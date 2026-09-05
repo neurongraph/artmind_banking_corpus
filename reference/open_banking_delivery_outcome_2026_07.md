@@ -1,0 +1,32 @@
+---
+_artmind_id: 01a07389-fc5b-75bd-98bb-32ce4e494fae
+_version: 1
+_content_sha256: 3aad6c18eabae9b2d6f54a87a18db6eea7dd0fa6c79ccbfe7d95f18773165ffa
+_domain: banking.reference
+_status: latest
+_source_commit: 9e4364f25d72fb4031437826e792d447b118c6d9
+_source_path: reference/open_banking_delivery_outcome_2026_07.md
+_source_type: md
+_ingested_at: '2026-09-05T21:46:58.011649+00:00'
+title: open_banking_delivery_outcome_2026_07
+declared_version: '1.0'
+created_on: '2026-09-05T21:46:58.011649+00:00'
+---
+
+# Open Banking Delivery Outcome
+
+| Field | Value |
+|---|---|
+| Document ID | OB-OUTCOME-2026-07 |
+| Version | 1.0 |
+| Reporting Date | 2026-07-10 |
+| Owner | Chief Technology Officer |
+| Status | Core delivery complete; limited exception under remediation |
+| Supersedes | None |
+| Superseded By | None |
+| Regulatory Reference | FCA-OP-2026-01 |
+| Related Documents | [[regulatory_circulars_2026]], [[systems]], [[policy_privacy]], [[board_risk_committee_minutes_q1_2026]] |
+
+FirstUK met the 2026-06-30 core delivery date. OAuth 2.0 APIs provide consented account, transaction, standing-order, and direct-debit mandate data. Consent scope, expiry and revocation are recorded; API-access data is purged after 90 days unless renewed.
+
+For 37 inactive legacy mandates, the API returns identifier and status but not a historical cancellation timestamp. Support provides the timestamp within one business day while migration completes by 2026-08-15. Compliance logged the exception on 2026-06-30; the CTO owns closure and reports it to the Board Risk Committee in September.
