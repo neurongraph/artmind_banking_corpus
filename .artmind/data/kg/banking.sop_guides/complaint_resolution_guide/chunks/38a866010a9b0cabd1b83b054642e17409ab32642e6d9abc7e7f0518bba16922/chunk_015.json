@@ -1,0 +1,1154 @@
+{
+  "chunk_seq": 15,
+  "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+  "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+  "text": "### Scenario 3: Unauthorized Direct Debit  \n**Your Issue:** \"I didn't authorize this Direct Debit, and £150 was taken.\"  \n**What We Investigate:**\n- Is there a signed mandate?\n- Did you actually authorize it?\n- When was it authorized?\n- Is the amount correct per mandate?  \n**Possible Outcomes:**\n- **Genuinely unauthorized:** Refund £150 + interest within 10 days (Direct Debit Guarantee)\n- **You authorized but forgot:** Explanation; option to cancel going forward\n- **Amount error:** Refund overage only  \n**Typical Resolution Time:** 5–10 business days  \n---",
+  "name": "Chunk 15/27",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_014",
+  "next_chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_016",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Unauthorized Direct Debit Investigation",
+      "aliases": [
+        "Direct Debit Dispute Resolution",
+        "DD Mandate Dispute"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "An operational procedure for investigating customer complaints of unauthorized Direct Debit transactions. The process verifies mandate authorization status, validates transaction amounts against mandate terms, and determines appropriate remediation including refunds with interest or cancellation options. Resolution is targeted within 5–10 business days.",
+      "context": [
+        "I didn't authorize this Direct Debit, and £150 was taken.",
+        "Is there a signed mandate? Did you actually authorize it?",
+        "Genuinely unauthorized: Refund £150 + interest within 10 days (Direct Debit Guarantee)",
+        "Typical Resolution Time: 5–10 business days"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Mandate Authorization Verification",
+      "aliases": [
+        "Signed Mandate Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step to establish whether a valid signed Direct Debit mandate exists for the disputed transaction. This is the foundational check that determines whether the debit was authorized.",
+      "context": [
+        "Is there a signed mandate?",
+        "Did you actually authorize it?"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Authorization Timing Confirmation",
+      "aliases": [
+        "Authorization Date Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Confirmation of when the Direct Debit mandate was authorized by the customer, establishing the temporal validity of the authorization.",
+      "context": [
+        "When was it authorized?"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Transaction Amount Validation",
+      "aliases": [
+        "Amount Verification Against Mandate"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Verification that the amount debited (£150) matches the amount authorized under the Direct Debit mandate terms.",
+      "context": [
+        "Is the amount correct per mandate?"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Unauthorized Debit Refund Processing",
+      "aliases": [
+        "DD Guarantee Refund"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Processing of a full refund of £150 plus accrued interest within 10 days when the Direct Debit is confirmed as genuinely unauthorized, in accordance with the Direct Debit Guarantee.",
+      "context": [
+        "Genuinely unauthorized: Refund £150 + interest within 10 days (Direct Debit Guarantee)"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Customer Authorization Clarification",
+      "aliases": [
+        "Authorization Explanation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Communication step where the customer is informed that they did authorize the Direct Debit but may have forgotten, with an explanation provided and the option to cancel future payments.",
+      "context": [
+        "You authorized but forgot: Explanation; option to cancel going forward"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Overage Refund Processing",
+      "aliases": [
+        "Amount Error Correction"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Processing of a partial refund limited to the amount by which the debit exceeded the authorized mandate amount when an amount error is identified.",
+      "context": [
+        "Amount error: Refund overage only"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Mandate Authorization Status Gate",
+      "aliases": [
+        "Authorization Verification Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A branching decision point that determines whether a valid signed mandate exists. The outcome determines whether the debit is classified as authorized or unauthorized, leading to different resolution paths.",
+      "context": [
+        "Is there a signed mandate?",
+        "Did you actually authorize it?"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Transaction Amount Correctness Gate",
+      "aliases": [
+        "Amount Validation Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "A decision point that verifies whether the debited amount matches the authorized mandate amount. A mismatch triggers partial refund processing for the overage.",
+      "context": [
+        "Is the amount correct per mandate?"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Direct Debit Guarantee Compliance Gate",
+      "aliases": [
+        "DD Guarantee Verification"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "regulatory_reporting",
+      "description": "A mandatory compliance gate ensuring that unauthorized Direct Debit claims are processed in accordance with the Direct Debit Guarantee, including refund of principal plus interest within the required 10-day timeframe.",
+      "context": [
+        "Genuinely unauthorized: Refund £150 + interest within 10 days (Direct Debit Guarantee)"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "DD Mandate",
+        "Direct Debit Authorization"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "The underlying Direct Debit authorization that is the subject of the dispute investigation. The mandate establishes the customer's authorization for recurring debits and defines the authorized amount.",
+      "context": [
+        "Is there a signed mandate?",
+        "Is the amount correct per mandate?"
+      ]
+    },
+    {
+      "id": "dd_002",
+      "name": "Direct Debit Guarantee",
+      "aliases": [
+        "DD Guarantee Protection"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_guarantee",
+      "description": "The consumer protection mechanism that guarantees refund of unauthorized Direct Debits plus interest within 10 days, providing the customer with recourse when a debit is genuinely unauthorized.",
+      "context": [
+        "Genuinely unauthorized: Refund £150 + interest within 10 days (Direct Debit Guarantee)"
+      ]
+    },
+    {
+      "id": "txn_001",
+      "name": "Disputed Direct Debit Transaction £150",
+      "aliases": [
+        "Unauthorized DD £150",
+        "Disputed Transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "The specific Direct Debit transaction of £150 that the customer disputes as unauthorized. This transaction is the subject of the investigation and potential refund.",
+      "context": [
+        "I didn't authorize this Direct Debit, and £150 was taken.",
+        "Genuinely unauthorized: Refund £150 + interest within 10 days"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Disputing Customer",
+      "aliases": [
+        "Complainant",
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The customer who has filed a complaint regarding an unauthorized Direct Debit deduction of £150 and is the subject of the investigation and potential remediation.",
+      "context": [
+        "I didn't authorize this Direct Debit, and £150 was taken.",
+        "You authorized but forgot: Explanation; option to cancel going forward"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_proc_001",
+    "pstep_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_001",
+    "pstep_002": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_002",
+    "pstep_003": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_003",
+    "pstep_004": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_004",
+    "pstep_005": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_005",
+    "pstep_006": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_006",
+    "dp_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dp_001",
+    "dp_002": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dp_002",
+    "cc_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cc_001",
+    "dd_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dd_001",
+    "dd_002": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dd_002",
+    "txn_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_txn_001",
+    "cust_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_proc_001",
+      "name": "Unauthorized Direct Debit Investigation",
+      "aliases": [
+        "Direct Debit Dispute Resolution",
+        "DD Mandate Dispute"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "An operational procedure for investigating customer complaints of unauthorized Direct Debit transactions. The process verifies mandate authorization status, validates transaction amounts against mandate terms, and determines appropriate remediation including refunds with interest or cancellation options. Resolution is targeted within 5–10 business days.",
+      "context": [
+        "I didn't authorize this Direct Debit, and £150 was taken.",
+        "Is there a signed mandate? Did you actually authorize it?",
+        "Genuinely unauthorized: Refund £150 + interest within 10 days (Direct Debit Guarantee)",
+        "Typical Resolution Time: 5–10 business days"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_001",
+      "name": "Mandate Authorization Verification",
+      "aliases": [
+        "Signed Mandate Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step to establish whether a valid signed Direct Debit mandate exists for the disputed transaction. This is the foundational check that determines whether the debit was authorized.",
+      "context": [
+        "Is there a signed mandate?",
+        "Did you actually authorize it?"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_002",
+      "name": "Authorization Timing Confirmation",
+      "aliases": [
+        "Authorization Date Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Confirmation of when the Direct Debit mandate was authorized by the customer, establishing the temporal validity of the authorization.",
+      "context": [
+        "When was it authorized?"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_003",
+      "name": "Transaction Amount Validation",
+      "aliases": [
+        "Amount Verification Against Mandate"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Verification that the amount debited (£150) matches the amount authorized under the Direct Debit mandate terms.",
+      "context": [
+        "Is the amount correct per mandate?"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_004",
+      "name": "Unauthorized Debit Refund Processing",
+      "aliases": [
+        "DD Guarantee Refund"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Processing of a full refund of £150 plus accrued interest within 10 days when the Direct Debit is confirmed as genuinely unauthorized, in accordance with the Direct Debit Guarantee.",
+      "context": [
+        "Genuinely unauthorized: Refund £150 + interest within 10 days (Direct Debit Guarantee)"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_005",
+      "name": "Customer Authorization Clarification",
+      "aliases": [
+        "Authorization Explanation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Communication step where the customer is informed that they did authorize the Direct Debit but may have forgotten, with an explanation provided and the option to cancel future payments.",
+      "context": [
+        "You authorized but forgot: Explanation; option to cancel going forward"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_006",
+      "name": "Overage Refund Processing",
+      "aliases": [
+        "Amount Error Correction"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Processing of a partial refund limited to the amount by which the debit exceeded the authorized mandate amount when an amount error is identified.",
+      "context": [
+        "Amount error: Refund overage only"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dp_001",
+      "name": "Mandate Authorization Status Gate",
+      "aliases": [
+        "Authorization Verification Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A branching decision point that determines whether a valid signed mandate exists. The outcome determines whether the debit is classified as authorized or unauthorized, leading to different resolution paths.",
+      "context": [
+        "Is there a signed mandate?",
+        "Did you actually authorize it?"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dp_002",
+      "name": "Transaction Amount Correctness Gate",
+      "aliases": [
+        "Amount Validation Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "A decision point that verifies whether the debited amount matches the authorized mandate amount. A mismatch triggers partial refund processing for the overage.",
+      "context": [
+        "Is the amount correct per mandate?"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cc_001",
+      "name": "Direct Debit Guarantee Compliance Gate",
+      "aliases": [
+        "DD Guarantee Verification"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "regulatory_reporting",
+      "description": "A mandatory compliance gate ensuring that unauthorized Direct Debit claims are processed in accordance with the Direct Debit Guarantee, including refund of principal plus interest within the required 10-day timeframe.",
+      "context": [
+        "Genuinely unauthorized: Refund £150 + interest within 10 days (Direct Debit Guarantee)"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "DD Mandate",
+        "Direct Debit Authorization"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "The underlying Direct Debit authorization that is the subject of the dispute investigation. The mandate establishes the customer's authorization for recurring debits and defines the authorized amount.",
+      "context": [
+        "Is there a signed mandate?",
+        "Is the amount correct per mandate?"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dd_002",
+      "name": "Direct Debit Guarantee",
+      "aliases": [
+        "DD Guarantee Protection"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_guarantee",
+      "description": "The consumer protection mechanism that guarantees refund of unauthorized Direct Debits plus interest within 10 days, providing the customer with recourse when a debit is genuinely unauthorized.",
+      "context": [
+        "Genuinely unauthorized: Refund £150 + interest within 10 days (Direct Debit Guarantee)"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_txn_001",
+      "name": "Disputed Direct Debit Transaction £150",
+      "aliases": [
+        "Unauthorized DD £150",
+        "Disputed Transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "The specific Direct Debit transaction of £150 that the customer disputes as unauthorized. This transaction is the subject of the investigation and potential refund.",
+      "context": [
+        "I didn't authorize this Direct Debit, and £150 was taken.",
+        "Genuinely unauthorized: Refund £150 + interest within 10 days"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cust_001",
+      "name": "Disputing Customer",
+      "aliases": [
+        "Complainant",
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The customer who has filed a complaint regarding an unauthorized Direct Debit deduction of £150 and is the subject of the investigation and potential remediation.",
+      "context": [
+        "I didn't authorize this Direct Debit, and £150 was taken.",
+        "You authorized but forgot: Explanation; option to cancel going forward"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_proc_001",
+      "name": "Unauthorized Direct Debit Investigation",
+      "properties": {
+        "purpose": "Investigate and resolve customer disputes regarding unauthorized or incorrectly processed direct debit transactions",
+        "scope": "Direct debit transactions where customer claims non-authorization or amount discrepancy",
+        "channels": [
+          "branch",
+          "online",
+          "phone"
+        ],
+        "departments_involved": [
+          "Payments",
+          "Customer Service",
+          "Compliance"
+        ],
+        "timeline_sla": "5–10 business days",
+        "trigger": "Customer dispute claim: unauthorized debit or incorrect amount",
+        "outcome_success": "Determination of authorization status and appropriate refund or explanation provided",
+        "outcome_failure": "Unresolved dispute, customer escalation, regulatory breach"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_001",
+      "name": "Mandate Authorization Verification",
+      "properties": {
+        "step_number": 1,
+        "actor": "Payments Team",
+        "input": "Customer account number, direct debit reference, mandate records",
+        "output": "Confirmation of signed mandate existence and validity",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Mandate Management System",
+          "Customer Records Database"
+        ],
+        "failure_path": "Escalate to Step 5 (Customer Authorization Clarification)"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_002",
+      "name": "Authorization Timing Confirmation",
+      "properties": {
+        "step_number": 2,
+        "actor": "Payments Team",
+        "input": "Mandate authorization date, transaction date, customer authorization records",
+        "output": "Confirmation that authorization predates transaction",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Mandate Management System"
+        ],
+        "failure_path": "Proceed to unauthorized refund processing (Step 4)"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_003",
+      "name": "Transaction Amount Validation",
+      "properties": {
+        "step_number": 3,
+        "actor": "Payments Team",
+        "input": "Mandate amount limit, transaction amount, transaction records",
+        "output": "Confirmation that transaction amount matches or exceeds mandate authorization",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Mandate Management System",
+          "Transaction Ledger"
+        ],
+        "failure_path": "Proceed to overage refund processing (Step 6)"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_004",
+      "name": "Unauthorized Debit Refund Processing",
+      "properties": {
+        "step_number": 4,
+        "actor": "Payments Team / Customer Service",
+        "input": "Transaction amount, customer account, authorization status determination",
+        "output": "Refund of full transaction amount plus interest credited to customer account",
+        "estimated_duration": "10 business days",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Payment Processing System",
+          "Customer Account System"
+        ],
+        "failure_path": "Escalate to supervisor for manual review"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_005",
+      "name": "Customer Authorization Clarification",
+      "properties": {
+        "step_number": 5,
+        "actor": "Customer Service Representative",
+        "input": "Customer contact details, mandate details, transaction details",
+        "output": "Customer confirmation of authorization status or cancellation request",
+        "channel": [
+          "phone",
+          "email"
+        ],
+        "mandatory": "yes",
+        "failure_path": "Proceed to unauthorized refund processing if customer confirms non-authorization"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_006",
+      "name": "Overage Refund Processing",
+      "properties": {
+        "step_number": 6,
+        "actor": "Payments Team",
+        "input": "Mandate amount limit, transaction amount, overage calculation",
+        "output": "Refund of amount exceeding mandate authorization",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Payment Processing System",
+          "Customer Account System"
+        ],
+        "failure_path": "Escalate to supervisor for manual review"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dp_001",
+      "name": "Mandate Authorization Status Gate",
+      "properties": {
+        "decision_question": "Is there a valid signed direct debit mandate on file?",
+        "criteria": "Presence of signed mandate predating the disputed transaction",
+        "decision_maker": "Payments Team (system-assisted)",
+        "path_yes": "Proceed to Step 2 (Authorization Timing Confirmation)",
+        "path_no": "Proceed to Step 5 (Customer Authorization Clarification)",
+        "override_possible": "yes"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dp_002",
+      "name": "Transaction Amount Correctness Gate",
+      "properties": {
+        "decision_question": "Does the transaction amount match the authorized mandate amount?",
+        "criteria": "Transaction amount equals or is less than mandate authorization limit",
+        "decision_maker": "Payments Team (system-assisted)",
+        "path_yes": "Provide explanation to customer; offer cancellation option",
+        "path_no": "Proceed to Step 6 (Overage Refund Processing)",
+        "override_possible": "yes"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cc_001",
+      "name": "Direct Debit Guarantee Compliance Gate",
+      "properties": {
+        "checkpoint_name": "Direct Debit Guarantee Compliance Verification",
+        "regulatory_basis": "Direct Debit Guarantee Scheme (UK Payments Council)",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "Mandate records",
+          "Transaction records",
+          "Authorization documentation"
+        ],
+        "performed_by": "Payments Team / Compliance",
+        "timing": "Upon customer dispute claim",
+        "failure_consequence": "Regulatory breach, customer compensation obligation, reputational damage"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dd_001",
+      "name": "Direct Debit Mandate",
+      "properties": {
+        "mandate_process": "Customer signs authorization; mandate stored in Mandate Management System",
+        "dd_guarantee_coverage": "Covered under Direct Debit Guarantee for unauthorized or incorrectly processed debits",
+        "cancellation_or_dispute_process": "Customer may dispute within timeframe; investigation triggers refund if unauthorized"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dd_002",
+      "name": "Direct Debit Guarantee",
+      "properties": {
+        "dd_guarantee_coverage": "Full refund of disputed amount plus interest within 10 business days if debit determined unauthorized",
+        "cancellation_or_dispute_process": "Customer initiates dispute; bank investigates mandate authorization and transaction amount; refund issued if claim valid"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_txn_001",
+      "name": "Disputed Direct Debit Transaction £150",
+      "properties": {
+        "transaction_type": "disputed",
+        "threshold_value": 150,
+        "monitoring_or_reporting_obligation": "Investigation required; Direct Debit Guarantee applies",
+        "dispute_or_reversal_rules": "Refund within 10 business days if unauthorized; refund overage only if amount error"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cust_001",
+      "name": "Disputing Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Direct debit dispute claimant",
+        "eligibility_or_verification_status": "Eligible for Direct Debit Guarantee investigation and potential refund"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_proc_001",
+      "source_name": "Unauthorized Direct Debit Investigation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_001",
+      "target_name": "Mandate Authorization Verification",
+      "rel_type": "starts_with",
+      "description": "The investigation process begins with verification of mandate authorization status",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "What We Investigate: Is there a signed mandate?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_001",
+      "source_name": "Mandate Authorization Verification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_002",
+      "target_name": "Authorization Timing Confirmation",
+      "rel_type": "followed_by",
+      "description": "Mandate verification is followed by confirmation of authorization timing",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Did you actually authorize it? When was it authorized?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_002",
+      "source_name": "Authorization Timing Confirmation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_003",
+      "target_name": "Transaction Amount Validation",
+      "rel_type": "followed_by",
+      "description": "Authorization timing confirmation is followed by validation of transaction amount",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Is the amount correct per mandate?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_001",
+      "source_name": "Mandate Authorization Verification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dp_001",
+      "target_name": "Mandate Authorization Status Gate",
+      "rel_type": "leads_to",
+      "description": "Mandate verification leads to a decision gate on authorization status",
+      "properties": {
+        "gate_type": "authorization_status"
+      },
+      "context": "Is there a signed mandate? Did you actually authorize it?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dp_001",
+      "source_name": "Mandate Authorization Status Gate",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_004",
+      "target_name": "Unauthorized Debit Refund Processing",
+      "rel_type": "routes_to_on_pass",
+      "description": "If mandate authorization is not confirmed, route to unauthorized debit refund processing",
+      "properties": {
+        "outcome": "genuinely_unauthorized",
+        "refund_amount": "£150 + interest",
+        "timeline": "within 10 days"
+      },
+      "context": "Genuinely unauthorized: Refund £150 + interest within 10 days (Direct Debit Guarantee)",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dp_001",
+      "source_name": "Mandate Authorization Status Gate",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_005",
+      "target_name": "Customer Authorization Clarification",
+      "rel_type": "routes_to_on_fail",
+      "description": "If mandate authorization is confirmed, route to customer clarification step",
+      "properties": {
+        "outcome": "authorized_but_forgotten"
+      },
+      "context": "You authorized but forgot: Explanation; option to cancel going forward",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_003",
+      "source_name": "Transaction Amount Validation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dp_002",
+      "target_name": "Transaction Amount Correctness Gate",
+      "rel_type": "leads_to",
+      "description": "Transaction amount validation leads to a decision gate on amount correctness",
+      "properties": {
+        "gate_type": "amount_correctness"
+      },
+      "context": "Is the amount correct per mandate?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dp_002",
+      "source_name": "Transaction Amount Correctness Gate",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_006",
+      "target_name": "Overage Refund Processing",
+      "rel_type": "routes_to_on_fail",
+      "description": "If transaction amount is incorrect, route to overage refund processing",
+      "properties": {
+        "outcome": "amount_error",
+        "refund_type": "overage_only"
+      },
+      "context": "Amount error: Refund overage only",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_004",
+      "source_name": "Unauthorized Debit Refund Processing",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dd_002",
+      "target_name": "Direct Debit Guarantee",
+      "rel_type": "processes_dispute_for",
+      "description": "Unauthorized debit refund processing applies the Direct Debit Guarantee protection",
+      "properties": {
+        "guarantee_type": "unauthorized_transaction",
+        "refund_timeline": "10 days"
+      },
+      "context": "Genuinely unauthorized: Refund £150 + interest within 10 days (Direct Debit Guarantee)",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_004",
+      "source_name": "Unauthorized Debit Refund Processing",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cc_001",
+      "target_name": "Direct Debit Guarantee Compliance Gate",
+      "rel_type": "satisfies",
+      "description": "Unauthorized debit refund processing satisfies Direct Debit Guarantee compliance requirements",
+      "properties": {
+        "compliance_requirement": "unauthorized_transaction_protection"
+      },
+      "context": "Genuinely unauthorized: Refund £150 + interest within 10 days (Direct Debit Guarantee)",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cc_001",
+      "source_name": "Direct Debit Guarantee Compliance Gate",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dp_001",
+      "target_name": "Mandate Authorization Status Gate",
+      "rel_type": "gates",
+      "description": "Direct Debit Guarantee compliance checkpoint gates the mandate authorization decision",
+      "properties": {
+        "gate_function": "ensures_guarantee_eligibility"
+      },
+      "context": "Direct Debit Guarantee compliance ensures proper investigation before refund",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_proc_001",
+      "source_name": "Unauthorized Direct Debit Investigation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "processes_mandate_for",
+      "description": "The investigation process examines the direct debit mandate",
+      "properties": {
+        "investigation_focus": "mandate_authorization"
+      },
+      "context": "Is there a signed mandate?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_proc_001",
+      "source_name": "Unauthorized Direct Debit Investigation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_txn_001",
+      "target_name": "Disputed Direct Debit Transaction £150",
+      "rel_type": "operates_on",
+      "description": "The investigation process operates on the disputed transaction",
+      "properties": {
+        "transaction_amount": "£150",
+        "dispute_type": "unauthorized"
+      },
+      "context": "£150 was taken",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_proc_001",
+      "source_name": "Unauthorized Direct Debit Investigation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cust_001",
+      "target_name": "Disputing Customer",
+      "rel_type": "serves",
+      "description": "The investigation process serves the disputing customer",
+      "properties": {
+        "resolution_timeline": "5-10 business days"
+      },
+      "context": "Typical Resolution Time: 5–10 business days",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cust_001",
+      "source_name": "Disputing Customer",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_txn_001",
+      "target_name": "Disputed Direct Debit Transaction £150",
+      "rel_type": "filed_about",
+      "description": "The customer filed a dispute about the transaction",
+      "properties": {
+        "dispute_reason": "unauthorized"
+      },
+      "context": "I didn't authorize this Direct Debit, and £150 was taken",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cust_001",
+      "source_name": "Disputing Customer",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "authorised_by",
+      "description": "The customer is the authorizer of the direct debit mandate",
+      "properties": {
+        "authorization_status": "disputed"
+      },
+      "context": "Did you actually authorize it?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_txn_001",
+      "source_name": "Disputed Direct Debit Transaction £150",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "triggered_by",
+      "description": "The disputed transaction was triggered by the direct debit mandate",
+      "properties": {
+        "transaction_amount": "£150"
+      },
+      "context": "£150 was taken via Direct Debit",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_005",
+      "source_name": "Customer Authorization Clarification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cust_001",
+      "target_name": "Disputing Customer",
+      "rel_type": "notifies",
+      "description": "Customer clarification step notifies the customer of findings",
+      "properties": {
+        "notification_type": "explanation_and_options"
+      },
+      "context": "You authorized but forgot: Explanation; option to cancel going forward",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_006",
+      "source_name": "Overage Refund Processing",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cust_001",
+      "target_name": "Disputing Customer",
+      "rel_type": "notifies",
+      "description": "Overage refund processing notifies customer of partial refund",
+      "properties": {
+        "refund_type": "overage_only"
+      },
+      "context": "Amount error: Refund overage only",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_proc_001",
+      "source_name": "Unauthorized Direct Debit Investigation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cc_001",
+      "target_name": "Direct Debit Guarantee Compliance Gate",
+      "rel_type": "mandated_to_include",
+      "description": "The investigation process must include Direct Debit Guarantee compliance verification",
+      "properties": {
+        "compliance_requirement": "mandatory"
+      },
+      "context": "Direct Debit Guarantee protection applies to genuinely unauthorized transactions",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_proc_001",
+      "source_name": "Unauthorized Direct Debit Investigation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_001",
+      "source_name": "Mandate Authorization Verification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_002",
+      "source_name": "Authorization Timing Confirmation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_003",
+      "source_name": "Transaction Amount Validation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_004",
+      "source_name": "Unauthorized Debit Refund Processing",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_005",
+      "source_name": "Customer Authorization Clarification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_pstep_006",
+      "source_name": "Overage Refund Processing",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dp_001",
+      "source_name": "Mandate Authorization Status Gate",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dp_002",
+      "source_name": "Transaction Amount Correctness Gate",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cc_001",
+      "source_name": "Direct Debit Guarantee Compliance Gate",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_dd_002",
+      "source_name": "Direct Debit Guarantee",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_txn_001",
+      "source_name": "Disputed Direct Debit Transaction £150",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015_cust_001",
+      "source_name": "Disputing Customer",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_015",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

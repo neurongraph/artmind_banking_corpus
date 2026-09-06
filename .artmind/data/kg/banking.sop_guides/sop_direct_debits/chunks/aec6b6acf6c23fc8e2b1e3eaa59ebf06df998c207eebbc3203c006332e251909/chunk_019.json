@@ -1,0 +1,1068 @@
+{
+  "chunk_seq": 19,
+  "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+  "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+  "text": "### FirstUK Cancellation Process  \n**Upon Cancellation Request:**\n1. Verify customer identity\n2. Confirm mandate details\n3. Set mandate status to \"Canceled\"\n4. Notify biller (automated ARUDD cancellation)\n5. Send confirmation to customer\n6. Future payments blocked  \n**Effective Date:** Immediate (no notice period required)\n**Any Pending Payments:** Blocked if cancellation before settlement date",
+  "name": "Chunk 19/26",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_018",
+  "next_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_020",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Direct Debit Cancellation Process",
+      "aliases": [
+        "FirstUK Cancellation Process",
+        "DD Cancellation"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit",
+      "description": "End-to-end procedure for cancelling a direct debit mandate with immediate effect. Includes customer identity verification, mandate status update, biller notification via ARUDD, customer confirmation, and blocking of future payments. Pending payments are blocked if cancellation occurs before settlement date.",
+      "context": [
+        "Upon Cancellation Request: 1. Verify customer identity 2. Confirm mandate details 3. Set mandate status to \"Canceled\" 4. Notify biller (automated ARUDD cancellation) 5. Send confirmation to customer 6. Future payments blocked",
+        "Effective Date: Immediate (no notice period required)",
+        "Any Pending Payments: Blocked if cancellation before settlement date"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Customer Identity Verification",
+      "aliases": [
+        "Verify customer identity"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Initial step in the cancellation process where the customer's identity is verified before proceeding with mandate cancellation.",
+      "context": [
+        "Verify customer identity"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Mandate Details Confirmation",
+      "aliases": [
+        "Confirm mandate details"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Step to confirm and validate the specific mandate details being cancelled, ensuring the correct mandate is identified.",
+      "context": [
+        "Confirm mandate details"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Mandate Status Update",
+      "aliases": [
+        "Set mandate status to Canceled"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step to update the mandate status to 'Canceled' in the banking system, formally recording the cancellation.",
+      "context": [
+        "Set mandate status to \"Canceled\""
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Biller Notification via ARUDD",
+      "aliases": [
+        "Notify biller (automated ARUDD cancellation)"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Automated step to notify the biller of the mandate cancellation using the ARUDD (Automated Return of Unpaid Direct Debit) system.",
+      "context": [
+        "Notify biller (automated ARUDD cancellation)"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Customer Cancellation Confirmation",
+      "aliases": [
+        "Send confirmation to customer"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Step to send formal confirmation to the customer that their direct debit mandate has been successfully cancelled.",
+      "context": [
+        "Send confirmation to customer"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Future Payments Block",
+      "aliases": [
+        "Future payments blocked"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step to block all future payments under the cancelled mandate, preventing any further debits from being processed.",
+      "context": [
+        "Future payments blocked"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Operations Staff - Cancellation Handler",
+      "aliases": [
+        "Cancellation Handler"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations staff member responsible for executing the direct debit cancellation process, including identity verification, mandate confirmation, and customer notification.",
+      "context": [
+        "Upon Cancellation Request: 1. Verify customer identity 2. Confirm mandate details 3. Set mandate status to \"Canceled\""
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Automated ARUDD System",
+      "aliases": [
+        "ARUDD",
+        "Automated ARUDD cancellation"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system responsible for notifying billers of direct debit mandate cancellations using the ARUDD protocol.",
+      "context": [
+        "Notify biller (automated ARUDD cancellation)"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Mandate Cancellation",
+      "aliases": [
+        "DD Mandate Cancellation",
+        "Mandate Cancellation"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_cancellation",
+      "description": "The direct debit mandate cancellation process with immediate effective date and no notice period required. Includes blocking of pending payments if cancellation occurs before settlement date.",
+      "context": [
+        "Effective Date: Immediate (no notice period required)",
+        "Any Pending Payments: Blocked if cancellation before settlement date"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Mandate Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The customer initiating the direct debit mandate cancellation request. Their identity must be verified and they receive confirmation of the cancellation.",
+      "context": [
+        "Upon Cancellation Request: 1. Verify customer identity",
+        "Send confirmation to customer"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Pending Payment Settlement Status Check",
+      "aliases": [
+        "Pending Payments Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision point determining whether pending payments should be blocked based on whether cancellation occurs before or after the settlement date.",
+      "context": [
+        "Any Pending Payments: Blocked if cancellation before settlement date"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_proc_001",
+    "pstep_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_001",
+    "pstep_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_002",
+    "pstep_003": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_003",
+    "pstep_004": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_004",
+    "pstep_005": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_005",
+    "pstep_006": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_006",
+    "ra_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_ra_001",
+    "ra_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_ra_002",
+    "dd_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dd_001",
+    "cust_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_cust_001",
+    "dp_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dp_001"
+  },
+  "entities": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_proc_001",
+      "name": "Direct Debit Cancellation Process",
+      "aliases": [
+        "FirstUK Cancellation Process",
+        "DD Cancellation"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit",
+      "description": "End-to-end procedure for cancelling a direct debit mandate with immediate effect. Includes customer identity verification, mandate status update, biller notification via ARUDD, customer confirmation, and blocking of future payments. Pending payments are blocked if cancellation occurs before settlement date.",
+      "context": [
+        "Upon Cancellation Request: 1. Verify customer identity 2. Confirm mandate details 3. Set mandate status to \"Canceled\" 4. Notify biller (automated ARUDD cancellation) 5. Send confirmation to customer 6. Future payments blocked",
+        "Effective Date: Immediate (no notice period required)",
+        "Any Pending Payments: Blocked if cancellation before settlement date"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_001",
+      "name": "Customer Identity Verification",
+      "aliases": [
+        "Verify customer identity"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Initial step in the cancellation process where the customer's identity is verified before proceeding with mandate cancellation.",
+      "context": [
+        "Verify customer identity"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_002",
+      "name": "Mandate Details Confirmation",
+      "aliases": [
+        "Confirm mandate details"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Step to confirm and validate the specific mandate details being cancelled, ensuring the correct mandate is identified.",
+      "context": [
+        "Confirm mandate details"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_003",
+      "name": "Mandate Status Update",
+      "aliases": [
+        "Set mandate status to Canceled"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step to update the mandate status to 'Canceled' in the banking system, formally recording the cancellation.",
+      "context": [
+        "Set mandate status to \"Canceled\""
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_004",
+      "name": "Biller Notification via ARUDD",
+      "aliases": [
+        "Notify biller (automated ARUDD cancellation)"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Automated step to notify the biller of the mandate cancellation using the ARUDD (Automated Return of Unpaid Direct Debit) system.",
+      "context": [
+        "Notify biller (automated ARUDD cancellation)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_005",
+      "name": "Customer Cancellation Confirmation",
+      "aliases": [
+        "Send confirmation to customer"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Step to send formal confirmation to the customer that their direct debit mandate has been successfully cancelled.",
+      "context": [
+        "Send confirmation to customer"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_006",
+      "name": "Future Payments Block",
+      "aliases": [
+        "Future payments blocked"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step to block all future payments under the cancelled mandate, preventing any further debits from being processed.",
+      "context": [
+        "Future payments blocked"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_ra_001",
+      "name": "Operations Staff - Cancellation Handler",
+      "aliases": [
+        "Cancellation Handler"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations staff member responsible for executing the direct debit cancellation process, including identity verification, mandate confirmation, and customer notification.",
+      "context": [
+        "Upon Cancellation Request: 1. Verify customer identity 2. Confirm mandate details 3. Set mandate status to \"Canceled\""
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_ra_002",
+      "name": "Automated ARUDD System",
+      "aliases": [
+        "ARUDD",
+        "Automated ARUDD cancellation"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system responsible for notifying billers of direct debit mandate cancellations using the ARUDD protocol.",
+      "context": [
+        "Notify biller (automated ARUDD cancellation)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dd_001",
+      "name": "Direct Debit Mandate Cancellation",
+      "aliases": [
+        "DD Mandate Cancellation",
+        "Mandate Cancellation"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_cancellation",
+      "description": "The direct debit mandate cancellation process with immediate effective date and no notice period required. Includes blocking of pending payments if cancellation occurs before settlement date.",
+      "context": [
+        "Effective Date: Immediate (no notice period required)",
+        "Any Pending Payments: Blocked if cancellation before settlement date"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Mandate Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The customer initiating the direct debit mandate cancellation request. Their identity must be verified and they receive confirmation of the cancellation.",
+      "context": [
+        "Upon Cancellation Request: 1. Verify customer identity",
+        "Send confirmation to customer"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dp_001",
+      "name": "Pending Payment Settlement Status Check",
+      "aliases": [
+        "Pending Payments Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision point determining whether pending payments should be blocked based on whether cancellation occurs before or after the settlement date.",
+      "context": [
+        "Any Pending Payments: Blocked if cancellation before settlement date"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_proc_001",
+      "name": "Direct Debit Cancellation Process",
+      "properties": {
+        "document_id": "FirstUK-DD-Cancellation-SOP",
+        "purpose": "Cancel active direct debit mandates and prevent future payments",
+        "scope": "All direct debit mandates held by FirstUK customers",
+        "channels": [
+          "branch",
+          "online",
+          "phone"
+        ],
+        "owner": "Operations Staff - Cancellation Handler",
+        "departments_involved": [
+          "Operations",
+          "Payments",
+          "Customer Service"
+        ],
+        "timeline_sla": "Immediate",
+        "trigger": "Customer request to cancel direct debit mandate",
+        "outcome_success": "Mandate status set to Canceled, biller notified, customer confirmed, future payments blocked",
+        "outcome_failure": "Pending payments not blocked or biller notification fails",
+        "effective_date": "Immediate"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_001",
+      "name": "Customer Identity Verification",
+      "properties": {
+        "step_number": 1,
+        "actor": "Operations Staff - Cancellation Handler",
+        "purpose": "Confirm customer identity before processing cancellation",
+        "channel": "branch | online | phone",
+        "mandatory": true,
+        "output": "Identity verified, customer authenticated"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_002",
+      "name": "Mandate Details Confirmation",
+      "properties": {
+        "step_number": 2,
+        "actor": "Operations Staff - Cancellation Handler",
+        "purpose": "Retrieve and confirm mandate details with customer",
+        "input": "Customer identity, mandate reference",
+        "output": "Mandate details confirmed by customer",
+        "channel": "system",
+        "mandatory": true
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_003",
+      "name": "Mandate Status Update",
+      "properties": {
+        "step_number": 3,
+        "actor": "Operations Staff - Cancellation Handler",
+        "purpose": "Update mandate status in system",
+        "input": "Confirmed mandate details",
+        "output": "Mandate status set to Canceled in system",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Direct Debit Management System"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_004",
+      "name": "Biller Notification via ARUDD",
+      "properties": {
+        "step_number": 4,
+        "actor": "Automated ARUDD System",
+        "purpose": "Notify biller of mandate cancellation",
+        "input": "Mandate status update",
+        "output": "ARUDD cancellation message sent to biller",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "ARUDD (Automated Return of Unpaid Direct Debits)"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_005",
+      "name": "Customer Cancellation Confirmation",
+      "properties": {
+        "step_number": 5,
+        "actor": "Operations Staff - Cancellation Handler",
+        "purpose": "Confirm cancellation to customer",
+        "input": "Mandate status update confirmation",
+        "output": "Confirmation message sent to customer",
+        "channel": "branch | online | phone",
+        "mandatory": true
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_006",
+      "name": "Future Payments Block",
+      "properties": {
+        "step_number": 6,
+        "actor": "Automated ARUDD System",
+        "purpose": "Prevent any future payments under canceled mandate",
+        "input": "Mandate status Canceled",
+        "output": "Future payments blocked in system",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Direct Debit Management System"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_ra_001",
+      "name": "Operations Staff - Cancellation Handler",
+      "properties": {
+        "role_type": "human",
+        "department": "Operations",
+        "authority_level": "Execute cancellation process",
+        "channels": [
+          "branch",
+          "online",
+          "phone",
+          "system"
+        ],
+        "responsibilities": [
+          "Customer identity verification",
+          "Mandate details confirmation",
+          "Mandate status update",
+          "Customer confirmation"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_ra_002",
+      "name": "Automated ARUDD System",
+      "properties": {
+        "role_type": "system",
+        "department": "Payments",
+        "channels": [
+          "system"
+        ],
+        "responsibilities": [
+          "Biller notification",
+          "Future payments block"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dd_001",
+      "name": "Direct Debit Mandate Cancellation",
+      "properties": {
+        "mandate_process": "Customer-initiated cancellation with immediate effect",
+        "cancellation_or_dispute_process": "Verify customer identity, confirm mandate details, update status to Canceled, notify biller via ARUDD, send customer confirmation, block future payments",
+        "notice_period_required": false,
+        "pending_payment_handling": "Blocked if cancellation occurs before settlement date"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Direct debit mandate holder requesting cancellation"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dp_001",
+      "name": "Pending Payment Settlement Status Check",
+      "properties": {
+        "decision_question": "Are there pending payments awaiting settlement?",
+        "criteria": "Cancellation request received before settlement date",
+        "decision_maker": "Automated ARUDD System",
+        "path_yes": "Block pending payments",
+        "path_no": "Allow pending payments to settle normally",
+        "timing": "Checked at point of mandate status update"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_proc_001",
+      "source_name": "Direct Debit Cancellation Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_001",
+      "target_name": "Customer Identity Verification",
+      "rel_type": "starts_with",
+      "description": "The Direct Debit Cancellation Process begins with Customer Identity Verification",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Upon Cancellation Request: 1. Verify customer identity",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_proc_001",
+      "source_name": "Direct Debit Cancellation Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_006",
+      "target_name": "Future Payments Block",
+      "rel_type": "ends_with",
+      "description": "The Direct Debit Cancellation Process concludes with Future Payments Block",
+      "properties": {
+        "sequence_position": 6
+      },
+      "context": "6. Future payments blocked",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_proc_001",
+      "source_name": "Direct Debit Cancellation Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dd_001",
+      "target_name": "Direct Debit Mandate Cancellation",
+      "rel_type": "cancels",
+      "description": "The Direct Debit Cancellation Process cancels the Direct Debit Mandate",
+      "properties": {
+        "effective_date": "Immediate",
+        "notice_period_required": false
+      },
+      "context": "Effective Date: Immediate (no notice period required)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_proc_001",
+      "source_name": "Direct Debit Cancellation Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_cust_001",
+      "target_name": "Customer",
+      "rel_type": "operates_on",
+      "description": "The Direct Debit Cancellation Process operates on the Customer",
+      "properties": {},
+      "context": "Upon Cancellation Request",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_proc_001",
+      "source_name": "Direct Debit Cancellation Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dp_001",
+      "target_name": "Pending Payment Settlement Status Check",
+      "rel_type": "branches_at",
+      "description": "The Direct Debit Cancellation Process branches at the Pending Payment Settlement Status Check decision point",
+      "properties": {
+        "condition": "Pending payments blocked if cancellation before settlement date"
+      },
+      "context": "Any Pending Payments: Blocked if cancellation before settlement date",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_001",
+      "source_name": "Customer Identity Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_002",
+      "target_name": "Mandate Details Confirmation",
+      "rel_type": "followed_by",
+      "description": "Customer Identity Verification is followed by Mandate Details Confirmation",
+      "properties": {
+        "sequence": "step 1 to step 2"
+      },
+      "context": "1. Verify customer identity 2. Confirm mandate details",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_001",
+      "source_name": "Customer Identity Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_cust_001",
+      "target_name": "Customer",
+      "rel_type": "verifies_identity_of",
+      "description": "Customer Identity Verification step verifies the identity of the Customer",
+      "properties": {},
+      "context": "Verify customer identity",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_001",
+      "source_name": "Customer Identity Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_ra_001",
+      "target_name": "Operations Staff - Cancellation Handler",
+      "rel_type": "performed_by",
+      "description": "Customer Identity Verification is performed by Operations Staff - Cancellation Handler",
+      "properties": {},
+      "context": "Upon Cancellation Request: 1. Verify customer identity",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_002",
+      "source_name": "Mandate Details Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_003",
+      "target_name": "Mandate Status Update",
+      "rel_type": "followed_by",
+      "description": "Mandate Details Confirmation is followed by Mandate Status Update",
+      "properties": {
+        "sequence": "step 2 to step 3"
+      },
+      "context": "2. Confirm mandate details 3. Set mandate status to \"Canceled\"",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_002",
+      "source_name": "Mandate Details Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dd_001",
+      "target_name": "Direct Debit Mandate Cancellation",
+      "rel_type": "records",
+      "description": "Mandate Details Confirmation step records details of the Direct Debit Mandate Cancellation",
+      "properties": {},
+      "context": "Confirm mandate details",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_002",
+      "source_name": "Mandate Details Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_ra_001",
+      "target_name": "Operations Staff - Cancellation Handler",
+      "rel_type": "performed_by",
+      "description": "Mandate Details Confirmation is performed by Operations Staff - Cancellation Handler",
+      "properties": {},
+      "context": "2. Confirm mandate details",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_003",
+      "source_name": "Mandate Status Update",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_004",
+      "target_name": "Biller Notification via ARUDD",
+      "rel_type": "followed_by",
+      "description": "Mandate Status Update is followed by Biller Notification via ARUDD",
+      "properties": {
+        "sequence": "step 3 to step 4"
+      },
+      "context": "3. Set mandate status to \"Canceled\" 4. Notify biller (automated ARUDD cancellation)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_003",
+      "source_name": "Mandate Status Update",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dd_001",
+      "target_name": "Direct Debit Mandate Cancellation",
+      "rel_type": "updates",
+      "description": "Mandate Status Update step updates the Direct Debit Mandate to Canceled status",
+      "properties": {
+        "new_status": "Canceled"
+      },
+      "context": "Set mandate status to \"Canceled\"",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_003",
+      "source_name": "Mandate Status Update",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_ra_001",
+      "target_name": "Operations Staff - Cancellation Handler",
+      "rel_type": "performed_by",
+      "description": "Mandate Status Update is performed by Operations Staff - Cancellation Handler",
+      "properties": {},
+      "context": "3. Set mandate status to \"Canceled\"",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_004",
+      "source_name": "Biller Notification via ARUDD",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_005",
+      "target_name": "Customer Cancellation Confirmation",
+      "rel_type": "followed_by",
+      "description": "Biller Notification via ARUDD is followed by Customer Cancellation Confirmation",
+      "properties": {
+        "sequence": "step 4 to step 5"
+      },
+      "context": "4. Notify biller (automated ARUDD cancellation) 5. Send confirmation to customer",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_004",
+      "source_name": "Biller Notification via ARUDD",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_ra_002",
+      "target_name": "Automated ARUDD System",
+      "rel_type": "performed_by",
+      "description": "Biller Notification via ARUDD is performed by Automated ARUDD System",
+      "properties": {
+        "automation_level": "automated"
+      },
+      "context": "Notify biller (automated ARUDD cancellation)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_004",
+      "source_name": "Biller Notification via ARUDD",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dd_001",
+      "target_name": "Direct Debit Mandate Cancellation",
+      "rel_type": "notifies",
+      "description": "Biller Notification via ARUDD notifies the biller of the Direct Debit Mandate Cancellation",
+      "properties": {
+        "notification_method": "ARUDD"
+      },
+      "context": "Notify biller (automated ARUDD cancellation)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_005",
+      "source_name": "Customer Cancellation Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_006",
+      "target_name": "Future Payments Block",
+      "rel_type": "followed_by",
+      "description": "Customer Cancellation Confirmation is followed by Future Payments Block",
+      "properties": {
+        "sequence": "step 5 to step 6"
+      },
+      "context": "5. Send confirmation to customer 6. Future payments blocked",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_005",
+      "source_name": "Customer Cancellation Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_cust_001",
+      "target_name": "Customer",
+      "rel_type": "notifies",
+      "description": "Customer Cancellation Confirmation step notifies the Customer of the cancellation",
+      "properties": {},
+      "context": "Send confirmation to customer",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_005",
+      "source_name": "Customer Cancellation Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_ra_001",
+      "target_name": "Operations Staff - Cancellation Handler",
+      "rel_type": "performed_by",
+      "description": "Customer Cancellation Confirmation is performed by Operations Staff - Cancellation Handler",
+      "properties": {},
+      "context": "5. Send confirmation to customer",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_006",
+      "source_name": "Future Payments Block",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dd_001",
+      "target_name": "Direct Debit Mandate Cancellation",
+      "rel_type": "cancels",
+      "description": "Future Payments Block step blocks future payments on the Direct Debit Mandate",
+      "properties": {
+        "effective_immediately": true
+      },
+      "context": "Future payments blocked",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_006",
+      "source_name": "Future Payments Block",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_ra_001",
+      "target_name": "Operations Staff - Cancellation Handler",
+      "rel_type": "performed_by",
+      "description": "Future Payments Block is performed by Operations Staff - Cancellation Handler",
+      "properties": {},
+      "context": "6. Future payments blocked",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dp_001",
+      "source_name": "Pending Payment Settlement Status Check",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_006",
+      "target_name": "Future Payments Block",
+      "rel_type": "routes_to_on_pass",
+      "description": "If pending payments exist before settlement date, decision routes to Future Payments Block",
+      "properties": {
+        "condition": "cancellation before settlement date"
+      },
+      "context": "Any Pending Payments: Blocked if cancellation before settlement date",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dd_001",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_cust_001",
+      "source_name": "Direct Debit Mandate Cancellation",
+      "target_name": "Customer",
+      "rel_type": "belongs_to",
+      "description": "The Direct Debit Mandate Cancellation belongs to the Customer",
+      "properties": {},
+      "context": "Upon Cancellation Request",
+      "bidirectional": true,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_proc_001",
+      "source_name": "Direct Debit Cancellation Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_001",
+      "source_name": "Customer Identity Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_002",
+      "source_name": "Mandate Details Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_003",
+      "source_name": "Mandate Status Update",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_004",
+      "source_name": "Biller Notification via ARUDD",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_005",
+      "source_name": "Customer Cancellation Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_pstep_006",
+      "source_name": "Future Payments Block",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_ra_001",
+      "source_name": "Operations Staff - Cancellation Handler",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_ra_002",
+      "source_name": "Automated ARUDD System",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dd_001",
+      "source_name": "Direct Debit Mandate Cancellation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019_dp_001",
+      "source_name": "Pending Payment Settlement Status Check",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_019",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

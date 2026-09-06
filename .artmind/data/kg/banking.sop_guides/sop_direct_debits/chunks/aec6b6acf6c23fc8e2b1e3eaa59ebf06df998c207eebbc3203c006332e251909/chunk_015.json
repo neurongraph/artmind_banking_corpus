@@ -1,0 +1,789 @@
+{
+  "chunk_seq": 15,
+  "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+  "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+  "text": "## Step 5: Direct Debit Disputes & Claims  \n### Customer Rights (Direct Debit Guarantee)  \n**If Unauthorized Debit:**\n- Customer files claim with FirstUK\n- FirstUK **refunds full amount within 10 business days**\n- No questions asked\n- No liability to customer  \n**Example Scenarios:**  \n**Scenario 1: Fraudulent Debit**\n```\nUnauthorized debit of £500 appears\nCustomer contacts bank: \"I didn't authorize this!\"\nBank refunds £500 within 10 days\nFull protection under Direct Debit Guarantee\n```  \n**Scenario 2: Wrong Amount Charged**\n```\nBiller charged £150 instead of £50\nCustomer contacts bank\nBank refunds £100 (overage) within 10 days\n```  \n**Scenario 3: Charged After Cancellation**\n```\nCustomer canceled Direct Debit\nBiller still deducted £75 (error)\nBank refunds £75 within 10 days\n```",
+  "name": "Chunk 15/26",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+  "next_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_016",
+  "raw_entities": [
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Dispute",
+      "aliases": [
+        "DD dispute",
+        "unauthorized debit claim"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_dispute",
+      "description": "Customer-initiated dispute process for unauthorized, incorrect, or erroneous direct debit charges. Covered under the Direct Debit Guarantee with mandatory bank refund within 10 business days, no questions asked, and no customer liability.",
+      "context": [
+        "If Unauthorized Debit: Customer files claim with FirstUK",
+        "FirstUK refunds full amount within 10 business days",
+        "No questions asked",
+        "No liability to customer"
+      ]
+    },
+    {
+      "id": "dd_002",
+      "name": "Direct Debit Guarantee",
+      "aliases": [
+        "DD Guarantee",
+        "customer protection"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_guarantee",
+      "description": "Mandatory consumer protection scheme that guarantees refund of unauthorized, incorrect, or erroneous direct debit charges within 10 business days with no questions asked and no liability to the customer.",
+      "context": [
+        "Full protection under Direct Debit Guarantee",
+        "FirstUK refunds full amount within 10 business days",
+        "No questions asked",
+        "No liability to customer"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "FirstUK",
+      "aliases": [
+        "bank",
+        "FirstUK bank"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "The bank responsible for processing direct debit disputes, investigating claims, and issuing refunds to customers within the 10 business day service level under the Direct Debit Guarantee.",
+      "context": [
+        "Customer files claim with FirstUK",
+        "FirstUK refunds full amount within 10 business days",
+        "Customer contacts bank"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [
+        "account holder",
+        "customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The account holder who initiates a direct debit dispute claim when an unauthorized, incorrect, or erroneous charge appears on their account.",
+      "context": [
+        "Customer files claim with FirstUK",
+        "Customer contacts bank: 'I didn't authorize this!'",
+        "Customer canceled Direct Debit"
+      ]
+    },
+    {
+      "id": "ps_001",
+      "name": "Direct Debit Dispute Resolution",
+      "aliases": [
+        "dispute handling",
+        "claim processing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "The operational step where FirstUK receives, processes, and resolves customer claims for unauthorized, incorrect, or erroneous direct debit charges, issuing refunds within 10 business days.",
+      "context": [
+        "Customer files claim with FirstUK",
+        "FirstUK refunds full amount within 10 business days",
+        "No questions asked"
+      ]
+    },
+    {
+      "id": "ps_002",
+      "name": "Unauthorized Debit Investigation",
+      "aliases": [
+        "fraud investigation",
+        "unauthorized charge review"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Investigation step triggered when a customer reports an unauthorized direct debit charge, resulting in immediate refund under the Direct Debit Guarantee.",
+      "context": [
+        "Unauthorized debit of £500 appears",
+        "Customer contacts bank: 'I didn't authorize this!'",
+        "Full protection under Direct Debit Guarantee"
+      ]
+    },
+    {
+      "id": "ps_003",
+      "name": "Incorrect Amount Verification",
+      "aliases": [
+        "amount check",
+        "billing error review"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "quality_check",
+      "description": "Verification step to confirm whether the charged amount matches the authorized amount, with refund of any overage within 10 business days.",
+      "context": [
+        "Biller charged £150 instead of £50",
+        "Bank refunds £100 (overage) within 10 days"
+      ]
+    },
+    {
+      "id": "ps_004",
+      "name": "Post-Cancellation Charge Review",
+      "aliases": [
+        "cancellation verification",
+        "post-cancel check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "quality_check",
+      "description": "Review step to verify whether a direct debit charge was incorrectly applied after the customer canceled the mandate, with refund of the erroneous charge within 10 business days.",
+      "context": [
+        "Customer canceled Direct Debit",
+        "Biller still deducted £75 (error)",
+        "Bank refunds £75 within 10 days"
+      ]
+    },
+    {
+      "id": "dd_003",
+      "name": "Direct Debit Mandate Cancellation",
+      "aliases": [
+        "DD cancellation",
+        "mandate termination"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_cancellation",
+      "description": "The process by which a customer terminates a direct debit mandate, after which no further charges should be applied by the biller.",
+      "context": [
+        "Customer canceled Direct Debit",
+        "Biller still deducted £75 (error)"
+      ]
+    },
+    {
+      "id": "fa_001",
+      "name": "Fraudulent Debit",
+      "aliases": [
+        "fraud scenario",
+        "unauthorized transaction"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "card_fraud_event",
+      "description": "A direct debit charge applied without customer authorization, triggering a fraud claim and immediate refund under the Direct Debit Guarantee.",
+      "context": [
+        "Unauthorized debit of £500 appears",
+        "Customer contacts bank: 'I didn't authorize this!'",
+        "Full protection under Direct Debit Guarantee"
+      ]
+    }
+  ],
+  "id_map": {
+    "dd_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_001",
+    "dd_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_002",
+    "ra_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ra_001",
+    "cust_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_cust_001",
+    "ps_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_001",
+    "ps_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_002",
+    "ps_003": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_003",
+    "ps_004": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_004",
+    "dd_003": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_003",
+    "fa_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_fa_001"
+  },
+  "entities": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_001",
+      "name": "Direct Debit Dispute",
+      "aliases": [
+        "DD dispute",
+        "unauthorized debit claim"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_dispute",
+      "description": "Customer-initiated dispute process for unauthorized, incorrect, or erroneous direct debit charges. Covered under the Direct Debit Guarantee with mandatory bank refund within 10 business days, no questions asked, and no customer liability.",
+      "context": [
+        "If Unauthorized Debit: Customer files claim with FirstUK",
+        "FirstUK refunds full amount within 10 business days",
+        "No questions asked",
+        "No liability to customer"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_002",
+      "name": "Direct Debit Guarantee",
+      "aliases": [
+        "DD Guarantee",
+        "customer protection"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_guarantee",
+      "description": "Mandatory consumer protection scheme that guarantees refund of unauthorized, incorrect, or erroneous direct debit charges within 10 business days with no questions asked and no liability to the customer.",
+      "context": [
+        "Full protection under Direct Debit Guarantee",
+        "FirstUK refunds full amount within 10 business days",
+        "No questions asked",
+        "No liability to customer"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ra_001",
+      "name": "FirstUK",
+      "aliases": [
+        "bank",
+        "FirstUK bank"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "The bank responsible for processing direct debit disputes, investigating claims, and issuing refunds to customers within the 10 business day service level under the Direct Debit Guarantee.",
+      "context": [
+        "Customer files claim with FirstUK",
+        "FirstUK refunds full amount within 10 business days",
+        "Customer contacts bank"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_cust_001",
+      "name": "Customer",
+      "aliases": [
+        "account holder",
+        "customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The account holder who initiates a direct debit dispute claim when an unauthorized, incorrect, or erroneous charge appears on their account.",
+      "context": [
+        "Customer files claim with FirstUK",
+        "Customer contacts bank: 'I didn't authorize this!'",
+        "Customer canceled Direct Debit"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_001",
+      "name": "Direct Debit Dispute Resolution",
+      "aliases": [
+        "dispute handling",
+        "claim processing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "The operational step where FirstUK receives, processes, and resolves customer claims for unauthorized, incorrect, or erroneous direct debit charges, issuing refunds within 10 business days.",
+      "context": [
+        "Customer files claim with FirstUK",
+        "FirstUK refunds full amount within 10 business days",
+        "No questions asked"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_002",
+      "name": "Unauthorized Debit Investigation",
+      "aliases": [
+        "fraud investigation",
+        "unauthorized charge review"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Investigation step triggered when a customer reports an unauthorized direct debit charge, resulting in immediate refund under the Direct Debit Guarantee.",
+      "context": [
+        "Unauthorized debit of £500 appears",
+        "Customer contacts bank: 'I didn't authorize this!'",
+        "Full protection under Direct Debit Guarantee"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_003",
+      "name": "Incorrect Amount Verification",
+      "aliases": [
+        "amount check",
+        "billing error review"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "quality_check",
+      "description": "Verification step to confirm whether the charged amount matches the authorized amount, with refund of any overage within 10 business days.",
+      "context": [
+        "Biller charged £150 instead of £50",
+        "Bank refunds £100 (overage) within 10 days"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_004",
+      "name": "Post-Cancellation Charge Review",
+      "aliases": [
+        "cancellation verification",
+        "post-cancel check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "quality_check",
+      "description": "Review step to verify whether a direct debit charge was incorrectly applied after the customer canceled the mandate, with refund of the erroneous charge within 10 business days.",
+      "context": [
+        "Customer canceled Direct Debit",
+        "Biller still deducted £75 (error)",
+        "Bank refunds £75 within 10 days"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_003",
+      "name": "Direct Debit Mandate Cancellation",
+      "aliases": [
+        "DD cancellation",
+        "mandate termination"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_cancellation",
+      "description": "The process by which a customer terminates a direct debit mandate, after which no further charges should be applied by the biller.",
+      "context": [
+        "Customer canceled Direct Debit",
+        "Biller still deducted £75 (error)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_fa_001",
+      "name": "Fraudulent Debit",
+      "aliases": [
+        "fraud scenario",
+        "unauthorized transaction"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "card_fraud_event",
+      "description": "A direct debit charge applied without customer authorization, triggering a fraud claim and immediate refund under the Direct Debit Guarantee.",
+      "context": [
+        "Unauthorized debit of £500 appears",
+        "Customer contacts bank: 'I didn't authorize this!'",
+        "Full protection under Direct Debit Guarantee"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_001",
+      "name": "Direct Debit Dispute",
+      "properties": {
+        "dispute_or_reversal_rules": "Customer files claim with FirstUK; full refund issued within 10 business days; no questions asked",
+        "applies_to_scenario": [
+          "unauthorized_debit",
+          "incorrect_amount",
+          "post_cancellation_charge"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_002",
+      "name": "Direct Debit Guarantee",
+      "properties": {
+        "dd_guarantee_coverage": "Full protection for unauthorized debits; refund of full amount within 10 business days; no liability to customer",
+        "refund_timeline": "10 business days",
+        "customer_liability": "none"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ra_001",
+      "name": "FirstUK",
+      "properties": {
+        "role_type": "human",
+        "authority_level": "dispute_resolution_and_refund_authority",
+        "channels": [
+          "phone",
+          "branch"
+        ],
+        "refund_obligation": "Issue full refund within 10 business days for unauthorized debits"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "direct_debit_account_holder",
+        "rights": [
+          "file_dispute_claim",
+          "receive_refund_for_unauthorized_debit",
+          "cancel_direct_debit"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_001",
+      "name": "Direct Debit Dispute Resolution",
+      "properties": {
+        "step_number": 1,
+        "actor": "FirstUK",
+        "input": "Customer dispute claim",
+        "output": "Refund authorization",
+        "estimated_duration": "10 business days",
+        "channel": "branch",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_002",
+      "name": "Unauthorized Debit Investigation",
+      "properties": {
+        "step_number": 2,
+        "actor": "FirstUK",
+        "input": "Customer claim of unauthorized debit",
+        "output": "Refund decision and full amount reimbursement",
+        "estimated_duration": "10 business days",
+        "channel": "branch",
+        "mandatory": "yes",
+        "failure_path": "Escalate to compliance review"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_003",
+      "name": "Incorrect Amount Verification",
+      "properties": {
+        "step_number": 3,
+        "actor": "FirstUK",
+        "input": "Customer notification of incorrect charge amount",
+        "output": "Refund of overage amount",
+        "estimated_duration": "10 business days",
+        "channel": "branch",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_004",
+      "name": "Post-Cancellation Charge Review",
+      "properties": {
+        "step_number": 4,
+        "actor": "FirstUK",
+        "input": "Customer report of charge after Direct Debit cancellation",
+        "output": "Refund of erroneous charge",
+        "estimated_duration": "10 business days",
+        "channel": "branch",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_003",
+      "name": "Direct Debit Mandate Cancellation",
+      "properties": {
+        "cancellation_process": "Customer initiates cancellation; biller must cease future debits",
+        "post_cancellation_obligation": "No further charges permitted after cancellation date",
+        "dispute_handling": "Any charge after cancellation is refundable within 10 business days"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_fa_001",
+      "name": "Fraudulent Debit",
+      "properties": {
+        "generation_trigger": "Unauthorized debit of £500 or other amount appears on account",
+        "investigation_or_escalation_path": "Customer contacts bank; FirstUK investigates and refunds",
+        "customer_notification": "Refund issued within 10 business days",
+        "reimbursement_obligation": "Full amount refunded; no questions asked",
+        "protection_framework": "Direct Debit Guarantee"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_001",
+      "target_name": "Direct Debit Dispute",
+      "rel_type": "initiates",
+      "description": "Customer files a claim for direct debit dispute with the bank",
+      "properties": {
+        "trigger": "unauthorized debit, incorrect amount, or post-cancellation charge",
+        "action": "files claim"
+      },
+      "context": "Customer files claim with FirstUK",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_001",
+      "source_name": "Direct Debit Dispute",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ra_001",
+      "target_name": "FirstUK",
+      "rel_type": "processed_by",
+      "description": "FirstUK processes the direct debit dispute claim",
+      "properties": {
+        "refund_timeline": "10 business days",
+        "refund_policy": "full amount refunded, no questions asked"
+      },
+      "context": "Customer files claim with FirstUK. FirstUK refunds full amount within 10 business days",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ra_001",
+      "source_name": "FirstUK",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_cust_001",
+      "target_name": "Customer",
+      "rel_type": "refunds",
+      "description": "FirstUK refunds the disputed amount to the customer within 10 business days",
+      "properties": {
+        "refund_timeline": "10 business days",
+        "liability": "no liability to customer",
+        "process": "no questions asked"
+      },
+      "context": "FirstUK refunds full amount within 10 business days. No questions asked. No liability to customer",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_002",
+      "source_name": "Direct Debit Guarantee",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_cust_001",
+      "target_name": "Customer",
+      "rel_type": "protects",
+      "description": "Direct Debit Guarantee provides full protection to customer against unauthorized debits",
+      "properties": {
+        "coverage": "unauthorized debits, incorrect amounts, post-cancellation charges",
+        "protection_level": "full"
+      },
+      "context": "Full protection under Direct Debit Guarantee",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_001",
+      "source_name": "Direct Debit Dispute Resolution",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_cust_001",
+      "target_name": "Customer",
+      "rel_type": "serves",
+      "description": "Direct Debit Dispute Resolution process serves the customer's claim",
+      "properties": {
+        "outcome": "refund within 10 business days"
+      },
+      "context": "Customer files claim with FirstUK. FirstUK refunds full amount within 10 business days",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_002",
+      "source_name": "Unauthorized Debit Investigation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_fa_001",
+      "target_name": "Fraudulent Debit",
+      "rel_type": "investigates",
+      "description": "Unauthorized Debit Investigation process examines fraudulent debit claims",
+      "properties": {
+        "scenario": "unauthorized debit of £500",
+        "customer_claim": "I didn't authorize this"
+      },
+      "context": "Unauthorized debit of £500 appears. Customer contacts bank: 'I didn't authorize this!' Bank refunds £500 within 10 days",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_003",
+      "source_name": "Incorrect Amount Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_001",
+      "target_name": "Direct Debit Dispute",
+      "rel_type": "resolves",
+      "description": "Incorrect Amount Verification process resolves disputes where wrong amount was charged",
+      "properties": {
+        "scenario": "biller charged £150 instead of £50",
+        "refund_amount": "£100 overage"
+      },
+      "context": "Biller charged £150 instead of £50. Customer contacts bank. Bank refunds £100 (overage) within 10 days",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_004",
+      "source_name": "Post-Cancellation Charge Review",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_003",
+      "target_name": "Direct Debit Mandate Cancellation",
+      "rel_type": "reviews",
+      "description": "Post-Cancellation Charge Review process examines charges made after mandate cancellation",
+      "properties": {
+        "scenario": "biller deducted £75 after cancellation",
+        "refund_amount": "£75"
+      },
+      "context": "Customer canceled Direct Debit. Biller still deducted £75 (error). Bank refunds £75 within 10 days",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_fa_001",
+      "source_name": "Fraudulent Debit",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_001",
+      "target_name": "Direct Debit Dispute",
+      "rel_type": "triggers",
+      "description": "Fraudulent debit triggers a direct debit dispute claim",
+      "properties": {
+        "amount": "£500",
+        "customer_action": "contacts bank"
+      },
+      "context": "Unauthorized debit of £500 appears. Customer contacts bank: 'I didn't authorize this!'",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_003",
+      "source_name": "Direct Debit Mandate Cancellation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_cust_001",
+      "target_name": "Customer",
+      "rel_type": "initiated_by",
+      "description": "Customer initiates cancellation of direct debit mandate",
+      "properties": {
+        "scenario": "customer canceled Direct Debit"
+      },
+      "context": "Customer canceled Direct Debit",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_001",
+      "source_name": "Direct Debit Dispute",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_002",
+      "source_name": "Direct Debit Guarantee",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ra_001",
+      "source_name": "FirstUK",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_001",
+      "source_name": "Direct Debit Dispute Resolution",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_002",
+      "source_name": "Unauthorized Debit Investigation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_003",
+      "source_name": "Incorrect Amount Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_ps_004",
+      "source_name": "Post-Cancellation Charge Review",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_dd_003",
+      "source_name": "Direct Debit Mandate Cancellation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015_fa_001",
+      "source_name": "Fraudulent Debit",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

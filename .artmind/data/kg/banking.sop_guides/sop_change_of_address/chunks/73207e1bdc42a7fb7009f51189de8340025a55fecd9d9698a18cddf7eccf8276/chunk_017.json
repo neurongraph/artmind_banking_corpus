@@ -1,0 +1,1204 @@
+{
+  "chunk_seq": 17,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "## Step 5: Assess AML Risk & Re-Screening  \n### Risk Assessment  \n**Questions to Answer:**  \n1. **Is the new address in a high-risk country?**\n- High-risk countries: Iran, North Korea, Syria, Crimea, Cuba, Sudan, etc.\n- Source: OFAC list, EU Sanctions, HMT Sanctions\n- If YES: Escalate to Compliance, may require enhanced due diligence  \n2. **Is the new address a known sanctions location?**\n- Example: Address matches OFAC-sanctioned entity address\n- If YES: Escalate immediately, block address change  \n3. **Does the address change create unusual profile?**\n- Example: Customer moves to high-crime area, or frequent international moves\n- If YES: Flag for ongoing monitoring  \n4. **Is this a temporary or permanent change?**\n- Temporary (holiday home): Lower risk\n- Permanent (migration): Higher risk, more screening needed",
+  "name": "Chunk 17/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_016",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Address Change AML Risk Assessment and Re-Screening",
+      "aliases": [
+        "Step 5: Assess AML Risk & Re-Screening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "aml_screening",
+      "description": "A compliance-driven process that evaluates AML risk when a customer changes their address. The process assesses whether the new address is located in a high-risk country, matches a known sanctions location, creates an unusual customer profile, or represents a temporary versus permanent relocation. Escalation to Compliance and enhanced due diligence may be triggered based on risk findings.",
+      "context": [
+        "Step 5: Assess AML Risk & Re-Screening",
+        "High-risk countries: Iran, North Korea, Syria, Crimea, Cuba, Sudan, etc.",
+        "If YES: Escalate to Compliance, may require enhanced due diligence",
+        "If YES: Escalate immediately, block address change"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "High-Risk Country Assessment",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Determines whether the new address is located in a high-risk country as defined by OFAC, EU Sanctions, or HMT Sanctions lists. If the address is in a high-risk jurisdiction, the step triggers escalation to Compliance and may require enhanced due diligence.",
+      "context": [
+        "Is the new address in a high-risk country?",
+        "High-risk countries: Iran, North Korea, Syria, Crimea, Cuba, Sudan, etc.",
+        "Source: OFAC list, EU Sanctions, HMT Sanctions",
+        "If YES: Escalate to Compliance, may require enhanced due diligence"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Sanctions Location Verification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Verifies whether the new address matches a known sanctions location or sanctioned entity address. If a match is found, the address change is blocked and the matter is escalated immediately.",
+      "context": [
+        "Is the new address a known sanctions location?",
+        "Example: Address matches OFAC-sanctioned entity address",
+        "If YES: Escalate immediately, block address change"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Unusual Profile Detection",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Evaluates whether the address change creates an unusual customer profile, such as relocation to a high-crime area or a pattern of frequent international moves. Flagged cases are marked for ongoing monitoring.",
+      "context": [
+        "Does the address change create unusual profile?",
+        "Example: Customer moves to high-crime area, or frequent international moves",
+        "If YES: Flag for ongoing monitoring"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Permanence Classification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Classifies the address change as either temporary or permanent. Temporary changes (e.g., holiday home) are assessed as lower risk, while permanent relocations (e.g., migration) trigger higher-risk screening and additional due diligence requirements.",
+      "context": [
+        "Is this a temporary or permanent change?",
+        "Temporary (holiday home): Lower risk",
+        "Permanent (migration): Higher risk, more screening needed"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Compliance Officer - AML Risk Escalation",
+      "aliases": [
+        "Compliance"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "The Compliance Officer receives escalations from the AML risk assessment process when high-risk countries, sanctions locations, or unusual profiles are detected. This role determines whether enhanced due diligence is required and whether to block the address change.",
+      "context": [
+        "If YES: Escalate to Compliance, may require enhanced due diligence",
+        "If YES: Escalate immediately, block address change"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "High-Risk Country Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "A branching decision that determines whether the new address is located in a high-risk country. A 'yes' outcome triggers escalation to Compliance and potential enhanced due diligence; a 'no' outcome allows the process to continue.",
+      "context": [
+        "Is the new address in a high-risk country?",
+        "If YES: Escalate to Compliance, may require enhanced due diligence"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Sanctions Location Match Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "A branching decision that determines whether the new address matches a known sanctions location or sanctioned entity address. A 'yes' outcome immediately escalates and blocks the address change; a 'no' outcome allows the process to continue.",
+      "context": [
+        "Is the new address a known sanctions location?",
+        "If YES: Escalate immediately, block address change"
+      ]
+    },
+    {
+      "id": "dp_003",
+      "name": "Unusual Profile Detection Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "A branching decision that determines whether the address change creates an unusual customer profile. A 'yes' outcome flags the case for ongoing monitoring; a 'no' outcome allows normal processing to continue.",
+      "context": [
+        "Does the address change create unusual profile?",
+        "If YES: Flag for ongoing monitoring"
+      ]
+    },
+    {
+      "id": "dp_004",
+      "name": "Permanence Classification Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "A branching decision that classifies the address change as temporary or permanent. Temporary changes are treated as lower risk, while permanent changes trigger higher-risk screening and additional due diligence requirements.",
+      "context": [
+        "Is this a temporary or permanent change?",
+        "Temporary (holiday home): Lower risk",
+        "Permanent (migration): Higher risk, more screening needed"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "High-Risk Country Sanctions Compliance Checkpoint",
+      "aliases": [],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "A mandatory regulatory gate that verifies the new address against OFAC, EU Sanctions, and HMT Sanctions lists before the address change can be processed. Failure to pass this checkpoint triggers escalation and potential enhanced due diligence.",
+      "context": [
+        "High-risk countries: Iran, North Korea, Syria, Crimea, Cuba, Sudan, etc.",
+        "Source: OFAC list, EU Sanctions, HMT Sanctions"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "Address Change Sanctions Screening",
+      "aliases": [],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Ongoing AML screening triggered by a customer's address change. The screening checks the new address against OFAC-sanctioned entity addresses and other known sanctions locations to ensure compliance with international sanctions regimes.",
+      "context": [
+        "Is the new address a known sanctions location?",
+        "Example: Address matches OFAC-sanctioned entity address"
+      ]
+    },
+    {
+      "id": "aml_002",
+      "name": "Address Change Ongoing Monitoring",
+      "aliases": [],
+      "entity_class": "AML_SCREENING",
+      "type": "ongoing_monitoring",
+      "description": "Ongoing AML monitoring flagged when an address change creates an unusual customer profile, such as relocation to a high-crime area or a pattern of frequent international moves. This monitoring continues beyond the initial address change assessment.",
+      "context": [
+        "Does the address change create unusual profile?",
+        "If YES: Flag for ongoing monitoring"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "New Address Verification",
+      "aliases": [],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "The verification and assessment of a customer's new address during an address change process. The new address is evaluated for high-risk country location, sanctions matching, and profile consistency before the change is approved.",
+      "context": [
+        "Is the new address in a high-risk country?",
+        "Is the new address a known sanctions location?"
+      ]
+    },
+    {
+      "id": "edd_001",
+      "name": "Enhanced Due Diligence - Address Change",
+      "aliases": [],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "enhanced_due_diligence",
+      "description": "Enhanced due diligence procedures that may be triggered when an address change is assessed as high-risk, such as relocation to a high-risk country or sanctions location. This enhanced verification is conducted by Compliance before the address change is approved.",
+      "context": [
+        "If YES: Escalate to Compliance, may require enhanced due diligence"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_017_proc_001",
+    "pstep_001": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_001",
+    "pstep_002": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_002",
+    "pstep_003": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_003",
+    "pstep_004": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_004",
+    "ra_001": "01a07400-ba86-72f1-8b22-d07b32649491_017_ra_001",
+    "dp_001": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_001",
+    "dp_002": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_002",
+    "dp_003": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_003",
+    "dp_004": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_004",
+    "cc_001": "01a07400-ba86-72f1-8b22-d07b32649491_017_cc_001",
+    "aml_001": "01a07400-ba86-72f1-8b22-d07b32649491_017_aml_001",
+    "aml_002": "01a07400-ba86-72f1-8b22-d07b32649491_017_aml_002",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_017_addr_001",
+    "edd_001": "01a07400-ba86-72f1-8b22-d07b32649491_017_edd_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_proc_001",
+      "name": "Address Change AML Risk Assessment and Re-Screening",
+      "aliases": [
+        "Step 5: Assess AML Risk & Re-Screening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "aml_screening",
+      "description": "A compliance-driven process that evaluates AML risk when a customer changes their address. The process assesses whether the new address is located in a high-risk country, matches a known sanctions location, creates an unusual customer profile, or represents a temporary versus permanent relocation. Escalation to Compliance and enhanced due diligence may be triggered based on risk findings.",
+      "context": [
+        "Step 5: Assess AML Risk & Re-Screening",
+        "High-risk countries: Iran, North Korea, Syria, Crimea, Cuba, Sudan, etc.",
+        "If YES: Escalate to Compliance, may require enhanced due diligence",
+        "If YES: Escalate immediately, block address change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_001",
+      "name": "High-Risk Country Assessment",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Determines whether the new address is located in a high-risk country as defined by OFAC, EU Sanctions, or HMT Sanctions lists. If the address is in a high-risk jurisdiction, the step triggers escalation to Compliance and may require enhanced due diligence.",
+      "context": [
+        "Is the new address in a high-risk country?",
+        "High-risk countries: Iran, North Korea, Syria, Crimea, Cuba, Sudan, etc.",
+        "Source: OFAC list, EU Sanctions, HMT Sanctions",
+        "If YES: Escalate to Compliance, may require enhanced due diligence"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_002",
+      "name": "Sanctions Location Verification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Verifies whether the new address matches a known sanctions location or sanctioned entity address. If a match is found, the address change is blocked and the matter is escalated immediately.",
+      "context": [
+        "Is the new address a known sanctions location?",
+        "Example: Address matches OFAC-sanctioned entity address",
+        "If YES: Escalate immediately, block address change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_003",
+      "name": "Unusual Profile Detection",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Evaluates whether the address change creates an unusual customer profile, such as relocation to a high-crime area or a pattern of frequent international moves. Flagged cases are marked for ongoing monitoring.",
+      "context": [
+        "Does the address change create unusual profile?",
+        "Example: Customer moves to high-crime area, or frequent international moves",
+        "If YES: Flag for ongoing monitoring"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_004",
+      "name": "Permanence Classification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Classifies the address change as either temporary or permanent. Temporary changes (e.g., holiday home) are assessed as lower risk, while permanent relocations (e.g., migration) trigger higher-risk screening and additional due diligence requirements.",
+      "context": [
+        "Is this a temporary or permanent change?",
+        "Temporary (holiday home): Lower risk",
+        "Permanent (migration): Higher risk, more screening needed"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_ra_001",
+      "name": "Compliance Officer - AML Risk Escalation",
+      "aliases": [
+        "Compliance"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "The Compliance Officer receives escalations from the AML risk assessment process when high-risk countries, sanctions locations, or unusual profiles are detected. This role determines whether enhanced due diligence is required and whether to block the address change.",
+      "context": [
+        "If YES: Escalate to Compliance, may require enhanced due diligence",
+        "If YES: Escalate immediately, block address change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_001",
+      "name": "High-Risk Country Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "A branching decision that determines whether the new address is located in a high-risk country. A 'yes' outcome triggers escalation to Compliance and potential enhanced due diligence; a 'no' outcome allows the process to continue.",
+      "context": [
+        "Is the new address in a high-risk country?",
+        "If YES: Escalate to Compliance, may require enhanced due diligence"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_002",
+      "name": "Sanctions Location Match Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "A branching decision that determines whether the new address matches a known sanctions location or sanctioned entity address. A 'yes' outcome immediately escalates and blocks the address change; a 'no' outcome allows the process to continue.",
+      "context": [
+        "Is the new address a known sanctions location?",
+        "If YES: Escalate immediately, block address change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_003",
+      "name": "Unusual Profile Detection Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "A branching decision that determines whether the address change creates an unusual customer profile. A 'yes' outcome flags the case for ongoing monitoring; a 'no' outcome allows normal processing to continue.",
+      "context": [
+        "Does the address change create unusual profile?",
+        "If YES: Flag for ongoing monitoring"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_004",
+      "name": "Permanence Classification Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "A branching decision that classifies the address change as temporary or permanent. Temporary changes are treated as lower risk, while permanent changes trigger higher-risk screening and additional due diligence requirements.",
+      "context": [
+        "Is this a temporary or permanent change?",
+        "Temporary (holiday home): Lower risk",
+        "Permanent (migration): Higher risk, more screening needed"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_cc_001",
+      "name": "High-Risk Country Sanctions Compliance Checkpoint",
+      "aliases": [],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "A mandatory regulatory gate that verifies the new address against OFAC, EU Sanctions, and HMT Sanctions lists before the address change can be processed. Failure to pass this checkpoint triggers escalation and potential enhanced due diligence.",
+      "context": [
+        "High-risk countries: Iran, North Korea, Syria, Crimea, Cuba, Sudan, etc.",
+        "Source: OFAC list, EU Sanctions, HMT Sanctions"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_aml_001",
+      "name": "Address Change Sanctions Screening",
+      "aliases": [],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Ongoing AML screening triggered by a customer's address change. The screening checks the new address against OFAC-sanctioned entity addresses and other known sanctions locations to ensure compliance with international sanctions regimes.",
+      "context": [
+        "Is the new address a known sanctions location?",
+        "Example: Address matches OFAC-sanctioned entity address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_aml_002",
+      "name": "Address Change Ongoing Monitoring",
+      "aliases": [],
+      "entity_class": "AML_SCREENING",
+      "type": "ongoing_monitoring",
+      "description": "Ongoing AML monitoring flagged when an address change creates an unusual customer profile, such as relocation to a high-crime area or a pattern of frequent international moves. This monitoring continues beyond the initial address change assessment.",
+      "context": [
+        "Does the address change create unusual profile?",
+        "If YES: Flag for ongoing monitoring"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_addr_001",
+      "name": "New Address Verification",
+      "aliases": [],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "The verification and assessment of a customer's new address during an address change process. The new address is evaluated for high-risk country location, sanctions matching, and profile consistency before the change is approved.",
+      "context": [
+        "Is the new address in a high-risk country?",
+        "Is the new address a known sanctions location?"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_edd_001",
+      "name": "Enhanced Due Diligence - Address Change",
+      "aliases": [],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "enhanced_due_diligence",
+      "description": "Enhanced due diligence procedures that may be triggered when an address change is assessed as high-risk, such as relocation to a high-risk country or sanctions location. This enhanced verification is conducted by Compliance before the address change is approved.",
+      "context": [
+        "If YES: Escalate to Compliance, may require enhanced due diligence"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_proc_001",
+      "name": "Address Change AML Risk Assessment and Re-Screening",
+      "properties": {
+        "purpose": "Assess AML risk and conduct re-screening when a customer changes address",
+        "scope": "All address changes requiring AML compliance verification",
+        "owner": "Compliance Officer - AML Risk Escalation",
+        "departments_involved": [
+          "Compliance",
+          "AML"
+        ],
+        "regulatory_references": [
+          "OFAC",
+          "EU Sanctions",
+          "HMT Sanctions"
+        ],
+        "trigger": "Customer initiates address change",
+        "outcome_success": "Address change approved with appropriate risk classification and monitoring applied",
+        "outcome_failure": "Address change blocked or escalated for enhanced due diligence"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_001",
+      "name": "High-Risk Country Assessment",
+      "properties": {
+        "step_number": 1,
+        "actor": "Compliance Officer - AML Risk Escalation",
+        "input": "New address provided by customer",
+        "output": "High-risk country determination; escalation flag if applicable",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "OFAC list",
+          "EU Sanctions database",
+          "HMT Sanctions list"
+        ],
+        "failure_path": "Escalate to Compliance for enhanced due diligence"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_002",
+      "name": "Sanctions Location Verification",
+      "properties": {
+        "step_number": 2,
+        "actor": "Compliance Officer - AML Risk Escalation",
+        "input": "New address; OFAC-sanctioned entity address database",
+        "output": "Sanctions match determination; block or escalation decision",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "OFAC sanctions database"
+        ],
+        "failure_path": "Block address change immediately; escalate to Compliance"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_003",
+      "name": "Unusual Profile Detection",
+      "properties": {
+        "step_number": 3,
+        "actor": "Compliance Officer - AML Risk Escalation",
+        "input": "New address; customer profile history; transaction patterns",
+        "output": "Unusual profile flag; ongoing monitoring recommendation",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Flag for ongoing monitoring"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_004",
+      "name": "Permanence Classification",
+      "properties": {
+        "step_number": 4,
+        "actor": "Compliance Officer - AML Risk Escalation",
+        "input": "Customer declaration of address change nature; supporting documentation if available",
+        "output": "Permanence classification (temporary or permanent); risk weighting",
+        "channel": "manual",
+        "mandatory": "yes",
+        "failure_path": "Classify as permanent (higher risk) if permanence cannot be verified"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_ra_001",
+      "name": "Compliance Officer - AML Risk Escalation",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "Can escalate address changes, block changes, require enhanced due diligence",
+        "channels": [
+          "system",
+          "email"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_001",
+      "name": "High-Risk Country Gate",
+      "properties": {
+        "decision_question": "Is the new address in a high-risk country?",
+        "criteria": "Address location matches OFAC list, EU Sanctions, or HMT Sanctions high-risk country list (Iran, North Korea, Syria, Crimea, Cuba, Sudan, etc.)",
+        "decision_maker": "Compliance Officer - AML Risk Escalation",
+        "path_yes": "Escalate to Compliance; may require enhanced due diligence",
+        "path_no": "Proceed to next assessment step"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_002",
+      "name": "Sanctions Location Match Gate",
+      "properties": {
+        "decision_question": "Is the new address a known sanctions location?",
+        "criteria": "Address matches OFAC-sanctioned entity address or other sanctions database entry",
+        "decision_maker": "Compliance Officer - AML Risk Escalation",
+        "path_yes": "Block address change immediately; escalate to Compliance",
+        "path_no": "Proceed to next assessment step"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_003",
+      "name": "Unusual Profile Detection Gate",
+      "properties": {
+        "decision_question": "Does the address change create an unusual customer profile?",
+        "criteria": "Customer moves to high-crime area, frequent international moves, or other anomalous patterns",
+        "decision_maker": "Compliance Officer - AML Risk Escalation",
+        "path_yes": "Flag for ongoing monitoring",
+        "path_no": "Proceed to permanence classification"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_004",
+      "name": "Permanence Classification Gate",
+      "properties": {
+        "decision_question": "Is this a temporary or permanent address change?",
+        "criteria": "Customer declaration and supporting documentation; temporary (holiday home) vs. permanent (migration)",
+        "decision_maker": "Compliance Officer - AML Risk Escalation",
+        "path_yes": "Permanent change — apply higher risk screening and monitoring",
+        "path_no": "Temporary change — apply lower risk screening"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_cc_001",
+      "name": "High-Risk Country Sanctions Compliance Checkpoint",
+      "properties": {
+        "regulatory_basis": [
+          "OFAC",
+          "EU Sanctions",
+          "HMT Sanctions"
+        ],
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "New address",
+          "OFAC/EU/HMT sanctions list verification"
+        ],
+        "performed_by": "Compliance Officer - AML Risk Escalation",
+        "timing": "Before address change approval",
+        "failure_consequence": "Address change escalated or blocked; enhanced due diligence required"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_aml_001",
+      "name": "Address Change Sanctions Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": [
+          "OFAC",
+          "EU Sanctions",
+          "HMT Sanctions",
+          "High-risk country list"
+        ],
+        "hit_or_match_response": "Immediate escalation to Compliance; address change blocked pending review",
+        "regulatory_basis": [
+          "OFAC",
+          "EU Sanctions",
+          "HMT Sanctions"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_aml_002",
+      "name": "Address Change Ongoing Monitoring",
+      "properties": {
+        "mandatory": "conditional",
+        "screening_lists_or_scope": "Unusual profile detection; high-crime area moves; frequent international relocations",
+        "hit_or_match_response": "Flag customer for ongoing transaction and profile monitoring",
+        "regulatory_basis": [
+          "AML/CFT best practice"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_addr_001",
+      "name": "New Address Verification",
+      "properties": {
+        "collection_steps": "Customer provides new address during address change request",
+        "verification_steps": "Cross-reference against OFAC, EU Sanctions, HMT Sanctions lists; assess high-risk country status; check for known sanctions locations",
+        "recording_system": "Customer account system; AML screening system"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_017_edd_001",
+      "name": "Enhanced Due Diligence - Address Change",
+      "properties": {
+        "mandatory": "conditional",
+        "timing_or_refresh_frequency": "Triggered when address change involves high-risk country or unusual profile detection",
+        "verification_method": "Compliance Officer review; additional documentation may be required; permanence classification assessment",
+        "consequence_of_failure": "Address change blocked; customer account flagged for enhanced monitoring or potential closure"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_proc_001",
+      "source_name": "Address Change AML Risk Assessment and Re-Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_001",
+      "target_name": "High-Risk Country Assessment",
+      "rel_type": "contains",
+      "description": "The process includes the high-risk country assessment step as part of AML risk evaluation",
+      "properties": {
+        "sequence_position": 1,
+        "phase": "Risk Assessment"
+      },
+      "context": "Step 5: Assess AML Risk & Re-Screening - Is the new address in a high-risk country?",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_proc_001",
+      "source_name": "Address Change AML Risk Assessment and Re-Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_002",
+      "target_name": "Sanctions Location Verification",
+      "rel_type": "contains",
+      "description": "The process includes sanctions location verification as part of AML risk evaluation",
+      "properties": {
+        "sequence_position": 2,
+        "phase": "Risk Assessment"
+      },
+      "context": "Is the new address a known sanctions location? - Example: Address matches OFAC-sanctioned entity address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_proc_001",
+      "source_name": "Address Change AML Risk Assessment and Re-Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_003",
+      "target_name": "Unusual Profile Detection",
+      "rel_type": "contains",
+      "description": "The process includes unusual profile detection as part of AML risk evaluation",
+      "properties": {
+        "sequence_position": 3,
+        "phase": "Risk Assessment"
+      },
+      "context": "Does the address change create unusual profile? - Example: Customer moves to high-crime area, or frequent international moves",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_proc_001",
+      "source_name": "Address Change AML Risk Assessment and Re-Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_004",
+      "target_name": "Permanence Classification",
+      "rel_type": "contains",
+      "description": "The process includes permanence classification as part of AML risk evaluation",
+      "properties": {
+        "sequence_position": 4,
+        "phase": "Risk Assessment"
+      },
+      "context": "Is this a temporary or permanent change? - Temporary (holiday home): Lower risk; Permanent (migration): Higher risk",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_proc_001",
+      "source_name": "Address Change AML Risk Assessment and Re-Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_aml_001",
+      "target_name": "Address Change Sanctions Screening",
+      "rel_type": "executes",
+      "description": "The process executes sanctions screening as part of AML risk assessment",
+      "properties": {
+        "screening_type": "sanctions_based"
+      },
+      "context": "Step 5: Assess AML Risk & Re-Screening - Is the new address a known sanctions location?",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_proc_001",
+      "source_name": "Address Change AML Risk Assessment and Re-Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_aml_002",
+      "target_name": "Address Change Ongoing Monitoring",
+      "rel_type": "executes",
+      "description": "The process executes ongoing monitoring as part of AML risk assessment",
+      "properties": {
+        "screening_type": "ongoing_monitoring"
+      },
+      "context": "Does the address change create unusual profile? - If YES: Flag for ongoing monitoring",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_proc_001",
+      "source_name": "Address Change AML Risk Assessment and Re-Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_edd_001",
+      "target_name": "Enhanced Due Diligence - Address Change",
+      "rel_type": "requires",
+      "description": "The process may require enhanced due diligence for high-risk address changes",
+      "properties": {
+        "trigger_condition": "high_risk_country_detected"
+      },
+      "context": "If YES: Escalate to Compliance, may require enhanced due diligence",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_001",
+      "source_name": "High-Risk Country Assessment",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_002",
+      "target_name": "Sanctions Location Verification",
+      "rel_type": "followed_by",
+      "description": "High-risk country assessment is followed by sanctions location verification",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Risk Assessment questions ordered: 1. High-risk country, 2. Sanctions location",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_002",
+      "source_name": "Sanctions Location Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_003",
+      "target_name": "Unusual Profile Detection",
+      "rel_type": "followed_by",
+      "description": "Sanctions location verification is followed by unusual profile detection",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Risk Assessment questions ordered: 2. Sanctions location, 3. Unusual profile",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_003",
+      "source_name": "Unusual Profile Detection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_004",
+      "target_name": "Permanence Classification",
+      "rel_type": "followed_by",
+      "description": "Unusual profile detection is followed by permanence classification",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Risk Assessment questions ordered: 3. Unusual profile, 4. Permanence classification",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_001",
+      "source_name": "High-Risk Country Assessment",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_001",
+      "target_name": "High-Risk Country Gate",
+      "rel_type": "leads_to",
+      "description": "High-risk country assessment leads to a decision gate for high-risk country determination",
+      "properties": {
+        "decision_criteria": "country_risk_classification"
+      },
+      "context": "Is the new address in a high-risk country? - High-risk countries: Iran, North Korea, Syria, Crimea, Cuba, Sudan, etc.",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_002",
+      "source_name": "Sanctions Location Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_002",
+      "target_name": "Sanctions Location Match Gate",
+      "rel_type": "leads_to",
+      "description": "Sanctions location verification leads to a decision gate for sanctions match determination",
+      "properties": {
+        "decision_criteria": "sanctions_list_match"
+      },
+      "context": "Is the new address a known sanctions location? - Example: Address matches OFAC-sanctioned entity address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_003",
+      "source_name": "Unusual Profile Detection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_003",
+      "target_name": "Unusual Profile Detection Gate",
+      "rel_type": "leads_to",
+      "description": "Unusual profile detection leads to a decision gate for unusual profile determination",
+      "properties": {
+        "decision_criteria": "profile_anomaly_detection"
+      },
+      "context": "Does the address change create unusual profile? - Example: Customer moves to high-crime area, or frequent international moves",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_004",
+      "source_name": "Permanence Classification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_004",
+      "target_name": "Permanence Classification Gate",
+      "rel_type": "leads_to",
+      "description": "Permanence classification leads to a decision gate for permanence determination",
+      "properties": {
+        "decision_criteria": "temporary_vs_permanent_classification"
+      },
+      "context": "Is this a temporary or permanent change? - Temporary (holiday home): Lower risk; Permanent (migration): Higher risk",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_001",
+      "source_name": "High-Risk Country Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_ra_001",
+      "target_name": "Compliance Officer - AML Risk Escalation",
+      "rel_type": "escalated_to",
+      "description": "High-risk country gate escalates to compliance officer when high-risk country is detected",
+      "properties": {
+        "trigger_condition": "high_risk_country_detected",
+        "action": "escalate"
+      },
+      "context": "If YES: Escalate to Compliance, may require enhanced due diligence",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_002",
+      "source_name": "Sanctions Location Match Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_ra_001",
+      "target_name": "Compliance Officer - AML Risk Escalation",
+      "rel_type": "escalated_to",
+      "description": "Sanctions location match gate escalates immediately to compliance officer when sanctions match is detected",
+      "properties": {
+        "trigger_condition": "sanctions_location_match",
+        "action": "escalate_immediately",
+        "consequence": "block_address_change"
+      },
+      "context": "If YES: Escalate immediately, block address change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_001",
+      "source_name": "High-Risk Country Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_cc_001",
+      "target_name": "High-Risk Country Sanctions Compliance Checkpoint",
+      "rel_type": "triggers",
+      "description": "High-risk country gate triggers the high-risk country sanctions compliance checkpoint",
+      "properties": {
+        "checkpoint_purpose": "verify_sanctions_compliance"
+      },
+      "context": "Is the new address in a high-risk country? - Source: OFAC list, EU Sanctions, HMT Sanctions",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_cc_001",
+      "source_name": "High-Risk Country Sanctions Compliance Checkpoint",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_001",
+      "target_name": "High-Risk Country Gate",
+      "rel_type": "gates",
+      "description": "High-risk country sanctions compliance checkpoint gates the high-risk country decision",
+      "properties": {
+        "checkpoint_type": "sanctions_verification"
+      },
+      "context": "Source: OFAC list, EU Sanctions, HMT Sanctions - determines if address is in high-risk country",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_aml_001",
+      "source_name": "Address Change Sanctions Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_002",
+      "target_name": "Sanctions Location Match Gate",
+      "rel_type": "outcome_determined_by",
+      "description": "Sanctions location match gate outcome is determined by address change sanctions screening results",
+      "properties": {
+        "screening_focus": "sanctions_list_matching"
+      },
+      "context": "Is the new address a known sanctions location? - Example: Address matches OFAC-sanctioned entity address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_aml_002",
+      "source_name": "Address Change Ongoing Monitoring",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_003",
+      "target_name": "Unusual Profile Detection Gate",
+      "rel_type": "outcome_determined_by",
+      "description": "Unusual profile detection gate outcome is determined by ongoing monitoring screening results",
+      "properties": {
+        "screening_focus": "profile_anomaly_detection"
+      },
+      "context": "Does the address change create unusual profile? - If YES: Flag for ongoing monitoring",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_addr_001",
+      "source_name": "New Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_001",
+      "target_name": "High-Risk Country Assessment",
+      "rel_type": "required_before",
+      "description": "New address verification must be completed before high-risk country assessment",
+      "properties": {
+        "dependency": "address_data_required"
+      },
+      "context": "Step 5: Assess AML Risk & Re-Screening - requires verified address to assess if in high-risk country",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_edd_001",
+      "source_name": "Enhanced Due Diligence - Address Change",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_001",
+      "target_name": "High-Risk Country Gate",
+      "rel_type": "gated_by",
+      "description": "Enhanced due diligence is gated by high-risk country determination",
+      "properties": {
+        "trigger_condition": "high_risk_country_detected"
+      },
+      "context": "If YES: Escalate to Compliance, may require enhanced due diligence",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_proc_001",
+      "source_name": "Address Change AML Risk Assessment and Re-Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_001",
+      "source_name": "High-Risk Country Assessment",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_002",
+      "source_name": "Sanctions Location Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_003",
+      "source_name": "Unusual Profile Detection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_pstep_004",
+      "source_name": "Permanence Classification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_ra_001",
+      "source_name": "Compliance Officer - AML Risk Escalation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_001",
+      "source_name": "High-Risk Country Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_002",
+      "source_name": "Sanctions Location Match Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_003",
+      "source_name": "Unusual Profile Detection Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_dp_004",
+      "source_name": "Permanence Classification Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_cc_001",
+      "source_name": "High-Risk Country Sanctions Compliance Checkpoint",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_aml_001",
+      "source_name": "Address Change Sanctions Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_aml_002",
+      "source_name": "Address Change Ongoing Monitoring",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_addr_001",
+      "source_name": "New Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_017_edd_001",
+      "source_name": "Enhanced Due Diligence - Address Change",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

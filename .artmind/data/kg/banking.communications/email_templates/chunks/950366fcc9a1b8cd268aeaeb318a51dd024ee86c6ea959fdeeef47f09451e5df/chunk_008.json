@@ -1,0 +1,836 @@
+{
+  "chunk_seq": 8,
+  "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+  "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+  "text": "## Template 6: Card Replacement Confirmation  \n**Subject:** Your Replacement Card Is On Its Way  \n```\nDear [Customer Name],\n\nYour replacement card has been issued and is on its way.\n\nCard Details:\n- Card Type: [Debit/Credit Card]\n- Last 4 Digits: [XXXX]\n- Replacement Reason: [Lost / Damaged / Expired / Other]\n- Estimated Arrival: [date range, 3–5 business days]\n\nImportant:\nYour old card is blocked and can no longer be used.\n\nWhile Waiting:\n✓ Online banking still works\n✓ Mobile app still works\n✓ Standing orders and Direct Debits continue normally\n✓ Visit a branch to withdraw cash if needed\n\nYour New Card:\nWhen it arrives, activate it by logging into your account at\nwww.firstuk.bank/login and clicking \"Activate Card.\"\n\nExpedited Replacement?\nIf you needed the card sooner, we offer overnight delivery for £25.\nContact us to arrange.\n\nQuestions?\n- Phone: 0800-555-2265\n- Email: support@firstuk.bank\n\nThank you,\nFirstUK Bank Team\n```  \n---",
+  "name": "Chunk 8/15",
+  "_domain": "banking.communications",
+  "prev_chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_007",
+  "next_chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_009",
+  "raw_entities": [
+    {
+      "id": "ct_001",
+      "name": "Card Replacement Confirmation",
+      "aliases": [
+        "Template 6"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "email_template",
+      "description": "Customer-facing email notification confirming issuance and dispatch of a replacement card (debit or credit). Informs the customer of card blocking, estimated arrival timeframe, and reassures them that digital banking channels and payment instructions remain active during the replacement period. Includes activation instructions and contact details for expedited delivery options.",
+      "context": [
+        "Your replacement card has been issued and is on its way.",
+        "Your old card is blocked and can no longer be used.",
+        "Standing orders and Direct Debits continue normally",
+        "When it arrives, activate it by logging into your account at www.firstuk.bank/login and clicking \"Activate Card.\""
+      ]
+    },
+    {
+      "id": "tv_001",
+      "name": "Customer Name",
+      "aliases": [],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "customer_data",
+      "description": "Placeholder for the recipient's full name, inserted at send time to personalise the card replacement confirmation email.",
+      "context": [
+        "Dear [Customer Name],"
+      ]
+    },
+    {
+      "id": "tv_002",
+      "name": "Card Type",
+      "aliases": [],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "product_data",
+      "description": "Placeholder indicating whether the replacement card is a debit or credit card, populated dynamically based on the account and card product.",
+      "context": [
+        "Card Type: [Debit/Credit Card]"
+      ]
+    },
+    {
+      "id": "tv_003",
+      "name": "Last Four Digits",
+      "aliases": [
+        "XXXX"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "account_data",
+      "description": "Placeholder for the final four digits of the card number, used to help the customer identify which card is being replaced.",
+      "context": [
+        "Last 4 Digits: [XXXX]"
+      ]
+    },
+    {
+      "id": "tv_004",
+      "name": "Replacement Reason",
+      "aliases": [],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "reference_field",
+      "description": "Placeholder capturing the reason for card replacement — Lost, Damaged, Expired, or Other — populated based on the replacement request.",
+      "context": [
+        "Replacement Reason: [Lost / Damaged / Expired / Other]"
+      ]
+    },
+    {
+      "id": "tv_005",
+      "name": "Estimated Arrival",
+      "aliases": [],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "Placeholder for the expected delivery date range of the replacement card, typically 3–5 business days from issuance.",
+      "context": [
+        "Estimated Arrival: [date range, 3–5 business days]"
+      ]
+    },
+    {
+      "id": "card_001",
+      "name": "Replacement Card",
+      "aliases": [],
+      "entity_class": "CARD",
+      "type": "replacement_card",
+      "description": "A replacement debit or credit card issued to a customer in response to loss, damage, expiry, or other triggering event. The old card is blocked upon issuance of the replacement, and the new card must be activated by the customer upon receipt.",
+      "context": [
+        "Your replacement card has been issued and is on its way.",
+        "Your old card is blocked and can no longer be used.",
+        "When it arrives, activate it by logging into your account at www.firstuk.bank/login and clicking \"Activate Card.\""
+      ]
+    },
+    {
+      "id": "card_002",
+      "name": "Old Card",
+      "aliases": [],
+      "entity_class": "CARD",
+      "type": "debit_card",
+      "description": "The original card being replaced, which is blocked and deactivated upon issuance of the replacement card to prevent unauthorised use.",
+      "context": [
+        "Your old card is blocked and can no longer be used."
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order",
+      "aliases": [],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "Recurring payment instruction that continues to operate normally during card replacement, reassuring the customer that their scheduled payments are not interrupted by the card change.",
+      "context": [
+        "Standing orders and Direct Debits continue normally"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit",
+      "aliases": [],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Direct debit mandate that remains active and unaffected during the card replacement process, ensuring continuous payment collection from the customer's account.",
+      "context": [
+        "Standing orders and Direct Debits continue normally"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Card Replacement Customer",
+      "aliases": [],
+      "entity_class": "CUSTOMER",
+      "type": "existing_customer",
+      "description": "An existing customer of FirstUK Bank who has requested or been issued a replacement card and is the recipient of this confirmation notification.",
+      "context": [
+        "Dear [Customer Name],",
+        "Your replacement card has been issued and is on its way."
+      ]
+    }
+  ],
+  "id_map": {
+    "ct_001": "01a0742b-8524-77fa-82d5-14970cde8c21_008_ct_001",
+    "tv_001": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_001",
+    "tv_002": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_002",
+    "tv_003": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_003",
+    "tv_004": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_004",
+    "tv_005": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_005",
+    "card_001": "01a0742b-8524-77fa-82d5-14970cde8c21_008_card_001",
+    "card_002": "01a0742b-8524-77fa-82d5-14970cde8c21_008_card_002",
+    "so_001": "01a0742b-8524-77fa-82d5-14970cde8c21_008_so_001",
+    "dd_001": "01a0742b-8524-77fa-82d5-14970cde8c21_008_dd_001",
+    "cust_001": "01a0742b-8524-77fa-82d5-14970cde8c21_008_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_ct_001",
+      "name": "Card Replacement Confirmation",
+      "aliases": [
+        "Template 6"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "email_template",
+      "description": "Customer-facing email notification confirming issuance and dispatch of a replacement card (debit or credit). Informs the customer of card blocking, estimated arrival timeframe, and reassures them that digital banking channels and payment instructions remain active during the replacement period. Includes activation instructions and contact details for expedited delivery options.",
+      "context": [
+        "Your replacement card has been issued and is on its way.",
+        "Your old card is blocked and can no longer be used.",
+        "Standing orders and Direct Debits continue normally",
+        "When it arrives, activate it by logging into your account at www.firstuk.bank/login and clicking \"Activate Card.\""
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_001",
+      "name": "Customer Name",
+      "aliases": [],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "customer_data",
+      "description": "Placeholder for the recipient's full name, inserted at send time to personalise the card replacement confirmation email.",
+      "context": [
+        "Dear [Customer Name],"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_002",
+      "name": "Card Type",
+      "aliases": [],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "product_data",
+      "description": "Placeholder indicating whether the replacement card is a debit or credit card, populated dynamically based on the account and card product.",
+      "context": [
+        "Card Type: [Debit/Credit Card]"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_003",
+      "name": "Last Four Digits",
+      "aliases": [
+        "XXXX"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "account_data",
+      "description": "Placeholder for the final four digits of the card number, used to help the customer identify which card is being replaced.",
+      "context": [
+        "Last 4 Digits: [XXXX]"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_004",
+      "name": "Replacement Reason",
+      "aliases": [],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "reference_field",
+      "description": "Placeholder capturing the reason for card replacement — Lost, Damaged, Expired, or Other — populated based on the replacement request.",
+      "context": [
+        "Replacement Reason: [Lost / Damaged / Expired / Other]"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_005",
+      "name": "Estimated Arrival",
+      "aliases": [],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "Placeholder for the expected delivery date range of the replacement card, typically 3–5 business days from issuance.",
+      "context": [
+        "Estimated Arrival: [date range, 3–5 business days]"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_card_001",
+      "name": "Replacement Card",
+      "aliases": [],
+      "entity_class": "CARD",
+      "type": "replacement_card",
+      "description": "A replacement debit or credit card issued to a customer in response to loss, damage, expiry, or other triggering event. The old card is blocked upon issuance of the replacement, and the new card must be activated by the customer upon receipt.",
+      "context": [
+        "Your replacement card has been issued and is on its way.",
+        "Your old card is blocked and can no longer be used.",
+        "When it arrives, activate it by logging into your account at www.firstuk.bank/login and clicking \"Activate Card.\""
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_card_002",
+      "name": "Old Card",
+      "aliases": [],
+      "entity_class": "CARD",
+      "type": "debit_card",
+      "description": "The original card being replaced, which is blocked and deactivated upon issuance of the replacement card to prevent unauthorised use.",
+      "context": [
+        "Your old card is blocked and can no longer be used."
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_so_001",
+      "name": "Standing Order",
+      "aliases": [],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "Recurring payment instruction that continues to operate normally during card replacement, reassuring the customer that their scheduled payments are not interrupted by the card change.",
+      "context": [
+        "Standing orders and Direct Debits continue normally"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_dd_001",
+      "name": "Direct Debit",
+      "aliases": [],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Direct debit mandate that remains active and unaffected during the card replacement process, ensuring continuous payment collection from the customer's account.",
+      "context": [
+        "Standing orders and Direct Debits continue normally"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_cust_001",
+      "name": "Card Replacement Customer",
+      "aliases": [],
+      "entity_class": "CUSTOMER",
+      "type": "existing_customer",
+      "description": "An existing customer of FirstUK Bank who has requested or been issued a replacement card and is the recipient of this confirmation notification.",
+      "context": [
+        "Dear [Customer Name],",
+        "Your replacement card has been issued and is on its way."
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_ct_001",
+      "name": "Card Replacement Confirmation",
+      "properties": {
+        "document_id": "TEMPLATE-006",
+        "trigger_event": "Card replacement issued",
+        "channel": "email",
+        "subject_line": "Your Replacement Card Is On Its Way",
+        "recipient": "card holder",
+        "key_content": [
+          "Card replacement issued notification",
+          "Card details (type, last 4 digits, reason)",
+          "Estimated arrival timeframe",
+          "Old card blocked confirmation",
+          "Service continuity assurance (online banking, mobile app, standing orders, direct debits)",
+          "New card activation instructions",
+          "Expedited replacement option",
+          "Contact information"
+        ],
+        "variables_used": [
+          "[Customer Name]",
+          "[Debit/Credit Card]",
+          "[XXXX]",
+          "[Lost / Damaged / Expired / Other]",
+          "[date range, 3–5 business days]"
+        ],
+        "tone": "friendly",
+        "owner": "Card Services Team"
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_001",
+      "name": "Customer Name",
+      "properties": {
+        "variable_placeholder": "[Customer Name]",
+        "data_source": "CRM",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Card Replacement Confirmation"
+        ]
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_002",
+      "name": "Card Type",
+      "properties": {
+        "variable_placeholder": "[Debit/Credit Card]",
+        "data_source": "Product Catalog",
+        "data_type": "string",
+        "example_value": "Debit Card",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Card Replacement Confirmation"
+        ]
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_003",
+      "name": "Last Four Digits",
+      "properties": {
+        "variable_placeholder": "[XXXX]",
+        "data_source": "AMS",
+        "data_type": "string",
+        "character_limit": "4",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Card Replacement Confirmation"
+        ]
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_004",
+      "name": "Replacement Reason",
+      "properties": {
+        "variable_placeholder": "[Lost / Damaged / Expired / Other]",
+        "data_source": "AMS",
+        "data_type": "string",
+        "example_value": "Lost",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Card Replacement Confirmation"
+        ]
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_005",
+      "name": "Estimated Arrival",
+      "properties": {
+        "variable_placeholder": "[date range, 3–5 business days]",
+        "data_source": "AMS",
+        "data_type": "date",
+        "example_value": "3–5 business days",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Card Replacement Confirmation"
+        ]
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_card_001",
+      "name": "Replacement Card",
+      "properties": {
+        "card_state": "issuance",
+        "card_type": "debit or credit",
+        "activation_required": "yes",
+        "activation_method": "online banking portal at www.firstuk.bank/login",
+        "estimated_delivery": "3–5 business days",
+        "expedited_option_available": "yes",
+        "expedited_cost": "25"
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_card_002",
+      "name": "Old Card",
+      "properties": {
+        "card_state": "blocked",
+        "block_or_replacement_conditions": "Card replacement issued; old card no longer usable"
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_so_001",
+      "name": "Standing Order",
+      "properties": {
+        "service_continuity": "continues normally during card replacement"
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_dd_001",
+      "name": "Direct Debit",
+      "properties": {
+        "service_continuity": "continues normally during card replacement"
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_cust_001",
+      "name": "Card Replacement Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "recipient of card replacement confirmation",
+        "communication_channel": "email"
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_ct_001",
+      "source_name": "Card Replacement Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_001",
+      "target_name": "Customer Name",
+      "rel_type": "personalises_via",
+      "description": "Template uses Customer Name variable to personalize the greeting",
+      "properties": {
+        "placeholder": "[Customer Name]",
+        "usage_context": "salutation"
+      },
+      "context": "Dear [Customer Name],",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_ct_001",
+      "source_name": "Card Replacement Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_002",
+      "target_name": "Card Type",
+      "rel_type": "populates_with",
+      "description": "Template requires Card Type variable to specify card category",
+      "properties": {
+        "placeholder": "[Debit/Credit Card]",
+        "usage_context": "card_details"
+      },
+      "context": "Card Type: [Debit/Credit Card]",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_ct_001",
+      "source_name": "Card Replacement Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_003",
+      "target_name": "Last Four Digits",
+      "rel_type": "populates_with",
+      "description": "Template requires Last Four Digits variable for card identification",
+      "properties": {
+        "placeholder": "[XXXX]",
+        "usage_context": "card_details"
+      },
+      "context": "Last 4 Digits: [XXXX]",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_ct_001",
+      "source_name": "Card Replacement Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_004",
+      "target_name": "Replacement Reason",
+      "rel_type": "populates_with",
+      "description": "Template requires Replacement Reason variable to explain card replacement",
+      "properties": {
+        "placeholder": "[Lost / Damaged / Expired / Other]",
+        "usage_context": "card_details"
+      },
+      "context": "Replacement Reason: [Lost / Damaged / Expired / Other]",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_ct_001",
+      "source_name": "Card Replacement Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_005",
+      "target_name": "Estimated Arrival",
+      "rel_type": "populates_with",
+      "description": "Template requires Estimated Arrival variable to communicate delivery timeline",
+      "properties": {
+        "placeholder": "[date range, 3–5 business days]",
+        "usage_context": "card_details"
+      },
+      "context": "Estimated Arrival: [date range, 3–5 business days]",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_ct_001",
+      "source_name": "Card Replacement Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_card_001",
+      "target_name": "Replacement Card",
+      "rel_type": "confirms_issuance_of",
+      "description": "Template confirms the issuance and dispatch of the replacement card",
+      "properties": {
+        "status": "issued_and_in_transit",
+        "action": "confirmation"
+      },
+      "context": "Your replacement card has been issued and is on its way.",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_ct_001",
+      "source_name": "Card Replacement Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_card_002",
+      "target_name": "Old Card",
+      "rel_type": "alerts_about",
+      "description": "Template alerts customer that old card has been blocked and cannot be used",
+      "properties": {
+        "status": "blocked",
+        "action": "deactivation_notice"
+      },
+      "context": "Your old card is blocked and can no longer be used.",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_ct_001",
+      "source_name": "Card Replacement Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "references",
+      "description": "Template references that standing orders continue to function during card replacement",
+      "properties": {
+        "status": "continues_normally",
+        "context": "service_continuity"
+      },
+      "context": "Standing orders and Direct Debits continue normally",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_ct_001",
+      "source_name": "Card Replacement Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_dd_001",
+      "target_name": "Direct Debit",
+      "rel_type": "references",
+      "description": "Template references that direct debits continue to function during card replacement",
+      "properties": {
+        "status": "continues_normally",
+        "context": "service_continuity"
+      },
+      "context": "Standing orders and Direct Debits continue normally",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_ct_001",
+      "source_name": "Card Replacement Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_cust_001",
+      "target_name": "Card Replacement Customer",
+      "rel_type": "addressed_to",
+      "description": "Template is addressed to the customer receiving the replacement card",
+      "properties": {
+        "communication_type": "confirmation",
+        "recipient_role": "card_holder"
+      },
+      "context": "Dear [Customer Name], Your replacement card has been issued and is on its way.",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_001",
+      "source_name": "Customer Name",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_002",
+      "target_name": "Card Type",
+      "rel_type": "used_together_with",
+      "description": "Customer Name and Card Type variables are used together in the same template",
+      "properties": {
+        "template_id": "ct_001",
+        "section": "card_details"
+      },
+      "context": "Dear [Customer Name], ... Card Type: [Debit/Credit Card]",
+      "bidirectional": true,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_002",
+      "source_name": "Card Type",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_003",
+      "target_name": "Last Four Digits",
+      "rel_type": "used_together_with",
+      "description": "Card Type and Last Four Digits variables are used together in card details section",
+      "properties": {
+        "template_id": "ct_001",
+        "section": "card_details"
+      },
+      "context": "Card Type: [Debit/Credit Card] - Last 4 Digits: [XXXX]",
+      "bidirectional": true,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_003",
+      "source_name": "Last Four Digits",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_004",
+      "target_name": "Replacement Reason",
+      "rel_type": "used_together_with",
+      "description": "Last Four Digits and Replacement Reason variables are used together in card details",
+      "properties": {
+        "template_id": "ct_001",
+        "section": "card_details"
+      },
+      "context": "Last 4 Digits: [XXXX] - Replacement Reason: [Lost / Damaged / Expired / Other]",
+      "bidirectional": true,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_004",
+      "source_name": "Replacement Reason",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_005",
+      "target_name": "Estimated Arrival",
+      "rel_type": "used_together_with",
+      "description": "Replacement Reason and Estimated Arrival variables are used together in card details",
+      "properties": {
+        "template_id": "ct_001",
+        "section": "card_details"
+      },
+      "context": "Replacement Reason: [Lost / Damaged / Expired / Other] - Estimated Arrival: [date range, 3–5 business days]",
+      "bidirectional": true,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_ct_001",
+      "source_name": "Card Replacement Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_001",
+      "source_name": "Customer Name",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_002",
+      "source_name": "Card Type",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_003",
+      "source_name": "Last Four Digits",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_004",
+      "source_name": "Replacement Reason",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_tv_005",
+      "source_name": "Estimated Arrival",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_card_001",
+      "source_name": "Replacement Card",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_card_002",
+      "source_name": "Old Card",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_dd_001",
+      "source_name": "Direct Debit",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008_cust_001",
+      "source_name": "Card Replacement Customer",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_008",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    }
+  ]
+}

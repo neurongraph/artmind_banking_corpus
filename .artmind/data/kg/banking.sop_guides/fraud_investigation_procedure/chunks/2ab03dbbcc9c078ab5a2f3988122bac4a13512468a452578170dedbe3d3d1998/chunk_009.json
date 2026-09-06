@@ -1,0 +1,1142 @@
+{
+  "chunk_seq": 9,
+  "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+  "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+  "text": "### Step 4: Evidence Evaluation  \n**Assess Fraud Likelihood:**  \n**For Each Piece of Evidence, Score:**  \n| Evidence | Value | Assessment |\n|---|---|---|\n| **Customer Disputes Transaction** | 1–3 | 1=Weak claim, 3=Strong claim (backed by facts) |\n| **Geo-Impossibility** | 0–2 | 2=Confirmed impossible, 0=Possible |\n| **Device Mismatch** | 0–2 | 2=New device, 0=Known device |\n| **Merchant Risk** | 0–2 | 2=High-risk merchant, 0=Legitimate |\n| **Velocity** | 0–2 | 2=Multiple rapid transactions, 0=Single |\n| **Customer History** | 0–2 | 2=Customer never does this, 0=Typical |  \n**Fraud Score = Sum of Evidence Points (0–12)**  \n| Score | Assessment | Action |\n|---|---|---|\n| **10–12** | Fraud Confirmed | Refund + Investigation |\n| **7–9** | Fraud Likely | Refund + Investigation |\n| **4–6** | Fraud Possible | Investigate further or refund pending |\n| **1–3** | Fraud Unlikely | Likely authorized or error; educate customer |\n| **0** | Fraud Not Likely | Deny fraud claim; educate customer |  \n---",
+  "name": "Chunk 9/24",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_008",
+  "next_chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Fraud Evidence Evaluation Process",
+      "aliases": [
+        "Evidence Assessment",
+        "Fraud Likelihood Assessment"
+      ],
+      "entity_class": "PROCESS",
+      "type": "fraud_investigation",
+      "description": "A structured procedure for evaluating fraud likelihood by scoring multiple pieces of evidence across six dimensions: customer dispute strength, geographic impossibility, device mismatch, merchant risk, transaction velocity, and customer history. The process produces a cumulative fraud score (0–12) that determines whether the claim is confirmed fraud, likely fraud, possible fraud, unlikely fraud, or not fraud, with corresponding actions for each outcome.",
+      "context": [
+        "Assess Fraud Likelihood: For Each Piece of Evidence, Score",
+        "Fraud Score = Sum of Evidence Points (0–12)",
+        "Score | Assessment | Action"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Customer Dispute Claim Assessment",
+      "aliases": [
+        "Customer Dispute Scoring"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Evaluation of the customer's dispute claim strength, scored on a scale of 1–3 where 1 indicates a weak claim and 3 indicates a strong claim backed by facts.",
+      "context": [
+        "Customer Disputes Transaction | 1–3 | 1=Weak claim, 3=Strong claim (backed by facts)"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Geographic Impossibility Check",
+      "aliases": [
+        "Geo-Impossibility Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Assessment of whether the transaction location is geographically impossible relative to the customer's known location or recent activity, scored 0–2 where 2 indicates confirmed impossibility and 0 indicates the transaction is possible.",
+      "context": [
+        "Geo-Impossibility | 0–2 | 2=Confirmed impossible, 0=Possible"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Device Mismatch Evaluation",
+      "aliases": [
+        "Device Mismatch Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Determination of whether the transaction was initiated from a device different from those known to be used by the customer, scored 0–2 where 2 indicates a new device and 0 indicates a known device.",
+      "context": [
+        "Device Mismatch | 0–2 | 2=New device, 0=Known device"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Merchant Risk Classification",
+      "aliases": [
+        "Merchant Risk Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Classification of the merchant involved in the transaction by risk level, scored 0–2 where 2 indicates a high-risk merchant and 0 indicates a legitimate merchant.",
+      "context": [
+        "Merchant Risk | 0–2 | 2=High-risk merchant, 0=Legitimate"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Transaction Velocity Analysis",
+      "aliases": [
+        "Velocity Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Analysis of the frequency and timing of transactions, scored 0–2 where 2 indicates multiple rapid transactions and 0 indicates a single transaction.",
+      "context": [
+        "Velocity | 0–2 | 2=Multiple rapid transactions, 0=Single"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Customer History Pattern Review",
+      "aliases": [
+        "Customer History Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Review of the customer's transaction history and behavioral patterns to determine whether the disputed transaction is typical or atypical, scored 0–2 where 2 indicates the customer never performs such transactions and 0 indicates the transaction is typical.",
+      "context": [
+        "Customer History | 0–2 | 2=Customer never does this, 0=Typical"
+      ]
+    },
+    {
+      "id": "pstep_007",
+      "name": "Fraud Score Calculation",
+      "aliases": [
+        "Score Aggregation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Summation of all evidence points across the six assessment dimensions to produce a cumulative fraud score ranging from 0 to 12.",
+      "context": [
+        "Fraud Score = Sum of Evidence Points (0–12)"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Fraud Score Outcome Gate",
+      "aliases": [
+        "Fraud Assessment Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A branching decision point that routes the fraud case to different outcomes based on the cumulative fraud score: scores 10–12 trigger refund and investigation (fraud confirmed); 7–9 trigger refund and investigation (fraud likely); 4–6 trigger investigation or conditional refund (fraud possible); 1–3 result in customer education (fraud unlikely); 0 results in claim denial and customer education (fraud not likely).",
+      "context": [
+        "Score | Assessment | Action",
+        "10–12 | Fraud Confirmed | Refund + Investigation",
+        "7–9 | Fraud Likely | Refund + Investigation",
+        "4–6 | Fraud Possible | Investigate further or refund pending",
+        "1–3 | Fraud Unlikely | Likely authorized or error; educate customer",
+        "0 | Fraud Not Likely | Deny fraud claim; educate customer"
+      ]
+    },
+    {
+      "id": "fa_001",
+      "name": "Fraud Investigation Trigger",
+      "aliases": [
+        "Fraud Case Investigation"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "An investigation process initiated when fraud evidence evaluation produces a score of 7 or higher, indicating fraud is likely or confirmed. The investigation is accompanied by customer refund authorization.",
+      "context": [
+        "10–12 | Fraud Confirmed | Refund + Investigation",
+        "7–9 | Fraud Likely | Refund + Investigation"
+      ]
+    },
+    {
+      "id": "fa_002",
+      "name": "Fraud Possible Further Investigation",
+      "aliases": [
+        "Conditional Fraud Investigation"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "An investigation or conditional refund process initiated when fraud evidence evaluation produces a score of 4–6, indicating fraud is possible but not confirmed. The outcome determines whether a refund is issued pending investigation completion.",
+      "context": [
+        "4–6 | Fraud Possible | Investigate further or refund pending"
+      ]
+    },
+    {
+      "id": "fa_003",
+      "name": "Customer Education on Fraud Unlikely",
+      "aliases": [
+        "Fraud Unlikely Customer Communication"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "customer_reimbursement",
+      "description": "A customer communication action taken when fraud evidence evaluation produces a score of 1–3, indicating fraud is unlikely. The customer is educated that the transaction is likely authorized or an error rather than fraudulent.",
+      "context": [
+        "1–3 | Fraud Unlikely | Likely authorized or error; educate customer"
+      ]
+    },
+    {
+      "id": "fa_004",
+      "name": "Fraud Claim Denial with Customer Education",
+      "aliases": [
+        "Fraud Not Likely Denial"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "customer_reimbursement",
+      "description": "A claim denial action taken when fraud evidence evaluation produces a score of 0, indicating fraud is not likely. The customer is denied the fraud claim and educated on the assessment outcome.",
+      "context": [
+        "0 | Fraud Not Likely | Deny fraud claim; educate customer"
+      ]
+    },
+    {
+      "id": "trans_001",
+      "name": "Disputed Transaction",
+      "aliases": [
+        "Fraud Dispute",
+        "Customer Disputed Transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "A financial transaction on a customer account that the customer has disputed as fraudulent or unauthorized. The transaction is the subject of the fraud evidence evaluation process and is scored across multiple fraud indicators.",
+      "context": [
+        "Customer Disputes Transaction | 1–3",
+        "Assess Fraud Likelihood: For Each Piece of Evidence, Score"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_proc_001",
+    "pstep_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_001",
+    "pstep_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_002",
+    "pstep_003": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_003",
+    "pstep_004": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_004",
+    "pstep_005": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_005",
+    "pstep_006": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_006",
+    "pstep_007": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_007",
+    "dp_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_dp_001",
+    "fa_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_001",
+    "fa_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_002",
+    "fa_003": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_003",
+    "fa_004": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_004",
+    "trans_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_trans_001"
+  },
+  "entities": [
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_proc_001",
+      "name": "Fraud Evidence Evaluation Process",
+      "aliases": [
+        "Evidence Assessment",
+        "Fraud Likelihood Assessment"
+      ],
+      "entity_class": "PROCESS",
+      "type": "fraud_investigation",
+      "description": "A structured procedure for evaluating fraud likelihood by scoring multiple pieces of evidence across six dimensions: customer dispute strength, geographic impossibility, device mismatch, merchant risk, transaction velocity, and customer history. The process produces a cumulative fraud score (0–12) that determines whether the claim is confirmed fraud, likely fraud, possible fraud, unlikely fraud, or not fraud, with corresponding actions for each outcome.",
+      "context": [
+        "Assess Fraud Likelihood: For Each Piece of Evidence, Score",
+        "Fraud Score = Sum of Evidence Points (0–12)",
+        "Score | Assessment | Action"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_001",
+      "name": "Customer Dispute Claim Assessment",
+      "aliases": [
+        "Customer Dispute Scoring"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Evaluation of the customer's dispute claim strength, scored on a scale of 1–3 where 1 indicates a weak claim and 3 indicates a strong claim backed by facts.",
+      "context": [
+        "Customer Disputes Transaction | 1–3 | 1=Weak claim, 3=Strong claim (backed by facts)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_002",
+      "name": "Geographic Impossibility Check",
+      "aliases": [
+        "Geo-Impossibility Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Assessment of whether the transaction location is geographically impossible relative to the customer's known location or recent activity, scored 0–2 where 2 indicates confirmed impossibility and 0 indicates the transaction is possible.",
+      "context": [
+        "Geo-Impossibility | 0–2 | 2=Confirmed impossible, 0=Possible"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_003",
+      "name": "Device Mismatch Evaluation",
+      "aliases": [
+        "Device Mismatch Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Determination of whether the transaction was initiated from a device different from those known to be used by the customer, scored 0–2 where 2 indicates a new device and 0 indicates a known device.",
+      "context": [
+        "Device Mismatch | 0–2 | 2=New device, 0=Known device"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_004",
+      "name": "Merchant Risk Classification",
+      "aliases": [
+        "Merchant Risk Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Classification of the merchant involved in the transaction by risk level, scored 0–2 where 2 indicates a high-risk merchant and 0 indicates a legitimate merchant.",
+      "context": [
+        "Merchant Risk | 0–2 | 2=High-risk merchant, 0=Legitimate"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_005",
+      "name": "Transaction Velocity Analysis",
+      "aliases": [
+        "Velocity Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Analysis of the frequency and timing of transactions, scored 0–2 where 2 indicates multiple rapid transactions and 0 indicates a single transaction.",
+      "context": [
+        "Velocity | 0–2 | 2=Multiple rapid transactions, 0=Single"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_006",
+      "name": "Customer History Pattern Review",
+      "aliases": [
+        "Customer History Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Review of the customer's transaction history and behavioral patterns to determine whether the disputed transaction is typical or atypical, scored 0–2 where 2 indicates the customer never performs such transactions and 0 indicates the transaction is typical.",
+      "context": [
+        "Customer History | 0–2 | 2=Customer never does this, 0=Typical"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_007",
+      "name": "Fraud Score Calculation",
+      "aliases": [
+        "Score Aggregation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Summation of all evidence points across the six assessment dimensions to produce a cumulative fraud score ranging from 0 to 12.",
+      "context": [
+        "Fraud Score = Sum of Evidence Points (0–12)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_dp_001",
+      "name": "Fraud Score Outcome Gate",
+      "aliases": [
+        "Fraud Assessment Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A branching decision point that routes the fraud case to different outcomes based on the cumulative fraud score: scores 10–12 trigger refund and investigation (fraud confirmed); 7–9 trigger refund and investigation (fraud likely); 4–6 trigger investigation or conditional refund (fraud possible); 1–3 result in customer education (fraud unlikely); 0 results in claim denial and customer education (fraud not likely).",
+      "context": [
+        "Score | Assessment | Action",
+        "10–12 | Fraud Confirmed | Refund + Investigation",
+        "7–9 | Fraud Likely | Refund + Investigation",
+        "4–6 | Fraud Possible | Investigate further or refund pending",
+        "1–3 | Fraud Unlikely | Likely authorized or error; educate customer",
+        "0 | Fraud Not Likely | Deny fraud claim; educate customer"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_001",
+      "name": "Fraud Investigation Trigger",
+      "aliases": [
+        "Fraud Case Investigation"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "An investigation process initiated when fraud evidence evaluation produces a score of 7 or higher, indicating fraud is likely or confirmed. The investigation is accompanied by customer refund authorization.",
+      "context": [
+        "10–12 | Fraud Confirmed | Refund + Investigation",
+        "7–9 | Fraud Likely | Refund + Investigation"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_002",
+      "name": "Fraud Possible Further Investigation",
+      "aliases": [
+        "Conditional Fraud Investigation"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "An investigation or conditional refund process initiated when fraud evidence evaluation produces a score of 4–6, indicating fraud is possible but not confirmed. The outcome determines whether a refund is issued pending investigation completion.",
+      "context": [
+        "4–6 | Fraud Possible | Investigate further or refund pending"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_003",
+      "name": "Customer Education on Fraud Unlikely",
+      "aliases": [
+        "Fraud Unlikely Customer Communication"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "customer_reimbursement",
+      "description": "A customer communication action taken when fraud evidence evaluation produces a score of 1–3, indicating fraud is unlikely. The customer is educated that the transaction is likely authorized or an error rather than fraudulent.",
+      "context": [
+        "1–3 | Fraud Unlikely | Likely authorized or error; educate customer"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_004",
+      "name": "Fraud Claim Denial with Customer Education",
+      "aliases": [
+        "Fraud Not Likely Denial"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "customer_reimbursement",
+      "description": "A claim denial action taken when fraud evidence evaluation produces a score of 0, indicating fraud is not likely. The customer is denied the fraud claim and educated on the assessment outcome.",
+      "context": [
+        "0 | Fraud Not Likely | Deny fraud claim; educate customer"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_trans_001",
+      "name": "Disputed Transaction",
+      "aliases": [
+        "Fraud Dispute",
+        "Customer Disputed Transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "A financial transaction on a customer account that the customer has disputed as fraudulent or unauthorized. The transaction is the subject of the fraud evidence evaluation process and is scored across multiple fraud indicators.",
+      "context": [
+        "Customer Disputes Transaction | 1–3",
+        "Assess Fraud Likelihood: For Each Piece of Evidence, Score"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_proc_001",
+      "name": "Fraud Evidence Evaluation Process",
+      "properties": {
+        "purpose": "Assess fraud likelihood through systematic evidence scoring and determine appropriate response action",
+        "scope": "Disputed transactions requiring fraud determination",
+        "owner": "Fraud Investigation Team",
+        "outcome_success": "Accurate fraud classification leading to appropriate refund or denial decision",
+        "outcome_failure": "Incorrect fraud determination resulting in unwarranted refunds or denied legitimate claims"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_001",
+      "name": "Customer Dispute Claim Assessment",
+      "properties": {
+        "step_number": 1,
+        "actor": "Fraud Investigator",
+        "input": "Customer dispute claim and supporting facts",
+        "output": "Dispute strength score (1–3 points)",
+        "channel": "system",
+        "mandatory": "yes",
+        "scoring_scale": "1=Weak claim, 3=Strong claim backed by facts"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_002",
+      "name": "Geographic Impossibility Check",
+      "properties": {
+        "step_number": 2,
+        "actor": "Fraud Investigator",
+        "input": "Transaction location, timestamp, customer location history",
+        "output": "Geographic impossibility score (0–2 points)",
+        "channel": "system",
+        "mandatory": "yes",
+        "scoring_scale": "2=Confirmed impossible, 0=Possible"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_003",
+      "name": "Device Mismatch Evaluation",
+      "properties": {
+        "step_number": 3,
+        "actor": "Fraud Investigator",
+        "input": "Transaction device fingerprint, customer device history",
+        "output": "Device mismatch score (0–2 points)",
+        "channel": "system",
+        "mandatory": "yes",
+        "scoring_scale": "2=New device, 0=Known device"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_004",
+      "name": "Merchant Risk Classification",
+      "properties": {
+        "step_number": 4,
+        "actor": "Fraud Investigator",
+        "input": "Merchant identifier, merchant risk profile",
+        "output": "Merchant risk score (0–2 points)",
+        "channel": "system",
+        "mandatory": "yes",
+        "scoring_scale": "2=High-risk merchant, 0=Legitimate"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_005",
+      "name": "Transaction Velocity Analysis",
+      "properties": {
+        "step_number": 5,
+        "actor": "Fraud Investigator",
+        "input": "Transaction timestamp, customer transaction history",
+        "output": "Velocity score (0–2 points)",
+        "channel": "system",
+        "mandatory": "yes",
+        "scoring_scale": "2=Multiple rapid transactions, 0=Single"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_006",
+      "name": "Customer History Pattern Review",
+      "properties": {
+        "step_number": 6,
+        "actor": "Fraud Investigator",
+        "input": "Transaction type, customer spending patterns, merchant category",
+        "output": "Customer history score (0–2 points)",
+        "channel": "system",
+        "mandatory": "yes",
+        "scoring_scale": "2=Customer never does this, 0=Typical"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_007",
+      "name": "Fraud Score Calculation",
+      "properties": {
+        "step_number": 7,
+        "actor": "Fraud Investigation System",
+        "input": "All evidence scores from steps 1–6",
+        "output": "Total fraud score (0–12 points)",
+        "channel": "system",
+        "mandatory": "yes",
+        "calculation_method": "Sum of all evidence points"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_dp_001",
+      "name": "Fraud Score Outcome Gate",
+      "properties": {
+        "decision_question": "What action should be taken based on the fraud score?",
+        "criteria": [
+          "Score 10–12: Fraud Confirmed",
+          "Score 7–9: Fraud Likely",
+          "Score 4–6: Fraud Possible",
+          "Score 1–3: Fraud Unlikely",
+          "Score 0: Fraud Not Likely"
+        ],
+        "decision_maker": "Fraud Investigation System",
+        "path_yes": "Proceed to appropriate action based on score band",
+        "path_no": "N/A — score always produces a classification"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_001",
+      "name": "Fraud Investigation Trigger",
+      "properties": {
+        "generation_trigger": "Fraud score 10–12 (Fraud Confirmed)",
+        "investigation_or_escalation_path": "Initiate full fraud investigation and refund processing",
+        "customer_notification": "Notify customer of fraud confirmation and refund",
+        "reimbursement_obligation": "Refund transaction amount"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_002",
+      "name": "Fraud Possible Further Investigation",
+      "properties": {
+        "generation_trigger": "Fraud score 4–6 (Fraud Possible)",
+        "investigation_or_escalation_path": "Conduct further investigation or process refund pending outcome",
+        "customer_notification": "Notify customer of ongoing investigation status"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_003",
+      "name": "Customer Education on Fraud Unlikely",
+      "properties": {
+        "generation_trigger": "Fraud score 1–3 (Fraud Unlikely)",
+        "investigation_or_escalation_path": "Close investigation; educate customer on likely authorization or error",
+        "customer_notification": "Notify customer that claim is likely authorized or error; provide education"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_004",
+      "name": "Fraud Claim Denial with Customer Education",
+      "properties": {
+        "generation_trigger": "Fraud score 0 (Fraud Not Likely)",
+        "investigation_or_escalation_path": "Deny fraud claim; provide customer education",
+        "customer_notification": "Notify customer of claim denial and provide fraud prevention education"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_trans_001",
+      "name": "Disputed Transaction",
+      "properties": {
+        "transaction_type": "disputed",
+        "monitoring_or_reporting_obligation": "Subject to fraud evidence evaluation process",
+        "dispute_or_reversal_rules": "Refund or denial determined by fraud score outcome (0–12 scale)"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_proc_001",
+      "source_name": "Fraud Evidence Evaluation Process",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_001",
+      "target_name": "Customer Dispute Claim Assessment",
+      "rel_type": "contains",
+      "description": "The Fraud Evidence Evaluation Process includes the Customer Dispute Claim Assessment as its first step",
+      "properties": {
+        "sequence_position": 1,
+        "evidence_type": "customer_dispute"
+      },
+      "context": "For Each Piece of Evidence, Score: Customer Disputes Transaction | 1–3 | 1=Weak claim, 3=Strong claim (backed by facts)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_001",
+      "source_name": "Customer Dispute Claim Assessment",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_002",
+      "target_name": "Geographic Impossibility Check",
+      "rel_type": "followed_by",
+      "description": "Customer Dispute Claim Assessment is followed by Geographic Impossibility Check in the evaluation sequence",
+      "properties": {
+        "sequence": "step_1_to_step_2"
+      },
+      "context": "Evidence evaluation steps: Customer Disputes Transaction, then Geo-Impossibility, then Device Mismatch, etc.",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_002",
+      "source_name": "Geographic Impossibility Check",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_003",
+      "target_name": "Device Mismatch Evaluation",
+      "rel_type": "followed_by",
+      "description": "Geographic Impossibility Check is followed by Device Mismatch Evaluation",
+      "properties": {
+        "sequence": "step_2_to_step_3"
+      },
+      "context": "Geo-Impossibility | 0–2 | 2=Confirmed impossible, 0=Possible; Device Mismatch | 0–2 | 2=New device, 0=Known device",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_003",
+      "source_name": "Device Mismatch Evaluation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_004",
+      "target_name": "Merchant Risk Classification",
+      "rel_type": "followed_by",
+      "description": "Device Mismatch Evaluation is followed by Merchant Risk Classification",
+      "properties": {
+        "sequence": "step_3_to_step_4"
+      },
+      "context": "Device Mismatch | 0–2, then Merchant Risk | 0–2 | 2=High-risk merchant, 0=Legitimate",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_004",
+      "source_name": "Merchant Risk Classification",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_005",
+      "target_name": "Transaction Velocity Analysis",
+      "rel_type": "followed_by",
+      "description": "Merchant Risk Classification is followed by Transaction Velocity Analysis",
+      "properties": {
+        "sequence": "step_4_to_step_5"
+      },
+      "context": "Merchant Risk | 0–2, then Velocity | 0–2 | 2=Multiple rapid transactions, 0=Single",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_005",
+      "source_name": "Transaction Velocity Analysis",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_006",
+      "target_name": "Customer History Pattern Review",
+      "rel_type": "followed_by",
+      "description": "Transaction Velocity Analysis is followed by Customer History Pattern Review",
+      "properties": {
+        "sequence": "step_5_to_step_6"
+      },
+      "context": "Velocity | 0–2, then Customer History | 0–2 | 2=Customer never does this, 0=Typical",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_006",
+      "source_name": "Customer History Pattern Review",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_007",
+      "target_name": "Fraud Score Calculation",
+      "rel_type": "followed_by",
+      "description": "Customer History Pattern Review is followed by Fraud Score Calculation",
+      "properties": {
+        "sequence": "step_6_to_step_7"
+      },
+      "context": "Customer History | 0–2, then Fraud Score = Sum of Evidence Points (0–12)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_007",
+      "source_name": "Fraud Score Calculation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_dp_001",
+      "target_name": "Fraud Score Outcome Gate",
+      "rel_type": "leads_to",
+      "description": "Fraud Score Calculation leads to the Fraud Score Outcome Gate decision point",
+      "properties": {
+        "score_range": "0-12"
+      },
+      "context": "Fraud Score = Sum of Evidence Points (0–12); Score | Assessment | Action",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_dp_001",
+      "source_name": "Fraud Score Outcome Gate",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_001",
+      "target_name": "Fraud Investigation Trigger",
+      "rel_type": "routes_to_on_pass",
+      "description": "Fraud Score Outcome Gate routes to Fraud Investigation Trigger when score is 7–12 (Fraud Confirmed or Likely)",
+      "properties": {
+        "score_threshold": "7-12",
+        "assessment": "Fraud Confirmed or Fraud Likely",
+        "action": "Refund + Investigation"
+      },
+      "context": "10–12 | Fraud Confirmed | Refund + Investigation; 7–9 | Fraud Likely | Refund + Investigation",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_dp_001",
+      "source_name": "Fraud Score Outcome Gate",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_002",
+      "target_name": "Fraud Possible Further Investigation",
+      "rel_type": "routes_to_on_pass",
+      "description": "Fraud Score Outcome Gate routes to Fraud Possible Further Investigation when score is 4–6",
+      "properties": {
+        "score_threshold": "4-6",
+        "assessment": "Fraud Possible",
+        "action": "Investigate further or refund pending"
+      },
+      "context": "4–6 | Fraud Possible | Investigate further or refund pending",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_dp_001",
+      "source_name": "Fraud Score Outcome Gate",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_003",
+      "target_name": "Customer Education on Fraud Unlikely",
+      "rel_type": "routes_to_on_fail",
+      "description": "Fraud Score Outcome Gate routes to Customer Education on Fraud Unlikely when score is 1–3",
+      "properties": {
+        "score_threshold": "1-3",
+        "assessment": "Fraud Unlikely",
+        "action": "Likely authorized or error; educate customer"
+      },
+      "context": "1–3 | Fraud Unlikely | Likely authorized or error; educate customer",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_dp_001",
+      "source_name": "Fraud Score Outcome Gate",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_004",
+      "target_name": "Fraud Claim Denial with Customer Education",
+      "rel_type": "routes_to_on_fail",
+      "description": "Fraud Score Outcome Gate routes to Fraud Claim Denial with Customer Education when score is 0",
+      "properties": {
+        "score_threshold": "0",
+        "assessment": "Fraud Not Likely",
+        "action": "Deny fraud claim; educate customer"
+      },
+      "context": "0 | Fraud Not Likely | Deny fraud claim; educate customer",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_001",
+      "source_name": "Customer Dispute Claim Assessment",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_trans_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "reviews_result_of",
+      "description": "Customer Dispute Claim Assessment reviews the disputed transaction as evidence",
+      "properties": {
+        "evidence_score_range": "1-3",
+        "scoring_criteria": "1=Weak claim, 3=Strong claim (backed by facts)"
+      },
+      "context": "Customer Disputes Transaction | 1–3 | 1=Weak claim, 3=Strong claim (backed by facts)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_002",
+      "source_name": "Geographic Impossibility Check",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_trans_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "reviews_result_of",
+      "description": "Geographic Impossibility Check evaluates the disputed transaction for geographic inconsistencies",
+      "properties": {
+        "evidence_score_range": "0-2",
+        "scoring_criteria": "2=Confirmed impossible, 0=Possible"
+      },
+      "context": "Geo-Impossibility | 0–2 | 2=Confirmed impossible, 0=Possible",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_003",
+      "source_name": "Device Mismatch Evaluation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_trans_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "reviews_result_of",
+      "description": "Device Mismatch Evaluation assesses the disputed transaction for device inconsistencies",
+      "properties": {
+        "evidence_score_range": "0-2",
+        "scoring_criteria": "2=New device, 0=Known device"
+      },
+      "context": "Device Mismatch | 0–2 | 2=New device, 0=Known device",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_004",
+      "source_name": "Merchant Risk Classification",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_trans_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "reviews_result_of",
+      "description": "Merchant Risk Classification evaluates the merchant associated with the disputed transaction",
+      "properties": {
+        "evidence_score_range": "0-2",
+        "scoring_criteria": "2=High-risk merchant, 0=Legitimate"
+      },
+      "context": "Merchant Risk | 0–2 | 2=High-risk merchant, 0=Legitimate",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_005",
+      "source_name": "Transaction Velocity Analysis",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_trans_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "reviews_result_of",
+      "description": "Transaction Velocity Analysis evaluates the disputed transaction within the context of transaction frequency patterns",
+      "properties": {
+        "evidence_score_range": "0-2",
+        "scoring_criteria": "2=Multiple rapid transactions, 0=Single"
+      },
+      "context": "Velocity | 0–2 | 2=Multiple rapid transactions, 0=Single",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_006",
+      "source_name": "Customer History Pattern Review",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_trans_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "reviews_result_of",
+      "description": "Customer History Pattern Review evaluates the disputed transaction against the customer's historical behavior",
+      "properties": {
+        "evidence_score_range": "0-2",
+        "scoring_criteria": "2=Customer never does this, 0=Typical"
+      },
+      "context": "Customer History | 0–2 | 2=Customer never does this, 0=Typical",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_001",
+      "source_name": "Fraud Investigation Trigger",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_trans_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "raised_on",
+      "description": "Fraud Investigation Trigger alert is raised on the disputed transaction when fraud score is 7–12",
+      "properties": {
+        "fraud_score_range": "7-12",
+        "action": "Refund + Investigation"
+      },
+      "context": "10–12 | Fraud Confirmed | Refund + Investigation; 7–9 | Fraud Likely | Refund + Investigation",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_002",
+      "source_name": "Fraud Possible Further Investigation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_trans_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "raised_on",
+      "description": "Fraud Possible Further Investigation alert is raised on the disputed transaction when fraud score is 4–6",
+      "properties": {
+        "fraud_score_range": "4-6",
+        "action": "Investigate further or refund pending"
+      },
+      "context": "4–6 | Fraud Possible | Investigate further or refund pending",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_proc_001",
+      "source_name": "Fraud Evidence Evaluation Process",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_trans_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "operates_on",
+      "description": "The Fraud Evidence Evaluation Process operates on the disputed transaction to assess fraud likelihood",
+      "properties": {
+        "process_type": "fraud_assessment",
+        "evaluation_scope": "comprehensive_evidence_review"
+      },
+      "context": "Step 4: Evidence Evaluation - Assess Fraud Likelihood for disputed transactions",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_proc_001",
+      "source_name": "Fraud Evidence Evaluation Process",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_001",
+      "source_name": "Customer Dispute Claim Assessment",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_002",
+      "source_name": "Geographic Impossibility Check",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_003",
+      "source_name": "Device Mismatch Evaluation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_004",
+      "source_name": "Merchant Risk Classification",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_005",
+      "source_name": "Transaction Velocity Analysis",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_006",
+      "source_name": "Customer History Pattern Review",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_pstep_007",
+      "source_name": "Fraud Score Calculation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_dp_001",
+      "source_name": "Fraud Score Outcome Gate",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_001",
+      "source_name": "Fraud Investigation Trigger",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_002",
+      "source_name": "Fraud Possible Further Investigation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_003",
+      "source_name": "Customer Education on Fraud Unlikely",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_fa_004",
+      "source_name": "Fraud Claim Denial with Customer Education",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009_trans_001",
+      "source_name": "Disputed Transaction",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

@@ -1,0 +1,722 @@
+{
+  "chunk_seq": 8,
+  "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+  "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+  "text": "## SCENARIO 5: Complaint  \n**Customer:** \"I want to file a complaint.\"  \n**Agent Script:**  \n```\nAgent: \"I'm sorry you've had a poor experience. We want to\nmake this right. Let me document your complaint.\n\nCan you tell me:\n- What happened?\n- When did it occur?\n- How would you like us to resolve it?\n\n[Customer explains]\n\nI'm escalating this to our Complaints Team. Here's what\nhappens next:\n\n1. We'll investigate within 8 calendar days\n2. You'll receive a response by email with our findings\n3. If you disagree, you can escalate to the Financial\nOmbudsman Service (free and independent)\n\nYour complaint reference number is [EXC-XXXXX]. Please keep\nthis for your records.\n\nWe'll be in touch within 8 days. Is there anything else I can\nhelp with today?\"\n```  \n---",
+  "name": "Chunk 8/17",
+  "_domain": "banking.communications",
+  "prev_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+  "next_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+  "raw_entities": [
+    {
+      "id": "ct_001",
+      "name": "Complaint Handling Call Script",
+      "aliases": [
+        "Complaint Script",
+        "Customer Complaint Agent Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre script for agents to follow when a customer initiates a complaint. The script guides the agent to document the complaint details, explain the investigation timeline (8 calendar days), inform the customer of the response method (email), and provide escalation information regarding the Financial Ombudsman Service. A complaint reference number is generated and provided to the customer for record-keeping.",
+      "context": [
+        "I'm sorry you've had a poor experience. We want to make this right. Let me document your complaint.",
+        "I'm escalating this to our Complaints Team. Here's what happens next: 1. We'll investigate within 8 calendar days 2. You'll receive a response by email with our findings 3. If you disagree, you can escalate to the Financial Ombudsman Service (free and independent)",
+        "Your complaint reference number is [EXC-XXXXX]. Please keep this for your records.",
+        "We'll be in touch within 8 days."
+      ]
+    },
+    {
+      "id": "tv_001",
+      "name": "Complaint Description",
+      "aliases": [
+        "What Happened"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "customer_data",
+      "description": "A free-text variable capturing the customer's account of what went wrong. Collected during the complaint call and used to populate the complaint record for investigation.",
+      "context": [
+        "Can you tell me: - What happened?"
+      ]
+    },
+    {
+      "id": "tv_002",
+      "name": "Complaint Occurrence Date",
+      "aliases": [
+        "When Did It Occur"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "A date variable capturing when the complained-of event occurred. Collected from the customer to establish the timeline and context for investigation.",
+      "context": [
+        "Can you tell me: - When did it occur?"
+      ]
+    },
+    {
+      "id": "tv_003",
+      "name": "Customer Resolution Request",
+      "aliases": [
+        "How Would You Like Us to Resolve It"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "customer_data",
+      "description": "A free-text variable capturing the customer's desired outcome or remedy for the complaint. Collected during the complaint call to inform the investigation and resolution approach.",
+      "context": [
+        "Can you tell me: - How would you like us to resolve it?"
+      ]
+    },
+    {
+      "id": "tv_004",
+      "name": "Complaint Reference Number",
+      "aliases": [
+        "EXC-XXXXX",
+        "Reference Number"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "reference_field",
+      "description": "A unique identifier assigned to each complaint at the point of logging. The reference number is provided to the customer for record-keeping and used to track the complaint through investigation and resolution.",
+      "context": [
+        "Your complaint reference number is [EXC-XXXXX]. Please keep this for your records."
+      ]
+    },
+    {
+      "id": "co_001",
+      "name": "Complaint Investigation Timeframe",
+      "aliases": [
+        "8 Calendar Day Investigation Obligation"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "reporting_obligation",
+      "description": "A mandatory obligation to investigate and respond to a customer complaint within 8 calendar days of receipt. The bank must provide findings and a response to the customer by email within this timeframe.",
+      "context": [
+        "We'll investigate within 8 calendar days",
+        "You'll receive a response by email with our findings",
+        "We'll be in touch within 8 days."
+      ]
+    },
+    {
+      "id": "co_002",
+      "name": "Complaint Documentation Requirement",
+      "aliases": [
+        "Document Complaint Obligation"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "documentation_requirement",
+      "description": "A mandatory obligation for the agent to document the customer's complaint, including what happened, when it occurred, and the customer's desired resolution. This documentation forms the basis of the complaint record for investigation.",
+      "context": [
+        "Let me document your complaint.",
+        "Can you tell me: - What happened? - When did it occur? - How would you like us to resolve it?"
+      ]
+    },
+    {
+      "id": "co_003",
+      "name": "Complaint Escalation to Financial Ombudsman Service",
+      "aliases": [
+        "FOS Escalation Obligation"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "escalation_duty",
+      "description": "A mandatory obligation to inform customers of their right to escalate unresolved complaints to the Financial Ombudsman Service, which is described as free and independent. This information must be provided during the complaint handling process.",
+      "context": [
+        "If you disagree, you can escalate to the Financial Ombudsman Service (free and independent)"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Complaining Customer",
+      "aliases": [
+        "Customer",
+        "Complaint Initiator"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A customer who has initiated a complaint regarding their banking experience or service. The customer provides details of the complaint and receives a reference number and timeline for investigation and response.",
+      "context": [
+        "Customer: \"I want to file a complaint.\"",
+        "[Customer explains]"
+      ]
+    }
+  ],
+  "id_map": {
+    "ct_001": "01a07428-c932-773f-a5f8-da98f9df05b5_008_ct_001",
+    "tv_001": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_001",
+    "tv_002": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_002",
+    "tv_003": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_003",
+    "tv_004": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_004",
+    "co_001": "01a07428-c932-773f-a5f8-da98f9df05b5_008_co_001",
+    "co_002": "01a07428-c932-773f-a5f8-da98f9df05b5_008_co_002",
+    "co_003": "01a07428-c932-773f-a5f8-da98f9df05b5_008_co_003",
+    "cust_001": "01a07428-c932-773f-a5f8-da98f9df05b5_008_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_ct_001",
+      "name": "Complaint Handling Call Script",
+      "aliases": [
+        "Complaint Script",
+        "Customer Complaint Agent Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre script for agents to follow when a customer initiates a complaint. The script guides the agent to document the complaint details, explain the investigation timeline (8 calendar days), inform the customer of the response method (email), and provide escalation information regarding the Financial Ombudsman Service. A complaint reference number is generated and provided to the customer for record-keeping.",
+      "context": [
+        "I'm sorry you've had a poor experience. We want to make this right. Let me document your complaint.",
+        "I'm escalating this to our Complaints Team. Here's what happens next: 1. We'll investigate within 8 calendar days 2. You'll receive a response by email with our findings 3. If you disagree, you can escalate to the Financial Ombudsman Service (free and independent)",
+        "Your complaint reference number is [EXC-XXXXX]. Please keep this for your records.",
+        "We'll be in touch within 8 days."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_001",
+      "name": "Complaint Description",
+      "aliases": [
+        "What Happened"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "customer_data",
+      "description": "A free-text variable capturing the customer's account of what went wrong. Collected during the complaint call and used to populate the complaint record for investigation.",
+      "context": [
+        "Can you tell me: - What happened?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_002",
+      "name": "Complaint Occurrence Date",
+      "aliases": [
+        "When Did It Occur"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "A date variable capturing when the complained-of event occurred. Collected from the customer to establish the timeline and context for investigation.",
+      "context": [
+        "Can you tell me: - When did it occur?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_003",
+      "name": "Customer Resolution Request",
+      "aliases": [
+        "How Would You Like Us to Resolve It"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "customer_data",
+      "description": "A free-text variable capturing the customer's desired outcome or remedy for the complaint. Collected during the complaint call to inform the investigation and resolution approach.",
+      "context": [
+        "Can you tell me: - How would you like us to resolve it?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_004",
+      "name": "Complaint Reference Number",
+      "aliases": [
+        "EXC-XXXXX",
+        "Reference Number"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "reference_field",
+      "description": "A unique identifier assigned to each complaint at the point of logging. The reference number is provided to the customer for record-keeping and used to track the complaint through investigation and resolution.",
+      "context": [
+        "Your complaint reference number is [EXC-XXXXX]. Please keep this for your records."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_co_001",
+      "name": "Complaint Investigation Timeframe",
+      "aliases": [
+        "8 Calendar Day Investigation Obligation"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "reporting_obligation",
+      "description": "A mandatory obligation to investigate and respond to a customer complaint within 8 calendar days of receipt. The bank must provide findings and a response to the customer by email within this timeframe.",
+      "context": [
+        "We'll investigate within 8 calendar days",
+        "You'll receive a response by email with our findings",
+        "We'll be in touch within 8 days."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_co_002",
+      "name": "Complaint Documentation Requirement",
+      "aliases": [
+        "Document Complaint Obligation"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "documentation_requirement",
+      "description": "A mandatory obligation for the agent to document the customer's complaint, including what happened, when it occurred, and the customer's desired resolution. This documentation forms the basis of the complaint record for investigation.",
+      "context": [
+        "Let me document your complaint.",
+        "Can you tell me: - What happened? - When did it occur? - How would you like us to resolve it?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_co_003",
+      "name": "Complaint Escalation to Financial Ombudsman Service",
+      "aliases": [
+        "FOS Escalation Obligation"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "escalation_duty",
+      "description": "A mandatory obligation to inform customers of their right to escalate unresolved complaints to the Financial Ombudsman Service, which is described as free and independent. This information must be provided during the complaint handling process.",
+      "context": [
+        "If you disagree, you can escalate to the Financial Ombudsman Service (free and independent)"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_cust_001",
+      "name": "Complaining Customer",
+      "aliases": [
+        "Customer",
+        "Complaint Initiator"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A customer who has initiated a complaint regarding their banking experience or service. The customer provides details of the complaint and receives a reference number and timeline for investigation and response.",
+      "context": [
+        "Customer: \"I want to file a complaint.\"",
+        "[Customer explains]"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_ct_001",
+      "name": "Complaint Handling Call Script",
+      "properties": {
+        "channel": "call",
+        "trigger_event": "customer initiates complaint",
+        "recipient": "complaining customer",
+        "key_content": [
+          "Acknowledge poor experience and commitment to resolution",
+          "Collect complaint details: what happened, when it occurred, desired resolution",
+          "Provide complaint reference number",
+          "Explain investigation timeline (8 calendar days)",
+          "Inform of response delivery method (email)",
+          "Advise escalation option to Financial Ombudsman Service",
+          "Confirm next steps and offer further assistance"
+        ],
+        "variables_used": [
+          "[Customer explains]",
+          "[EXC-XXXXX]"
+        ],
+        "tone": "formal, empathetic, reassuring",
+        "owner": "Complaints Team"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_001",
+      "name": "Complaint Description",
+      "properties": {
+        "variable_placeholder": "What happened?",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Complaint Handling Call Script"
+        ],
+        "character_limit": "none stated"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_002",
+      "name": "Complaint Occurrence Date",
+      "properties": {
+        "variable_placeholder": "When did it occur?",
+        "data_type": "date",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Complaint Handling Call Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_003",
+      "name": "Customer Resolution Request",
+      "properties": {
+        "variable_placeholder": "How would you like us to resolve it?",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Complaint Handling Call Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_004",
+      "name": "Complaint Reference Number",
+      "properties": {
+        "variable_placeholder": "[EXC-XXXXX]",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Complaint Handling Call Script"
+        ],
+        "example_value": "EXC-XXXXX"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_co_001",
+      "name": "Complaint Investigation Timeframe",
+      "properties": {
+        "obligation_type": "mandatory_action",
+        "applies_to": "Complaints Team",
+        "timeframe": "8 calendar days",
+        "regulatory_source": "Financial Conduct Authority (FCA) complaint handling rules"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_co_002",
+      "name": "Complaint Documentation Requirement",
+      "properties": {
+        "obligation_type": "documentation",
+        "applies_to": "all staff handling complaints",
+        "timeframe": "at time of complaint receipt",
+        "required_content": [
+          "complaint description",
+          "complaint occurrence date",
+          "customer resolution request",
+          "complaint reference number"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_co_003",
+      "name": "Complaint Escalation to Financial Ombudsman Service",
+      "properties": {
+        "obligation_type": "reporting_duty",
+        "applies_to": "all staff",
+        "consequence_of_failure": "customer may escalate independently to Financial Ombudsman Service",
+        "regulatory_source": "Financial Conduct Authority (FCA) complaint handling rules",
+        "escalation_path": "Financial Ombudsman Service (free and independent)"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_cust_001",
+      "name": "Complaining Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "initiates complaint regarding poor service experience",
+        "eligibility_or_verification_status": "entitled to complaint handling and escalation rights"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_ct_001",
+      "source_name": "Complaint Handling Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_001",
+      "target_name": "Complaint Description",
+      "rel_type": "contains",
+      "description": "The call script contains and requires the complaint description variable to document what happened",
+      "properties": {
+        "required": true,
+        "prompt": "What happened?"
+      },
+      "context": "Can you tell me: - What happened?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_ct_001",
+      "source_name": "Complaint Handling Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_002",
+      "target_name": "Complaint Occurrence Date",
+      "rel_type": "contains",
+      "description": "The call script contains and requires the complaint occurrence date variable",
+      "properties": {
+        "required": true,
+        "prompt": "When did it occur?"
+      },
+      "context": "Can you tell me: - When did it occur?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_ct_001",
+      "source_name": "Complaint Handling Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_003",
+      "target_name": "Customer Resolution Request",
+      "rel_type": "contains",
+      "description": "The call script contains and requires the customer resolution request variable",
+      "properties": {
+        "required": true,
+        "prompt": "How would you like us to resolve it?"
+      },
+      "context": "Can you tell me: - How would you like us to resolve it?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_ct_001",
+      "source_name": "Complaint Handling Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_004",
+      "target_name": "Complaint Reference Number",
+      "rel_type": "populates_with",
+      "description": "The call script populates and provides the complaint reference number to the customer",
+      "properties": {
+        "format": "EXC-XXXXX",
+        "purpose": "customer record keeping"
+      },
+      "context": "Your complaint reference number is [EXC-XXXXX]. Please keep this for your records.",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_ct_001",
+      "source_name": "Complaint Handling Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_co_001",
+      "target_name": "Complaint Investigation Timeframe",
+      "rel_type": "satisfies",
+      "description": "The call script satisfies the compliance obligation by communicating the 8 calendar day investigation timeframe",
+      "properties": {
+        "timeframe": "8 calendar days",
+        "disclosure_type": "investigation timeline"
+      },
+      "context": "We'll investigate within 8 calendar days",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_ct_001",
+      "source_name": "Complaint Handling Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_co_002",
+      "target_name": "Complaint Documentation Requirement",
+      "rel_type": "satisfies",
+      "description": "The call script satisfies the compliance obligation by documenting the complaint with required details",
+      "properties": {
+        "documentation_elements": [
+          "complaint description",
+          "occurrence date",
+          "resolution request",
+          "reference number"
+        ]
+      },
+      "context": "Let me document your complaint. Can you tell me: - What happened? - When did it occur? - How would you like us to resolve it?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_ct_001",
+      "source_name": "Complaint Handling Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_co_003",
+      "target_name": "Complaint Escalation to Financial Ombudsman Service",
+      "rel_type": "includes_disclosure_for",
+      "description": "The call script includes disclosure about the right to escalate to the Financial Ombudsman Service",
+      "properties": {
+        "disclosure_content": "free and independent escalation option",
+        "trigger": "customer disagreement with resolution"
+      },
+      "context": "If you disagree, you can escalate to the Financial Ombudsman Service (free and independent)",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_ct_001",
+      "source_name": "Complaint Handling Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_cust_001",
+      "target_name": "Complaining Customer",
+      "rel_type": "addressed_to",
+      "description": "The complaint handling call script is addressed to and designed for the complaining customer",
+      "properties": {
+        "interaction_type": "inbound complaint call"
+      },
+      "context": "Customer: 'I want to file a complaint.' Agent Script: [entire script]",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_cust_001",
+      "source_name": "Complaining Customer",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_001",
+      "target_name": "Complaint Description",
+      "rel_type": "personalises_via",
+      "description": "The complaining customer personalises the template by providing their specific complaint description",
+      "properties": {
+        "variable_type": "customer-provided content"
+      },
+      "context": "[Customer explains]",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_cust_001",
+      "source_name": "Complaining Customer",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_002",
+      "target_name": "Complaint Occurrence Date",
+      "rel_type": "personalises_via",
+      "description": "The complaining customer personalises the template by providing when the complaint occurred",
+      "properties": {
+        "variable_type": "customer-provided content"
+      },
+      "context": "When did it occur?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_cust_001",
+      "source_name": "Complaining Customer",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_003",
+      "target_name": "Customer Resolution Request",
+      "rel_type": "personalises_via",
+      "description": "The complaining customer personalises the template by stating their desired resolution",
+      "properties": {
+        "variable_type": "customer-provided content"
+      },
+      "context": "How would you like us to resolve it?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_ct_001",
+      "source_name": "Complaint Handling Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_001",
+      "source_name": "Complaint Description",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_002",
+      "source_name": "Complaint Occurrence Date",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_003",
+      "source_name": "Customer Resolution Request",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_tv_004",
+      "source_name": "Complaint Reference Number",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_co_001",
+      "source_name": "Complaint Investigation Timeframe",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_co_002",
+      "source_name": "Complaint Documentation Requirement",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_co_003",
+      "source_name": "Complaint Escalation to Financial Ombudsman Service",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008_cust_001",
+      "source_name": "Complaining Customer",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ]
+}

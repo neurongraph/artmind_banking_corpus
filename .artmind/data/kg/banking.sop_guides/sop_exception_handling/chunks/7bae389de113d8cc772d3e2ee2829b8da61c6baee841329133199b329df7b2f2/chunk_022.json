@@ -1,0 +1,991 @@
+{
+  "chunk_seq": 22,
+  "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+  "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+  "text": "### Missing KYC Documentation  \n```\nException: Account opened without identity verification (audit finding)\nInvestigation: KYC file missing; customer opened via online\nResolution: Email customer, request identity document immediately\nSLA: 5 days (account restricted if doc not provided)\n```  \n---",
+  "name": "Chunk 22/25",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_021",
+  "next_chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_023",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Missing KYC Documentation Exception Handling",
+      "aliases": [
+        "KYC Exception",
+        "Missing Documentation Resolution"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "End-to-end procedure for resolving accounts opened without complete identity verification. Triggered by audit findings of missing KYC documentation in online-opened accounts. Includes customer notification, document collection, and account restriction enforcement within a 5-day SLA.",
+      "context": [
+        "Account opened without identity verification (audit finding)",
+        "KYC file missing; customer opened via online",
+        "Email customer, request identity document immediately",
+        "SLA: 5 days (account restricted if doc not provided)"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "KYC File Audit Review",
+      "aliases": [
+        "Audit Finding",
+        "Documentation Audit"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "quality_check",
+      "description": "Audit control step that identifies accounts opened without complete identity verification documentation. Detects missing KYC files as an exception condition requiring immediate remediation.",
+      "context": [
+        "Account opened without identity verification (audit finding)",
+        "KYC file missing; customer opened via online"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Customer Identity Document Request",
+      "aliases": [
+        "Document Request",
+        "Customer Notification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Communication step where the customer is contacted via email to provide missing identity documentation. Initiates the remediation timeline and establishes the 5-day compliance deadline.",
+      "context": [
+        "Email customer, request identity document immediately"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Account Restriction Enforcement",
+      "aliases": [
+        "Account Lock",
+        "Restriction Application"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "account_activation",
+      "description": "Enforcement step applied if the customer fails to provide required identity documentation within the 5-day SLA. Account functionality is restricted pending document receipt and verification.",
+      "context": [
+        "SLA: 5 days (account restricted if doc not provided)"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Audit Function",
+      "aliases": [
+        "Internal Audit",
+        "Compliance Audit"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "Internal audit team responsible for identifying and flagging accounts opened without complete KYC documentation as an exception condition.",
+      "context": [
+        "Account opened without identity verification (audit finding)"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Customer Service Operations",
+      "aliases": [
+        "Operations Team",
+        "Customer Communications"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations team responsible for sending email notifications to customers requesting missing identity documentation and managing the remediation workflow.",
+      "context": [
+        "Email customer, request identity document immediately"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Document Receipt Decision",
+      "aliases": [
+        "Documentation Gate",
+        "Compliance Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "Binary decision point at the 5-day SLA boundary: if identity document is provided, proceed to verification; if not provided, apply account restriction. Determines whether the account can remain active or must be restricted.",
+      "context": [
+        "SLA: 5 days (account restricted if doc not provided)"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Identity Verification Compliance Checkpoint",
+      "aliases": [
+        "KYC Checkpoint",
+        "Identity Verification Gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "document_retention",
+      "description": "Mandatory regulatory control point verifying that all accounts have complete identity verification documentation on file before account activation. Failure to meet this checkpoint triggers exception handling and account restriction.",
+      "context": [
+        "Account opened without identity verification (audit finding)",
+        "KYC file missing; customer opened via online"
+      ]
+    },
+    {
+      "id": "kyc_001",
+      "name": "Identity Verification",
+      "aliases": [
+        "KYC Verification",
+        "Document Verification"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "Know Your Customer identity verification process required for all account openings. In this exception case, verification was not completed during online account opening and must be remediated through document collection.",
+      "context": [
+        "Account opened without identity verification (audit finding)",
+        "KYC file missing; customer opened via online"
+      ]
+    },
+    {
+      "id": "iddoc_001",
+      "name": "Identity Document",
+      "aliases": [
+        "ID Document",
+        "Verification Document"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "document_recording",
+      "description": "Official identity document required to complete KYC verification for the account. Customer must provide this document within 5 days to avoid account restriction.",
+      "context": [
+        "Email customer, request identity document immediately",
+        "SLA: 5 days (account restricted if doc not provided)"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Online-Opened Account",
+      "aliases": [
+        "Account",
+        "Customer Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "new_account",
+      "description": "Customer account opened through online channel without complete identity verification documentation. Subject to exception handling and potential restriction if KYC documentation is not provided within 5 days.",
+      "context": [
+        "Account opened without identity verification (audit finding)",
+        "KYC file missing; customer opened via online",
+        "SLA: 5 days (account restricted if doc not provided)"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Account Customer",
+      "aliases": [
+        "Customer",
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Individual customer who opened an account via online channel without providing required identity verification documentation. Subject to remediation request and potential account restriction.",
+      "context": [
+        "KYC file missing; customer opened via online",
+        "Email customer, request identity document immediately"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_proc_001",
+    "pstep_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_001",
+    "pstep_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_002",
+    "pstep_003": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_003",
+    "ra_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_ra_001",
+    "ra_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_ra_002",
+    "dp_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_dp_001",
+    "cc_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_cc_001",
+    "kyc_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_kyc_001",
+    "iddoc_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_iddoc_001",
+    "acc_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_acc_001",
+    "cust_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_proc_001",
+      "name": "Missing KYC Documentation Exception Handling",
+      "aliases": [
+        "KYC Exception",
+        "Missing Documentation Resolution"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "End-to-end procedure for resolving accounts opened without complete identity verification. Triggered by audit findings of missing KYC documentation in online-opened accounts. Includes customer notification, document collection, and account restriction enforcement within a 5-day SLA.",
+      "context": [
+        "Account opened without identity verification (audit finding)",
+        "KYC file missing; customer opened via online",
+        "Email customer, request identity document immediately",
+        "SLA: 5 days (account restricted if doc not provided)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_001",
+      "name": "KYC File Audit Review",
+      "aliases": [
+        "Audit Finding",
+        "Documentation Audit"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "quality_check",
+      "description": "Audit control step that identifies accounts opened without complete identity verification documentation. Detects missing KYC files as an exception condition requiring immediate remediation.",
+      "context": [
+        "Account opened without identity verification (audit finding)",
+        "KYC file missing; customer opened via online"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_002",
+      "name": "Customer Identity Document Request",
+      "aliases": [
+        "Document Request",
+        "Customer Notification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Communication step where the customer is contacted via email to provide missing identity documentation. Initiates the remediation timeline and establishes the 5-day compliance deadline.",
+      "context": [
+        "Email customer, request identity document immediately"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_003",
+      "name": "Account Restriction Enforcement",
+      "aliases": [
+        "Account Lock",
+        "Restriction Application"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "account_activation",
+      "description": "Enforcement step applied if the customer fails to provide required identity documentation within the 5-day SLA. Account functionality is restricted pending document receipt and verification.",
+      "context": [
+        "SLA: 5 days (account restricted if doc not provided)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_ra_001",
+      "name": "Audit Function",
+      "aliases": [
+        "Internal Audit",
+        "Compliance Audit"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "Internal audit team responsible for identifying and flagging accounts opened without complete KYC documentation as an exception condition.",
+      "context": [
+        "Account opened without identity verification (audit finding)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_ra_002",
+      "name": "Customer Service Operations",
+      "aliases": [
+        "Operations Team",
+        "Customer Communications"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations team responsible for sending email notifications to customers requesting missing identity documentation and managing the remediation workflow.",
+      "context": [
+        "Email customer, request identity document immediately"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_dp_001",
+      "name": "Document Receipt Decision",
+      "aliases": [
+        "Documentation Gate",
+        "Compliance Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "Binary decision point at the 5-day SLA boundary: if identity document is provided, proceed to verification; if not provided, apply account restriction. Determines whether the account can remain active or must be restricted.",
+      "context": [
+        "SLA: 5 days (account restricted if doc not provided)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_cc_001",
+      "name": "Identity Verification Compliance Checkpoint",
+      "aliases": [
+        "KYC Checkpoint",
+        "Identity Verification Gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "document_retention",
+      "description": "Mandatory regulatory control point verifying that all accounts have complete identity verification documentation on file before account activation. Failure to meet this checkpoint triggers exception handling and account restriction.",
+      "context": [
+        "Account opened without identity verification (audit finding)",
+        "KYC file missing; customer opened via online"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_kyc_001",
+      "name": "Identity Verification",
+      "aliases": [
+        "KYC Verification",
+        "Document Verification"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "Know Your Customer identity verification process required for all account openings. In this exception case, verification was not completed during online account opening and must be remediated through document collection.",
+      "context": [
+        "Account opened without identity verification (audit finding)",
+        "KYC file missing; customer opened via online"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_iddoc_001",
+      "name": "Identity Document",
+      "aliases": [
+        "ID Document",
+        "Verification Document"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "document_recording",
+      "description": "Official identity document required to complete KYC verification for the account. Customer must provide this document within 5 days to avoid account restriction.",
+      "context": [
+        "Email customer, request identity document immediately",
+        "SLA: 5 days (account restricted if doc not provided)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_acc_001",
+      "name": "Online-Opened Account",
+      "aliases": [
+        "Account",
+        "Customer Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "new_account",
+      "description": "Customer account opened through online channel without complete identity verification documentation. Subject to exception handling and potential restriction if KYC documentation is not provided within 5 days.",
+      "context": [
+        "Account opened without identity verification (audit finding)",
+        "KYC file missing; customer opened via online",
+        "SLA: 5 days (account restricted if doc not provided)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_cust_001",
+      "name": "Account Customer",
+      "aliases": [
+        "Customer",
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Individual customer who opened an account via online channel without providing required identity verification documentation. Subject to remediation request and potential account restriction.",
+      "context": [
+        "KYC file missing; customer opened via online",
+        "Email customer, request identity document immediately"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_proc_001",
+      "name": "Missing KYC Documentation Exception Handling",
+      "properties": {
+        "purpose": "Handle accounts opened without complete identity verification and remediate missing KYC documentation",
+        "scope": "Online-opened accounts with incomplete KYC files",
+        "channels": [
+          "online",
+          "email"
+        ],
+        "owner": "Audit Function",
+        "departments_involved": [
+          "Audit",
+          "Customer Service Operations",
+          "Compliance"
+        ],
+        "timeline_sla": "5 days",
+        "regulatory_references": [
+          "KYC regulations",
+          "Customer Due Diligence requirements"
+        ],
+        "trigger": "Audit finding of missing KYC documentation in account file",
+        "outcome_success": "Customer provides identity document and KYC verification is completed",
+        "outcome_failure": "Account restriction enforced if document not provided within SLA"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_001",
+      "name": "KYC File Audit Review",
+      "properties": {
+        "step_number": 1,
+        "actor": "Audit Function",
+        "input": "Account file, KYC documentation records",
+        "output": "Audit finding identifying missing identity verification",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "KYC file system",
+          "audit records"
+        ],
+        "failure_path": "Exception escalated to compliance"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_002",
+      "name": "Customer Identity Document Request",
+      "properties": {
+        "step_number": 2,
+        "actor": "Customer Service Operations",
+        "input": "Customer contact details, audit finding",
+        "output": "Email communication requesting identity document",
+        "channel": "email",
+        "mandatory": "yes",
+        "estimated_duration": "same day",
+        "failure_path": "Escalate to account restriction if no response within 5 days"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_003",
+      "name": "Account Restriction Enforcement",
+      "properties": {
+        "step_number": 3,
+        "actor": "Customer Service Operations",
+        "input": "Document receipt status, SLA expiry",
+        "output": "Account restriction applied",
+        "channel": "system",
+        "mandatory": "conditional",
+        "trigger": "Document not received within 5-day SLA",
+        "failure_path": "Account remains restricted until KYC documentation provided"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_ra_001",
+      "name": "Audit Function",
+      "properties": {
+        "role_type": "human",
+        "department": "Audit",
+        "authority_level": "detection and escalation",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_ra_002",
+      "name": "Customer Service Operations",
+      "properties": {
+        "role_type": "human",
+        "department": "Customer Service Operations",
+        "authority_level": "customer communication and account restriction",
+        "channels": [
+          "email",
+          "system"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_dp_001",
+      "name": "Document Receipt Decision",
+      "properties": {
+        "decision_question": "Has the customer provided the requested identity document within the 5-day SLA?",
+        "criteria": "Document received and verified against customer record",
+        "decision_maker": "Customer Service Operations",
+        "path_yes": "Complete KYC verification and remove account restriction",
+        "path_no": "Enforce account restriction",
+        "time_limit": "5 days"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_cc_001",
+      "name": "Identity Verification Compliance Checkpoint",
+      "properties": {
+        "regulatory_basis": "KYC regulations, Customer Due Diligence requirements",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "online"
+        ],
+        "evidence_required": [
+          "Identity document",
+          "KYC file record"
+        ],
+        "performed_by": "Audit Function, Customer Service Operations",
+        "timing": "At account opening and remediation phase",
+        "failure_consequence": "Account restriction until documentation provided"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_kyc_001",
+      "name": "Identity Verification",
+      "properties": {
+        "mandatory": "yes",
+        "timing_or_refresh_frequency": "At account opening",
+        "verification_method": "Identity document collection and verification",
+        "consequence_of_failure": "Account restriction and exception handling process triggered"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_iddoc_001",
+      "name": "Identity Document",
+      "properties": {
+        "collection_steps": [
+          "Email request to customer",
+          "Customer submission via email or portal"
+        ],
+        "verification_steps": [
+          "Audit review of submitted document",
+          "Verification against customer record"
+        ],
+        "recording_obligation": "KYC file system",
+        "expiry_check": "yes"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_acc_001",
+      "name": "Online-Opened Account",
+      "properties": {
+        "account_type": "online",
+        "account_state": "restricted",
+        "closure_or_freeze_conditions": "Account restricted if KYC documentation not provided within 5 days"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_cust_001",
+      "name": "Account Customer",
+      "properties": {
+        "customer_type": "individual",
+        "context_role": "Account holder with incomplete KYC verification",
+        "eligibility_or_verification_status": "Pending identity document submission"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_proc_001",
+      "source_name": "Missing KYC Documentation Exception Handling",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_001",
+      "target_name": "KYC File Audit Review",
+      "rel_type": "starts_with",
+      "description": "The Missing KYC Documentation Exception Handling process begins with a KYC File Audit Review step",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Exception: Account opened without identity verification (audit finding)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_001",
+      "source_name": "KYC File Audit Review",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_002",
+      "target_name": "Customer Identity Document Request",
+      "rel_type": "followed_by",
+      "description": "KYC File Audit Review is followed by Customer Identity Document Request",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Investigation: KYC file missing; customer opened via online. Resolution: Email customer, request identity document immediately",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_002",
+      "source_name": "Customer Identity Document Request",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_003",
+      "target_name": "Account Restriction Enforcement",
+      "rel_type": "followed_by",
+      "description": "Customer Identity Document Request is followed by Account Restriction Enforcement if document not provided",
+      "properties": {
+        "sequence_position": 3,
+        "condition": "if document not provided within SLA"
+      },
+      "context": "SLA: 5 days (account restricted if doc not provided)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_001",
+      "source_name": "KYC File Audit Review",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_ra_001",
+      "target_name": "Audit Function",
+      "rel_type": "performed_by",
+      "description": "KYC File Audit Review is performed by the Audit Function",
+      "properties": {},
+      "context": "Exception: Account opened without identity verification (audit finding)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_002",
+      "source_name": "Customer Identity Document Request",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_ra_002",
+      "target_name": "Customer Service Operations",
+      "rel_type": "performed_by",
+      "description": "Customer Identity Document Request is performed by Customer Service Operations",
+      "properties": {
+        "method": "email"
+      },
+      "context": "Resolution: Email customer, request identity document immediately",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_003",
+      "source_name": "Account Restriction Enforcement",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_ra_002",
+      "target_name": "Customer Service Operations",
+      "rel_type": "performed_by",
+      "description": "Account Restriction Enforcement is performed by Customer Service Operations",
+      "properties": {},
+      "context": "SLA: 5 days (account restricted if doc not provided)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_002",
+      "source_name": "Customer Identity Document Request",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_dp_001",
+      "target_name": "Document Receipt Decision",
+      "rel_type": "leads_to",
+      "description": "Customer Identity Document Request leads to a Document Receipt Decision point",
+      "properties": {
+        "sla_days": 5
+      },
+      "context": "SLA: 5 days (account restricted if doc not provided)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_dp_001",
+      "source_name": "Document Receipt Decision",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_003",
+      "target_name": "Account Restriction Enforcement",
+      "rel_type": "routes_to_on_fail",
+      "description": "Document Receipt Decision routes to Account Restriction Enforcement if document not received",
+      "properties": {
+        "condition": "document not provided within SLA"
+      },
+      "context": "SLA: 5 days (account restricted if doc not provided)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_proc_001",
+      "source_name": "Missing KYC Documentation Exception Handling",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_cc_001",
+      "target_name": "Identity Verification Compliance Checkpoint",
+      "rel_type": "requires",
+      "description": "Missing KYC Documentation Exception Handling process requires Identity Verification Compliance Checkpoint",
+      "properties": {},
+      "context": "Exception: Account opened without identity verification (audit finding)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_cc_001",
+      "source_name": "Identity Verification Compliance Checkpoint",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_dp_001",
+      "target_name": "Document Receipt Decision",
+      "rel_type": "gates",
+      "description": "Identity Verification Compliance Checkpoint gates the Document Receipt Decision",
+      "properties": {},
+      "context": "Exception: Account opened without identity verification (audit finding)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_002",
+      "source_name": "Customer Identity Document Request",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_kyc_001",
+      "target_name": "Identity Verification",
+      "rel_type": "triggers",
+      "description": "Customer Identity Document Request triggers Identity Verification process",
+      "properties": {},
+      "context": "Resolution: Email customer, request identity document immediately",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_kyc_001",
+      "source_name": "Identity Verification",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_iddoc_001",
+      "target_name": "Identity Document",
+      "rel_type": "requires",
+      "description": "Identity Verification requires an Identity Document",
+      "properties": {},
+      "context": "Resolution: Email customer, request identity document immediately",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_002",
+      "source_name": "Customer Identity Document Request",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_cust_001",
+      "target_name": "Account Customer",
+      "rel_type": "collects_data_from",
+      "description": "Customer Identity Document Request collects identity document data from the Account Customer",
+      "properties": {
+        "method": "email",
+        "sla_days": 5
+      },
+      "context": "Resolution: Email customer, request identity document immediately. SLA: 5 days",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_003",
+      "source_name": "Account Restriction Enforcement",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_acc_001",
+      "target_name": "Online-Opened Account",
+      "rel_type": "freezes",
+      "description": "Account Restriction Enforcement freezes the Online-Opened Account if document not provided",
+      "properties": {
+        "trigger_condition": "document not provided within SLA"
+      },
+      "context": "SLA: 5 days (account restricted if doc not provided)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_acc_001",
+      "source_name": "Online-Opened Account",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_kyc_001",
+      "target_name": "Identity Verification",
+      "rel_type": "gate_for_opening",
+      "description": "Identity Verification is required before the Online-Opened Account can be fully activated",
+      "properties": {
+        "status": "missing_verification"
+      },
+      "context": "Exception: Account opened without identity verification (audit finding)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_cust_001",
+      "source_name": "Account Customer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_acc_001",
+      "target_name": "Online-Opened Account",
+      "rel_type": "holds",
+      "description": "Account Customer holds the Online-Opened Account",
+      "properties": {},
+      "context": "Investigation: KYC file missing; customer opened via online",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_iddoc_001",
+      "source_name": "Identity Document",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_cust_001",
+      "target_name": "Account Customer",
+      "rel_type": "proves_identity_of",
+      "description": "Identity Document proves the identity of the Account Customer",
+      "properties": {},
+      "context": "Resolution: Email customer, request identity document immediately",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_proc_001",
+      "source_name": "Missing KYC Documentation Exception Handling",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_001",
+      "source_name": "KYC File Audit Review",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_002",
+      "source_name": "Customer Identity Document Request",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_pstep_003",
+      "source_name": "Account Restriction Enforcement",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_ra_001",
+      "source_name": "Audit Function",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_ra_002",
+      "source_name": "Customer Service Operations",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_dp_001",
+      "source_name": "Document Receipt Decision",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_cc_001",
+      "source_name": "Identity Verification Compliance Checkpoint",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_kyc_001",
+      "source_name": "Identity Verification",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_iddoc_001",
+      "source_name": "Identity Document",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_acc_001",
+      "source_name": "Online-Opened Account",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022_cust_001",
+      "source_name": "Account Customer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_022",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

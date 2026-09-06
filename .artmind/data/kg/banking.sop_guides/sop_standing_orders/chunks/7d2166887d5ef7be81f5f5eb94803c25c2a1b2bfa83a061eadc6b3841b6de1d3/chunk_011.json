@@ -1,0 +1,1503 @@
+{
+  "chunk_seq": 11,
+  "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+  "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+  "text": "## Step 5: Standing Order Execution  \n### Scheduled Processing  \n**Timing:**\n- Standing order executes on scheduled date (e.g., 15th of month)\n- Processing occurs early morning (before business hours)\n- Funds transferred via FPS (Faster Payments Service)\n- Recipient account receives funds within 1 hour  \n**Execution Process:**\n1. System identifies standing orders due\n2. Validates source account has sufficient funds\n3. Initiates FPS transfer\n4. Records transaction in ledger\n5. Updates standing order status (completed)\n6. Notifies customer (optional, if opted in)  \n**If Funds Unavailable:**\n- Transfer fails (declined)\n- Customer notified of failure\n- Retry attempt made (usually once)\n- Manual intervention if persistent failure  \n---",
+  "name": "Chunk 11/24",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_010",
+  "next_chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Standing Order Execution",
+      "aliases": [
+        "Scheduled Standing Order Processing"
+      ],
+      "entity_class": "PROCESS",
+      "type": "standing_order_setup",
+      "description": "End-to-end process for executing scheduled standing order payments on a customer account. Executes on the scheduled date (e.g., 15th of month) during early morning hours before business hours, with funds transferred via Faster Payments Service (FPS) to the recipient account within 1 hour. Includes validation of sufficient funds, transaction recording, status updates, and customer notification.",
+      "context": [
+        "Standing order executes on scheduled date (e.g., 15th of month)",
+        "Processing occurs early morning (before business hours)",
+        "Funds transferred via FPS (Faster Payments Service)",
+        "Recipient account receives funds within 1 hour"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "System Identification of Due Standing Orders",
+      "aliases": [
+        "Identify Standing Orders Due"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Automated system step that identifies all standing orders scheduled for execution on the current processing date.",
+      "context": [
+        "System identifies standing orders due"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Source Account Funds Validation",
+      "aliases": [
+        "Validate Sufficient Funds"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Verification step that confirms the source account contains sufficient funds to complete the standing order transfer.",
+      "context": [
+        "Validates source account has sufficient funds"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "FPS Transfer Initiation",
+      "aliases": [
+        "Initiate Faster Payments Service Transfer"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that initiates the Faster Payments Service (FPS) transfer to move funds from the source account to the recipient account.",
+      "context": [
+        "Initiates FPS transfer"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Transaction Ledger Recording",
+      "aliases": [
+        "Record Transaction in Ledger"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that records the executed standing order transaction in the account ledger for audit and reconciliation purposes.",
+      "context": [
+        "Records transaction in ledger"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Standing Order Status Update",
+      "aliases": [
+        "Update Standing Order Status to Completed"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that updates the standing order record to reflect completion of the current execution cycle.",
+      "context": [
+        "Updates standing order status (completed)"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Customer Notification of Execution",
+      "aliases": [
+        "Notify Customer of Standing Order Execution"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Optional notification step that informs the customer of successful standing order execution, triggered only if the customer has opted in to receive such notifications.",
+      "context": [
+        "Notifies customer (optional, if opted in)"
+      ]
+    },
+    {
+      "id": "pstep_007",
+      "name": "Transfer Failure Handling",
+      "aliases": [
+        "Handle Declined Transfer"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Exception handling step executed when the source account lacks sufficient funds to complete the standing order transfer, resulting in transfer decline.",
+      "context": [
+        "Transfer fails (declined)",
+        "Customer notified of failure"
+      ]
+    },
+    {
+      "id": "pstep_008",
+      "name": "Retry Attempt for Failed Transfer",
+      "aliases": [
+        "Retry Standing Order Transfer"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Exception handling step that automatically attempts to retry the failed standing order transfer, typically executed once before escalation to manual intervention.",
+      "context": [
+        "Retry attempt made (usually once)"
+      ]
+    },
+    {
+      "id": "pstep_009",
+      "name": "Manual Intervention for Persistent Failure",
+      "aliases": [
+        "Escalate Persistent Transfer Failure"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Manual intervention step triggered when standing order transfer fails persistently despite automatic retry attempts, requiring human review and resolution.",
+      "context": [
+        "Manual intervention if persistent failure"
+      ]
+    },
+    {
+      "id": "role_001",
+      "name": "Automated Standing Order Processing System",
+      "aliases": [
+        "System",
+        "Processing Engine"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system responsible for identifying due standing orders, validating funds, initiating FPS transfers, recording transactions, updating status, and handling retry logic for failed transfers.",
+      "context": [
+        "System identifies standing orders due",
+        "Validates source account has sufficient funds",
+        "Initiates FPS transfer"
+      ]
+    },
+    {
+      "id": "role_002",
+      "name": "Customer Service Operations Team",
+      "aliases": [
+        "Operations Staff",
+        "Manual Intervention Team"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Human operations team responsible for manual intervention when standing order transfers fail persistently and require human review and resolution.",
+      "context": [
+        "Manual intervention if persistent failure"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Sufficient Funds Available Decision",
+      "aliases": [
+        "Funds Validation Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate that determines whether the source account contains sufficient funds to execute the standing order transfer. Pass path leads to FPS transfer initiation; fail path triggers transfer decline and customer notification.",
+      "context": [
+        "Validates source account has sufficient funds",
+        "If Funds Unavailable: Transfer fails (declined)"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Transfer Success Confirmation Decision",
+      "aliases": [
+        "FPS Transfer Outcome Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate that confirms whether the FPS transfer completed successfully. Pass path leads to transaction recording and status update; fail path triggers retry logic and eventual manual intervention if persistent.",
+      "context": [
+        "Initiates FPS transfer",
+        "Retry attempt made (usually once)",
+        "Manual intervention if persistent failure"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Scheduled Payment Instruction"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "Recurring payment instruction set up on a customer account to automatically transfer funds on a scheduled date (e.g., 15th of month) via Faster Payments Service to a designated recipient account.",
+      "context": [
+        "Standing order executes on scheduled date (e.g., 15th of month)",
+        "Funds transferred via FPS (Faster Payments Service)",
+        "Recipient account receives funds within 1 hour"
+      ]
+    },
+    {
+      "id": "txn_001",
+      "name": "Standing Order Transfer Transaction",
+      "aliases": [
+        "Scheduled Payment Transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "Financial transaction representing the execution of a standing order payment, transferred via Faster Payments Service from source account to recipient account, with recording in the account ledger.",
+      "context": [
+        "Funds transferred via FPS (Faster Payments Service)",
+        "Records transaction in ledger",
+        "Recipient account receives funds within 1 hour"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Source Account",
+      "aliases": [
+        "Payer Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "Customer account from which standing order funds are debited. Subject to validation for sufficient funds before transfer execution.",
+      "context": [
+        "Validates source account has sufficient funds",
+        "Initiates FPS transfer"
+      ]
+    },
+    {
+      "id": "acc_002",
+      "name": "Recipient Account",
+      "aliases": [
+        "Payee Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "Destination account that receives standing order funds via Faster Payments Service, typically receiving funds within 1 hour of transfer initiation.",
+      "context": [
+        "Funds transferred via FPS (Faster Payments Service)",
+        "Recipient account receives funds within 1 hour"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_proc_001",
+    "pstep_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_001",
+    "pstep_002": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_002",
+    "pstep_003": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_003",
+    "pstep_004": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_004",
+    "pstep_005": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_005",
+    "pstep_006": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_006",
+    "pstep_007": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_007",
+    "pstep_008": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_008",
+    "pstep_009": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_009",
+    "role_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_001",
+    "role_002": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_002",
+    "dp_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_dp_001",
+    "dp_002": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_dp_002",
+    "so_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_so_001",
+    "txn_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_txn_001",
+    "acc_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_acc_001",
+    "acc_002": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_acc_002"
+  },
+  "entities": [
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_proc_001",
+      "name": "Standing Order Execution",
+      "aliases": [
+        "Scheduled Standing Order Processing"
+      ],
+      "entity_class": "PROCESS",
+      "type": "standing_order_setup",
+      "description": "End-to-end process for executing scheduled standing order payments on a customer account. Executes on the scheduled date (e.g., 15th of month) during early morning hours before business hours, with funds transferred via Faster Payments Service (FPS) to the recipient account within 1 hour. Includes validation of sufficient funds, transaction recording, status updates, and customer notification.",
+      "context": [
+        "Standing order executes on scheduled date (e.g., 15th of month)",
+        "Processing occurs early morning (before business hours)",
+        "Funds transferred via FPS (Faster Payments Service)",
+        "Recipient account receives funds within 1 hour"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_001",
+      "name": "System Identification of Due Standing Orders",
+      "aliases": [
+        "Identify Standing Orders Due"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Automated system step that identifies all standing orders scheduled for execution on the current processing date.",
+      "context": [
+        "System identifies standing orders due"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_002",
+      "name": "Source Account Funds Validation",
+      "aliases": [
+        "Validate Sufficient Funds"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Verification step that confirms the source account contains sufficient funds to complete the standing order transfer.",
+      "context": [
+        "Validates source account has sufficient funds"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_003",
+      "name": "FPS Transfer Initiation",
+      "aliases": [
+        "Initiate Faster Payments Service Transfer"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that initiates the Faster Payments Service (FPS) transfer to move funds from the source account to the recipient account.",
+      "context": [
+        "Initiates FPS transfer"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_004",
+      "name": "Transaction Ledger Recording",
+      "aliases": [
+        "Record Transaction in Ledger"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that records the executed standing order transaction in the account ledger for audit and reconciliation purposes.",
+      "context": [
+        "Records transaction in ledger"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_005",
+      "name": "Standing Order Status Update",
+      "aliases": [
+        "Update Standing Order Status to Completed"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that updates the standing order record to reflect completion of the current execution cycle.",
+      "context": [
+        "Updates standing order status (completed)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_006",
+      "name": "Customer Notification of Execution",
+      "aliases": [
+        "Notify Customer of Standing Order Execution"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Optional notification step that informs the customer of successful standing order execution, triggered only if the customer has opted in to receive such notifications.",
+      "context": [
+        "Notifies customer (optional, if opted in)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_007",
+      "name": "Transfer Failure Handling",
+      "aliases": [
+        "Handle Declined Transfer"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Exception handling step executed when the source account lacks sufficient funds to complete the standing order transfer, resulting in transfer decline.",
+      "context": [
+        "Transfer fails (declined)",
+        "Customer notified of failure"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_008",
+      "name": "Retry Attempt for Failed Transfer",
+      "aliases": [
+        "Retry Standing Order Transfer"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Exception handling step that automatically attempts to retry the failed standing order transfer, typically executed once before escalation to manual intervention.",
+      "context": [
+        "Retry attempt made (usually once)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_009",
+      "name": "Manual Intervention for Persistent Failure",
+      "aliases": [
+        "Escalate Persistent Transfer Failure"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Manual intervention step triggered when standing order transfer fails persistently despite automatic retry attempts, requiring human review and resolution.",
+      "context": [
+        "Manual intervention if persistent failure"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_001",
+      "name": "Automated Standing Order Processing System",
+      "aliases": [
+        "System",
+        "Processing Engine"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system responsible for identifying due standing orders, validating funds, initiating FPS transfers, recording transactions, updating status, and handling retry logic for failed transfers.",
+      "context": [
+        "System identifies standing orders due",
+        "Validates source account has sufficient funds",
+        "Initiates FPS transfer"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_002",
+      "name": "Customer Service Operations Team",
+      "aliases": [
+        "Operations Staff",
+        "Manual Intervention Team"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Human operations team responsible for manual intervention when standing order transfers fail persistently and require human review and resolution.",
+      "context": [
+        "Manual intervention if persistent failure"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_dp_001",
+      "name": "Sufficient Funds Available Decision",
+      "aliases": [
+        "Funds Validation Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate that determines whether the source account contains sufficient funds to execute the standing order transfer. Pass path leads to FPS transfer initiation; fail path triggers transfer decline and customer notification.",
+      "context": [
+        "Validates source account has sufficient funds",
+        "If Funds Unavailable: Transfer fails (declined)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_dp_002",
+      "name": "Transfer Success Confirmation Decision",
+      "aliases": [
+        "FPS Transfer Outcome Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate that confirms whether the FPS transfer completed successfully. Pass path leads to transaction recording and status update; fail path triggers retry logic and eventual manual intervention if persistent.",
+      "context": [
+        "Initiates FPS transfer",
+        "Retry attempt made (usually once)",
+        "Manual intervention if persistent failure"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Scheduled Payment Instruction"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "Recurring payment instruction set up on a customer account to automatically transfer funds on a scheduled date (e.g., 15th of month) via Faster Payments Service to a designated recipient account.",
+      "context": [
+        "Standing order executes on scheduled date (e.g., 15th of month)",
+        "Funds transferred via FPS (Faster Payments Service)",
+        "Recipient account receives funds within 1 hour"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_txn_001",
+      "name": "Standing Order Transfer Transaction",
+      "aliases": [
+        "Scheduled Payment Transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "Financial transaction representing the execution of a standing order payment, transferred via Faster Payments Service from source account to recipient account, with recording in the account ledger.",
+      "context": [
+        "Funds transferred via FPS (Faster Payments Service)",
+        "Records transaction in ledger",
+        "Recipient account receives funds within 1 hour"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_acc_001",
+      "name": "Source Account",
+      "aliases": [
+        "Payer Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "Customer account from which standing order funds are debited. Subject to validation for sufficient funds before transfer execution.",
+      "context": [
+        "Validates source account has sufficient funds",
+        "Initiates FPS transfer"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_acc_002",
+      "name": "Recipient Account",
+      "aliases": [
+        "Payee Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "Destination account that receives standing order funds via Faster Payments Service, typically receiving funds within 1 hour of transfer initiation.",
+      "context": [
+        "Funds transferred via FPS (Faster Payments Service)",
+        "Recipient account receives funds within 1 hour"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_proc_001",
+      "name": "Standing Order Execution",
+      "properties": {
+        "purpose": "Execute scheduled standing order transfers on the due date via Faster Payments Service",
+        "scope": "All standing orders scheduled for execution",
+        "channels": [
+          "system"
+        ],
+        "owner": "Automated Standing Order Processing System",
+        "departments_involved": [
+          "Operations",
+          "Customer Service"
+        ],
+        "timeline_sla": "Execution early morning before business hours; recipient receives funds within 1 hour",
+        "trigger": "Scheduled execution date (e.g., 15th of month)",
+        "outcome_success": "Funds transferred via FPS, transaction recorded, standing order status updated to completed, customer notified",
+        "outcome_failure": "Transfer declined due to insufficient funds; retry attempted; manual intervention if persistent failure"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_001",
+      "name": "System Identification of Due Standing Orders",
+      "properties": {
+        "step_number": 1,
+        "actor": "Automated Standing Order Processing System",
+        "output": "List of standing orders due for execution",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Standing Order Processing System"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_002",
+      "name": "Source Account Funds Validation",
+      "properties": {
+        "step_number": 2,
+        "actor": "Automated Standing Order Processing System",
+        "input": "Standing order amount, source account balance",
+        "output": "Funds availability confirmation or failure notification",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account Management System"
+        ],
+        "failure_path": "Transfer declined; customer notified; retry attempt initiated"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_003",
+      "name": "FPS Transfer Initiation",
+      "properties": {
+        "step_number": 3,
+        "actor": "Automated Standing Order Processing System",
+        "input": "Source account, recipient account, transfer amount",
+        "output": "FPS transfer initiated",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Faster Payments Service (FPS)"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_004",
+      "name": "Transaction Ledger Recording",
+      "properties": {
+        "step_number": 4,
+        "actor": "Automated Standing Order Processing System",
+        "input": "Transfer details (amount, source, recipient, timestamp)",
+        "output": "Transaction recorded in ledger",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Transaction Ledger System"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_005",
+      "name": "Standing Order Status Update",
+      "properties": {
+        "step_number": 5,
+        "actor": "Automated Standing Order Processing System",
+        "input": "Transfer completion confirmation",
+        "output": "Standing order status updated to completed",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Standing Order Management System"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_006",
+      "name": "Customer Notification of Execution",
+      "properties": {
+        "step_number": 6,
+        "actor": "Automated Standing Order Processing System",
+        "input": "Customer notification preference, transfer details",
+        "output": "Customer notification sent (if opted in)",
+        "channel": "system",
+        "mandatory": "no"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_007",
+      "name": "Transfer Failure Handling",
+      "properties": {
+        "step_number": 7,
+        "actor": "Automated Standing Order Processing System",
+        "input": "Transfer failure reason",
+        "output": "Customer notified of failure; retry attempt scheduled",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Retry attempt made; if persistent, escalate to manual intervention"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_008",
+      "name": "Retry Attempt for Failed Transfer",
+      "properties": {
+        "step_number": 8,
+        "actor": "Automated Standing Order Processing System",
+        "input": "Failed transfer details",
+        "output": "Retry transfer initiated (usually once)",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "If retry fails, escalate to manual intervention"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_009",
+      "name": "Manual Intervention for Persistent Failure",
+      "properties": {
+        "step_number": 9,
+        "actor": "Customer Service Operations Team",
+        "input": "Failed transfer details, retry failure confirmation",
+        "output": "Manual investigation and resolution",
+        "channel": "manual",
+        "mandatory": "yes",
+        "failure_path": "Escalation to supervisor or management"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_001",
+      "name": "Automated Standing Order Processing System",
+      "properties": {
+        "role_type": "system",
+        "department": "Operations",
+        "authority_level": "Automated execution within defined parameters",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_002",
+      "name": "Customer Service Operations Team",
+      "properties": {
+        "role_type": "human",
+        "department": "Customer Service",
+        "authority_level": "Manual intervention and resolution of persistent failures",
+        "channels": [
+          "phone",
+          "email",
+          "system"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_dp_001",
+      "name": "Sufficient Funds Available Decision",
+      "properties": {
+        "decision_question": "Does the source account have sufficient funds to cover the standing order transfer?",
+        "criteria": "Source account balance >= standing order amount",
+        "decision_maker": "Automated Standing Order Processing System",
+        "path_yes": "Proceed to FPS transfer initiation",
+        "path_no": "Transfer declined; customer notified; retry attempt scheduled"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_dp_002",
+      "name": "Transfer Success Confirmation Decision",
+      "properties": {
+        "decision_question": "Has the FPS transfer completed successfully?",
+        "criteria": "FPS confirmation received; funds delivered to recipient account",
+        "decision_maker": "Automated Standing Order Processing System",
+        "path_yes": "Record transaction, update standing order status to completed, notify customer",
+        "path_no": "Initiate retry attempt; if retry fails, escalate to manual intervention"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_so_001",
+      "name": "Standing Order",
+      "properties": {
+        "setup_or_amendment_process": "Customer establishes standing order with scheduled execution date and amount",
+        "beneficiary_validation": "Recipient account details validated before execution",
+        "cancellation_process": "Customer can cancel standing order at any time"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_txn_001",
+      "name": "Standing Order Transfer Transaction",
+      "properties": {
+        "transaction_type": "transfer",
+        "monitoring_or_reporting_obligation": "Transaction recorded in ledger; customer notified if opted in"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_acc_001",
+      "name": "Source Account",
+      "properties": {
+        "account_state": "active",
+        "account_type": "current or savings"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_acc_002",
+      "name": "Recipient Account",
+      "properties": {
+        "account_state": "active",
+        "account_type": "current or savings"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_proc_001",
+      "source_name": "Standing Order Execution",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_001",
+      "target_name": "System Identification of Due Standing Orders",
+      "rel_type": "starts_with",
+      "description": "Standing Order Execution process begins with system identification of due standing orders",
+      "properties": {
+        "sequence_position": 1,
+        "timing": "early morning before business hours"
+      },
+      "context": "System identifies standing orders due",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_001",
+      "source_name": "System Identification of Due Standing Orders",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_002",
+      "target_name": "Source Account Funds Validation",
+      "rel_type": "followed_by",
+      "description": "System identification is followed by validation of source account funds",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "System identifies standing orders due; Validates source account has sufficient funds",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_002",
+      "source_name": "Source Account Funds Validation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_dp_001",
+      "target_name": "Sufficient Funds Available Decision",
+      "rel_type": "leads_to",
+      "description": "Funds validation step leads to decision point on whether sufficient funds are available",
+      "properties": {
+        "decision_criteria": "sufficient funds check"
+      },
+      "context": "Validates source account has sufficient funds",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_dp_001",
+      "source_name": "Sufficient Funds Available Decision",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_003",
+      "target_name": "FPS Transfer Initiation",
+      "rel_type": "routes_to_on_pass",
+      "description": "If sufficient funds are available, process routes to FPS transfer initiation",
+      "properties": {
+        "condition": "funds available"
+      },
+      "context": "Validates source account has sufficient funds; Initiates FPS transfer",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_dp_001",
+      "source_name": "Sufficient Funds Available Decision",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_007",
+      "target_name": "Transfer Failure Handling",
+      "rel_type": "routes_to_on_fail",
+      "description": "If insufficient funds, process routes to transfer failure handling",
+      "properties": {
+        "condition": "funds unavailable",
+        "failure_type": "declined"
+      },
+      "context": "If Funds Unavailable: Transfer fails (declined)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_003",
+      "source_name": "FPS Transfer Initiation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_004",
+      "target_name": "Transaction Ledger Recording",
+      "rel_type": "followed_by",
+      "description": "FPS transfer initiation is followed by transaction ledger recording",
+      "properties": {
+        "sequence_position": 4,
+        "transfer_method": "FPS"
+      },
+      "context": "Initiates FPS transfer; Records transaction in ledger",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_004",
+      "source_name": "Transaction Ledger Recording",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_005",
+      "target_name": "Standing Order Status Update",
+      "rel_type": "followed_by",
+      "description": "Transaction ledger recording is followed by standing order status update",
+      "properties": {
+        "sequence_position": 5
+      },
+      "context": "Records transaction in ledger; Updates standing order status (completed)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_005",
+      "source_name": "Standing Order Status Update",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_006",
+      "target_name": "Customer Notification of Execution",
+      "rel_type": "followed_by",
+      "description": "Standing order status update is followed by customer notification",
+      "properties": {
+        "sequence_position": 6,
+        "notification_type": "optional"
+      },
+      "context": "Updates standing order status (completed); Notifies customer (optional, if opted in)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_003",
+      "source_name": "FPS Transfer Initiation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_dp_002",
+      "target_name": "Transfer Success Confirmation Decision",
+      "rel_type": "leads_to",
+      "description": "FPS transfer initiation leads to decision point on transfer success confirmation",
+      "properties": {
+        "decision_criteria": "transfer success check"
+      },
+      "context": "Initiates FPS transfer; Transfer Success Confirmation Decision",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_dp_002",
+      "source_name": "Transfer Success Confirmation Decision",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_006",
+      "target_name": "Customer Notification of Execution",
+      "rel_type": "routes_to_on_pass",
+      "description": "If transfer succeeds, process routes to customer notification",
+      "properties": {
+        "condition": "transfer successful"
+      },
+      "context": "Recipient account receives funds within 1 hour; Notifies customer",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_dp_002",
+      "source_name": "Transfer Success Confirmation Decision",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_007",
+      "target_name": "Transfer Failure Handling",
+      "rel_type": "routes_to_on_fail",
+      "description": "If transfer fails, process routes to transfer failure handling",
+      "properties": {
+        "condition": "transfer failed"
+      },
+      "context": "Transfer fails (declined); Customer notified of failure",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_007",
+      "source_name": "Transfer Failure Handling",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_008",
+      "target_name": "Retry Attempt for Failed Transfer",
+      "rel_type": "followed_by",
+      "description": "Transfer failure handling is followed by retry attempt",
+      "properties": {
+        "sequence_position": 8,
+        "retry_frequency": "usually once"
+      },
+      "context": "Transfer fails (declined); Customer notified of failure; Retry attempt made (usually once)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_008",
+      "source_name": "Retry Attempt for Failed Transfer",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_009",
+      "target_name": "Manual Intervention for Persistent Failure",
+      "rel_type": "followed_by",
+      "description": "Retry attempt is followed by manual intervention if transfer continues to fail",
+      "properties": {
+        "sequence_position": 9,
+        "condition": "persistent failure"
+      },
+      "context": "Retry attempt made (usually once); Manual intervention if persistent failure",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_001",
+      "source_name": "System Identification of Due Standing Orders",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_001",
+      "target_name": "Automated Standing Order Processing System",
+      "rel_type": "performed_by",
+      "description": "System identification of due standing orders is performed by automated processing system",
+      "properties": {
+        "automation_level": "fully automated"
+      },
+      "context": "System identifies standing orders due",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_002",
+      "source_name": "Source Account Funds Validation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_001",
+      "target_name": "Automated Standing Order Processing System",
+      "rel_type": "performed_by",
+      "description": "Funds validation is performed by automated processing system",
+      "properties": {
+        "automation_level": "fully automated"
+      },
+      "context": "Validates source account has sufficient funds",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_003",
+      "source_name": "FPS Transfer Initiation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_001",
+      "target_name": "Automated Standing Order Processing System",
+      "rel_type": "performed_by",
+      "description": "FPS transfer initiation is performed by automated processing system",
+      "properties": {
+        "automation_level": "fully automated",
+        "transfer_method": "FPS"
+      },
+      "context": "Initiates FPS transfer",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_004",
+      "source_name": "Transaction Ledger Recording",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_001",
+      "target_name": "Automated Standing Order Processing System",
+      "rel_type": "performed_by",
+      "description": "Transaction ledger recording is performed by automated processing system",
+      "properties": {
+        "automation_level": "fully automated"
+      },
+      "context": "Records transaction in ledger",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_005",
+      "source_name": "Standing Order Status Update",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_001",
+      "target_name": "Automated Standing Order Processing System",
+      "rel_type": "performed_by",
+      "description": "Standing order status update is performed by automated processing system",
+      "properties": {
+        "automation_level": "fully automated",
+        "new_status": "completed"
+      },
+      "context": "Updates standing order status (completed)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_009",
+      "source_name": "Manual Intervention for Persistent Failure",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_002",
+      "target_name": "Customer Service Operations Team",
+      "rel_type": "escalated_to",
+      "description": "Persistent transfer failures are escalated to customer service operations team for manual intervention",
+      "properties": {
+        "escalation_trigger": "persistent failure"
+      },
+      "context": "Manual intervention if persistent failure",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_006",
+      "source_name": "Customer Notification of Execution",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_001",
+      "target_name": "Automated Standing Order Processing System",
+      "rel_type": "performed_by",
+      "description": "Customer notification is performed by automated processing system",
+      "properties": {
+        "automation_level": "automated",
+        "notification_type": "optional"
+      },
+      "context": "Notifies customer (optional, if opted in)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_007",
+      "source_name": "Transfer Failure Handling",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_001",
+      "target_name": "Automated Standing Order Processing System",
+      "rel_type": "performed_by",
+      "description": "Transfer failure handling is performed by automated processing system",
+      "properties": {
+        "automation_level": "automated"
+      },
+      "context": "Transfer fails (declined); Customer notified of failure",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_008",
+      "source_name": "Retry Attempt for Failed Transfer",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_001",
+      "target_name": "Automated Standing Order Processing System",
+      "rel_type": "performed_by",
+      "description": "Retry attempt for failed transfer is performed by automated processing system",
+      "properties": {
+        "automation_level": "automated",
+        "retry_frequency": "usually once"
+      },
+      "context": "Retry attempt made (usually once)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_proc_001",
+      "source_name": "Standing Order Execution",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "executes",
+      "description": "Standing Order Execution process executes the standing order",
+      "properties": {
+        "execution_timing": "scheduled date (e.g., 15th of month)",
+        "processing_time": "early morning before business hours"
+      },
+      "context": "Standing order executes on scheduled date (e.g., 15th of month); Processing occurs early morning (before business hours)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_004",
+      "source_name": "Transaction Ledger Recording",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_txn_001",
+      "target_name": "Standing Order Transfer Transaction",
+      "rel_type": "records",
+      "description": "Transaction ledger recording step records the standing order transfer transaction",
+      "properties": {
+        "recording_type": "ledger entry"
+      },
+      "context": "Records transaction in ledger",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_002",
+      "source_name": "Source Account Funds Validation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_acc_001",
+      "target_name": "Source Account",
+      "rel_type": "updates",
+      "description": "Funds validation step checks and validates the source account",
+      "properties": {
+        "validation_type": "sufficient funds check"
+      },
+      "context": "Validates source account has sufficient funds",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_003",
+      "source_name": "FPS Transfer Initiation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_acc_001",
+      "target_name": "Source Account",
+      "rel_type": "deducts_from",
+      "description": "FPS transfer initiation deducts funds from source account",
+      "properties": {
+        "transfer_method": "FPS",
+        "recipient_timing": "within 1 hour"
+      },
+      "context": "Initiates FPS transfer; Funds transferred via FPS (Faster Payments Service); Recipient account receives funds within 1 hour",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_003",
+      "source_name": "FPS Transfer Initiation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_acc_002",
+      "target_name": "Recipient Account",
+      "rel_type": "updates",
+      "description": "FPS transfer initiation credits the recipient account",
+      "properties": {
+        "transfer_method": "FPS",
+        "receipt_timing": "within 1 hour"
+      },
+      "context": "Initiates FPS transfer; Funds transferred via FPS (Faster Payments Service); Recipient account receives funds within 1 hour",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_acc_001",
+      "target_name": "Source Account",
+      "rel_type": "set_up_on",
+      "description": "Standing order is set up on the source account",
+      "properties": {
+        "execution_frequency": "scheduled (e.g., 15th of month)"
+      },
+      "context": "Standing order executes on scheduled date (e.g., 15th of month)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_005",
+      "source_name": "Standing Order Status Update",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "updates",
+      "description": "Standing order status is updated to completed after execution",
+      "properties": {
+        "new_status": "completed"
+      },
+      "context": "Updates standing order status (completed)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_proc_001",
+      "source_name": "Standing Order Execution",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_001",
+      "source_name": "System Identification of Due Standing Orders",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_002",
+      "source_name": "Source Account Funds Validation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_003",
+      "source_name": "FPS Transfer Initiation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_004",
+      "source_name": "Transaction Ledger Recording",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_005",
+      "source_name": "Standing Order Status Update",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_006",
+      "source_name": "Customer Notification of Execution",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_007",
+      "source_name": "Transfer Failure Handling",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_008",
+      "source_name": "Retry Attempt for Failed Transfer",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_pstep_009",
+      "source_name": "Manual Intervention for Persistent Failure",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_001",
+      "source_name": "Automated Standing Order Processing System",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_role_002",
+      "source_name": "Customer Service Operations Team",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_dp_001",
+      "source_name": "Sufficient Funds Available Decision",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_dp_002",
+      "source_name": "Transfer Success Confirmation Decision",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_txn_001",
+      "source_name": "Standing Order Transfer Transaction",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_acc_001",
+      "source_name": "Source Account",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011_acc_002",
+      "source_name": "Recipient Account",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

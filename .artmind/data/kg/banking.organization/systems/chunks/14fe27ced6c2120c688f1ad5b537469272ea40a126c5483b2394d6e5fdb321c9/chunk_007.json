@@ -1,0 +1,1755 @@
+{
+  "chunk_seq": 7,
+  "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+  "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+  "text": "#### 4. Fraud Detection Engine (FDE)  \n**System ID:** FDE-001\n**Purpose:** Real-time detection and prevention of fraudulent transactions\n**Technology:** Python, Apache Kafka, TensorFlow (ML models)\n**Deployment:** Cloud (AWS) + on-premises (for sensitive rules)\n**Latency:** <100ms per transaction  \n**Key Functions:**\n- Transaction risk scoring\n- Anomaly detection (ML models)\n- Rule-based detection\n- Card fraud prevention\n- Account takeover detection\n- Suspicious activity flagging  \n**Fraud Rules (Examples):**\n- Large transaction amount (>£5,000)\n- Geographic anomaly (transaction in different country within 2 hours)\n- Velocity checks (>5 transactions within 1 hour)\n- Unusual beneficiary (new beneficiary + large transfer)\n- Card not present (CNP) high-value transaction  \n**Machine Learning Models:**\n- Transaction Risk Model (trained on 2,000+ fraud cases)\n- Anomaly Detection Model (unsupervised)\n- Chargeback Prediction Model  \n**Alert Escalation:**\n- Low Risk: Auto-approve\n- Medium Risk: Require OTP verification\n- High Risk: Block transaction, notify customer, escalate to Financial Crime team (see [[departments]])  \n**Performance:**\n- Detection Rate: 97%+\n- False Positive Rate: <2%\n- Monthly fraud prevented: ~£45k–£80k  \n**Integration:**\n- Account Management System (AMS) — transaction data\n- Internet Banking Platform (IBP) — real-time blocking\n- Mobile Banking App (MBA)\n- Payment Processing System (PPS)\n- Financial Crime System — SAR filing  \n---",
+  "name": "Chunk 7/39",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_006",
+  "next_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+  "raw_entities": [
+    {
+      "id": "sys_001",
+      "name": "Fraud Detection Engine",
+      "aliases": [
+        "FDE",
+        "FDE-001"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "fraud_detection",
+      "description": "Real-time fraud detection and prevention system deployed across cloud (AWS) and on-premises infrastructure. Combines rule-based detection, ML anomaly models, and transaction risk scoring to identify and block fraudulent transactions with <100ms latency. Integrates with account management, internet banking, mobile banking, and payment processing systems.",
+      "context": [
+        "System ID: FDE-001",
+        "Purpose: Real-time detection and prevention of fraudulent transactions",
+        "Technology: Python, Apache Kafka, TensorFlow (ML models)",
+        "Deployment: Cloud (AWS) + on-premises (for sensitive rules)",
+        "Latency: <100ms per transaction"
+      ]
+    },
+    {
+      "id": "sys_002",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "core_banking",
+      "description": "Core banking system that provides transaction data to the Fraud Detection Engine for real-time risk assessment and monitoring.",
+      "context": [
+        "Account Management System (AMS) — transaction data"
+      ]
+    },
+    {
+      "id": "sys_003",
+      "name": "Internet Banking Platform",
+      "aliases": [
+        "IBP"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "internet_banking",
+      "description": "Customer-facing internet banking channel integrated with the Fraud Detection Engine for real-time transaction blocking and fraud prevention.",
+      "context": [
+        "Internet Banking Platform (IBP) — real-time blocking"
+      ]
+    },
+    {
+      "id": "sys_004",
+      "name": "Mobile Banking App",
+      "aliases": [
+        "MBA"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "mobile_banking",
+      "description": "Mobile banking application integrated with the Fraud Detection Engine to support real-time fraud detection and transaction monitoring.",
+      "context": [
+        "Mobile Banking App (MBA)"
+      ]
+    },
+    {
+      "id": "sys_005",
+      "name": "Payment Processing System",
+      "aliases": [
+        "PPS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "payment_processor",
+      "description": "Payment processing system that interfaces with the Fraud Detection Engine to enable real-time transaction risk assessment and blocking.",
+      "context": [
+        "Payment Processing System (PPS)"
+      ]
+    },
+    {
+      "id": "sys_006",
+      "name": "Financial Crime System",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "regulatory_reporting",
+      "description": "System responsible for SAR filing and suspicious activity reporting, integrated with the Fraud Detection Engine for escalation of high-risk fraud alerts.",
+      "context": [
+        "Financial Crime System — SAR filing"
+      ]
+    },
+    {
+      "id": "org_001",
+      "name": "Financial Crime Team",
+      "aliases": [],
+      "entity_class": "ORGANIZATIONAL_UNIT",
+      "type": "department",
+      "description": "Department responsible for investigating and escalating high-risk fraud alerts from the Fraud Detection Engine and managing suspicious activity reporting.",
+      "context": [
+        "High Risk: Block transaction, notify customer, escalate to Financial Crime team"
+      ]
+    },
+    {
+      "id": "bc_001",
+      "name": "Transaction",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "A financial event subject to real-time fraud detection and risk scoring by the Fraud Detection Engine. Transactions are assessed for risk using rule-based detection, ML anomaly models, and transaction risk scoring.",
+      "context": [
+        "Real-time detection and prevention of fraudulent transactions",
+        "Transaction risk scoring",
+        "Latency: <100ms per transaction"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Fraud Alert",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "fraud_detection_obligation",
+      "description": "A fraud detection alert generated by the Fraud Detection Engine when suspicious activity is flagged. Alerts are escalated based on risk level: low-risk alerts are auto-approved, medium-risk require OTP verification, and high-risk alerts trigger transaction blocking and customer notification.",
+      "context": [
+        "Suspicious activity flagging",
+        "Alert Escalation: Low Risk: Auto-approve, Medium Risk: Require OTP verification, High Risk: Block transaction, notify customer, escalate to Financial Crime team"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "Card Fraud Prevention",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "card_fraud_scenario",
+      "description": "Fraud detection capability within the Fraud Detection Engine that identifies and prevents fraudulent card transactions, including card-not-present (CNP) high-value transactions.",
+      "context": [
+        "Card fraud prevention",
+        "Card not present (CNP) high-value transaction"
+      ]
+    },
+    {
+      "id": "bc_004",
+      "name": "Account Takeover Detection",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "fraud_detection_obligation",
+      "description": "Fraud detection capability within the Fraud Detection Engine that identifies unauthorized account access and fraudulent activity on compromised customer accounts.",
+      "context": [
+        "Account takeover detection"
+      ]
+    },
+    {
+      "id": "bc_005",
+      "name": "SAR Filing",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sar",
+      "description": "Suspicious Activity Report filing process integrated with the Fraud Detection Engine. High-risk fraud alerts are escalated to the Financial Crime System for SAR preparation and filing with relevant authorities.",
+      "context": [
+        "Financial Crime System — SAR filing"
+      ]
+    },
+    {
+      "id": "mt_001",
+      "name": "Transaction Risk Scoring Latency",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "response_time",
+      "description": "Performance target for the Fraud Detection Engine to assess transaction risk and return a decision within 100 milliseconds.",
+      "context": [
+        "Latency: <100ms per transaction"
+      ]
+    },
+    {
+      "id": "mt_002",
+      "name": "Fraud Detection Rate",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "kpi",
+      "description": "Performance metric indicating the Fraud Detection Engine's ability to identify fraudulent transactions, with a target of 97% or higher.",
+      "context": [
+        "Detection Rate: 97%+"
+      ]
+    },
+    {
+      "id": "mt_003",
+      "name": "False Positive Rate",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "kpi",
+      "description": "Performance metric measuring the proportion of legitimate transactions incorrectly flagged as fraudulent by the Fraud Detection Engine, maintained below 2%.",
+      "context": [
+        "False Positive Rate: <2%"
+      ]
+    },
+    {
+      "id": "mt_004",
+      "name": "Monthly Fraud Prevention Value",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "kpi",
+      "description": "Monthly financial impact of fraud prevention by the Fraud Detection Engine, ranging from approximately £45,000 to £80,000.",
+      "context": [
+        "Monthly fraud prevented: ~£45k–£80k"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "Large Transaction Amount Fraud Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Fraud detection rule that flags transactions exceeding £5,000 for additional risk assessment and potential blocking.",
+      "context": [
+        "Large transaction amount (>£5,000)"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Geographic Anomaly Fraud Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Fraud detection rule that flags transactions occurring in different countries within a 2-hour window as potentially fraudulent.",
+      "context": [
+        "Geographic anomaly (transaction in different country within 2 hours)"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "Velocity Check Fraud Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Fraud detection rule that flags accounts with more than 5 transactions within a 1-hour period as potentially fraudulent.",
+      "context": [
+        "Velocity checks (>5 transactions within 1 hour)"
+      ]
+    },
+    {
+      "id": "br_004",
+      "name": "Unusual Beneficiary Fraud Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Fraud detection rule that flags large transfers to new beneficiaries as potentially fraudulent.",
+      "context": [
+        "Unusual beneficiary (new beneficiary + large transfer)"
+      ]
+    },
+    {
+      "id": "br_005",
+      "name": "Card-Not-Present High-Value Transaction Fraud Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Fraud detection rule that flags high-value card-not-present (CNP) transactions for additional risk assessment.",
+      "context": [
+        "Card not present (CNP) high-value transaction"
+      ]
+    },
+    {
+      "id": "br_006",
+      "name": "Low-Risk Fraud Alert Auto-Approval",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "Operational rule that permits automatic approval of transactions flagged as low-risk by the Fraud Detection Engine without additional customer verification.",
+      "context": [
+        "Low Risk: Auto-approve"
+      ]
+    },
+    {
+      "id": "br_007",
+      "name": "Medium-Risk Fraud Alert OTP Verification",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "Operational rule requiring one-time password (OTP) verification for transactions flagged as medium-risk by the Fraud Detection Engine.",
+      "context": [
+        "Medium Risk: Require OTP verification"
+      ]
+    },
+    {
+      "id": "br_008",
+      "name": "High-Risk Fraud Alert Escalation",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "Operational rule requiring high-risk transactions to be blocked, the customer notified, and the alert escalated to the Financial Crime team for investigation.",
+      "context": [
+        "High Risk: Block transaction, notify customer, escalate to Financial Crime team"
+      ]
+    }
+  ],
+  "id_map": {
+    "sys_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+    "sys_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_002",
+    "sys_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_003",
+    "sys_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_004",
+    "sys_005": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_005",
+    "sys_006": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_006",
+    "org_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_org_001",
+    "bc_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_001",
+    "bc_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_002",
+    "bc_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_003",
+    "bc_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_004",
+    "bc_005": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_005",
+    "mt_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_001",
+    "mt_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_002",
+    "mt_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_003",
+    "mt_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_004",
+    "br_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_001",
+    "br_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_002",
+    "br_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_003",
+    "br_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_004",
+    "br_005": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_005",
+    "br_006": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_006",
+    "br_007": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_007",
+    "br_008": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_008"
+  },
+  "entities": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "name": "Fraud Detection Engine",
+      "aliases": [
+        "FDE",
+        "FDE-001"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "fraud_detection",
+      "description": "Real-time fraud detection and prevention system deployed across cloud (AWS) and on-premises infrastructure. Combines rule-based detection, ML anomaly models, and transaction risk scoring to identify and block fraudulent transactions with <100ms latency. Integrates with account management, internet banking, mobile banking, and payment processing systems.",
+      "context": [
+        "System ID: FDE-001",
+        "Purpose: Real-time detection and prevention of fraudulent transactions",
+        "Technology: Python, Apache Kafka, TensorFlow (ML models)",
+        "Deployment: Cloud (AWS) + on-premises (for sensitive rules)",
+        "Latency: <100ms per transaction"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_002",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "core_banking",
+      "description": "Core banking system that provides transaction data to the Fraud Detection Engine for real-time risk assessment and monitoring.",
+      "context": [
+        "Account Management System (AMS) — transaction data"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_003",
+      "name": "Internet Banking Platform",
+      "aliases": [
+        "IBP"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "internet_banking",
+      "description": "Customer-facing internet banking channel integrated with the Fraud Detection Engine for real-time transaction blocking and fraud prevention.",
+      "context": [
+        "Internet Banking Platform (IBP) — real-time blocking"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_004",
+      "name": "Mobile Banking App",
+      "aliases": [
+        "MBA"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "mobile_banking",
+      "description": "Mobile banking application integrated with the Fraud Detection Engine to support real-time fraud detection and transaction monitoring.",
+      "context": [
+        "Mobile Banking App (MBA)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_005",
+      "name": "Payment Processing System",
+      "aliases": [
+        "PPS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "payment_processor",
+      "description": "Payment processing system that interfaces with the Fraud Detection Engine to enable real-time transaction risk assessment and blocking.",
+      "context": [
+        "Payment Processing System (PPS)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_006",
+      "name": "Financial Crime System",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "regulatory_reporting",
+      "description": "System responsible for SAR filing and suspicious activity reporting, integrated with the Fraud Detection Engine for escalation of high-risk fraud alerts.",
+      "context": [
+        "Financial Crime System — SAR filing"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_org_001",
+      "name": "Financial Crime Team",
+      "aliases": [],
+      "entity_class": "ORGANIZATIONAL_UNIT",
+      "type": "department",
+      "description": "Department responsible for investigating and escalating high-risk fraud alerts from the Fraud Detection Engine and managing suspicious activity reporting.",
+      "context": [
+        "High Risk: Block transaction, notify customer, escalate to Financial Crime team"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_001",
+      "name": "Transaction",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "A financial event subject to real-time fraud detection and risk scoring by the Fraud Detection Engine. Transactions are assessed for risk using rule-based detection, ML anomaly models, and transaction risk scoring.",
+      "context": [
+        "Real-time detection and prevention of fraudulent transactions",
+        "Transaction risk scoring",
+        "Latency: <100ms per transaction"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_002",
+      "name": "Fraud Alert",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "fraud_detection_obligation",
+      "description": "A fraud detection alert generated by the Fraud Detection Engine when suspicious activity is flagged. Alerts are escalated based on risk level: low-risk alerts are auto-approved, medium-risk require OTP verification, and high-risk alerts trigger transaction blocking and customer notification.",
+      "context": [
+        "Suspicious activity flagging",
+        "Alert Escalation: Low Risk: Auto-approve, Medium Risk: Require OTP verification, High Risk: Block transaction, notify customer, escalate to Financial Crime team"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_003",
+      "name": "Card Fraud Prevention",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "card_fraud_scenario",
+      "description": "Fraud detection capability within the Fraud Detection Engine that identifies and prevents fraudulent card transactions, including card-not-present (CNP) high-value transactions.",
+      "context": [
+        "Card fraud prevention",
+        "Card not present (CNP) high-value transaction"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_004",
+      "name": "Account Takeover Detection",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "fraud_detection_obligation",
+      "description": "Fraud detection capability within the Fraud Detection Engine that identifies unauthorized account access and fraudulent activity on compromised customer accounts.",
+      "context": [
+        "Account takeover detection"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_005",
+      "name": "SAR Filing",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sar",
+      "description": "Suspicious Activity Report filing process integrated with the Fraud Detection Engine. High-risk fraud alerts are escalated to the Financial Crime System for SAR preparation and filing with relevant authorities.",
+      "context": [
+        "Financial Crime System — SAR filing"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_001",
+      "name": "Transaction Risk Scoring Latency",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "response_time",
+      "description": "Performance target for the Fraud Detection Engine to assess transaction risk and return a decision within 100 milliseconds.",
+      "context": [
+        "Latency: <100ms per transaction"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_002",
+      "name": "Fraud Detection Rate",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "kpi",
+      "description": "Performance metric indicating the Fraud Detection Engine's ability to identify fraudulent transactions, with a target of 97% or higher.",
+      "context": [
+        "Detection Rate: 97%+"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_003",
+      "name": "False Positive Rate",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "kpi",
+      "description": "Performance metric measuring the proportion of legitimate transactions incorrectly flagged as fraudulent by the Fraud Detection Engine, maintained below 2%.",
+      "context": [
+        "False Positive Rate: <2%"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_004",
+      "name": "Monthly Fraud Prevention Value",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "kpi",
+      "description": "Monthly financial impact of fraud prevention by the Fraud Detection Engine, ranging from approximately £45,000 to £80,000.",
+      "context": [
+        "Monthly fraud prevented: ~£45k–£80k"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_001",
+      "name": "Large Transaction Amount Fraud Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Fraud detection rule that flags transactions exceeding £5,000 for additional risk assessment and potential blocking.",
+      "context": [
+        "Large transaction amount (>£5,000)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_002",
+      "name": "Geographic Anomaly Fraud Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Fraud detection rule that flags transactions occurring in different countries within a 2-hour window as potentially fraudulent.",
+      "context": [
+        "Geographic anomaly (transaction in different country within 2 hours)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_003",
+      "name": "Velocity Check Fraud Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Fraud detection rule that flags accounts with more than 5 transactions within a 1-hour period as potentially fraudulent.",
+      "context": [
+        "Velocity checks (>5 transactions within 1 hour)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_004",
+      "name": "Unusual Beneficiary Fraud Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Fraud detection rule that flags large transfers to new beneficiaries as potentially fraudulent.",
+      "context": [
+        "Unusual beneficiary (new beneficiary + large transfer)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_005",
+      "name": "Card-Not-Present High-Value Transaction Fraud Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Fraud detection rule that flags high-value card-not-present (CNP) transactions for additional risk assessment.",
+      "context": [
+        "Card not present (CNP) high-value transaction"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_006",
+      "name": "Low-Risk Fraud Alert Auto-Approval",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "Operational rule that permits automatic approval of transactions flagged as low-risk by the Fraud Detection Engine without additional customer verification.",
+      "context": [
+        "Low Risk: Auto-approve"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_007",
+      "name": "Medium-Risk Fraud Alert OTP Verification",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "Operational rule requiring one-time password (OTP) verification for transactions flagged as medium-risk by the Fraud Detection Engine.",
+      "context": [
+        "Medium Risk: Require OTP verification"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_008",
+      "name": "High-Risk Fraud Alert Escalation",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "Operational rule requiring high-risk transactions to be blocked, the customer notified, and the alert escalated to the Financial Crime team for investigation.",
+      "context": [
+        "High Risk: Block transaction, notify customer, escalate to Financial Crime team"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "name": "Fraud Detection Engine",
+      "properties": {
+        "system_id": "FDE-001",
+        "purpose": "Real-time detection and prevention of fraudulent transactions",
+        "technology_stack": [
+          "Python",
+          "Apache Kafka",
+          "TensorFlow"
+        ],
+        "deployment": "hybrid",
+        "performance": {
+          "latency": "<100ms per transaction",
+          "detection_rate": "97%+",
+          "false_positive_rate": "<2%"
+        },
+        "key_features": [
+          "Transaction risk scoring",
+          "Anomaly detection (ML models)",
+          "Rule-based detection",
+          "Card fraud prevention",
+          "Account takeover detection",
+          "Suspicious activity flagging"
+        ],
+        "integrations": [
+          "Account Management System",
+          "Internet Banking Platform",
+          "Mobile Banking App",
+          "Payment Processing System",
+          "Financial Crime System"
+        ],
+        "ml_models": [
+          "Transaction Risk Model",
+          "Anomaly Detection Model",
+          "Chargeback Prediction Model"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_002",
+      "name": "Account Management System",
+      "properties": {
+        "purpose": "Manage transaction data and account information",
+        "key_features": [
+          "Transaction data storage and retrieval"
+        ],
+        "integrations": [
+          "Fraud Detection Engine"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_003",
+      "name": "Internet Banking Platform",
+      "properties": {
+        "purpose": "Provide real-time transaction blocking and customer interface",
+        "key_features": [
+          "Real-time blocking capability"
+        ],
+        "integrations": [
+          "Fraud Detection Engine"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_004",
+      "name": "Mobile Banking App",
+      "properties": {
+        "purpose": "Mobile banking interface for customers",
+        "integrations": [
+          "Fraud Detection Engine"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_005",
+      "name": "Payment Processing System",
+      "properties": {
+        "purpose": "Process payment transactions",
+        "integrations": [
+          "Fraud Detection Engine"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_006",
+      "name": "Financial Crime System",
+      "properties": {
+        "purpose": "File SARs and manage financial crime investigations",
+        "key_features": [
+          "SAR filing"
+        ],
+        "integrations": [
+          "Fraud Detection Engine"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_org_001",
+      "name": "Financial Crime Team",
+      "properties": {
+        "key_functions": [
+          "Escalation of high-risk fraud alerts",
+          "Investigation of suspicious transactions",
+          "SAR filing"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_001",
+      "name": "Transaction",
+      "properties": {
+        "definition": "A financial movement of funds subject to fraud detection and risk scoring",
+        "key_attributes": [
+          "amount",
+          "timestamp",
+          "geographic_location",
+          "beneficiary",
+          "transaction_type",
+          "risk_score"
+        ],
+        "business_rules": [
+          "Large amounts (>£5,000) trigger fraud rules",
+          "Geographic anomalies within 2 hours trigger alerts",
+          "Velocity checks apply (>5 transactions within 1 hour)",
+          "Card-not-present high-value transactions require additional scrutiny"
+        ],
+        "ontology_domain": "transaction_monitoring"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_002",
+      "name": "Fraud Alert",
+      "properties": {
+        "definition": "A system-generated notification of potentially fraudulent activity requiring investigation or customer action",
+        "key_attributes": [
+          "risk_level",
+          "alert_type",
+          "transaction_id",
+          "timestamp",
+          "escalation_status"
+        ],
+        "subtypes": [
+          "Low Risk",
+          "Medium Risk",
+          "High Risk"
+        ],
+        "business_rules": [
+          "Low-risk alerts are auto-approved",
+          "Medium-risk alerts require OTP verification",
+          "High-risk alerts are blocked and escalated to Financial Crime Team"
+        ],
+        "ontology_domain": "fraud_prevention"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_003",
+      "name": "Card Fraud Prevention",
+      "properties": {
+        "definition": "Detection and prevention of fraudulent card transactions including card-not-present scenarios",
+        "key_attributes": [
+          "card_id",
+          "transaction_amount",
+          "merchant_category",
+          "card_present_indicator",
+          "risk_score"
+        ],
+        "business_rules": [
+          "Card-not-present high-value transactions trigger enhanced fraud rules",
+          "Unusual beneficiary patterns combined with card transactions escalate alerts"
+        ],
+        "ontology_domain": "fraud_prevention"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_004",
+      "name": "Account Takeover Detection",
+      "properties": {
+        "definition": "Detection of unauthorized access and control of customer accounts through behavioral and anomaly analysis",
+        "key_attributes": [
+          "account_id",
+          "login_patterns",
+          "transaction_patterns",
+          "geographic_location",
+          "device_fingerprint"
+        ],
+        "business_rules": [
+          "Anomalies in transaction patterns trigger detection models",
+          "Geographic anomalies within 2 hours of previous transaction flag account takeover risk"
+        ],
+        "ontology_domain": "fraud_prevention"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_005",
+      "name": "SAR Filing",
+      "properties": {
+        "definition": "Suspicious Activity Report filing obligation for transactions meeting regulatory thresholds",
+        "key_attributes": [
+          "transaction_id",
+          "filing_date",
+          "suspicious_indicator",
+          "regulatory_basis"
+        ],
+        "business_rules": [
+          "High-risk fraud alerts trigger SAR filing process",
+          "Financial Crime System manages SAR filing workflow"
+        ],
+        "ontology_domain": "regulatory_compliance"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_001",
+      "name": "Transaction Risk Scoring Latency",
+      "properties": {
+        "value": 100,
+        "unit": "milliseconds",
+        "what_it_measures": "Time taken to score transaction risk in the Fraud Detection Engine",
+        "owner": "Fraud Detection Engine",
+        "context": "Critical for real-time fraud prevention and transaction blocking"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_002",
+      "name": "Fraud Detection Rate",
+      "properties": {
+        "value": 97,
+        "unit": "percentage",
+        "what_it_measures": "Percentage of fraudulent transactions successfully detected by the system",
+        "owner": "Fraud Detection Engine",
+        "context": "Key performance indicator for fraud prevention effectiveness"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_003",
+      "name": "False Positive Rate",
+      "properties": {
+        "value": 2,
+        "unit": "percentage",
+        "what_it_measures": "Percentage of legitimate transactions incorrectly flagged as fraudulent",
+        "owner": "Fraud Detection Engine",
+        "context": "Measures customer experience impact and operational efficiency"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_004",
+      "name": "Monthly Fraud Prevention Value",
+      "properties": {
+        "value": 62500,
+        "unit": "GBP",
+        "what_it_measures": "Average monthly value of fraud prevented by the system",
+        "actual_value": "45000 to 80000",
+        "owner": "Fraud Detection Engine",
+        "context": "Business impact metric demonstrating fraud prevention ROI"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_001",
+      "name": "Large Transaction Amount Fraud Rule",
+      "properties": {
+        "rule_statement": "Transactions exceeding £5,000 trigger fraud detection rules and risk scoring",
+        "rule_type": "threshold",
+        "applies_to": [
+          "Transaction"
+        ],
+        "enforcement": "Fraud Detection Engine",
+        "threshold_value": 5000,
+        "context": "Large amounts represent higher fraud risk and require enhanced monitoring"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_002",
+      "name": "Geographic Anomaly Fraud Rule",
+      "properties": {
+        "rule_statement": "Transactions occurring in different countries within 2 hours of each other trigger fraud alerts",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Transaction",
+          "Account Takeover Detection"
+        ],
+        "enforcement": "Fraud Detection Engine",
+        "context": "Detects impossible travel scenarios indicating account compromise"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_003",
+      "name": "Velocity Check Fraud Rule",
+      "properties": {
+        "rule_statement": "More than 5 transactions within 1 hour trigger fraud detection rules",
+        "rule_type": "threshold",
+        "applies_to": [
+          "Transaction"
+        ],
+        "enforcement": "Fraud Detection Engine",
+        "threshold_value": 5,
+        "context": "Detects rapid-fire transaction patterns indicative of account compromise or fraud"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_004",
+      "name": "Unusual Beneficiary Fraud Rule",
+      "properties": {
+        "rule_statement": "New beneficiary combined with large transfer amount triggers fraud alerts",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Transaction"
+        ],
+        "enforcement": "Fraud Detection Engine",
+        "context": "Detects common fraud pattern of establishing new payee for large unauthorized transfer"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_005",
+      "name": "Card-Not-Present High-Value Transaction Fraud Rule",
+      "properties": {
+        "rule_statement": "Card-not-present transactions above defined thresholds trigger enhanced fraud detection",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Transaction",
+          "Card Fraud Prevention"
+        ],
+        "enforcement": "Fraud Detection Engine",
+        "context": "Card-not-present transactions carry elevated fraud risk and require additional scrutiny"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_006",
+      "name": "Low-Risk Fraud Alert Auto-Approval",
+      "properties": {
+        "rule_statement": "Low-risk fraud alerts are automatically approved without customer intervention",
+        "rule_type": "authority",
+        "applies_to": [
+          "Fraud Alert"
+        ],
+        "enforcement": "Fraud Detection Engine",
+        "decision_authority": "Fraud Detection Engine",
+        "context": "Balances fraud prevention with customer experience for low-risk scenarios"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_007",
+      "name": "Medium-Risk Fraud Alert OTP Verification",
+      "properties": {
+        "rule_statement": "Medium-risk fraud alerts require one-time password verification from the customer",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Fraud Alert"
+        ],
+        "enforcement": "Internet Banking Platform, Mobile Banking App",
+        "context": "Provides additional verification layer for moderate-risk transactions"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_008",
+      "name": "High-Risk Fraud Alert Escalation",
+      "properties": {
+        "rule_statement": "High-risk fraud alerts result in transaction blocking, customer notification, and escalation to Financial Crime Team",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Fraud Alert"
+        ],
+        "enforcement": "Fraud Detection Engine, Financial Crime Team",
+        "consequence": "Transaction blocked, customer notified, investigation initiated",
+        "context": "Highest level of fraud response for transactions with severe risk indicators"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_001",
+      "target_name": "Transaction",
+      "rel_type": "processes",
+      "description": "Fraud Detection Engine processes transactions for risk scoring and anomaly detection",
+      "properties": {
+        "latency_ms": 100,
+        "function": "real-time detection and prevention"
+      },
+      "context": "Real-time detection and prevention of fraudulent transactions... Transaction risk scoring... Anomaly detection (ML models)... Rule-based detection",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_002",
+      "target_name": "Fraud Alert",
+      "rel_type": "manages",
+      "description": "Fraud Detection Engine manages fraud alert generation and escalation",
+      "properties": {
+        "escalation_levels": [
+          "Low Risk: Auto-approve",
+          "Medium Risk: Require OTP verification",
+          "High Risk: Block transaction, notify customer, escalate"
+        ]
+      },
+      "context": "Alert Escalation: Low Risk: Auto-approve, Medium Risk: Require OTP verification, High Risk: Block transaction, notify customer, escalate to Financial Crime team",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_003",
+      "target_name": "Card Fraud Prevention",
+      "rel_type": "manages",
+      "description": "Fraud Detection Engine manages card fraud prevention functionality",
+      "properties": {
+        "rule": "Card not present (CNP) high-value transaction"
+      },
+      "context": "Key Functions: Card fraud prevention... Card not present (CNP) high-value transaction",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_004",
+      "target_name": "Account Takeover Detection",
+      "rel_type": "manages",
+      "description": "Fraud Detection Engine manages account takeover detection",
+      "properties": {
+        "detection_method": "ML models and rule-based detection"
+      },
+      "context": "Key Functions: Account takeover detection",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_002",
+      "target_name": "Account Management System",
+      "rel_type": "depends_on",
+      "description": "Fraud Detection Engine depends on Account Management System for transaction data",
+      "properties": {
+        "data_type": "transaction data"
+      },
+      "context": "Integration: Account Management System (AMS) — transaction data",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_003",
+      "target_name": "Internet Banking Platform",
+      "rel_type": "integrates_with",
+      "description": "Fraud Detection Engine integrates with Internet Banking Platform for real-time blocking",
+      "properties": {
+        "function": "real-time blocking"
+      },
+      "context": "Integration: Internet Banking Platform (IBP) — real-time blocking",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_004",
+      "target_name": "Mobile Banking App",
+      "rel_type": "integrates_with",
+      "description": "Fraud Detection Engine integrates with Mobile Banking App",
+      "properties": {},
+      "context": "Integration: Mobile Banking App (MBA)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_005",
+      "target_name": "Payment Processing System",
+      "rel_type": "integrates_with",
+      "description": "Fraud Detection Engine integrates with Payment Processing System",
+      "properties": {},
+      "context": "Integration: Payment Processing System (PPS)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_006",
+      "target_name": "Financial Crime System",
+      "rel_type": "integrates_with",
+      "description": "Fraud Detection Engine integrates with Financial Crime System for SAR filing",
+      "properties": {
+        "function": "SAR filing"
+      },
+      "context": "Integration: Financial Crime System — SAR filing",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_001",
+      "target_name": "Transaction Risk Scoring Latency",
+      "rel_type": "owns_sla",
+      "description": "Fraud Detection Engine owns SLA for transaction risk scoring latency",
+      "properties": {
+        "sla_value": "<100ms per transaction"
+      },
+      "context": "Latency: <100ms per transaction",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_002",
+      "target_name": "Fraud Detection Rate",
+      "rel_type": "tracks",
+      "description": "Fraud Detection Engine tracks fraud detection rate performance",
+      "properties": {
+        "target_rate": "97%+"
+      },
+      "context": "Performance: Detection Rate: 97%+",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_003",
+      "target_name": "False Positive Rate",
+      "rel_type": "tracks",
+      "description": "Fraud Detection Engine tracks false positive rate performance",
+      "properties": {
+        "target_rate": "<2%"
+      },
+      "context": "Performance: False Positive Rate: <2%",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_004",
+      "target_name": "Monthly Fraud Prevention Value",
+      "rel_type": "tracks",
+      "description": "Fraud Detection Engine tracks monthly fraud prevention value",
+      "properties": {
+        "monthly_value": "£45k–£80k"
+      },
+      "context": "Performance: Monthly fraud prevented: ~£45k–£80k",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_001",
+      "target_name": "Large Transaction Amount Fraud Rule",
+      "rel_type": "implements",
+      "description": "Fraud Detection Engine implements large transaction amount fraud rule",
+      "properties": {
+        "rule_threshold": ">£5,000"
+      },
+      "context": "Fraud Rules (Examples): Large transaction amount (>£5,000)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_002",
+      "target_name": "Geographic Anomaly Fraud Rule",
+      "rel_type": "implements",
+      "description": "Fraud Detection Engine implements geographic anomaly fraud rule",
+      "properties": {
+        "rule_description": "transaction in different country within 2 hours"
+      },
+      "context": "Fraud Rules (Examples): Geographic anomaly (transaction in different country within 2 hours)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_003",
+      "target_name": "Velocity Check Fraud Rule",
+      "rel_type": "implements",
+      "description": "Fraud Detection Engine implements velocity check fraud rule",
+      "properties": {
+        "rule_description": ">5 transactions within 1 hour"
+      },
+      "context": "Fraud Rules (Examples): Velocity checks (>5 transactions within 1 hour)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_004",
+      "target_name": "Unusual Beneficiary Fraud Rule",
+      "rel_type": "implements",
+      "description": "Fraud Detection Engine implements unusual beneficiary fraud rule",
+      "properties": {
+        "rule_description": "new beneficiary + large transfer"
+      },
+      "context": "Fraud Rules (Examples): Unusual beneficiary (new beneficiary + large transfer)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_005",
+      "target_name": "Card-Not-Present High-Value Transaction Fraud Rule",
+      "rel_type": "implements",
+      "description": "Fraud Detection Engine implements card-not-present high-value transaction fraud rule",
+      "properties": {
+        "rule_description": "CNP high-value transaction"
+      },
+      "context": "Fraud Rules (Examples): Card not present (CNP) high-value transaction",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_006",
+      "target_name": "Low-Risk Fraud Alert Auto-Approval",
+      "rel_type": "implements",
+      "description": "Fraud Detection Engine implements low-risk fraud alert auto-approval rule",
+      "properties": {
+        "risk_level": "Low Risk",
+        "action": "Auto-approve"
+      },
+      "context": "Alert Escalation: Low Risk: Auto-approve",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_007",
+      "target_name": "Medium-Risk Fraud Alert OTP Verification",
+      "rel_type": "implements",
+      "description": "Fraud Detection Engine implements medium-risk fraud alert OTP verification rule",
+      "properties": {
+        "risk_level": "Medium Risk",
+        "action": "Require OTP verification"
+      },
+      "context": "Alert Escalation: Medium Risk: Require OTP verification",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_008",
+      "target_name": "High-Risk Fraud Alert Escalation",
+      "rel_type": "implements",
+      "description": "Fraud Detection Engine implements high-risk fraud alert escalation rule",
+      "properties": {
+        "risk_level": "High Risk",
+        "actions": [
+          "Block transaction",
+          "notify customer",
+          "escalate to Financial Crime team"
+        ]
+      },
+      "context": "Alert Escalation: High Risk: Block transaction, notify customer, escalate to Financial Crime team",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_org_001",
+      "source_name": "Financial Crime Team",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_002",
+      "target_name": "Fraud Alert",
+      "rel_type": "reviews",
+      "description": "Financial Crime Team reviews high-risk fraud alerts",
+      "properties": {
+        "alert_type": "High Risk"
+      },
+      "context": "High Risk: Block transaction, notify customer, escalate to Financial Crime team",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_org_001",
+      "source_name": "Financial Crime Team",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_005",
+      "target_name": "SAR Filing",
+      "rel_type": "performs",
+      "description": "Financial Crime Team performs SAR filing",
+      "properties": {},
+      "context": "Integration: Financial Crime System — SAR filing",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_002",
+      "source_name": "Fraud Alert",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_001",
+      "target_name": "Transaction",
+      "rel_type": "triggered_by",
+      "description": "Fraud Alert is triggered by suspicious transactions",
+      "properties": {
+        "detection_method": "rule-based and ML-based detection"
+      },
+      "context": "Suspicious activity flagging... Transaction risk scoring... Anomaly detection (ML models)... Rule-based detection",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_003",
+      "source_name": "Card Fraud Prevention",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_005",
+      "target_name": "Card-Not-Present High-Value Transaction Fraud Rule",
+      "rel_type": "governed_by",
+      "description": "Card Fraud Prevention is governed by card-not-present high-value transaction fraud rule",
+      "properties": {},
+      "context": "Key Functions: Card fraud prevention... Card not present (CNP) high-value transaction",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_004",
+      "source_name": "Account Takeover Detection",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_003",
+      "target_name": "Velocity Check Fraud Rule",
+      "rel_type": "governed_by",
+      "description": "Account Takeover Detection is governed by velocity check fraud rule",
+      "properties": {
+        "detection_indicator": "multiple transactions in short timeframe"
+      },
+      "context": "Account takeover detection... Velocity checks (>5 transactions within 1 hour)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_002",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_003",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_004",
+      "source_name": "Mobile Banking App",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_005",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_sys_006",
+      "source_name": "Financial Crime System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_org_001",
+      "source_name": "Financial Crime Team",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_001",
+      "source_name": "Transaction",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_002",
+      "source_name": "Fraud Alert",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_003",
+      "source_name": "Card Fraud Prevention",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_004",
+      "source_name": "Account Takeover Detection",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_bc_005",
+      "source_name": "SAR Filing",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_001",
+      "source_name": "Transaction Risk Scoring Latency",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_002",
+      "source_name": "Fraud Detection Rate",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_003",
+      "source_name": "False Positive Rate",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_mt_004",
+      "source_name": "Monthly Fraud Prevention Value",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_001",
+      "source_name": "Large Transaction Amount Fraud Rule",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_002",
+      "source_name": "Geographic Anomaly Fraud Rule",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_003",
+      "source_name": "Velocity Check Fraud Rule",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_004",
+      "source_name": "Unusual Beneficiary Fraud Rule",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_005",
+      "source_name": "Card-Not-Present High-Value Transaction Fraud Rule",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_006",
+      "source_name": "Low-Risk Fraud Alert Auto-Approval",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_007",
+      "source_name": "Medium-Risk Fraud Alert OTP Verification",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007_br_008",
+      "source_name": "High-Risk Fraud Alert Escalation",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ]
+}

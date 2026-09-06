@@ -1,0 +1,1234 @@
+{
+  "chunk_seq": 21,
+  "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+  "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+  "text": "## Step 7: Account Management  \n### Mandate During Account Changes  \n**If Customer Changes Address:**\n- Biller notified automatically\n- Mandate remains active\n- No interruption to payments  \n**If Customer Gets New Account:**\n- Old mandate canceled (if account closed)\n- Customer must authorize new mandate for new account\n- Biller must have new account details  \n**If Account Frozen (Fraud Hold):**\n- Direct Debits blocked temporarily\n- Biller notified (generic \"unable to process\" message)\n- Customer resolution required before payment resumes  \n---",
+  "name": "Chunk 21/26",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_020",
+  "next_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_022",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Account Management During Account Changes",
+      "aliases": [
+        "Mandate During Account Changes",
+        "Step 7"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_management",
+      "description": "End-to-end procedure governing direct debit mandate handling when customers change address, open new accounts, or experience account freezes due to fraud holds. Defines notification requirements, mandate continuity rules, and payment resumption conditions.",
+      "context": [
+        "Step 7: Account Management",
+        "Mandate During Account Changes",
+        "If Customer Changes Address: Biller notified automatically, Mandate remains active, No interruption to payments",
+        "If Customer Gets New Account: Old mandate canceled (if account closed), Customer must authorize new mandate for new account",
+        "If Account Frozen (Fraud Hold): Direct Debits blocked temporarily, Biller notified (generic 'unable to process' message), Customer resolution required before payment resumes"
+      ]
+    },
+    {
+      "id": "ps_001",
+      "name": "Address Change Notification to Biller",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Automatic notification sent to biller when customer changes address. Mandate remains active with no interruption to payments.",
+      "context": [
+        "If Customer Changes Address: Biller notified automatically",
+        "Mandate remains active",
+        "No interruption to payments"
+      ]
+    },
+    {
+      "id": "ps_002",
+      "name": "Old Mandate Cancellation on Account Closure",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "direct_debit_cancellation",
+      "description": "When customer opens a new account and the old account is closed, the direct debit mandate on the old account is automatically canceled.",
+      "context": [
+        "If Customer Gets New Account: Old mandate canceled (if account closed)"
+      ]
+    },
+    {
+      "id": "ps_003",
+      "name": "New Mandate Authorization for New Account",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer must provide explicit authorization for a new direct debit mandate when opening a new account. Biller must receive updated account details.",
+      "context": [
+        "Customer must authorize new mandate for new account",
+        "Biller must have new account details"
+      ]
+    },
+    {
+      "id": "ps_004",
+      "name": "Direct Debit Blocking on Fraud Hold",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Direct debits are temporarily blocked when an account is frozen due to a fraud hold. Biller receives a generic 'unable to process' message.",
+      "context": [
+        "If Account Frozen (Fraud Hold): Direct Debits blocked temporarily",
+        "Biller notified (generic 'unable to process' message)"
+      ]
+    },
+    {
+      "id": "ps_005",
+      "name": "Customer Resolution and Payment Resumption",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "account_activation",
+      "description": "Customer must resolve the fraud hold issue before direct debit payments can resume on the frozen account.",
+      "context": [
+        "Customer resolution required before payment resumes"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Biller",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External party receiving notifications about mandate changes, account updates, and payment processing status. Receives automatic notifications on address changes and generic messages when payments cannot be processed.",
+      "context": [
+        "Biller notified automatically",
+        "Biller must have new account details",
+        "Biller notified (generic 'unable to process' message)"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer",
+      "description": "Account holder responsible for authorizing new mandates when opening new accounts and resolving fraud holds to resume payments.",
+      "context": [
+        "If Customer Changes Address",
+        "If Customer Gets New Account",
+        "Customer must authorize new mandate for new account",
+        "Customer resolution required before payment resumes"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "mandate"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Standing direct debit authorization on customer account. Remains active during address changes, requires cancellation and reauthorization when account changes, and is temporarily blocked during fraud holds.",
+      "context": [
+        "Mandate remains active",
+        "Old mandate canceled (if account closed)",
+        "Customer must authorize new mandate for new account",
+        "Direct Debits blocked temporarily"
+      ]
+    },
+    {
+      "id": "fa_001",
+      "name": "Account Fraud Hold",
+      "aliases": [
+        "Fraud Hold"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "Temporary freeze placed on customer account due to suspected fraud. Triggers blocking of direct debits and requires customer resolution before payment processing resumes.",
+      "context": [
+        "If Account Frozen (Fraud Hold)",
+        "Direct Debits blocked temporarily",
+        "Customer resolution required before payment resumes"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "Customer's bank account subject to direct debit mandates and account management procedures. Can be closed, frozen, or changed, each triggering specific mandate handling rules.",
+      "context": [
+        "If Customer Changes Address",
+        "If Customer Gets New Account",
+        "If Account Frozen (Fraud Hold)",
+        "Old mandate canceled (if account closed)"
+      ]
+    },
+    {
+      "id": "acc_002",
+      "name": "New Account",
+      "aliases": [],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "Account opened by customer requiring new direct debit mandate authorization and updated account details to be provided to biller.",
+      "context": [
+        "If Customer Gets New Account",
+        "Customer must authorize new mandate for new account",
+        "Biller must have new account details"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Customer Address Change",
+      "aliases": [
+        "address change"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "Update to customer's registered address. Triggers automatic notification to biller while maintaining mandate continuity and uninterrupted payment processing.",
+      "context": [
+        "If Customer Changes Address",
+        "Biller notified automatically",
+        "Mandate remains active",
+        "No interruption to payments"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_proc_001",
+    "ps_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_001",
+    "ps_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_002",
+    "ps_003": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_003",
+    "ps_004": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_004",
+    "ps_005": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_005",
+    "ra_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ra_001",
+    "ra_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ra_002",
+    "dd_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_dd_001",
+    "fa_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_fa_001",
+    "acc_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_acc_001",
+    "acc_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_acc_002",
+    "addr_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_addr_001"
+  },
+  "entities": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_proc_001",
+      "name": "Account Management During Account Changes",
+      "aliases": [
+        "Mandate During Account Changes",
+        "Step 7"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_management",
+      "description": "End-to-end procedure governing direct debit mandate handling when customers change address, open new accounts, or experience account freezes due to fraud holds. Defines notification requirements, mandate continuity rules, and payment resumption conditions.",
+      "context": [
+        "Step 7: Account Management",
+        "Mandate During Account Changes",
+        "If Customer Changes Address: Biller notified automatically, Mandate remains active, No interruption to payments",
+        "If Customer Gets New Account: Old mandate canceled (if account closed), Customer must authorize new mandate for new account",
+        "If Account Frozen (Fraud Hold): Direct Debits blocked temporarily, Biller notified (generic 'unable to process' message), Customer resolution required before payment resumes"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_001",
+      "name": "Address Change Notification to Biller",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Automatic notification sent to biller when customer changes address. Mandate remains active with no interruption to payments.",
+      "context": [
+        "If Customer Changes Address: Biller notified automatically",
+        "Mandate remains active",
+        "No interruption to payments"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_002",
+      "name": "Old Mandate Cancellation on Account Closure",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "direct_debit_cancellation",
+      "description": "When customer opens a new account and the old account is closed, the direct debit mandate on the old account is automatically canceled.",
+      "context": [
+        "If Customer Gets New Account: Old mandate canceled (if account closed)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_003",
+      "name": "New Mandate Authorization for New Account",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer must provide explicit authorization for a new direct debit mandate when opening a new account. Biller must receive updated account details.",
+      "context": [
+        "Customer must authorize new mandate for new account",
+        "Biller must have new account details"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_004",
+      "name": "Direct Debit Blocking on Fraud Hold",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Direct debits are temporarily blocked when an account is frozen due to a fraud hold. Biller receives a generic 'unable to process' message.",
+      "context": [
+        "If Account Frozen (Fraud Hold): Direct Debits blocked temporarily",
+        "Biller notified (generic 'unable to process' message)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_005",
+      "name": "Customer Resolution and Payment Resumption",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "account_activation",
+      "description": "Customer must resolve the fraud hold issue before direct debit payments can resume on the frozen account.",
+      "context": [
+        "Customer resolution required before payment resumes"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ra_001",
+      "name": "Biller",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External party receiving notifications about mandate changes, account updates, and payment processing status. Receives automatic notifications on address changes and generic messages when payments cannot be processed.",
+      "context": [
+        "Biller notified automatically",
+        "Biller must have new account details",
+        "Biller notified (generic 'unable to process' message)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ra_002",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer",
+      "description": "Account holder responsible for authorizing new mandates when opening new accounts and resolving fraud holds to resume payments.",
+      "context": [
+        "If Customer Changes Address",
+        "If Customer Gets New Account",
+        "Customer must authorize new mandate for new account",
+        "Customer resolution required before payment resumes"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "mandate"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Standing direct debit authorization on customer account. Remains active during address changes, requires cancellation and reauthorization when account changes, and is temporarily blocked during fraud holds.",
+      "context": [
+        "Mandate remains active",
+        "Old mandate canceled (if account closed)",
+        "Customer must authorize new mandate for new account",
+        "Direct Debits blocked temporarily"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_fa_001",
+      "name": "Account Fraud Hold",
+      "aliases": [
+        "Fraud Hold"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "Temporary freeze placed on customer account due to suspected fraud. Triggers blocking of direct debits and requires customer resolution before payment processing resumes.",
+      "context": [
+        "If Account Frozen (Fraud Hold)",
+        "Direct Debits blocked temporarily",
+        "Customer resolution required before payment resumes"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "Customer's bank account subject to direct debit mandates and account management procedures. Can be closed, frozen, or changed, each triggering specific mandate handling rules.",
+      "context": [
+        "If Customer Changes Address",
+        "If Customer Gets New Account",
+        "If Account Frozen (Fraud Hold)",
+        "Old mandate canceled (if account closed)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_acc_002",
+      "name": "New Account",
+      "aliases": [],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "Account opened by customer requiring new direct debit mandate authorization and updated account details to be provided to biller.",
+      "context": [
+        "If Customer Gets New Account",
+        "Customer must authorize new mandate for new account",
+        "Biller must have new account details"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_addr_001",
+      "name": "Customer Address Change",
+      "aliases": [
+        "address change"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "Update to customer's registered address. Triggers automatic notification to biller while maintaining mandate continuity and uninterrupted payment processing.",
+      "context": [
+        "If Customer Changes Address",
+        "Biller notified automatically",
+        "Mandate remains active",
+        "No interruption to payments"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_proc_001",
+      "name": "Account Management During Account Changes",
+      "properties": {
+        "purpose": "Manage direct debit mandates and payment continuity during customer account changes, closures, and fraud holds",
+        "scope": [
+          "address changes",
+          "account closure",
+          "new account setup",
+          "fraud holds"
+        ],
+        "owner": "Operations",
+        "departments_involved": [
+          "Operations",
+          "Fraud",
+          "Customer Service"
+        ],
+        "trigger": [
+          "customer address change",
+          "account closure",
+          "new account creation",
+          "fraud hold activation"
+        ],
+        "outcome_success": "Mandates properly transitioned, payments uninterrupted where appropriate, customer notified, biller updated"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_001",
+      "name": "Address Change Notification to Biller",
+      "properties": {
+        "step_number": 1,
+        "actor": "System",
+        "input": "Customer address change notification",
+        "output": "Biller notification of new address",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account Management System"
+        ],
+        "outcome": "Mandate remains active, no payment interruption"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_002",
+      "name": "Old Mandate Cancellation on Account Closure",
+      "properties": {
+        "step_number": 2,
+        "actor": "System",
+        "input": "Account closure instruction",
+        "output": "Direct debit mandate cancellation",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Direct Debit Management System"
+        ],
+        "trigger": "Account closed"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_003",
+      "name": "New Mandate Authorization for New Account",
+      "properties": {
+        "step_number": 3,
+        "actor": "Customer",
+        "input": "New account details, authorization request",
+        "output": "New direct debit mandate",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Direct Debit Management System"
+        ],
+        "trigger": "Customer opens new account"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_004",
+      "name": "Direct Debit Blocking on Fraud Hold",
+      "properties": {
+        "step_number": 4,
+        "actor": "System",
+        "input": "Fraud hold activation",
+        "output": "Direct debits blocked, biller notification sent",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Fraud Management System",
+          "Direct Debit Management System"
+        ],
+        "trigger": "Account frozen due to fraud hold"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_005",
+      "name": "Customer Resolution and Payment Resumption",
+      "properties": {
+        "step_number": 5,
+        "actor": "Customer Service",
+        "input": "Fraud investigation outcome, customer resolution",
+        "output": "Direct debits unblocked, payments resumed",
+        "channel": [
+          "branch",
+          "phone"
+        ],
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Fraud Management System",
+          "Direct Debit Management System"
+        ],
+        "trigger": "Fraud hold resolved"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ra_001",
+      "name": "Biller",
+      "properties": {
+        "role_type": "external",
+        "channels": [
+          "system notification"
+        ],
+        "notification_requirement": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ra_002",
+      "name": "Customer",
+      "properties": {
+        "role_type": "human",
+        "authority_level": "mandate authorization",
+        "channels": [
+          "branch",
+          "online",
+          "phone"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_dd_001",
+      "name": "Direct Debit Mandate",
+      "properties": {
+        "mandate_process": "Authorization required for new account; cancellation on account closure",
+        "dd_guarantee_coverage": "applicable",
+        "cancellation_or_dispute_process": "Automatic cancellation on account closure; manual cancellation on customer request",
+        "blocking_condition": "Temporary block during fraud hold"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_fa_001",
+      "name": "Account Fraud Hold",
+      "properties": {
+        "generation_trigger": "Suspected fraudulent activity",
+        "investigation_or_escalation_path": "Fraud investigation team",
+        "customer_notification": "yes",
+        "impact_on_direct_debits": "Temporary block with generic 'unable to process' message to biller",
+        "reimbursement_obligation": "Applicable if fraud confirmed"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_acc_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_state": [
+          "active",
+          "frozen"
+        ],
+        "closure_or_freeze_conditions": [
+          "customer initiated closure",
+          "fraud hold activation"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_acc_002",
+      "name": "New Account",
+      "properties": {
+        "account_state": "new",
+        "mandate_requirement": "New direct debit mandate authorization required"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_addr_001",
+      "name": "Customer Address Change",
+      "properties": {
+        "collection_steps": "Customer initiates address change",
+        "update_process": "Automatic notification to biller; mandate remains active",
+        "payment_impact": "No interruption to direct debit payments"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_proc_001",
+      "source_name": "Account Management During Account Changes",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_001",
+      "target_name": "Address Change Notification to Biller",
+      "rel_type": "contains",
+      "description": "Process includes the step of notifying biller when customer changes address",
+      "properties": {
+        "sequence_position": 1,
+        "conditional": true,
+        "condition": "If Customer Changes Address"
+      },
+      "context": "If Customer Changes Address: Biller notified automatically",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_proc_001",
+      "source_name": "Account Management During Account Changes",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_002",
+      "target_name": "Old Mandate Cancellation on Account Closure",
+      "rel_type": "contains",
+      "description": "Process includes the step of canceling old mandate when account is closed",
+      "properties": {
+        "sequence_position": 2,
+        "conditional": true,
+        "condition": "If Customer Gets New Account"
+      },
+      "context": "If Customer Gets New Account: Old mandate canceled (if account closed)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_proc_001",
+      "source_name": "Account Management During Account Changes",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_003",
+      "target_name": "New Mandate Authorization for New Account",
+      "rel_type": "contains",
+      "description": "Process includes the step of authorizing new mandate for new account",
+      "properties": {
+        "sequence_position": 3,
+        "conditional": true,
+        "condition": "If Customer Gets New Account"
+      },
+      "context": "Customer must authorize new mandate for new account",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_proc_001",
+      "source_name": "Account Management During Account Changes",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_004",
+      "target_name": "Direct Debit Blocking on Fraud Hold",
+      "rel_type": "contains",
+      "description": "Process includes the step of blocking direct debits when account is frozen due to fraud",
+      "properties": {
+        "sequence_position": 4,
+        "conditional": true,
+        "condition": "If Account Frozen (Fraud Hold)"
+      },
+      "context": "If Account Frozen (Fraud Hold): Direct Debits blocked temporarily",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_proc_001",
+      "source_name": "Account Management During Account Changes",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_005",
+      "target_name": "Customer Resolution and Payment Resumption",
+      "rel_type": "contains",
+      "description": "Process includes the step of resolving customer issues and resuming payments",
+      "properties": {
+        "sequence_position": 5,
+        "conditional": true,
+        "condition": "If Account Frozen (Fraud Hold)"
+      },
+      "context": "Customer resolution required before payment resumes",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_001",
+      "source_name": "Address Change Notification to Biller",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ra_001",
+      "target_name": "Biller",
+      "rel_type": "notifies",
+      "description": "Address change notification step notifies the biller automatically",
+      "properties": {
+        "notification_type": "automatic",
+        "trigger": "address_change"
+      },
+      "context": "Biller notified automatically",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_001",
+      "source_name": "Address Change Notification to Biller",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_addr_001",
+      "target_name": "Customer Address Change",
+      "rel_type": "records",
+      "description": "Address change notification step records the new customer address",
+      "properties": {
+        "action": "notification_triggered_by"
+      },
+      "context": "If Customer Changes Address: Biller notified automatically",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_001",
+      "source_name": "Address Change Notification to Biller",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "records",
+      "description": "Address change notification confirms mandate remains active with no interruption",
+      "properties": {
+        "status": "remains_active",
+        "impact": "no_interruption"
+      },
+      "context": "Mandate remains active, No interruption to payments",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_002",
+      "source_name": "Old Mandate Cancellation on Account Closure",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "cancels",
+      "description": "Old mandate is canceled when account is closed",
+      "properties": {
+        "condition": "if_account_closed",
+        "trigger": "account_closure"
+      },
+      "context": "Old mandate canceled (if account closed)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_002",
+      "source_name": "Old Mandate Cancellation on Account Closure",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "closes",
+      "description": "Old mandate cancellation step is triggered by account closure",
+      "properties": {
+        "trigger": "account_closure"
+      },
+      "context": "Old mandate canceled (if account closed)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_003",
+      "source_name": "New Mandate Authorization for New Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ra_002",
+      "target_name": "Customer",
+      "rel_type": "collects_data_from",
+      "description": "New mandate authorization step collects authorization from customer",
+      "properties": {
+        "data_type": "mandate_authorization",
+        "requirement": "mandatory"
+      },
+      "context": "Customer must authorize new mandate for new account",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_003",
+      "source_name": "New Mandate Authorization for New Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "sets_up_mandate_for",
+      "description": "New mandate authorization step sets up direct debit mandate for new account",
+      "properties": {
+        "account_target": "new_account",
+        "requirement": "customer_authorization_required"
+      },
+      "context": "Customer must authorize new mandate for new account",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_003",
+      "source_name": "New Mandate Authorization for New Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_acc_002",
+      "target_name": "New Account",
+      "rel_type": "activates",
+      "description": "New mandate authorization step activates direct debit on new account",
+      "properties": {
+        "action": "mandate_setup"
+      },
+      "context": "Customer must authorize new mandate for new account",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_003",
+      "source_name": "New Mandate Authorization for New Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ra_001",
+      "target_name": "Biller",
+      "rel_type": "notifies",
+      "description": "New mandate authorization step ensures biller receives new account details",
+      "properties": {
+        "information_type": "new_account_details",
+        "requirement": "mandatory"
+      },
+      "context": "Biller must have new account details",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_004",
+      "source_name": "Direct Debit Blocking on Fraud Hold",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "cancels",
+      "description": "Direct debits are blocked temporarily when account is frozen due to fraud",
+      "properties": {
+        "status": "blocked_temporarily",
+        "trigger": "fraud_hold",
+        "duration": "temporary"
+      },
+      "context": "Direct Debits blocked temporarily",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_004",
+      "source_name": "Direct Debit Blocking on Fraud Hold",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_fa_001",
+      "target_name": "Account Fraud Hold",
+      "rel_type": "triggered_by",
+      "description": "Direct debit blocking is triggered by fraud hold on account",
+      "properties": {
+        "trigger_type": "fraud_alert"
+      },
+      "context": "If Account Frozen (Fraud Hold): Direct Debits blocked temporarily",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_004",
+      "source_name": "Direct Debit Blocking on Fraud Hold",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ra_001",
+      "target_name": "Biller",
+      "rel_type": "notifies",
+      "description": "Biller is notified with generic message that payment cannot be processed",
+      "properties": {
+        "notification_type": "generic",
+        "message": "unable_to_process"
+      },
+      "context": "Biller notified (generic 'unable to process' message)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_005",
+      "source_name": "Customer Resolution and Payment Resumption",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ra_002",
+      "target_name": "Customer",
+      "rel_type": "notifies",
+      "description": "Customer resolution step involves customer action to resolve fraud hold",
+      "properties": {
+        "action_required": true,
+        "prerequisite_for": "payment_resumption"
+      },
+      "context": "Customer resolution required before payment resumes",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_005",
+      "source_name": "Customer Resolution and Payment Resumption",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "records",
+      "description": "Payment resumption step re-activates direct debit mandate after resolution",
+      "properties": {
+        "status": "resumed",
+        "prerequisite": "customer_resolution"
+      },
+      "context": "Customer resolution required before payment resumes",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_005",
+      "source_name": "Customer Resolution and Payment Resumption",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_fa_001",
+      "target_name": "Account Fraud Hold",
+      "rel_type": "closes",
+      "description": "Payment resumption step closes the fraud hold after customer resolution",
+      "properties": {
+        "action": "fraud_hold_resolution"
+      },
+      "context": "Customer resolution required before payment resumes",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_001",
+      "source_name": "Address Change Notification to Biller",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_002",
+      "target_name": "Old Mandate Cancellation on Account Closure",
+      "rel_type": "alternative_to",
+      "description": "Address change scenario is an alternative path to account closure scenario",
+      "properties": {
+        "condition_type": "mutually_exclusive",
+        "scenario_1": "address_change",
+        "scenario_2": "account_closure"
+      },
+      "context": "If Customer Changes Address vs If Customer Gets New Account",
+      "bidirectional": true,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_002",
+      "source_name": "Old Mandate Cancellation on Account Closure",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_003",
+      "target_name": "New Mandate Authorization for New Account",
+      "rel_type": "followed_by",
+      "description": "Old mandate cancellation is followed by new mandate authorization in account change scenario",
+      "properties": {
+        "sequence": "sequential",
+        "condition": "account_closure_with_new_account"
+      },
+      "context": "Old mandate canceled (if account closed), Customer must authorize new mandate for new account",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_004",
+      "source_name": "Direct Debit Blocking on Fraud Hold",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_005",
+      "target_name": "Customer Resolution and Payment Resumption",
+      "rel_type": "followed_by",
+      "description": "Direct debit blocking is followed by customer resolution and payment resumption",
+      "properties": {
+        "sequence": "sequential",
+        "condition": "fraud_hold_scenario"
+      },
+      "context": "If Account Frozen (Fraud Hold): Direct Debits blocked temporarily, Customer resolution required before payment resumes",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "set_up_on",
+      "description": "Direct debit mandate is set up on customer account",
+      "properties": {
+        "status": "active_by_default"
+      },
+      "context": "Mandate remains active",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_fa_001",
+      "target_name": "Account Fraud Hold",
+      "rel_type": "raised_on",
+      "description": "Fraud hold can be raised on customer account",
+      "properties": {
+        "impact": "blocks_direct_debits"
+      },
+      "context": "If Account Frozen (Fraud Hold)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_acc_002",
+      "source_name": "New Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "set_up_on",
+      "description": "New direct debit mandate is set up on new account after customer authorization",
+      "properties": {
+        "requirement": "customer_authorization_required"
+      },
+      "context": "Customer must authorize new mandate for new account",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ra_002",
+      "source_name": "Customer",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "holds",
+      "description": "Customer holds the account",
+      "properties": {},
+      "context": "Customer Account",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ra_002",
+      "source_name": "Customer",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_addr_001",
+      "target_name": "Customer Address Change",
+      "rel_type": "registered_to",
+      "description": "Customer address change is registered to the customer",
+      "properties": {
+        "action": "address_update"
+      },
+      "context": "If Customer Changes Address",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_proc_001",
+      "source_name": "Account Management During Account Changes",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_001",
+      "source_name": "Address Change Notification to Biller",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_002",
+      "source_name": "Old Mandate Cancellation on Account Closure",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_003",
+      "source_name": "New Mandate Authorization for New Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_004",
+      "source_name": "Direct Debit Blocking on Fraud Hold",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ps_005",
+      "source_name": "Customer Resolution and Payment Resumption",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ra_001",
+      "source_name": "Biller",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_ra_002",
+      "source_name": "Customer",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_fa_001",
+      "source_name": "Account Fraud Hold",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_acc_002",
+      "source_name": "New Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021_addr_001",
+      "source_name": "Customer Address Change",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_021",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

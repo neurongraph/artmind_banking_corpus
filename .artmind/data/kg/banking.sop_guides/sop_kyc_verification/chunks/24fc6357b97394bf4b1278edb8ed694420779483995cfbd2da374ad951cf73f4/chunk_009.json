@@ -1,0 +1,1204 @@
+{
+  "chunk_seq": 9,
+  "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+  "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+  "text": "## Step 4: Risk Assessment  \n### Customer Risk Level  \n**Determine Risk Category:**  \n**Low Risk:**\n- UK national or long-term resident\n- Age 18–65\n- Standard product (SmartSaver, Current Account)\n- UK address\n- No PEP/adverse media\n- Standard initial deposit (<£100k)  \n**Medium Risk:**\n- Non-UK resident (but EU/developed country)\n- Age >65 or <25\n- Higher-value account (>£50k)\n- Foreign address but EU/developed country\n- Professional/business account  \n**High Risk:**\n- Non-UK national with foreign address\n- PEP (Politically Exposed Person)\n- Adverse media (criminal history, fraud)\n- Beneficial ownership unclear\n- High-value account (>£250k)\n- Country with weak AML controls",
+  "name": "Chunk 9/22",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+  "next_chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_010",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Risk Assessment Process",
+      "aliases": [
+        "Customer Risk Level Determination"
+      ],
+      "entity_class": "PROCESS",
+      "type": "risk_assessment",
+      "description": "A process to determine and categorize customer risk levels during account opening, classifying customers into Low, Medium, or High Risk categories based on nationality, residency, age, product type, deposit value, PEP status, adverse media, and AML jurisdiction controls.",
+      "context": [
+        "Step 4: Risk Assessment",
+        "Determine Risk Category:",
+        "Customer Risk Level"
+      ]
+    },
+    {
+      "id": "ps_001",
+      "name": "Risk Category Determination",
+      "aliases": [
+        "Determine Risk Category"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The step in which the responsible actor evaluates customer attributes against defined criteria to assign a risk classification (Low, Medium, or High).",
+      "context": [
+        "Determine Risk Category:",
+        "Low Risk:",
+        "Medium Risk:",
+        "High Risk:"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Risk Category Gate",
+      "aliases": [
+        "Risk Level Classification"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "A branching decision point that classifies the customer into one of three risk categories (Low, Medium, or High) based on cumulative assessment of nationality, residency, age, product type, address jurisdiction, deposit value, PEP status, and adverse media findings.",
+      "context": [
+        "Low Risk:",
+        "Medium Risk:",
+        "High Risk:"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "PEP Screening Checkpoint",
+      "aliases": [
+        "PEP Status Verification"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "pep_screening",
+      "description": "A mandatory compliance gate that verifies whether the customer is a Politically Exposed Person (PEP), with PEP status being a key factor in risk classification and a trigger for High Risk categorization.",
+      "context": [
+        "No PEP/adverse media",
+        "PEP (Politically Exposed Person)",
+        "High Risk:"
+      ]
+    },
+    {
+      "id": "cc_002",
+      "name": "Adverse Media Screening Checkpoint",
+      "aliases": [
+        "Adverse Media Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "adverse_media_check",
+      "description": "A mandatory compliance gate that screens for adverse media including criminal history and fraud records, with findings triggering High Risk classification.",
+      "context": [
+        "No PEP/adverse media",
+        "Adverse media (criminal history, fraud)",
+        "High Risk:"
+      ]
+    },
+    {
+      "id": "cc_003",
+      "name": "AML Jurisdiction Controls Checkpoint",
+      "aliases": [
+        "AML Controls Verification"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "A mandatory compliance gate that assesses whether the customer's country of residence or beneficial ownership jurisdiction has weak AML controls, which is a High Risk indicator.",
+      "context": [
+        "Country with weak AML controls",
+        "High Risk:"
+      ]
+    },
+    {
+      "id": "prd_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SmartSaver"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "smartsaver_account",
+      "description": "A standard banking product referenced as a Low Risk product type in the risk assessment framework.",
+      "context": [
+        "Standard product (SmartSaver, Current Account)"
+      ]
+    },
+    {
+      "id": "prd_002",
+      "name": "Current Account",
+      "aliases": [],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "A standard banking product referenced as a Low Risk product type in the risk assessment framework.",
+      "context": [
+        "Standard product (SmartSaver, Current Account)"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "UK National Customer",
+      "aliases": [
+        "UK national"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A customer classified as a UK national or long-term resident, which is a Low Risk indicator in the risk assessment process.",
+      "context": [
+        "UK national or long-term resident",
+        "Low Risk:"
+      ]
+    },
+    {
+      "id": "cust_002",
+      "name": "Non-UK Resident Customer",
+      "aliases": [
+        "Non-UK resident"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A customer who is a non-UK resident, classified as Medium Risk if from EU/developed country, or High Risk if from non-developed country with unclear beneficial ownership.",
+      "context": [
+        "Non-UK resident (but EU/developed country)",
+        "Non-UK national with foreign address"
+      ]
+    },
+    {
+      "id": "cust_003",
+      "name": "PEP Customer",
+      "aliases": [
+        "Politically Exposed Person"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "pep_customer",
+      "description": "A customer identified as a Politically Exposed Person, automatically classified as High Risk in the risk assessment framework.",
+      "context": [
+        "PEP (Politically Exposed Person)",
+        "High Risk:"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "UK Address Verification",
+      "aliases": [
+        "UK address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "Verification that the customer maintains a UK address, which is a Low Risk indicator in the risk assessment process.",
+      "context": [
+        "UK address",
+        "Low Risk:"
+      ]
+    },
+    {
+      "id": "addr_002",
+      "name": "Foreign Address Verification",
+      "aliases": [
+        "Foreign address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "Verification of a customer's foreign address, classified as Medium Risk if in EU/developed country or High Risk if in non-developed country.",
+      "context": [
+        "Foreign address but EU/developed country",
+        "Non-UK national with foreign address"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "Beneficial Ownership Screening",
+      "aliases": [
+        "Beneficial ownership clarity"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "beneficial_owner_check",
+      "description": "An AML screening step to verify clarity of beneficial ownership, with unclear beneficial ownership being a High Risk indicator.",
+      "context": [
+        "Beneficial ownership unclear",
+        "High Risk:"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_proc_001",
+    "ps_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_ps_001",
+    "dp_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_dp_001",
+    "cc_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_001",
+    "cc_002": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_002",
+    "cc_003": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_003",
+    "prd_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_prd_001",
+    "prd_002": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_prd_002",
+    "cust_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_001",
+    "cust_002": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_002",
+    "cust_003": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_003",
+    "addr_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_addr_001",
+    "addr_002": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_addr_002",
+    "aml_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_aml_001"
+  },
+  "entities": [
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_proc_001",
+      "name": "Risk Assessment Process",
+      "aliases": [
+        "Customer Risk Level Determination"
+      ],
+      "entity_class": "PROCESS",
+      "type": "risk_assessment",
+      "description": "A process to determine and categorize customer risk levels during account opening, classifying customers into Low, Medium, or High Risk categories based on nationality, residency, age, product type, deposit value, PEP status, adverse media, and AML jurisdiction controls.",
+      "context": [
+        "Step 4: Risk Assessment",
+        "Determine Risk Category:",
+        "Customer Risk Level"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_ps_001",
+      "name": "Risk Category Determination",
+      "aliases": [
+        "Determine Risk Category"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The step in which the responsible actor evaluates customer attributes against defined criteria to assign a risk classification (Low, Medium, or High).",
+      "context": [
+        "Determine Risk Category:",
+        "Low Risk:",
+        "Medium Risk:",
+        "High Risk:"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_dp_001",
+      "name": "Risk Category Gate",
+      "aliases": [
+        "Risk Level Classification"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "A branching decision point that classifies the customer into one of three risk categories (Low, Medium, or High) based on cumulative assessment of nationality, residency, age, product type, address jurisdiction, deposit value, PEP status, and adverse media findings.",
+      "context": [
+        "Low Risk:",
+        "Medium Risk:",
+        "High Risk:"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_001",
+      "name": "PEP Screening Checkpoint",
+      "aliases": [
+        "PEP Status Verification"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "pep_screening",
+      "description": "A mandatory compliance gate that verifies whether the customer is a Politically Exposed Person (PEP), with PEP status being a key factor in risk classification and a trigger for High Risk categorization.",
+      "context": [
+        "No PEP/adverse media",
+        "PEP (Politically Exposed Person)",
+        "High Risk:"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_002",
+      "name": "Adverse Media Screening Checkpoint",
+      "aliases": [
+        "Adverse Media Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "adverse_media_check",
+      "description": "A mandatory compliance gate that screens for adverse media including criminal history and fraud records, with findings triggering High Risk classification.",
+      "context": [
+        "No PEP/adverse media",
+        "Adverse media (criminal history, fraud)",
+        "High Risk:"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_003",
+      "name": "AML Jurisdiction Controls Checkpoint",
+      "aliases": [
+        "AML Controls Verification"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "A mandatory compliance gate that assesses whether the customer's country of residence or beneficial ownership jurisdiction has weak AML controls, which is a High Risk indicator.",
+      "context": [
+        "Country with weak AML controls",
+        "High Risk:"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_prd_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SmartSaver"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "smartsaver_account",
+      "description": "A standard banking product referenced as a Low Risk product type in the risk assessment framework.",
+      "context": [
+        "Standard product (SmartSaver, Current Account)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_prd_002",
+      "name": "Current Account",
+      "aliases": [],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "A standard banking product referenced as a Low Risk product type in the risk assessment framework.",
+      "context": [
+        "Standard product (SmartSaver, Current Account)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_001",
+      "name": "UK National Customer",
+      "aliases": [
+        "UK national"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A customer classified as a UK national or long-term resident, which is a Low Risk indicator in the risk assessment process.",
+      "context": [
+        "UK national or long-term resident",
+        "Low Risk:"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_002",
+      "name": "Non-UK Resident Customer",
+      "aliases": [
+        "Non-UK resident"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A customer who is a non-UK resident, classified as Medium Risk if from EU/developed country, or High Risk if from non-developed country with unclear beneficial ownership.",
+      "context": [
+        "Non-UK resident (but EU/developed country)",
+        "Non-UK national with foreign address"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_003",
+      "name": "PEP Customer",
+      "aliases": [
+        "Politically Exposed Person"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "pep_customer",
+      "description": "A customer identified as a Politically Exposed Person, automatically classified as High Risk in the risk assessment framework.",
+      "context": [
+        "PEP (Politically Exposed Person)",
+        "High Risk:"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_addr_001",
+      "name": "UK Address Verification",
+      "aliases": [
+        "UK address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "Verification that the customer maintains a UK address, which is a Low Risk indicator in the risk assessment process.",
+      "context": [
+        "UK address",
+        "Low Risk:"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_addr_002",
+      "name": "Foreign Address Verification",
+      "aliases": [
+        "Foreign address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "Verification of a customer's foreign address, classified as Medium Risk if in EU/developed country or High Risk if in non-developed country.",
+      "context": [
+        "Foreign address but EU/developed country",
+        "Non-UK national with foreign address"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_aml_001",
+      "name": "Beneficial Ownership Screening",
+      "aliases": [
+        "Beneficial ownership clarity"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "beneficial_owner_check",
+      "description": "An AML screening step to verify clarity of beneficial ownership, with unclear beneficial ownership being a High Risk indicator.",
+      "context": [
+        "Beneficial ownership unclear",
+        "High Risk:"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_proc_001",
+      "name": "Risk Assessment Process",
+      "properties": {
+        "purpose": "Determine customer risk category to inform KYC and ongoing monitoring requirements",
+        "scope": [
+          "SmartSaver Account",
+          "Current Account"
+        ],
+        "owner": "Compliance/Risk Management",
+        "departments_involved": [
+          "Compliance",
+          "Risk Management",
+          "Customer Due Diligence"
+        ],
+        "trigger": "Customer account opening or periodic review",
+        "outcome_success": "Risk category assigned (Low, Medium, or High) with corresponding due diligence requirements applied"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_ps_001",
+      "name": "Risk Category Determination",
+      "properties": {
+        "step_number": 1,
+        "actor": "Risk Assessment Officer",
+        "input": [
+          "Customer nationality",
+          "Customer age",
+          "Product type",
+          "Address information",
+          "PEP status",
+          "Adverse media check results",
+          "Initial deposit amount",
+          "Beneficial ownership details",
+          "Country AML controls assessment"
+        ],
+        "output": "Risk category assignment (Low, Medium, or High)",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Customer Due Diligence System",
+          "Risk Assessment Module"
+        ]
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_dp_001",
+      "name": "Risk Category Gate",
+      "properties": {
+        "decision_question": "What is the customer's risk classification based on profile attributes?",
+        "criteria": [
+          "Nationality and residency status",
+          "Age bracket (18–65 standard, <25 or >65 elevated)",
+          "Product type and account value",
+          "Address jurisdiction (UK, EU/developed, or high-risk country)",
+          "PEP or adverse media indicators",
+          "Beneficial ownership clarity",
+          "Initial deposit amount thresholds"
+        ],
+        "decision_maker": "Risk Assessment Officer",
+        "path_yes": "Assign corresponding risk level (Low/Medium/High) and apply matching due diligence procedures",
+        "path_no": "Escalate for manual review and senior compliance approval",
+        "override_possible": true
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_001",
+      "name": "PEP Screening Checkpoint",
+      "properties": {
+        "regulatory_basis": "FCA COBS, MLR 2017",
+        "mandatory": true,
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "PEP screening report",
+          "Adverse media search results"
+        ],
+        "performed_by": "Compliance Officer",
+        "timing": "During risk assessment step",
+        "failure_consequence": "Customer classified as High Risk; enhanced due diligence required; potential account rejection"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_002",
+      "name": "Adverse Media Screening Checkpoint",
+      "properties": {
+        "regulatory_basis": "FCA COBS, MLR 2017",
+        "mandatory": true,
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "Adverse media search results",
+          "Criminal history check",
+          "Fraud history check"
+        ],
+        "performed_by": "Compliance Officer",
+        "timing": "During risk assessment step",
+        "failure_consequence": "Customer classified as High Risk; enhanced due diligence required; potential account rejection"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_003",
+      "name": "AML Jurisdiction Controls Checkpoint",
+      "properties": {
+        "regulatory_basis": "MLR 2017, FATF Recommendations",
+        "mandatory": true,
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "Country AML controls assessment",
+          "Sanctions list check",
+          "FATF grey/black list status"
+        ],
+        "performed_by": "Compliance Officer",
+        "timing": "During risk assessment step",
+        "failure_consequence": "Customer classified as High Risk if jurisdiction has weak AML controls; enhanced due diligence or account rejection"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_prd_001",
+      "name": "SmartSaver Account",
+      "properties": {
+        "product_type": "savings",
+        "determines_process_variant": true,
+        "risk_classification_indicator": "Standard product; contributes to Low Risk classification when combined with other factors"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_prd_002",
+      "name": "Current Account",
+      "properties": {
+        "product_type": "current",
+        "determines_process_variant": true,
+        "risk_classification_indicator": "Standard product; contributes to Low Risk classification when combined with other factors"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_001",
+      "name": "UK National Customer",
+      "properties": {
+        "customer_type": "individual",
+        "risk_classification": "standard",
+        "eligibility_or_verification_status": "Low Risk if age 18–65, standard product, UK address, no PEP/adverse media, deposit <£100k",
+        "context_role": "Primary risk assessment profile"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_002",
+      "name": "Non-UK Resident Customer",
+      "properties": {
+        "customer_type": "individual",
+        "risk_classification": "medium_or_high",
+        "eligibility_or_verification_status": "Medium Risk if EU/developed country resident; High Risk if non-UK national with foreign address in weak AML jurisdiction",
+        "context_role": "Elevated due diligence required"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_003",
+      "name": "PEP Customer",
+      "properties": {
+        "customer_type": "individual",
+        "risk_classification": "high_risk",
+        "eligibility_or_verification_status": "Automatically classified High Risk; enhanced due diligence mandatory",
+        "context_role": "Triggers PEP screening checkpoint and enhanced monitoring"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_addr_001",
+      "name": "UK Address Verification",
+      "properties": {
+        "collection_steps": "Captured during account opening",
+        "verification_steps": "Verified against utility bill or credit bureau",
+        "acceptable_proof": [
+          "Utility bill",
+          "Credit bureau confirmation"
+        ],
+        "recording_system": "Customer Due Diligence System",
+        "risk_indicator": "UK address contributes to Low Risk classification"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_addr_002",
+      "name": "Foreign Address Verification",
+      "properties": {
+        "collection_steps": "Captured during account opening",
+        "verification_steps": "Verified against international address database; jurisdiction AML controls assessed",
+        "acceptable_proof": [
+          "International utility bill",
+          "Government-issued ID with address",
+          "International credit bureau confirmation"
+        ],
+        "recording_system": "Customer Due Diligence System",
+        "risk_indicator": "EU/developed country address = Medium Risk; weak AML jurisdiction address = High Risk"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_aml_001",
+      "name": "Beneficial Ownership Screening",
+      "properties": {
+        "mandatory": true,
+        "screening_lists_or_scope": "Beneficial ownership clarity assessment; identification of ultimate beneficial owners",
+        "hit_or_match_response": "If beneficial ownership unclear or high-risk beneficial owner identified, escalate to High Risk classification",
+        "regulatory_basis": "MLR 2017, FATF Recommendations",
+        "timing": "During risk assessment step"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_proc_001",
+      "source_name": "Risk Assessment Process",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_ps_001",
+      "target_name": "Risk Category Determination",
+      "rel_type": "contains",
+      "description": "Risk Assessment Process includes the Risk Category Determination step",
+      "properties": {
+        "step_sequence": 1,
+        "mandatory": true
+      },
+      "context": "Step 4: Risk Assessment - Determine Risk Category",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_ps_001",
+      "source_name": "Risk Category Determination",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_dp_001",
+      "target_name": "Risk Category Gate",
+      "rel_type": "leads_to",
+      "description": "Risk Category Determination step leads to Risk Category Gate decision point",
+      "properties": {
+        "decision_required": true
+      },
+      "context": "Determine Risk Category: Low Risk, Medium Risk, High Risk classifications",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_dp_001",
+      "source_name": "Risk Category Gate",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_001",
+      "target_name": "PEP Screening Checkpoint",
+      "rel_type": "triggers",
+      "description": "Risk Category Gate decision triggers PEP Screening Checkpoint",
+      "properties": {
+        "trigger_condition": "PEP status determination required for all risk categories"
+      },
+      "context": "No PEP/adverse media (Low Risk); PEP (Politically Exposed Person) (High Risk)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_dp_001",
+      "source_name": "Risk Category Gate",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_002",
+      "target_name": "Adverse Media Screening Checkpoint",
+      "rel_type": "triggers",
+      "description": "Risk Category Gate decision triggers Adverse Media Screening Checkpoint",
+      "properties": {
+        "trigger_condition": "Adverse media screening required for all risk categories"
+      },
+      "context": "No PEP/adverse media (Low Risk); Adverse media (criminal history, fraud) (High Risk)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_dp_001",
+      "source_name": "Risk Category Gate",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_003",
+      "target_name": "AML Jurisdiction Controls Checkpoint",
+      "rel_type": "triggers",
+      "description": "Risk Category Gate decision triggers AML Jurisdiction Controls Checkpoint",
+      "properties": {
+        "trigger_condition": "Jurisdiction AML controls assessment required for all risk categories"
+      },
+      "context": "Country with weak AML controls (High Risk); EU/developed country (Medium Risk)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_001",
+      "source_name": "PEP Screening Checkpoint",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_003",
+      "target_name": "PEP Customer",
+      "rel_type": "verifies_completion_of",
+      "description": "PEP Screening Checkpoint verifies PEP status of customer",
+      "properties": {
+        "screening_type": "PEP identification"
+      },
+      "context": "PEP (Politically Exposed Person)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_002",
+      "source_name": "Adverse Media Screening Checkpoint",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_001",
+      "target_name": "UK National Customer",
+      "rel_type": "verifies_completion_of",
+      "description": "Adverse Media Screening Checkpoint screens UK National Customer for adverse media",
+      "properties": {
+        "screening_type": "Adverse media check",
+        "risk_indicators": [
+          "criminal history",
+          "fraud"
+        ]
+      },
+      "context": "No PEP/adverse media (Low Risk); Adverse media (criminal history, fraud) (High Risk)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_003",
+      "source_name": "AML Jurisdiction Controls Checkpoint",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_002",
+      "target_name": "Non-UK Resident Customer",
+      "rel_type": "verifies_completion_of",
+      "description": "AML Jurisdiction Controls Checkpoint verifies jurisdiction AML controls for Non-UK Resident Customer",
+      "properties": {
+        "screening_type": "Jurisdiction AML controls assessment",
+        "risk_factors": [
+          "weak AML controls",
+          "foreign address"
+        ]
+      },
+      "context": "Non-UK resident (but EU/developed country) (Medium Risk); Country with weak AML controls (High Risk)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_ps_001",
+      "source_name": "Risk Category Determination",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_001",
+      "target_name": "UK National Customer",
+      "rel_type": "classifies",
+      "description": "Risk Category Determination classifies UK National Customer as Low Risk",
+      "properties": {
+        "risk_category": "Low Risk",
+        "criteria": [
+          "UK national or long-term resident",
+          "Age 18–65",
+          "UK address",
+          "No PEP/adverse media"
+        ]
+      },
+      "context": "Low Risk: UK national or long-term resident; Age 18–65; Standard product (SmartSaver, Current Account); UK address; No PEP/adverse media",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_ps_001",
+      "source_name": "Risk Category Determination",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_002",
+      "target_name": "Non-UK Resident Customer",
+      "rel_type": "classifies",
+      "description": "Risk Category Determination classifies Non-UK Resident Customer as Medium or High Risk",
+      "properties": {
+        "risk_categories": [
+          "Medium Risk",
+          "High Risk"
+        ],
+        "criteria": [
+          "Non-UK resident",
+          "Foreign address",
+          "Jurisdiction AML controls"
+        ]
+      },
+      "context": "Medium Risk: Non-UK resident (but EU/developed country); Foreign address but EU/developed country; High Risk: Non-UK national with foreign address; Country with weak AML controls",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_ps_001",
+      "source_name": "Risk Category Determination",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_003",
+      "target_name": "PEP Customer",
+      "rel_type": "classifies",
+      "description": "Risk Category Determination classifies PEP Customer as High Risk",
+      "properties": {
+        "risk_category": "High Risk",
+        "criteria": [
+          "PEP (Politically Exposed Person)"
+        ]
+      },
+      "context": "High Risk: PEP (Politically Exposed Person)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_ps_001",
+      "source_name": "Risk Category Determination",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_addr_001",
+      "target_name": "UK Address Verification",
+      "rel_type": "verifies_identity_of",
+      "description": "Risk Category Determination verifies UK Address for Low Risk classification",
+      "properties": {
+        "address_type": "UK address",
+        "risk_impact": "Low Risk indicator"
+      },
+      "context": "Low Risk: UK address",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_ps_001",
+      "source_name": "Risk Category Determination",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_addr_002",
+      "target_name": "Foreign Address Verification",
+      "rel_type": "verifies_identity_of",
+      "description": "Risk Category Determination verifies Foreign Address for Medium or High Risk classification",
+      "properties": {
+        "address_type": "Foreign address",
+        "risk_impact": [
+          "Medium Risk",
+          "High Risk"
+        ]
+      },
+      "context": "Medium Risk: Foreign address but EU/developed country; High Risk: Non-UK national with foreign address",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_prd_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_001",
+      "target_name": "UK National Customer",
+      "rel_type": "governs_setup_of",
+      "description": "SmartSaver Account product is associated with Low Risk UK National Customer",
+      "properties": {
+        "product_type": "Standard product",
+        "risk_category": "Low Risk"
+      },
+      "context": "Standard product (SmartSaver, Current Account)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_prd_002",
+      "source_name": "Current Account",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_001",
+      "target_name": "UK National Customer",
+      "rel_type": "governs_setup_of",
+      "description": "Current Account product is associated with Low Risk UK National Customer",
+      "properties": {
+        "product_type": "Standard product",
+        "risk_category": "Low Risk"
+      },
+      "context": "Standard product (SmartSaver, Current Account)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_aml_001",
+      "source_name": "Beneficial Ownership Screening",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_003",
+      "target_name": "PEP Customer",
+      "rel_type": "screens_for_patterns_in",
+      "description": "Beneficial Ownership Screening identifies unclear beneficial ownership in PEP Customer",
+      "properties": {
+        "screening_focus": "Beneficial ownership clarity",
+        "risk_indicator": "High Risk"
+      },
+      "context": "High Risk: Beneficial ownership unclear",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_proc_001",
+      "source_name": "Risk Assessment Process",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_001",
+      "target_name": "PEP Screening Checkpoint",
+      "rel_type": "mandated_to_include",
+      "description": "Risk Assessment Process mandates inclusion of PEP Screening Checkpoint",
+      "properties": {
+        "mandatory": true,
+        "checkpoint_type": "compliance"
+      },
+      "context": "PEP (Politically Exposed Person) screening required for risk assessment",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_proc_001",
+      "source_name": "Risk Assessment Process",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_002",
+      "target_name": "Adverse Media Screening Checkpoint",
+      "rel_type": "mandated_to_include",
+      "description": "Risk Assessment Process mandates inclusion of Adverse Media Screening Checkpoint",
+      "properties": {
+        "mandatory": true,
+        "checkpoint_type": "compliance"
+      },
+      "context": "Adverse media screening required for risk assessment",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_proc_001",
+      "source_name": "Risk Assessment Process",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_003",
+      "target_name": "AML Jurisdiction Controls Checkpoint",
+      "rel_type": "mandated_to_include",
+      "description": "Risk Assessment Process mandates inclusion of AML Jurisdiction Controls Checkpoint",
+      "properties": {
+        "mandatory": true,
+        "checkpoint_type": "compliance"
+      },
+      "context": "AML jurisdiction controls assessment required for risk assessment",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_proc_001",
+      "source_name": "Risk Assessment Process",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_dp_001",
+      "target_name": "Risk Category Gate",
+      "rel_type": "branches_at",
+      "description": "Risk Assessment Process branches at Risk Category Gate decision point",
+      "properties": {
+        "branches": [
+          "Low Risk",
+          "Medium Risk",
+          "High Risk"
+        ]
+      },
+      "context": "Determine Risk Category: Low Risk, Medium Risk, High Risk classifications",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_proc_001",
+      "source_name": "Risk Assessment Process",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_ps_001",
+      "source_name": "Risk Category Determination",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_dp_001",
+      "source_name": "Risk Category Gate",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_001",
+      "source_name": "PEP Screening Checkpoint",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_002",
+      "source_name": "Adverse Media Screening Checkpoint",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cc_003",
+      "source_name": "AML Jurisdiction Controls Checkpoint",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_prd_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_prd_002",
+      "source_name": "Current Account",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_001",
+      "source_name": "UK National Customer",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_002",
+      "source_name": "Non-UK Resident Customer",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_cust_003",
+      "source_name": "PEP Customer",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_addr_001",
+      "source_name": "UK Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_addr_002",
+      "source_name": "Foreign Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009_aml_001",
+      "source_name": "Beneficial Ownership Screening",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

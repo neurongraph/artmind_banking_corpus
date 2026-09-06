@@ -1,0 +1,410 @@
+{
+  "chunk_seq": 30,
+  "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+  "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+  "text": "### Customer Constraints  \n| Rule | Constraint |\n|------|-----------|\n| Must have identity verified | `customer.kyc_status = 'Verified'` |\n| Must pass AML screening | `customer.aml_status != 'Flagged'` |\n| Must have valid address | `customer.address IS NOT NULL AND verified` |\n| Age 18+ | `customer.age >= 18` |",
+  "name": "Chunk 30/37",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+  "next_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+  "raw_entities": [
+    {
+      "id": "bc_001",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "customer",
+      "description": "A natural person subject to identity verification, AML screening, address validation, and age requirements as defined in the customer constraints table. The customer must meet all four mandatory constraints before account opening or transaction processing.",
+      "context": [
+        "Must have identity verified",
+        "Must pass AML screening",
+        "Must have valid address",
+        "Age 18+"
+      ]
+    },
+    {
+      "id": "kyc_001",
+      "name": "Identity Verification",
+      "aliases": [
+        "kyc_status"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "A mandatory compliance control requiring that a customer's identity be verified before account opening or transaction processing. The verification status is tracked as a boolean constraint in the customer record.",
+      "context": [
+        "Must have identity verified",
+        "customer.kyc_status = 'Verified'"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "AML Screening",
+      "aliases": [
+        "aml_status"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "A mandatory anti-money laundering control requiring that a customer pass AML screening before account opening or transaction processing. Customers with a flagged AML status are rejected.",
+      "context": [
+        "Must pass AML screening",
+        "customer.aml_status != 'Flagged'"
+      ]
+    },
+    {
+      "id": "kyc_002",
+      "name": "Address Verification",
+      "aliases": [
+        "address_verification"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "address_verification",
+      "description": "A mandatory compliance control requiring that a customer have a valid, verified address on file before account opening or transaction processing. The address must be non-null and marked as verified.",
+      "context": [
+        "Must have valid address",
+        "customer.address IS NOT NULL AND verified"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "Minimum Age Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A regulatory constraint requiring that customers be at least 18 years of age to open an account or conduct transactions with the bank.",
+      "context": [
+        "Age 18+",
+        "customer.age >= 18"
+      ]
+    }
+  ],
+  "id_map": {
+    "bc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_bc_001",
+    "kyc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_kyc_001",
+    "aml_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_aml_001",
+    "kyc_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_kyc_002",
+    "br_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_br_001"
+  },
+  "entities": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_bc_001",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "customer",
+      "description": "A natural person subject to identity verification, AML screening, address validation, and age requirements as defined in the customer constraints table. The customer must meet all four mandatory constraints before account opening or transaction processing.",
+      "context": [
+        "Must have identity verified",
+        "Must pass AML screening",
+        "Must have valid address",
+        "Age 18+"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_kyc_001",
+      "name": "Identity Verification",
+      "aliases": [
+        "kyc_status"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "A mandatory compliance control requiring that a customer's identity be verified before account opening or transaction processing. The verification status is tracked as a boolean constraint in the customer record.",
+      "context": [
+        "Must have identity verified",
+        "customer.kyc_status = 'Verified'"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_aml_001",
+      "name": "AML Screening",
+      "aliases": [
+        "aml_status"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "A mandatory anti-money laundering control requiring that a customer pass AML screening before account opening or transaction processing. Customers with a flagged AML status are rejected.",
+      "context": [
+        "Must pass AML screening",
+        "customer.aml_status != 'Flagged'"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_kyc_002",
+      "name": "Address Verification",
+      "aliases": [
+        "address_verification"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "address_verification",
+      "description": "A mandatory compliance control requiring that a customer have a valid, verified address on file before account opening or transaction processing. The address must be non-null and marked as verified.",
+      "context": [
+        "Must have valid address",
+        "customer.address IS NOT NULL AND verified"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_br_001",
+      "name": "Minimum Age Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A regulatory constraint requiring that customers be at least 18 years of age to open an account or conduct transactions with the bank.",
+      "context": [
+        "Age 18+",
+        "customer.age >= 18"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_bc_001",
+      "name": "Customer",
+      "properties": {
+        "definition": "An entity that must satisfy identity verification, AML screening, address verification, and minimum age requirements to be eligible for banking services",
+        "key_attributes": [
+          "kyc_status",
+          "aml_status",
+          "address",
+          "age"
+        ],
+        "business_rules": [
+          "Must have identity verified",
+          "Must pass AML screening",
+          "Must have valid address",
+          "Must be age 18 or older"
+        ],
+        "ontology_domain": "Customer Management"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_kyc_001",
+      "name": "Identity Verification",
+      "properties": {
+        "mandatory": "yes",
+        "verification_method": "identity verification process",
+        "consequence_of_failure": "customer cannot be onboarded; kyc_status will not be 'Verified'"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_aml_001",
+      "name": "AML Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": "customer AML status screening",
+        "hit_or_match_response": "customer marked as 'Flagged'; customer fails AML screening requirement",
+        "regulatory_basis": "AML compliance obligation"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_kyc_002",
+      "name": "Address Verification",
+      "properties": {
+        "mandatory": "yes",
+        "verification_method": "address validation and verification",
+        "consequence_of_failure": "customer cannot be onboarded; address requirement not satisfied"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_br_001",
+      "name": "Minimum Age Requirement",
+      "properties": {
+        "rule_statement": "Customer must be age 18 or older",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Customer"
+        ],
+        "enforcement": "system constraint: customer.age >= 18"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_bc_001",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_kyc_001",
+      "target_name": "Identity Verification",
+      "rel_type": "required_to_complete",
+      "description": "Customer must have identity verified as a constraint",
+      "properties": {
+        "constraint": "customer.kyc_status = 'Verified'",
+        "mandatory": true
+      },
+      "context": "Must have identity verified | `customer.kyc_status = 'Verified'`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_bc_001",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_aml_001",
+      "target_name": "AML Screening",
+      "rel_type": "required_to_complete",
+      "description": "Customer must pass AML screening as a constraint",
+      "properties": {
+        "constraint": "customer.aml_status != 'Flagged'",
+        "mandatory": true
+      },
+      "context": "Must pass AML screening | `customer.aml_status != 'Flagged'`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_bc_001",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_kyc_002",
+      "target_name": "Address Verification",
+      "rel_type": "required_to_complete",
+      "description": "Customer must have valid address verified as a constraint",
+      "properties": {
+        "constraint": "customer.address IS NOT NULL AND verified",
+        "mandatory": true
+      },
+      "context": "Must have valid address | `customer.address IS NOT NULL AND verified`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_bc_001",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_br_001",
+      "target_name": "Minimum Age Requirement",
+      "rel_type": "subject_to",
+      "description": "Customer is subject to minimum age requirement business rule",
+      "properties": {
+        "constraint": "customer.age >= 18",
+        "minimum_age": 18
+      },
+      "context": "Age 18+ | `customer.age >= 18`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_kyc_001",
+      "source_name": "Identity Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_bc_001",
+      "target_name": "Customer",
+      "rel_type": "verified_by",
+      "description": "Identity Verification is performed on Customer",
+      "properties": {
+        "verification_type": "identity"
+      },
+      "context": "Must have identity verified | `customer.kyc_status = 'Verified'`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_aml_001",
+      "source_name": "AML Screening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_bc_001",
+      "target_name": "Customer",
+      "rel_type": "applied_to",
+      "description": "AML Screening is applied to Customer",
+      "properties": {
+        "screening_type": "aml"
+      },
+      "context": "Must pass AML screening | `customer.aml_status != 'Flagged'`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_kyc_002",
+      "source_name": "Address Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_bc_001",
+      "target_name": "Customer",
+      "rel_type": "verified_by",
+      "description": "Address Verification is performed on Customer",
+      "properties": {
+        "verification_type": "address"
+      },
+      "context": "Must have valid address | `customer.address IS NOT NULL AND verified`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_bc_001",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_kyc_001",
+      "source_name": "Identity Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_aml_001",
+      "source_name": "AML Screening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_kyc_002",
+      "source_name": "Address Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030_br_001",
+      "source_name": "Minimum Age Requirement",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ]
+}

@@ -1,0 +1,1138 @@
+{
+  "chunk_seq": 14,
+  "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+  "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+  "text": "### Monitoring Methods  \n**Automated Rules (Fraud Detection Engine, see [[systems]]):**  \n| Rule | Threshold | Action |\n|------|-----------|--------|\n| Large deposit | >£50,000 in 24h | Alert + manual review |\n| Rapid movement | Deposit then withdrawal <2h | Alert for review |\n| Multiple small transfers | 10+ transfers to different recipients <24h | Velocity alert |\n| Geographic anomaly | Transaction in different country within 2 hours | Alert for review |\n| High-risk jurisdiction | Transaction with sanctioned country | Auto-block |\n| Unusual beneficiary | Transfer to new beneficiary >threshold | Alert for review |  \n**Manual Monitoring:**\n- Financial Crime team reviews alerts\n- Pattern analysis for suspicious sequences\n- Behavioral profiling changes\n- Judgment-based assessment",
+  "name": "Chunk 14/35",
+  "_domain": "banking.policy",
+  "prev_chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_013",
+  "next_chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_015",
+  "raw_entities": [
+    {
+      "id": "ctrl_001",
+      "name": "Fraud Detection Engine",
+      "aliases": [
+        "Automated Rules",
+        "FDE"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "transaction_monitoring",
+      "description": "An automated system that monitors customer transactions against predefined rules to detect potential fraud. The engine generates alerts for large deposits, rapid movements, velocity patterns, geographic anomalies, high-risk jurisdictions, and unusual beneficiaries, triggering manual review or automatic blocking actions.",
+      "context": [
+        "Automated Rules (Fraud Detection Engine, see [[systems]]):",
+        "Large deposit | >£50,000 in 24h | Alert + manual review",
+        "High-risk jurisdiction | Transaction with sanctioned country | Auto-block"
+      ]
+    },
+    {
+      "id": "ctrl_002",
+      "name": "Large Deposit Alert",
+      "aliases": [],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "transaction_monitoring",
+      "description": "An automated monitoring rule that triggers an alert and manual review when a deposit exceeds £50,000 within a 24-hour period. This control is designed to identify potentially suspicious high-value deposit activity.",
+      "context": [
+        "Large deposit | >£50,000 in 24h | Alert + manual review"
+      ]
+    },
+    {
+      "id": "ctrl_003",
+      "name": "Rapid Movement Alert",
+      "aliases": [],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "transaction_monitoring",
+      "description": "An automated monitoring rule that flags transactions where a deposit is followed by a withdrawal within less than 2 hours. This control detects potential layering or rapid fund movement patterns indicative of money laundering.",
+      "context": [
+        "Rapid movement | Deposit then withdrawal <2h | Alert for review"
+      ]
+    },
+    {
+      "id": "ctrl_004",
+      "name": "Velocity Alert",
+      "aliases": [
+        "Multiple Small Transfers Alert"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "transaction_monitoring",
+      "description": "An automated monitoring rule that generates a velocity alert when 10 or more transfers to different recipients occur within a 24-hour period. This control identifies potential structuring or rapid distribution patterns.",
+      "context": [
+        "Multiple small transfers | 10+ transfers to different recipients <24h | Velocity alert"
+      ]
+    },
+    {
+      "id": "ctrl_005",
+      "name": "Geographic Anomaly Alert",
+      "aliases": [],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "transaction_monitoring",
+      "description": "An automated monitoring rule that triggers an alert for manual review when a transaction occurs in a different country within 2 hours of a previous transaction. This control detects geographically impossible or suspicious transaction patterns.",
+      "context": [
+        "Geographic anomaly | Transaction in different country within 2 hours | Alert for review"
+      ]
+    },
+    {
+      "id": "ctrl_006",
+      "name": "High-Risk Jurisdiction Block",
+      "aliases": [
+        "Sanctioned Country Block"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "transaction_monitoring",
+      "description": "An automated control that automatically blocks transactions involving sanctioned countries or high-risk jurisdictions. This is a preventive measure that stops transactions before they complete rather than generating an alert.",
+      "context": [
+        "High-risk jurisdiction | Transaction with sanctioned country | Auto-block"
+      ]
+    },
+    {
+      "id": "ctrl_007",
+      "name": "Unusual Beneficiary Alert",
+      "aliases": [],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "transaction_monitoring",
+      "description": "An automated monitoring rule that triggers an alert for manual review when a transfer is made to a new beneficiary above a defined threshold. This control identifies transfers to previously unknown recipients that may warrant additional scrutiny.",
+      "context": [
+        "Unusual beneficiary | Transfer to new beneficiary >threshold | Alert for review"
+      ]
+    },
+    {
+      "id": "ctrl_008",
+      "name": "Manual Alert Review",
+      "aliases": [],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "audit_logging",
+      "description": "A manual monitoring process performed by the Financial Crime team to review alerts generated by the automated fraud detection engine. The team conducts pattern analysis, behavioral profiling, and judgment-based assessment of suspicious activity.",
+      "context": [
+        "Financial Crime team reviews alerts",
+        "Pattern analysis for suspicious sequences",
+        "Behavioral profiling changes",
+        "Judgment-based assessment"
+      ]
+    },
+    {
+      "id": "role_001",
+      "name": "Financial Crime Team",
+      "aliases": [],
+      "entity_class": "ROLE_RESPONSIBILITY",
+      "type": "all_staff",
+      "description": "The team responsible for reviewing fraud detection alerts, conducting pattern analysis for suspicious sequences, assessing behavioral profiling changes, and making judgment-based assessments of flagged transactions.",
+      "context": [
+        "Financial Crime team reviews alerts",
+        "Pattern analysis for suspicious sequences",
+        "Behavioral profiling changes"
+      ]
+    },
+    {
+      "id": "risk_001",
+      "name": "Large Deposit Risk",
+      "aliases": [],
+      "entity_class": "RISK_CATEGORY",
+      "type": "fraud",
+      "description": "The risk that unusually large deposits (exceeding £50,000 in 24 hours) may indicate money laundering, fraud, or other financial crime activity requiring investigation.",
+      "context": [
+        "Large deposit | >£50,000 in 24h | Alert + manual review"
+      ]
+    },
+    {
+      "id": "risk_002",
+      "name": "Rapid Fund Movement Risk",
+      "aliases": [],
+      "entity_class": "RISK_CATEGORY",
+      "type": "money_laundering",
+      "description": "The risk that deposits followed immediately by withdrawals (within 2 hours) may indicate layering or rapid fund movement consistent with money laundering schemes.",
+      "context": [
+        "Rapid movement | Deposit then withdrawal <2h | Alert for review"
+      ]
+    },
+    {
+      "id": "risk_003",
+      "name": "Structuring Risk",
+      "aliases": [
+        "Velocity Risk"
+      ],
+      "entity_class": "RISK_CATEGORY",
+      "type": "money_laundering",
+      "description": "The risk that multiple small transfers to different recipients within a short timeframe (10+ transfers in 24 hours) may indicate structuring or deliberate fragmentation of funds to evade detection.",
+      "context": [
+        "Multiple small transfers | 10+ transfers to different recipients <24h | Velocity alert"
+      ]
+    },
+    {
+      "id": "risk_004",
+      "name": "Geographic Anomaly Risk",
+      "aliases": [],
+      "entity_class": "RISK_CATEGORY",
+      "type": "fraud",
+      "description": "The risk that transactions occurring in geographically distant locations within an impossibly short timeframe (2 hours) may indicate account compromise, fraud, or unauthorized access.",
+      "context": [
+        "Geographic anomaly | Transaction in different country within 2 hours | Alert for review"
+      ]
+    },
+    {
+      "id": "risk_005",
+      "name": "Sanctions Violation Risk",
+      "aliases": [
+        "High-Risk Jurisdiction Risk"
+      ],
+      "entity_class": "RISK_CATEGORY",
+      "type": "sanctions_violation",
+      "description": "The risk that transactions with sanctioned countries or high-risk jurisdictions may violate sanctions regulations and expose the bank to regulatory penalties and reputational harm.",
+      "context": [
+        "High-risk jurisdiction | Transaction with sanctioned country | Auto-block"
+      ]
+    },
+    {
+      "id": "risk_006",
+      "name": "Unusual Beneficiary Risk",
+      "aliases": [],
+      "entity_class": "RISK_CATEGORY",
+      "type": "fraud",
+      "description": "The risk that transfers to new or previously unknown beneficiaries above a defined threshold may indicate account compromise, fraud, or unauthorized fund diversion.",
+      "context": [
+        "Unusual beneficiary | Transfer to new beneficiary >threshold | Alert for review"
+      ]
+    }
+  ],
+  "id_map": {
+    "ctrl_001": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_001",
+    "ctrl_002": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_002",
+    "ctrl_003": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_003",
+    "ctrl_004": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_004",
+    "ctrl_005": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_005",
+    "ctrl_006": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_006",
+    "ctrl_007": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_007",
+    "ctrl_008": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_008",
+    "role_001": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_role_001",
+    "risk_001": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_001",
+    "risk_002": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_002",
+    "risk_003": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_003",
+    "risk_004": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_004",
+    "risk_005": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_005",
+    "risk_006": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_006"
+  },
+  "entities": [
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_001",
+      "name": "Fraud Detection Engine",
+      "aliases": [
+        "Automated Rules",
+        "FDE"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "transaction_monitoring",
+      "description": "An automated system that monitors customer transactions against predefined rules to detect potential fraud. The engine generates alerts for large deposits, rapid movements, velocity patterns, geographic anomalies, high-risk jurisdictions, and unusual beneficiaries, triggering manual review or automatic blocking actions.",
+      "context": [
+        "Automated Rules (Fraud Detection Engine, see [[systems]]):",
+        "Large deposit | >£50,000 in 24h | Alert + manual review",
+        "High-risk jurisdiction | Transaction with sanctioned country | Auto-block"
+      ],
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_002",
+      "name": "Large Deposit Alert",
+      "aliases": [],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "transaction_monitoring",
+      "description": "An automated monitoring rule that triggers an alert and manual review when a deposit exceeds £50,000 within a 24-hour period. This control is designed to identify potentially suspicious high-value deposit activity.",
+      "context": [
+        "Large deposit | >£50,000 in 24h | Alert + manual review"
+      ],
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_003",
+      "name": "Rapid Movement Alert",
+      "aliases": [],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "transaction_monitoring",
+      "description": "An automated monitoring rule that flags transactions where a deposit is followed by a withdrawal within less than 2 hours. This control detects potential layering or rapid fund movement patterns indicative of money laundering.",
+      "context": [
+        "Rapid movement | Deposit then withdrawal <2h | Alert for review"
+      ],
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_004",
+      "name": "Velocity Alert",
+      "aliases": [
+        "Multiple Small Transfers Alert"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "transaction_monitoring",
+      "description": "An automated monitoring rule that generates a velocity alert when 10 or more transfers to different recipients occur within a 24-hour period. This control identifies potential structuring or rapid distribution patterns.",
+      "context": [
+        "Multiple small transfers | 10+ transfers to different recipients <24h | Velocity alert"
+      ],
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_005",
+      "name": "Geographic Anomaly Alert",
+      "aliases": [],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "transaction_monitoring",
+      "description": "An automated monitoring rule that triggers an alert for manual review when a transaction occurs in a different country within 2 hours of a previous transaction. This control detects geographically impossible or suspicious transaction patterns.",
+      "context": [
+        "Geographic anomaly | Transaction in different country within 2 hours | Alert for review"
+      ],
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_006",
+      "name": "High-Risk Jurisdiction Block",
+      "aliases": [
+        "Sanctioned Country Block"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "transaction_monitoring",
+      "description": "An automated control that automatically blocks transactions involving sanctioned countries or high-risk jurisdictions. This is a preventive measure that stops transactions before they complete rather than generating an alert.",
+      "context": [
+        "High-risk jurisdiction | Transaction with sanctioned country | Auto-block"
+      ],
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_007",
+      "name": "Unusual Beneficiary Alert",
+      "aliases": [],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "transaction_monitoring",
+      "description": "An automated monitoring rule that triggers an alert for manual review when a transfer is made to a new beneficiary above a defined threshold. This control identifies transfers to previously unknown recipients that may warrant additional scrutiny.",
+      "context": [
+        "Unusual beneficiary | Transfer to new beneficiary >threshold | Alert for review"
+      ],
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_008",
+      "name": "Manual Alert Review",
+      "aliases": [],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "audit_logging",
+      "description": "A manual monitoring process performed by the Financial Crime team to review alerts generated by the automated fraud detection engine. The team conducts pattern analysis, behavioral profiling, and judgment-based assessment of suspicious activity.",
+      "context": [
+        "Financial Crime team reviews alerts",
+        "Pattern analysis for suspicious sequences",
+        "Behavioral profiling changes",
+        "Judgment-based assessment"
+      ],
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_role_001",
+      "name": "Financial Crime Team",
+      "aliases": [],
+      "entity_class": "ROLE_RESPONSIBILITY",
+      "type": "all_staff",
+      "description": "The team responsible for reviewing fraud detection alerts, conducting pattern analysis for suspicious sequences, assessing behavioral profiling changes, and making judgment-based assessments of flagged transactions.",
+      "context": [
+        "Financial Crime team reviews alerts",
+        "Pattern analysis for suspicious sequences",
+        "Behavioral profiling changes"
+      ],
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_001",
+      "name": "Large Deposit Risk",
+      "aliases": [],
+      "entity_class": "RISK_CATEGORY",
+      "type": "fraud",
+      "description": "The risk that unusually large deposits (exceeding £50,000 in 24 hours) may indicate money laundering, fraud, or other financial crime activity requiring investigation.",
+      "context": [
+        "Large deposit | >£50,000 in 24h | Alert + manual review"
+      ],
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_002",
+      "name": "Rapid Fund Movement Risk",
+      "aliases": [],
+      "entity_class": "RISK_CATEGORY",
+      "type": "money_laundering",
+      "description": "The risk that deposits followed immediately by withdrawals (within 2 hours) may indicate layering or rapid fund movement consistent with money laundering schemes.",
+      "context": [
+        "Rapid movement | Deposit then withdrawal <2h | Alert for review"
+      ],
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_003",
+      "name": "Structuring Risk",
+      "aliases": [
+        "Velocity Risk"
+      ],
+      "entity_class": "RISK_CATEGORY",
+      "type": "money_laundering",
+      "description": "The risk that multiple small transfers to different recipients within a short timeframe (10+ transfers in 24 hours) may indicate structuring or deliberate fragmentation of funds to evade detection.",
+      "context": [
+        "Multiple small transfers | 10+ transfers to different recipients <24h | Velocity alert"
+      ],
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_004",
+      "name": "Geographic Anomaly Risk",
+      "aliases": [],
+      "entity_class": "RISK_CATEGORY",
+      "type": "fraud",
+      "description": "The risk that transactions occurring in geographically distant locations within an impossibly short timeframe (2 hours) may indicate account compromise, fraud, or unauthorized access.",
+      "context": [
+        "Geographic anomaly | Transaction in different country within 2 hours | Alert for review"
+      ],
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_005",
+      "name": "Sanctions Violation Risk",
+      "aliases": [
+        "High-Risk Jurisdiction Risk"
+      ],
+      "entity_class": "RISK_CATEGORY",
+      "type": "sanctions_violation",
+      "description": "The risk that transactions with sanctioned countries or high-risk jurisdictions may violate sanctions regulations and expose the bank to regulatory penalties and reputational harm.",
+      "context": [
+        "High-risk jurisdiction | Transaction with sanctioned country | Auto-block"
+      ],
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_006",
+      "name": "Unusual Beneficiary Risk",
+      "aliases": [],
+      "entity_class": "RISK_CATEGORY",
+      "type": "fraud",
+      "description": "The risk that transfers to new or previously unknown beneficiaries above a defined threshold may indicate account compromise, fraud, or unauthorized fund diversion.",
+      "context": [
+        "Unusual beneficiary | Transfer to new beneficiary >threshold | Alert for review"
+      ],
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_001",
+      "name": "Fraud Detection Engine",
+      "properties": {
+        "control_type": "detective",
+        "mandatory": true,
+        "frequency": "real-time",
+        "performed_by": "automated_system",
+        "applies_to": [
+          "large_deposits",
+          "rapid_fund_movements",
+          "velocity_patterns",
+          "geographic_anomalies",
+          "high_risk_jurisdictions",
+          "unusual_beneficiaries"
+        ],
+        "evidence_required": "alert_logs_and_review_records"
+      },
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_002",
+      "name": "Large Deposit Alert",
+      "properties": {
+        "control_type": "detective",
+        "mandatory": true,
+        "frequency": "real-time",
+        "performed_by": "automated_system",
+        "applies_to": "large_deposit_risk",
+        "threshold_value": 50000,
+        "timeframe": "24_hours",
+        "escalation_path": "manual_review",
+        "evidence_required": "alert_trigger_logs"
+      },
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_003",
+      "name": "Rapid Movement Alert",
+      "properties": {
+        "control_type": "detective",
+        "mandatory": true,
+        "frequency": "real-time",
+        "performed_by": "automated_system",
+        "applies_to": "rapid_fund_movement_risk",
+        "timeframe": "2_hours",
+        "escalation_path": "manual_review",
+        "evidence_required": "transaction_sequence_logs"
+      },
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_004",
+      "name": "Velocity Alert",
+      "properties": {
+        "control_type": "detective",
+        "mandatory": true,
+        "frequency": "real-time",
+        "performed_by": "automated_system",
+        "applies_to": "structuring_risk",
+        "threshold_value": 10,
+        "timeframe": "24_hours",
+        "escalation_path": "manual_review",
+        "evidence_required": "transfer_count_and_recipient_logs"
+      },
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_005",
+      "name": "Geographic Anomaly Alert",
+      "properties": {
+        "control_type": "detective",
+        "mandatory": true,
+        "frequency": "real-time",
+        "performed_by": "automated_system",
+        "applies_to": "geographic_anomaly_risk",
+        "timeframe": "2_hours",
+        "escalation_path": "manual_review",
+        "evidence_required": "transaction_location_and_timestamp_logs"
+      },
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_006",
+      "name": "High-Risk Jurisdiction Block",
+      "properties": {
+        "control_type": "preventive",
+        "mandatory": true,
+        "frequency": "real-time",
+        "performed_by": "automated_system",
+        "applies_to": "sanctions_violation_risk",
+        "escalation_path": "auto_block",
+        "evidence_required": "blocked_transaction_logs"
+      },
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_007",
+      "name": "Unusual Beneficiary Alert",
+      "properties": {
+        "control_type": "detective",
+        "mandatory": true,
+        "frequency": "real-time",
+        "performed_by": "automated_system",
+        "applies_to": "unusual_beneficiary_risk",
+        "escalation_path": "manual_review",
+        "evidence_required": "beneficiary_history_and_threshold_comparison_logs"
+      },
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_008",
+      "name": "Manual Alert Review",
+      "properties": {
+        "control_type": "detective",
+        "mandatory": true,
+        "frequency": "periodic",
+        "performed_by": "financial_crime_team",
+        "applies_to": [
+          "large_deposit_risk",
+          "rapid_fund_movement_risk",
+          "structuring_risk",
+          "geographic_anomaly_risk",
+          "unusual_beneficiary_risk"
+        ],
+        "evidence_required": "review_notes_and_assessment_records"
+      },
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_role_001",
+      "name": "Financial Crime Team",
+      "properties": {
+        "specific_obligation": [
+          "review_automated_alerts",
+          "conduct_pattern_analysis",
+          "perform_behavioral_profiling",
+          "make_judgment_based_assessments",
+          "escalate_suspicious_activity"
+        ],
+        "accountability_for": "alert_review_and_suspicious_activity_determination"
+      },
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_001",
+      "name": "Large Deposit Risk",
+      "properties": {
+        "risk_definition": "deposits exceeding £50,000 within a 24-hour period",
+        "detection_mechanism": "automated_fraud_detection_engine",
+        "required_response": "alert_and_manual_review"
+      },
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_002",
+      "name": "Rapid Fund Movement Risk",
+      "properties": {
+        "risk_definition": "deposit followed by withdrawal within 2 hours",
+        "detection_mechanism": "automated_fraud_detection_engine",
+        "required_response": "alert_for_manual_review"
+      },
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_003",
+      "name": "Structuring Risk",
+      "properties": {
+        "risk_definition": "10 or more transfers to different recipients within 24 hours",
+        "detection_mechanism": "velocity_alert_system",
+        "required_response": "velocity_alert_for_review"
+      },
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_004",
+      "name": "Geographic Anomaly Risk",
+      "properties": {
+        "risk_definition": "transaction in a different country within 2 hours of previous transaction",
+        "detection_mechanism": "automated_fraud_detection_engine",
+        "required_response": "alert_for_manual_review"
+      },
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_005",
+      "name": "Sanctions Violation Risk",
+      "properties": {
+        "risk_definition": "transaction involving sanctioned country or high-risk jurisdiction",
+        "detection_mechanism": "automated_fraud_detection_engine",
+        "required_response": "auto_block"
+      },
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_006",
+      "name": "Unusual Beneficiary Risk",
+      "properties": {
+        "risk_definition": "transfer to new beneficiary exceeding established threshold",
+        "detection_mechanism": "automated_fraud_detection_engine",
+        "required_response": "alert_for_manual_review"
+      },
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_001",
+      "target_name": "Large Deposit Risk",
+      "rel_type": "detected_by",
+      "description": "Fraud Detection Engine detects Large Deposit Risk through automated monitoring of deposits exceeding £50,000 in 24 hours",
+      "properties": {
+        "threshold": ">£50,000 in 24h",
+        "action": "Alert + manual review"
+      },
+      "context": "Large deposit | >£50,000 in 24h | Alert + manual review",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_002",
+      "source_name": "Large Deposit Alert",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_001",
+      "target_name": "Large Deposit Risk",
+      "rel_type": "mitigated_by",
+      "description": "Large Deposit Alert control mitigates Large Deposit Risk by triggering alerts and manual review for deposits over £50,000 in 24 hours",
+      "properties": {
+        "threshold": ">£50,000 in 24h",
+        "response": "Alert + manual review"
+      },
+      "context": "Large deposit | >£50,000 in 24h | Alert + manual review",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_003",
+      "source_name": "Rapid Movement Alert",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_002",
+      "target_name": "Rapid Fund Movement Risk",
+      "rel_type": "mitigated_by",
+      "description": "Rapid Movement Alert control mitigates Rapid Fund Movement Risk by detecting deposits followed by withdrawals within 2 hours",
+      "properties": {
+        "threshold": "Deposit then withdrawal <2h",
+        "response": "Alert for review"
+      },
+      "context": "Rapid movement | Deposit then withdrawal <2h | Alert for review",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_004",
+      "source_name": "Velocity Alert",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_003",
+      "target_name": "Structuring Risk",
+      "rel_type": "mitigated_by",
+      "description": "Velocity Alert control mitigates Structuring Risk by detecting multiple small transfers (10+ to different recipients within 24 hours)",
+      "properties": {
+        "threshold": "10+ transfers to different recipients <24h",
+        "response": "Velocity alert"
+      },
+      "context": "Multiple small transfers | 10+ transfers to different recipients <24h | Velocity alert",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_005",
+      "source_name": "Geographic Anomaly Alert",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_004",
+      "target_name": "Geographic Anomaly Risk",
+      "rel_type": "mitigated_by",
+      "description": "Geographic Anomaly Alert control mitigates Geographic Anomaly Risk by detecting transactions in different countries within 2 hours",
+      "properties": {
+        "threshold": "Transaction in different country within 2 hours",
+        "response": "Alert for review"
+      },
+      "context": "Geographic anomaly | Transaction in different country within 2 hours | Alert for review",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_006",
+      "source_name": "High-Risk Jurisdiction Block",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_005",
+      "target_name": "Sanctions Violation Risk",
+      "rel_type": "prevented_by",
+      "description": "High-Risk Jurisdiction Block control prevents Sanctions Violation Risk by automatically blocking transactions with sanctioned countries",
+      "properties": {
+        "trigger": "Transaction with sanctioned country",
+        "response": "Auto-block"
+      },
+      "context": "High-risk jurisdiction | Transaction with sanctioned country | Auto-block",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_007",
+      "source_name": "Unusual Beneficiary Alert",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_006",
+      "target_name": "Unusual Beneficiary Risk",
+      "rel_type": "mitigated_by",
+      "description": "Unusual Beneficiary Alert control mitigates Unusual Beneficiary Risk by detecting transfers to new beneficiaries exceeding threshold",
+      "properties": {
+        "trigger": "Transfer to new beneficiary >threshold",
+        "response": "Alert for review"
+      },
+      "context": "Unusual beneficiary | Transfer to new beneficiary >threshold | Alert for review",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_role_001",
+      "source_name": "Financial Crime Team",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_008",
+      "target_name": "Manual Alert Review",
+      "rel_type": "performed_by",
+      "description": "Financial Crime Team performs Manual Alert Review of automated alerts and conducts pattern analysis",
+      "properties": {
+        "activities": [
+          "Alert review",
+          "Pattern analysis for suspicious sequences",
+          "Behavioral profiling changes",
+          "Judgment-based assessment"
+        ]
+      },
+      "context": "Financial Crime team reviews alerts. Pattern analysis for suspicious sequences. Behavioral profiling changes. Judgment-based assessment",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_008",
+      "source_name": "Manual Alert Review",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_001",
+      "target_name": "Large Deposit Risk",
+      "rel_type": "responded_to_by",
+      "description": "Manual Alert Review responds to Large Deposit Risk through Financial Crime Team assessment",
+      "properties": {
+        "trigger": "Large deposit alerts",
+        "method": "Manual review and judgment-based assessment"
+      },
+      "context": "Financial Crime team reviews alerts",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_008",
+      "source_name": "Manual Alert Review",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_002",
+      "target_name": "Rapid Fund Movement Risk",
+      "rel_type": "responded_to_by",
+      "description": "Manual Alert Review responds to Rapid Fund Movement Risk through pattern analysis and assessment",
+      "properties": {
+        "trigger": "Rapid movement alerts",
+        "method": "Pattern analysis and review"
+      },
+      "context": "Financial Crime team reviews alerts. Pattern analysis for suspicious sequences",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_008",
+      "source_name": "Manual Alert Review",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_003",
+      "target_name": "Structuring Risk",
+      "rel_type": "responded_to_by",
+      "description": "Manual Alert Review responds to Structuring Risk through pattern analysis of multiple transfers",
+      "properties": {
+        "trigger": "Velocity alerts",
+        "method": "Pattern analysis for suspicious sequences"
+      },
+      "context": "Financial Crime team reviews alerts. Pattern analysis for suspicious sequences",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_008",
+      "source_name": "Manual Alert Review",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_004",
+      "target_name": "Geographic Anomaly Risk",
+      "rel_type": "responded_to_by",
+      "description": "Manual Alert Review responds to Geographic Anomaly Risk through alert assessment",
+      "properties": {
+        "trigger": "Geographic anomaly alerts",
+        "method": "Manual review and judgment-based assessment"
+      },
+      "context": "Financial Crime team reviews alerts",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_008",
+      "source_name": "Manual Alert Review",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_006",
+      "target_name": "Unusual Beneficiary Risk",
+      "rel_type": "responded_to_by",
+      "description": "Manual Alert Review responds to Unusual Beneficiary Risk through alert assessment",
+      "properties": {
+        "trigger": "Unusual beneficiary alerts",
+        "method": "Manual review and judgment-based assessment"
+      },
+      "context": "Financial Crime team reviews alerts",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_002",
+      "source_name": "Large Deposit Alert",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_001",
+      "target_name": "Fraud Detection Engine",
+      "rel_type": "triggered_by",
+      "description": "Large Deposit Alert is triggered by Fraud Detection Engine when deposits exceed £50,000 in 24 hours",
+      "properties": {
+        "system": "Fraud Detection Engine",
+        "threshold": ">£50,000 in 24h"
+      },
+      "context": "Automated Rules (Fraud Detection Engine, see [[systems]]): Large deposit | >£50,000 in 24h | Alert + manual review",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_003",
+      "source_name": "Rapid Movement Alert",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_001",
+      "target_name": "Fraud Detection Engine",
+      "rel_type": "triggered_by",
+      "description": "Rapid Movement Alert is triggered by Fraud Detection Engine when deposit followed by withdrawal occurs within 2 hours",
+      "properties": {
+        "system": "Fraud Detection Engine",
+        "threshold": "Deposit then withdrawal <2h"
+      },
+      "context": "Automated Rules (Fraud Detection Engine, see [[systems]]): Rapid movement | Deposit then withdrawal <2h | Alert for review",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_004",
+      "source_name": "Velocity Alert",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_001",
+      "target_name": "Fraud Detection Engine",
+      "rel_type": "triggered_by",
+      "description": "Velocity Alert is triggered by Fraud Detection Engine when 10+ transfers to different recipients occur within 24 hours",
+      "properties": {
+        "system": "Fraud Detection Engine",
+        "threshold": "10+ transfers to different recipients <24h"
+      },
+      "context": "Automated Rules (Fraud Detection Engine, see [[systems]]): Multiple small transfers | 10+ transfers to different recipients <24h | Velocity alert",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_005",
+      "source_name": "Geographic Anomaly Alert",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_001",
+      "target_name": "Fraud Detection Engine",
+      "rel_type": "triggered_by",
+      "description": "Geographic Anomaly Alert is triggered by Fraud Detection Engine when transactions occur in different countries within 2 hours",
+      "properties": {
+        "system": "Fraud Detection Engine",
+        "threshold": "Transaction in different country within 2 hours"
+      },
+      "context": "Automated Rules (Fraud Detection Engine, see [[systems]]): Geographic anomaly | Transaction in different country within 2 hours | Alert for review",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_006",
+      "source_name": "High-Risk Jurisdiction Block",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_001",
+      "target_name": "Fraud Detection Engine",
+      "rel_type": "triggered_by",
+      "description": "High-Risk Jurisdiction Block is triggered by Fraud Detection Engine when transactions involve sanctioned countries",
+      "properties": {
+        "system": "Fraud Detection Engine",
+        "trigger": "Transaction with sanctioned country"
+      },
+      "context": "Automated Rules (Fraud Detection Engine, see [[systems]]): High-risk jurisdiction | Transaction with sanctioned country | Auto-block",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_007",
+      "source_name": "Unusual Beneficiary Alert",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_001",
+      "target_name": "Fraud Detection Engine",
+      "rel_type": "triggered_by",
+      "description": "Unusual Beneficiary Alert is triggered by Fraud Detection Engine when transfers to new beneficiaries exceed threshold",
+      "properties": {
+        "system": "Fraud Detection Engine",
+        "trigger": "Transfer to new beneficiary >threshold"
+      },
+      "context": "Automated Rules (Fraud Detection Engine, see [[systems]]): Unusual beneficiary | Transfer to new beneficiary >threshold | Alert for review",
+      "bidirectional": false,
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_001",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "target_name": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_002",
+      "source_name": "Large Deposit Alert",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "target_name": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_003",
+      "source_name": "Rapid Movement Alert",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "target_name": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_004",
+      "source_name": "Velocity Alert",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "target_name": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_005",
+      "source_name": "Geographic Anomaly Alert",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "target_name": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_006",
+      "source_name": "High-Risk Jurisdiction Block",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "target_name": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_007",
+      "source_name": "Unusual Beneficiary Alert",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "target_name": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_ctrl_008",
+      "source_name": "Manual Alert Review",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "target_name": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_role_001",
+      "source_name": "Financial Crime Team",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "target_name": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_001",
+      "source_name": "Large Deposit Risk",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "target_name": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_002",
+      "source_name": "Rapid Fund Movement Risk",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "target_name": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_003",
+      "source_name": "Structuring Risk",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "target_name": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_004",
+      "source_name": "Geographic Anomaly Risk",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "target_name": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_005",
+      "source_name": "Sanctions Violation Risk",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "target_name": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014_risk_006",
+      "source_name": "Unusual Beneficiary Risk",
+      "target_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "target_name": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7_014",
+      "doc_id": "01a072ec-71ad-76b8-a567-2e4d5f6eede7",
+      "_domain": "banking.policy"
+    }
+  ]
+}

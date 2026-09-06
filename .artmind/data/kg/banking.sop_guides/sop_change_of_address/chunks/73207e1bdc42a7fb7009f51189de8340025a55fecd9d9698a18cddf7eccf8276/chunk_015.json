@@ -1,0 +1,886 @@
+{
+  "chunk_seq": 15,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "### Validation Checks  \n**UK Address Validation:**\n- [ ] Postcode format correct (AA9A 9AA)\n- [ ] Postcode matches city/town (use Royal Mail lookup)\n- [ ] Address not on blacklist (fraudulent addresses)\n- [ ] Property number/name is valid  \n**International Address Validation:**\n- [ ] Country is real and recognized\n- [ ] Postal code format correct for country\n- [ ] Address not in sanctions country (see Step 5: AML)\n- [ ] Address format matches country requirements  \n**Escalation If Validation Fails:**\n- Don't accept invalid address\n- Ask customer to re-confirm\n- Provide postal code lookup tool\n- Escalate if customer insists on non-standard address",
+  "name": "Chunk 15/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_014",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_016",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Address Validation Process",
+      "aliases": [
+        "Address Validation",
+        "Address Verification Procedure"
+      ],
+      "entity_class": "PROCESS",
+      "type": "address_verification",
+      "description": "A mandatory validation procedure for customer addresses that includes UK and international address format checks, blacklist screening, and sanctions country verification. The process includes escalation pathways when validation fails or customers provide non-standard addresses.",
+      "context": [
+        "UK Address Validation:",
+        "International Address Validation:",
+        "Escalation If Validation Fails:"
+      ]
+    },
+    {
+      "id": "ps_001",
+      "name": "UK Address Format Validation",
+      "aliases": [
+        "UK Postcode Validation",
+        "UK Address Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_verification",
+      "description": "Verification step that checks UK postcode format compliance (AA9A 9AA pattern), matches postcode against city/town using Royal Mail lookup, validates property number/name, and screens address against fraudulent address blacklist.",
+      "context": [
+        "Postcode format correct (AA9A 9AA)",
+        "Postcode matches city/town (use Royal Mail lookup)",
+        "Address not on blacklist (fraudulent addresses)",
+        "Property number/name is valid"
+      ]
+    },
+    {
+      "id": "ps_002",
+      "name": "International Address Format Validation",
+      "aliases": [
+        "International Address Check",
+        "Non-UK Address Validation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_verification",
+      "description": "Verification step for non-UK addresses that validates country recognition, checks postal code format compliance for the specific country, verifies address is not in a sanctions country, and confirms address format matches country requirements.",
+      "context": [
+        "Country is real and recognized",
+        "Postal code format correct for country",
+        "Address not in sanctions country (see Step 5: AML)",
+        "Address format matches country requirements"
+      ]
+    },
+    {
+      "id": "ps_003",
+      "name": "Address Validation Failure Escalation",
+      "aliases": [
+        "Invalid Address Escalation",
+        "Address Rejection Handling"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Escalation procedure triggered when address validation fails, requiring staff to reject invalid addresses, request customer re-confirmation, offer postal code lookup tool assistance, and escalate cases where customers insist on non-standard addresses.",
+      "context": [
+        "Don't accept invalid address",
+        "Ask customer to re-confirm",
+        "Provide postal code lookup tool",
+        "Escalate if customer insists on non-standard address"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Address Validation Pass/Fail Gate",
+      "aliases": [
+        "Address Validation Decision",
+        "Address Acceptance Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "A branching decision point that determines whether a customer-provided address passes all validation checks. Failed validation triggers escalation and customer re-confirmation procedures.",
+      "context": [
+        "Escalation If Validation Fails:",
+        "Don't accept invalid address"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Sanctions Country Address Screening",
+      "aliases": [
+        "Sanctions Address Check",
+        "AML Address Screening"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory compliance gate that verifies international addresses are not located in sanctions countries as part of AML screening obligations. This checkpoint must be passed before address acceptance.",
+      "context": [
+        "Address not in sanctions country (see Step 5: AML)"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Customer Address Verification",
+      "aliases": [
+        "Address Verification",
+        "Address Validation"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "The address verification and validation process applied to customer-provided addresses, encompassing UK postcode validation, international format checks, blacklist screening, and sanctions country verification.",
+      "context": [
+        "UK Address Validation:",
+        "International Address Validation:",
+        "Address not on blacklist (fraudulent addresses)"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Address Validation Staff",
+      "aliases": [
+        "Validation Officer",
+        "Address Verification Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations staff responsible for executing address validation checks, rejecting invalid addresses, requesting customer re-confirmation, and escalating cases where customers insist on non-standard addresses.",
+      "context": [
+        "Don't accept invalid address",
+        "Ask customer to re-confirm",
+        "Escalate if customer insists on non-standard address"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Address Validation Escalation Approver",
+      "aliases": [
+        "Escalation Manager",
+        "Address Exception Handler"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "Senior staff member responsible for reviewing and approving escalated address validation cases where customers insist on non-standard addresses or validation failures require management decision.",
+      "context": [
+        "Escalate if customer insists on non-standard address"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_015_proc_001",
+    "ps_001": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_001",
+    "ps_002": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_002",
+    "ps_003": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_003",
+    "dp_001": "01a07400-ba86-72f1-8b22-d07b32649491_015_dp_001",
+    "cc_001": "01a07400-ba86-72f1-8b22-d07b32649491_015_cc_001",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_015_addr_001",
+    "ra_001": "01a07400-ba86-72f1-8b22-d07b32649491_015_ra_001",
+    "ra_002": "01a07400-ba86-72f1-8b22-d07b32649491_015_ra_002"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_proc_001",
+      "name": "Address Validation Process",
+      "aliases": [
+        "Address Validation",
+        "Address Verification Procedure"
+      ],
+      "entity_class": "PROCESS",
+      "type": "address_verification",
+      "description": "A mandatory validation procedure for customer addresses that includes UK and international address format checks, blacklist screening, and sanctions country verification. The process includes escalation pathways when validation fails or customers provide non-standard addresses.",
+      "context": [
+        "UK Address Validation:",
+        "International Address Validation:",
+        "Escalation If Validation Fails:"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_001",
+      "name": "UK Address Format Validation",
+      "aliases": [
+        "UK Postcode Validation",
+        "UK Address Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_verification",
+      "description": "Verification step that checks UK postcode format compliance (AA9A 9AA pattern), matches postcode against city/town using Royal Mail lookup, validates property number/name, and screens address against fraudulent address blacklist.",
+      "context": [
+        "Postcode format correct (AA9A 9AA)",
+        "Postcode matches city/town (use Royal Mail lookup)",
+        "Address not on blacklist (fraudulent addresses)",
+        "Property number/name is valid"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_002",
+      "name": "International Address Format Validation",
+      "aliases": [
+        "International Address Check",
+        "Non-UK Address Validation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_verification",
+      "description": "Verification step for non-UK addresses that validates country recognition, checks postal code format compliance for the specific country, verifies address is not in a sanctions country, and confirms address format matches country requirements.",
+      "context": [
+        "Country is real and recognized",
+        "Postal code format correct for country",
+        "Address not in sanctions country (see Step 5: AML)",
+        "Address format matches country requirements"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_003",
+      "name": "Address Validation Failure Escalation",
+      "aliases": [
+        "Invalid Address Escalation",
+        "Address Rejection Handling"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Escalation procedure triggered when address validation fails, requiring staff to reject invalid addresses, request customer re-confirmation, offer postal code lookup tool assistance, and escalate cases where customers insist on non-standard addresses.",
+      "context": [
+        "Don't accept invalid address",
+        "Ask customer to re-confirm",
+        "Provide postal code lookup tool",
+        "Escalate if customer insists on non-standard address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_dp_001",
+      "name": "Address Validation Pass/Fail Gate",
+      "aliases": [
+        "Address Validation Decision",
+        "Address Acceptance Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "A branching decision point that determines whether a customer-provided address passes all validation checks. Failed validation triggers escalation and customer re-confirmation procedures.",
+      "context": [
+        "Escalation If Validation Fails:",
+        "Don't accept invalid address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_cc_001",
+      "name": "Sanctions Country Address Screening",
+      "aliases": [
+        "Sanctions Address Check",
+        "AML Address Screening"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory compliance gate that verifies international addresses are not located in sanctions countries as part of AML screening obligations. This checkpoint must be passed before address acceptance.",
+      "context": [
+        "Address not in sanctions country (see Step 5: AML)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_addr_001",
+      "name": "Customer Address Verification",
+      "aliases": [
+        "Address Verification",
+        "Address Validation"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "The address verification and validation process applied to customer-provided addresses, encompassing UK postcode validation, international format checks, blacklist screening, and sanctions country verification.",
+      "context": [
+        "UK Address Validation:",
+        "International Address Validation:",
+        "Address not on blacklist (fraudulent addresses)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ra_001",
+      "name": "Address Validation Staff",
+      "aliases": [
+        "Validation Officer",
+        "Address Verification Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations staff responsible for executing address validation checks, rejecting invalid addresses, requesting customer re-confirmation, and escalating cases where customers insist on non-standard addresses.",
+      "context": [
+        "Don't accept invalid address",
+        "Ask customer to re-confirm",
+        "Escalate if customer insists on non-standard address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ra_002",
+      "name": "Address Validation Escalation Approver",
+      "aliases": [
+        "Escalation Manager",
+        "Address Exception Handler"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "Senior staff member responsible for reviewing and approving escalated address validation cases where customers insist on non-standard addresses or validation failures require management decision.",
+      "context": [
+        "Escalate if customer insists on non-standard address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_proc_001",
+      "name": "Address Validation Process",
+      "properties": {
+        "purpose": "Validate customer addresses against format standards and compliance requirements",
+        "scope": [
+          "UK addresses",
+          "international addresses"
+        ],
+        "channels": [
+          "branch",
+          "online"
+        ],
+        "departments_involved": [
+          "Compliance",
+          "Customer Service"
+        ],
+        "trigger": "Customer provides address during account opening or update",
+        "outcome_success": "Address validated and accepted into system",
+        "outcome_failure": "Address rejected; customer re-confirmation required or escalation initiated"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_001",
+      "name": "UK Address Format Validation",
+      "properties": {
+        "step_number": 1,
+        "actor": "Address Validation Staff",
+        "input": [
+          "customer address",
+          "postcode"
+        ],
+        "output": "validation result (pass/fail)",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Royal Mail lookup",
+          "address blacklist database"
+        ],
+        "validation_criteria": [
+          "postcode format correct (AA9A 9AA)",
+          "postcode matches city/town",
+          "address not on blacklist (fraudulent addresses)",
+          "property number/name is valid"
+        ],
+        "failure_path": "escalate to Address Validation Failure Escalation step"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_002",
+      "name": "International Address Format Validation",
+      "properties": {
+        "step_number": 2,
+        "actor": "Address Validation Staff",
+        "input": [
+          "customer address",
+          "country",
+          "postal code"
+        ],
+        "output": "validation result (pass/fail)",
+        "channel": "system",
+        "mandatory": true,
+        "validation_criteria": [
+          "country is real and recognized",
+          "postal code format correct for country",
+          "address not in sanctions country",
+          "address format matches country requirements"
+        ],
+        "failure_path": "escalate to Address Validation Failure Escalation step"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_003",
+      "name": "Address Validation Failure Escalation",
+      "properties": {
+        "step_number": 3,
+        "actor": "Address Validation Escalation Approver",
+        "input": [
+          "failed validation result",
+          "customer confirmation"
+        ],
+        "output": "escalation decision (accept/reject)",
+        "channel": "manual",
+        "mandatory": true,
+        "escalation_actions": [
+          "do not accept invalid address",
+          "ask customer to re-confirm",
+          "provide postal code lookup tool",
+          "escalate if customer insists on non-standard address"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_dp_001",
+      "name": "Address Validation Pass/Fail Gate",
+      "properties": {
+        "decision_question": "Does the customer address pass all validation checks?",
+        "criteria": [
+          "UK: postcode format, postcode-city match, blacklist check, property validity",
+          "International: country recognition, postal code format, sanctions screening, format compliance"
+        ],
+        "decision_maker": "Address Validation Staff",
+        "path_yes": "accept address and proceed to next process step",
+        "path_no": "escalate to Address Validation Failure Escalation",
+        "override_possible": true
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_cc_001",
+      "name": "Sanctions Country Address Screening",
+      "properties": {
+        "regulatory_basis": "AML regulations",
+        "mandatory": true,
+        "applies_to_channel": [
+          "all"
+        ],
+        "evidence_required": [
+          "customer address",
+          "country identification"
+        ],
+        "performed_by": "Address Validation Staff",
+        "timing": "during international address validation (Step 2)",
+        "failure_consequence": "address rejected; escalation required"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_addr_001",
+      "name": "Customer Address Verification",
+      "properties": {
+        "collection_steps": [
+          "customer provides address during account opening or update"
+        ],
+        "verification_steps": [
+          "UK format validation (postcode, city match, blacklist, property validity)",
+          "international format validation (country, postal code, sanctions screening)",
+          "escalation and re-confirmation if validation fails"
+        ],
+        "acceptable_proof": [
+          "address provided by customer"
+        ],
+        "verification_method": [
+          "Royal Mail lookup",
+          "country-specific postal code validation",
+          "sanctions list screening"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ra_001",
+      "name": "Address Validation Staff",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "validation execution",
+        "channels": [
+          "system",
+          "branch",
+          "online"
+        ],
+        "responsibilities": [
+          "perform UK address format validation",
+          "perform international address format validation",
+          "apply validation criteria and blacklist checks",
+          "escalate failed validations"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ra_002",
+      "name": "Address Validation Escalation Approver",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "escalation decision",
+        "channels": [
+          "manual",
+          "branch"
+        ],
+        "responsibilities": [
+          "review failed address validations",
+          "request customer re-confirmation",
+          "provide postal code lookup tool",
+          "make final decision on non-standard addresses"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_proc_001",
+      "source_name": "Address Validation Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_001",
+      "target_name": "UK Address Format Validation",
+      "rel_type": "contains",
+      "description": "The Address Validation Process includes UK Address Format Validation as a component step",
+      "properties": {
+        "sequence_position": 1,
+        "validation_type": "UK-specific"
+      },
+      "context": "UK Address Validation: Postcode format correct (AA9A 9AA), Postcode matches city/town (use Royal Mail lookup), Address not on blacklist (fraudulent addresses), Property number/name is valid",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_proc_001",
+      "source_name": "Address Validation Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_002",
+      "target_name": "International Address Format Validation",
+      "rel_type": "contains",
+      "description": "The Address Validation Process includes International Address Format Validation as a component step",
+      "properties": {
+        "sequence_position": 2,
+        "validation_type": "International"
+      },
+      "context": "International Address Validation: Country is real and recognized, Postal code format correct for country, Address not in sanctions country (see Step 5: AML), Address format matches country requirements",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_proc_001",
+      "source_name": "Address Validation Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_003",
+      "target_name": "Address Validation Failure Escalation",
+      "rel_type": "contains",
+      "description": "The Address Validation Process includes Address Validation Failure Escalation as a contingency step",
+      "properties": {
+        "sequence_position": 3,
+        "trigger_condition": "validation_failure"
+      },
+      "context": "Escalation If Validation Fails: Don't accept invalid address, Ask customer to re-confirm, Provide postal code lookup tool, Escalate if customer insists on non-standard address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_proc_001",
+      "source_name": "Address Validation Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_dp_001",
+      "target_name": "Address Validation Pass/Fail Gate",
+      "rel_type": "branches_at",
+      "description": "The Address Validation Process branches at the Address Validation Pass/Fail Gate decision point",
+      "properties": {
+        "decision_criteria": "validation_success_or_failure"
+      },
+      "context": "Validation Checks determine whether address passes or fails, leading to escalation if validation fails",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_proc_001",
+      "source_name": "Address Validation Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_cc_001",
+      "target_name": "Sanctions Country Address Screening",
+      "rel_type": "mandated_to_include",
+      "description": "The Address Validation Process is mandated to include Sanctions Country Address Screening as a compliance requirement",
+      "properties": {
+        "compliance_requirement": "AML",
+        "step_reference": "Step 5"
+      },
+      "context": "Address not in sanctions country (see Step 5: AML)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_proc_001",
+      "source_name": "Address Validation Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_addr_001",
+      "target_name": "Customer Address Verification",
+      "rel_type": "operates_on",
+      "description": "The Address Validation Process operates on Customer Address Verification",
+      "properties": {
+        "operation_type": "validation_and_verification"
+      },
+      "context": "The entire process validates and verifies customer addresses through multiple checks",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_proc_001",
+      "source_name": "Address Validation Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ra_001",
+      "target_name": "Address Validation Staff",
+      "rel_type": "executed_by",
+      "description": "The Address Validation Process is executed by Address Validation Staff",
+      "properties": {
+        "role_responsibility": "performing_validation_checks"
+      },
+      "context": "Address Validation Staff perform the validation checks and manage the process",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_001",
+      "source_name": "UK Address Format Validation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_002",
+      "target_name": "International Address Format Validation",
+      "rel_type": "followed_by",
+      "description": "UK Address Format Validation is followed by International Address Format Validation",
+      "properties": {
+        "sequence": "sequential",
+        "conditional": false
+      },
+      "context": "UK Address Validation checks are performed first, then International Address Validation checks",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_002",
+      "source_name": "International Address Format Validation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_dp_001",
+      "target_name": "Address Validation Pass/Fail Gate",
+      "rel_type": "leads_to",
+      "description": "International Address Format Validation leads to the Address Validation Pass/Fail Gate decision point",
+      "properties": {
+        "decision_trigger": "validation_completion"
+      },
+      "context": "After international validation checks, the process reaches the pass/fail gate",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_dp_001",
+      "source_name": "Address Validation Pass/Fail Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_003",
+      "target_name": "Address Validation Failure Escalation",
+      "rel_type": "routes_to_on_fail",
+      "description": "On failure, the Address Validation Pass/Fail Gate routes to Address Validation Failure Escalation",
+      "properties": {
+        "condition": "validation_failure",
+        "action": "escalate"
+      },
+      "context": "If validation fails, the process escalates with customer re-confirmation and escalation approval",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_003",
+      "source_name": "Address Validation Failure Escalation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ra_002",
+      "target_name": "Address Validation Escalation Approver",
+      "rel_type": "escalated_to",
+      "description": "Address Validation Failure Escalation is escalated to Address Validation Escalation Approver",
+      "properties": {
+        "escalation_trigger": "customer_insists_on_non_standard_address",
+        "action_required": "approval_decision"
+      },
+      "context": "Escalate if customer insists on non-standard address - requires approver decision",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_001",
+      "source_name": "UK Address Format Validation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ra_001",
+      "target_name": "Address Validation Staff",
+      "rel_type": "performed_by",
+      "description": "UK Address Format Validation is performed by Address Validation Staff",
+      "properties": {
+        "validation_checks": [
+          "postcode_format",
+          "postcode_city_match",
+          "blacklist_check",
+          "property_validity"
+        ]
+      },
+      "context": "Address Validation Staff perform UK postcode format checks, city matching, blacklist verification, and property validation",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_002",
+      "source_name": "International Address Format Validation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ra_001",
+      "target_name": "Address Validation Staff",
+      "rel_type": "performed_by",
+      "description": "International Address Format Validation is performed by Address Validation Staff",
+      "properties": {
+        "validation_checks": [
+          "country_recognition",
+          "postal_code_format",
+          "sanctions_screening",
+          "country_format_compliance"
+        ]
+      },
+      "context": "Address Validation Staff perform international country validation, postal code format checks, sanctions screening, and country-specific format verification",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_cc_001",
+      "source_name": "Sanctions Country Address Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_dp_001",
+      "target_name": "Address Validation Pass/Fail Gate",
+      "rel_type": "gates",
+      "description": "Sanctions Country Address Screening gates the Address Validation Pass/Fail Gate decision",
+      "properties": {
+        "compliance_requirement": "AML",
+        "gate_condition": "address_not_in_sanctions_country"
+      },
+      "context": "Address not in sanctions country (see Step 5: AML) - this is a gating requirement for validation pass",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_001",
+      "source_name": "UK Address Format Validation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_cc_001",
+      "target_name": "Sanctions Country Address Screening",
+      "rel_type": "preceded_by",
+      "description": "UK Address Format Validation is preceded by implicit country context that feeds into Sanctions Country Address Screening",
+      "properties": {
+        "relationship_type": "implicit_prerequisite"
+      },
+      "context": "UK validation is country-specific and relates to the broader sanctions screening requirement",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_proc_001",
+      "source_name": "Address Validation Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_001",
+      "source_name": "UK Address Format Validation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_002",
+      "source_name": "International Address Format Validation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ps_003",
+      "source_name": "Address Validation Failure Escalation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_dp_001",
+      "source_name": "Address Validation Pass/Fail Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_cc_001",
+      "source_name": "Sanctions Country Address Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_addr_001",
+      "source_name": "Customer Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ra_001",
+      "source_name": "Address Validation Staff",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_015_ra_002",
+      "source_name": "Address Validation Escalation Approver",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_015",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

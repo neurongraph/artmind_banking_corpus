@@ -1,0 +1,1369 @@
+{
+  "chunk_seq": 15,
+  "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+  "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+  "text": "## Online KYC Verification  \n### Digital Document Upload  \n**For Online Account Opening:**  \n1. **Upload Document**\n- Customer uploads photo of ID (Passport or Driving License)\n- System performs automated verification (if available)\n- Manual review by Compliance staff  \n2. **Verification Steps**\n- Check document not expired\n- Verify document number format\n- Review uploaded image quality\n- Flag for manual review if unclear  \n3. **Address Verification**\n- Customer enters address in form\n- Postcode verification (automated)\n- Secondary document upload (optional, if required)\n- Compliance staff review  \n4. **Approval**\n- Compliance staff approves or requests clarification\n- If approved, account proceeds to AML screening\n- If rejected, customer notified (not a regulatory reason disclosed)  \n**Timeline:** <1 hour (if no issues), 1–2 business days (if manual review)  \n---",
+  "name": "Chunk 15/22",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_014",
+  "next_chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_016",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Online KYC Verification",
+      "aliases": [
+        "Digital Document Upload",
+        "Online Account Opening KYC"
+      ],
+      "entity_class": "PROCESS",
+      "type": "kyc_verification",
+      "description": "End-to-end digital Know Your Customer verification process for online account opening. Encompasses automated and manual document verification, address validation, and compliance approval gates. Timeline ranges from under 1 hour for straightforward cases to 1–2 business days when manual review is required.",
+      "context": [
+        "Online KYC Verification",
+        "For Online Account Opening",
+        "If approved, account proceeds to AML screening",
+        "Timeline: <1 hour (if no issues), 1–2 business days (if manual review)"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Document Upload",
+      "aliases": [
+        "Upload Document"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer uploads a photo of their identity document (Passport or Driving License) through the online portal. The system performs automated verification where available, followed by manual review by Compliance staff.",
+      "context": [
+        "Customer uploads photo of ID (Passport or Driving License)",
+        "System performs automated verification (if available)",
+        "Manual review by Compliance staff"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Document Verification",
+      "aliases": [
+        "Verification Steps"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Compliance staff perform multi-point checks on the uploaded identity document: expiry date validation, document number format verification, image quality assessment, and flagging for manual escalation if clarity is insufficient.",
+      "context": [
+        "Check document not expired",
+        "Verify document number format",
+        "Review uploaded image quality",
+        "Flag for manual review if unclear"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Address Verification",
+      "aliases": [
+        "Address Verification Step"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_verification",
+      "description": "Customer enters their address via online form. Automated postcode verification is performed, and an optional secondary document upload is available if required. Compliance staff review the address data before approval.",
+      "context": [
+        "Customer enters address in form",
+        "Postcode verification (automated)",
+        "Secondary document upload (optional, if required)",
+        "Compliance staff review"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Compliance Approval Decision",
+      "aliases": [
+        "Approval"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Compliance staff make a final approval or rejection decision. Approved applications proceed to AML screening. Rejected applications trigger customer notification without disclosure of regulatory reasons.",
+      "context": [
+        "Compliance staff approves or requests clarification",
+        "If approved, account proceeds to AML screening",
+        "If rejected, customer notified (not a regulatory reason disclosed)"
+      ]
+    },
+    {
+      "id": "role_001",
+      "name": "Compliance Staff",
+      "aliases": [
+        "Compliance Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "Compliance team members responsible for manual review of uploaded identity documents, address verification, and final approval or rejection decisions in the online KYC process.",
+      "context": [
+        "Manual review by Compliance staff",
+        "Compliance staff review",
+        "Compliance staff approves or requests clarification"
+      ]
+    },
+    {
+      "id": "role_002",
+      "name": "Automated Verification System",
+      "aliases": [
+        "System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system that performs initial document verification checks and postcode validation where available, before escalation to manual Compliance staff review.",
+      "context": [
+        "System performs automated verification (if available)",
+        "Postcode verification (automated)"
+      ]
+    },
+    {
+      "id": "dec_001",
+      "name": "Document Clarity Assessment",
+      "aliases": [
+        "Image Quality Flag"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate determining whether the uploaded document image quality is sufficient for verification. Unclear images are flagged for manual escalation; clear images proceed to format and expiry checks.",
+      "context": [
+        "Review uploaded image quality",
+        "Flag for manual review if unclear"
+      ]
+    },
+    {
+      "id": "dec_002",
+      "name": "Compliance Approval Gate",
+      "aliases": [
+        "Approval Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Final compliance decision point where Compliance staff approve the KYC verification and allow the account to proceed to AML screening, or reject the application and notify the customer.",
+      "context": [
+        "Compliance staff approves or requests clarification",
+        "If approved, account proceeds to AML screening",
+        "If rejected, customer notified"
+      ]
+    },
+    {
+      "id": "comp_001",
+      "name": "KYC Verification Checkpoint",
+      "aliases": [
+        "Online KYC Compliance Gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "identity_verification",
+      "description": "Mandatory regulatory compliance gate verifying that customer identity and address have been properly collected, verified, and documented before account activation. Completion is required before AML screening can proceed.",
+      "context": [
+        "Online KYC Verification",
+        "If approved, account proceeds to AML screening"
+      ]
+    },
+    {
+      "id": "idoc_001",
+      "name": "Passport Verification",
+      "aliases": [
+        "Passport"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "passport_verification",
+      "description": "Passport document accepted as valid identity proof in the online KYC process. Subject to expiry date check, document number format verification, and image quality assessment.",
+      "context": [
+        "Customer uploads photo of ID (Passport or Driving License)"
+      ]
+    },
+    {
+      "id": "idoc_002",
+      "name": "Driving License Verification",
+      "aliases": [
+        "Driving License"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "driving_licence_check",
+      "description": "Driving License document accepted as valid identity proof in the online KYC process. Subject to expiry date check, document number format verification, and image quality assessment.",
+      "context": [
+        "Customer uploads photo of ID (Passport or Driving License)"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Address Verification Step",
+      "aliases": [
+        "Address Verification"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "Customer-entered address subject to automated postcode verification and optional secondary document upload. Compliance staff review the address data as part of the KYC verification process.",
+      "context": [
+        "Customer enters address in form",
+        "Postcode verification (automated)",
+        "Secondary document upload (optional, if required)"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Online Account Applicant",
+      "aliases": [
+        "Customer",
+        "Applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "prospective_customer",
+      "description": "Individual applying to open an account online who must complete KYC verification by uploading identity documents and providing address information.",
+      "context": [
+        "For Online Account Opening",
+        "Customer uploads photo of ID",
+        "Customer enters address in form"
+      ]
+    },
+    {
+      "id": "kyc_001",
+      "name": "Identity and Address Verification",
+      "aliases": [
+        "KYC Verification"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "Comprehensive Know Your Customer process combining identity document verification (Passport or Driving License) and address validation through automated postcode checks and optional secondary documentation.",
+      "context": [
+        "Online KYC Verification",
+        "Check document not expired",
+        "Verify document number format",
+        "Postcode verification (automated)"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_proc_001",
+    "pstep_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_001",
+    "pstep_002": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_002",
+    "pstep_003": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_003",
+    "pstep_004": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_004",
+    "role_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_role_001",
+    "role_002": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_role_002",
+    "dec_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_dec_001",
+    "dec_002": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_dec_002",
+    "comp_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_comp_001",
+    "idoc_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_idoc_001",
+    "idoc_002": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_idoc_002",
+    "addr_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_addr_001",
+    "cust_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_cust_001",
+    "kyc_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_kyc_001"
+  },
+  "entities": [
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_proc_001",
+      "name": "Online KYC Verification",
+      "aliases": [
+        "Digital Document Upload",
+        "Online Account Opening KYC"
+      ],
+      "entity_class": "PROCESS",
+      "type": "kyc_verification",
+      "description": "End-to-end digital Know Your Customer verification process for online account opening. Encompasses automated and manual document verification, address validation, and compliance approval gates. Timeline ranges from under 1 hour for straightforward cases to 1–2 business days when manual review is required.",
+      "context": [
+        "Online KYC Verification",
+        "For Online Account Opening",
+        "If approved, account proceeds to AML screening",
+        "Timeline: <1 hour (if no issues), 1–2 business days (if manual review)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_001",
+      "name": "Document Upload",
+      "aliases": [
+        "Upload Document"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer uploads a photo of their identity document (Passport or Driving License) through the online portal. The system performs automated verification where available, followed by manual review by Compliance staff.",
+      "context": [
+        "Customer uploads photo of ID (Passport or Driving License)",
+        "System performs automated verification (if available)",
+        "Manual review by Compliance staff"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_002",
+      "name": "Document Verification",
+      "aliases": [
+        "Verification Steps"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Compliance staff perform multi-point checks on the uploaded identity document: expiry date validation, document number format verification, image quality assessment, and flagging for manual escalation if clarity is insufficient.",
+      "context": [
+        "Check document not expired",
+        "Verify document number format",
+        "Review uploaded image quality",
+        "Flag for manual review if unclear"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_003",
+      "name": "Address Verification",
+      "aliases": [
+        "Address Verification Step"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_verification",
+      "description": "Customer enters their address via online form. Automated postcode verification is performed, and an optional secondary document upload is available if required. Compliance staff review the address data before approval.",
+      "context": [
+        "Customer enters address in form",
+        "Postcode verification (automated)",
+        "Secondary document upload (optional, if required)",
+        "Compliance staff review"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_004",
+      "name": "Compliance Approval Decision",
+      "aliases": [
+        "Approval"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Compliance staff make a final approval or rejection decision. Approved applications proceed to AML screening. Rejected applications trigger customer notification without disclosure of regulatory reasons.",
+      "context": [
+        "Compliance staff approves or requests clarification",
+        "If approved, account proceeds to AML screening",
+        "If rejected, customer notified (not a regulatory reason disclosed)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_role_001",
+      "name": "Compliance Staff",
+      "aliases": [
+        "Compliance Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "Compliance team members responsible for manual review of uploaded identity documents, address verification, and final approval or rejection decisions in the online KYC process.",
+      "context": [
+        "Manual review by Compliance staff",
+        "Compliance staff review",
+        "Compliance staff approves or requests clarification"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_role_002",
+      "name": "Automated Verification System",
+      "aliases": [
+        "System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system that performs initial document verification checks and postcode validation where available, before escalation to manual Compliance staff review.",
+      "context": [
+        "System performs automated verification (if available)",
+        "Postcode verification (automated)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_dec_001",
+      "name": "Document Clarity Assessment",
+      "aliases": [
+        "Image Quality Flag"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate determining whether the uploaded document image quality is sufficient for verification. Unclear images are flagged for manual escalation; clear images proceed to format and expiry checks.",
+      "context": [
+        "Review uploaded image quality",
+        "Flag for manual review if unclear"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_dec_002",
+      "name": "Compliance Approval Gate",
+      "aliases": [
+        "Approval Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Final compliance decision point where Compliance staff approve the KYC verification and allow the account to proceed to AML screening, or reject the application and notify the customer.",
+      "context": [
+        "Compliance staff approves or requests clarification",
+        "If approved, account proceeds to AML screening",
+        "If rejected, customer notified"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_comp_001",
+      "name": "KYC Verification Checkpoint",
+      "aliases": [
+        "Online KYC Compliance Gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "identity_verification",
+      "description": "Mandatory regulatory compliance gate verifying that customer identity and address have been properly collected, verified, and documented before account activation. Completion is required before AML screening can proceed.",
+      "context": [
+        "Online KYC Verification",
+        "If approved, account proceeds to AML screening"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_idoc_001",
+      "name": "Passport Verification",
+      "aliases": [
+        "Passport"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "passport_verification",
+      "description": "Passport document accepted as valid identity proof in the online KYC process. Subject to expiry date check, document number format verification, and image quality assessment.",
+      "context": [
+        "Customer uploads photo of ID (Passport or Driving License)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_idoc_002",
+      "name": "Driving License Verification",
+      "aliases": [
+        "Driving License"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "driving_licence_check",
+      "description": "Driving License document accepted as valid identity proof in the online KYC process. Subject to expiry date check, document number format verification, and image quality assessment.",
+      "context": [
+        "Customer uploads photo of ID (Passport or Driving License)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_addr_001",
+      "name": "Address Verification Step",
+      "aliases": [
+        "Address Verification"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "Customer-entered address subject to automated postcode verification and optional secondary document upload. Compliance staff review the address data as part of the KYC verification process.",
+      "context": [
+        "Customer enters address in form",
+        "Postcode verification (automated)",
+        "Secondary document upload (optional, if required)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_cust_001",
+      "name": "Online Account Applicant",
+      "aliases": [
+        "Customer",
+        "Applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "prospective_customer",
+      "description": "Individual applying to open an account online who must complete KYC verification by uploading identity documents and providing address information.",
+      "context": [
+        "For Online Account Opening",
+        "Customer uploads photo of ID",
+        "Customer enters address in form"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_kyc_001",
+      "name": "Identity and Address Verification",
+      "aliases": [
+        "KYC Verification"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "Comprehensive Know Your Customer process combining identity document verification (Passport or Driving License) and address validation through automated postcode checks and optional secondary documentation.",
+      "context": [
+        "Online KYC Verification",
+        "Check document not expired",
+        "Verify document number format",
+        "Postcode verification (automated)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_proc_001",
+      "name": "Online KYC Verification",
+      "properties": {
+        "purpose": "Verify customer identity and address for online account opening",
+        "scope": "Online account opening",
+        "channels": [
+          "online"
+        ],
+        "owner": "Compliance Staff",
+        "departments_involved": [
+          "Compliance"
+        ],
+        "timeline_sla": "1 hour if no issues; 1–2 business days if manual review required",
+        "trigger": "Customer initiates online account opening",
+        "outcome_success": "Account proceeds to AML screening",
+        "outcome_failure": "Customer notified; account opening rejected"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_001",
+      "name": "Document Upload",
+      "properties": {
+        "step_number": 1,
+        "actor": "Customer",
+        "input": "Photo of ID (Passport or Driving License)",
+        "output": "Uploaded document image in system",
+        "channel": "online",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Automated Verification System",
+          "Document Upload Portal"
+        ]
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_002",
+      "name": "Document Verification",
+      "properties": {
+        "step_number": 2,
+        "actor": [
+          "Automated Verification System",
+          "Compliance Staff"
+        ],
+        "input": "Uploaded document image",
+        "output": "Document verification result; flag for manual review if needed",
+        "channel": [
+          "system",
+          "manual"
+        ],
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Automated Verification System"
+        ],
+        "failure_path": "Flag for manual review by Compliance staff"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_003",
+      "name": "Address Verification",
+      "properties": {
+        "step_number": 3,
+        "actor": [
+          "Customer",
+          "Automated Verification System",
+          "Compliance Staff"
+        ],
+        "input": "Customer-entered address; optional secondary document",
+        "output": "Verified address; compliance review result",
+        "channel": [
+          "online",
+          "system",
+          "manual"
+        ],
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Postcode Verification System"
+        ]
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_004",
+      "name": "Compliance Approval Decision",
+      "properties": {
+        "step_number": 4,
+        "actor": "Compliance Staff",
+        "input": "Document verification result; address verification result",
+        "output": "Approval decision or request for clarification",
+        "channel": "manual",
+        "mandatory": "yes",
+        "failure_path": "Customer notified of rejection; account opening rejected"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_role_001",
+      "name": "Compliance Staff",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "Approval authority for KYC verification",
+        "channels": [
+          "system",
+          "manual"
+        ]
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_role_002",
+      "name": "Automated Verification System",
+      "properties": {
+        "role_type": "system",
+        "department": "Compliance",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_dec_001",
+      "name": "Document Clarity Assessment",
+      "properties": {
+        "decision_question": "Is the uploaded document image of sufficient quality and clarity for verification?",
+        "criteria": "Image quality; document legibility; expiry status; document number format validity",
+        "decision_maker": "Automated Verification System; Compliance Staff (manual review)",
+        "path_yes": "Proceed to address verification",
+        "path_no": "Flag for manual review or request customer to re-upload"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_dec_002",
+      "name": "Compliance Approval Gate",
+      "properties": {
+        "decision_question": "Should the customer's KYC verification be approved?",
+        "criteria": "Document verification passed; address verification passed; no regulatory concerns",
+        "decision_maker": "Compliance Staff",
+        "path_yes": "Account proceeds to AML screening",
+        "path_no": "Customer notified; account opening rejected"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_comp_001",
+      "name": "KYC Verification Checkpoint",
+      "properties": {
+        "regulatory_basis": "FCA COBS; MLR 2017",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "online"
+        ],
+        "evidence_required": [
+          "Valid ID document (Passport or Driving License)",
+          "Address verification"
+        ],
+        "performed_by": "Compliance Staff",
+        "timing": "During online account opening process",
+        "failure_consequence": "Account opening rejected; customer notified"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_idoc_001",
+      "name": "Passport Verification",
+      "properties": {
+        "accepted_types": [
+          "Passport"
+        ],
+        "collection_steps": [
+          "Customer uploads photo of Passport"
+        ],
+        "verification_steps": [
+          "Check document not expired",
+          "Verify document number format",
+          "Review uploaded image quality"
+        ],
+        "recording_obligation": "Stored in system for compliance records",
+        "expiry_check": "yes"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_idoc_002",
+      "name": "Driving License Verification",
+      "properties": {
+        "accepted_types": [
+          "Driving License"
+        ],
+        "collection_steps": [
+          "Customer uploads photo of Driving License"
+        ],
+        "verification_steps": [
+          "Check document not expired",
+          "Verify document number format",
+          "Review uploaded image quality"
+        ],
+        "recording_obligation": "Stored in system for compliance records",
+        "expiry_check": "yes"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_addr_001",
+      "name": "Address Verification Step",
+      "properties": {
+        "collection_steps": [
+          "Customer enters address in online form"
+        ],
+        "verification_steps": [
+          "Postcode verification (automated)",
+          "Secondary document upload (optional, if required)",
+          "Compliance staff review"
+        ],
+        "acceptable_proof": [
+          "Postcode verification match",
+          "Secondary document (if required)"
+        ],
+        "recording_system": "Online account opening system"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_cust_001",
+      "name": "Online Account Applicant",
+      "properties": {
+        "customer_type": "new",
+        "context_role": "Applicant for online account opening"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_kyc_001",
+      "name": "Identity and Address Verification",
+      "properties": {
+        "mandatory": "yes",
+        "timing_or_refresh_frequency": "During account opening",
+        "verification_method": [
+          "Automated document verification",
+          "Manual compliance review",
+          "Postcode verification"
+        ],
+        "consequence_of_failure": "Account opening rejected; customer notified"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_proc_001",
+      "source_name": "Online KYC Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_001",
+      "target_name": "Document Upload",
+      "rel_type": "contains",
+      "description": "Online KYC Verification process includes Document Upload as its first step",
+      "properties": {
+        "sequence": 1,
+        "stage": "initial"
+      },
+      "context": "1. **Upload Document** - Customer uploads photo of ID (Passport or Driving License)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_001",
+      "source_name": "Document Upload",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_002",
+      "target_name": "Document Verification",
+      "rel_type": "followed_by",
+      "description": "Document Upload step is followed by Document Verification",
+      "properties": {
+        "sequence_order": "1 to 2"
+      },
+      "context": "1. **Upload Document** ... 2. **Verification Steps** - Check document not expired",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_002",
+      "source_name": "Document Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_003",
+      "target_name": "Address Verification",
+      "rel_type": "followed_by",
+      "description": "Document Verification step is followed by Address Verification",
+      "properties": {
+        "sequence_order": "2 to 3"
+      },
+      "context": "2. **Verification Steps** ... 3. **Address Verification** - Customer enters address in form",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_003",
+      "source_name": "Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_004",
+      "target_name": "Compliance Approval Decision",
+      "rel_type": "followed_by",
+      "description": "Address Verification step is followed by Compliance Approval Decision",
+      "properties": {
+        "sequence_order": "3 to 4"
+      },
+      "context": "3. **Address Verification** ... 4. **Approval** - Compliance staff approves or requests clarification",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_001",
+      "source_name": "Document Upload",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_cust_001",
+      "target_name": "Online Account Applicant",
+      "rel_type": "collects_data_from",
+      "description": "Document Upload step collects identification documents from the customer",
+      "properties": {
+        "data_type": "photo of ID"
+      },
+      "context": "Customer uploads photo of ID (Passport or Driving License)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_001",
+      "source_name": "Document Upload",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_role_002",
+      "target_name": "Automated Verification System",
+      "rel_type": "performed_by",
+      "description": "Document Upload step includes automated verification performed by the system",
+      "properties": {
+        "automation_level": "partial"
+      },
+      "context": "System performs automated verification (if available)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_001",
+      "source_name": "Document Upload",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_role_001",
+      "target_name": "Compliance Staff",
+      "rel_type": "reviewed_by",
+      "description": "Document Upload step includes manual review by Compliance staff",
+      "properties": {
+        "review_type": "manual"
+      },
+      "context": "Manual review by Compliance staff",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_002",
+      "source_name": "Document Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_idoc_001",
+      "target_name": "Passport Verification",
+      "rel_type": "verifies",
+      "description": "Document Verification step verifies Passport documents",
+      "properties": {
+        "checks": [
+          "expiration",
+          "document_number_format",
+          "image_quality"
+        ]
+      },
+      "context": "Check document not expired, Verify document number format, Review uploaded image quality",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_002",
+      "source_name": "Document Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_idoc_002",
+      "target_name": "Driving License Verification",
+      "rel_type": "verifies",
+      "description": "Document Verification step verifies Driving License documents",
+      "properties": {
+        "checks": [
+          "expiration",
+          "document_number_format",
+          "image_quality"
+        ]
+      },
+      "context": "Check document not expired, Verify document number format, Review uploaded image quality",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_002",
+      "source_name": "Document Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_dec_001",
+      "target_name": "Document Clarity Assessment",
+      "rel_type": "leads_to",
+      "description": "Document Verification step leads to Document Clarity Assessment decision",
+      "properties": {
+        "trigger_condition": "image quality review"
+      },
+      "context": "Flag for manual review if unclear",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_dec_001",
+      "source_name": "Document Clarity Assessment",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_role_001",
+      "target_name": "Compliance Staff",
+      "rel_type": "escalated_to",
+      "description": "Document Clarity Assessment decision is escalated to Compliance Staff for manual review",
+      "properties": {
+        "escalation_trigger": "unclear_document"
+      },
+      "context": "Flag for manual review if unclear",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_003",
+      "source_name": "Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_addr_001",
+      "target_name": "Address Verification Step",
+      "rel_type": "verifies",
+      "description": "Address Verification step verifies customer address",
+      "properties": {
+        "methods": [
+          "postcode_verification",
+          "secondary_document_upload"
+        ]
+      },
+      "context": "Customer enters address in form, Postcode verification (automated), Secondary document upload (optional, if required)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_003",
+      "source_name": "Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_cust_001",
+      "target_name": "Online Account Applicant",
+      "rel_type": "collects_data_from",
+      "description": "Address Verification step collects address information from the customer",
+      "properties": {
+        "data_type": "address"
+      },
+      "context": "Customer enters address in form",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_003",
+      "source_name": "Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_role_001",
+      "target_name": "Compliance Staff",
+      "rel_type": "reviewed_by",
+      "description": "Address Verification step includes review by Compliance staff",
+      "properties": {
+        "review_type": "manual"
+      },
+      "context": "Compliance staff review",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_004",
+      "source_name": "Compliance Approval Decision",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_dec_002",
+      "target_name": "Compliance Approval Gate",
+      "rel_type": "results_in",
+      "description": "Compliance Approval Decision step results in the Compliance Approval Gate decision point",
+      "properties": {
+        "outcomes": [
+          "approved",
+          "rejected",
+          "clarification_requested"
+        ]
+      },
+      "context": "Compliance staff approves or requests clarification",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_004",
+      "source_name": "Compliance Approval Decision",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_role_001",
+      "target_name": "Compliance Staff",
+      "rel_type": "performed_by",
+      "description": "Compliance Approval Decision step is performed by Compliance staff",
+      "properties": {
+        "decision_authority": true
+      },
+      "context": "Compliance staff approves or requests clarification",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_004",
+      "source_name": "Compliance Approval Decision",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_cust_001",
+      "target_name": "Online Account Applicant",
+      "rel_type": "notifies",
+      "description": "Compliance Approval Decision step notifies customer of rejection",
+      "properties": {
+        "notification_type": "rejection",
+        "reason_disclosure": "not_regulatory_reason_disclosed"
+      },
+      "context": "If rejected, customer notified (not a regulatory reason disclosed)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_dec_002",
+      "source_name": "Compliance Approval Gate",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_comp_001",
+      "target_name": "KYC Verification Checkpoint",
+      "rel_type": "gates",
+      "description": "Compliance Approval Gate decision point gates the KYC Verification Checkpoint",
+      "properties": {
+        "gate_condition": "approval_required"
+      },
+      "context": "Compliance staff approves or requests clarification",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_proc_001",
+      "source_name": "Online KYC Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_kyc_001",
+      "target_name": "Identity and Address Verification",
+      "rel_type": "executes",
+      "description": "Online KYC Verification process executes Identity and Address Verification",
+      "properties": {
+        "verification_scope": [
+          "identity",
+          "address"
+        ]
+      },
+      "context": "Online KYC Verification ... Document Upload ... Address Verification",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_proc_001",
+      "source_name": "Online KYC Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_comp_001",
+      "target_name": "KYC Verification Checkpoint",
+      "rel_type": "mandated_to_include",
+      "description": "Online KYC Verification process is mandated to include KYC Verification Checkpoint",
+      "properties": {
+        "compliance_requirement": true
+      },
+      "context": "Online KYC Verification ... Compliance Approval Decision",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_kyc_001",
+      "source_name": "Identity and Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_idoc_001",
+      "target_name": "Passport Verification",
+      "rel_type": "verified_using",
+      "description": "Identity and Address Verification uses Passport Verification documents",
+      "properties": {
+        "document_type": "passport"
+      },
+      "context": "Customer uploads photo of ID (Passport or Driving License)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_kyc_001",
+      "source_name": "Identity and Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_idoc_002",
+      "target_name": "Driving License Verification",
+      "rel_type": "verified_using",
+      "description": "Identity and Address Verification uses Driving License Verification documents",
+      "properties": {
+        "document_type": "driving_license"
+      },
+      "context": "Customer uploads photo of ID (Passport or Driving License)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_kyc_001",
+      "source_name": "Identity and Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_addr_001",
+      "target_name": "Address Verification Step",
+      "rel_type": "verifies",
+      "description": "Identity and Address Verification verifies customer address",
+      "properties": {
+        "verification_component": "address"
+      },
+      "context": "3. **Address Verification** - Customer enters address in form",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_kyc_001",
+      "source_name": "Identity and Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_cust_001",
+      "target_name": "Online Account Applicant",
+      "rel_type": "subject_to",
+      "description": "Online Account Applicant is subject to Identity and Address Verification",
+      "properties": {
+        "verification_mandatory": true
+      },
+      "context": "For Online Account Opening: ... Customer uploads photo of ID",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_comp_001",
+      "source_name": "KYC Verification Checkpoint",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_kyc_001",
+      "target_name": "Identity and Address Verification",
+      "rel_type": "verifies_completion_of",
+      "description": "KYC Verification Checkpoint verifies completion of Identity and Address Verification",
+      "properties": {
+        "checkpoint_type": "completion_verification"
+      },
+      "context": "Compliance Approval Decision ... Compliance staff approves",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_comp_001",
+      "source_name": "KYC Verification Checkpoint",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_role_001",
+      "target_name": "Compliance Staff",
+      "rel_type": "performed_by",
+      "description": "KYC Verification Checkpoint is performed by Compliance staff",
+      "properties": {
+        "checkpoint_authority": true
+      },
+      "context": "Compliance staff approves or requests clarification",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_proc_001",
+      "source_name": "Online KYC Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_001",
+      "source_name": "Document Upload",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_002",
+      "source_name": "Document Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_003",
+      "source_name": "Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_pstep_004",
+      "source_name": "Compliance Approval Decision",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_role_001",
+      "source_name": "Compliance Staff",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_role_002",
+      "source_name": "Automated Verification System",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_dec_001",
+      "source_name": "Document Clarity Assessment",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_dec_002",
+      "source_name": "Compliance Approval Gate",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_comp_001",
+      "source_name": "KYC Verification Checkpoint",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_idoc_001",
+      "source_name": "Passport Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_idoc_002",
+      "source_name": "Driving License Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_addr_001",
+      "source_name": "Address Verification Step",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_cust_001",
+      "source_name": "Online Account Applicant",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015_kyc_001",
+      "source_name": "Identity and Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_015",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

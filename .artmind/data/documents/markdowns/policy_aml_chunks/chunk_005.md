@@ -1,0 +1,2 @@
+## Policy Statement  
+**FirstUK Bank does not knowingly provide banking services to individuals or entities engaged in or suspected of money laundering, terrorist financing, sanctions violations, or other financial crime.**

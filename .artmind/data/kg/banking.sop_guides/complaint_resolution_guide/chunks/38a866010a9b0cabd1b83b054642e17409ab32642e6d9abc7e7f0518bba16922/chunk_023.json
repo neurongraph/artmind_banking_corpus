@@ -1,0 +1,1380 @@
+{
+  "chunk_seq": 23,
+  "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+  "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+  "text": "## Your Complaint Rights Summary  \n| Right | Details |\n|---|---|\n| **Free Complaint** | No charge to lodge or escalate |\n| **8-Day Response** | We respond within 8 calendar days |\n| **Full Investigation** | Thorough review of your issue |\n| **Clear Explanation** | We explain our findings in detail |\n| **Compensation** | If we're wrong, we compensate you |\n| **Ombudsman Appeal** | Escalate to Financial Ombudsman if unhappy |\n| **6-Month Window** | You have 6 months to escalate to Ombudsman |\n| **No Retaliation** | We won't penalize you for complaining |  \n---",
+  "name": "Chunk 23/27",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_022",
+  "next_chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_024",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Complaint Resolution Process",
+      "aliases": [
+        "complaint_handling",
+        "complaint_management"
+      ],
+      "entity_class": "PROCESS",
+      "type": "complaint_resolution",
+      "description": "End-to-end procedure for handling customer complaints with mandatory response timelines, investigation requirements, and escalation rights to the Financial Ombudsman. The process includes free lodging, thorough investigation, detailed explanation of findings, and compensation where applicable.",
+      "context": [
+        "No charge to lodge or escalate",
+        "We respond within 8 calendar days",
+        "Thorough review of your issue",
+        "Escalate to Financial Ombudsman if unhappy"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Complaint Lodging",
+      "aliases": [
+        "complaint_submission"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial step where customer submits a complaint without any charge or fee. This is the entry point to the complaint resolution process.",
+      "context": [
+        "No charge to lodge or escalate",
+        "Free Complaint"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Complaint Investigation",
+      "aliases": [
+        "issue_review"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Thorough review and investigation of the customer's complaint to establish facts and determine the bank's position on the matter.",
+      "context": [
+        "Full Investigation",
+        "Thorough review of your issue"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Complaint Response",
+      "aliases": [
+        "findings_communication"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Bank provides a clear, detailed explanation of investigation findings to the customer within the mandated 8-day response window.",
+      "context": [
+        "We respond within 8 calendar days",
+        "Clear Explanation",
+        "We explain our findings in detail"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Compensation Decision",
+      "aliases": [
+        "remediation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Determination of whether compensation is warranted based on investigation findings. Compensation is provided if the bank is found to be at fault.",
+      "context": [
+        "Compensation",
+        "If we're wrong, we compensate you"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Ombudsman Escalation",
+      "aliases": [
+        "escalation_to_ombudsman"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation_procedure",
+      "description": "Customer option to escalate unresolved or unsatisfactory complaint to the Financial Ombudsman within a 6-month window from the bank's response.",
+      "context": [
+        "Ombudsman Appeal",
+        "Escalate to Financial Ombudsman if unhappy",
+        "6-Month Window"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Bank Complaint Handler",
+      "aliases": [
+        "complaint_team",
+        "complaint_staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Bank staff responsible for receiving, investigating, and responding to customer complaints within the defined process and timelines.",
+      "context": [
+        "We respond within 8 calendar days",
+        "We explain our findings in detail",
+        "We won't penalize you for complaining"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Financial Ombudsman",
+      "aliases": [
+        "ombudsman",
+        "financial_ombudsman_service"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "Independent external authority to which customers may escalate complaints if they are dissatisfied with the bank's response or investigation outcome.",
+      "context": [
+        "Ombudsman Appeal",
+        "Escalate to Financial Ombudsman if unhappy"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Complaint Outcome Decision",
+      "aliases": [
+        "fault_determination"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "decision_question": "Is the bank at fault in the complaint?",
+      "path_yes": "Compensation is provided to the customer",
+      "path_no": "Complaint is rejected; customer may escalate to Ombudsman",
+      "description": "Gate determining whether the bank's investigation concludes fault on the bank's part, triggering compensation obligation or complaint rejection.",
+      "context": [
+        "If we're wrong, we compensate you",
+        "Compensation"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Ombudsman Escalation Eligibility",
+      "aliases": [
+        "escalation_window_check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "timeout_check",
+      "decision_question": "Is the complaint escalation to Ombudsman within 6 months of bank response?",
+      "path_yes": "Escalation to Financial Ombudsman is accepted",
+      "path_no": "Escalation is time-barred and cannot proceed",
+      "description": "Compliance gate verifying that customer escalation to the Financial Ombudsman occurs within the 6-month window from the bank's response date.",
+      "context": [
+        "6-Month Window",
+        "You have 6 months to escalate to Ombudsman"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Complaint Response Timeline Compliance",
+      "aliases": [
+        "8_day_response_gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "regulatory_reporting",
+      "regulatory_basis": "Banking conduct and complaint handling regulations",
+      "mandatory": true,
+      "evidence_required": "Documented response to customer within 8 calendar days",
+      "description": "Mandatory compliance gate ensuring the bank responds to all complaints within 8 calendar days. Failure to meet this timeline constitutes a regulatory breach.",
+      "context": [
+        "8-Day Response",
+        "We respond within 8 calendar days"
+      ]
+    },
+    {
+      "id": "cc_002",
+      "name": "Ombudsman Escalation Rights Compliance",
+      "aliases": [
+        "ombudsman_access_gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "regulatory_reporting",
+      "regulatory_basis": "Financial Ombudsman Service rules and consumer protection regulations",
+      "mandatory": true,
+      "evidence_required": "Clear communication of Ombudsman escalation rights and 6-month window to customer",
+      "description": "Mandatory compliance gate ensuring customers are informed of their right to escalate to the Financial Ombudsman and the 6-month escalation window.",
+      "context": [
+        "Ombudsman Appeal",
+        "6-Month Window",
+        "You have 6 months to escalate to Ombudsman"
+      ]
+    },
+    {
+      "id": "cc_003",
+      "name": "Non-Retaliation Compliance",
+      "aliases": [
+        "anti_retaliation_gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "regulatory_reporting",
+      "regulatory_basis": "Consumer protection and fair treatment regulations",
+      "mandatory": true,
+      "evidence_required": "Documented policy and training ensuring no adverse action against complaining customers",
+      "description": "Mandatory compliance gate ensuring the bank does not penalize or retaliate against customers for lodging or escalating complaints.",
+      "context": [
+        "No Retaliation",
+        "We won't penalize you for complaining"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Complaining Customer",
+      "aliases": [
+        "complainant",
+        "customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A customer who has lodged a complaint with the bank regarding a service issue or dispute. The customer has defined rights including free complaint lodging, investigation, response, and escalation to the Financial Ombudsman.",
+      "context": [
+        "No charge to lodge or escalate",
+        "You have 6 months to escalate to Ombudsman",
+        "We won't penalize you for complaining"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_proc_001",
+    "pstep_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_001",
+    "pstep_002": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_002",
+    "pstep_003": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_003",
+    "pstep_004": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_004",
+    "pstep_005": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_005",
+    "ra_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_001",
+    "ra_002": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_002",
+    "dp_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_001",
+    "dp_002": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_002",
+    "cc_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_001",
+    "cc_002": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_002",
+    "cc_003": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_003",
+    "cust_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_proc_001",
+      "name": "Complaint Resolution Process",
+      "aliases": [
+        "complaint_handling",
+        "complaint_management"
+      ],
+      "entity_class": "PROCESS",
+      "type": "complaint_resolution",
+      "description": "End-to-end procedure for handling customer complaints with mandatory response timelines, investigation requirements, and escalation rights to the Financial Ombudsman. The process includes free lodging, thorough investigation, detailed explanation of findings, and compensation where applicable.",
+      "context": [
+        "No charge to lodge or escalate",
+        "We respond within 8 calendar days",
+        "Thorough review of your issue",
+        "Escalate to Financial Ombudsman if unhappy"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_001",
+      "name": "Complaint Lodging",
+      "aliases": [
+        "complaint_submission"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial step where customer submits a complaint without any charge or fee. This is the entry point to the complaint resolution process.",
+      "context": [
+        "No charge to lodge or escalate",
+        "Free Complaint"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_002",
+      "name": "Complaint Investigation",
+      "aliases": [
+        "issue_review"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Thorough review and investigation of the customer's complaint to establish facts and determine the bank's position on the matter.",
+      "context": [
+        "Full Investigation",
+        "Thorough review of your issue"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_003",
+      "name": "Complaint Response",
+      "aliases": [
+        "findings_communication"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Bank provides a clear, detailed explanation of investigation findings to the customer within the mandated 8-day response window.",
+      "context": [
+        "We respond within 8 calendar days",
+        "Clear Explanation",
+        "We explain our findings in detail"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_004",
+      "name": "Compensation Decision",
+      "aliases": [
+        "remediation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Determination of whether compensation is warranted based on investigation findings. Compensation is provided if the bank is found to be at fault.",
+      "context": [
+        "Compensation",
+        "If we're wrong, we compensate you"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_005",
+      "name": "Ombudsman Escalation",
+      "aliases": [
+        "escalation_to_ombudsman"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation_procedure",
+      "description": "Customer option to escalate unresolved or unsatisfactory complaint to the Financial Ombudsman within a 6-month window from the bank's response.",
+      "context": [
+        "Ombudsman Appeal",
+        "Escalate to Financial Ombudsman if unhappy",
+        "6-Month Window"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_001",
+      "name": "Bank Complaint Handler",
+      "aliases": [
+        "complaint_team",
+        "complaint_staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Bank staff responsible for receiving, investigating, and responding to customer complaints within the defined process and timelines.",
+      "context": [
+        "We respond within 8 calendar days",
+        "We explain our findings in detail",
+        "We won't penalize you for complaining"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_002",
+      "name": "Financial Ombudsman",
+      "aliases": [
+        "ombudsman",
+        "financial_ombudsman_service"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "Independent external authority to which customers may escalate complaints if they are dissatisfied with the bank's response or investigation outcome.",
+      "context": [
+        "Ombudsman Appeal",
+        "Escalate to Financial Ombudsman if unhappy"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_001",
+      "name": "Complaint Outcome Decision",
+      "aliases": [
+        "fault_determination"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "decision_question": "Is the bank at fault in the complaint?",
+      "path_yes": "Compensation is provided to the customer",
+      "path_no": "Complaint is rejected; customer may escalate to Ombudsman",
+      "description": "Gate determining whether the bank's investigation concludes fault on the bank's part, triggering compensation obligation or complaint rejection.",
+      "context": [
+        "If we're wrong, we compensate you",
+        "Compensation"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_002",
+      "name": "Ombudsman Escalation Eligibility",
+      "aliases": [
+        "escalation_window_check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "timeout_check",
+      "decision_question": "Is the complaint escalation to Ombudsman within 6 months of bank response?",
+      "path_yes": "Escalation to Financial Ombudsman is accepted",
+      "path_no": "Escalation is time-barred and cannot proceed",
+      "description": "Compliance gate verifying that customer escalation to the Financial Ombudsman occurs within the 6-month window from the bank's response date.",
+      "context": [
+        "6-Month Window",
+        "You have 6 months to escalate to Ombudsman"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_001",
+      "name": "Complaint Response Timeline Compliance",
+      "aliases": [
+        "8_day_response_gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "regulatory_reporting",
+      "regulatory_basis": "Banking conduct and complaint handling regulations",
+      "mandatory": true,
+      "evidence_required": "Documented response to customer within 8 calendar days",
+      "description": "Mandatory compliance gate ensuring the bank responds to all complaints within 8 calendar days. Failure to meet this timeline constitutes a regulatory breach.",
+      "context": [
+        "8-Day Response",
+        "We respond within 8 calendar days"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_002",
+      "name": "Ombudsman Escalation Rights Compliance",
+      "aliases": [
+        "ombudsman_access_gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "regulatory_reporting",
+      "regulatory_basis": "Financial Ombudsman Service rules and consumer protection regulations",
+      "mandatory": true,
+      "evidence_required": "Clear communication of Ombudsman escalation rights and 6-month window to customer",
+      "description": "Mandatory compliance gate ensuring customers are informed of their right to escalate to the Financial Ombudsman and the 6-month escalation window.",
+      "context": [
+        "Ombudsman Appeal",
+        "6-Month Window",
+        "You have 6 months to escalate to Ombudsman"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_003",
+      "name": "Non-Retaliation Compliance",
+      "aliases": [
+        "anti_retaliation_gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "regulatory_reporting",
+      "regulatory_basis": "Consumer protection and fair treatment regulations",
+      "mandatory": true,
+      "evidence_required": "Documented policy and training ensuring no adverse action against complaining customers",
+      "description": "Mandatory compliance gate ensuring the bank does not penalize or retaliate against customers for lodging or escalating complaints.",
+      "context": [
+        "No Retaliation",
+        "We won't penalize you for complaining"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cust_001",
+      "name": "Complaining Customer",
+      "aliases": [
+        "complainant",
+        "customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A customer who has lodged a complaint with the bank regarding a service issue or dispute. The customer has defined rights including free complaint lodging, investigation, response, and escalation to the Financial Ombudsman.",
+      "context": [
+        "No charge to lodge or escalate",
+        "You have 6 months to escalate to Ombudsman",
+        "We won't penalize you for complaining"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_proc_001",
+      "name": "Complaint Resolution Process",
+      "properties": {
+        "purpose": "Provide customers with a formal mechanism to lodge, investigate, and resolve complaints",
+        "scope": "All customers with complaints against the bank",
+        "channels": [
+          "branch",
+          "online",
+          "postal"
+        ],
+        "departments_involved": [
+          "Complaints",
+          "Financial Ombudsman Service"
+        ],
+        "timeline_sla": "8 calendar days for initial response",
+        "regulatory_references": [
+          "FCA DISP (Dispute Resolution)",
+          "Financial Ombudsman Service Rules"
+        ],
+        "trigger": "Customer lodges a complaint",
+        "outcome_success": "Complaint resolved with clear explanation and compensation if warranted",
+        "outcome_failure": "Escalation to Financial Ombudsman Service"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_001",
+      "name": "Complaint Lodging",
+      "properties": {
+        "step_number": 1,
+        "actor": "Complaining Customer",
+        "output": "Formal complaint record created in system",
+        "channel": [
+          "branch",
+          "online",
+          "postal"
+        ],
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_002",
+      "name": "Complaint Investigation",
+      "properties": {
+        "step_number": 2,
+        "actor": "Bank Complaint Handler",
+        "input": "Complaint details and supporting documentation",
+        "output": "Investigation findings and determination of liability",
+        "estimated_duration": "8 calendar days",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Complaint Management System"
+        ]
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_003",
+      "name": "Complaint Response",
+      "properties": {
+        "step_number": 3,
+        "actor": "Bank Complaint Handler",
+        "input": "Investigation findings",
+        "output": "Written response with clear explanation of findings",
+        "estimated_duration": "8 calendar days",
+        "channel": [
+          "branch",
+          "postal",
+          "online"
+        ],
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_004",
+      "name": "Compensation Decision",
+      "properties": {
+        "step_number": 4,
+        "actor": "Bank Complaint Handler",
+        "input": "Investigation outcome",
+        "output": "Compensation determination and payment if applicable",
+        "channel": "system",
+        "mandatory": "conditional"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_005",
+      "name": "Ombudsman Escalation",
+      "properties": {
+        "step_number": 5,
+        "actor": "Financial Ombudsman",
+        "input": "Complaint case file and customer escalation request",
+        "output": "Ombudsman determination and final resolution",
+        "channel": "external",
+        "mandatory": "conditional"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_001",
+      "name": "Bank Complaint Handler",
+      "properties": {
+        "role_type": "human",
+        "department": "Complaints",
+        "authority_level": "Investigates and resolves complaints; determines compensation eligibility",
+        "response_time_sla": "8 calendar days",
+        "channels": [
+          "system",
+          "email",
+          "postal"
+        ]
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_002",
+      "name": "Financial Ombudsman",
+      "properties": {
+        "role_type": "external",
+        "authority_level": "Independent authority; can overturn bank decisions and award compensation",
+        "channels": [
+          "postal",
+          "online"
+        ]
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_001",
+      "name": "Complaint Outcome Decision",
+      "properties": {
+        "decision_question": "Is the bank liable for the complaint?",
+        "criteria": "Investigation findings and evidence review",
+        "decision_maker": "Bank Complaint Handler",
+        "path_yes": "Proceed to Compensation Decision",
+        "path_no": "Issue rejection response with explanation"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_002",
+      "name": "Ombudsman Escalation Eligibility",
+      "properties": {
+        "decision_question": "Is the customer eligible to escalate to the Financial Ombudsman?",
+        "criteria": "Complaint unresolved or customer dissatisfied; within 6-month escalation window",
+        "decision_maker": "Financial Ombudsman Service",
+        "path_yes": "Accept case for ombudsman review",
+        "path_no": "Reject escalation as out of time or ineligible"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_001",
+      "name": "Complaint Response Timeline Compliance",
+      "properties": {
+        "regulatory_basis": "FCA DISP 2.8.1R",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": "Complaint response issued within 8 calendar days",
+        "performed_by": "Bank Complaint Handler",
+        "timing": "During Complaint Response step",
+        "failure_consequence": "Regulatory breach; customer may escalate to ombudsman"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_002",
+      "name": "Ombudsman Escalation Rights Compliance",
+      "properties": {
+        "regulatory_basis": "FCA DISP 2.8.2R; Financial Ombudsman Service Rules",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": "Clear communication of ombudsman escalation right and 6-month window",
+        "performed_by": "Bank Complaint Handler",
+        "timing": "In initial complaint response",
+        "failure_consequence": "Regulatory breach; customer may file complaint with FCA"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_003",
+      "name": "Non-Retaliation Compliance",
+      "properties": {
+        "regulatory_basis": "FCA DISP 1.2.1R",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": "No adverse action taken against customer for lodging complaint",
+        "performed_by": "Bank Complaint Handler; all staff",
+        "timing": "Throughout complaint process",
+        "failure_consequence": "Regulatory breach; potential enforcement action by FCA"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cust_001",
+      "name": "Complaining Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Initiator of complaint; recipient of investigation findings and compensation",
+        "eligibility_or_verification_status": "Entitled to free complaint lodging, 8-day response, full investigation, clear explanation, compensation if warranted, ombudsman appeal within 6 months, and protection from retaliation"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_proc_001",
+      "source_name": "Complaint Resolution Process",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_001",
+      "target_name": "Complaint Lodging",
+      "rel_type": "starts_with",
+      "description": "The Complaint Resolution Process begins with the Complaint Lodging step",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Complaint Resolution Process initiates with lodging of complaint",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_001",
+      "source_name": "Complaint Lodging",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_002",
+      "target_name": "Complaint Investigation",
+      "rel_type": "followed_by",
+      "description": "Complaint Lodging is followed by Complaint Investigation",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "After complaint is lodged, investigation is conducted",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_002",
+      "source_name": "Complaint Investigation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_003",
+      "target_name": "Complaint Response",
+      "rel_type": "followed_by",
+      "description": "Complaint Investigation is followed by Complaint Response",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Following thorough review of the issue, a response is provided",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_003",
+      "source_name": "Complaint Response",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_004",
+      "target_name": "Compensation Decision",
+      "rel_type": "followed_by",
+      "description": "Complaint Response is followed by Compensation Decision",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "Response includes findings and potential compensation decision",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_004",
+      "source_name": "Compensation Decision",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_005",
+      "target_name": "Ombudsman Escalation",
+      "rel_type": "alternative_to",
+      "description": "If customer is unhappy with Compensation Decision, they may pursue Ombudsman Escalation as an alternative path",
+      "properties": {
+        "condition": "customer_dissatisfaction"
+      },
+      "context": "Escalate to Financial Ombudsman if unhappy",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_proc_001",
+      "source_name": "Complaint Resolution Process",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_001",
+      "target_name": "Bank Complaint Handler",
+      "rel_type": "executed_by",
+      "description": "The Complaint Resolution Process is executed by the Bank Complaint Handler",
+      "properties": {
+        "primary_executor": true
+      },
+      "context": "Bank Complaint Handler manages the complaint resolution",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_001",
+      "source_name": "Complaint Lodging",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_001",
+      "target_name": "Bank Complaint Handler",
+      "rel_type": "performed_by",
+      "description": "Complaint Lodging is performed by the Bank Complaint Handler",
+      "properties": {},
+      "context": "Bank Complaint Handler receives and logs the complaint",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_002",
+      "source_name": "Complaint Investigation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_001",
+      "target_name": "Bank Complaint Handler",
+      "rel_type": "performed_by",
+      "description": "Complaint Investigation is performed by the Bank Complaint Handler",
+      "properties": {
+        "investigation_type": "thorough_review"
+      },
+      "context": "Full Investigation - Thorough review of your issue",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_003",
+      "source_name": "Complaint Response",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_001",
+      "target_name": "Bank Complaint Handler",
+      "rel_type": "performed_by",
+      "description": "Complaint Response is performed by the Bank Complaint Handler",
+      "properties": {
+        "response_requirement": "clear_explanation"
+      },
+      "context": "Clear Explanation - We explain our findings in detail",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_004",
+      "source_name": "Compensation Decision",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_001",
+      "target_name": "Bank Complaint Handler",
+      "rel_type": "performed_by",
+      "description": "Compensation Decision is performed by the Bank Complaint Handler",
+      "properties": {
+        "decision_criteria": "bank_liability"
+      },
+      "context": "Compensation - If we're wrong, we compensate you",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_005",
+      "source_name": "Ombudsman Escalation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_002",
+      "target_name": "Financial Ombudsman",
+      "rel_type": "escalated_to",
+      "description": "Ombudsman Escalation step is escalated to the Financial Ombudsman",
+      "properties": {
+        "escalation_trigger": "customer_dissatisfaction"
+      },
+      "context": "Ombudsman Appeal - Escalate to Financial Ombudsman if unhappy",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_proc_001",
+      "source_name": "Complaint Resolution Process",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_001",
+      "target_name": "Complaint Outcome Decision",
+      "rel_type": "includes",
+      "description": "The Complaint Resolution Process includes a Complaint Outcome Decision point",
+      "properties": {
+        "decision_stage": "post_investigation"
+      },
+      "context": "Decision on complaint outcome based on investigation findings",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_003",
+      "source_name": "Complaint Response",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_001",
+      "target_name": "Complaint Outcome Decision",
+      "rel_type": "leads_to",
+      "description": "Complaint Response leads to Complaint Outcome Decision",
+      "properties": {
+        "decision_basis": "investigation_findings"
+      },
+      "context": "Response findings determine the complaint outcome decision",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_001",
+      "source_name": "Complaint Outcome Decision",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_004",
+      "target_name": "Compensation Decision",
+      "rel_type": "routes_to_on_pass",
+      "description": "If Complaint Outcome Decision is favorable, it routes to Compensation Decision",
+      "properties": {
+        "outcome": "favorable_to_customer"
+      },
+      "context": "If we're wrong, we compensate you",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_001",
+      "source_name": "Complaint Outcome Decision",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_002",
+      "target_name": "Ombudsman Escalation Eligibility",
+      "rel_type": "routes_to_on_fail",
+      "description": "If Complaint Outcome Decision is unfavorable, it routes to Ombudsman Escalation Eligibility check",
+      "properties": {
+        "outcome": "unfavorable_to_customer"
+      },
+      "context": "Escalate to Financial Ombudsman if unhappy",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_proc_001",
+      "source_name": "Complaint Resolution Process",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_002",
+      "target_name": "Ombudsman Escalation Eligibility",
+      "rel_type": "includes",
+      "description": "The Complaint Resolution Process includes an Ombudsman Escalation Eligibility decision point",
+      "properties": {
+        "decision_stage": "escalation_gate"
+      },
+      "context": "6-Month Window - You have 6 months to escalate to Ombudsman",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_002",
+      "source_name": "Ombudsman Escalation Eligibility",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_005",
+      "target_name": "Ombudsman Escalation",
+      "rel_type": "routes_to_on_pass",
+      "description": "If Ombudsman Escalation Eligibility is confirmed, it routes to Ombudsman Escalation step",
+      "properties": {
+        "eligibility_criteria": "within_6_month_window"
+      },
+      "context": "6-Month Window - You have 6 months to escalate to Ombudsman",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_proc_001",
+      "source_name": "Complaint Resolution Process",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_001",
+      "target_name": "Complaint Response Timeline Compliance",
+      "rel_type": "mandated_to_include",
+      "description": "The Complaint Resolution Process is mandated to include Complaint Response Timeline Compliance checkpoint",
+      "properties": {
+        "compliance_requirement": "8_day_response_time"
+      },
+      "context": "8-Day Response - We respond within 8 calendar days",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_003",
+      "source_name": "Complaint Response",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_001",
+      "target_name": "Complaint Response Timeline Compliance",
+      "rel_type": "satisfies",
+      "description": "Complaint Response step satisfies the Complaint Response Timeline Compliance checkpoint",
+      "properties": {
+        "compliance_metric": "8_calendar_days"
+      },
+      "context": "8-Day Response - We respond within 8 calendar days",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_001",
+      "source_name": "Complaint Response Timeline Compliance",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_001",
+      "target_name": "Complaint Outcome Decision",
+      "rel_type": "gates",
+      "description": "Complaint Response Timeline Compliance checkpoint gates the Complaint Outcome Decision",
+      "properties": {
+        "gate_condition": "response_delivered_within_8_days"
+      },
+      "context": "8-Day Response - We respond within 8 calendar days",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_proc_001",
+      "source_name": "Complaint Resolution Process",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_002",
+      "target_name": "Ombudsman Escalation Rights Compliance",
+      "rel_type": "mandated_to_include",
+      "description": "The Complaint Resolution Process is mandated to include Ombudsman Escalation Rights Compliance checkpoint",
+      "properties": {
+        "compliance_requirement": "ombudsman_appeal_rights"
+      },
+      "context": "Ombudsman Appeal - Escalate to Financial Ombudsman if unhappy",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_005",
+      "source_name": "Ombudsman Escalation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_002",
+      "target_name": "Ombudsman Escalation Rights Compliance",
+      "rel_type": "satisfies",
+      "description": "Ombudsman Escalation step satisfies the Ombudsman Escalation Rights Compliance checkpoint",
+      "properties": {
+        "compliance_metric": "escalation_window_6_months"
+      },
+      "context": "6-Month Window - You have 6 months to escalate to Ombudsman",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_002",
+      "source_name": "Ombudsman Escalation Rights Compliance",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_002",
+      "target_name": "Ombudsman Escalation Eligibility",
+      "rel_type": "gates",
+      "description": "Ombudsman Escalation Rights Compliance checkpoint gates the Ombudsman Escalation Eligibility decision",
+      "properties": {
+        "gate_condition": "within_escalation_window"
+      },
+      "context": "6-Month Window - You have 6 months to escalate to Ombudsman",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_proc_001",
+      "source_name": "Complaint Resolution Process",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_003",
+      "target_name": "Non-Retaliation Compliance",
+      "rel_type": "mandated_to_include",
+      "description": "The Complaint Resolution Process is mandated to include Non-Retaliation Compliance checkpoint",
+      "properties": {
+        "compliance_requirement": "no_retaliation_policy"
+      },
+      "context": "No Retaliation - We won't penalize you for complaining",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_proc_001",
+      "source_name": "Complaint Resolution Process",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cust_001",
+      "target_name": "Complaining Customer",
+      "rel_type": "operates_on",
+      "description": "The Complaint Resolution Process operates on the Complaining Customer",
+      "properties": {
+        "customer_role": "complaint_initiator"
+      },
+      "context": "Process handles complaints from customers",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_001",
+      "source_name": "Complaint Lodging",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cust_001",
+      "target_name": "Complaining Customer",
+      "rel_type": "collects_data_from",
+      "description": "Complaint Lodging step collects complaint data from the Complaining Customer",
+      "properties": {
+        "data_type": "complaint_details"
+      },
+      "context": "Free Complaint - No charge to lodge or escalate",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_003",
+      "source_name": "Complaint Response",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cust_001",
+      "target_name": "Complaining Customer",
+      "rel_type": "notifies",
+      "description": "Complaint Response step notifies the Complaining Customer of findings",
+      "properties": {
+        "notification_content": "investigation_findings_and_explanation"
+      },
+      "context": "Clear Explanation - We explain our findings in detail",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_001",
+      "source_name": "Complaint Outcome Decision",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cust_001",
+      "target_name": "Complaining Customer",
+      "rel_type": "classifies",
+      "description": "Complaint Outcome Decision classifies the Complaining Customer's complaint status",
+      "properties": {
+        "classification_basis": "investigation_outcome"
+      },
+      "context": "Decision determines if customer receives compensation or escalation rights",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_003",
+      "source_name": "Non-Retaliation Compliance",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cust_001",
+      "target_name": "Complaining Customer",
+      "rel_type": "performed_by",
+      "description": "Non-Retaliation Compliance checkpoint is enforced to protect the Complaining Customer",
+      "properties": {
+        "protection_scope": "no_penalty_for_complaint"
+      },
+      "context": "No Retaliation - We won't penalize you for complaining",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_001",
+      "source_name": "Bank Complaint Handler",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_001",
+      "target_name": "Complaint Outcome Decision",
+      "rel_type": "decided_by",
+      "description": "Complaint Outcome Decision is decided by the Bank Complaint Handler",
+      "properties": {
+        "decision_authority": "primary"
+      },
+      "context": "Bank Complaint Handler makes the complaint outcome determination",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_002",
+      "source_name": "Financial Ombudsman",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_002",
+      "target_name": "Ombudsman Escalation Eligibility",
+      "rel_type": "decided_by",
+      "description": "Ombudsman Escalation Eligibility is decided by the Financial Ombudsman",
+      "properties": {
+        "decision_authority": "escalation_authority"
+      },
+      "context": "Financial Ombudsman determines if escalation is eligible",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_001",
+      "source_name": "Complaint Response Timeline Compliance",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_002",
+      "target_name": "Ombudsman Escalation Rights Compliance",
+      "rel_type": "precedes",
+      "description": "Complaint Response Timeline Compliance checkpoint precedes Ombudsman Escalation Rights Compliance",
+      "properties": {
+        "sequence": "response_before_escalation_rights"
+      },
+      "context": "Response must be provided before escalation rights are exercised",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_proc_001",
+      "source_name": "Complaint Resolution Process",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_001",
+      "source_name": "Complaint Lodging",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_002",
+      "source_name": "Complaint Investigation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_003",
+      "source_name": "Complaint Response",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_004",
+      "source_name": "Compensation Decision",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_pstep_005",
+      "source_name": "Ombudsman Escalation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_001",
+      "source_name": "Bank Complaint Handler",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_ra_002",
+      "source_name": "Financial Ombudsman",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_001",
+      "source_name": "Complaint Outcome Decision",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_dp_002",
+      "source_name": "Ombudsman Escalation Eligibility",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_001",
+      "source_name": "Complaint Response Timeline Compliance",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_002",
+      "source_name": "Ombudsman Escalation Rights Compliance",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cc_003",
+      "source_name": "Non-Retaliation Compliance",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023_cust_001",
+      "source_name": "Complaining Customer",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_023",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

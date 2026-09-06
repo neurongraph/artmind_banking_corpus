@@ -1,0 +1,1062 @@
+{
+  "chunk_seq": 4,
+  "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+  "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+  "text": "## Application Landscape  \n### Core Banking Systems  \n#### 1. Account Management System (AMS)  \n**System ID:** AMS-001\n**Purpose:** Central repository for customer accounts, balances, and transactions\n**Technology:** Java microservices, PostgreSQL database\n**Deployment:** Cloud (AWS)\n**Availability:** 99.9% (SLA)  \n**Key Functions:**\n- Account creation and lifecycle\n- Balance management\n- Transaction recording\n- Interest calculation\n- Account status tracking  \n**Data Model:**\n- Customers\n- Accounts (see [[business_ontology]])\n- Account Holders (primary, secondary, joint)\n- Transactions\n- Account Status  \n**APIs Exposed:**\n- `POST /accounts` — Create account\n- `GET /accounts/{accountId}` — Retrieve account details\n- `GET /accounts/{accountId}/balance` — Get balance\n- `GET /accounts/{accountId}/transactions` — Transaction history\n- `POST /accounts/{accountId}/transactions` — Record transaction  \n**Integration:**\n- Internet Banking Platform (IBP)\n- Mobile Banking App\n- Fraud Detection Engine\n- Data Warehouse  \n**Database:**\n- PostgreSQL 13+\n- 800 accounts × 2,000+ transactions = 1.6M records\n- Backup: Daily encrypted backup to S3\n- Recovery Point Objective (RPO): 15 minutes  \n---",
+  "name": "Chunk 4/39",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_003",
+  "next_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+  "raw_entities": [
+    {
+      "id": "sys_001",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS",
+        "AMS-001"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "core_banking",
+      "description": "Central repository for customer accounts, balances, and transactions. Built on Java microservices with PostgreSQL backend, deployed on AWS cloud infrastructure. Manages account creation, lifecycle, balance tracking, transaction recording, interest calculation, and account status monitoring.",
+      "context": [
+        "Central repository for customer accounts, balances, and transactions",
+        "Technology: Java microservices, PostgreSQL database",
+        "Deployment: Cloud (AWS)",
+        "Account creation and lifecycle, Balance management, Transaction recording, Interest calculation, Account status tracking"
+      ]
+    },
+    {
+      "id": "sys_002",
+      "name": "Internet Banking Platform",
+      "aliases": [
+        "IBP"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "internet_banking",
+      "description": "Customer-facing digital channel integrated with the Account Management System for account access and transaction management.",
+      "context": [
+        "Internet Banking Platform (IBP)"
+      ]
+    },
+    {
+      "id": "sys_003",
+      "name": "Mobile Banking App",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "mobile_banking",
+      "description": "Mobile application channel integrated with the Account Management System for customer account access and transaction management.",
+      "context": [
+        "Mobile Banking App"
+      ]
+    },
+    {
+      "id": "sys_004",
+      "name": "Fraud Detection Engine",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "fraud_detection",
+      "description": "System integrated with Account Management System to monitor and detect fraudulent transactions and account activities.",
+      "context": [
+        "Fraud Detection Engine"
+      ]
+    },
+    {
+      "id": "sys_005",
+      "name": "Data Warehouse",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "analytics",
+      "description": "Analytics and reporting system integrated with Account Management System for data aggregation and business intelligence.",
+      "context": [
+        "Data Warehouse"
+      ]
+    },
+    {
+      "id": "sys_006",
+      "name": "PostgreSQL Database",
+      "aliases": [
+        "PostgreSQL 13+"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "Primary relational database for Account Management System storing customer, account, account holder, transaction, and account status data. Version 13 or higher with daily encrypted backup to S3.",
+      "context": [
+        "Technology: Java microservices, PostgreSQL database",
+        "PostgreSQL 13+",
+        "Backup: Daily encrypted backup to S3"
+      ]
+    },
+    {
+      "id": "sys_007",
+      "name": "S3 Backup Storage",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "Cloud storage service for encrypted daily backups of the PostgreSQL database with 15-minute Recovery Point Objective.",
+      "context": [
+        "Backup: Daily encrypted backup to S3",
+        "Recovery Point Objective (RPO): 15 minutes"
+      ]
+    },
+    {
+      "id": "bc_001",
+      "name": "Account",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "Core banking entity representing a customer account with associated balance, transaction history, and lifecycle state. Managed centrally in the Account Management System data model.",
+      "context": [
+        "Accounts (see [[business_ontology]])",
+        "Account creation and lifecycle",
+        "Balance management"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Account Holder",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account_holder",
+      "description": "Legal party with rights and obligations over an account, including primary, secondary, and joint account holders. Tracked in Account Management System data model.",
+      "context": [
+        "Account Holders (primary, secondary, joint)"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "customer",
+      "description": "Natural person who holds or is associated with banking accounts and transactions. Stored as core entity in Account Management System data model.",
+      "context": [
+        "Customers",
+        "Data Model: Customers"
+      ]
+    },
+    {
+      "id": "bc_004",
+      "name": "Transaction",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "Financial event recorded on a customer account including deposits, withdrawals, transfers, and payments. Centrally managed and tracked in Account Management System.",
+      "context": [
+        "Transaction recording",
+        "Transactions",
+        "GET /accounts/{accountId}/transactions — Transaction history"
+      ]
+    },
+    {
+      "id": "bc_005",
+      "name": "Account Status",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "State attribute of an account tracked in the Account Management System data model, including lifecycle and operational status.",
+      "context": [
+        "Account status tracking",
+        "Account Status"
+      ]
+    },
+    {
+      "id": "mt_001",
+      "name": "Account Management System Availability Target",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "availability_target",
+      "description": "Service level agreement for Account Management System uptime and availability.",
+      "context": [
+        "Availability: 99.9% (SLA)"
+      ]
+    },
+    {
+      "id": "mt_002",
+      "name": "Recovery Point Objective",
+      "aliases": [
+        "RPO"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "sla",
+      "description": "Maximum acceptable data loss window for Account Management System backups, set at 15 minutes for daily encrypted backups to S3.",
+      "context": [
+        "Recovery Point Objective (RPO): 15 minutes"
+      ]
+    },
+    {
+      "id": "mt_003",
+      "name": "Account Management System Data Volume",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Current data capacity of Account Management System PostgreSQL database storing approximately 1.6 million transaction records across 800 accounts.",
+      "context": [
+        "800 accounts × 2,000+ transactions = 1.6M records"
+      ]
+    }
+  ],
+  "id_map": {
+    "sys_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+    "sys_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_002",
+    "sys_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_003",
+    "sys_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_004",
+    "sys_005": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_005",
+    "sys_006": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_006",
+    "sys_007": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_007",
+    "bc_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_001",
+    "bc_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_002",
+    "bc_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_003",
+    "bc_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_004",
+    "bc_005": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_005",
+    "mt_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_mt_001",
+    "mt_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_mt_002",
+    "mt_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_mt_003"
+  },
+  "entities": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS",
+        "AMS-001"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "core_banking",
+      "description": "Central repository for customer accounts, balances, and transactions. Built on Java microservices with PostgreSQL backend, deployed on AWS cloud infrastructure. Manages account creation, lifecycle, balance tracking, transaction recording, interest calculation, and account status monitoring.",
+      "context": [
+        "Central repository for customer accounts, balances, and transactions",
+        "Technology: Java microservices, PostgreSQL database",
+        "Deployment: Cloud (AWS)",
+        "Account creation and lifecycle, Balance management, Transaction recording, Interest calculation, Account status tracking"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_002",
+      "name": "Internet Banking Platform",
+      "aliases": [
+        "IBP"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "internet_banking",
+      "description": "Customer-facing digital channel integrated with the Account Management System for account access and transaction management.",
+      "context": [
+        "Internet Banking Platform (IBP)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_003",
+      "name": "Mobile Banking App",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "mobile_banking",
+      "description": "Mobile application channel integrated with the Account Management System for customer account access and transaction management.",
+      "context": [
+        "Mobile Banking App"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_004",
+      "name": "Fraud Detection Engine",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "fraud_detection",
+      "description": "System integrated with Account Management System to monitor and detect fraudulent transactions and account activities.",
+      "context": [
+        "Fraud Detection Engine"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_005",
+      "name": "Data Warehouse",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "analytics",
+      "description": "Analytics and reporting system integrated with Account Management System for data aggregation and business intelligence.",
+      "context": [
+        "Data Warehouse"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_006",
+      "name": "PostgreSQL Database",
+      "aliases": [
+        "PostgreSQL 13+"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "Primary relational database for Account Management System storing customer, account, account holder, transaction, and account status data. Version 13 or higher with daily encrypted backup to S3.",
+      "context": [
+        "Technology: Java microservices, PostgreSQL database",
+        "PostgreSQL 13+",
+        "Backup: Daily encrypted backup to S3"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_007",
+      "name": "S3 Backup Storage",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "Cloud storage service for encrypted daily backups of the PostgreSQL database with 15-minute Recovery Point Objective.",
+      "context": [
+        "Backup: Daily encrypted backup to S3",
+        "Recovery Point Objective (RPO): 15 minutes"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_001",
+      "name": "Account",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "Core banking entity representing a customer account with associated balance, transaction history, and lifecycle state. Managed centrally in the Account Management System data model.",
+      "context": [
+        "Accounts (see [[business_ontology]])",
+        "Account creation and lifecycle",
+        "Balance management"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_002",
+      "name": "Account Holder",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account_holder",
+      "description": "Legal party with rights and obligations over an account, including primary, secondary, and joint account holders. Tracked in Account Management System data model.",
+      "context": [
+        "Account Holders (primary, secondary, joint)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_003",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "customer",
+      "description": "Natural person who holds or is associated with banking accounts and transactions. Stored as core entity in Account Management System data model.",
+      "context": [
+        "Customers",
+        "Data Model: Customers"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_004",
+      "name": "Transaction",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "Financial event recorded on a customer account including deposits, withdrawals, transfers, and payments. Centrally managed and tracked in Account Management System.",
+      "context": [
+        "Transaction recording",
+        "Transactions",
+        "GET /accounts/{accountId}/transactions — Transaction history"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_005",
+      "name": "Account Status",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "State attribute of an account tracked in the Account Management System data model, including lifecycle and operational status.",
+      "context": [
+        "Account status tracking",
+        "Account Status"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_mt_001",
+      "name": "Account Management System Availability Target",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "availability_target",
+      "description": "Service level agreement for Account Management System uptime and availability.",
+      "context": [
+        "Availability: 99.9% (SLA)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_mt_002",
+      "name": "Recovery Point Objective",
+      "aliases": [
+        "RPO"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "sla",
+      "description": "Maximum acceptable data loss window for Account Management System backups, set at 15 minutes for daily encrypted backups to S3.",
+      "context": [
+        "Recovery Point Objective (RPO): 15 minutes"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_mt_003",
+      "name": "Account Management System Data Volume",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Current data capacity of Account Management System PostgreSQL database storing approximately 1.6 million transaction records across 800 accounts.",
+      "context": [
+        "800 accounts × 2,000+ transactions = 1.6M records"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "name": "Account Management System",
+      "properties": {
+        "system_id": "AMS-001",
+        "purpose": "Central repository for customer accounts, balances, and transactions",
+        "technology_stack": [
+          "Java microservices",
+          "PostgreSQL 13+"
+        ],
+        "deployment": "Cloud (AWS)",
+        "availability_sla": "99.9%",
+        "key_features": [
+          "Account creation and lifecycle",
+          "Balance management",
+          "Transaction recording",
+          "Interest calculation",
+          "Account status tracking"
+        ],
+        "apis_exposed": [
+          "POST /accounts",
+          "GET /accounts/{accountId}",
+          "GET /accounts/{accountId}/balance",
+          "GET /accounts/{accountId}/transactions",
+          "POST /accounts/{accountId}/transactions"
+        ],
+        "integrations": [
+          "Internet Banking Platform",
+          "Mobile Banking App",
+          "Fraud Detection Engine",
+          "Data Warehouse"
+        ],
+        "data_stored": [
+          "Customers",
+          "Accounts",
+          "Account Holders",
+          "Transactions",
+          "Account Status"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_002",
+      "name": "Internet Banking Platform",
+      "properties": {
+        "integrations": [
+          "Account Management System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_003",
+      "name": "Mobile Banking App",
+      "properties": {
+        "integrations": [
+          "Account Management System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_004",
+      "name": "Fraud Detection Engine",
+      "properties": {
+        "integrations": [
+          "Account Management System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_005",
+      "name": "Data Warehouse",
+      "properties": {
+        "integrations": [
+          "Account Management System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_006",
+      "name": "PostgreSQL Database",
+      "properties": {
+        "technology_stack": [
+          "PostgreSQL 13+"
+        ],
+        "deployment": "Cloud (AWS)"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_007",
+      "name": "S3 Backup Storage",
+      "properties": {
+        "purpose": "Daily encrypted backup storage",
+        "deployment": "Cloud (AWS)"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_001",
+      "name": "Account",
+      "properties": {
+        "definition": "Central entity representing customer accounts with balances and transaction history",
+        "key_attributes": [
+          "accountId",
+          "balance",
+          "account_status",
+          "transactions"
+        ],
+        "business_rules": [
+          "Account creation and lifecycle management required",
+          "Balance must be tracked and updated with each transaction",
+          "Interest calculation applied to accounts"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_002",
+      "name": "Account Holder",
+      "properties": {
+        "definition": "Individual or entity with ownership or signing authority over an account",
+        "key_attributes": [
+          "holder_type",
+          "account_id",
+          "signing_authority"
+        ],
+        "subtypes": [
+          "primary",
+          "secondary",
+          "joint"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_003",
+      "name": "Customer",
+      "properties": {
+        "definition": "Individual or entity that holds one or more accounts in the bank",
+        "key_attributes": [
+          "customer_id",
+          "accounts",
+          "account_holders"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_004",
+      "name": "Transaction",
+      "properties": {
+        "definition": "Record of account activity including deposits, withdrawals, and transfers",
+        "key_attributes": [
+          "transaction_id",
+          "account_id",
+          "amount",
+          "type",
+          "timestamp"
+        ],
+        "business_rules": [
+          "All transactions must be recorded in Account Management System",
+          "Transaction history must be retrievable per account"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_005",
+      "name": "Account Status",
+      "properties": {
+        "definition": "Current state of an account tracked within the Account Management System",
+        "key_attributes": [
+          "status_value",
+          "account_id",
+          "last_updated"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_mt_001",
+      "name": "Account Management System Availability Target",
+      "properties": {
+        "value": 99.9,
+        "unit": "percentage",
+        "what_it_measures": "System uptime and availability for Account Management System",
+        "context": "SLA commitment for core banking operations"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_mt_002",
+      "name": "Recovery Point Objective",
+      "properties": {
+        "value": 15,
+        "unit": "minutes",
+        "what_it_measures": "Maximum acceptable data loss in case of system failure",
+        "context": "Backup frequency to S3 encrypted storage"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_mt_003",
+      "name": "Account Management System Data Volume",
+      "properties": {
+        "value": 1600000,
+        "unit": "count",
+        "what_it_measures": "Total records stored (800 accounts × 2,000+ transactions per account)",
+        "context": "Database capacity and performance baseline"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_006",
+      "target_name": "PostgreSQL Database",
+      "rel_type": "depends_on",
+      "description": "Account Management System relies on PostgreSQL 13+ as its primary database for storing account and transaction data",
+      "properties": {
+        "technology": "PostgreSQL 13+",
+        "data_volume": "1.6M records (800 accounts × 2,000+ transactions)"
+      },
+      "context": "Technology: Java microservices, PostgreSQL database... Database: PostgreSQL 13+ 800 accounts × 2,000+ transactions = 1.6M records",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_007",
+      "target_name": "S3 Backup Storage",
+      "rel_type": "depends_on",
+      "description": "Account Management System depends on S3 for daily encrypted backup storage",
+      "properties": {
+        "backup_frequency": "daily",
+        "encryption": "encrypted",
+        "rpo": "15 minutes"
+      },
+      "context": "Backup: Daily encrypted backup to S3 Recovery Point Objective (RPO): 15 minutes",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_002",
+      "target_name": "Internet Banking Platform",
+      "rel_type": "integrates_with",
+      "description": "Account Management System integrates with Internet Banking Platform for customer access",
+      "properties": {
+        "integration_type": "API-based"
+      },
+      "context": "Integration: Internet Banking Platform (IBP)",
+      "bidirectional": true,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_003",
+      "target_name": "Mobile Banking App",
+      "rel_type": "integrates_with",
+      "description": "Account Management System integrates with Mobile Banking App for mobile customer access",
+      "properties": {
+        "integration_type": "API-based"
+      },
+      "context": "Integration: Mobile Banking App",
+      "bidirectional": true,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_004",
+      "target_name": "Fraud Detection Engine",
+      "rel_type": "integrates_with",
+      "description": "Account Management System integrates with Fraud Detection Engine for transaction monitoring",
+      "properties": {
+        "integration_type": "API-based"
+      },
+      "context": "Integration: Fraud Detection Engine",
+      "bidirectional": true,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_005",
+      "target_name": "Data Warehouse",
+      "rel_type": "feeds_data_to",
+      "description": "Account Management System feeds account and transaction data to Data Warehouse",
+      "properties": {
+        "data_type": "accounts, transactions, balances"
+      },
+      "context": "Integration: Data Warehouse",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_001",
+      "target_name": "Account",
+      "rel_type": "manages",
+      "description": "Account Management System manages the Account banking concept including creation, lifecycle, and status",
+      "properties": {
+        "functions": [
+          "account creation",
+          "lifecycle management",
+          "balance management",
+          "status tracking"
+        ]
+      },
+      "context": "Key Functions: Account creation and lifecycle, Balance management, Account status tracking",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_002",
+      "target_name": "Account Holder",
+      "rel_type": "manages",
+      "description": "Account Management System manages Account Holder data including primary, secondary, and joint holders",
+      "properties": {
+        "holder_types": [
+          "primary",
+          "secondary",
+          "joint"
+        ]
+      },
+      "context": "Data Model: Account Holders (primary, secondary, joint)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_004",
+      "target_name": "Transaction",
+      "rel_type": "records",
+      "description": "Account Management System records and manages transactions",
+      "properties": {
+        "functions": [
+          "transaction recording",
+          "transaction history retrieval"
+        ]
+      },
+      "context": "Key Functions: Transaction recording... APIs Exposed: POST /accounts/{accountId}/transactions — Record transaction",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_005",
+      "target_name": "Account Status",
+      "rel_type": "tracks",
+      "description": "Account Management System tracks account status",
+      "properties": {
+        "tracking_type": "account lifecycle status"
+      },
+      "context": "Key Functions: Account status tracking",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_mt_001",
+      "target_name": "Account Management System Availability Target",
+      "rel_type": "owns_sla",
+      "description": "Account Management System is accountable for 99.9% availability SLA",
+      "properties": {
+        "availability_target": "99.9%",
+        "sla_type": "uptime"
+      },
+      "context": "Availability: 99.9% (SLA)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_mt_002",
+      "target_name": "Recovery Point Objective",
+      "rel_type": "owns_sla",
+      "description": "Account Management System is accountable for 15-minute Recovery Point Objective",
+      "properties": {
+        "rpo_value": "15 minutes",
+        "backup_mechanism": "S3 encrypted backup"
+      },
+      "context": "Recovery Point Objective (RPO): 15 minutes",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_mt_003",
+      "target_name": "Account Management System Data Volume",
+      "rel_type": "owns_sla",
+      "description": "Account Management System manages data volume of 1.6M records",
+      "properties": {
+        "data_volume": "1.6M records",
+        "composition": "800 accounts × 2,000+ transactions"
+      },
+      "context": "800 accounts × 2,000+ transactions = 1.6M records",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_001",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_002",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_003",
+      "source_name": "Mobile Banking App",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_004",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_005",
+      "source_name": "Data Warehouse",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_006",
+      "source_name": "PostgreSQL Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_sys_007",
+      "source_name": "S3 Backup Storage",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_002",
+      "source_name": "Account Holder",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_003",
+      "source_name": "Customer",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_004",
+      "source_name": "Transaction",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_bc_005",
+      "source_name": "Account Status",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_mt_001",
+      "source_name": "Account Management System Availability Target",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_mt_002",
+      "source_name": "Recovery Point Objective",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004_mt_003",
+      "source_name": "Account Management System Data Volume",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ]
+}

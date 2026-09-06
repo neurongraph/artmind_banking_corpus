@@ -1,0 +1,784 @@
+{
+  "chunk_seq": 14,
+  "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+  "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+  "text": "### Entity: Joint Account  \n**Definition:** An account held by two or more customers with joint and several liability.  \n**Attributes:**\n- `account_id` — Base account ID\n- `joint_type` — Joint and Several, Tenants in Common\n- `holders` → AccountHolder (2+ records)\n- `interest_split` — How interest allocated (equal, specified %)  \n**Key Business Rules:**\n- Both holders must consent to account closure\n- Both holders responsible for overdraft\n- Both holders can initiate transactions\n- Dispute resolution per [[departments]] Complaint Handling  \n**Regulatory Treatment:**\n- Both holders jointly and severally liable\n- Both included in AML due diligence\n- Both entitled to account information  \n---",
+  "name": "Chunk 14/37",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+  "next_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+  "raw_entities": [
+    {
+      "id": "bc_001",
+      "name": "Joint Account",
+      "aliases": [
+        "joint_account_arrangement"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "joint_account",
+      "description": "An account held by two or more customers with joint and several liability. Both account holders share equal responsibility for overdrafts and can independently initiate transactions. Interest allocation and dispute resolution are governed by defined business rules and complaint handling procedures.",
+      "context": [
+        "An account held by two or more customers with joint and several liability.",
+        "Both holders must consent to account closure",
+        "Both holders responsible for overdraft",
+        "Both holders can initiate transactions"
+      ]
+    },
+    {
+      "id": "ba_001",
+      "name": "Account Holder",
+      "aliases": [
+        "joint_holder"
+      ],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "joint_holder",
+      "description": "A party with legal rights and obligations over a joint account. Joint account holders are jointly and severally liable for account activity, must consent to account closure, and are both entitled to account information and included in AML due diligence.",
+      "context": [
+        "holders → AccountHolder (2+ records)",
+        "Both holders must consent to account closure",
+        "Both holders jointly and severally liable",
+        "Both included in AML due diligence"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Joint and Several Liability",
+      "aliases": [
+        "joint_and_several"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "joint_account",
+      "description": "A legal arrangement where both account holders are individually and collectively responsible for all account obligations, including overdrafts and account closure decisions.",
+      "context": [
+        "Joint and Several, Tenants in Common",
+        "Both holders jointly and severally liable",
+        "Both holders responsible for overdraft"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "Joint Account Closure Consent Requirement",
+      "aliases": [
+        "closure_consent_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "A governance rule requiring that both holders of a joint account must provide explicit consent before the account can be closed.",
+      "context": [
+        "Both holders must consent to account closure"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Joint Account Overdraft Liability",
+      "aliases": [
+        "overdraft_liability_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A constraint establishing that both holders of a joint account are jointly and severally responsible for any overdraft on the account.",
+      "context": [
+        "Both holders responsible for overdraft"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "Joint Account Transaction Authority",
+      "aliases": [
+        "transaction_authority_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "An operational rule permitting either holder of a joint account to independently initiate transactions without requiring consent from the other holder.",
+      "context": [
+        "Both holders can initiate transactions"
+      ]
+    },
+    {
+      "id": "br_004",
+      "name": "Joint Account AML Due Diligence",
+      "aliases": [
+        "aml_due_diligence_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "A regulatory requirement that both holders of a joint account must be included in Anti-Money Laundering due diligence procedures.",
+      "context": [
+        "Both included in AML due diligence"
+      ]
+    },
+    {
+      "id": "br_005",
+      "name": "Joint Account Information Access",
+      "aliases": [
+        "information_access_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "A regulatory obligation ensuring that both holders of a joint account are entitled to receive and access all account information.",
+      "context": [
+        "Both entitled to account information"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "Interest Split",
+      "aliases": [
+        "interest_allocation"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "feature",
+      "description": "A configurable attribute of a joint account that determines how accrued interest is allocated between account holders, either equally or according to specified percentages.",
+      "context": [
+        "interest_split — How interest allocated (equal, specified %)"
+      ]
+    },
+    {
+      "id": "bc_004",
+      "name": "Joint Account Dispute Resolution",
+      "aliases": [
+        "dispute_handling"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "The process by which disputes on a joint account are handled, governed by the bank's Complaint Handling procedures and applicable to both account holders.",
+      "context": [
+        "Dispute resolution per [[departments]] Complaint Handling"
+      ]
+    }
+  ],
+  "id_map": {
+    "bc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_001",
+    "ba_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_ba_001",
+    "bc_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_002",
+    "br_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_001",
+    "br_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_002",
+    "br_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_003",
+    "br_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_004",
+    "br_005": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_005",
+    "bc_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_003",
+    "bc_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_004"
+  },
+  "entities": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_001",
+      "name": "Joint Account",
+      "aliases": [
+        "joint_account_arrangement"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "joint_account",
+      "description": "An account held by two or more customers with joint and several liability. Both account holders share equal responsibility for overdrafts and can independently initiate transactions. Interest allocation and dispute resolution are governed by defined business rules and complaint handling procedures.",
+      "context": [
+        "An account held by two or more customers with joint and several liability.",
+        "Both holders must consent to account closure",
+        "Both holders responsible for overdraft",
+        "Both holders can initiate transactions"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_ba_001",
+      "name": "Account Holder",
+      "aliases": [
+        "joint_holder"
+      ],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "joint_holder",
+      "description": "A party with legal rights and obligations over a joint account. Joint account holders are jointly and severally liable for account activity, must consent to account closure, and are both entitled to account information and included in AML due diligence.",
+      "context": [
+        "holders → AccountHolder (2+ records)",
+        "Both holders must consent to account closure",
+        "Both holders jointly and severally liable",
+        "Both included in AML due diligence"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_002",
+      "name": "Joint and Several Liability",
+      "aliases": [
+        "joint_and_several"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "joint_account",
+      "description": "A legal arrangement where both account holders are individually and collectively responsible for all account obligations, including overdrafts and account closure decisions.",
+      "context": [
+        "Joint and Several, Tenants in Common",
+        "Both holders jointly and severally liable",
+        "Both holders responsible for overdraft"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_001",
+      "name": "Joint Account Closure Consent Requirement",
+      "aliases": [
+        "closure_consent_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "A governance rule requiring that both holders of a joint account must provide explicit consent before the account can be closed.",
+      "context": [
+        "Both holders must consent to account closure"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_002",
+      "name": "Joint Account Overdraft Liability",
+      "aliases": [
+        "overdraft_liability_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A constraint establishing that both holders of a joint account are jointly and severally responsible for any overdraft on the account.",
+      "context": [
+        "Both holders responsible for overdraft"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_003",
+      "name": "Joint Account Transaction Authority",
+      "aliases": [
+        "transaction_authority_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "An operational rule permitting either holder of a joint account to independently initiate transactions without requiring consent from the other holder.",
+      "context": [
+        "Both holders can initiate transactions"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_004",
+      "name": "Joint Account AML Due Diligence",
+      "aliases": [
+        "aml_due_diligence_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "A regulatory requirement that both holders of a joint account must be included in Anti-Money Laundering due diligence procedures.",
+      "context": [
+        "Both included in AML due diligence"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_005",
+      "name": "Joint Account Information Access",
+      "aliases": [
+        "information_access_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "A regulatory obligation ensuring that both holders of a joint account are entitled to receive and access all account information.",
+      "context": [
+        "Both entitled to account information"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_003",
+      "name": "Interest Split",
+      "aliases": [
+        "interest_allocation"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "feature",
+      "description": "A configurable attribute of a joint account that determines how accrued interest is allocated between account holders, either equally or according to specified percentages.",
+      "context": [
+        "interest_split — How interest allocated (equal, specified %)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_004",
+      "name": "Joint Account Dispute Resolution",
+      "aliases": [
+        "dispute_handling"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "The process by which disputes on a joint account are handled, governed by the bank's Complaint Handling procedures and applicable to both account holders.",
+      "context": [
+        "Dispute resolution per [[departments]] Complaint Handling"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_001",
+      "name": "Joint Account",
+      "properties": {
+        "definition": "An account held by two or more customers with joint and several liability",
+        "key_attributes": [
+          "account_id",
+          "joint_type",
+          "holders",
+          "interest_split"
+        ],
+        "subtypes": [
+          "Joint and Several",
+          "Tenants in Common"
+        ],
+        "business_rules": [
+          "Both holders must consent to account closure",
+          "Both holders responsible for overdraft",
+          "Both holders can initiate transactions",
+          "Dispute resolution per Complaint Handling procedures"
+        ],
+        "regulatory_significance": "Both holders jointly and severally liable; both included in AML due diligence; both entitled to account information",
+        "relationships_to": [
+          "Joint and Several Liability",
+          "Interest Split",
+          "Account Holder",
+          "Joint Account Dispute Resolution"
+        ],
+        "ontology_domain": "Products & Accounts"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_ba_001",
+      "name": "Account Holder",
+      "properties": {
+        "holder_type": "joint",
+        "liability_scope": "joint and several",
+        "withdrawal_or_signing_authority": "Both holders can initiate transactions",
+        "due_diligence_requirement": "Both holders included in AML due diligence"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_002",
+      "name": "Joint and Several Liability",
+      "properties": {
+        "definition": "Legal arrangement where each account holder is individually and collectively responsible for the full account balance and obligations",
+        "key_attributes": [
+          "liability_type",
+          "holder_count",
+          "overdraft_responsibility"
+        ],
+        "business_rules": [
+          "Both holders responsible for overdraft",
+          "Each holder liable for full account balance"
+        ],
+        "regulatory_significance": "Both holders jointly and severally liable under banking regulations",
+        "relationships_to": [
+          "Joint Account",
+          "Account Holder"
+        ],
+        "ontology_domain": "Legal & Compliance"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_001",
+      "name": "Joint Account Closure Consent Requirement",
+      "properties": {
+        "rule_statement": "Both holders must consent to account closure",
+        "rule_type": "authority",
+        "applies_to": [
+          "Joint Account",
+          "Account Holder"
+        ],
+        "regulatory_source": "Banking regulations for joint accounts"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_002",
+      "name": "Joint Account Overdraft Liability",
+      "properties": {
+        "rule_statement": "Both holders are responsible for overdraft",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Joint Account",
+          "Account Holder"
+        ],
+        "regulatory_source": "Joint and Several Liability framework"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_003",
+      "name": "Joint Account Transaction Authority",
+      "properties": {
+        "rule_statement": "Both holders can initiate transactions",
+        "rule_type": "authority",
+        "applies_to": [
+          "Joint Account",
+          "Account Holder",
+          "Transaction"
+        ],
+        "decision_authority": "Either joint account holder"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_004",
+      "name": "Joint Account AML Due Diligence",
+      "properties": {
+        "rule_statement": "Both holders must be included in AML due diligence",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Joint Account",
+          "Account Holder",
+          "AML Screening"
+        ],
+        "regulatory_source": "AML/CFT regulations"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_005",
+      "name": "Joint Account Information Access",
+      "properties": {
+        "rule_statement": "Both holders are entitled to account information",
+        "rule_type": "authority",
+        "applies_to": [
+          "Joint Account",
+          "Account Holder"
+        ],
+        "regulatory_source": "Banking regulations and data access rights"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_003",
+      "name": "Interest Split",
+      "properties": {
+        "definition": "Method of allocating interest earned on a joint account between account holders",
+        "key_attributes": [
+          "split_method",
+          "allocation_percentage"
+        ],
+        "subtypes": [
+          "Equal split",
+          "Specified percentage split"
+        ],
+        "relationships_to": [
+          "Joint Account",
+          "Account Holder"
+        ],
+        "ontology_domain": "Products & Accounts"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_004",
+      "name": "Joint Account Dispute Resolution",
+      "properties": {
+        "definition": "Process for resolving disputes on joint accounts",
+        "business_rules": [
+          "Dispute resolution per Complaint Handling procedures"
+        ],
+        "relationships_to": [
+          "Joint Account",
+          "Account Holder"
+        ],
+        "ontology_domain": "Complaints & Disputes"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_001",
+      "source_name": "Joint Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_002",
+      "target_name": "Joint and Several Liability",
+      "rel_type": "has_subtype",
+      "description": "Joint Account is structured with Joint and Several Liability as a core characteristic",
+      "properties": {
+        "liability_model": "joint_and_several"
+      },
+      "context": "An account held by two or more customers with joint and several liability.",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_001",
+      "source_name": "Joint Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_003",
+      "target_name": "Interest Split",
+      "rel_type": "has_relationship_to",
+      "description": "Joint Account includes interest allocation mechanism",
+      "properties": {
+        "allocation_methods": [
+          "equal",
+          "specified_percentage"
+        ]
+      },
+      "context": "`interest_split` — How interest allocated (equal, specified %)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_001",
+      "source_name": "Joint Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_001",
+      "target_name": "Joint Account Closure Consent Requirement",
+      "rel_type": "governed_by",
+      "description": "Joint Account closure is governed by consent requirement rule",
+      "properties": {
+        "requirement": "both_holders_must_consent"
+      },
+      "context": "Both holders must consent to account closure",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_001",
+      "source_name": "Joint Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_002",
+      "target_name": "Joint Account Overdraft Liability",
+      "rel_type": "governed_by",
+      "description": "Joint Account overdraft liability is governed by joint responsibility rule",
+      "properties": {
+        "liability_scope": "both_holders_responsible"
+      },
+      "context": "Both holders responsible for overdraft",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_001",
+      "source_name": "Joint Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_003",
+      "target_name": "Joint Account Transaction Authority",
+      "rel_type": "governed_by",
+      "description": "Joint Account transaction authority is governed by rule allowing both holders to initiate",
+      "properties": {
+        "authority_model": "both_holders_can_initiate"
+      },
+      "context": "Both holders can initiate transactions",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_001",
+      "source_name": "Joint Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_004",
+      "target_name": "Joint Account AML Due Diligence",
+      "rel_type": "governed_by",
+      "description": "Joint Account is subject to AML due diligence rule requiring both holders to be included",
+      "properties": {
+        "scope": "both_holders_included"
+      },
+      "context": "Both included in AML due diligence",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_001",
+      "source_name": "Joint Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_005",
+      "target_name": "Joint Account Information Access",
+      "rel_type": "governed_by",
+      "description": "Joint Account information access is governed by rule entitling both holders",
+      "properties": {
+        "access_scope": "both_holders_entitled"
+      },
+      "context": "Both entitled to account information",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_001",
+      "source_name": "Joint Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_004",
+      "target_name": "Joint Account Dispute Resolution",
+      "rel_type": "has_relationship_to",
+      "description": "Joint Account disputes are handled through dispute resolution mechanism",
+      "properties": {
+        "process": "complaint_handling"
+      },
+      "context": "Dispute resolution per [[departments]] Complaint Handling",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_002",
+      "source_name": "Joint and Several Liability",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_001",
+      "target_name": "Joint Account",
+      "rel_type": "instantiates",
+      "description": "Joint and Several Liability concept is instantiated in Joint Account structure",
+      "properties": {
+        "regulatory_treatment": "both_holders_jointly_and_severally_liable"
+      },
+      "context": "Both holders jointly and severally liable",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_ba_001",
+      "source_name": "Account Holder",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_001",
+      "target_name": "Joint Account",
+      "rel_type": "party_to",
+      "description": "Account Holder is a party to Joint Account (2 or more holders)",
+      "properties": {
+        "minimum_holders": 2
+      },
+      "context": "`holders` → AccountHolder (2+ records)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_001",
+      "source_name": "Joint Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_ba_001",
+      "source_name": "Account Holder",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_002",
+      "source_name": "Joint and Several Liability",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_001",
+      "source_name": "Joint Account Closure Consent Requirement",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_002",
+      "source_name": "Joint Account Overdraft Liability",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_003",
+      "source_name": "Joint Account Transaction Authority",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_004",
+      "source_name": "Joint Account AML Due Diligence",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_br_005",
+      "source_name": "Joint Account Information Access",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_003",
+      "source_name": "Interest Split",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014_bc_004",
+      "source_name": "Joint Account Dispute Resolution",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ]
+}

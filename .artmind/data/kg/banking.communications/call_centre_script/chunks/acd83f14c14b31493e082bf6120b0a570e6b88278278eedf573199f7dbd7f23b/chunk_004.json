@@ -1,0 +1,791 @@
+{
+  "chunk_seq": 4,
+  "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+  "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+  "text": "## SCENARIO 1: Account Opening Inquiry  \n**Customer:** \"I'd like to open a SmartSaver account.\"  \n**Agent Script:**  \n```\nAgent: \"Excellent choice! Our SmartSaver account offers\nsome of the best interest rates available. We currently offer\n4.50% to 4.80% AER depending on your balance, with no monthly\nfees.\n\nWe have three ways to open an account:\n\n1. Online at www.firstuk.bank/open-account (1-2 business\ndays)\n2. In one of our 12 branches (same day or next day)\n3. By post (5-7 business days)\n\nWhich option works best for you?\"\n\n[If online:]\n\"Online is fastest. You'll need a UK Passport or Driving\nLicense, plus proof of address (utility bill, council tax, or\nbank statement). The process takes about 10 minutes.\"\n\n[If branch:]\n\"You can visit any of our 12 locations. Our staff will help\nyou open the account on the spot. Do you have a branch near\nyou?\"\n\n[If postal:]\n\"I'll send you our application pack. You'll fill it out and\npost it back within 5-7 days.\"\n\nDo you have any questions about the SmartSaver?\"\n```  \n---",
+  "name": "Chunk 4/17",
+  "_domain": "banking.communications",
+  "prev_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_003",
+  "next_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_005",
+  "raw_entities": [
+    {
+      "id": "prd_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SmartSaver"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "savings_product",
+      "description": "A savings product offering competitive interest rates ranging from 4.50% to 4.80% AER depending on customer balance, with no monthly fees. Available through multiple opening channels: online, in-branch, or by post.",
+      "context": [
+        "I'd like to open a SmartSaver account.",
+        "Our SmartSaver account offers some of the best interest rates available. We currently offer 4.50% to 4.80% AER depending on your balance, with no monthly fees.",
+        "Do you have any questions about the SmartSaver?"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SmartSaver"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "A new savings account being opened by a customer through one of three available channels: online, in-branch, or by post. The account is subject to interest rate terms and no monthly fees.",
+      "context": [
+        "I'd like to open a SmartSaver account.",
+        "We have three ways to open an account: 1. Online at www.firstuk.bank/open-account (1-2 business days) 2. In one of our 12 branches (same day or next day) 3. By post (5-7 business days)"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [
+        "prospective customer",
+        "account applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "prospective_customer",
+      "description": "An individual seeking to open a new SmartSaver savings account. The customer is inquiring about account opening options and product features.",
+      "context": [
+        "Customer: \"I'd like to open a SmartSaver account.\"",
+        "Which option works best for you?"
+      ]
+    },
+    {
+      "id": "com_001",
+      "name": "Account Opening Inquiry Agent Script",
+      "aliases": [
+        "SmartSaver Opening Script",
+        "Account Opening Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre agent script for handling customer inquiries about opening a SmartSaver account. The script presents three account opening channels (online, in-branch, postal), outlines required documentation for online opening, and provides timeframes for each method.",
+      "context": [
+        "Agent: \"Excellent choice! Our SmartSaver account offers some of the best interest rates available.\"",
+        "We have three ways to open an account: 1. Online at www.firstuk.bank/open-account (1-2 business days) 2. In one of our 12 branches (same day or next day) 3. By post (5-7 business days)",
+        "You'll need a UK Passport or Driving License, plus proof of address (utility bill, council tax, or bank statement). The process takes about 10 minutes."
+      ]
+    },
+    {
+      "id": "tvar_001",
+      "name": "Interest Rate Range",
+      "aliases": [
+        "AER",
+        "Annual Equivalent Rate"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "rate_field",
+      "description": "A dynamic variable representing the interest rate offered on the SmartSaver account, which varies based on customer balance. Currently ranges from 4.50% to 4.80% AER.",
+      "context": [
+        "We currently offer 4.50% to 4.80% AER depending on your balance, with no monthly fees."
+      ]
+    },
+    {
+      "id": "tvar_002",
+      "name": "Account Opening Channel",
+      "aliases": [
+        "opening method",
+        "channel"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "reference_field",
+      "description": "A variable representing the customer's chosen method for opening a SmartSaver account: online, in-branch, or by post. Each channel has different processing timeframes and documentation requirements.",
+      "context": [
+        "We have three ways to open an account: 1. Online at www.firstuk.bank/open-account (1-2 business days) 2. In one of our 12 branches (same day or next day) 3. By post (5-7 business days)",
+        "Which option works best for you?"
+      ]
+    },
+    {
+      "id": "tvar_003",
+      "name": "Identity Verification Document",
+      "aliases": [
+        "ID document",
+        "proof of identity"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "documentation_field",
+      "description": "A variable representing the required identity document for online account opening: either a UK Passport or Driving License.",
+      "context": [
+        "You'll need a UK Passport or Driving License, plus proof of address (utility bill, council tax, or bank statement)."
+      ]
+    },
+    {
+      "id": "tvar_004",
+      "name": "Proof of Address Document",
+      "aliases": [
+        "address verification",
+        "proof of address"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "documentation_field",
+      "description": "A variable representing the required proof of address document for online account opening, which may be a utility bill, council tax statement, or bank statement.",
+      "context": [
+        "You'll need a UK Passport or Driving License, plus proof of address (utility bill, council tax, or bank statement)."
+      ]
+    },
+    {
+      "id": "kyc_001",
+      "name": "Online Account Opening Identity Verification",
+      "aliases": [
+        "online KYC",
+        "identity verification for online opening"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "The identity verification process required for customers opening a SmartSaver account online. Requires presentation of either a UK Passport or Driving License and proof of address documentation.",
+      "context": [
+        "You'll need a UK Passport or Driving License, plus proof of address (utility bill, council tax, or bank statement). The process takes about 10 minutes."
+      ]
+    }
+  ],
+  "id_map": {
+    "prd_001": "01a07428-c932-773f-a5f8-da98f9df05b5_004_prd_001",
+    "acc_001": "01a07428-c932-773f-a5f8-da98f9df05b5_004_acc_001",
+    "cust_001": "01a07428-c932-773f-a5f8-da98f9df05b5_004_cust_001",
+    "com_001": "01a07428-c932-773f-a5f8-da98f9df05b5_004_com_001",
+    "tvar_001": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_001",
+    "tvar_002": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_002",
+    "tvar_003": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_003",
+    "tvar_004": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_004",
+    "kyc_001": "01a07428-c932-773f-a5f8-da98f9df05b5_004_kyc_001"
+  },
+  "entities": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_prd_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SmartSaver"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "savings_product",
+      "description": "A savings product offering competitive interest rates ranging from 4.50% to 4.80% AER depending on customer balance, with no monthly fees. Available through multiple opening channels: online, in-branch, or by post.",
+      "context": [
+        "I'd like to open a SmartSaver account.",
+        "Our SmartSaver account offers some of the best interest rates available. We currently offer 4.50% to 4.80% AER depending on your balance, with no monthly fees.",
+        "Do you have any questions about the SmartSaver?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_acc_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SmartSaver"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "A new savings account being opened by a customer through one of three available channels: online, in-branch, or by post. The account is subject to interest rate terms and no monthly fees.",
+      "context": [
+        "I'd like to open a SmartSaver account.",
+        "We have three ways to open an account: 1. Online at www.firstuk.bank/open-account (1-2 business days) 2. In one of our 12 branches (same day or next day) 3. By post (5-7 business days)"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_cust_001",
+      "name": "Customer",
+      "aliases": [
+        "prospective customer",
+        "account applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "prospective_customer",
+      "description": "An individual seeking to open a new SmartSaver savings account. The customer is inquiring about account opening options and product features.",
+      "context": [
+        "Customer: \"I'd like to open a SmartSaver account.\"",
+        "Which option works best for you?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_com_001",
+      "name": "Account Opening Inquiry Agent Script",
+      "aliases": [
+        "SmartSaver Opening Script",
+        "Account Opening Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre agent script for handling customer inquiries about opening a SmartSaver account. The script presents three account opening channels (online, in-branch, postal), outlines required documentation for online opening, and provides timeframes for each method.",
+      "context": [
+        "Agent: \"Excellent choice! Our SmartSaver account offers some of the best interest rates available.\"",
+        "We have three ways to open an account: 1. Online at www.firstuk.bank/open-account (1-2 business days) 2. In one of our 12 branches (same day or next day) 3. By post (5-7 business days)",
+        "You'll need a UK Passport or Driving License, plus proof of address (utility bill, council tax, or bank statement). The process takes about 10 minutes."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_001",
+      "name": "Interest Rate Range",
+      "aliases": [
+        "AER",
+        "Annual Equivalent Rate"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "rate_field",
+      "description": "A dynamic variable representing the interest rate offered on the SmartSaver account, which varies based on customer balance. Currently ranges from 4.50% to 4.80% AER.",
+      "context": [
+        "We currently offer 4.50% to 4.80% AER depending on your balance, with no monthly fees."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_002",
+      "name": "Account Opening Channel",
+      "aliases": [
+        "opening method",
+        "channel"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "reference_field",
+      "description": "A variable representing the customer's chosen method for opening a SmartSaver account: online, in-branch, or by post. Each channel has different processing timeframes and documentation requirements.",
+      "context": [
+        "We have three ways to open an account: 1. Online at www.firstuk.bank/open-account (1-2 business days) 2. In one of our 12 branches (same day or next day) 3. By post (5-7 business days)",
+        "Which option works best for you?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_003",
+      "name": "Identity Verification Document",
+      "aliases": [
+        "ID document",
+        "proof of identity"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "documentation_field",
+      "description": "A variable representing the required identity document for online account opening: either a UK Passport or Driving License.",
+      "context": [
+        "You'll need a UK Passport or Driving License, plus proof of address (utility bill, council tax, or bank statement)."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_004",
+      "name": "Proof of Address Document",
+      "aliases": [
+        "address verification",
+        "proof of address"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "documentation_field",
+      "description": "A variable representing the required proof of address document for online account opening, which may be a utility bill, council tax statement, or bank statement.",
+      "context": [
+        "You'll need a UK Passport or Driving License, plus proof of address (utility bill, council tax, or bank statement)."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_kyc_001",
+      "name": "Online Account Opening Identity Verification",
+      "aliases": [
+        "online KYC",
+        "identity verification for online opening"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "The identity verification process required for customers opening a SmartSaver account online. Requires presentation of either a UK Passport or Driving License and proof of address documentation.",
+      "context": [
+        "You'll need a UK Passport or Driving License, plus proof of address (utility bill, council tax, or bank statement). The process takes about 10 minutes."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_prd_001",
+      "name": "SmartSaver Account",
+      "properties": {
+        "product_type": "savings account",
+        "key_features_taught": [
+          "interest rate range 4.50% to 4.80% AER",
+          "no monthly fees",
+          "balance-dependent interest rates"
+        ],
+        "customer_facing_messaging": "Excellent choice! Our SmartSaver account offers some of the best interest rates available.",
+        "communication_template": [
+          "Account Opening Inquiry Agent Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_acc_001",
+      "name": "SmartSaver Account",
+      "properties": {
+        "account_type": "savings",
+        "account_state": "new",
+        "interest_rate_range": "4.50% to 4.80% AER",
+        "monthly_fee": "none"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "new",
+        "context_role": "prospective account opener"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_com_001",
+      "name": "Account Opening Inquiry Agent Script",
+      "properties": {
+        "channel": "call",
+        "trigger_event": "customer inquiry about opening SmartSaver account",
+        "recipient": "prospective customer",
+        "tone": "friendly",
+        "key_content": [
+          "product overview and interest rates",
+          "account opening channel options",
+          "identity verification requirements for online opening",
+          "proof of address requirements for online opening",
+          "processing timeframes by channel"
+        ],
+        "variables_used": [
+          "Interest Rate Range",
+          "Account Opening Channel",
+          "Identity Verification Document",
+          "Proof of Address Document"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_001",
+      "name": "Interest Rate Range",
+      "properties": {
+        "variable_placeholder": "[Interest Rate Range]",
+        "data_type": "percentage",
+        "example_value": "4.50% to 4.80% AER",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Account Opening Inquiry Agent Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_002",
+      "name": "Account Opening Channel",
+      "properties": {
+        "variable_placeholder": "[Account Opening Channel]",
+        "data_type": "string",
+        "example_value": [
+          "Online at www.firstuk.bank/open-account (1-2 business days)",
+          "In one of our 12 branches (same day or next day)",
+          "By post (5-7 business days)"
+        ],
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Account Opening Inquiry Agent Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_003",
+      "name": "Identity Verification Document",
+      "properties": {
+        "variable_placeholder": "[Identity Verification Document]",
+        "data_type": "string",
+        "example_value": [
+          "UK Passport",
+          "Driving License"
+        ],
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Account Opening Inquiry Agent Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_004",
+      "name": "Proof of Address Document",
+      "properties": {
+        "variable_placeholder": "[Proof of Address Document]",
+        "data_type": "string",
+        "example_value": [
+          "utility bill",
+          "council tax",
+          "bank statement"
+        ],
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Account Opening Inquiry Agent Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_kyc_001",
+      "name": "Online Account Opening Identity Verification",
+      "properties": {
+        "mandatory": "yes",
+        "verification_method": [
+          "UK Passport",
+          "Driving License"
+        ],
+        "timing_or_refresh_frequency": "at account opening",
+        "context": "required for online account opening channel"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_com_001",
+      "source_name": "Account Opening Inquiry Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_001",
+      "target_name": "Interest Rate Range",
+      "rel_type": "contains",
+      "description": "The agent script contains and references the interest rate range variable for the SmartSaver account",
+      "properties": {
+        "context_value": "4.50% to 4.80% AER",
+        "usage": "product_feature_disclosure"
+      },
+      "context": "Our SmartSaver account offers some of the best interest rates available. We currently offer 4.50% to 4.80% AER depending on your balance",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_com_001",
+      "source_name": "Account Opening Inquiry Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_002",
+      "target_name": "Account Opening Channel",
+      "rel_type": "contains",
+      "description": "The agent script contains and personalises via the account opening channel variable with three options",
+      "properties": {
+        "channels": [
+          "Online",
+          "Branch",
+          "Postal"
+        ],
+        "usage": "customer_choice_presentation"
+      },
+      "context": "We have three ways to open an account: 1. Online at www.firstuk.bank/open-account (1-2 business days) 2. In one of our 12 branches (same day or next day) 3. By post (5-7 business days)",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_com_001",
+      "source_name": "Account Opening Inquiry Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_003",
+      "target_name": "Identity Verification Document",
+      "rel_type": "contains",
+      "description": "The agent script contains and specifies the identity verification document requirements",
+      "properties": {
+        "accepted_documents": [
+          "UK Passport",
+          "Driving License"
+        ],
+        "usage": "online_channel_requirement"
+      },
+      "context": "You'll need a UK Passport or Driving License, plus proof of address (utility bill, council tax, or bank statement)",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_com_001",
+      "source_name": "Account Opening Inquiry Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_004",
+      "target_name": "Proof of Address Document",
+      "rel_type": "contains",
+      "description": "The agent script contains and specifies the proof of address document requirements",
+      "properties": {
+        "accepted_documents": [
+          "utility bill",
+          "council tax",
+          "bank statement"
+        ],
+        "usage": "online_channel_requirement"
+      },
+      "context": "You'll need a UK Passport or Driving License, plus proof of address (utility bill, council tax, or bank statement)",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_com_001",
+      "source_name": "Account Opening Inquiry Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_prd_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "provides_information_about",
+      "description": "The agent script provides comprehensive information about the SmartSaver Account product",
+      "properties": {
+        "information_type": [
+          "interest_rates",
+          "fees",
+          "opening_channels",
+          "requirements"
+        ]
+      },
+      "context": "Excellent choice! Our SmartSaver account offers some of the best interest rates available. We currently offer 4.50% to 4.80% AER depending on your balance, with no monthly fees.",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_com_001",
+      "source_name": "Account Opening Inquiry Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_cust_001",
+      "target_name": "Customer",
+      "rel_type": "addressed_to",
+      "description": "The agent script is addressed to and designed for the customer inquiring about account opening",
+      "properties": {
+        "interaction_type": "account_opening_inquiry"
+      },
+      "context": "Customer: 'I'd like to open a SmartSaver account.' Agent Script: 'Excellent choice!'",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_com_001",
+      "source_name": "Account Opening Inquiry Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_kyc_001",
+      "target_name": "Online Account Opening Identity Verification",
+      "rel_type": "triggered_by",
+      "description": "The agent script is triggered by and references the KYC verification process for online account opening",
+      "properties": {
+        "channel": "online",
+        "requirements": [
+          "identity_document",
+          "proof_of_address"
+        ],
+        "duration": "10 minutes"
+      },
+      "context": "If online: 'Online is fastest. You'll need a UK Passport or Driving License, plus proof of address (utility bill, council tax, or bank statement). The process takes about 10 minutes.'",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_acc_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "opens",
+      "description": "The customer is opening a SmartSaver Account",
+      "properties": {
+        "action": "account_opening_inquiry"
+      },
+      "context": "Customer: 'I'd like to open a SmartSaver account.'",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_acc_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_prd_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "linked_to",
+      "description": "The SmartSaver Account instance is linked to the SmartSaver Account product",
+      "properties": {
+        "relationship_type": "instance_of_product"
+      },
+      "context": "Our SmartSaver account offers some of the best interest rates available",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_001",
+      "source_name": "Interest Rate Range",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_002",
+      "target_name": "Account Opening Channel",
+      "rel_type": "used_together_with",
+      "description": "Interest rate range and account opening channel variables are used together in the agent script",
+      "properties": {
+        "context": "product_feature_and_channel_presentation"
+      },
+      "context": "Our SmartSaver account offers some of the best interest rates available. We currently offer 4.50% to 4.80% AER depending on your balance, with no monthly fees. We have three ways to open an account",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_003",
+      "source_name": "Identity Verification Document",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_004",
+      "target_name": "Proof of Address Document",
+      "rel_type": "used_together_with",
+      "description": "Identity verification and proof of address documents are required together for online account opening",
+      "properties": {
+        "channel": "online",
+        "requirement_type": "kyc_verification"
+      },
+      "context": "You'll need a UK Passport or Driving License, plus proof of address (utility bill, council tax, or bank statement)",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_kyc_001",
+      "source_name": "Online Account Opening Identity Verification",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_cust_001",
+      "target_name": "Customer",
+      "rel_type": "required_to_complete",
+      "description": "The customer is required to complete the online account opening identity verification process",
+      "properties": {
+        "channel": "online",
+        "duration": "10 minutes"
+      },
+      "context": "If online: 'Online is fastest. You'll need a UK Passport or Driving License, plus proof of address (utility bill, council tax, or bank statement). The process takes about 10 minutes.'",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_acc_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_kyc_001",
+      "target_name": "Online Account Opening Identity Verification",
+      "rel_type": "required_before_activating",
+      "description": "KYC verification is required before the SmartSaver Account can be activated",
+      "properties": {
+        "channel": "online",
+        "gate_type": "account_activation"
+      },
+      "context": "If online: 'Online is fastest. You'll need a UK Passport or Driving License, plus proof of address (utility bill, council tax, or bank statement). The process takes about 10 minutes.'",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_prd_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_acc_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_com_001",
+      "source_name": "Account Opening Inquiry Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_001",
+      "source_name": "Interest Rate Range",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_002",
+      "source_name": "Account Opening Channel",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_003",
+      "source_name": "Identity Verification Document",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_tvar_004",
+      "source_name": "Proof of Address Document",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004_kyc_001",
+      "source_name": "Online Account Opening Identity Verification",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_004",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ]
+}

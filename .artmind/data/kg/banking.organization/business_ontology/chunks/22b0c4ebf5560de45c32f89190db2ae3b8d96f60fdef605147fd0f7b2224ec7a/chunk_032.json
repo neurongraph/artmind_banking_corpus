@@ -1,0 +1,425 @@
+{
+  "chunk_seq": 32,
+  "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+  "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+  "text": "### Compliance Constraints  \n| Rule | Constraint |\n|------|-----------|\n| SAR filed within 30 days | `SAR.filing_date <= suspicion_date + 30 days` |\n| KYC refreshed 3-5 years | `KYC.next_review_date <= TODAY() + 5 years` |\n| Fraud reimbursement 10 days | `Fraud_claim.reimbursement_date <= claim_date + 10 days` |  \n---",
+  "name": "Chunk 32/37",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+  "next_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+  "raw_entities": [
+    {
+      "id": "br_001",
+      "name": "SAR Filing Deadline",
+      "aliases": [
+        "SAR filing within 30 days"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "A regulatory constraint requiring that a Suspicious Activity Report must be filed within 30 days of the date suspicion arises. This is a hard compliance deadline enforced across all SAR filings.",
+      "context": [
+        "SAR filed within 30 days",
+        "SAR.filing_date <= suspicion_date + 30 days"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "KYC Periodic Refresh Requirement",
+      "aliases": [
+        "KYC refreshed 3-5 years"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "A compliance constraint mandating that Know Your Customer verification must be refreshed within a 3-5 year cycle. The next review date must not exceed 5 years from the current date.",
+      "context": [
+        "KYC refreshed 3-5 years",
+        "KYC.next_review_date <= TODAY() + 5 years"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "Fraud Reimbursement Timeline",
+      "aliases": [
+        "Fraud reimbursement 10 days"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "A compliance constraint requiring that fraud-related customer reimbursements must be processed within 10 days of the claim date. This establishes the maximum permissible processing window for fraud compensation.",
+      "context": [
+        "Fraud reimbursement 10 days",
+        "Fraud_claim.reimbursement_date <= claim_date + 10 days"
+      ]
+    },
+    {
+      "id": "bc_001",
+      "name": "Suspicious Activity Report",
+      "aliases": [
+        "SAR"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sar",
+      "description": "A formal report filed to regulatory authorities documenting suspicious customer activity or transactions that may indicate money laundering or other financial crime. Subject to a 30-day filing deadline from the date of suspicion.",
+      "context": [
+        "SAR filed within 30 days",
+        "SAR.filing_date <= suspicion_date + 30 days"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Know Your Customer Verification",
+      "aliases": [
+        "KYC"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "kyc_verification",
+      "description": "The identity and address verification process required for customer due diligence, subject to periodic refresh requirements every 3-5 years to maintain compliance with regulatory obligations.",
+      "context": [
+        "KYC refreshed 3-5 years",
+        "KYC.next_review_date <= TODAY() + 5 years"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "Fraud Claim",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "fraud_alert",
+      "description": "A customer claim for reimbursement following a fraud event, subject to a 10-day processing and reimbursement deadline from the date the claim is filed.",
+      "context": [
+        "Fraud reimbursement 10 days",
+        "Fraud_claim.reimbursement_date <= claim_date + 10 days"
+      ]
+    }
+  ],
+  "id_map": {
+    "br_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_br_001",
+    "br_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_br_002",
+    "br_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_br_003",
+    "bc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_bc_001",
+    "bc_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_bc_002",
+    "bc_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_bc_003"
+  },
+  "entities": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_br_001",
+      "name": "SAR Filing Deadline",
+      "aliases": [
+        "SAR filing within 30 days"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "A regulatory constraint requiring that a Suspicious Activity Report must be filed within 30 days of the date suspicion arises. This is a hard compliance deadline enforced across all SAR filings.",
+      "context": [
+        "SAR filed within 30 days",
+        "SAR.filing_date <= suspicion_date + 30 days"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_br_002",
+      "name": "KYC Periodic Refresh Requirement",
+      "aliases": [
+        "KYC refreshed 3-5 years"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "A compliance constraint mandating that Know Your Customer verification must be refreshed within a 3-5 year cycle. The next review date must not exceed 5 years from the current date.",
+      "context": [
+        "KYC refreshed 3-5 years",
+        "KYC.next_review_date <= TODAY() + 5 years"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_br_003",
+      "name": "Fraud Reimbursement Timeline",
+      "aliases": [
+        "Fraud reimbursement 10 days"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "A compliance constraint requiring that fraud-related customer reimbursements must be processed within 10 days of the claim date. This establishes the maximum permissible processing window for fraud compensation.",
+      "context": [
+        "Fraud reimbursement 10 days",
+        "Fraud_claim.reimbursement_date <= claim_date + 10 days"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_bc_001",
+      "name": "Suspicious Activity Report",
+      "aliases": [
+        "SAR"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sar",
+      "description": "A formal report filed to regulatory authorities documenting suspicious customer activity or transactions that may indicate money laundering or other financial crime. Subject to a 30-day filing deadline from the date of suspicion.",
+      "context": [
+        "SAR filed within 30 days",
+        "SAR.filing_date <= suspicion_date + 30 days"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_bc_002",
+      "name": "Know Your Customer Verification",
+      "aliases": [
+        "KYC"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "kyc_verification",
+      "description": "The identity and address verification process required for customer due diligence, subject to periodic refresh requirements every 3-5 years to maintain compliance with regulatory obligations.",
+      "context": [
+        "KYC refreshed 3-5 years",
+        "KYC.next_review_date <= TODAY() + 5 years"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_bc_003",
+      "name": "Fraud Claim",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "fraud_alert",
+      "description": "A customer claim for reimbursement following a fraud event, subject to a 10-day processing and reimbursement deadline from the date the claim is filed.",
+      "context": [
+        "Fraud reimbursement 10 days",
+        "Fraud_claim.reimbursement_date <= claim_date + 10 days"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_br_001",
+      "name": "SAR Filing Deadline",
+      "properties": {
+        "rule_statement": "Suspicious Activity Report must be filed within 30 days of suspicion date",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Suspicious Activity Report"
+        ],
+        "filing_deadline": "30 days",
+        "regulatory_source": "FCA"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_br_002",
+      "name": "KYC Periodic Refresh Requirement",
+      "properties": {
+        "rule_statement": "Know Your Customer verification must be refreshed within 3-5 years",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Know Your Customer Verification"
+        ],
+        "timing_or_refresh_frequency": "3-5 years",
+        "regulatory_source": "FCA"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_br_003",
+      "name": "Fraud Reimbursement Timeline",
+      "properties": {
+        "rule_statement": "Fraud claim reimbursement must be processed within 10 days of claim date",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Fraud Claim"
+        ],
+        "reimbursement_deadline": "10 days",
+        "regulatory_source": "FCA"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_bc_001",
+      "name": "Suspicious Activity Report",
+      "properties": {
+        "definition": "A report filed when suspicious activity is detected, requiring submission within 30 days of suspicion",
+        "ontology_domain": "Compliance & Reporting",
+        "key_attributes": [
+          "filing_date",
+          "suspicion_date",
+          "activity_description"
+        ],
+        "business_rules": [
+          "Must be filed within 30 days of suspicion date"
+        ],
+        "regulatory_significance": "FCA-mandated reporting obligation for financial crime detection"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_bc_002",
+      "name": "Know Your Customer Verification",
+      "properties": {
+        "definition": "Customer identity and background verification process that must be refreshed periodically",
+        "ontology_domain": "Customer Due Diligence",
+        "key_attributes": [
+          "verification_date",
+          "next_review_date",
+          "customer_id"
+        ],
+        "business_rules": [
+          "Must be refreshed within 3-5 years"
+        ],
+        "regulatory_significance": "FCA-mandated customer due diligence requirement"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_bc_003",
+      "name": "Fraud Claim",
+      "properties": {
+        "definition": "A customer claim for reimbursement of fraudulent transactions, requiring processing within 10 days",
+        "ontology_domain": "Fraud & Dispute Management",
+        "key_attributes": [
+          "claim_date",
+          "reimbursement_date",
+          "claim_amount",
+          "transaction_id"
+        ],
+        "business_rules": [
+          "Reimbursement must be processed within 10 days of claim date"
+        ],
+        "regulatory_significance": "FCA-mandated consumer protection requirement for fraud liability"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_br_001",
+      "source_name": "SAR Filing Deadline",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_bc_001",
+      "target_name": "Suspicious Activity Report",
+      "rel_type": "enforces",
+      "description": "SAR Filing Deadline business rule enforces the requirement that Suspicious Activity Reports must be filed within 30 days of suspicion",
+      "properties": {
+        "constraint": "SAR.filing_date <= suspicion_date + 30 days",
+        "timeframe_days": 30
+      },
+      "context": "SAR filed within 30 days | `SAR.filing_date <= suspicion_date + 30 days`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_br_002",
+      "source_name": "KYC Periodic Refresh Requirement",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_bc_002",
+      "target_name": "Know Your Customer Verification",
+      "rel_type": "enforces",
+      "description": "KYC Periodic Refresh Requirement business rule enforces the requirement that Know Your Customer Verification must be refreshed every 3-5 years",
+      "properties": {
+        "constraint": "KYC.next_review_date <= TODAY() + 5 years",
+        "refresh_interval_years": "3-5"
+      },
+      "context": "KYC refreshed 3-5 years | `KYC.next_review_date <= TODAY() + 5 years`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_br_003",
+      "source_name": "Fraud Reimbursement Timeline",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_bc_003",
+      "target_name": "Fraud Claim",
+      "rel_type": "enforces",
+      "description": "Fraud Reimbursement Timeline business rule enforces the requirement that Fraud Claims must be reimbursed within 10 days of claim date",
+      "properties": {
+        "constraint": "Fraud_claim.reimbursement_date <= claim_date + 10 days",
+        "timeframe_days": 10
+      },
+      "context": "Fraud reimbursement 10 days | `Fraud_claim.reimbursement_date <= claim_date + 10 days`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_br_001",
+      "source_name": "SAR Filing Deadline",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_br_002",
+      "source_name": "KYC Periodic Refresh Requirement",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_br_003",
+      "source_name": "Fraud Reimbursement Timeline",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_bc_001",
+      "source_name": "Suspicious Activity Report",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_bc_002",
+      "source_name": "Know Your Customer Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032_bc_003",
+      "source_name": "Fraud Claim",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ]
+}

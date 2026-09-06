@@ -1,0 +1,751 @@
+{
+  "chunk_seq": 20,
+  "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+  "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+  "text": "### Entity: AML Screening  \n**Definition:** Anti-Money Laundering screening to detect financial crime risks.  \n**Attributes:**\n- `screening_id` — Unique identifier\n- `customer_id` — Customer being screened\n- `screening_date` — Date screening performed\n- `screening_lists` — Which lists searched (e.g., OFAC, INTERPOL, HMT)\n- `matches_found` — Number of potential matches\n- `match_details` — List of matches (name, score, list name)\n- `risk_level` — Low, Medium, High\n- `manual_review_required` — Boolean (escalation needed)\n- `screening_status` — Passed, Flagged, Escalated\n- `reviewer` — Staff member who reviewed  \n**Screening Lists Checked:**\n- OFAC Sanctions List (US Treasury)\n- UN Sanctions List\n- EU Sanctions List\n- HM Treasury Sanctions Designations\n- INTERPOL Red Notices\n- PEP (Politically Exposed Persons) databases\n- Adverse media databases  \n**Key Business Rules:**\n- AML screening mandatory at account opening\n- Ongoing AML monitoring for high-risk customers\n- Hit on sanctions list = automatic account freeze + SAR filing\n- Failed screening = account application rejected  \n**Relationships:**\n- `for_customer` → Customer (1:1)\n- `triggers_suspicious_activity_report` → SAR (0:many)  \n---",
+  "name": "Chunk 20/37",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+  "next_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+  "raw_entities": [
+    {
+      "id": "bc_001",
+      "name": "AML Screening",
+      "aliases": [
+        "Anti-Money Laundering screening",
+        "AML check"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "aml_screening",
+      "description": "Anti-Money Laundering screening process to detect financial crime risks through sanctions list checks, PEP database searches, and adverse media monitoring. Mandatory at account opening and ongoing for high-risk customers, with automatic account freeze and SAR filing triggered by sanctions list hits.",
+      "context": [
+        "Anti-Money Laundering screening to detect financial crime risks.",
+        "AML screening mandatory at account opening",
+        "Ongoing AML monitoring for high-risk customers",
+        "Hit on sanctions list = automatic account freeze + SAR filing"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "AML Screening Mandatory at Account Opening",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "Regulatory requirement that AML screening must be performed on all customers at the point of account opening as a mandatory compliance control.",
+      "context": [
+        "AML screening mandatory at account opening"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Ongoing AML Monitoring for High-Risk Customers",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "Compliance requirement to conduct continuous AML monitoring and screening for customers classified as high-risk to detect evolving financial crime threats.",
+      "context": [
+        "Ongoing AML monitoring for high-risk customers"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "Sanctions List Hit Response",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Mandatory operational constraint requiring automatic account freeze and Suspicious Activity Report filing when a customer matches a sanctions list during AML screening.",
+      "context": [
+        "Hit on sanctions list = automatic account freeze + SAR filing"
+      ]
+    },
+    {
+      "id": "br_004",
+      "name": "Failed AML Screening Account Rejection",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "Decision rule that account applications must be rejected if the applicant fails AML screening checks.",
+      "context": [
+        "Failed screening = account application rejected"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Screening List",
+      "aliases": [
+        "sanctions list",
+        "watchlist"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "aml_screening",
+      "description": "External regulatory and law enforcement databases searched during AML screening, including OFAC, UN Sanctions, EU Sanctions, HM Treasury designations, INTERPOL Red Notices, PEP databases, and adverse media sources.",
+      "context": [
+        "OFAC Sanctions List (US Treasury)",
+        "UN Sanctions List",
+        "EU Sanctions List",
+        "HM Treasury Sanctions Designations",
+        "INTERPOL Red Notices",
+        "PEP (Politically Exposed Persons) databases",
+        "Adverse media databases"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "Screening Match",
+      "aliases": [
+        "potential match",
+        "hit"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "aml_screening",
+      "description": "A potential match identified during AML screening against external watchlists, characterized by match details including name, risk score, and source list name.",
+      "context": [
+        "matches_found — Number of potential matches",
+        "match_details — List of matches (name, score, list name)"
+      ]
+    },
+    {
+      "id": "bc_004",
+      "name": "Risk Level Assessment",
+      "aliases": [
+        "risk classification"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "aml_screening",
+      "description": "Classification of AML screening outcome into risk categories (Low, Medium, High) to determine escalation and ongoing monitoring requirements.",
+      "context": [
+        "risk_level — Low, Medium, High"
+      ]
+    },
+    {
+      "id": "bc_005",
+      "name": "Screening Status",
+      "aliases": [
+        "screening outcome"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "aml_screening",
+      "description": "Final determination of AML screening result recorded as Passed, Flagged, or Escalated to indicate whether the customer cleared screening or requires further action.",
+      "context": [
+        "screening_status — Passed, Flagged, Escalated"
+      ]
+    }
+  ],
+  "id_map": {
+    "bc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_001",
+    "br_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_001",
+    "br_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_002",
+    "br_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_003",
+    "br_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_004",
+    "bc_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_002",
+    "bc_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_003",
+    "bc_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_004",
+    "bc_005": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_005"
+  },
+  "entities": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_001",
+      "name": "AML Screening",
+      "aliases": [
+        "Anti-Money Laundering screening",
+        "AML check"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "aml_screening",
+      "description": "Anti-Money Laundering screening process to detect financial crime risks through sanctions list checks, PEP database searches, and adverse media monitoring. Mandatory at account opening and ongoing for high-risk customers, with automatic account freeze and SAR filing triggered by sanctions list hits.",
+      "context": [
+        "Anti-Money Laundering screening to detect financial crime risks.",
+        "AML screening mandatory at account opening",
+        "Ongoing AML monitoring for high-risk customers",
+        "Hit on sanctions list = automatic account freeze + SAR filing"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_001",
+      "name": "AML Screening Mandatory at Account Opening",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "Regulatory requirement that AML screening must be performed on all customers at the point of account opening as a mandatory compliance control.",
+      "context": [
+        "AML screening mandatory at account opening"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_002",
+      "name": "Ongoing AML Monitoring for High-Risk Customers",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "Compliance requirement to conduct continuous AML monitoring and screening for customers classified as high-risk to detect evolving financial crime threats.",
+      "context": [
+        "Ongoing AML monitoring for high-risk customers"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_003",
+      "name": "Sanctions List Hit Response",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Mandatory operational constraint requiring automatic account freeze and Suspicious Activity Report filing when a customer matches a sanctions list during AML screening.",
+      "context": [
+        "Hit on sanctions list = automatic account freeze + SAR filing"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_004",
+      "name": "Failed AML Screening Account Rejection",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "Decision rule that account applications must be rejected if the applicant fails AML screening checks.",
+      "context": [
+        "Failed screening = account application rejected"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_002",
+      "name": "Screening List",
+      "aliases": [
+        "sanctions list",
+        "watchlist"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "aml_screening",
+      "description": "External regulatory and law enforcement databases searched during AML screening, including OFAC, UN Sanctions, EU Sanctions, HM Treasury designations, INTERPOL Red Notices, PEP databases, and adverse media sources.",
+      "context": [
+        "OFAC Sanctions List (US Treasury)",
+        "UN Sanctions List",
+        "EU Sanctions List",
+        "HM Treasury Sanctions Designations",
+        "INTERPOL Red Notices",
+        "PEP (Politically Exposed Persons) databases",
+        "Adverse media databases"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_003",
+      "name": "Screening Match",
+      "aliases": [
+        "potential match",
+        "hit"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "aml_screening",
+      "description": "A potential match identified during AML screening against external watchlists, characterized by match details including name, risk score, and source list name.",
+      "context": [
+        "matches_found — Number of potential matches",
+        "match_details — List of matches (name, score, list name)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_004",
+      "name": "Risk Level Assessment",
+      "aliases": [
+        "risk classification"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "aml_screening",
+      "description": "Classification of AML screening outcome into risk categories (Low, Medium, High) to determine escalation and ongoing monitoring requirements.",
+      "context": [
+        "risk_level — Low, Medium, High"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_005",
+      "name": "Screening Status",
+      "aliases": [
+        "screening outcome"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "aml_screening",
+      "description": "Final determination of AML screening result recorded as Passed, Flagged, or Escalated to indicate whether the customer cleared screening or requires further action.",
+      "context": [
+        "screening_status — Passed, Flagged, Escalated"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_001",
+      "name": "AML Screening",
+      "properties": {
+        "definition": "Anti-Money Laundering screening to detect financial crime risks",
+        "key_attributes": [
+          "screening_id",
+          "customer_id",
+          "screening_date",
+          "screening_lists",
+          "matches_found",
+          "match_details",
+          "risk_level",
+          "manual_review_required",
+          "screening_status",
+          "reviewer"
+        ],
+        "ontology_domain": "Compliance & Risk Management",
+        "regulatory_significance": "Mandatory control for detecting financial crime, sanctions evasion, and PEP involvement under AML/CFT regulations",
+        "relationships_to": [
+          "Customer",
+          "Suspicious Activity Report",
+          "Screening List",
+          "Screening Match",
+          "Risk Level Assessment"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_001",
+      "name": "AML Screening Mandatory at Account Opening",
+      "properties": {
+        "rule_statement": "AML screening must be performed on all customers at the point of account opening",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Account opening process",
+          "All customer types"
+        ],
+        "regulatory_source": "AML/CFT regulations",
+        "enforcement": "Compliance & Risk Management",
+        "consequence": "Account application rejected if screening fails or cannot be completed"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_002",
+      "name": "Ongoing AML Monitoring for High-Risk Customers",
+      "properties": {
+        "rule_statement": "Customers classified as high-risk must be subject to ongoing AML monitoring beyond initial screening",
+        "rule_type": "obligation",
+        "applies_to": [
+          "High-risk customers",
+          "Ongoing account management"
+        ],
+        "regulatory_source": "AML/CFT regulations",
+        "enforcement": "Compliance & Risk Management"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_003",
+      "name": "Sanctions List Hit Response",
+      "properties": {
+        "rule_statement": "A match on any sanctions list triggers automatic account freeze and mandatory Suspicious Activity Report filing",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Screening matches on OFAC, UN, EU, HM Treasury, or equivalent lists"
+        ],
+        "regulatory_source": "Sanctions regulations (OFAC, UN, EU, HM Treasury)",
+        "enforcement": "Compliance & Risk Management",
+        "consequence": "Account frozen; SAR filed; customer notification as per regulatory requirements"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_004",
+      "name": "Failed AML Screening Account Rejection",
+      "properties": {
+        "rule_statement": "Account applications must be rejected if AML screening fails or cannot be satisfactorily completed",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Account opening",
+          "New customer onboarding"
+        ],
+        "regulatory_source": "AML/CFT regulations",
+        "enforcement": "Compliance & Risk Management",
+        "consequence": "Account application denied; customer notified"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_002",
+      "name": "Screening List",
+      "properties": {
+        "definition": "Authoritative list of individuals, entities, or designations used to identify financial crime risks, sanctions targets, and PEPs",
+        "key_attributes": [
+          "list_name",
+          "issuing_authority",
+          "update_frequency",
+          "record_count"
+        ],
+        "subtypes": [
+          "OFAC Sanctions List",
+          "UN Sanctions List",
+          "EU Sanctions List",
+          "HM Treasury Sanctions Designations",
+          "INTERPOL Red Notices",
+          "PEP databases",
+          "Adverse media databases"
+        ],
+        "regulatory_significance": "Mandatory reference for AML screening; failure to check current lists is a compliance breach",
+        "relationships_to": [
+          "AML Screening",
+          "Screening Match"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_003",
+      "name": "Screening Match",
+      "properties": {
+        "definition": "A potential match between a customer or transaction and a record on a screening list",
+        "key_attributes": [
+          "match_name",
+          "match_score",
+          "list_source",
+          "match_date",
+          "match_details"
+        ],
+        "business_rules": [
+          "Sanctions list match triggers automatic account freeze",
+          "Match requires manual review and escalation"
+        ],
+        "regulatory_significance": "Matches must be investigated and documented; sanctions matches require immediate action and SAR filing",
+        "relationships_to": [
+          "AML Screening",
+          "Screening List",
+          "Risk Level Assessment"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_004",
+      "name": "Risk Level Assessment",
+      "properties": {
+        "definition": "Classification of a customer or transaction into a risk category based on screening results and other factors",
+        "key_attributes": [
+          "risk_level",
+          "assessment_date",
+          "assessment_basis",
+          "reviewer"
+        ],
+        "subtypes": [
+          "Low",
+          "Medium",
+          "High"
+        ],
+        "business_rules": [
+          "High-risk customers require ongoing monitoring",
+          "Risk level determines screening frequency and depth"
+        ],
+        "regulatory_significance": "Risk assessment drives enhanced due diligence and ongoing monitoring obligations",
+        "relationships_to": [
+          "AML Screening",
+          "Screening Match",
+          "Customer"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_005",
+      "name": "Screening Status",
+      "properties": {
+        "definition": "The outcome state of an AML screening process",
+        "key_attributes": [
+          "status_code",
+          "status_date",
+          "status_reason"
+        ],
+        "subtypes": [
+          "Passed",
+          "Flagged",
+          "Escalated"
+        ],
+        "business_rules": [
+          "Passed status allows account opening to proceed",
+          "Flagged or Escalated status requires manual review",
+          "Escalated status may trigger SAR filing"
+        ],
+        "regulatory_significance": "Screening status determines whether customer onboarding can proceed and what escalation actions are required",
+        "relationships_to": [
+          "AML Screening",
+          "Account opening process"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_001",
+      "source_name": "AML Screening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_001",
+      "target_name": "AML Screening Mandatory at Account Opening",
+      "rel_type": "governed_by",
+      "description": "AML Screening is governed by the mandatory screening requirement at account opening",
+      "properties": {
+        "timing": "at_account_opening",
+        "mandatory": true
+      },
+      "context": "AML screening mandatory at account opening",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_001",
+      "source_name": "AML Screening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_002",
+      "target_name": "Ongoing AML Monitoring for High-Risk Customers",
+      "rel_type": "governed_by",
+      "description": "AML Screening is governed by ongoing monitoring requirements for high-risk customers",
+      "properties": {
+        "customer_segment": "high_risk",
+        "monitoring_type": "ongoing"
+      },
+      "context": "Ongoing AML monitoring for high-risk customers",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_003",
+      "source_name": "Screening Match",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_003",
+      "target_name": "Sanctions List Hit Response",
+      "rel_type": "governed_by",
+      "description": "Screening Match outcomes are governed by sanctions list hit response procedures",
+      "properties": {
+        "consequence": "automatic_account_freeze_and_sar_filing"
+      },
+      "context": "Hit on sanctions list = automatic account freeze + SAR filing",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_005",
+      "source_name": "Screening Status",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_004",
+      "target_name": "Failed AML Screening Account Rejection",
+      "rel_type": "governed_by",
+      "description": "Failed Screening Status is governed by account rejection procedures",
+      "properties": {
+        "status_value": "failed",
+        "consequence": "account_application_rejected"
+      },
+      "context": "Failed screening = account application rejected",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_001",
+      "source_name": "AML Screening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_002",
+      "target_name": "Screening List",
+      "rel_type": "has_relationship_to",
+      "description": "AML Screening uses multiple screening lists to detect matches",
+      "properties": {
+        "lists_used": [
+          "OFAC Sanctions List",
+          "UN Sanctions List",
+          "EU Sanctions List",
+          "HM Treasury Sanctions Designations",
+          "INTERPOL Red Notices",
+          "PEP databases",
+          "Adverse media databases"
+        ]
+      },
+      "context": "Screening Lists Checked: OFAC Sanctions List (US Treasury), UN Sanctions List, EU Sanctions List, HM Treasury Sanctions Designations, INTERPOL Red Notices, PEP (Politically Exposed Persons) databases, Adverse media databases",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_001",
+      "source_name": "AML Screening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_003",
+      "target_name": "Screening Match",
+      "rel_type": "has_subtype",
+      "description": "Screening Match is a specific outcome type of AML Screening",
+      "properties": {
+        "attribute": "matches_found",
+        "match_details_captured": true
+      },
+      "context": "matches_found — Number of potential matches, match_details — List of matches (name, score, list name)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_001",
+      "source_name": "AML Screening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_004",
+      "target_name": "Risk Level Assessment",
+      "rel_type": "has_subtype",
+      "description": "Risk Level Assessment is a component outcome of AML Screening",
+      "properties": {
+        "attribute": "risk_level",
+        "possible_values": [
+          "Low",
+          "Medium",
+          "High"
+        ]
+      },
+      "context": "risk_level — Low, Medium, High",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_001",
+      "source_name": "AML Screening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_005",
+      "target_name": "Screening Status",
+      "rel_type": "has_subtype",
+      "description": "Screening Status is a classification outcome of AML Screening",
+      "properties": {
+        "attribute": "screening_status",
+        "possible_values": [
+          "Passed",
+          "Flagged",
+          "Escalated"
+        ]
+      },
+      "context": "screening_status — Passed, Flagged, Escalated",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_001",
+      "source_name": "AML Screening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_001",
+      "source_name": "AML Screening Mandatory at Account Opening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_002",
+      "source_name": "Ongoing AML Monitoring for High-Risk Customers",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_003",
+      "source_name": "Sanctions List Hit Response",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_br_004",
+      "source_name": "Failed AML Screening Account Rejection",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_002",
+      "source_name": "Screening List",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_003",
+      "source_name": "Screening Match",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_004",
+      "source_name": "Risk Level Assessment",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020_bc_005",
+      "source_name": "Screening Status",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ]
+}

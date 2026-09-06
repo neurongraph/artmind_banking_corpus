@@ -1,0 +1,385 @@
+{
+  "chunk_seq": 31,
+  "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+  "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+  "text": "### Transaction Constraints  \n| Rule | Constraint |\n|------|-----------|\n| Amount > 0 | `transaction.amount > 0` |\n| Account must exist | `transaction.account_id REFERENCES account(account_id)` |\n| Immutable post-posting | `transaction.status IN (Pending, Completed) AND cannot_edit_completed` |",
+  "name": "Chunk 31/37",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+  "next_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+  "raw_entities": [
+    {
+      "id": "bc_001",
+      "name": "Transaction",
+      "aliases": [
+        "transaction"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "A financial event on a customer account subject to constraints governing amount validation, account existence, and post-posting immutability. Transactions progress through Pending and Completed states with edit restrictions once posted.",
+      "context": [
+        "Transaction Constraints",
+        "transaction.amount > 0",
+        "transaction.account_id REFERENCES account(account_id)",
+        "transaction.status IN (Pending, Completed) AND cannot_edit_completed"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "Transaction Amount Validation",
+      "aliases": [
+        "Amount > 0"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A hard constraint requiring that all transaction amounts must be positive values greater than zero.",
+      "context": [
+        "Amount > 0",
+        "transaction.amount > 0"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Transaction Account Reference Requirement",
+      "aliases": [
+        "Account must exist"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A referential integrity constraint requiring that every transaction must reference an existing account record in the account table.",
+      "context": [
+        "Account must exist",
+        "transaction.account_id REFERENCES account(account_id)"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "Transaction Post-Posting Immutability",
+      "aliases": [
+        "Immutable post-posting"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A control constraint that prevents editing of completed transactions. Transactions in Pending or Completed status are subject to an edit restriction once posted.",
+      "context": [
+        "Immutable post-posting",
+        "transaction.status IN (Pending, Completed) AND cannot_edit_completed"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Account",
+      "aliases": [
+        "account"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "A customer account entity that serves as the target reference for all transactions. Accounts are identified by account_id and must exist prior to transaction posting.",
+      "context": [
+        "Account must exist",
+        "transaction.account_id REFERENCES account(account_id)"
+      ]
+    }
+  ],
+  "id_map": {
+    "bc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_bc_001",
+    "br_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_br_001",
+    "br_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_br_002",
+    "br_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_br_003",
+    "bc_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_bc_002"
+  },
+  "entities": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_bc_001",
+      "name": "Transaction",
+      "aliases": [
+        "transaction"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "A financial event on a customer account subject to constraints governing amount validation, account existence, and post-posting immutability. Transactions progress through Pending and Completed states with edit restrictions once posted.",
+      "context": [
+        "Transaction Constraints",
+        "transaction.amount > 0",
+        "transaction.account_id REFERENCES account(account_id)",
+        "transaction.status IN (Pending, Completed) AND cannot_edit_completed"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_br_001",
+      "name": "Transaction Amount Validation",
+      "aliases": [
+        "Amount > 0"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A hard constraint requiring that all transaction amounts must be positive values greater than zero.",
+      "context": [
+        "Amount > 0",
+        "transaction.amount > 0"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_br_002",
+      "name": "Transaction Account Reference Requirement",
+      "aliases": [
+        "Account must exist"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A referential integrity constraint requiring that every transaction must reference an existing account record in the account table.",
+      "context": [
+        "Account must exist",
+        "transaction.account_id REFERENCES account(account_id)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_br_003",
+      "name": "Transaction Post-Posting Immutability",
+      "aliases": [
+        "Immutable post-posting"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A control constraint that prevents editing of completed transactions. Transactions in Pending or Completed status are subject to an edit restriction once posted.",
+      "context": [
+        "Immutable post-posting",
+        "transaction.status IN (Pending, Completed) AND cannot_edit_completed"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_bc_002",
+      "name": "Account",
+      "aliases": [
+        "account"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "A customer account entity that serves as the target reference for all transactions. Accounts are identified by account_id and must exist prior to transaction posting.",
+      "context": [
+        "Account must exist",
+        "transaction.account_id REFERENCES account(account_id)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_bc_001",
+      "name": "Transaction",
+      "properties": {
+        "definition": "A financial movement of funds between accounts or into/out of an account, characterized by an amount, account reference, and posting status",
+        "key_attributes": [
+          "amount",
+          "account_id",
+          "status"
+        ],
+        "business_rules": [
+          "Amount must be greater than zero",
+          "Account reference must exist and be valid",
+          "Transaction becomes immutable once posted to Completed status"
+        ],
+        "ontology_domain": "Transaction Management"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_br_001",
+      "name": "Transaction Amount Validation",
+      "properties": {
+        "rule_statement": "Transaction amount must be greater than zero",
+        "rule_type": "constraint",
+        "applies_to": [
+          "transaction.amount"
+        ],
+        "enforcement": "System validation at transaction creation",
+        "consequence": "Transaction rejected if amount is zero or negative"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_br_002",
+      "name": "Transaction Account Reference Requirement",
+      "properties": {
+        "rule_statement": "Every transaction must reference an existing account via account_id foreign key",
+        "rule_type": "constraint",
+        "applies_to": [
+          "transaction.account_id"
+        ],
+        "enforcement": "Database referential integrity constraint",
+        "consequence": "Transaction cannot be created or posted without valid account reference"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_br_003",
+      "name": "Transaction Post-Posting Immutability",
+      "properties": {
+        "rule_statement": "Transactions with Completed status cannot be edited or modified",
+        "rule_type": "constraint",
+        "applies_to": [
+          "transaction.status"
+        ],
+        "enforcement": "System prevents modification of Completed transactions",
+        "consequence": "Completed transactions are locked from further amendment; reversal or correction requires new transaction"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_bc_002",
+      "name": "Account",
+      "properties": {
+        "definition": "A financial holding entity that serves as the target or source for transactions, identified by account_id",
+        "key_attributes": [
+          "account_id"
+        ],
+        "business_rules": [
+          "Account must exist before a transaction can reference it",
+          "Account is the mandatory anchor point for all transaction activity"
+        ],
+        "ontology_domain": "Account Management"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_bc_001",
+      "source_name": "Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_br_001",
+      "target_name": "Transaction Amount Validation",
+      "rel_type": "governed_by",
+      "description": "Transaction concept is governed by the rule that transaction amount must be greater than zero",
+      "properties": {
+        "constraint": "transaction.amount > 0",
+        "rule_category": "amount_validation"
+      },
+      "context": "Amount > 0 | `transaction.amount > 0`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_bc_001",
+      "source_name": "Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_br_002",
+      "target_name": "Transaction Account Reference Requirement",
+      "rel_type": "governed_by",
+      "description": "Transaction concept is governed by the rule that transaction must reference an existing account",
+      "properties": {
+        "constraint": "transaction.account_id REFERENCES account(account_id)",
+        "rule_category": "referential_integrity"
+      },
+      "context": "Account must exist | `transaction.account_id REFERENCES account(account_id)`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_bc_001",
+      "source_name": "Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_br_003",
+      "target_name": "Transaction Post-Posting Immutability",
+      "rel_type": "governed_by",
+      "description": "Transaction concept is governed by the rule that completed transactions cannot be edited after posting",
+      "properties": {
+        "constraint": "transaction.status IN (Pending, Completed) AND cannot_edit_completed",
+        "rule_category": "immutability"
+      },
+      "context": "Immutable post-posting | `transaction.status IN (Pending, Completed) AND cannot_edit_completed`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_bc_001",
+      "source_name": "Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_bc_002",
+      "target_name": "Account",
+      "rel_type": "linked_to",
+      "description": "Transaction is linked to Account through a referential relationship where each transaction must reference an existing account",
+      "properties": {
+        "relationship_type": "foreign_key_reference",
+        "constraint": "transaction.account_id REFERENCES account(account_id)"
+      },
+      "context": "Account must exist | `transaction.account_id REFERENCES account(account_id)`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_bc_001",
+      "source_name": "Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_br_001",
+      "source_name": "Transaction Amount Validation",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_br_002",
+      "source_name": "Transaction Account Reference Requirement",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_br_003",
+      "source_name": "Transaction Post-Posting Immutability",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031_bc_002",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_031",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ]
+}

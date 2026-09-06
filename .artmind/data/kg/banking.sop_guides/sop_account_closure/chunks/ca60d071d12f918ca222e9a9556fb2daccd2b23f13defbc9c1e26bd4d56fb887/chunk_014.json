@@ -1,0 +1,1150 @@
+{
+  "chunk_seq": 14,
+  "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+  "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+  "text": "## Step 6: Final Balance Payment  \n### Payment Method Options  \n**1. Bank Transfer (Preferred)**\n- Customer provides receiving bank details\n- Transfer initiated immediately (if funds available)\n- Timeline: 1–2 business days (FPS)\n- Confirmation sent to customer  \n**2. Check**\n- Check issued in customer name\n- Mailed to registered address\n- Timeline: 3–5 business days\n- Tracking number provided  \n**3. Cash (Branch Only)**\n- Customer collects at branch\n- Teller issues cash receipt\n- Immediate payment\n- Limited to £5,000 (regulatory requirement for cash)\n- Larger amounts: Check or transfer recommended  \n**4. Hold for Customer Instruction**\n- Balance held in suspense account (maximum 6 months)\n- Customer instructed to provide payment details\n- Reminder sent at 3 months\n- Transferred to unclaimed money fund after 6 months",
+  "name": "Chunk 14/25",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_013",
+  "next_chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_015",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Final Balance Payment Process",
+      "aliases": [
+        "Step 6",
+        "Balance Payment"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_closure",
+      "description": "End-to-end procedure for disbursing a customer's final account balance upon account closure. Offers four payment method options (bank transfer, check, cash, or hold) with defined timelines, regulatory limits, and customer communication requirements.",
+      "context": [
+        "Step 6: Final Balance Payment",
+        "Payment Method Options",
+        "Balance held in suspense account (maximum 6 months)",
+        "Transferred to unclaimed money fund after 6 months"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Bank Transfer Initiation",
+      "aliases": [
+        "Bank Transfer Payment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Customer provides receiving bank details and transfer is initiated immediately if funds are available. Payment is processed via FPS with 1–2 business day timeline and confirmation sent to customer.",
+      "context": [
+        "Customer provides receiving bank details",
+        "Transfer initiated immediately (if funds available)",
+        "Timeline: 1–2 business days (FPS)",
+        "Confirmation sent to customer"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Check Issuance and Mailing",
+      "aliases": [
+        "Check Payment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Check is issued in customer name and mailed to the registered address with a tracking number provided. Payment timeline is 3–5 business days.",
+      "context": [
+        "Check issued in customer name",
+        "Mailed to registered address",
+        "Timeline: 3–5 business days",
+        "Tracking number provided"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Cash Payment at Branch",
+      "aliases": [
+        "Cash Withdrawal",
+        "Teller Cash Payment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Customer collects cash at branch with teller issuing a cash receipt. Payment is immediate but limited to £5,000 per regulatory requirement; larger amounts require check or transfer.",
+      "context": [
+        "Customer collects at branch",
+        "Teller issues cash receipt",
+        "Immediate payment",
+        "Limited to £5,000 (regulatory requirement for cash)"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Balance Hold in Suspense Account",
+      "aliases": [
+        "Hold for Customer Instruction"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Balance is held in a suspense account for a maximum of 6 months while customer is instructed to provide payment details. A reminder is sent at 3 months, and the balance is transferred to the unclaimed money fund if no instruction is received after 6 months.",
+      "context": [
+        "Balance held in suspense account (maximum 6 months)",
+        "Customer instructed to provide payment details",
+        "Reminder sent at 3 months",
+        "Transferred to unclaimed money fund after 6 months"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer",
+      "description": "The account holder responsible for selecting a payment method and providing necessary details (bank account, address, or collection instructions) to receive their final balance.",
+      "context": [
+        "Customer provides receiving bank details",
+        "Customer collects at branch",
+        "Customer instructed to provide payment details"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Teller",
+      "aliases": [
+        "Branch Teller",
+        "Branch Staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "branch_staff",
+      "description": "Branch staff member responsible for issuing cash payments and providing cash receipts when customers collect their final balance in cash at the branch.",
+      "context": [
+        "Teller issues cash receipt",
+        "Customer collects at branch"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Payment Method Selection",
+      "aliases": [
+        "Payment Option Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Customer selects one of four payment methods: bank transfer, check, cash (branch only, up to £5,000), or hold in suspense account. Selection determines the disbursement timeline and process path.",
+      "context": [
+        "Payment Method Options",
+        "Bank Transfer (Preferred)",
+        "Check",
+        "Cash (Branch Only)",
+        "Hold for Customer Instruction"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Cash Amount Limit Check",
+      "aliases": [
+        "Regulatory Cash Limit Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "authority_limit_check",
+      "description": "Decision gate determining whether the final balance can be paid in cash. If amount exceeds £5,000 (regulatory requirement), customer is directed to use check or transfer instead.",
+      "context": [
+        "Limited to £5,000 (regulatory requirement for cash)",
+        "Larger amounts: Check or transfer recommended"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Regulatory Cash Payment Limit Compliance",
+      "aliases": [
+        "Cash Limit Regulatory Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "regulatory_reporting",
+      "description": "Mandatory regulatory control ensuring that cash payments do not exceed £5,000 per transaction. Enforces alternative payment methods (check or transfer) for larger amounts.",
+      "context": [
+        "Limited to £5,000 (regulatory requirement for cash)",
+        "Larger amounts: Check or transfer recommended"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Registered Address for Check Mailing",
+      "aliases": [
+        "Mailing Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_recording",
+      "description": "The customer's registered address on file to which the check is mailed as part of the final balance payment process.",
+      "context": [
+        "Mailed to registered address",
+        "Check issued in customer name"
+      ]
+    },
+    {
+      "id": "acct_001",
+      "name": "Suspense Account",
+      "aliases": [
+        "Hold Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "dormant_account",
+      "description": "A temporary holding account where the final balance is placed when the customer does not immediately provide payment instructions. The balance is held for a maximum of 6 months before transfer to the unclaimed money fund.",
+      "context": [
+        "Balance held in suspense account (maximum 6 months)",
+        "Transferred to unclaimed money fund after 6 months"
+      ]
+    },
+    {
+      "id": "trans_001",
+      "name": "Final Balance Bank Transfer",
+      "aliases": [
+        "Balance Transfer Payment"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "Electronic funds transfer of the final account balance to a customer-provided receiving bank account via FPS, processed within 1–2 business days.",
+      "context": [
+        "Transfer initiated immediately (if funds available)",
+        "Timeline: 1–2 business days (FPS)",
+        "Confirmation sent to customer"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_proc_001",
+    "pstep_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_001",
+    "pstep_002": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_002",
+    "pstep_003": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_003",
+    "pstep_004": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_004",
+    "ra_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_ra_001",
+    "ra_002": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_ra_002",
+    "dp_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_001",
+    "dp_002": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_002",
+    "cc_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_cc_001",
+    "addr_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_addr_001",
+    "acct_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_acct_001",
+    "trans_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_trans_001"
+  },
+  "entities": [
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_proc_001",
+      "name": "Final Balance Payment Process",
+      "aliases": [
+        "Step 6",
+        "Balance Payment"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_closure",
+      "description": "End-to-end procedure for disbursing a customer's final account balance upon account closure. Offers four payment method options (bank transfer, check, cash, or hold) with defined timelines, regulatory limits, and customer communication requirements.",
+      "context": [
+        "Step 6: Final Balance Payment",
+        "Payment Method Options",
+        "Balance held in suspense account (maximum 6 months)",
+        "Transferred to unclaimed money fund after 6 months"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_001",
+      "name": "Bank Transfer Initiation",
+      "aliases": [
+        "Bank Transfer Payment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Customer provides receiving bank details and transfer is initiated immediately if funds are available. Payment is processed via FPS with 1–2 business day timeline and confirmation sent to customer.",
+      "context": [
+        "Customer provides receiving bank details",
+        "Transfer initiated immediately (if funds available)",
+        "Timeline: 1–2 business days (FPS)",
+        "Confirmation sent to customer"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_002",
+      "name": "Check Issuance and Mailing",
+      "aliases": [
+        "Check Payment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Check is issued in customer name and mailed to the registered address with a tracking number provided. Payment timeline is 3–5 business days.",
+      "context": [
+        "Check issued in customer name",
+        "Mailed to registered address",
+        "Timeline: 3–5 business days",
+        "Tracking number provided"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_003",
+      "name": "Cash Payment at Branch",
+      "aliases": [
+        "Cash Withdrawal",
+        "Teller Cash Payment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Customer collects cash at branch with teller issuing a cash receipt. Payment is immediate but limited to £5,000 per regulatory requirement; larger amounts require check or transfer.",
+      "context": [
+        "Customer collects at branch",
+        "Teller issues cash receipt",
+        "Immediate payment",
+        "Limited to £5,000 (regulatory requirement for cash)"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_004",
+      "name": "Balance Hold in Suspense Account",
+      "aliases": [
+        "Hold for Customer Instruction"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Balance is held in a suspense account for a maximum of 6 months while customer is instructed to provide payment details. A reminder is sent at 3 months, and the balance is transferred to the unclaimed money fund if no instruction is received after 6 months.",
+      "context": [
+        "Balance held in suspense account (maximum 6 months)",
+        "Customer instructed to provide payment details",
+        "Reminder sent at 3 months",
+        "Transferred to unclaimed money fund after 6 months"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_ra_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer",
+      "description": "The account holder responsible for selecting a payment method and providing necessary details (bank account, address, or collection instructions) to receive their final balance.",
+      "context": [
+        "Customer provides receiving bank details",
+        "Customer collects at branch",
+        "Customer instructed to provide payment details"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_ra_002",
+      "name": "Teller",
+      "aliases": [
+        "Branch Teller",
+        "Branch Staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "branch_staff",
+      "description": "Branch staff member responsible for issuing cash payments and providing cash receipts when customers collect their final balance in cash at the branch.",
+      "context": [
+        "Teller issues cash receipt",
+        "Customer collects at branch"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_001",
+      "name": "Payment Method Selection",
+      "aliases": [
+        "Payment Option Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Customer selects one of four payment methods: bank transfer, check, cash (branch only, up to £5,000), or hold in suspense account. Selection determines the disbursement timeline and process path.",
+      "context": [
+        "Payment Method Options",
+        "Bank Transfer (Preferred)",
+        "Check",
+        "Cash (Branch Only)",
+        "Hold for Customer Instruction"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_002",
+      "name": "Cash Amount Limit Check",
+      "aliases": [
+        "Regulatory Cash Limit Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "authority_limit_check",
+      "description": "Decision gate determining whether the final balance can be paid in cash. If amount exceeds £5,000 (regulatory requirement), customer is directed to use check or transfer instead.",
+      "context": [
+        "Limited to £5,000 (regulatory requirement for cash)",
+        "Larger amounts: Check or transfer recommended"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_cc_001",
+      "name": "Regulatory Cash Payment Limit Compliance",
+      "aliases": [
+        "Cash Limit Regulatory Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "regulatory_reporting",
+      "description": "Mandatory regulatory control ensuring that cash payments do not exceed £5,000 per transaction. Enforces alternative payment methods (check or transfer) for larger amounts.",
+      "context": [
+        "Limited to £5,000 (regulatory requirement for cash)",
+        "Larger amounts: Check or transfer recommended"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_addr_001",
+      "name": "Registered Address for Check Mailing",
+      "aliases": [
+        "Mailing Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_recording",
+      "description": "The customer's registered address on file to which the check is mailed as part of the final balance payment process.",
+      "context": [
+        "Mailed to registered address",
+        "Check issued in customer name"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_acct_001",
+      "name": "Suspense Account",
+      "aliases": [
+        "Hold Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "dormant_account",
+      "description": "A temporary holding account where the final balance is placed when the customer does not immediately provide payment instructions. The balance is held for a maximum of 6 months before transfer to the unclaimed money fund.",
+      "context": [
+        "Balance held in suspense account (maximum 6 months)",
+        "Transferred to unclaimed money fund after 6 months"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_trans_001",
+      "name": "Final Balance Bank Transfer",
+      "aliases": [
+        "Balance Transfer Payment"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "Electronic funds transfer of the final account balance to a customer-provided receiving bank account via FPS, processed within 1–2 business days.",
+      "context": [
+        "Transfer initiated immediately (if funds available)",
+        "Timeline: 1–2 business days (FPS)",
+        "Confirmation sent to customer"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_proc_001",
+      "name": "Final Balance Payment Process",
+      "properties": {
+        "purpose": "Distribute final account balance to customer via selected payment method",
+        "scope": "All customer account closures",
+        "channels": [
+          "branch",
+          "online",
+          "postal"
+        ],
+        "outcome_success": "Balance paid to customer via chosen method with confirmation",
+        "outcome_failure": "Balance held in suspense account pending customer instruction"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_001",
+      "name": "Bank Transfer Initiation",
+      "properties": {
+        "step_number": 1,
+        "actor": "Bank System",
+        "input": "Customer bank details, account balance",
+        "output": "Transfer confirmation to customer",
+        "estimated_duration": "1–2 business days",
+        "channel": "system",
+        "mandatory": "no",
+        "tools_or_systems": [
+          "FPS (Faster Payment System)"
+        ],
+        "failure_path": "Offer alternative payment method"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_002",
+      "name": "Check Issuance and Mailing",
+      "properties": {
+        "step_number": 2,
+        "actor": "Bank Operations",
+        "input": "Customer name, registered address, balance amount",
+        "output": "Check issued with tracking number",
+        "estimated_duration": "3–5 business days",
+        "channel": "postal",
+        "mandatory": "no",
+        "tools_or_systems": [
+          "Check printing system"
+        ],
+        "failure_path": "Offer alternative payment method"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_003",
+      "name": "Cash Payment at Branch",
+      "properties": {
+        "step_number": 3,
+        "actor": "Teller",
+        "input": "Customer identification, balance amount (up to £5,000)",
+        "output": "Cash receipt issued",
+        "estimated_duration": "Immediate",
+        "channel": "branch",
+        "mandatory": "no",
+        "tools_or_systems": [
+          "Cash drawer",
+          "Receipt system"
+        ],
+        "failure_path": "Recommend check or transfer for amounts exceeding £5,000"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_004",
+      "name": "Balance Hold in Suspense Account",
+      "properties": {
+        "step_number": 4,
+        "actor": "Bank System",
+        "input": "Account balance, customer contact details",
+        "output": "Balance held in suspense; reminder sent at 3 months",
+        "estimated_duration": "Maximum 6 months",
+        "channel": "system",
+        "mandatory": "no",
+        "tools_or_systems": [
+          "Suspense account system"
+        ],
+        "failure_path": "Transfer to unclaimed money fund after 6 months"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_ra_001",
+      "name": "Customer",
+      "properties": {
+        "role_type": "human",
+        "authority_level": "Selects payment method; provides bank details or collection instructions",
+        "channels": [
+          "branch",
+          "online",
+          "postal"
+        ]
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_ra_002",
+      "name": "Teller",
+      "properties": {
+        "role_type": "human",
+        "department": "Branch Operations",
+        "authority_level": "Issues cash payments up to £5,000; issues receipts",
+        "approval_limit": "5000",
+        "channels": [
+          "branch"
+        ]
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_001",
+      "name": "Payment Method Selection",
+      "properties": {
+        "decision_question": "Which payment method does the customer prefer?",
+        "criteria": "Customer instruction; balance amount; regulatory limits",
+        "decision_maker": "Customer",
+        "path_yes": "Proceed with selected method (transfer, check, cash, or hold)",
+        "path_no": "Default to hold in suspense account pending instruction"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_002",
+      "name": "Cash Amount Limit Check",
+      "properties": {
+        "decision_question": "Is the balance amount £5,000 or less?",
+        "criteria": "Regulatory cash payment limit",
+        "decision_maker": "Bank System",
+        "path_yes": "Proceed with cash payment at branch",
+        "path_no": "Recommend check or bank transfer; offer hold option"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_cc_001",
+      "name": "Regulatory Cash Payment Limit Compliance",
+      "properties": {
+        "regulatory_basis": "Cash payment regulatory requirement",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "branch"
+        ],
+        "evidence_required": "Customer identification; cash receipt",
+        "performed_by": "Teller",
+        "timing": "At point of cash payment",
+        "failure_consequence": "Payment method must be changed to check or transfer"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_addr_001",
+      "name": "Registered Address for Check Mailing",
+      "properties": {
+        "collection_steps": "Captured during account opening; verified at closure",
+        "recording_system": "Customer account record",
+        "update_process": "Customer provides new address; bank updates record before check issuance"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_acct_001",
+      "name": "Suspense Account",
+      "properties": {
+        "account_type": "suspense",
+        "account_state": "active",
+        "balance_minimum": "none",
+        "balance_maximum": "unlimited",
+        "closure_or_freeze_conditions": "Transferred to unclaimed money fund after 6 months of inactivity"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_trans_001",
+      "name": "Final Balance Bank Transfer",
+      "properties": {
+        "transaction_type": "transfer",
+        "threshold_value": "none",
+        "monitoring_or_reporting_obligation": "Confirmation sent to customer"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_proc_001",
+      "source_name": "Final Balance Payment Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_001",
+      "target_name": "Bank Transfer Initiation",
+      "rel_type": "contains",
+      "description": "The Final Balance Payment Process includes Bank Transfer Initiation as one of its constituent steps",
+      "properties": {
+        "sequence_position": 1,
+        "method_type": "bank_transfer"
+      },
+      "context": "Bank Transfer (Preferred) - Customer provides receiving bank details - Transfer initiated immediately (if funds available)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_proc_001",
+      "source_name": "Final Balance Payment Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_002",
+      "target_name": "Check Issuance and Mailing",
+      "rel_type": "contains",
+      "description": "The Final Balance Payment Process includes Check Issuance and Mailing as one of its constituent steps",
+      "properties": {
+        "sequence_position": 2,
+        "method_type": "check"
+      },
+      "context": "Check - Check issued in customer name - Mailed to registered address - Timeline: 3–5 business days",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_proc_001",
+      "source_name": "Final Balance Payment Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_003",
+      "target_name": "Cash Payment at Branch",
+      "rel_type": "contains",
+      "description": "The Final Balance Payment Process includes Cash Payment at Branch as one of its constituent steps",
+      "properties": {
+        "sequence_position": 3,
+        "method_type": "cash",
+        "location": "branch_only"
+      },
+      "context": "Cash (Branch Only) - Customer collects at branch - Teller issues cash receipt - Immediate payment",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_proc_001",
+      "source_name": "Final Balance Payment Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_004",
+      "target_name": "Balance Hold in Suspense Account",
+      "rel_type": "contains",
+      "description": "The Final Balance Payment Process includes Balance Hold in Suspense Account as one of its constituent steps",
+      "properties": {
+        "sequence_position": 4,
+        "method_type": "hold_for_instruction"
+      },
+      "context": "Hold for Customer Instruction - Balance held in suspense account (maximum 6 months)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_proc_001",
+      "source_name": "Final Balance Payment Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_001",
+      "target_name": "Payment Method Selection",
+      "rel_type": "branches_at",
+      "description": "The Final Balance Payment Process branches at the Payment Method Selection decision point",
+      "properties": {
+        "decision_options": [
+          "bank_transfer",
+          "check",
+          "cash",
+          "hold_for_instruction"
+        ]
+      },
+      "context": "Payment Method Options - 1. Bank Transfer (Preferred) - 2. Check - 3. Cash (Branch Only) - 4. Hold for Customer Instruction",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_proc_001",
+      "source_name": "Final Balance Payment Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_cc_001",
+      "target_name": "Regulatory Cash Payment Limit Compliance",
+      "rel_type": "mandated_to_include",
+      "description": "The Final Balance Payment Process is mandated to include Regulatory Cash Payment Limit Compliance checkpoint",
+      "properties": {
+        "compliance_requirement": "cash_payment_limit",
+        "limit_amount": "£5,000"
+      },
+      "context": "Limited to £5,000 (regulatory requirement for cash) - Larger amounts: Check or transfer recommended",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_001",
+      "source_name": "Bank Transfer Initiation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_ra_001",
+      "target_name": "Customer",
+      "rel_type": "collects_data_from",
+      "description": "Bank Transfer Initiation step collects receiving bank details from the Customer",
+      "properties": {
+        "data_collected": "receiving_bank_details"
+      },
+      "context": "Customer provides receiving bank details - Transfer initiated immediately (if funds available)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_001",
+      "source_name": "Bank Transfer Initiation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_trans_001",
+      "target_name": "Final Balance Bank Transfer",
+      "rel_type": "creates",
+      "description": "Bank Transfer Initiation step creates the Final Balance Bank Transfer transaction",
+      "properties": {
+        "timeline": "1-2 business days",
+        "method": "FPS"
+      },
+      "context": "Transfer initiated immediately (if funds available) - Timeline: 1–2 business days (FPS) - Confirmation sent to customer",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_002",
+      "source_name": "Check Issuance and Mailing",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_ra_001",
+      "target_name": "Customer",
+      "rel_type": "notifies",
+      "description": "Check Issuance and Mailing step notifies the Customer with tracking number",
+      "properties": {
+        "notification_type": "tracking_number"
+      },
+      "context": "Check issued in customer name - Mailed to registered address - Tracking number provided",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_002",
+      "source_name": "Check Issuance and Mailing",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_addr_001",
+      "target_name": "Registered Address for Check Mailing",
+      "rel_type": "uses",
+      "description": "Check Issuance and Mailing step uses the Registered Address for Check Mailing",
+      "properties": {
+        "purpose": "check_delivery"
+      },
+      "context": "Mailed to registered address",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_003",
+      "source_name": "Cash Payment at Branch",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_ra_002",
+      "target_name": "Teller",
+      "rel_type": "performed_by",
+      "description": "Cash Payment at Branch step is performed by the Teller",
+      "properties": {
+        "action": "issue_cash_receipt"
+      },
+      "context": "Teller issues cash receipt - Immediate payment",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_003",
+      "source_name": "Cash Payment at Branch",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_002",
+      "target_name": "Cash Amount Limit Check",
+      "rel_type": "triggers",
+      "description": "Cash Payment at Branch step triggers the Cash Amount Limit Check decision point",
+      "properties": {
+        "limit": "£5,000"
+      },
+      "context": "Limited to £5,000 (regulatory requirement for cash) - Larger amounts: Check or transfer recommended",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_004",
+      "source_name": "Balance Hold in Suspense Account",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_acct_001",
+      "target_name": "Suspense Account",
+      "rel_type": "creates",
+      "description": "Balance Hold in Suspense Account step creates a hold in the Suspense Account",
+      "properties": {
+        "hold_duration_max": "6 months",
+        "reminder_schedule": "3 months"
+      },
+      "context": "Balance held in suspense account (maximum 6 months) - Reminder sent at 3 months",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_004",
+      "source_name": "Balance Hold in Suspense Account",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_ra_001",
+      "target_name": "Customer",
+      "rel_type": "notifies",
+      "description": "Balance Hold in Suspense Account step notifies the Customer to provide payment details",
+      "properties": {
+        "notification_type": "instruction_request",
+        "reminder_at": "3_months"
+      },
+      "context": "Customer instructed to provide payment details - Reminder sent at 3 months",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_001",
+      "source_name": "Payment Method Selection",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_001",
+      "target_name": "Bank Transfer Initiation",
+      "rel_type": "routes_to_on_pass",
+      "description": "Payment Method Selection routes to Bank Transfer Initiation when bank transfer is selected",
+      "properties": {
+        "condition": "bank_transfer_selected",
+        "priority": "preferred"
+      },
+      "context": "Bank Transfer (Preferred) - Customer provides receiving bank details",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_001",
+      "source_name": "Payment Method Selection",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_002",
+      "target_name": "Check Issuance and Mailing",
+      "rel_type": "routes_to_on_pass",
+      "description": "Payment Method Selection routes to Check Issuance and Mailing when check is selected",
+      "properties": {
+        "condition": "check_selected"
+      },
+      "context": "Check - Check issued in customer name - Mailed to registered address",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_001",
+      "source_name": "Payment Method Selection",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_003",
+      "target_name": "Cash Payment at Branch",
+      "rel_type": "routes_to_on_pass",
+      "description": "Payment Method Selection routes to Cash Payment at Branch when cash is selected",
+      "properties": {
+        "condition": "cash_selected",
+        "location_constraint": "branch_only"
+      },
+      "context": "Cash (Branch Only) - Customer collects at branch",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_001",
+      "source_name": "Payment Method Selection",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_004",
+      "target_name": "Balance Hold in Suspense Account",
+      "rel_type": "routes_to_on_pass",
+      "description": "Payment Method Selection routes to Balance Hold in Suspense Account when hold for instruction is selected",
+      "properties": {
+        "condition": "hold_for_instruction_selected"
+      },
+      "context": "Hold for Customer Instruction - Balance held in suspense account",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_002",
+      "source_name": "Cash Amount Limit Check",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_cc_001",
+      "target_name": "Regulatory Cash Payment Limit Compliance",
+      "rel_type": "gated_by",
+      "description": "Cash Amount Limit Check decision point is gated by Regulatory Cash Payment Limit Compliance checkpoint",
+      "properties": {
+        "limit": "£5,000",
+        "regulation_type": "cash_payment_limit"
+      },
+      "context": "Limited to £5,000 (regulatory requirement for cash) - Larger amounts: Check or transfer recommended",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_cc_001",
+      "source_name": "Regulatory Cash Payment Limit Compliance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_002",
+      "target_name": "Cash Amount Limit Check",
+      "rel_type": "gates",
+      "description": "Regulatory Cash Payment Limit Compliance checkpoint gates the Cash Amount Limit Check decision point",
+      "properties": {
+        "limit_amount": "£5,000",
+        "enforcement": "mandatory"
+      },
+      "context": "Limited to £5,000 (regulatory requirement for cash)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_ra_001",
+      "source_name": "Customer",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_addr_001",
+      "target_name": "Registered Address for Check Mailing",
+      "rel_type": "registered_to",
+      "description": "Customer is registered to the Registered Address for Check Mailing",
+      "properties": {
+        "address_type": "registered_address"
+      },
+      "context": "Mailed to registered address",
+      "bidirectional": true,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_proc_001",
+      "source_name": "Final Balance Payment Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_001",
+      "source_name": "Bank Transfer Initiation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_002",
+      "source_name": "Check Issuance and Mailing",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_003",
+      "source_name": "Cash Payment at Branch",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_pstep_004",
+      "source_name": "Balance Hold in Suspense Account",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_ra_001",
+      "source_name": "Customer",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_ra_002",
+      "source_name": "Teller",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_001",
+      "source_name": "Payment Method Selection",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_dp_002",
+      "source_name": "Cash Amount Limit Check",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_cc_001",
+      "source_name": "Regulatory Cash Payment Limit Compliance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_addr_001",
+      "source_name": "Registered Address for Check Mailing",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_acct_001",
+      "source_name": "Suspense Account",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014_trans_001",
+      "source_name": "Final Balance Bank Transfer",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_014",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

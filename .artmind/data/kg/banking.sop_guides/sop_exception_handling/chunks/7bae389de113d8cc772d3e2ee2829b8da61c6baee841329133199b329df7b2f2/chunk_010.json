@@ -1,0 +1,1596 @@
+{
+  "chunk_seq": 10,
+  "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+  "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+  "text": "## Step 2: Investigation  \n### Category 1: Failed Transactions  \n**Investigation Steps:**\n1. Pull transaction record from system\n2. Check status (why did it fail?)\n3. Verify customer authorization\n4. Confirm account details correct\n5. Assess if reversible  \n**Common Failure Reasons & Resolution:**  \n| Reason | Investigation | Resolution |\n|--------|---|---|\n| Insufficient funds | Confirm balance at time of attempt | Explain to customer, offer retry once funds available |\n| Invalid recipient | Check account number format | Contact customer for correct details, retry |\n| Account frozen | Confirm freeze in place and reason | Unfreeze if valid, notify customer |\n| Duplicate prevention | Check for earlier same transaction | Explain duplicate rule, offer manual retry |  \n**Outcome:** Refund if funds were debited + failed, retry if appropriate, or explain to customer",
+  "name": "Chunk 10/25",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_009",
+  "next_chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Failed Transaction Investigation Process",
+      "aliases": [
+        "Category 1: Failed Transactions"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "An operational procedure for investigating and resolving failed transactions on customer accounts. The process involves pulling transaction records, determining failure reasons, verifying customer authorization and account details, assessing reversibility, and determining appropriate resolution actions including refunds, retries, or customer explanation.",
+      "context": [
+        "Step 2: Investigation",
+        "Category 1: Failed Transactions",
+        "Pull transaction record from system",
+        "Outcome: Refund if funds were debited + failed, retry if appropriate, or explain to customer"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Transaction Record Retrieval",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The initial step of pulling the transaction record from the system to begin investigation of a failed transaction.",
+      "context": [
+        "Pull transaction record from system"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Transaction Status Check",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Examination of the transaction status to determine the reason for failure.",
+      "context": [
+        "Check status (why did it fail?)"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Customer Authorization Verification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Verification that the customer authorized the failed transaction.",
+      "context": [
+        "Verify customer authorization"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Account Details Confirmation",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Confirmation that the account details provided in the transaction are correct.",
+      "context": [
+        "Confirm account details correct"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Reversibility Assessment",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Assessment of whether the failed transaction can be reversed or refunded.",
+      "context": [
+        "Assess if reversible"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Balance Confirmation at Transaction Attempt",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Confirmation of the customer's account balance at the time of the failed transaction attempt to verify insufficient funds as the failure reason.",
+      "context": [
+        "Confirm balance at time of attempt"
+      ]
+    },
+    {
+      "id": "pstep_007",
+      "name": "Recipient Account Number Validation",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Verification of the recipient account number format to identify if invalid recipient details caused the transaction failure.",
+      "context": [
+        "Check account number format"
+      ]
+    },
+    {
+      "id": "pstep_008",
+      "name": "Account Freeze Status Confirmation",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Confirmation of whether an account freeze is in place and the reason for the freeze when account frozen is identified as the failure reason.",
+      "context": [
+        "Confirm freeze in place and reason"
+      ]
+    },
+    {
+      "id": "pstep_009",
+      "name": "Duplicate Transaction Check",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Verification of whether an earlier identical transaction exists to determine if duplicate prevention rules caused the transaction failure.",
+      "context": [
+        "Check for earlier same transaction"
+      ]
+    },
+    {
+      "id": "pstep_010",
+      "name": "Customer Notification and Resolution",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Communication to the customer explaining the failure reason and offering appropriate resolution such as retry, refund, or explanation of policy.",
+      "context": [
+        "Explain to customer, offer retry once funds available",
+        "Contact customer for correct details, retry",
+        "Unfreeze if valid, notify customer",
+        "Explain duplicate rule, offer manual retry"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Transaction Failure Reason Determination",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "A branching decision point that categorizes the transaction failure into one of five common reasons: insufficient funds, invalid recipient, account frozen, duplicate prevention, or other. Each reason path leads to specific investigation and resolution steps.",
+      "context": [
+        "Common Failure Reasons & Resolution",
+        "Reason | Investigation | Resolution"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Insufficient Funds Failure Path",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision path triggered when insufficient funds is identified as the transaction failure reason, leading to balance confirmation and customer explanation with retry offer.",
+      "context": [
+        "Insufficient funds | Confirm balance at time of attempt | Explain to customer, offer retry once funds available"
+      ]
+    },
+    {
+      "id": "dp_003",
+      "name": "Invalid Recipient Failure Path",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision path triggered when invalid recipient details are identified as the transaction failure reason, leading to account number format verification and customer contact for correction.",
+      "context": [
+        "Invalid recipient | Check account number format | Contact customer for correct details, retry"
+      ]
+    },
+    {
+      "id": "dp_004",
+      "name": "Account Frozen Failure Path",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision path triggered when an account freeze is identified as the transaction failure reason, leading to freeze confirmation and conditional unfreezing with customer notification.",
+      "context": [
+        "Account frozen | Confirm freeze in place and reason | Unfreeze if valid, notify customer"
+      ]
+    },
+    {
+      "id": "dp_005",
+      "name": "Duplicate Prevention Failure Path",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision path triggered when duplicate prevention rules are identified as the transaction failure reason, leading to earlier transaction verification and customer explanation with manual retry offer.",
+      "context": [
+        "Duplicate prevention | Check for earlier same transaction | Explain duplicate rule, offer manual retry"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Transaction Investigation Investigator",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The operations staff member responsible for executing the failed transaction investigation steps, including pulling records, verifying details, assessing reversibility, and determining appropriate resolution.",
+      "context": [
+        "Pull transaction record from system",
+        "Check status (why did it fail?)",
+        "Verify customer authorization"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Account Freeze Authority",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The role responsible for unfreezing an account when the freeze is determined to be valid and the transaction failure is resolved.",
+      "context": [
+        "Unfreeze if valid, notify customer"
+      ]
+    },
+    {
+      "id": "txn_001",
+      "name": "Failed Transaction",
+      "aliases": [],
+      "entity_class": "TRANSACTION",
+      "type": "failed_transaction",
+      "description": "A financial transaction that did not complete successfully on a customer account, requiring investigation to determine the failure reason and appropriate resolution including potential refund or retry.",
+      "context": [
+        "Step 2: Investigation",
+        "Category 1: Failed Transactions",
+        "Outcome: Refund if funds were debited + failed, retry if appropriate, or explain to customer"
+      ]
+    },
+    {
+      "id": "acct_001",
+      "name": "Customer Account",
+      "aliases": [],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "A customer account subject to transaction processing and potential failure scenarios requiring investigation and resolution.",
+      "context": [
+        "Confirm account details correct",
+        "Account frozen | Confirm freeze in place and reason"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The account holder whose transaction has failed and who requires notification and resolution of the failure.",
+      "context": [
+        "Verify customer authorization",
+        "Explain to customer, offer retry once funds available",
+        "Contact customer for correct details, retry"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_proc_001",
+    "pstep_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_001",
+    "pstep_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_002",
+    "pstep_003": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_003",
+    "pstep_004": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_004",
+    "pstep_005": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_005",
+    "pstep_006": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_006",
+    "pstep_007": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_007",
+    "pstep_008": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_008",
+    "pstep_009": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_009",
+    "pstep_010": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_010",
+    "dp_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_001",
+    "dp_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_002",
+    "dp_003": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_003",
+    "dp_004": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_004",
+    "dp_005": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_005",
+    "ra_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_ra_001",
+    "ra_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_ra_002",
+    "txn_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_txn_001",
+    "acct_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_acct_001",
+    "cust_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_proc_001",
+      "name": "Failed Transaction Investigation Process",
+      "aliases": [
+        "Category 1: Failed Transactions"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "An operational procedure for investigating and resolving failed transactions on customer accounts. The process involves pulling transaction records, determining failure reasons, verifying customer authorization and account details, assessing reversibility, and determining appropriate resolution actions including refunds, retries, or customer explanation.",
+      "context": [
+        "Step 2: Investigation",
+        "Category 1: Failed Transactions",
+        "Pull transaction record from system",
+        "Outcome: Refund if funds were debited + failed, retry if appropriate, or explain to customer"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_001",
+      "name": "Transaction Record Retrieval",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The initial step of pulling the transaction record from the system to begin investigation of a failed transaction.",
+      "context": [
+        "Pull transaction record from system"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_002",
+      "name": "Transaction Status Check",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Examination of the transaction status to determine the reason for failure.",
+      "context": [
+        "Check status (why did it fail?)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_003",
+      "name": "Customer Authorization Verification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Verification that the customer authorized the failed transaction.",
+      "context": [
+        "Verify customer authorization"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_004",
+      "name": "Account Details Confirmation",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Confirmation that the account details provided in the transaction are correct.",
+      "context": [
+        "Confirm account details correct"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_005",
+      "name": "Reversibility Assessment",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Assessment of whether the failed transaction can be reversed or refunded.",
+      "context": [
+        "Assess if reversible"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_006",
+      "name": "Balance Confirmation at Transaction Attempt",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Confirmation of the customer's account balance at the time of the failed transaction attempt to verify insufficient funds as the failure reason.",
+      "context": [
+        "Confirm balance at time of attempt"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_007",
+      "name": "Recipient Account Number Validation",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Verification of the recipient account number format to identify if invalid recipient details caused the transaction failure.",
+      "context": [
+        "Check account number format"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_008",
+      "name": "Account Freeze Status Confirmation",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Confirmation of whether an account freeze is in place and the reason for the freeze when account frozen is identified as the failure reason.",
+      "context": [
+        "Confirm freeze in place and reason"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_009",
+      "name": "Duplicate Transaction Check",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Verification of whether an earlier identical transaction exists to determine if duplicate prevention rules caused the transaction failure.",
+      "context": [
+        "Check for earlier same transaction"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_010",
+      "name": "Customer Notification and Resolution",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Communication to the customer explaining the failure reason and offering appropriate resolution such as retry, refund, or explanation of policy.",
+      "context": [
+        "Explain to customer, offer retry once funds available",
+        "Contact customer for correct details, retry",
+        "Unfreeze if valid, notify customer",
+        "Explain duplicate rule, offer manual retry"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_001",
+      "name": "Transaction Failure Reason Determination",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "A branching decision point that categorizes the transaction failure into one of five common reasons: insufficient funds, invalid recipient, account frozen, duplicate prevention, or other. Each reason path leads to specific investigation and resolution steps.",
+      "context": [
+        "Common Failure Reasons & Resolution",
+        "Reason | Investigation | Resolution"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_002",
+      "name": "Insufficient Funds Failure Path",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision path triggered when insufficient funds is identified as the transaction failure reason, leading to balance confirmation and customer explanation with retry offer.",
+      "context": [
+        "Insufficient funds | Confirm balance at time of attempt | Explain to customer, offer retry once funds available"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_003",
+      "name": "Invalid Recipient Failure Path",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision path triggered when invalid recipient details are identified as the transaction failure reason, leading to account number format verification and customer contact for correction.",
+      "context": [
+        "Invalid recipient | Check account number format | Contact customer for correct details, retry"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_004",
+      "name": "Account Frozen Failure Path",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision path triggered when an account freeze is identified as the transaction failure reason, leading to freeze confirmation and conditional unfreezing with customer notification.",
+      "context": [
+        "Account frozen | Confirm freeze in place and reason | Unfreeze if valid, notify customer"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_005",
+      "name": "Duplicate Prevention Failure Path",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision path triggered when duplicate prevention rules are identified as the transaction failure reason, leading to earlier transaction verification and customer explanation with manual retry offer.",
+      "context": [
+        "Duplicate prevention | Check for earlier same transaction | Explain duplicate rule, offer manual retry"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_ra_001",
+      "name": "Transaction Investigation Investigator",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The operations staff member responsible for executing the failed transaction investigation steps, including pulling records, verifying details, assessing reversibility, and determining appropriate resolution.",
+      "context": [
+        "Pull transaction record from system",
+        "Check status (why did it fail?)",
+        "Verify customer authorization"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_ra_002",
+      "name": "Account Freeze Authority",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The role responsible for unfreezing an account when the freeze is determined to be valid and the transaction failure is resolved.",
+      "context": [
+        "Unfreeze if valid, notify customer"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_txn_001",
+      "name": "Failed Transaction",
+      "aliases": [],
+      "entity_class": "TRANSACTION",
+      "type": "failed_transaction",
+      "description": "A financial transaction that did not complete successfully on a customer account, requiring investigation to determine the failure reason and appropriate resolution including potential refund or retry.",
+      "context": [
+        "Step 2: Investigation",
+        "Category 1: Failed Transactions",
+        "Outcome: Refund if funds were debited + failed, retry if appropriate, or explain to customer"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_acct_001",
+      "name": "Customer Account",
+      "aliases": [],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "A customer account subject to transaction processing and potential failure scenarios requiring investigation and resolution.",
+      "context": [
+        "Confirm account details correct",
+        "Account frozen | Confirm freeze in place and reason"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_cust_001",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The account holder whose transaction has failed and who requires notification and resolution of the failure.",
+      "context": [
+        "Verify customer authorization",
+        "Explain to customer, offer retry once funds available",
+        "Contact customer for correct details, retry"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_proc_001",
+      "name": "Failed Transaction Investigation Process",
+      "properties": {
+        "purpose": "Investigate and resolve failed transactions through systematic analysis of failure reasons and appropriate remediation",
+        "scope": "Failed transactions across all account types",
+        "owner": "Transaction Investigation Investigator",
+        "departments_involved": [
+          "Operations",
+          "Accounts"
+        ],
+        "trigger": "Transaction failure event",
+        "outcome_success": "Transaction resolved through refund, retry, or customer explanation",
+        "outcome_failure": "Unresolved transaction dispute or customer dissatisfaction"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_001",
+      "name": "Transaction Record Retrieval",
+      "properties": {
+        "step_number": 1,
+        "actor": "Transaction Investigation Investigator",
+        "input": "Transaction identifier",
+        "output": "Complete transaction record from system",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Transaction Management System"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_002",
+      "name": "Transaction Status Check",
+      "properties": {
+        "step_number": 2,
+        "actor": "Transaction Investigation Investigator",
+        "input": "Transaction record",
+        "output": "Identified failure reason",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Transaction Management System"
+        ],
+        "failure_path": "Escalate to decision point for failure reason determination"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_003",
+      "name": "Customer Authorization Verification",
+      "properties": {
+        "step_number": 3,
+        "actor": "Transaction Investigation Investigator",
+        "input": "Transaction record, customer authorization records",
+        "output": "Authorization status confirmed",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_004",
+      "name": "Account Details Confirmation",
+      "properties": {
+        "step_number": 4,
+        "actor": "Transaction Investigation Investigator",
+        "input": "Transaction record, account master data",
+        "output": "Account details validation result",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_005",
+      "name": "Reversibility Assessment",
+      "properties": {
+        "step_number": 5,
+        "actor": "Transaction Investigation Investigator",
+        "input": "Transaction record, account status",
+        "output": "Reversibility determination",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_006",
+      "name": "Balance Confirmation at Transaction Attempt",
+      "properties": {
+        "step_number": 6,
+        "actor": "Transaction Investigation Investigator",
+        "input": "Transaction timestamp, account balance history",
+        "output": "Balance at time of transaction attempt",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account Balance History System"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_007",
+      "name": "Recipient Account Number Validation",
+      "properties": {
+        "step_number": 7,
+        "actor": "Transaction Investigation Investigator",
+        "input": "Recipient account number from transaction",
+        "output": "Account number format validation result",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_008",
+      "name": "Account Freeze Status Confirmation",
+      "properties": {
+        "step_number": 8,
+        "actor": "Transaction Investigation Investigator",
+        "input": "Account identifier",
+        "output": "Freeze status and reason",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account Management System"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_009",
+      "name": "Duplicate Transaction Check",
+      "properties": {
+        "step_number": 9,
+        "actor": "Transaction Investigation Investigator",
+        "input": "Transaction details, transaction history",
+        "output": "Duplicate detection result",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Transaction Deduplication System"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_010",
+      "name": "Customer Notification and Resolution",
+      "properties": {
+        "step_number": 10,
+        "actor": "Transaction Investigation Investigator",
+        "input": "Investigation findings, resolution decision",
+        "output": "Customer notification, refund or retry authorization",
+        "channel": [
+          "system",
+          "manual"
+        ],
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_001",
+      "name": "Transaction Failure Reason Determination",
+      "properties": {
+        "decision_question": "What is the root cause of the transaction failure?",
+        "criteria": [
+          "Insufficient funds",
+          "Invalid recipient",
+          "Account frozen",
+          "Duplicate prevention"
+        ],
+        "decision_maker": "Transaction Investigation Investigator",
+        "path_yes": "Route to appropriate failure-specific investigation path",
+        "path_no": "Escalate for manual review"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_002",
+      "name": "Insufficient Funds Failure Path",
+      "properties": {
+        "decision_question": "Were funds insufficient at time of transaction attempt?",
+        "criteria": "Balance at transaction timestamp less than transaction amount",
+        "decision_maker": "Transaction Investigation Investigator",
+        "path_yes": "Explain to customer, offer retry once funds available",
+        "path_no": "Investigate alternative failure reason"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_003",
+      "name": "Invalid Recipient Failure Path",
+      "properties": {
+        "decision_question": "Is the recipient account number invalid or incorrectly formatted?",
+        "criteria": "Account number format validation failure",
+        "decision_maker": "Transaction Investigation Investigator",
+        "path_yes": "Contact customer for correct details, retry transaction",
+        "path_no": "Investigate alternative failure reason"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_004",
+      "name": "Account Frozen Failure Path",
+      "properties": {
+        "decision_question": "Is the account frozen?",
+        "criteria": "Account freeze status confirmed in system",
+        "decision_maker": "Account Freeze Authority",
+        "path_yes": "Unfreeze if valid, notify customer",
+        "path_no": "Investigate alternative failure reason",
+        "override_possible": "yes"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_005",
+      "name": "Duplicate Prevention Failure Path",
+      "properties": {
+        "decision_question": "Is this a duplicate of an earlier transaction?",
+        "criteria": "Matching transaction found in recent history with same amount, recipient, and timestamp proximity",
+        "decision_maker": "Transaction Investigation Investigator",
+        "path_yes": "Explain duplicate prevention rule to customer, offer manual retry",
+        "path_no": "Investigate alternative failure reason"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_ra_001",
+      "name": "Transaction Investigation Investigator",
+      "properties": {
+        "role_type": "human",
+        "department": "Operations",
+        "authority_level": "Investigation and resolution authority for failed transactions",
+        "channels": [
+          "system",
+          "manual"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_ra_002",
+      "name": "Account Freeze Authority",
+      "properties": {
+        "role_type": "human",
+        "department": "Accounts",
+        "authority_level": "Account freeze and unfreeze decision authority",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_txn_001",
+      "name": "Failed Transaction",
+      "properties": {
+        "transaction_type": "failed",
+        "monitoring_or_reporting_obligation": "Investigation and resolution required"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_acct_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_state": [
+          "active",
+          "frozen"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Transaction initiator and recipient of investigation outcome"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_proc_001",
+      "source_name": "Failed Transaction Investigation Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_001",
+      "target_name": "Transaction Record Retrieval",
+      "rel_type": "starts_with",
+      "description": "The Failed Transaction Investigation Process begins with retrieving the transaction record from the system",
+      "properties": {
+        "sequence_position": 1,
+        "mandatory": true
+      },
+      "context": "Pull transaction record from system",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_001",
+      "source_name": "Transaction Record Retrieval",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_002",
+      "target_name": "Transaction Status Check",
+      "rel_type": "followed_by",
+      "description": "Transaction Record Retrieval is followed by checking the transaction status",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Pull transaction record from system; Check status (why did it fail?)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_002",
+      "source_name": "Transaction Status Check",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_001",
+      "target_name": "Transaction Failure Reason Determination",
+      "rel_type": "leads_to",
+      "description": "Transaction Status Check leads to determining the reason for transaction failure",
+      "properties": {
+        "decision_trigger": "status_check_result"
+      },
+      "context": "Check status (why did it fail?)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_001",
+      "source_name": "Transaction Failure Reason Determination",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_002",
+      "target_name": "Insufficient Funds Failure Path",
+      "rel_type": "routes_to_on_pass",
+      "description": "If insufficient funds is determined as the failure reason, route to insufficient funds investigation path",
+      "properties": {
+        "failure_reason": "Insufficient funds"
+      },
+      "context": "Insufficient funds | Confirm balance at time of attempt",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_001",
+      "source_name": "Transaction Failure Reason Determination",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_003",
+      "target_name": "Invalid Recipient Failure Path",
+      "rel_type": "routes_to_on_pass",
+      "description": "If invalid recipient is determined as the failure reason, route to invalid recipient investigation path",
+      "properties": {
+        "failure_reason": "Invalid recipient"
+      },
+      "context": "Invalid recipient | Check account number format",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_001",
+      "source_name": "Transaction Failure Reason Determination",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_004",
+      "target_name": "Account Frozen Failure Path",
+      "rel_type": "routes_to_on_pass",
+      "description": "If account frozen is determined as the failure reason, route to account frozen investigation path",
+      "properties": {
+        "failure_reason": "Account frozen"
+      },
+      "context": "Account frozen | Confirm freeze in place and reason",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_001",
+      "source_name": "Transaction Failure Reason Determination",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_005",
+      "target_name": "Duplicate Prevention Failure Path",
+      "rel_type": "routes_to_on_pass",
+      "description": "If duplicate prevention is determined as the failure reason, route to duplicate prevention investigation path",
+      "properties": {
+        "failure_reason": "Duplicate prevention"
+      },
+      "context": "Duplicate prevention | Check for earlier same transaction",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_002",
+      "source_name": "Transaction Status Check",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_003",
+      "target_name": "Customer Authorization Verification",
+      "rel_type": "followed_by",
+      "description": "Transaction Status Check is followed by verifying customer authorization",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Check status (why did it fail?); Verify customer authorization",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_003",
+      "source_name": "Customer Authorization Verification",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_004",
+      "target_name": "Account Details Confirmation",
+      "rel_type": "followed_by",
+      "description": "Customer Authorization Verification is followed by confirming account details",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "Verify customer authorization; Confirm account details correct",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_004",
+      "source_name": "Account Details Confirmation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_005",
+      "target_name": "Reversibility Assessment",
+      "rel_type": "followed_by",
+      "description": "Account Details Confirmation is followed by assessing if the transaction is reversible",
+      "properties": {
+        "sequence_position": 5
+      },
+      "context": "Confirm account details correct; Assess if reversible",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_005",
+      "source_name": "Reversibility Assessment",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_006",
+      "target_name": "Balance Confirmation at Transaction Attempt",
+      "rel_type": "followed_by",
+      "description": "Reversibility Assessment is followed by confirming the balance at the time of transaction attempt",
+      "properties": {
+        "sequence_position": 6
+      },
+      "context": "Assess if reversible; Confirm balance at time of attempt",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_006",
+      "source_name": "Balance Confirmation at Transaction Attempt",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_007",
+      "target_name": "Recipient Account Number Validation",
+      "rel_type": "followed_by",
+      "description": "Balance Confirmation is followed by validating the recipient account number",
+      "properties": {
+        "sequence_position": 7
+      },
+      "context": "Confirm balance at time of attempt; Check account number format",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_007",
+      "source_name": "Recipient Account Number Validation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_008",
+      "target_name": "Account Freeze Status Confirmation",
+      "rel_type": "followed_by",
+      "description": "Recipient Account Number Validation is followed by confirming account freeze status",
+      "properties": {
+        "sequence_position": 8
+      },
+      "context": "Check account number format; Confirm freeze in place and reason",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_008",
+      "source_name": "Account Freeze Status Confirmation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_009",
+      "target_name": "Duplicate Transaction Check",
+      "rel_type": "followed_by",
+      "description": "Account Freeze Status Confirmation is followed by checking for duplicate transactions",
+      "properties": {
+        "sequence_position": 9
+      },
+      "context": "Confirm freeze in place and reason; Check for earlier same transaction",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_009",
+      "source_name": "Duplicate Transaction Check",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_010",
+      "target_name": "Customer Notification and Resolution",
+      "rel_type": "followed_by",
+      "description": "Duplicate Transaction Check is followed by notifying the customer and providing resolution",
+      "properties": {
+        "sequence_position": 10,
+        "final_step": true
+      },
+      "context": "Check for earlier same transaction; Outcome: Refund if funds were debited + failed, retry if appropriate, or explain to customer",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_proc_001",
+      "source_name": "Failed Transaction Investigation Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_ra_001",
+      "target_name": "Transaction Investigation Investigator",
+      "rel_type": "executed_by",
+      "description": "The Failed Transaction Investigation Process is executed by the Transaction Investigation Investigator",
+      "properties": {
+        "role_responsibility": "investigation_execution"
+      },
+      "context": "Investigation Steps: Pull transaction record from system, Check status, Verify customer authorization, Confirm account details correct, Assess if reversible",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_001",
+      "source_name": "Transaction Record Retrieval",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_txn_001",
+      "target_name": "Failed Transaction",
+      "rel_type": "collects_data_from",
+      "description": "Transaction Record Retrieval step collects data from the failed transaction",
+      "properties": {
+        "data_type": "transaction_record"
+      },
+      "context": "Pull transaction record from system",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_003",
+      "source_name": "Customer Authorization Verification",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_cust_001",
+      "target_name": "Customer",
+      "rel_type": "verifies_identity_of",
+      "description": "Customer Authorization Verification step verifies the identity and authorization of the customer",
+      "properties": {
+        "verification_type": "authorization"
+      },
+      "context": "Verify customer authorization",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_004",
+      "source_name": "Account Details Confirmation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_acct_001",
+      "target_name": "Customer Account",
+      "rel_type": "updates",
+      "description": "Account Details Confirmation step confirms and updates account details",
+      "properties": {
+        "confirmation_type": "account_details"
+      },
+      "context": "Confirm account details correct",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_008",
+      "source_name": "Account Freeze Status Confirmation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_acct_001",
+      "target_name": "Customer Account",
+      "rel_type": "updates",
+      "description": "Account Freeze Status Confirmation step checks and confirms the freeze status of the account",
+      "properties": {
+        "confirmation_type": "freeze_status"
+      },
+      "context": "Confirm freeze in place and reason",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_010",
+      "source_name": "Customer Notification and Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_cust_001",
+      "target_name": "Customer",
+      "rel_type": "notifies",
+      "description": "Customer Notification and Resolution step notifies the customer of the investigation outcome",
+      "properties": {
+        "notification_type": "resolution_outcome",
+        "possible_outcomes": [
+          "refund",
+          "retry",
+          "explanation"
+        ]
+      },
+      "context": "Outcome: Refund if funds were debited + failed, retry if appropriate, or explain to customer",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_proc_001",
+      "source_name": "Failed Transaction Investigation Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_txn_001",
+      "target_name": "Failed Transaction",
+      "rel_type": "operates_on",
+      "description": "The Failed Transaction Investigation Process operates on the failed transaction",
+      "properties": {
+        "process_focus": "investigation_and_resolution"
+      },
+      "context": "Category 1: Failed Transactions",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_proc_001",
+      "source_name": "Failed Transaction Investigation Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_001",
+      "target_name": "Transaction Failure Reason Determination",
+      "rel_type": "branches_at",
+      "description": "The Failed Transaction Investigation Process branches at the Transaction Failure Reason Determination decision point",
+      "properties": {
+        "branching_criteria": "failure_reason_classification"
+      },
+      "context": "Common Failure Reasons & Resolution: Insufficient funds, Invalid recipient, Account frozen, Duplicate prevention",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_006",
+      "source_name": "Balance Confirmation at Transaction Attempt",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_acct_001",
+      "target_name": "Customer Account",
+      "rel_type": "updates",
+      "description": "Balance Confirmation at Transaction Attempt step verifies and records the account balance",
+      "properties": {
+        "confirmation_type": "balance_at_attempt"
+      },
+      "context": "Confirm balance at time of attempt",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_007",
+      "source_name": "Recipient Account Number Validation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_acct_001",
+      "target_name": "Customer Account",
+      "rel_type": "updates",
+      "description": "Recipient Account Number Validation step validates the recipient account details",
+      "properties": {
+        "validation_type": "account_number_format"
+      },
+      "context": "Check account number format",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_009",
+      "source_name": "Duplicate Transaction Check",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_txn_001",
+      "target_name": "Failed Transaction",
+      "rel_type": "collects_data_from",
+      "description": "Duplicate Transaction Check step collects data from the failed transaction to check for duplicates",
+      "properties": {
+        "data_type": "transaction_history",
+        "check_type": "duplicate_prevention"
+      },
+      "context": "Check for earlier same transaction",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_ra_001",
+      "source_name": "Transaction Investigation Investigator",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_001",
+      "target_name": "Transaction Record Retrieval",
+      "rel_type": "performed_by",
+      "description": "Transaction Record Retrieval is performed by the Transaction Investigation Investigator",
+      "properties": {
+        "role_action": "retrieve_transaction_record"
+      },
+      "context": "Pull transaction record from system",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_ra_002",
+      "source_name": "Account Freeze Authority",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_008",
+      "target_name": "Account Freeze Status Confirmation",
+      "rel_type": "performed_by",
+      "description": "Account Freeze Status Confirmation is performed by the Account Freeze Authority",
+      "properties": {
+        "role_action": "confirm_freeze_status"
+      },
+      "context": "Confirm freeze in place and reason",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_acct_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_cust_001",
+      "target_name": "Customer",
+      "rel_type": "held_by",
+      "description": "The Customer Account is held by the Customer",
+      "properties": {
+        "account_relationship": "ownership"
+      },
+      "context": "Confirm account details correct",
+      "bidirectional": true,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_txn_001",
+      "source_name": "Failed Transaction",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_acct_001",
+      "target_name": "Customer Account",
+      "rel_type": "has_associated",
+      "description": "The Failed Transaction is associated with the Customer Account",
+      "properties": {
+        "transaction_status": "failed"
+      },
+      "context": "Pull transaction record from system; Confirm account details correct",
+      "bidirectional": true,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_proc_001",
+      "source_name": "Failed Transaction Investigation Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_001",
+      "source_name": "Transaction Record Retrieval",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_002",
+      "source_name": "Transaction Status Check",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_003",
+      "source_name": "Customer Authorization Verification",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_004",
+      "source_name": "Account Details Confirmation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_005",
+      "source_name": "Reversibility Assessment",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_006",
+      "source_name": "Balance Confirmation at Transaction Attempt",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_007",
+      "source_name": "Recipient Account Number Validation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_008",
+      "source_name": "Account Freeze Status Confirmation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_009",
+      "source_name": "Duplicate Transaction Check",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_pstep_010",
+      "source_name": "Customer Notification and Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_001",
+      "source_name": "Transaction Failure Reason Determination",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_002",
+      "source_name": "Insufficient Funds Failure Path",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_003",
+      "source_name": "Invalid Recipient Failure Path",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_004",
+      "source_name": "Account Frozen Failure Path",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_dp_005",
+      "source_name": "Duplicate Prevention Failure Path",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_ra_001",
+      "source_name": "Transaction Investigation Investigator",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_ra_002",
+      "source_name": "Account Freeze Authority",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_txn_001",
+      "source_name": "Failed Transaction",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_acct_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

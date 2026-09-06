@@ -1,0 +1,771 @@
+{
+  "chunk_seq": 3,
+  "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+  "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+  "text": "## 1. DAILY OPERATIONS  \n### Pre-Business Hours (07:00 AM)  \n**Checklist (15 minutes):**  \n- [ ] **Check Dashboard** — Open ops dashboard at https://dashboard.firstuk.bank\n- AMS status: Should be \"Green\"\n- IBP status: Should be \"Green\"\n- MBA status: Should be \"Green\"\n- PPS status: Should be \"Green\"  \n- [ ] **Review Alerts Overnight** — Check alert queue for any issues reported 00:00–07:00\n- Command: `kubectl get events -n production | grep -i warning`\n- Action: Address any critical alerts immediately  \n- [ ] **Verify Database Backups** — Check last backup completed\n- Command: `aws s3 ls s3://firstuk-backups/ --recursive | tail -5`\n- Expected: Most recent backup within last 24 hours  \n- [ ] **Check Payment Systems** — Verify BACS/FPS connections active\n- Command: `curl https://api.firstuk.bank/health | grep \"payments\"`\n- Expected: \"status\": \"ok\"  \n**Issue Found?** → Go to Step 6 (Incident Response)",
+  "name": "Chunk 3/21",
+  "_domain": "banking.reference",
+  "prev_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_002",
+  "next_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+  "raw_entities": [
+    {
+      "id": "prd_001",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "banking_system",
+      "description": "Core banking system component monitored as part of daily pre-business operations. Status must be verified as 'Green' during the 07:00 AM operational checklist to ensure system readiness before business hours.",
+      "context": [
+        "AMS status: Should be \"Green\"",
+        "Open ops dashboard at https://dashboard.firstuk.bank"
+      ]
+    },
+    {
+      "id": "prd_002",
+      "name": "Internet Banking Platform",
+      "aliases": [
+        "IBP"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "banking_system",
+      "description": "Customer-facing internet banking platform monitored during pre-business operations. Status verification is part of the mandatory 15-minute operational checklist.",
+      "context": [
+        "IBP status: Should be \"Green\"",
+        "Open ops dashboard at https://dashboard.firstuk.bank"
+      ]
+    },
+    {
+      "id": "prd_003",
+      "name": "Mobile Banking Application",
+      "aliases": [
+        "MBA"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "banking_system",
+      "description": "Mobile banking application monitored as part of daily pre-business system health checks. Status must be 'Green' before business operations commence.",
+      "context": [
+        "MBA status: Should be \"Green\"",
+        "Open ops dashboard at https://dashboard.firstuk.bank"
+      ]
+    },
+    {
+      "id": "prd_004",
+      "name": "Payment Processing System",
+      "aliases": [
+        "PPS"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "banking_system",
+      "description": "Payment processing infrastructure monitored during pre-business operations checklist. Status verification ensures payment systems are operational before business hours.",
+      "context": [
+        "PPS status: Should be \"Green\"",
+        "Open ops dashboard at https://dashboard.firstuk.bank"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Dashboard Status Check",
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Daily pre-business operational detection step requiring opening the ops dashboard and verifying status of four critical systems (AMS, IBP, MBA, PPS). All statuses must show 'Green' to proceed with business operations.",
+      "context": [
+        "Check Dashboard — Open ops dashboard at https://dashboard.firstuk.bank",
+        "AMS status: Should be \"Green\"",
+        "IBP status: Should be \"Green\"",
+        "MBA status: Should be \"Green\"",
+        "PPS status: Should be \"Green\""
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Overnight Alert Review",
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Daily pre-business detection action to review alert queue for any issues reported during overnight hours (00:00–07:00). Critical alerts must be addressed immediately using kubectl command to query production events.",
+      "context": [
+        "Review Alerts Overnight — Check alert queue for any issues reported 00:00–07:00",
+        "Command: `kubectl get events -n production | grep -i warning`",
+        "Action: Address any critical alerts immediately"
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Database Backup Verification",
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Daily pre-business operational check to verify that database backups have completed successfully. Most recent backup must be within the last 24 hours using AWS S3 verification.",
+      "context": [
+        "Verify Database Backups — Check last backup completed",
+        "Command: `aws s3 ls s3://firstuk-backups/ --recursive | tail -5`",
+        "Expected: Most recent backup within last 24 hours"
+      ]
+    },
+    {
+      "id": "ra_004",
+      "name": "Payment Systems Connection Verification",
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Daily pre-business operational check to verify that BACS and FPS payment system connections are active and operational. Health check API call must return 'ok' status.",
+      "context": [
+        "Check Payment Systems — Verify BACS/FPS connections active",
+        "Command: `curl https://api.firstuk.bank/health | grep \"payments\"`",
+        "Expected: \"status\": \"ok\""
+      ]
+    },
+    {
+      "id": "ra_005",
+      "name": "Incident Response Escalation",
+      "entity_class": "RESPONSE_ACTION",
+      "type": "escalation",
+      "description": "Escalation action triggered when any critical issue is found during pre-business operations checklist. Directs operations team to proceed to Step 6 (Incident Response) procedures.",
+      "context": [
+        "Issue Found? → Go to Step 6 (Incident Response)"
+      ]
+    },
+    {
+      "id": "cg_001",
+      "name": "Daily Operations Checklist",
+      "entity_class": "CUSTOMER_GUIDE_ITEM",
+      "type": "getting_started",
+      "description": "Operational reference guide for pre-business hours procedures, detailing the mandatory 15-minute checklist that must be completed at 07:00 AM before business operations commence. Includes dashboard verification, alert review, backup confirmation, and payment system checks.",
+      "context": [
+        "Pre-Business Hours (07:00 AM)",
+        "Checklist (15 minutes):",
+        "Issue Found? → Go to Step 6 (Incident Response)"
+      ]
+    }
+  ],
+  "id_map": {
+    "prd_001": "01a07393-e320-7264-b05f-7163527566c2_003_prd_001",
+    "prd_002": "01a07393-e320-7264-b05f-7163527566c2_003_prd_002",
+    "prd_003": "01a07393-e320-7264-b05f-7163527566c2_003_prd_003",
+    "prd_004": "01a07393-e320-7264-b05f-7163527566c2_003_prd_004",
+    "ra_001": "01a07393-e320-7264-b05f-7163527566c2_003_ra_001",
+    "ra_002": "01a07393-e320-7264-b05f-7163527566c2_003_ra_002",
+    "ra_003": "01a07393-e320-7264-b05f-7163527566c2_003_ra_003",
+    "ra_004": "01a07393-e320-7264-b05f-7163527566c2_003_ra_004",
+    "ra_005": "01a07393-e320-7264-b05f-7163527566c2_003_ra_005",
+    "cg_001": "01a07393-e320-7264-b05f-7163527566c2_003_cg_001"
+  },
+  "entities": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_001",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "banking_system",
+      "description": "Core banking system component monitored as part of daily pre-business operations. Status must be verified as 'Green' during the 07:00 AM operational checklist to ensure system readiness before business hours.",
+      "context": [
+        "AMS status: Should be \"Green\"",
+        "Open ops dashboard at https://dashboard.firstuk.bank"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_002",
+      "name": "Internet Banking Platform",
+      "aliases": [
+        "IBP"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "banking_system",
+      "description": "Customer-facing internet banking platform monitored during pre-business operations. Status verification is part of the mandatory 15-minute operational checklist.",
+      "context": [
+        "IBP status: Should be \"Green\"",
+        "Open ops dashboard at https://dashboard.firstuk.bank"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_003",
+      "name": "Mobile Banking Application",
+      "aliases": [
+        "MBA"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "banking_system",
+      "description": "Mobile banking application monitored as part of daily pre-business system health checks. Status must be 'Green' before business operations commence.",
+      "context": [
+        "MBA status: Should be \"Green\"",
+        "Open ops dashboard at https://dashboard.firstuk.bank"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_004",
+      "name": "Payment Processing System",
+      "aliases": [
+        "PPS"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "banking_system",
+      "description": "Payment processing infrastructure monitored during pre-business operations checklist. Status verification ensures payment systems are operational before business hours.",
+      "context": [
+        "PPS status: Should be \"Green\"",
+        "Open ops dashboard at https://dashboard.firstuk.bank"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_001",
+      "name": "Dashboard Status Check",
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Daily pre-business operational detection step requiring opening the ops dashboard and verifying status of four critical systems (AMS, IBP, MBA, PPS). All statuses must show 'Green' to proceed with business operations.",
+      "context": [
+        "Check Dashboard — Open ops dashboard at https://dashboard.firstuk.bank",
+        "AMS status: Should be \"Green\"",
+        "IBP status: Should be \"Green\"",
+        "MBA status: Should be \"Green\"",
+        "PPS status: Should be \"Green\""
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_002",
+      "name": "Overnight Alert Review",
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Daily pre-business detection action to review alert queue for any issues reported during overnight hours (00:00–07:00). Critical alerts must be addressed immediately using kubectl command to query production events.",
+      "context": [
+        "Review Alerts Overnight — Check alert queue for any issues reported 00:00–07:00",
+        "Command: `kubectl get events -n production | grep -i warning`",
+        "Action: Address any critical alerts immediately"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_003",
+      "name": "Database Backup Verification",
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Daily pre-business operational check to verify that database backups have completed successfully. Most recent backup must be within the last 24 hours using AWS S3 verification.",
+      "context": [
+        "Verify Database Backups — Check last backup completed",
+        "Command: `aws s3 ls s3://firstuk-backups/ --recursive | tail -5`",
+        "Expected: Most recent backup within last 24 hours"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_004",
+      "name": "Payment Systems Connection Verification",
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Daily pre-business operational check to verify that BACS and FPS payment system connections are active and operational. Health check API call must return 'ok' status.",
+      "context": [
+        "Check Payment Systems — Verify BACS/FPS connections active",
+        "Command: `curl https://api.firstuk.bank/health | grep \"payments\"`",
+        "Expected: \"status\": \"ok\""
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_005",
+      "name": "Incident Response Escalation",
+      "entity_class": "RESPONSE_ACTION",
+      "type": "escalation",
+      "description": "Escalation action triggered when any critical issue is found during pre-business operations checklist. Directs operations team to proceed to Step 6 (Incident Response) procedures.",
+      "context": [
+        "Issue Found? → Go to Step 6 (Incident Response)"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_cg_001",
+      "name": "Daily Operations Checklist",
+      "entity_class": "CUSTOMER_GUIDE_ITEM",
+      "type": "getting_started",
+      "description": "Operational reference guide for pre-business hours procedures, detailing the mandatory 15-minute checklist that must be completed at 07:00 AM before business operations commence. Includes dashboard verification, alert review, backup confirmation, and payment system checks.",
+      "context": [
+        "Pre-Business Hours (07:00 AM)",
+        "Checklist (15 minutes):",
+        "Issue Found? → Go to Step 6 (Incident Response)"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_001",
+      "name": "Account Management System",
+      "properties": {
+        "system_abbreviation": "AMS",
+        "monitoring_dashboard": "https://dashboard.firstuk.bank",
+        "expected_status": "Green",
+        "operational_context": "daily_operations_pre_business_check"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_002",
+      "name": "Internet Banking Platform",
+      "properties": {
+        "system_abbreviation": "IBP",
+        "monitoring_dashboard": "https://dashboard.firstuk.bank",
+        "expected_status": "Green",
+        "operational_context": "daily_operations_pre_business_check"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_003",
+      "name": "Mobile Banking Application",
+      "properties": {
+        "system_abbreviation": "MBA",
+        "monitoring_dashboard": "https://dashboard.firstuk.bank",
+        "expected_status": "Green",
+        "operational_context": "daily_operations_pre_business_check"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_004",
+      "name": "Payment Processing System",
+      "properties": {
+        "system_abbreviation": "PPS",
+        "monitoring_dashboard": "https://dashboard.firstuk.bank",
+        "expected_status": "Green",
+        "payment_schemes": [
+          "BACS",
+          "FPS"
+        ],
+        "health_check_endpoint": "https://api.firstuk.bank/health",
+        "operational_context": "daily_operations_pre_business_check"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_001",
+      "name": "Dashboard Status Check",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "operations_team",
+        "timeline": "15 minutes",
+        "timing_context": "pre_business_hours_07_00_am",
+        "tools_or_system": [
+          "https://dashboard.firstuk.bank"
+        ],
+        "output_or_artifact": "status_verification_of_AMS_IBP_MBA_PPS",
+        "success_criteria": "all_systems_green",
+        "mandatory_for_severities": [
+          "all"
+        ]
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_002",
+      "name": "Overnight Alert Review",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "operations_team",
+        "timeline": "part_of_15_minute_checklist",
+        "timing_context": "pre_business_hours_07_00_am",
+        "tools_or_system": [
+          "kubectl"
+        ],
+        "command": "kubectl get events -n production | grep -i warning",
+        "monitoring_window": "00:00_to_07:00",
+        "escalation_trigger": "critical_alerts_found",
+        "mandatory_for_severities": [
+          "all"
+        ]
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_003",
+      "name": "Database Backup Verification",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "operations_team",
+        "timeline": "part_of_15_minute_checklist",
+        "timing_context": "pre_business_hours_07_00_am",
+        "tools_or_system": [
+          "aws_s3"
+        ],
+        "command": "aws s3 ls s3://firstuk-backups/ --recursive | tail -5",
+        "backup_location": "s3://firstuk-backups/",
+        "success_criteria": "most_recent_backup_within_24_hours",
+        "mandatory_for_severities": [
+          "all"
+        ]
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_004",
+      "name": "Payment Systems Connection Verification",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "operations_team",
+        "timeline": "part_of_15_minute_checklist",
+        "timing_context": "pre_business_hours_07_00_am",
+        "tools_or_system": [
+          "curl"
+        ],
+        "command": "curl https://api.firstuk.bank/health | grep \"payments\"",
+        "health_check_endpoint": "https://api.firstuk.bank/health",
+        "payment_schemes_verified": [
+          "BACS",
+          "FPS"
+        ],
+        "success_criteria": "status_ok",
+        "mandatory_for_severities": [
+          "all"
+        ]
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_005",
+      "name": "Incident Response Escalation",
+      "properties": {
+        "action_phase": "escalation",
+        "actor": "operations_team",
+        "trigger_condition": "issue_found_during_daily_checks",
+        "escalation_path": "step_6_incident_response_procedure",
+        "mandatory_for_severities": [
+          "all"
+        ]
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_003_cg_001",
+      "name": "Daily Operations Checklist",
+      "properties": {
+        "topic": "pre_business_hours_operational_readiness",
+        "target_customer": "operations_team",
+        "timing": "pre_business_hours_07_00_am",
+        "duration": "15_minutes",
+        "key_point": [
+          "Check dashboard status for all four systems (AMS, IBP, MBA, PPS)",
+          "Review overnight alert queue for critical issues",
+          "Verify database backups completed within 24 hours",
+          "Confirm payment systems connections active for BACS and FPS"
+        ],
+        "action_required": "complete_all_checklist_items_before_business_hours",
+        "escalation_trigger": "any_issue_found_triggers_incident_response",
+        "relevant_channel": "operations_dashboard_and_command_line_tools"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_001",
+      "source_name": "Dashboard Status Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_001",
+      "target_name": "Account Management System",
+      "rel_type": "investigates",
+      "description": "Dashboard Status Check verifies the operational status of Account Management System",
+      "properties": {
+        "expected_status": "Green",
+        "check_location": "https://dashboard.firstuk.bank",
+        "status_indicator": "AMS status"
+      },
+      "context": "Check Dashboard — Open ops dashboard at https://dashboard.firstuk.bank - AMS status: Should be \"Green\"",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_001",
+      "source_name": "Dashboard Status Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_002",
+      "target_name": "Internet Banking Platform",
+      "rel_type": "investigates",
+      "description": "Dashboard Status Check verifies the operational status of Internet Banking Platform",
+      "properties": {
+        "expected_status": "Green",
+        "check_location": "https://dashboard.firstuk.bank",
+        "status_indicator": "IBP status"
+      },
+      "context": "Check Dashboard — Open ops dashboard at https://dashboard.firstuk.bank - IBP status: Should be \"Green\"",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_001",
+      "source_name": "Dashboard Status Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_003",
+      "target_name": "Mobile Banking Application",
+      "rel_type": "investigates",
+      "description": "Dashboard Status Check verifies the operational status of Mobile Banking Application",
+      "properties": {
+        "expected_status": "Green",
+        "check_location": "https://dashboard.firstuk.bank",
+        "status_indicator": "MBA status"
+      },
+      "context": "Check Dashboard — Open ops dashboard at https://dashboard.firstuk.bank - MBA status: Should be \"Green\"",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_001",
+      "source_name": "Dashboard Status Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_004",
+      "target_name": "Payment Processing System",
+      "rel_type": "investigates",
+      "description": "Dashboard Status Check verifies the operational status of Payment Processing System",
+      "properties": {
+        "expected_status": "Green",
+        "check_location": "https://dashboard.firstuk.bank",
+        "status_indicator": "PPS status"
+      },
+      "context": "Check Dashboard — Open ops dashboard at https://dashboard.firstuk.bank - PPS status: Should be \"Green\"",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_002",
+      "source_name": "Overnight Alert Review",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003_cg_001",
+      "target_name": "Daily Operations Checklist",
+      "rel_type": "follows",
+      "description": "Overnight Alert Review is part of the Daily Operations Checklist procedure",
+      "properties": {
+        "time_window": "00:00–07:00",
+        "action": "Address any critical alerts immediately",
+        "command": "kubectl get events -n production | grep -i warning"
+      },
+      "context": "Review Alerts Overnight — Check alert queue for any issues reported 00:00–07:00",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_003",
+      "source_name": "Database Backup Verification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003_cg_001",
+      "target_name": "Daily Operations Checklist",
+      "rel_type": "follows",
+      "description": "Database Backup Verification is part of the Daily Operations Checklist procedure",
+      "properties": {
+        "expected_condition": "Most recent backup within last 24 hours",
+        "command": "aws s3 ls s3://firstuk-backups/ --recursive | tail -5"
+      },
+      "context": "Verify Database Backups — Check last backup completed",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_004",
+      "source_name": "Payment Systems Connection Verification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_004",
+      "target_name": "Payment Processing System",
+      "rel_type": "investigates",
+      "description": "Payment Systems Connection Verification checks the active status of Payment Processing System connections",
+      "properties": {
+        "systems_checked": [
+          "BACS",
+          "FPS"
+        ],
+        "expected_status": "ok",
+        "command": "curl https://api.firstuk.bank/health | grep \"payments\""
+      },
+      "context": "Check Payment Systems — Verify BACS/FPS connections active - Expected: \"status\": \"ok\"",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_004",
+      "source_name": "Payment Systems Connection Verification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003_cg_001",
+      "target_name": "Daily Operations Checklist",
+      "rel_type": "follows",
+      "description": "Payment Systems Connection Verification is part of the Daily Operations Checklist procedure",
+      "properties": {
+        "step_name": "Check Payment Systems"
+      },
+      "context": "Check Payment Systems — Verify BACS/FPS connections active",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_001",
+      "source_name": "Dashboard Status Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003_cg_001",
+      "target_name": "Daily Operations Checklist",
+      "rel_type": "follows",
+      "description": "Dashboard Status Check is the first step in the Daily Operations Checklist",
+      "properties": {
+        "step_name": "Check Dashboard",
+        "duration": "15 minutes",
+        "time_window": "Pre-Business Hours (07:00 AM)"
+      },
+      "context": "Checklist (15 minutes): - [ ] **Check Dashboard**",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_005",
+      "source_name": "Incident Response Escalation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003_cg_001",
+      "target_name": "Daily Operations Checklist",
+      "rel_type": "follows",
+      "description": "Incident Response Escalation is triggered when issues are found during Daily Operations Checklist",
+      "properties": {
+        "trigger_condition": "Issue Found",
+        "escalation_step": "Step 6"
+      },
+      "context": "**Issue Found?** → Go to Step 6 (Incident Response)",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_001",
+      "source_name": "Account Management System",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_002",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_003",
+      "source_name": "Mobile Banking Application",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_prd_004",
+      "source_name": "Payment Processing System",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_001",
+      "source_name": "Dashboard Status Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_002",
+      "source_name": "Overnight Alert Review",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_003",
+      "source_name": "Database Backup Verification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_004",
+      "source_name": "Payment Systems Connection Verification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_ra_005",
+      "source_name": "Incident Response Escalation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_003_cg_001",
+      "source_name": "Daily Operations Checklist",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ]
+}

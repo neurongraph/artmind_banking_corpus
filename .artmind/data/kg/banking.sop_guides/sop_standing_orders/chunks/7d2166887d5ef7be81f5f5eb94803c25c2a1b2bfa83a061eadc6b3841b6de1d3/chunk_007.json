@@ -1,0 +1,869 @@
+{
+  "chunk_seq": 7,
+  "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+  "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+  "text": "## Step 2: Validate Details  \n### Validation Checks  \n**Source Account:**\n- ✅ Account exists and is active\n- ✅ Account holder matches requestor\n- ✅ Account has sufficient funds (for first payment)  \n**Payee Information:**\n- ✅ Recipient account number valid (format check)\n- ✅ Sort code valid (if external transfer)\n- ✅ Recipient name provided and non-empty  \n**Amount & Frequency:**\n- ✅ Amount > £0 and reasonable (< daily balance)\n- ✅ Frequency valid (weekly, monthly, etc.)\n- ✅ Start date is future date (not past)  \n**If Validation Fails:**\n- Contact customer for correction\n- Clarify requirements\n- Collect correct information\n- Re-validate  \n---",
+  "name": "Chunk 7/24",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+  "next_chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_008",
+  "raw_entities": [
+    {
+      "id": "ps_001",
+      "name": "Validate Details",
+      "aliases": [
+        "Validation Checks",
+        "Step 2"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "A comprehensive validation step that checks source account status, payee information accuracy, and payment amount/frequency parameters before proceeding with standing order setup. If validation fails, the step includes customer contact and information correction procedures.",
+      "context": [
+        "Step 2: Validate Details",
+        "Account exists and is active",
+        "Recipient account number valid (format check)",
+        "Amount > £0 and reasonable (< daily balance)",
+        "If Validation Fails: Contact customer for correction"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Validation Pass/Fail Gate",
+      "aliases": [
+        "Validation Outcome"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "A branching decision point that determines whether all validation checks (source account, payee information, amount, and frequency) have passed. On failure, the process routes to customer contact and correction; on pass, the process advances.",
+      "context": [
+        "If Validation Fails:",
+        "Contact customer for correction",
+        "Clarify requirements",
+        "Collect correct information",
+        "Re-validate"
+      ]
+    },
+    {
+      "id": "ps_002",
+      "name": "Source Account Verification",
+      "aliases": [
+        "Account Validation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step that confirms the source account exists, is active, belongs to the requestor, and holds sufficient funds for the first payment.",
+      "context": [
+        "Source Account:",
+        "Account exists and is active",
+        "Account holder matches requestor",
+        "Account has sufficient funds (for first payment)"
+      ]
+    },
+    {
+      "id": "ps_003",
+      "name": "Payee Information Validation",
+      "aliases": [
+        "Recipient Validation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Validation step that checks recipient account number format, sort code validity for external transfers, and confirms recipient name is provided and non-empty.",
+      "context": [
+        "Payee Information:",
+        "Recipient account number valid (format check)",
+        "Sort code valid (if external transfer)",
+        "Recipient name provided and non-empty"
+      ]
+    },
+    {
+      "id": "ps_004",
+      "name": "Amount and Frequency Validation",
+      "aliases": [
+        "Payment Parameters Validation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Validation step that verifies payment amount is positive and reasonable relative to daily balance, frequency is valid (weekly, monthly, etc.), and start date is set to a future date rather than a past date.",
+      "context": [
+        "Amount & Frequency:",
+        "Amount > £0 and reasonable (< daily balance)",
+        "Frequency valid (weekly, monthly, etc.)",
+        "Start date is future date (not past)"
+      ]
+    },
+    {
+      "id": "ps_005",
+      "name": "Customer Contact and Correction",
+      "aliases": [
+        "Correction Procedure"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Remedial step executed when validation fails, involving contact with the customer to clarify requirements, collect correct information, and prepare for re-validation.",
+      "context": [
+        "If Validation Fails:",
+        "Contact customer for correction",
+        "Clarify requirements",
+        "Collect correct information",
+        "Re-validate"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Validation Operator",
+      "aliases": [
+        "Validation Staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The operations or customer service staff member responsible for executing validation checks on source account, payee information, and payment parameters, and for contacting the customer if validation fails.",
+      "context": [
+        "Contact customer for correction",
+        "Clarify requirements",
+        "Collect correct information"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Source Account",
+      "aliases": [
+        "Customer Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer's account from which the standing order payment will be drawn. Must be active, belong to the requestor, and hold sufficient funds for the first payment.",
+      "context": [
+        "Source Account:",
+        "Account exists and is active",
+        "Account holder matches requestor",
+        "Account has sufficient funds (for first payment)"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order Setup",
+      "aliases": [
+        "Standing Order"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "The standing order payment instruction being set up, subject to validation of source account, payee details, amount, frequency, and start date before proceeding.",
+      "context": [
+        "Amount & Frequency:",
+        "Frequency valid (weekly, monthly, etc.)",
+        "Start date is future date (not past)"
+      ]
+    }
+  ],
+  "id_map": {
+    "ps_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_001",
+    "dp_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_dp_001",
+    "ps_002": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_002",
+    "ps_003": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_003",
+    "ps_004": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_004",
+    "ps_005": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_005",
+    "ra_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ra_001",
+    "acc_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_acc_001",
+    "so_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_so_001"
+  },
+  "entities": [
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_001",
+      "name": "Validate Details",
+      "aliases": [
+        "Validation Checks",
+        "Step 2"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "A comprehensive validation step that checks source account status, payee information accuracy, and payment amount/frequency parameters before proceeding with standing order setup. If validation fails, the step includes customer contact and information correction procedures.",
+      "context": [
+        "Step 2: Validate Details",
+        "Account exists and is active",
+        "Recipient account number valid (format check)",
+        "Amount > £0 and reasonable (< daily balance)",
+        "If Validation Fails: Contact customer for correction"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_dp_001",
+      "name": "Validation Pass/Fail Gate",
+      "aliases": [
+        "Validation Outcome"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "A branching decision point that determines whether all validation checks (source account, payee information, amount, and frequency) have passed. On failure, the process routes to customer contact and correction; on pass, the process advances.",
+      "context": [
+        "If Validation Fails:",
+        "Contact customer for correction",
+        "Clarify requirements",
+        "Collect correct information",
+        "Re-validate"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_002",
+      "name": "Source Account Verification",
+      "aliases": [
+        "Account Validation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step that confirms the source account exists, is active, belongs to the requestor, and holds sufficient funds for the first payment.",
+      "context": [
+        "Source Account:",
+        "Account exists and is active",
+        "Account holder matches requestor",
+        "Account has sufficient funds (for first payment)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_003",
+      "name": "Payee Information Validation",
+      "aliases": [
+        "Recipient Validation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Validation step that checks recipient account number format, sort code validity for external transfers, and confirms recipient name is provided and non-empty.",
+      "context": [
+        "Payee Information:",
+        "Recipient account number valid (format check)",
+        "Sort code valid (if external transfer)",
+        "Recipient name provided and non-empty"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_004",
+      "name": "Amount and Frequency Validation",
+      "aliases": [
+        "Payment Parameters Validation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Validation step that verifies payment amount is positive and reasonable relative to daily balance, frequency is valid (weekly, monthly, etc.), and start date is set to a future date rather than a past date.",
+      "context": [
+        "Amount & Frequency:",
+        "Amount > £0 and reasonable (< daily balance)",
+        "Frequency valid (weekly, monthly, etc.)",
+        "Start date is future date (not past)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_005",
+      "name": "Customer Contact and Correction",
+      "aliases": [
+        "Correction Procedure"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Remedial step executed when validation fails, involving contact with the customer to clarify requirements, collect correct information, and prepare for re-validation.",
+      "context": [
+        "If Validation Fails:",
+        "Contact customer for correction",
+        "Clarify requirements",
+        "Collect correct information",
+        "Re-validate"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ra_001",
+      "name": "Validation Operator",
+      "aliases": [
+        "Validation Staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The operations or customer service staff member responsible for executing validation checks on source account, payee information, and payment parameters, and for contacting the customer if validation fails.",
+      "context": [
+        "Contact customer for correction",
+        "Clarify requirements",
+        "Collect correct information"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_acc_001",
+      "name": "Source Account",
+      "aliases": [
+        "Customer Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer's account from which the standing order payment will be drawn. Must be active, belong to the requestor, and hold sufficient funds for the first payment.",
+      "context": [
+        "Source Account:",
+        "Account exists and is active",
+        "Account holder matches requestor",
+        "Account has sufficient funds (for first payment)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_so_001",
+      "name": "Standing Order Setup",
+      "aliases": [
+        "Standing Order"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "The standing order payment instruction being set up, subject to validation of source account, payee details, amount, frequency, and start date before proceeding.",
+      "context": [
+        "Amount & Frequency:",
+        "Frequency valid (weekly, monthly, etc.)",
+        "Start date is future date (not past)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_001",
+      "name": "Validate Details",
+      "properties": {
+        "step_number": 2,
+        "actor": "Validation Operator",
+        "channel": "system",
+        "mandatory": true,
+        "input": [
+          "source account details",
+          "payee information",
+          "amount and frequency parameters",
+          "customer request"
+        ],
+        "output": "validation result (pass/fail)",
+        "tools_or_systems": [
+          "account verification system",
+          "format validation engine"
+        ],
+        "failure_path": "escalate to customer contact and correction step"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_dp_001",
+      "name": "Validation Pass/Fail Gate",
+      "properties": {
+        "decision_question": "Do all validation checks pass (source account, payee information, amount, and frequency)?",
+        "criteria": [
+          "source account exists and is active",
+          "account holder matches requestor",
+          "account has sufficient funds for first payment",
+          "recipient account number format is valid",
+          "sort code is valid (if external transfer)",
+          "recipient name is provided and non-empty",
+          "amount is greater than £0 and reasonable relative to daily balance",
+          "frequency is valid (weekly, monthly, etc.)",
+          "start date is a future date"
+        ],
+        "decision_maker": "Validation Operator",
+        "path_yes": "proceed to next step in standing order setup",
+        "path_no": "contact customer for correction and re-validation"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_002",
+      "name": "Source Account Verification",
+      "properties": {
+        "step_number": 2,
+        "actor": "Validation Operator",
+        "channel": "system",
+        "mandatory": true,
+        "input": [
+          "source account number",
+          "account holder identity"
+        ],
+        "output": "account verification status",
+        "tools_or_systems": [
+          "account verification system"
+        ],
+        "validation_checks": [
+          "account exists and is active",
+          "account holder matches requestor",
+          "account has sufficient funds for first payment"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_003",
+      "name": "Payee Information Validation",
+      "properties": {
+        "step_number": 2,
+        "actor": "Validation Operator",
+        "channel": "system",
+        "mandatory": true,
+        "input": [
+          "recipient account number",
+          "sort code",
+          "recipient name"
+        ],
+        "output": "payee validation status",
+        "tools_or_systems": [
+          "format validation engine"
+        ],
+        "validation_checks": [
+          "recipient account number format is valid",
+          "sort code is valid (if external transfer)",
+          "recipient name is provided and non-empty"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_004",
+      "name": "Amount and Frequency Validation",
+      "properties": {
+        "step_number": 2,
+        "actor": "Validation Operator",
+        "channel": "system",
+        "mandatory": true,
+        "input": [
+          "transfer amount",
+          "frequency parameter",
+          "start date",
+          "daily balance"
+        ],
+        "output": "amount and frequency validation status",
+        "tools_or_systems": [
+          "validation engine"
+        ],
+        "validation_checks": [
+          "amount is greater than £0",
+          "amount is reasonable relative to daily balance",
+          "frequency is valid (weekly, monthly, etc.)",
+          "start date is a future date"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_005",
+      "name": "Customer Contact and Correction",
+      "properties": {
+        "step_number": 2,
+        "actor": "Validation Operator",
+        "channel": [
+          "phone",
+          "email",
+          "branch"
+        ],
+        "mandatory": false,
+        "trigger": "validation failure",
+        "input": [
+          "validation failure details",
+          "customer contact information"
+        ],
+        "output": "corrected customer information",
+        "actions": [
+          "contact customer for correction",
+          "clarify requirements",
+          "collect correct information",
+          "re-validate"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ra_001",
+      "name": "Validation Operator",
+      "properties": {
+        "role_type": "human",
+        "authority_level": "operational",
+        "channels": [
+          "system",
+          "phone",
+          "email"
+        ],
+        "responsibilities": [
+          "perform validation checks on standing order details",
+          "contact customers for corrections",
+          "re-validate corrected information"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_acc_001",
+      "name": "Source Account",
+      "properties": {
+        "account_state": "active",
+        "validation_requirement": [
+          "account must exist",
+          "account must be active",
+          "account holder must match requestor",
+          "account must have sufficient funds for first payment"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_so_001",
+      "name": "Standing Order Setup",
+      "properties": {
+        "setup_process": [
+          "validate details",
+          "verify source account",
+          "validate payee information",
+          "validate amount and frequency",
+          "contact customer if corrections needed",
+          "re-validate"
+        ],
+        "validation_requirement": [
+          "source account verification",
+          "payee information validation",
+          "amount and frequency validation"
+        ],
+        "failure_handling": "contact customer for correction and re-validate"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_001",
+      "source_name": "Validate Details",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_dp_001",
+      "target_name": "Validation Pass/Fail Gate",
+      "rel_type": "leads_to",
+      "description": "Validate Details process step leads to the Validation Pass/Fail Gate decision point",
+      "properties": {
+        "stage": "validation",
+        "outcome_determines": "whether standing order setup proceeds or customer correction is required"
+      },
+      "context": "Step 2: Validate Details... If Validation Fails: Contact customer for correction",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_001",
+      "source_name": "Validate Details",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_002",
+      "target_name": "Source Account Verification",
+      "rel_type": "contains",
+      "description": "Validate Details process step includes Source Account Verification as a sub-check",
+      "properties": {
+        "validation_type": "source_account",
+        "checks": [
+          "Account exists and is active",
+          "Account holder matches requestor",
+          "Account has sufficient funds"
+        ]
+      },
+      "context": "Source Account: ✅ Account exists and is active ✅ Account holder matches requestor ✅ Account has sufficient funds",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_001",
+      "source_name": "Validate Details",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_003",
+      "target_name": "Payee Information Validation",
+      "rel_type": "contains",
+      "description": "Validate Details process step includes Payee Information Validation as a sub-check",
+      "properties": {
+        "validation_type": "payee_information",
+        "checks": [
+          "Recipient account number valid",
+          "Sort code valid",
+          "Recipient name provided and non-empty"
+        ]
+      },
+      "context": "Payee Information: ✅ Recipient account number valid (format check) ✅ Sort code valid (if external transfer) ✅ Recipient name provided and non-empty",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_001",
+      "source_name": "Validate Details",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_004",
+      "target_name": "Amount and Frequency Validation",
+      "rel_type": "contains",
+      "description": "Validate Details process step includes Amount and Frequency Validation as a sub-check",
+      "properties": {
+        "validation_type": "amount_and_frequency",
+        "checks": [
+          "Amount > £0 and reasonable",
+          "Frequency valid",
+          "Start date is future date"
+        ]
+      },
+      "context": "Amount & Frequency: ✅ Amount > £0 and reasonable (< daily balance) ✅ Frequency valid (weekly, monthly, etc.) ✅ Start date is future date (not past)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_001",
+      "source_name": "Validate Details",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ra_001",
+      "target_name": "Validation Operator",
+      "rel_type": "performed_by",
+      "description": "Validate Details process step is performed by the Validation Operator role",
+      "properties": {
+        "responsibility": "execute all validation checks"
+      },
+      "context": "Step 2: Validate Details... Validation Checks",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_001",
+      "source_name": "Validate Details",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_acc_001",
+      "target_name": "Source Account",
+      "rel_type": "verifies_identity_of",
+      "description": "Validate Details process step verifies the Source Account during validation",
+      "properties": {
+        "verification_aspects": [
+          "Account exists and is active",
+          "Account holder matches requestor",
+          "Sufficient funds"
+        ]
+      },
+      "context": "Source Account: ✅ Account exists and is active ✅ Account holder matches requestor ✅ Account has sufficient funds (for first payment)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_002",
+      "source_name": "Source Account Verification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_acc_001",
+      "target_name": "Source Account",
+      "rel_type": "updates",
+      "description": "Source Account Verification step validates and confirms the source account details",
+      "properties": {
+        "checks": [
+          "Account exists and is active",
+          "Account holder matches requestor",
+          "Account has sufficient funds"
+        ]
+      },
+      "context": "Source Account: ✅ Account exists and is active ✅ Account holder matches requestor ✅ Account has sufficient funds (for first payment)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_005",
+      "source_name": "Customer Contact and Correction",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_dp_001",
+      "target_name": "Validation Pass/Fail Gate",
+      "rel_type": "triggered_by",
+      "description": "Customer Contact and Correction step is triggered when validation fails at the decision gate",
+      "properties": {
+        "trigger_condition": "validation_failure",
+        "actions": [
+          "Contact customer for correction",
+          "Clarify requirements",
+          "Collect correct information",
+          "Re-validate"
+        ]
+      },
+      "context": "If Validation Fails: Contact customer for correction Clarify requirements Collect correct information Re-validate",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_005",
+      "source_name": "Customer Contact and Correction",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_001",
+      "target_name": "Validate Details",
+      "rel_type": "alternative_to",
+      "description": "Customer Contact and Correction is an alternative path when Validate Details fails",
+      "properties": {
+        "condition": "validation_failure",
+        "purpose": "collect corrected information for re-validation"
+      },
+      "context": "If Validation Fails: Contact customer for correction... Re-validate",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_dp_001",
+      "source_name": "Validation Pass/Fail Gate",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_so_001",
+      "target_name": "Standing Order Setup",
+      "rel_type": "routes_to_on_pass",
+      "description": "On validation pass, the decision gate routes to Standing Order Setup",
+      "properties": {
+        "condition": "all_validation_checks_pass"
+      },
+      "context": "Step 2: Validate Details... [implicit: successful validation leads to standing order setup]",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_dp_001",
+      "source_name": "Validation Pass/Fail Gate",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_005",
+      "target_name": "Customer Contact and Correction",
+      "rel_type": "routes_to_on_fail",
+      "description": "On validation failure, the decision gate routes to Customer Contact and Correction",
+      "properties": {
+        "condition": "any_validation_check_fails"
+      },
+      "context": "If Validation Fails: Contact customer for correction Clarify requirements Collect correct information Re-validate",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_so_001",
+      "source_name": "Standing Order Setup",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_acc_001",
+      "target_name": "Source Account",
+      "rel_type": "set_up_on",
+      "description": "Standing Order Setup is configured on the Source Account",
+      "properties": {
+        "account_role": "source"
+      },
+      "context": "Source Account: ✅ Account exists and is active ✅ Account holder matches requestor",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_001",
+      "source_name": "Validate Details",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_dp_001",
+      "source_name": "Validation Pass/Fail Gate",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_002",
+      "source_name": "Source Account Verification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_003",
+      "source_name": "Payee Information Validation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_004",
+      "source_name": "Amount and Frequency Validation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ps_005",
+      "source_name": "Customer Contact and Correction",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_ra_001",
+      "source_name": "Validation Operator",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_acc_001",
+      "source_name": "Source Account",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007_so_001",
+      "source_name": "Standing Order Setup",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

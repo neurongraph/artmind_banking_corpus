@@ -1,0 +1,3 @@
+## Supersession Notice  
+**This policy (Version 3.0, effective 2026-06-01) supersedes and replaces Version 2.0 (effective 2026-01-15) in full.** The prior version's Escalation Matrix and Compensation Framework thresholds no longer apply as of the effective date above. The revision was made to resolve an internal inconsistency identified between those two sections in Version 2.0 (the Escalation Matrix and Compensation Framework tables specified different Manager/Director approval boundaries for the same decisions); this version aligns both sections on a single set of thresholds. See Document Version History for details.  
+---

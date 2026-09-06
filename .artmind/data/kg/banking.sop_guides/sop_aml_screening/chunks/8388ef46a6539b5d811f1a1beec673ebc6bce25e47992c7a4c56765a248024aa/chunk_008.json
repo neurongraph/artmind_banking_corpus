@@ -1,0 +1,755 @@
+{
+  "chunk_seq": 8,
+  "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+  "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+  "text": "## Step 3: Assess Screening Results  \n### No Match Scenario  \n**Results:**\n- ✅ Screening shows NO hits across all lists\n- ✅ Customer not on any sanctions/watchlist\n- ✅ No adverse media identified  \n**Action:**\n- Proceed with account opening (KYC already complete)\n- Record \"screening passed\" in system\n- Note screening date and system reference\n- Continue to AML compliance checklist  \n**Timeline:** Immediate",
+  "name": "Chunk 8/23",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_007",
+  "next_chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Account Opening Process",
+      "aliases": [
+        "account_opening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_opening",
+      "description": "End-to-end account opening workflow that includes KYC verification and AML screening. The process proceeds to account opening upon successful completion of screening with no matches against sanctions or watchlists.",
+      "context": [
+        "Proceed with account opening (KYC already complete)",
+        "Continue to AML compliance checklist"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Assess Screening Results",
+      "aliases": [
+        "screening_assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Evaluation step that determines whether screening results show no matches across sanctions lists, watchlists, or adverse media. This assessment gates the decision to proceed with account opening.",
+      "context": [
+        "Screening shows NO hits across all lists",
+        "Customer not on any sanctions/watchlist",
+        "No adverse media identified"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Record Screening Passed Status",
+      "aliases": [
+        "screening_recording"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System recording step that documents the successful completion of screening checks. Includes recording the screening date and system reference for audit and compliance purposes.",
+      "context": [
+        "Record \"screening passed\" in system",
+        "Note screening date and system reference"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Screening Results Gate",
+      "aliases": [
+        "no_match_decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "Binary compliance gate that branches based on screening results. No matches across all lists permits account opening to proceed; any match would trigger escalation or rejection.",
+      "context": [
+        "Screening shows NO hits across all lists",
+        "Proceed with account opening (KYC already complete)"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Sanctions and Watchlist Screening Checkpoint",
+      "aliases": [
+        "sanctions_check",
+        "watchlist_check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory regulatory compliance gate verifying that the customer is not listed on any sanctions lists or watchlists. Screening must show no hits before account opening can proceed.",
+      "context": [
+        "Customer not on any sanctions/watchlist",
+        "Screening shows NO hits across all lists"
+      ]
+    },
+    {
+      "id": "cc_002",
+      "name": "Adverse Media Screening Checkpoint",
+      "aliases": [
+        "adverse_media_check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory regulatory compliance gate verifying that no adverse media has been identified against the customer. Clearance on this checkpoint is required before proceeding with account opening.",
+      "context": [
+        "No adverse media identified",
+        "Screening shows NO hits across all lists"
+      ]
+    },
+    {
+      "id": "kyc_001",
+      "name": "Know Your Customer Verification",
+      "aliases": [
+        "KYC"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "KYC verification process that has already been completed prior to the screening assessment step. Completion of KYC is a prerequisite for proceeding to account opening upon successful screening.",
+      "context": [
+        "Proceed with account opening (KYC already complete)",
+        "Continue to AML compliance checklist"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "AML Screening",
+      "aliases": [
+        "AML_screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Anti-Money Laundering screening process that checks customer against sanctions lists, watchlists, and adverse media. Results determine whether account opening can proceed or requires escalation.",
+      "context": [
+        "Screening shows NO hits across all lists",
+        "Customer not on any sanctions/watchlist",
+        "No adverse media identified"
+      ]
+    },
+    {
+      "id": "customer_001",
+      "name": "Account Applicant",
+      "aliases": [
+        "customer",
+        "applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "prospective_customer",
+      "description": "Individual applying for account opening who is subject to KYC verification and AML screening. The customer must clear all compliance checkpoints before account opening is approved.",
+      "context": [
+        "Customer not on any sanctions/watchlist",
+        "Proceed with account opening (KYC already complete)"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_proc_001",
+    "pstep_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_pstep_001",
+    "pstep_002": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_pstep_002",
+    "dp_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_dp_001",
+    "cc_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_cc_001",
+    "cc_002": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_cc_002",
+    "kyc_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_kyc_001",
+    "aml_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_aml_001",
+    "customer_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_customer_001"
+  },
+  "entities": [
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_proc_001",
+      "name": "Account Opening Process",
+      "aliases": [
+        "account_opening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_opening",
+      "description": "End-to-end account opening workflow that includes KYC verification and AML screening. The process proceeds to account opening upon successful completion of screening with no matches against sanctions or watchlists.",
+      "context": [
+        "Proceed with account opening (KYC already complete)",
+        "Continue to AML compliance checklist"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_pstep_001",
+      "name": "Assess Screening Results",
+      "aliases": [
+        "screening_assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Evaluation step that determines whether screening results show no matches across sanctions lists, watchlists, or adverse media. This assessment gates the decision to proceed with account opening.",
+      "context": [
+        "Screening shows NO hits across all lists",
+        "Customer not on any sanctions/watchlist",
+        "No adverse media identified"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_pstep_002",
+      "name": "Record Screening Passed Status",
+      "aliases": [
+        "screening_recording"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System recording step that documents the successful completion of screening checks. Includes recording the screening date and system reference for audit and compliance purposes.",
+      "context": [
+        "Record \"screening passed\" in system",
+        "Note screening date and system reference"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_dp_001",
+      "name": "Screening Results Gate",
+      "aliases": [
+        "no_match_decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "Binary compliance gate that branches based on screening results. No matches across all lists permits account opening to proceed; any match would trigger escalation or rejection.",
+      "context": [
+        "Screening shows NO hits across all lists",
+        "Proceed with account opening (KYC already complete)"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_cc_001",
+      "name": "Sanctions and Watchlist Screening Checkpoint",
+      "aliases": [
+        "sanctions_check",
+        "watchlist_check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory regulatory compliance gate verifying that the customer is not listed on any sanctions lists or watchlists. Screening must show no hits before account opening can proceed.",
+      "context": [
+        "Customer not on any sanctions/watchlist",
+        "Screening shows NO hits across all lists"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_cc_002",
+      "name": "Adverse Media Screening Checkpoint",
+      "aliases": [
+        "adverse_media_check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory regulatory compliance gate verifying that no adverse media has been identified against the customer. Clearance on this checkpoint is required before proceeding with account opening.",
+      "context": [
+        "No adverse media identified",
+        "Screening shows NO hits across all lists"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_kyc_001",
+      "name": "Know Your Customer Verification",
+      "aliases": [
+        "KYC"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "KYC verification process that has already been completed prior to the screening assessment step. Completion of KYC is a prerequisite for proceeding to account opening upon successful screening.",
+      "context": [
+        "Proceed with account opening (KYC already complete)",
+        "Continue to AML compliance checklist"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_aml_001",
+      "name": "AML Screening",
+      "aliases": [
+        "AML_screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Anti-Money Laundering screening process that checks customer against sanctions lists, watchlists, and adverse media. Results determine whether account opening can proceed or requires escalation.",
+      "context": [
+        "Screening shows NO hits across all lists",
+        "Customer not on any sanctions/watchlist",
+        "No adverse media identified"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_customer_001",
+      "name": "Account Applicant",
+      "aliases": [
+        "customer",
+        "applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "prospective_customer",
+      "description": "Individual applying for account opening who is subject to KYC verification and AML screening. The customer must clear all compliance checkpoints before account opening is approved.",
+      "context": [
+        "Customer not on any sanctions/watchlist",
+        "Proceed with account opening (KYC already complete)"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_proc_001",
+      "name": "Account Opening Process",
+      "properties": {
+        "scope": "new account applicants subject to sanctions and watchlist screening",
+        "channels": [
+          "branch",
+          "online"
+        ],
+        "departments_involved": [
+          "compliance",
+          "operations"
+        ],
+        "regulatory_references": [
+          "sanctions regulations",
+          "watchlist requirements",
+          "AML regulations"
+        ]
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_pstep_001",
+      "name": "Assess Screening Results",
+      "properties": {
+        "step_number": 3,
+        "actor": "compliance officer",
+        "input": [
+          "screening results from sanctions and watchlist databases",
+          "adverse media screening results"
+        ],
+        "output": [
+          "screening assessment decision",
+          "pass/fail determination"
+        ],
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "screening system",
+          "watchlist database"
+        ],
+        "failure_path": "escalate to compliance manager for manual review"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_pstep_002",
+      "name": "Record Screening Passed Status",
+      "properties": {
+        "step_number": 3,
+        "actor": "operations staff",
+        "input": [
+          "screening passed decision"
+        ],
+        "output": [
+          "screening status recorded in system",
+          "screening date and reference logged"
+        ],
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "account opening system"
+        ],
+        "estimated_duration": "immediate"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_dp_001",
+      "name": "Screening Results Gate",
+      "properties": {
+        "decision_question": "Do screening results show any hits on sanctions lists, watchlists, or adverse media?",
+        "criteria": [
+          "no matches across all screening lists",
+          "customer not flagged on any sanctions/watchlist",
+          "no adverse media identified"
+        ],
+        "decision_maker": "compliance system with officer review",
+        "path_yes": "escalate for manual review and investigation",
+        "path_no": "proceed with account opening and record screening passed status",
+        "override_possible": true
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_cc_001",
+      "name": "Sanctions and Watchlist Screening Checkpoint",
+      "properties": {
+        "regulatory_basis": [
+          "sanctions regulations",
+          "watchlist requirements"
+        ],
+        "mandatory": true,
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "screening results report",
+          "system reference number"
+        ],
+        "performed_by": "compliance officer",
+        "timing": "during account opening process before approval",
+        "failure_consequence": "account opening blocked pending investigation",
+        "system_used": "screening system"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_cc_002",
+      "name": "Adverse Media Screening Checkpoint",
+      "properties": {
+        "regulatory_basis": [
+          "AML regulations",
+          "adverse media screening requirements"
+        ],
+        "mandatory": true,
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "adverse media screening results"
+        ],
+        "performed_by": "compliance officer",
+        "timing": "during account opening process before approval",
+        "failure_consequence": "account opening blocked pending investigation",
+        "system_used": "screening system"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_kyc_001",
+      "name": "Know Your Customer Verification",
+      "properties": {
+        "mandatory": true,
+        "timing_or_refresh_frequency": "completed prior to screening results assessment",
+        "consequence_of_failure": "account opening blocked"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_aml_001",
+      "name": "AML Screening",
+      "properties": {
+        "mandatory": true,
+        "screening_lists_or_scope": [
+          "sanctions lists",
+          "watchlists",
+          "adverse media"
+        ],
+        "hit_or_match_response": "escalate for manual review and investigation",
+        "regulatory_basis": [
+          "AML regulations"
+        ]
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_customer_001",
+      "name": "Account Applicant",
+      "properties": {
+        "customer_type": "new",
+        "context_role": "applicant for account opening",
+        "eligibility_or_verification_status": "subject to screening verification"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_pstep_001",
+      "target_name": "Assess Screening Results",
+      "rel_type": "contains",
+      "description": "Account Opening Process includes the step to assess screening results",
+      "properties": {
+        "sequence_position": "step_3"
+      },
+      "context": "## Step 3: Assess Screening Results",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_pstep_001",
+      "source_name": "Assess Screening Results",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_dp_001",
+      "target_name": "Screening Results Gate",
+      "rel_type": "leads_to",
+      "description": "Assessing screening results leads to a decision point on screening outcomes",
+      "properties": {
+        "decision_criteria": "presence or absence of hits across sanctions, watchlist, and adverse media lists"
+      },
+      "context": "Screening shows NO hits across all lists; Customer not on any sanctions/watchlist; No adverse media identified",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_pstep_001",
+      "source_name": "Assess Screening Results",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_pstep_002",
+      "target_name": "Record Screening Passed Status",
+      "rel_type": "followed_by",
+      "description": "Assessing screening results is followed by recording the screening passed status",
+      "properties": {
+        "condition": "when screening shows no hits"
+      },
+      "context": "Record 'screening passed' in system",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_pstep_002",
+      "source_name": "Record Screening Passed Status",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_aml_001",
+      "target_name": "AML Screening",
+      "rel_type": "triggers",
+      "description": "Recording screening passed status triggers continuation to AML compliance checklist",
+      "properties": {
+        "action": "continue to AML compliance checklist"
+      },
+      "context": "Continue to AML compliance checklist",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_dp_001",
+      "source_name": "Screening Results Gate",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_cc_001",
+      "target_name": "Sanctions and Watchlist Screening Checkpoint",
+      "rel_type": "outcome_determined_by",
+      "description": "Screening results decision point outcome is determined by sanctions and watchlist screening checkpoint results",
+      "properties": {
+        "outcome_scenario": "no_match"
+      },
+      "context": "Customer not on any sanctions/watchlist",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_dp_001",
+      "source_name": "Screening Results Gate",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_cc_002",
+      "target_name": "Adverse Media Screening Checkpoint",
+      "rel_type": "outcome_determined_by",
+      "description": "Screening results decision point outcome is determined by adverse media screening checkpoint results",
+      "properties": {
+        "outcome_scenario": "no_match"
+      },
+      "context": "No adverse media identified",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_cc_001",
+      "source_name": "Sanctions and Watchlist Screening Checkpoint",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_aml_001",
+      "target_name": "AML Screening",
+      "rel_type": "precedes",
+      "description": "Sanctions and watchlist screening checkpoint precedes AML screening in the compliance sequence",
+      "properties": {
+        "sequence": "earlier_in_process"
+      },
+      "context": "Continue to AML compliance checklist",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_cc_002",
+      "source_name": "Adverse Media Screening Checkpoint",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_aml_001",
+      "target_name": "AML Screening",
+      "rel_type": "precedes",
+      "description": "Adverse media screening checkpoint precedes AML screening in the compliance sequence",
+      "properties": {
+        "sequence": "earlier_in_process"
+      },
+      "context": "Continue to AML compliance checklist",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_aml_001",
+      "source_name": "AML Screening",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_customer_001",
+      "target_name": "Account Applicant",
+      "rel_type": "applied_to",
+      "description": "AML screening is applied to the account applicant customer",
+      "properties": {
+        "screening_type": "AML compliance"
+      },
+      "context": "Continue to AML compliance checklist",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_kyc_001",
+      "source_name": "Know Your Customer Verification",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_proc_001",
+      "target_name": "Account Opening Process",
+      "rel_type": "required_before_activating",
+      "description": "KYC verification is required before account opening process can proceed to screening assessment",
+      "properties": {
+        "status": "already_complete"
+      },
+      "context": "Proceed with account opening (KYC already complete)",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_pstep_002",
+      "source_name": "Record Screening Passed Status",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_customer_001",
+      "target_name": "Account Applicant",
+      "rel_type": "records",
+      "description": "Recording screening passed status documents the customer's screening outcome in the system",
+      "properties": {
+        "data_recorded": "screening passed status, screening date, system reference"
+      },
+      "context": "Record 'screening passed' in system; Note screening date and system reference",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_pstep_001",
+      "source_name": "Assess Screening Results",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_pstep_002",
+      "source_name": "Record Screening Passed Status",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_dp_001",
+      "source_name": "Screening Results Gate",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_cc_001",
+      "source_name": "Sanctions and Watchlist Screening Checkpoint",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_cc_002",
+      "source_name": "Adverse Media Screening Checkpoint",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_kyc_001",
+      "source_name": "Know Your Customer Verification",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_aml_001",
+      "source_name": "AML Screening",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008_customer_001",
+      "source_name": "Account Applicant",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

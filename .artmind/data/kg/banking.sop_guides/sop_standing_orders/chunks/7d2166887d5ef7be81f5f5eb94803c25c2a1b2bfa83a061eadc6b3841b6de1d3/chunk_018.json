@@ -1,0 +1,1054 @@
+{
+  "chunk_seq": 18,
+  "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+  "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+  "text": "### Failure Handling  \n**Step 1: Detect Failure**\n- System logs failed standing order attempt\n- Marks standing order status as \"Failed\"  \n**Step 2: Alert Customer**\n- Email/SMS sent to customer\n- Alert includes: Amount, recipient, failure reason\n- Request for action (provide funds, update payee)  \n**Step 3: Retry Attempt**\n- System retries once (usually within 24 hours)\n- If retry successful: Standing order resumes  \n**Step 4: Escalation**\n- If retry fails: Standing order suspended\n- Staff review required\n- Contact customer to resolve  \n**Step 5: Resolution**\n- Customer provides corrected information (if needed)\n- Staff updates standing order\n- Standing order resumes or customer opts for cancellation  \n---",
+  "name": "Chunk 18/24",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+  "next_chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_019",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Standing Order Failure Handling",
+      "aliases": [
+        "Failure Handling",
+        "Standing Order Failure Process"
+      ],
+      "entity_class": "PROCESS",
+      "type": "standing_order_setup",
+      "description": "End-to-end procedure for detecting, alerting, retrying, and resolving failed standing order payment attempts. The process includes automated system detection, customer notification, retry logic, escalation to staff review, and final resolution through customer action or cancellation.",
+      "context": [
+        "System logs failed standing order attempt",
+        "If retry fails: Standing order suspended",
+        "Staff review required",
+        "Customer provides corrected information (if needed)"
+      ]
+    },
+    {
+      "id": "pst_001",
+      "name": "Detect Failure",
+      "aliases": [
+        "Step 1"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Automated system detection and logging of a failed standing order payment attempt, with status marked as 'Failed' in the system.",
+      "context": [
+        "System logs failed standing order attempt",
+        "Marks standing order status as 'Failed'"
+      ]
+    },
+    {
+      "id": "pst_002",
+      "name": "Alert Customer",
+      "aliases": [
+        "Step 2"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Customer notification via email or SMS containing failure details (amount, recipient, reason) and requesting corrective action such as providing funds or updating payee information.",
+      "context": [
+        "Email/SMS sent to customer",
+        "Alert includes: Amount, recipient, failure reason",
+        "Request for action (provide funds, update payee)"
+      ]
+    },
+    {
+      "id": "pst_003",
+      "name": "Retry Attempt",
+      "aliases": [
+        "Step 3"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Automated system retry of the failed standing order payment, typically executed within 24 hours. If successful, the standing order resumes normal operation.",
+      "context": [
+        "System retries once (usually within 24 hours)",
+        "If retry successful: Standing order resumes"
+      ]
+    },
+    {
+      "id": "pst_004",
+      "name": "Escalation",
+      "aliases": [
+        "Step 4"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation_procedure",
+      "description": "Manual escalation to staff review when the automated retry fails. The standing order is suspended and staff contact the customer to resolve the underlying issue.",
+      "context": [
+        "If retry fails: Standing order suspended",
+        "Staff review required",
+        "Contact customer to resolve"
+      ]
+    },
+    {
+      "id": "pst_005",
+      "name": "Resolution",
+      "aliases": [
+        "Step 5"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Final resolution step where the customer provides corrected information if needed, staff updates the standing order configuration, and the standing order either resumes or is cancelled per customer preference.",
+      "context": [
+        "Customer provides corrected information (if needed)",
+        "Staff updates standing order",
+        "Standing order resumes or customer opts for cancellation"
+      ]
+    },
+    {
+      "id": "ract_001",
+      "name": "Automated Payment System",
+      "aliases": [
+        "System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system responsible for logging failed standing order attempts, marking status, executing retry logic, and recording transaction outcomes.",
+      "context": [
+        "System logs failed standing order attempt",
+        "System retries once (usually within 24 hours)"
+      ]
+    },
+    {
+      "id": "ract_002",
+      "name": "Customer Service Staff",
+      "aliases": [
+        "Staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations staff responsible for reviewing escalated failed standing orders, contacting customers, updating standing order details, and facilitating resolution or cancellation.",
+      "context": [
+        "Staff review required",
+        "Contact customer to resolve",
+        "Staff updates standing order"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Retry Success Gate",
+      "aliases": [
+        "Retry Outcome Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision point determining whether the automated retry of the failed standing order succeeds or fails, with divergent paths for resumption or escalation.",
+      "context": [
+        "If retry successful: Standing order resumes",
+        "If retry fails: Standing order suspended"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Standing Order Payment"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "Recurring payment instruction subject to failure detection, retry, and resolution procedures. The standing order can be suspended, resumed, or cancelled based on failure outcomes and customer action.",
+      "context": [
+        "System logs failed standing order attempt",
+        "Marks standing order status as 'Failed'",
+        "Standing order resumes or customer opts for cancellation"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Individual customer receiving standing order payment notifications and responsible for providing corrected information or taking action to resolve payment failures.",
+      "context": [
+        "Email/SMS sent to customer",
+        "Request for action (provide funds, update payee)",
+        "Contact customer to resolve"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_proc_001",
+    "pst_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_001",
+    "pst_002": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_002",
+    "pst_003": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_003",
+    "pst_004": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_004",
+    "pst_005": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_005",
+    "ract_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_ract_001",
+    "ract_002": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_ract_002",
+    "dp_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_dp_001",
+    "so_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_so_001",
+    "cust_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_proc_001",
+      "name": "Standing Order Failure Handling",
+      "aliases": [
+        "Failure Handling",
+        "Standing Order Failure Process"
+      ],
+      "entity_class": "PROCESS",
+      "type": "standing_order_setup",
+      "description": "End-to-end procedure for detecting, alerting, retrying, and resolving failed standing order payment attempts. The process includes automated system detection, customer notification, retry logic, escalation to staff review, and final resolution through customer action or cancellation.",
+      "context": [
+        "System logs failed standing order attempt",
+        "If retry fails: Standing order suspended",
+        "Staff review required",
+        "Customer provides corrected information (if needed)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_001",
+      "name": "Detect Failure",
+      "aliases": [
+        "Step 1"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Automated system detection and logging of a failed standing order payment attempt, with status marked as 'Failed' in the system.",
+      "context": [
+        "System logs failed standing order attempt",
+        "Marks standing order status as 'Failed'"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_002",
+      "name": "Alert Customer",
+      "aliases": [
+        "Step 2"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Customer notification via email or SMS containing failure details (amount, recipient, reason) and requesting corrective action such as providing funds or updating payee information.",
+      "context": [
+        "Email/SMS sent to customer",
+        "Alert includes: Amount, recipient, failure reason",
+        "Request for action (provide funds, update payee)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_003",
+      "name": "Retry Attempt",
+      "aliases": [
+        "Step 3"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Automated system retry of the failed standing order payment, typically executed within 24 hours. If successful, the standing order resumes normal operation.",
+      "context": [
+        "System retries once (usually within 24 hours)",
+        "If retry successful: Standing order resumes"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_004",
+      "name": "Escalation",
+      "aliases": [
+        "Step 4"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation_procedure",
+      "description": "Manual escalation to staff review when the automated retry fails. The standing order is suspended and staff contact the customer to resolve the underlying issue.",
+      "context": [
+        "If retry fails: Standing order suspended",
+        "Staff review required",
+        "Contact customer to resolve"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_005",
+      "name": "Resolution",
+      "aliases": [
+        "Step 5"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Final resolution step where the customer provides corrected information if needed, staff updates the standing order configuration, and the standing order either resumes or is cancelled per customer preference.",
+      "context": [
+        "Customer provides corrected information (if needed)",
+        "Staff updates standing order",
+        "Standing order resumes or customer opts for cancellation"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_ract_001",
+      "name": "Automated Payment System",
+      "aliases": [
+        "System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system responsible for logging failed standing order attempts, marking status, executing retry logic, and recording transaction outcomes.",
+      "context": [
+        "System logs failed standing order attempt",
+        "System retries once (usually within 24 hours)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_ract_002",
+      "name": "Customer Service Staff",
+      "aliases": [
+        "Staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations staff responsible for reviewing escalated failed standing orders, contacting customers, updating standing order details, and facilitating resolution or cancellation.",
+      "context": [
+        "Staff review required",
+        "Contact customer to resolve",
+        "Staff updates standing order"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_dp_001",
+      "name": "Retry Success Gate",
+      "aliases": [
+        "Retry Outcome Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision point determining whether the automated retry of the failed standing order succeeds or fails, with divergent paths for resumption or escalation.",
+      "context": [
+        "If retry successful: Standing order resumes",
+        "If retry fails: Standing order suspended"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Standing Order Payment"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "Recurring payment instruction subject to failure detection, retry, and resolution procedures. The standing order can be suspended, resumed, or cancelled based on failure outcomes and customer action.",
+      "context": [
+        "System logs failed standing order attempt",
+        "Marks standing order status as 'Failed'",
+        "Standing order resumes or customer opts for cancellation"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Individual customer receiving standing order payment notifications and responsible for providing corrected information or taking action to resolve payment failures.",
+      "context": [
+        "Email/SMS sent to customer",
+        "Request for action (provide funds, update payee)",
+        "Contact customer to resolve"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_proc_001",
+      "name": "Standing Order Failure Handling",
+      "properties": {
+        "purpose": "Handle and resolve failed standing order payment attempts",
+        "scope": "All standing orders that fail to process",
+        "channels": [
+          "system",
+          "email",
+          "sms",
+          "branch"
+        ],
+        "owner": "Customer Service Staff",
+        "departments_involved": [
+          "Payments",
+          "Customer Service"
+        ],
+        "trigger": "Standing order payment attempt fails",
+        "outcome_success": "Standing order resumes or customer opts for cancellation",
+        "outcome_failure": "Standing order remains suspended pending customer action"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_001",
+      "name": "Detect Failure",
+      "properties": {
+        "step_number": 1,
+        "actor": "Automated Payment System",
+        "output": "Failed standing order status recorded in system",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Payment Processing System"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_002",
+      "name": "Alert Customer",
+      "properties": {
+        "step_number": 2,
+        "actor": "Automated Payment System",
+        "output": "Customer notification sent with failure details",
+        "channel": [
+          "email",
+          "sms"
+        ],
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Notification System"
+        ],
+        "notification_content": [
+          "Amount",
+          "Recipient",
+          "Failure Reason"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_003",
+      "name": "Retry Attempt",
+      "properties": {
+        "step_number": 3,
+        "actor": "Automated Payment System",
+        "estimated_duration": "24 hours",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Payment Processing System"
+        ],
+        "retry_count": 1
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_004",
+      "name": "Escalation",
+      "properties": {
+        "step_number": 4,
+        "actor": "Customer Service Staff",
+        "input": "Failed retry attempt",
+        "output": "Standing order suspended; customer contact initiated",
+        "channel": "branch",
+        "mandatory": "yes",
+        "failure_path": "Standing order remains suspended until customer action"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_005",
+      "name": "Resolution",
+      "properties": {
+        "step_number": 5,
+        "actor": "Customer Service Staff",
+        "input": "Corrected customer information (if needed)",
+        "output": "Standing order resumed or cancellation processed",
+        "channel": "branch",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Standing Order Management System"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_ract_001",
+      "name": "Automated Payment System",
+      "properties": {
+        "role_type": "system",
+        "authority_level": "Automated detection and retry execution",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_ract_002",
+      "name": "Customer Service Staff",
+      "properties": {
+        "role_type": "human",
+        "department": "Customer Service",
+        "authority_level": "Review failed payments and resolve with customer",
+        "channels": [
+          "branch",
+          "phone",
+          "email"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_dp_001",
+      "name": "Retry Success Gate",
+      "properties": {
+        "decision_question": "Did the retry attempt succeed?",
+        "criteria": "Payment processed successfully on second attempt",
+        "decision_maker": "Automated Payment System",
+        "path_yes": "Standing order resumes normal processing",
+        "path_no": "Escalate to staff review and customer contact"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_so_001",
+      "name": "Standing Order",
+      "properties": {
+        "failure_handling_process": "Detect → Alert → Retry → Escalate → Resolve",
+        "retry_mechanism": "Automatic retry within 24 hours",
+        "suspension_trigger": "Retry attempt fails",
+        "resumption_condition": "Customer provides corrected information or opts to continue"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Standing order account holder",
+        "notification_channels": [
+          "email",
+          "sms"
+        ],
+        "action_required": "Provide funds or update payee information"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_proc_001",
+      "source_name": "Standing Order Failure Handling",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_001",
+      "target_name": "Detect Failure",
+      "rel_type": "starts_with",
+      "description": "The Standing Order Failure Handling process begins with the Detect Failure step",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Step 1: Detect Failure - System logs failed standing order attempt",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_proc_001",
+      "source_name": "Standing Order Failure Handling",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_005",
+      "target_name": "Resolution",
+      "rel_type": "ends_with",
+      "description": "The Standing Order Failure Handling process concludes with the Resolution step",
+      "properties": {
+        "sequence_position": 5
+      },
+      "context": "Step 5: Resolution - Customer provides corrected information (if needed)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_proc_001",
+      "source_name": "Standing Order Failure Handling",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_ract_001",
+      "target_name": "Automated Payment System",
+      "rel_type": "executed_by",
+      "description": "The Standing Order Failure Handling process is executed by the Automated Payment System",
+      "properties": {
+        "execution_scope": "automated detection and retry logic"
+      },
+      "context": "System logs failed standing order attempt, System retries once",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_proc_001",
+      "source_name": "Standing Order Failure Handling",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_ract_002",
+      "target_name": "Customer Service Staff",
+      "rel_type": "executed_by",
+      "description": "The Standing Order Failure Handling process is executed by Customer Service Staff",
+      "properties": {
+        "execution_scope": "escalation and resolution phases"
+      },
+      "context": "Staff review required, Contact customer to resolve, Staff updates standing order",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_proc_001",
+      "source_name": "Standing Order Failure Handling",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_dp_001",
+      "target_name": "Retry Success Gate",
+      "rel_type": "branches_at",
+      "description": "The Standing Order Failure Handling process branches at the Retry Success Gate decision point",
+      "properties": {
+        "decision_trigger": "outcome of retry attempt"
+      },
+      "context": "If retry successful: Standing order resumes, If retry fails: Standing order suspended",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_proc_001",
+      "source_name": "Standing Order Failure Handling",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "modifies",
+      "description": "The Standing Order Failure Handling process modifies the Standing Order status and configuration",
+      "properties": {
+        "modifications": "status updates, suspension, resumption, cancellation"
+      },
+      "context": "Marks standing order status as Failed, Standing order resumes, Standing order suspended, Standing order resumes or customer opts for cancellation",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_proc_001",
+      "source_name": "Standing Order Failure Handling",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_cust_001",
+      "target_name": "Customer",
+      "rel_type": "serves",
+      "description": "The Standing Order Failure Handling process serves the Customer",
+      "properties": {
+        "service_type": "failure notification and resolution"
+      },
+      "context": "Email/SMS sent to customer, Contact customer to resolve",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_001",
+      "source_name": "Detect Failure",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_002",
+      "target_name": "Alert Customer",
+      "rel_type": "followed_by",
+      "description": "Detect Failure step is followed by Alert Customer step",
+      "properties": {
+        "sequence_position": "1 to 2"
+      },
+      "context": "Step 1: Detect Failure, Step 2: Alert Customer",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_001",
+      "source_name": "Detect Failure",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_ract_001",
+      "target_name": "Automated Payment System",
+      "rel_type": "performed_by",
+      "description": "Detect Failure step is performed by the Automated Payment System",
+      "properties": {
+        "action": "logs failed standing order attempt and marks status"
+      },
+      "context": "System logs failed standing order attempt, Marks standing order status as Failed",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_001",
+      "source_name": "Detect Failure",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "updates",
+      "description": "Detect Failure step updates the Standing Order status to Failed",
+      "properties": {
+        "status_change": "Failed"
+      },
+      "context": "Marks standing order status as Failed",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_002",
+      "source_name": "Alert Customer",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_003",
+      "target_name": "Retry Attempt",
+      "rel_type": "followed_by",
+      "description": "Alert Customer step is followed by Retry Attempt step",
+      "properties": {
+        "sequence_position": "2 to 3"
+      },
+      "context": "Step 2: Alert Customer, Step 3: Retry Attempt",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_002",
+      "source_name": "Alert Customer",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_ract_002",
+      "target_name": "Customer Service Staff",
+      "rel_type": "performed_by",
+      "description": "Alert Customer step is performed by Customer Service Staff",
+      "properties": {
+        "action": "send email/SMS notification"
+      },
+      "context": "Email/SMS sent to customer",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_002",
+      "source_name": "Alert Customer",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_cust_001",
+      "target_name": "Customer",
+      "rel_type": "notifies",
+      "description": "Alert Customer step notifies the Customer of the failure",
+      "properties": {
+        "notification_content": "Amount, recipient, failure reason, request for action"
+      },
+      "context": "Email/SMS sent to customer, Alert includes: Amount, recipient, failure reason, Request for action",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_003",
+      "source_name": "Retry Attempt",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_dp_001",
+      "target_name": "Retry Success Gate",
+      "rel_type": "leads_to",
+      "description": "Retry Attempt step leads to the Retry Success Gate decision point",
+      "properties": {
+        "decision_trigger": "retry outcome"
+      },
+      "context": "If retry successful: Standing order resumes, If retry fails: Standing order suspended",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_003",
+      "source_name": "Retry Attempt",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_ract_001",
+      "target_name": "Automated Payment System",
+      "rel_type": "performed_by",
+      "description": "Retry Attempt step is performed by the Automated Payment System",
+      "properties": {
+        "action": "retry standing order processing",
+        "timing": "usually within 24 hours"
+      },
+      "context": "System retries once (usually within 24 hours)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_dp_001",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_005",
+      "target_name": "Resolution",
+      "source_name": "Retry Success Gate",
+      "rel_type": "routes_to_on_fail",
+      "description": "If Retry Success Gate fails, routing proceeds to Resolution step via Escalation",
+      "properties": {
+        "condition": "retry fails"
+      },
+      "context": "If retry fails: Standing order suspended, Staff review required",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_004",
+      "source_name": "Escalation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_005",
+      "target_name": "Resolution",
+      "rel_type": "followed_by",
+      "description": "Escalation step is followed by Resolution step",
+      "properties": {
+        "sequence_position": "4 to 5"
+      },
+      "context": "Step 4: Escalation, Step 5: Resolution",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_004",
+      "source_name": "Escalation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_ract_002",
+      "target_name": "Customer Service Staff",
+      "rel_type": "performed_by",
+      "description": "Escalation step is performed by Customer Service Staff",
+      "properties": {
+        "action": "staff review and customer contact"
+      },
+      "context": "Staff review required, Contact customer to resolve",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_004",
+      "source_name": "Escalation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_cust_001",
+      "target_name": "Customer",
+      "rel_type": "notifies",
+      "description": "Escalation step notifies the Customer for resolution",
+      "properties": {
+        "action": "contact customer"
+      },
+      "context": "Contact customer to resolve",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_004",
+      "source_name": "Escalation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "updates",
+      "description": "Escalation step updates the Standing Order status to Suspended",
+      "properties": {
+        "status_change": "Suspended"
+      },
+      "context": "Standing order suspended",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_005",
+      "source_name": "Resolution",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_ract_002",
+      "target_name": "Customer Service Staff",
+      "rel_type": "performed_by",
+      "description": "Resolution step is performed by Customer Service Staff",
+      "properties": {
+        "action": "update standing order configuration"
+      },
+      "context": "Staff updates standing order",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_005",
+      "source_name": "Resolution",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_cust_001",
+      "target_name": "Customer",
+      "rel_type": "collects_data_from",
+      "description": "Resolution step collects corrected information from the Customer",
+      "properties": {
+        "data_type": "corrected payment or payee information"
+      },
+      "context": "Customer provides corrected information (if needed)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_005",
+      "source_name": "Resolution",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "updates",
+      "description": "Resolution step updates the Standing Order with corrected information and resumes or cancels it",
+      "properties": {
+        "status_change": "Resumed or Cancelled"
+      },
+      "context": "Standing order resumes or customer opts for cancellation",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_cust_001",
+      "target_name": "Customer",
+      "rel_type": "belongs_to",
+      "description": "The Standing Order belongs to the Customer",
+      "properties": {
+        "relationship": "ownership"
+      },
+      "context": "Standing order initiated by customer",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_proc_001",
+      "source_name": "Standing Order Failure Handling",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_001",
+      "source_name": "Detect Failure",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_002",
+      "source_name": "Alert Customer",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_003",
+      "source_name": "Retry Attempt",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_004",
+      "source_name": "Escalation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_pst_005",
+      "source_name": "Resolution",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_ract_001",
+      "source_name": "Automated Payment System",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_ract_002",
+      "source_name": "Customer Service Staff",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_dp_001",
+      "source_name": "Retry Success Gate",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

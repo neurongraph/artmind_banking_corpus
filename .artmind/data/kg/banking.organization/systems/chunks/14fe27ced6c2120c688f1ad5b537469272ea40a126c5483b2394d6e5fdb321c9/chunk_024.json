@@ -1,0 +1,703 @@
+{
+  "chunk_seq": 24,
+  "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+  "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+  "text": "## Security Architecture  \n### Authentication & Authorization  \n**Customer Authentication:**\n- Internet Banking: Username/password + OTP (email/SMS)\n- Mobile App: Biometric (fingerprint/face) + optional PIN\n- Branch: Photo ID verification  \n**Internal Authentication:**\n- Staff: LDAP/Active Directory\n- API Services: Mutual TLS (mTLS) + JWT\n- Admin Access: Multi-factor authentication (MFA)  \n**Authorization:**\n- Role-Based Access Control (RBAC)\n- Attribute-Based Access Control (ABAC) for sensitive operations\n- Audit logging for all access",
+  "name": "Chunk 24/39",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_023",
+  "next_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_025",
+  "raw_entities": [
+    {
+      "id": "sys_001",
+      "name": "Internet Banking Platform",
+      "aliases": [
+        "Internet Banking"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "internet_banking",
+      "description": "Customer-facing digital channel for account access and transactions, secured with username/password authentication and one-time password verification via email or SMS.",
+      "context": [
+        "Internet Banking: Username/password + OTP (email/SMS)",
+        "Customer Authentication"
+      ]
+    },
+    {
+      "id": "sys_002",
+      "name": "Mobile App",
+      "aliases": [
+        "Mobile Banking Application"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "mobile_banking",
+      "description": "Mobile banking application providing customer access via biometric authentication (fingerprint or face recognition) with optional PIN as secondary factor.",
+      "context": [
+        "Mobile App: Biometric (fingerprint/face) + optional PIN",
+        "Customer Authentication"
+      ]
+    },
+    {
+      "id": "sys_003",
+      "name": "LDAP/Active Directory",
+      "aliases": [
+        "LDAP",
+        "Active Directory",
+        "AD"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "authentication",
+      "description": "Internal identity and access management system used for staff authentication and authorization within the bank's infrastructure.",
+      "context": [
+        "Staff: LDAP/Active Directory",
+        "Internal Authentication"
+      ]
+    },
+    {
+      "id": "sys_004",
+      "name": "API Services",
+      "aliases": [
+        "API Gateway"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "api_gateway",
+      "description": "Internal API infrastructure secured with mutual TLS (mTLS) and JWT token-based authentication for service-to-service communication.",
+      "context": [
+        "API Services: Mutual TLS (mTLS) + JWT",
+        "Internal Authentication"
+      ]
+    },
+    {
+      "id": "sys_005",
+      "name": "Audit Logging System",
+      "aliases": [
+        "Audit Log"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "analytics",
+      "description": "System that records and tracks all access events across the bank's infrastructure for compliance, security monitoring, and forensic investigation purposes.",
+      "context": [
+        "Audit logging for all access",
+        "Authorization"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "Role-Based Access Control",
+      "aliases": [
+        "RBAC"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "access_control",
+      "description": "Authorization framework that grants system access and permissions based on predefined user roles within the organization.",
+      "context": [
+        "Role-Based Access Control (RBAC)",
+        "Authorization"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Attribute-Based Access Control",
+      "aliases": [
+        "ABAC"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "access_control",
+      "description": "Fine-grained authorization mechanism applied to sensitive operations, allowing access decisions based on attributes of users, resources, and environmental conditions.",
+      "context": [
+        "Attribute-Based Access Control (ABAC) for sensitive operations",
+        "Authorization"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "Multi-Factor Authentication Requirement",
+      "aliases": [
+        "MFA",
+        "Admin MFA"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Mandatory security control requiring multiple authentication factors for administrative access to sensitive systems and functions.",
+      "context": [
+        "Admin Access: Multi-factor authentication (MFA)",
+        "Internal Authentication"
+      ]
+    },
+    {
+      "id": "br_004",
+      "name": "Photo ID Verification for Branch Access",
+      "aliases": [
+        "Branch Authentication"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Authentication requirement for customers accessing the bank through physical branch locations, verified through photographic identification.",
+      "context": [
+        "Branch: Photo ID verification",
+        "Customer Authentication"
+      ]
+    }
+  ],
+  "id_map": {
+    "sys_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_001",
+    "sys_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_002",
+    "sys_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_003",
+    "sys_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_004",
+    "sys_005": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_005",
+    "br_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_001",
+    "br_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_002",
+    "br_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_003",
+    "br_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_004"
+  },
+  "entities": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_001",
+      "name": "Internet Banking Platform",
+      "aliases": [
+        "Internet Banking"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "internet_banking",
+      "description": "Customer-facing digital channel for account access and transactions, secured with username/password authentication and one-time password verification via email or SMS.",
+      "context": [
+        "Internet Banking: Username/password + OTP (email/SMS)",
+        "Customer Authentication"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_002",
+      "name": "Mobile App",
+      "aliases": [
+        "Mobile Banking Application"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "mobile_banking",
+      "description": "Mobile banking application providing customer access via biometric authentication (fingerprint or face recognition) with optional PIN as secondary factor.",
+      "context": [
+        "Mobile App: Biometric (fingerprint/face) + optional PIN",
+        "Customer Authentication"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_003",
+      "name": "LDAP/Active Directory",
+      "aliases": [
+        "LDAP",
+        "Active Directory",
+        "AD"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "authentication",
+      "description": "Internal identity and access management system used for staff authentication and authorization within the bank's infrastructure.",
+      "context": [
+        "Staff: LDAP/Active Directory",
+        "Internal Authentication"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_004",
+      "name": "API Services",
+      "aliases": [
+        "API Gateway"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "api_gateway",
+      "description": "Internal API infrastructure secured with mutual TLS (mTLS) and JWT token-based authentication for service-to-service communication.",
+      "context": [
+        "API Services: Mutual TLS (mTLS) + JWT",
+        "Internal Authentication"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_005",
+      "name": "Audit Logging System",
+      "aliases": [
+        "Audit Log"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "analytics",
+      "description": "System that records and tracks all access events across the bank's infrastructure for compliance, security monitoring, and forensic investigation purposes.",
+      "context": [
+        "Audit logging for all access",
+        "Authorization"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_001",
+      "name": "Role-Based Access Control",
+      "aliases": [
+        "RBAC"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "access_control",
+      "description": "Authorization framework that grants system access and permissions based on predefined user roles within the organization.",
+      "context": [
+        "Role-Based Access Control (RBAC)",
+        "Authorization"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_002",
+      "name": "Attribute-Based Access Control",
+      "aliases": [
+        "ABAC"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "access_control",
+      "description": "Fine-grained authorization mechanism applied to sensitive operations, allowing access decisions based on attributes of users, resources, and environmental conditions.",
+      "context": [
+        "Attribute-Based Access Control (ABAC) for sensitive operations",
+        "Authorization"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_003",
+      "name": "Multi-Factor Authentication Requirement",
+      "aliases": [
+        "MFA",
+        "Admin MFA"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Mandatory security control requiring multiple authentication factors for administrative access to sensitive systems and functions.",
+      "context": [
+        "Admin Access: Multi-factor authentication (MFA)",
+        "Internal Authentication"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_004",
+      "name": "Photo ID Verification for Branch Access",
+      "aliases": [
+        "Branch Authentication"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Authentication requirement for customers accessing the bank through physical branch locations, verified through photographic identification.",
+      "context": [
+        "Branch: Photo ID verification",
+        "Customer Authentication"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_001",
+      "name": "Internet Banking Platform",
+      "properties": {
+        "purpose": "Customer access to banking services via web interface",
+        "key_features": [
+          "Username/password authentication",
+          "One-time password via email or SMS"
+        ],
+        "security_controls": [
+          "Username/password",
+          "OTP (email/SMS)"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_002",
+      "name": "Mobile App",
+      "properties": {
+        "purpose": "Customer access to banking services via mobile device",
+        "key_features": [
+          "Biometric authentication (fingerprint/face)",
+          "Optional PIN"
+        ],
+        "security_controls": [
+          "Biometric (fingerprint/face)",
+          "Optional PIN"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_003",
+      "name": "LDAP/Active Directory",
+      "properties": {
+        "purpose": "Internal staff authentication and identity management",
+        "security_controls": [
+          "LDAP/Active Directory"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_004",
+      "name": "API Services",
+      "properties": {
+        "purpose": "Internal service-to-service communication",
+        "security_controls": [
+          "Mutual TLS (mTLS)",
+          "JWT"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_005",
+      "name": "Audit Logging System",
+      "properties": {
+        "purpose": "Record and monitor all access events across systems",
+        "key_features": [
+          "Audit logging for all access"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_001",
+      "name": "Role-Based Access Control",
+      "properties": {
+        "rule_statement": "Access to systems and data is controlled based on assigned user roles",
+        "rule_type": "authority",
+        "applies_to": [
+          "Internal staff",
+          "Admin access"
+        ],
+        "enforcement": "LDAP/Active Directory and authorization layer"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_002",
+      "name": "Attribute-Based Access Control",
+      "properties": {
+        "rule_statement": "Access to sensitive operations is controlled based on user attributes and contextual factors",
+        "rule_type": "authority",
+        "applies_to": [
+          "Sensitive operations"
+        ],
+        "enforcement": "Authorization layer"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_003",
+      "name": "Multi-Factor Authentication Requirement",
+      "properties": {
+        "rule_statement": "Admin access requires multi-factor authentication",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Admin access"
+        ],
+        "enforcement": "Authentication system"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_004",
+      "name": "Photo ID Verification for Branch Access",
+      "properties": {
+        "rule_statement": "Customers accessing branch services must present photo ID for verification",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Branch customer access"
+        ],
+        "enforcement": "Branch staff"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_003",
+      "target_name": "Multi-Factor Authentication Requirement",
+      "rel_type": "enforces",
+      "description": "Internet Banking Platform enforces multi-factor authentication via username/password and OTP",
+      "properties": {
+        "authentication_method": "Username/password + OTP (email/SMS)",
+        "mfa_components": [
+          "password",
+          "OTP"
+        ]
+      },
+      "context": "Internet Banking: Username/password + OTP (email/SMS)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_002",
+      "source_name": "Mobile App",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_003",
+      "target_name": "Multi-Factor Authentication Requirement",
+      "rel_type": "enforces",
+      "description": "Mobile App enforces multi-factor authentication via biometric and optional PIN",
+      "properties": {
+        "authentication_method": "Biometric (fingerprint/face) + optional PIN",
+        "mfa_components": [
+          "biometric",
+          "PIN"
+        ]
+      },
+      "context": "Mobile App: Biometric (fingerprint/face) + optional PIN",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_001",
+      "target_name": "Role-Based Access Control",
+      "rel_type": "implements",
+      "description": "Internet Banking Platform implements Role-Based Access Control for authorization",
+      "properties": {
+        "authorization_type": "RBAC"
+      },
+      "context": "Authorization: Role-Based Access Control (RBAC)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_002",
+      "source_name": "Mobile App",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_001",
+      "target_name": "Role-Based Access Control",
+      "rel_type": "implements",
+      "description": "Mobile App implements Role-Based Access Control for authorization",
+      "properties": {
+        "authorization_type": "RBAC"
+      },
+      "context": "Authorization: Role-Based Access Control (RBAC)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_004",
+      "source_name": "API Services",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_002",
+      "target_name": "Attribute-Based Access Control",
+      "rel_type": "implements",
+      "description": "API Services implements Attribute-Based Access Control for sensitive operations",
+      "properties": {
+        "authorization_type": "ABAC",
+        "scope": "sensitive operations"
+      },
+      "context": "Attribute-Based Access Control (ABAC) for sensitive operations",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_003",
+      "source_name": "LDAP/Active Directory",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_003",
+      "target_name": "Multi-Factor Authentication Requirement",
+      "rel_type": "enforces",
+      "description": "LDAP/Active Directory enforces multi-factor authentication for staff access",
+      "properties": {
+        "user_type": "Staff",
+        "authentication_method": "LDAP/Active Directory with MFA"
+      },
+      "context": "Staff: LDAP/Active Directory; Admin Access: Multi-factor authentication (MFA)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_004",
+      "source_name": "API Services",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_003",
+      "target_name": "Multi-Factor Authentication Requirement",
+      "rel_type": "enforces",
+      "description": "API Services enforces mutual TLS and JWT for authentication",
+      "properties": {
+        "authentication_method": "Mutual TLS (mTLS) + JWT",
+        "user_type": "API clients"
+      },
+      "context": "API Services: Mutual TLS (mTLS) + JWT",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_005",
+      "source_name": "Audit Logging System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_001",
+      "target_name": "Role-Based Access Control",
+      "rel_type": "tracks",
+      "description": "Audit Logging System tracks all access events governed by Role-Based Access Control",
+      "properties": {
+        "tracking_scope": "all access"
+      },
+      "context": "Audit logging for all access",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_005",
+      "source_name": "Audit Logging System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_002",
+      "target_name": "Attribute-Based Access Control",
+      "rel_type": "tracks",
+      "description": "Audit Logging System tracks all access events governed by Attribute-Based Access Control",
+      "properties": {
+        "tracking_scope": "all access"
+      },
+      "context": "Audit logging for all access",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_004",
+      "target_name": "Photo ID Verification for Branch Access",
+      "rel_type": "subject_to",
+      "description": "Internet Banking Platform is subject to photo ID verification requirements for branch access",
+      "properties": {
+        "verification_method": "Photo ID",
+        "access_channel": "Branch"
+      },
+      "context": "Branch: Photo ID verification",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_002",
+      "source_name": "Mobile App",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_003",
+      "source_name": "LDAP/Active Directory",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_004",
+      "source_name": "API Services",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_sys_005",
+      "source_name": "Audit Logging System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_001",
+      "source_name": "Role-Based Access Control",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_002",
+      "source_name": "Attribute-Based Access Control",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_003",
+      "source_name": "Multi-Factor Authentication Requirement",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024_br_004",
+      "source_name": "Photo ID Verification for Branch Access",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_024",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ]
+}

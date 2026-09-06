@@ -1,0 +1,774 @@
+{
+  "chunk_seq": 4,
+  "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+  "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+  "text": "## Exception Categories  \n### Category 1: Transaction Failures  \n**Definition:** Transaction initiated but not completed successfully  \n**Examples:**\n- Bank transfer fails (recipient account invalid)\n- ATM withdrawal denied (insufficient funds)\n- Standing order fails (account closed)\n- Direct Debit rejected (no funds)  \n**Customer Impact:** High (customer expecting transaction to complete)\n**SLA:** Resolve within 1–3 business days  \n---",
+  "name": "Chunk 4/25",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_003",
+  "next_chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_005",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Transaction Failure Resolution Process",
+      "aliases": [
+        "Exception Handling - Transaction Failures"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "End-to-end procedure for identifying, investigating, and resolving failed transactions across multiple channels including bank transfers, ATM withdrawals, standing orders, and direct debits. The process prioritizes high-impact customer issues with a defined SLA of 1–3 business days for resolution.",
+      "context": [
+        "Transaction initiated but not completed successfully",
+        "Resolve within 1–3 business days",
+        "Bank transfer fails (recipient account invalid)",
+        "Standing order fails (account closed)"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Transaction Failure Detection",
+      "aliases": [
+        "Failure Identification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial identification and categorization of failed transactions across channels including bank transfers, ATM withdrawals, standing orders, and direct debits.",
+      "context": [
+        "Transaction initiated but not completed successfully",
+        "Bank transfer fails (recipient account invalid)",
+        "ATM withdrawal denied (insufficient funds)"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Transaction Failure Investigation",
+      "aliases": [
+        "Failure Analysis"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Detailed examination of the root cause of transaction failure, including validation of recipient account details, fund availability, and account status.",
+      "context": [
+        "Bank transfer fails (recipient account invalid)",
+        "ATM withdrawal denied (insufficient funds)",
+        "Standing order fails (account closed)",
+        "Direct Debit rejected (no funds)"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Transaction Failure Resolution",
+      "aliases": [
+        "Failure Remediation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Action taken to resolve the failed transaction, which may include correcting recipient details, retrying the transaction, or providing customer notification of the failure reason.",
+      "context": [
+        "Resolve within 1–3 business days",
+        "Customer expecting transaction to complete"
+      ]
+    },
+    {
+      "id": "trans_001",
+      "name": "Failed Bank Transfer",
+      "aliases": [
+        "Transfer Failure"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "Bank transfer transaction that fails due to invalid recipient account details or other transfer-specific issues.",
+      "context": [
+        "Bank transfer fails (recipient account invalid)"
+      ]
+    },
+    {
+      "id": "trans_002",
+      "name": "Denied ATM Withdrawal",
+      "aliases": [
+        "ATM Withdrawal Failure"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "withdrawal",
+      "description": "ATM withdrawal transaction that is denied, typically due to insufficient funds in the customer's account.",
+      "context": [
+        "ATM withdrawal denied (insufficient funds)"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Failed Standing Order",
+      "aliases": [
+        "Standing Order Failure"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "Standing order payment instruction that fails to execute, commonly due to the account being closed or other account status issues.",
+      "context": [
+        "Standing order fails (account closed)"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Rejected Direct Debit",
+      "aliases": [
+        "Direct Debit Failure"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Direct debit mandate that is rejected at the point of collection, typically due to insufficient funds in the customer's account.",
+      "context": [
+        "Direct Debit rejected (no funds)"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder",
+        "Customer Expecting Transaction"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Individual customer affected by transaction failure, who expects the initiated transaction to complete successfully and requires timely resolution.",
+      "context": [
+        "Customer Impact: High (customer expecting transaction to complete)",
+        "Resolve within 1–3 business days"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_proc_001",
+    "pstep_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_001",
+    "pstep_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_002",
+    "pstep_003": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_003",
+    "trans_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_001",
+    "trans_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_002",
+    "so_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_so_001",
+    "dd_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_dd_001",
+    "cust_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_proc_001",
+      "name": "Transaction Failure Resolution Process",
+      "aliases": [
+        "Exception Handling - Transaction Failures"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "End-to-end procedure for identifying, investigating, and resolving failed transactions across multiple channels including bank transfers, ATM withdrawals, standing orders, and direct debits. The process prioritizes high-impact customer issues with a defined SLA of 1–3 business days for resolution.",
+      "context": [
+        "Transaction initiated but not completed successfully",
+        "Resolve within 1–3 business days",
+        "Bank transfer fails (recipient account invalid)",
+        "Standing order fails (account closed)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_001",
+      "name": "Transaction Failure Detection",
+      "aliases": [
+        "Failure Identification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial identification and categorization of failed transactions across channels including bank transfers, ATM withdrawals, standing orders, and direct debits.",
+      "context": [
+        "Transaction initiated but not completed successfully",
+        "Bank transfer fails (recipient account invalid)",
+        "ATM withdrawal denied (insufficient funds)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_002",
+      "name": "Transaction Failure Investigation",
+      "aliases": [
+        "Failure Analysis"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Detailed examination of the root cause of transaction failure, including validation of recipient account details, fund availability, and account status.",
+      "context": [
+        "Bank transfer fails (recipient account invalid)",
+        "ATM withdrawal denied (insufficient funds)",
+        "Standing order fails (account closed)",
+        "Direct Debit rejected (no funds)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_003",
+      "name": "Transaction Failure Resolution",
+      "aliases": [
+        "Failure Remediation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Action taken to resolve the failed transaction, which may include correcting recipient details, retrying the transaction, or providing customer notification of the failure reason.",
+      "context": [
+        "Resolve within 1–3 business days",
+        "Customer expecting transaction to complete"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_001",
+      "name": "Failed Bank Transfer",
+      "aliases": [
+        "Transfer Failure"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "Bank transfer transaction that fails due to invalid recipient account details or other transfer-specific issues.",
+      "context": [
+        "Bank transfer fails (recipient account invalid)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_002",
+      "name": "Denied ATM Withdrawal",
+      "aliases": [
+        "ATM Withdrawal Failure"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "withdrawal",
+      "description": "ATM withdrawal transaction that is denied, typically due to insufficient funds in the customer's account.",
+      "context": [
+        "ATM withdrawal denied (insufficient funds)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_so_001",
+      "name": "Failed Standing Order",
+      "aliases": [
+        "Standing Order Failure"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "Standing order payment instruction that fails to execute, commonly due to the account being closed or other account status issues.",
+      "context": [
+        "Standing order fails (account closed)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_dd_001",
+      "name": "Rejected Direct Debit",
+      "aliases": [
+        "Direct Debit Failure"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Direct debit mandate that is rejected at the point of collection, typically due to insufficient funds in the customer's account.",
+      "context": [
+        "Direct Debit rejected (no funds)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder",
+        "Customer Expecting Transaction"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Individual customer affected by transaction failure, who expects the initiated transaction to complete successfully and requires timely resolution.",
+      "context": [
+        "Customer Impact: High (customer expecting transaction to complete)",
+        "Resolve within 1–3 business days"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_proc_001",
+      "name": "Transaction Failure Resolution Process",
+      "properties": {
+        "purpose": "Resolve transaction failures and restore customer confidence",
+        "scope": "Bank transfers, ATM withdrawals, standing orders, direct debits",
+        "channels": [
+          "branch",
+          "online",
+          "system"
+        ],
+        "timeline_sla": "1–3 business days",
+        "outcome_success": "Transaction completed or customer notified with resolution",
+        "outcome_failure": "Unresolved transaction; customer escalation or complaint"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_001",
+      "name": "Transaction Failure Detection",
+      "properties": {
+        "step_number": 1,
+        "purpose": "Identify and categorize transaction failures",
+        "channel": "system",
+        "mandatory": true,
+        "input": "Transaction attempt records",
+        "output": "Failure classification and alert"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_002",
+      "name": "Transaction Failure Investigation",
+      "properties": {
+        "step_number": 2,
+        "purpose": "Determine root cause of transaction failure",
+        "channel": "system",
+        "mandatory": true,
+        "input": "Transaction details, account status, failure logs",
+        "output": "Root cause analysis and investigation report"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_003",
+      "name": "Transaction Failure Resolution",
+      "properties": {
+        "step_number": 3,
+        "purpose": "Execute corrective action and communicate outcome to customer",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": true,
+        "input": "Investigation findings, customer contact details",
+        "output": "Resolution action taken, customer notification sent"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_001",
+      "name": "Failed Bank Transfer",
+      "properties": {
+        "transaction_type": "transfer",
+        "failure_reason": "Recipient account invalid",
+        "customer_impact": "High",
+        "resolution_sla": "1–3 business days"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_002",
+      "name": "Denied ATM Withdrawal",
+      "properties": {
+        "transaction_type": "withdrawal",
+        "failure_reason": "Insufficient funds",
+        "customer_impact": "High",
+        "resolution_sla": "1–3 business days"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_so_001",
+      "name": "Failed Standing Order",
+      "properties": {
+        "transaction_type": "standing_order",
+        "failure_reason": "Account closed",
+        "customer_impact": "High",
+        "resolution_sla": "1–3 business days"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_dd_001",
+      "name": "Rejected Direct Debit",
+      "properties": {
+        "transaction_type": "direct_debit",
+        "failure_reason": "No funds available",
+        "customer_impact": "High",
+        "resolution_sla": "1–3 business days"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "individual",
+        "context_role": "Affected party in transaction failure",
+        "impact_level": "High"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_proc_001",
+      "source_name": "Transaction Failure Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_001",
+      "target_name": "Transaction Failure Detection",
+      "rel_type": "starts_with",
+      "description": "The Transaction Failure Resolution Process begins with the Transaction Failure Detection step",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Transaction Failure Resolution Process with steps including Transaction Failure Detection, Investigation, and Resolution",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_001",
+      "source_name": "Transaction Failure Detection",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_002",
+      "target_name": "Transaction Failure Investigation",
+      "rel_type": "followed_by",
+      "description": "Transaction Failure Detection is followed by Transaction Failure Investigation",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Process flow from detection through investigation to resolution",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_002",
+      "source_name": "Transaction Failure Investigation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_003",
+      "target_name": "Transaction Failure Resolution",
+      "rel_type": "followed_by",
+      "description": "Transaction Failure Investigation is followed by Transaction Failure Resolution",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Process flow from investigation to resolution",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_proc_001",
+      "source_name": "Transaction Failure Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_001",
+      "target_name": "Failed Bank Transfer",
+      "rel_type": "operates_on",
+      "description": "The Transaction Failure Resolution Process operates on Failed Bank Transfer transactions",
+      "properties": {
+        "failure_reason": "recipient account invalid"
+      },
+      "context": "Bank transfer fails (recipient account invalid)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_proc_001",
+      "source_name": "Transaction Failure Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_002",
+      "target_name": "Denied ATM Withdrawal",
+      "rel_type": "operates_on",
+      "description": "The Transaction Failure Resolution Process operates on Denied ATM Withdrawal transactions",
+      "properties": {
+        "failure_reason": "insufficient funds"
+      },
+      "context": "ATM withdrawal denied (insufficient funds)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_proc_001",
+      "source_name": "Transaction Failure Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_so_001",
+      "target_name": "Failed Standing Order",
+      "rel_type": "operates_on",
+      "description": "The Transaction Failure Resolution Process operates on Failed Standing Order transactions",
+      "properties": {
+        "failure_reason": "account closed"
+      },
+      "context": "Standing order fails (account closed)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_proc_001",
+      "source_name": "Transaction Failure Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_dd_001",
+      "target_name": "Rejected Direct Debit",
+      "rel_type": "operates_on",
+      "description": "The Transaction Failure Resolution Process operates on Rejected Direct Debit transactions",
+      "properties": {
+        "failure_reason": "no funds"
+      },
+      "context": "Direct Debit rejected (no funds)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_proc_001",
+      "source_name": "Transaction Failure Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_cust_001",
+      "target_name": "Customer",
+      "rel_type": "serves",
+      "description": "The Transaction Failure Resolution Process serves the Customer by resolving transaction failures",
+      "properties": {
+        "customer_impact": "High",
+        "sla_days": "1-3 business days"
+      },
+      "context": "Customer Impact: High (customer expecting transaction to complete), SLA: Resolve within 1–3 business days",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_001",
+      "source_name": "Transaction Failure Detection",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_001",
+      "target_name": "Failed Bank Transfer",
+      "rel_type": "detects",
+      "description": "Transaction Failure Detection step identifies Failed Bank Transfer transactions",
+      "properties": {
+        "detection_type": "failure identification"
+      },
+      "context": "Bank transfer fails (recipient account invalid)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_001",
+      "source_name": "Transaction Failure Detection",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_002",
+      "target_name": "Denied ATM Withdrawal",
+      "rel_type": "detects",
+      "description": "Transaction Failure Detection step identifies Denied ATM Withdrawal transactions",
+      "properties": {
+        "detection_type": "failure identification"
+      },
+      "context": "ATM withdrawal denied (insufficient funds)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_002",
+      "source_name": "Transaction Failure Investigation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_001",
+      "target_name": "Failed Bank Transfer",
+      "rel_type": "investigates",
+      "description": "Transaction Failure Investigation step investigates Failed Bank Transfer transactions",
+      "properties": {
+        "investigation_type": "root cause analysis"
+      },
+      "context": "Bank transfer fails (recipient account invalid)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_002",
+      "source_name": "Transaction Failure Investigation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_002",
+      "target_name": "Denied ATM Withdrawal",
+      "rel_type": "investigates",
+      "description": "Transaction Failure Investigation step investigates Denied ATM Withdrawal transactions",
+      "properties": {
+        "investigation_type": "root cause analysis"
+      },
+      "context": "ATM withdrawal denied (insufficient funds)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_003",
+      "source_name": "Transaction Failure Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_001",
+      "target_name": "Failed Bank Transfer",
+      "rel_type": "resolves",
+      "description": "Transaction Failure Resolution step resolves Failed Bank Transfer transactions",
+      "properties": {
+        "resolution_type": "transaction completion or customer notification"
+      },
+      "context": "Bank transfer fails (recipient account invalid)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_003",
+      "source_name": "Transaction Failure Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_002",
+      "target_name": "Denied ATM Withdrawal",
+      "rel_type": "resolves",
+      "description": "Transaction Failure Resolution step resolves Denied ATM Withdrawal transactions",
+      "properties": {
+        "resolution_type": "transaction completion or customer notification"
+      },
+      "context": "ATM withdrawal denied (insufficient funds)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_001",
+      "target_name": "Failed Bank Transfer",
+      "rel_type": "liable_for",
+      "description": "Customer is liable for the Failed Bank Transfer transaction",
+      "properties": {
+        "transaction_type": "bank transfer"
+      },
+      "context": "Bank transfer fails (recipient account invalid)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_002",
+      "target_name": "Denied ATM Withdrawal",
+      "rel_type": "liable_for",
+      "description": "Customer is liable for the Denied ATM Withdrawal transaction",
+      "properties": {
+        "transaction_type": "ATM withdrawal"
+      },
+      "context": "ATM withdrawal denied (insufficient funds)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_proc_001",
+      "source_name": "Transaction Failure Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_001",
+      "source_name": "Transaction Failure Detection",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_002",
+      "source_name": "Transaction Failure Investigation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_pstep_003",
+      "source_name": "Transaction Failure Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_001",
+      "source_name": "Failed Bank Transfer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_trans_002",
+      "source_name": "Denied ATM Withdrawal",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_so_001",
+      "source_name": "Failed Standing Order",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_dd_001",
+      "source_name": "Rejected Direct Debit",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_004",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

@@ -1,0 +1,1076 @@
+{
+  "chunk_seq": 14,
+  "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+  "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+  "text": "### Failure Process  \n**Step 1: Debit Attempt Fails**\n- System blocks payment (insufficient funds, closed account, etc.)\n- Failure recorded with reason  \n**Step 2: Notify Biller**\n- Automated message sent (ARUDD rejection)\n- Includes reason code (e.g., \"insufficient funds\")  \n**Step 3: Notify Customer**\n- Email/SMS alert (optional, if opted in)\n- Notification includes: Amount, biller, reason  \n**Step 4: Customer Action**\n- Customer must:\n- Provide sufficient funds, OR\n- Contact biller to arrange alternative payment, OR\n- Cancel Direct Debit  \n**Step 5: Retry (At Biller's Option)**\n- Biller may retry (usually within 3–5 days)\n- Retry typically succeeds if funds now available  \n---",
+  "name": "Chunk 14/26",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+  "next_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_015",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Direct Debit Failure Process",
+      "aliases": [
+        "Failure Process",
+        "Payment Failure Handling"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "End-to-end procedure for handling failed direct debit payment attempts, including system blocking, notification to biller and customer, and retry options. The process captures the sequence from initial payment failure through customer remediation and optional biller retry.",
+      "context": [
+        "System blocks payment (insufficient funds, closed account, etc.)",
+        "Automated message sent (ARUDD rejection)",
+        "Email/SMS alert (optional, if opted in)",
+        "Biller may retry (usually within 3–5 days)"
+      ]
+    },
+    {
+      "id": "pst_001",
+      "name": "Debit Attempt Failure Recording",
+      "aliases": [
+        "Step 1"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System blocks the payment attempt and records the failure with the reason code (e.g., insufficient funds, closed account). This is the initial detection and logging step in the failure workflow.",
+      "context": [
+        "System blocks payment (insufficient funds, closed account, etc.)",
+        "Failure recorded with reason"
+      ]
+    },
+    {
+      "id": "pst_002",
+      "name": "Biller Notification",
+      "aliases": [
+        "Step 2"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Automated ARUDD rejection message is sent to the biller, including the reason code for the payment failure. This notifies the creditor of the failed collection attempt.",
+      "context": [
+        "Automated message sent (ARUDD rejection)",
+        "Includes reason code (e.g., \"insufficient funds\")"
+      ]
+    },
+    {
+      "id": "pst_003",
+      "name": "Customer Notification",
+      "aliases": [
+        "Step 3"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Optional email or SMS alert is sent to the customer (if opted in), containing the payment amount, biller name, and failure reason. This informs the customer of the failed direct debit attempt.",
+      "context": [
+        "Email/SMS alert (optional, if opted in)",
+        "Notification includes: Amount, biller, reason"
+      ]
+    },
+    {
+      "id": "pst_004",
+      "name": "Customer Remediation Action",
+      "aliases": [
+        "Step 4"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer takes one of three actions in response to the failure: provide sufficient funds to the account, contact the biller to arrange alternative payment, or cancel the Direct Debit mandate. This step represents the customer's required response.",
+      "context": [
+        "Customer must:",
+        "Provide sufficient funds, OR",
+        "Contact biller to arrange alternative payment, OR",
+        "Cancel Direct Debit"
+      ]
+    },
+    {
+      "id": "pst_005",
+      "name": "Biller Retry Attempt",
+      "aliases": [
+        "Step 5"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Biller may elect to retry the payment collection, typically within 3–5 days of the initial failure. The retry typically succeeds if sufficient funds are now available in the customer's account.",
+      "context": [
+        "Biller may retry (usually within 3–5 days)",
+        "Retry typically succeeds if funds now available"
+      ]
+    },
+    {
+      "id": "ract_001",
+      "name": "Payment Processing System",
+      "aliases": [
+        "System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system responsible for blocking failed payment attempts and recording the failure reason. It executes the initial detection and logging of direct debit failures.",
+      "context": [
+        "System blocks payment (insufficient funds, closed account, etc.)",
+        "Failure recorded with reason"
+      ]
+    },
+    {
+      "id": "ract_002",
+      "name": "Automated Notification Engine",
+      "aliases": [
+        "Notification System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system responsible for sending ARUDD rejection messages to billers and optional email/SMS alerts to customers. It delivers failure notifications with reason codes and payment details.",
+      "context": [
+        "Automated message sent (ARUDD rejection)",
+        "Email/SMS alert (optional, if opted in)"
+      ]
+    },
+    {
+      "id": "ract_003",
+      "name": "Biller",
+      "aliases": [
+        "Creditor"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External party receiving the ARUDD rejection notification and holding the option to retry the payment collection within 3–5 days. The biller decides whether to attempt re-collection.",
+      "context": [
+        "Automated message sent (ARUDD rejection)",
+        "Biller may retry (usually within 3–5 days)"
+      ]
+    },
+    {
+      "id": "ract_004",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer",
+      "description": "Account holder who receives the failure notification and must take remedial action: provide funds, contact the biller, or cancel the Direct Debit. The customer is the primary actor in resolving the failure.",
+      "context": [
+        "Email/SMS alert (optional, if opted in)",
+        "Customer must:",
+        "Provide sufficient funds, OR"
+      ]
+    },
+    {
+      "id": "ddeb_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "Direct Debit",
+        "DD Mandate"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Standing direct debit instruction on a customer account that is subject to failure and retry procedures. The mandate can be cancelled by the customer in response to repeated failures.",
+      "context": [
+        "System blocks payment (insufficient funds, closed account, etc.)",
+        "Cancel Direct Debit",
+        "Biller may retry (usually within 3–5 days)"
+      ]
+    },
+    {
+      "id": "txn_001",
+      "name": "Failed Direct Debit Payment",
+      "aliases": [
+        "Payment Failure",
+        "Blocked Payment"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "A direct debit payment attempt that is blocked by the system due to insufficient funds, closed account, or other reasons. The failure is recorded with a reason code and triggers notifications to both biller and customer.",
+      "context": [
+        "System blocks payment (insufficient funds, closed account, etc.)",
+        "Failure recorded with reason",
+        "Includes reason code (e.g., \"insufficient funds\")"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_proc_001",
+    "pst_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_001",
+    "pst_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_002",
+    "pst_003": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_003",
+    "pst_004": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_004",
+    "pst_005": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_005",
+    "ract_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_001",
+    "ract_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_002",
+    "ract_003": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_003",
+    "ract_004": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_004",
+    "ddeb_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ddeb_001",
+    "txn_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_txn_001"
+  },
+  "entities": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_proc_001",
+      "name": "Direct Debit Failure Process",
+      "aliases": [
+        "Failure Process",
+        "Payment Failure Handling"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "End-to-end procedure for handling failed direct debit payment attempts, including system blocking, notification to biller and customer, and retry options. The process captures the sequence from initial payment failure through customer remediation and optional biller retry.",
+      "context": [
+        "System blocks payment (insufficient funds, closed account, etc.)",
+        "Automated message sent (ARUDD rejection)",
+        "Email/SMS alert (optional, if opted in)",
+        "Biller may retry (usually within 3–5 days)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_001",
+      "name": "Debit Attempt Failure Recording",
+      "aliases": [
+        "Step 1"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System blocks the payment attempt and records the failure with the reason code (e.g., insufficient funds, closed account). This is the initial detection and logging step in the failure workflow.",
+      "context": [
+        "System blocks payment (insufficient funds, closed account, etc.)",
+        "Failure recorded with reason"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_002",
+      "name": "Biller Notification",
+      "aliases": [
+        "Step 2"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Automated ARUDD rejection message is sent to the biller, including the reason code for the payment failure. This notifies the creditor of the failed collection attempt.",
+      "context": [
+        "Automated message sent (ARUDD rejection)",
+        "Includes reason code (e.g., \"insufficient funds\")"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_003",
+      "name": "Customer Notification",
+      "aliases": [
+        "Step 3"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Optional email or SMS alert is sent to the customer (if opted in), containing the payment amount, biller name, and failure reason. This informs the customer of the failed direct debit attempt.",
+      "context": [
+        "Email/SMS alert (optional, if opted in)",
+        "Notification includes: Amount, biller, reason"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_004",
+      "name": "Customer Remediation Action",
+      "aliases": [
+        "Step 4"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer takes one of three actions in response to the failure: provide sufficient funds to the account, contact the biller to arrange alternative payment, or cancel the Direct Debit mandate. This step represents the customer's required response.",
+      "context": [
+        "Customer must:",
+        "Provide sufficient funds, OR",
+        "Contact biller to arrange alternative payment, OR",
+        "Cancel Direct Debit"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_005",
+      "name": "Biller Retry Attempt",
+      "aliases": [
+        "Step 5"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Biller may elect to retry the payment collection, typically within 3–5 days of the initial failure. The retry typically succeeds if sufficient funds are now available in the customer's account.",
+      "context": [
+        "Biller may retry (usually within 3–5 days)",
+        "Retry typically succeeds if funds now available"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_001",
+      "name": "Payment Processing System",
+      "aliases": [
+        "System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system responsible for blocking failed payment attempts and recording the failure reason. It executes the initial detection and logging of direct debit failures.",
+      "context": [
+        "System blocks payment (insufficient funds, closed account, etc.)",
+        "Failure recorded with reason"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_002",
+      "name": "Automated Notification Engine",
+      "aliases": [
+        "Notification System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system responsible for sending ARUDD rejection messages to billers and optional email/SMS alerts to customers. It delivers failure notifications with reason codes and payment details.",
+      "context": [
+        "Automated message sent (ARUDD rejection)",
+        "Email/SMS alert (optional, if opted in)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_003",
+      "name": "Biller",
+      "aliases": [
+        "Creditor"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External party receiving the ARUDD rejection notification and holding the option to retry the payment collection within 3–5 days. The biller decides whether to attempt re-collection.",
+      "context": [
+        "Automated message sent (ARUDD rejection)",
+        "Biller may retry (usually within 3–5 days)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_004",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer",
+      "description": "Account holder who receives the failure notification and must take remedial action: provide funds, contact the biller, or cancel the Direct Debit. The customer is the primary actor in resolving the failure.",
+      "context": [
+        "Email/SMS alert (optional, if opted in)",
+        "Customer must:",
+        "Provide sufficient funds, OR"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ddeb_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "Direct Debit",
+        "DD Mandate"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Standing direct debit instruction on a customer account that is subject to failure and retry procedures. The mandate can be cancelled by the customer in response to repeated failures.",
+      "context": [
+        "System blocks payment (insufficient funds, closed account, etc.)",
+        "Cancel Direct Debit",
+        "Biller may retry (usually within 3–5 days)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_txn_001",
+      "name": "Failed Direct Debit Payment",
+      "aliases": [
+        "Payment Failure",
+        "Blocked Payment"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "A direct debit payment attempt that is blocked by the system due to insufficient funds, closed account, or other reasons. The failure is recorded with a reason code and triggers notifications to both biller and customer.",
+      "context": [
+        "System blocks payment (insufficient funds, closed account, etc.)",
+        "Failure recorded with reason",
+        "Includes reason code (e.g., \"insufficient funds\")"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_proc_001",
+      "name": "Direct Debit Failure Process",
+      "properties": {
+        "purpose": "Handle failed direct debit payment attempts and coordinate recovery or cancellation",
+        "scope": "All direct debit mandates where payment attempt fails",
+        "channels": [
+          "system",
+          "email",
+          "sms"
+        ],
+        "departments_involved": [
+          "Payment Processing",
+          "Customer Service",
+          "Biller Relations"
+        ],
+        "trigger": "Payment block due to insufficient funds, closed account, or other failure condition",
+        "outcome_success": "Customer provides funds, arranges alternative payment, or cancels mandate; biller notified and may retry",
+        "outcome_failure": "Direct debit remains unpaid; customer and biller unable to resolve"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_001",
+      "name": "Debit Attempt Failure Recording",
+      "properties": {
+        "step_number": 1,
+        "actor": "Payment Processing System",
+        "input": "Direct debit payment instruction with customer account details",
+        "output": "Failure record with reason code (e.g., insufficient funds, closed account)",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Payment Processing System"
+        ],
+        "failure_path": "Payment blocked; failure logged and escalated to notification step"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_002",
+      "name": "Biller Notification",
+      "properties": {
+        "step_number": 2,
+        "actor": "Automated Notification Engine",
+        "input": "Failure record with reason code",
+        "output": "ARUDD rejection message sent to biller",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Automated Notification Engine"
+        ],
+        "failure_path": "Biller does not receive notification; retry decision cannot be made"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_003",
+      "name": "Customer Notification",
+      "properties": {
+        "step_number": 3,
+        "actor": "Automated Notification Engine",
+        "input": "Failure record with amount, biller, and reason",
+        "output": "Email or SMS alert to customer (if opted in)",
+        "channel": [
+          "email",
+          "sms"
+        ],
+        "mandatory": "no",
+        "tools_or_systems": [
+          "Automated Notification Engine"
+        ],
+        "failure_path": "Customer not alerted; may not take remedial action"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_004",
+      "name": "Customer Remediation Action",
+      "properties": {
+        "step_number": 4,
+        "actor": "Customer",
+        "input": "Failure notification with payment details",
+        "output": "One of: funds deposited, alternative payment arranged with biller, or mandate cancelled",
+        "channel": [
+          "branch",
+          "online",
+          "phone"
+        ],
+        "mandatory": "no",
+        "failure_path": "Customer takes no action; payment remains failed and unresolved"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_005",
+      "name": "Biller Retry Attempt",
+      "properties": {
+        "step_number": 5,
+        "actor": "Biller",
+        "input": "Failure notification and biller's decision to retry",
+        "output": "Retry payment instruction submitted to payment system",
+        "estimated_duration": "3–5 days after initial failure",
+        "channel": "system",
+        "mandatory": "no",
+        "failure_path": "Retry fails if funds still unavailable; process repeats or mandate cancelled"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_001",
+      "name": "Payment Processing System",
+      "properties": {
+        "role_type": "system",
+        "department": "Payment Processing",
+        "authority_level": "Automated block and failure recording",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_002",
+      "name": "Automated Notification Engine",
+      "properties": {
+        "role_type": "system",
+        "department": "Customer Service",
+        "authority_level": "Automated message dispatch",
+        "channels": [
+          "email",
+          "sms",
+          "system"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_003",
+      "name": "Biller",
+      "properties": {
+        "role_type": "external",
+        "authority_level": "Decides whether to retry payment",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_004",
+      "name": "Customer",
+      "properties": {
+        "role_type": "human",
+        "authority_level": "Decides remedial action: deposit funds, arrange alternative payment, or cancel mandate",
+        "channels": [
+          "branch",
+          "online",
+          "phone",
+          "email",
+          "sms"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ddeb_001",
+      "name": "Direct Debit Mandate",
+      "properties": {
+        "mandate_process": "Customer authorizes recurring payment to biller; payment processed automatically",
+        "cancellation_or_dispute_process": "Customer may cancel mandate following failed payment attempt or at any time"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_txn_001",
+      "name": "Failed Direct Debit Payment",
+      "properties": {
+        "transaction_type": "failed_withdrawal",
+        "monitoring_or_reporting_obligation": "Failure recorded and reported to biller via ARUDD rejection",
+        "failure_reason": [
+          "insufficient funds",
+          "closed account",
+          "other block condition"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_proc_001",
+      "source_name": "Direct Debit Failure Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_001",
+      "target_name": "Debit Attempt Failure Recording",
+      "rel_type": "starts_with",
+      "description": "The Direct Debit Failure Process begins with recording the debit attempt failure",
+      "properties": {
+        "sequence_position": 1,
+        "mandatory": true
+      },
+      "context": "Step 1: Debit Attempt Fails - System blocks payment (insufficient funds, closed account, etc.) - Failure recorded with reason",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_001",
+      "source_name": "Debit Attempt Failure Recording",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_002",
+      "target_name": "Biller Notification",
+      "rel_type": "followed_by",
+      "description": "Failure recording is followed by notification to the biller",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Step 1 leads to Step 2: Notify Biller - Automated message sent (ARUDD rejection)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_002",
+      "source_name": "Biller Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_003",
+      "target_name": "Customer Notification",
+      "rel_type": "followed_by",
+      "description": "Biller notification is followed by customer notification",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Step 2 leads to Step 3: Notify Customer - Email/SMS alert (optional, if opted in)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_003",
+      "source_name": "Customer Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_004",
+      "target_name": "Customer Remediation Action",
+      "rel_type": "followed_by",
+      "description": "Customer notification is followed by customer remediation action",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "Step 3 leads to Step 4: Customer Action - Customer must provide sufficient funds, contact biller, or cancel Direct Debit",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_004",
+      "source_name": "Customer Remediation Action",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_005",
+      "target_name": "Biller Retry Attempt",
+      "rel_type": "followed_by",
+      "description": "Customer remediation action is followed by optional biller retry attempt",
+      "properties": {
+        "sequence_position": 5,
+        "optional": true
+      },
+      "context": "Step 4 leads to Step 5: Retry (At Biller's Option) - Biller may retry (usually within 3–5 days)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_proc_001",
+      "source_name": "Direct Debit Failure Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_001",
+      "target_name": "Debit Attempt Failure Recording",
+      "rel_type": "includes_step_for",
+      "description": "The process includes the step of recording debit attempt failures",
+      "properties": {
+        "step_number": 1
+      },
+      "context": "Step 1: Debit Attempt Fails - System blocks payment - Failure recorded with reason",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_proc_001",
+      "source_name": "Direct Debit Failure Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_002",
+      "target_name": "Biller Notification",
+      "rel_type": "includes_step_for",
+      "description": "The process includes the step of notifying the biller",
+      "properties": {
+        "step_number": 2
+      },
+      "context": "Step 2: Notify Biller - Automated message sent (ARUDD rejection)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_proc_001",
+      "source_name": "Direct Debit Failure Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_003",
+      "target_name": "Customer Notification",
+      "rel_type": "includes_step_for",
+      "description": "The process includes the step of notifying the customer",
+      "properties": {
+        "step_number": 3,
+        "optional": true
+      },
+      "context": "Step 3: Notify Customer - Email/SMS alert (optional, if opted in)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_proc_001",
+      "source_name": "Direct Debit Failure Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_004",
+      "target_name": "Customer Remediation Action",
+      "rel_type": "includes_step_for",
+      "description": "The process includes the step of customer remediation action",
+      "properties": {
+        "step_number": 4
+      },
+      "context": "Step 4: Customer Action - Customer must provide sufficient funds, contact biller, or cancel Direct Debit",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_proc_001",
+      "source_name": "Direct Debit Failure Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_005",
+      "target_name": "Biller Retry Attempt",
+      "rel_type": "includes_optional",
+      "description": "The process optionally includes a biller retry attempt step",
+      "properties": {
+        "step_number": 5,
+        "optional": true
+      },
+      "context": "Step 5: Retry (At Biller's Option) - Biller may retry (usually within 3–5 days)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_001",
+      "source_name": "Debit Attempt Failure Recording",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_001",
+      "target_name": "Payment Processing System",
+      "rel_type": "performed_by",
+      "description": "Debit attempt failure recording is performed by the payment processing system",
+      "properties": {
+        "action": "blocks payment and records failure"
+      },
+      "context": "System blocks payment (insufficient funds, closed account, etc.) - Failure recorded with reason",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_002",
+      "source_name": "Biller Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_002",
+      "target_name": "Automated Notification Engine",
+      "rel_type": "performed_by",
+      "description": "Biller notification is performed by the automated notification engine",
+      "properties": {
+        "method": "ARUDD rejection message",
+        "includes": "reason code"
+      },
+      "context": "Automated message sent (ARUDD rejection) - Includes reason code (e.g., 'insufficient funds')",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_002",
+      "source_name": "Biller Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_003",
+      "target_name": "Biller",
+      "rel_type": "notifies",
+      "description": "Biller notification step notifies the biller of the failed debit",
+      "properties": {
+        "notification_type": "ARUDD rejection",
+        "includes_reason_code": true
+      },
+      "context": "Notify Biller - Automated message sent (ARUDD rejection) - Includes reason code",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_003",
+      "source_name": "Customer Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_002",
+      "target_name": "Automated Notification Engine",
+      "rel_type": "performed_by",
+      "description": "Customer notification is performed by the automated notification engine",
+      "properties": {
+        "method": "Email/SMS",
+        "optional": true,
+        "condition": "if opted in"
+      },
+      "context": "Email/SMS alert (optional, if opted in) - Notification includes: Amount, biller, reason",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_003",
+      "source_name": "Customer Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_004",
+      "target_name": "Customer",
+      "rel_type": "notifies",
+      "description": "Customer notification step notifies the customer of the failed debit",
+      "properties": {
+        "method": "Email/SMS",
+        "optional": true,
+        "content": [
+          "Amount",
+          "biller",
+          "reason"
+        ]
+      },
+      "context": "Notify Customer - Email/SMS alert (optional, if opted in) - Notification includes: Amount, biller, reason",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_004",
+      "source_name": "Customer Remediation Action",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_004",
+      "target_name": "Customer",
+      "rel_type": "performed_by",
+      "description": "Customer remediation action is performed by the customer",
+      "properties": {
+        "options": [
+          "Provide sufficient funds",
+          "Contact biller to arrange alternative payment",
+          "Cancel Direct Debit"
+        ]
+      },
+      "context": "Customer must: Provide sufficient funds, OR Contact biller to arrange alternative payment, OR Cancel Direct Debit",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_005",
+      "source_name": "Biller Retry Attempt",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_003",
+      "target_name": "Biller",
+      "rel_type": "performed_by",
+      "description": "Biller retry attempt is performed by the biller",
+      "properties": {
+        "optional": true,
+        "timing": "usually within 3–5 days",
+        "success_condition": "if funds now available"
+      },
+      "context": "Retry (At Biller's Option) - Biller may retry (usually within 3–5 days) - Retry typically succeeds if funds now available",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_proc_001",
+      "source_name": "Direct Debit Failure Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ddeb_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "processes_mandate_for",
+      "description": "The Direct Debit Failure Process handles failures related to a direct debit mandate",
+      "properties": {
+        "context": "failure handling and recovery"
+      },
+      "context": "The entire process deals with failures in executing direct debit mandates",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_001",
+      "source_name": "Debit Attempt Failure Recording",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_txn_001",
+      "target_name": "Failed Direct Debit Payment",
+      "rel_type": "records",
+      "description": "Debit attempt failure recording step records the failed transaction",
+      "properties": {
+        "recorded_details": [
+          "failure reason",
+          "amount",
+          "timestamp"
+        ]
+      },
+      "context": "Failure recorded with reason - System blocks payment (insufficient funds, closed account, etc.)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_txn_001",
+      "source_name": "Failed Direct Debit Payment",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ddeb_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "triggered_by",
+      "description": "The failed direct debit payment transaction is triggered by the direct debit mandate",
+      "properties": {
+        "failure_context": "attempted execution of mandate"
+      },
+      "context": "The failed payment is an attempt to execute the direct debit mandate",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_proc_001",
+      "source_name": "Direct Debit Failure Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_001",
+      "source_name": "Debit Attempt Failure Recording",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_002",
+      "source_name": "Biller Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_003",
+      "source_name": "Customer Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_004",
+      "source_name": "Customer Remediation Action",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_pst_005",
+      "source_name": "Biller Retry Attempt",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_001",
+      "source_name": "Payment Processing System",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_002",
+      "source_name": "Automated Notification Engine",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_003",
+      "source_name": "Biller",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ract_004",
+      "source_name": "Customer",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_ddeb_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014_txn_001",
+      "source_name": "Failed Direct Debit Payment",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

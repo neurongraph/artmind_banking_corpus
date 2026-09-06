@@ -1,0 +1,487 @@
+name: project_governance
+description: Project and programme governance documents that track delivery progress, workstream status,
+  risks, issues, decisions, and actions. Includes status reports, delivery dashboards, steering committee
+  packs, monthly governance presentations, and programme review documents from consulting and technology
+  delivery engagements.
+subject: project governance document analysis
+persona: a delivery manager reading the document
+temporal:
+  document:
+    valid_from:
+    - Date
+    - date
+  relative_anchor: document.valid_from
+  defaults:
+    valid_from: ingestion_date
+    valid_to: null
+    superseded_by: null
+    time_source: default_ingestion
+    valid_from_inferred: true
+entity_types:
+  PROJECT:
+    kind: recurrent
+    description: A named project, workstream, programme, initiative, or engagement described in the document.
+      Includes both the top-level programme and individual sub-workstreams or tracks.
+    type_examples:
+    - programme
+    - workstream
+    - initiative
+    - engagement
+    - track
+    - migration
+    - transformation
+    - pilot
+    - proof_of_concept
+    - phase
+    properties:
+      status:
+        hint: on_track | at_risk | delayed | completed | on_hold
+      rag_status:
+        hint: Red | Amber | Green
+      domain:
+        hint: data | cloud | automation | ai | payments | migration | etc.
+      timeline:
+        hint: start_date, end_date, current_phase
+      key_objective: {}
+      delivery_model:
+        hint: onshore | offshore | hybrid | nearshore
+      client_name: {}
+      in_quarter_highlights:
+        hint: list of recent achievements
+      next_month_priorities:
+        hint: list
+      start_date:
+        temporal: valid_from
+      end_date:
+        temporal: valid_to
+      team_size_or_headcount:
+        hint: if mentioned
+    relates_to:
+      PROJECT:
+      - part_of
+      - depends_on
+      - feeds_into
+      - parallel_to
+      - precedes
+      - follows
+      MILESTONE:
+      - has_milestone
+      - targeting
+      - completed
+      - blocked_from_reaching
+      PERSON:
+      - led_by
+      - managed_by
+      - sponsored_by
+      - staffed_by
+      - escalated_to
+      - reviewed_by
+      ORGANIZATION:
+      - owned_by
+      - delivered_by
+      - sponsored_by
+      - contracted_to
+      - partnered_with
+      RISK:
+      - has_risk
+      - exposed_to
+      ISSUE:
+      - has_issue
+      - blocked_by
+      TECHNOLOGY:
+      - uses
+      - migrating_from
+      - migrating_to
+      - building_on
+      - replacing
+      - integrating_with
+      DECISION:
+      - governed_by
+      - impacted_by
+  MILESTONE:
+    kind: recurrent
+    description: A named checkpoint, deliverable, phase gate, target date, or key event in the project
+      timeline. Includes both achieved and upcoming milestones.
+    type_examples:
+    - kickoff
+    - proposal
+    - sign_off
+    - go_live
+    - phase_completion
+    - review
+    - demo
+    - deployment
+    - cutover
+    - handover
+    - feasibility
+    properties:
+      status:
+        hint: achieved | upcoming | delayed | at_risk
+      dependencies:
+        hint: what must happen first
+      completion_criteria: {}
+      owner:
+        hint: who is responsible
+      target_date:
+        temporal: valid_from
+        hint: or relative timing, e.g. "t0 + 2 weeks"
+    relates_to:
+      MILESTONE:
+      - depends_on
+      - followed_by
+      - precedes
+  PERSON:
+    kind: recurrent
+    description: Any named individual mentioned in the document — project leads, sponsors, team members,
+      client stakeholders, or named owners of actions and decisions.
+    type_examples:
+    - project_manager
+    - technical_lead
+    - sponsor
+    - stakeholder
+    - consultant
+    - architect
+    - analyst
+    - executive
+    - owner
+    - approver
+    properties:
+      role:
+        hint: specific title or function
+      organization:
+        hint: which company or team
+      accountability:
+        hint: what they are responsible for in this project
+      involvement_type:
+        hint: client | delivery | steering | advisory
+    relates_to:
+      ACTION:
+      - owns
+      - assigned_to
+      - accountable_for
+      - reviewing
+      ORGANIZATION:
+      - works_for
+      - represents
+      - is_client_at
+      - leads_within
+      PROJECT:
+      - leads
+      - manages
+      - sponsors
+      - contributes_to
+      - is_accountable_for
+      DECISION:
+      - made
+      - approved
+      - escalated_to
+      - influenced
+      RISK:
+      - owns
+      - raised
+      - is_managing
+      ISSUE:
+      - owns
+      - raised
+      - is_resolving
+  ORGANIZATION:
+    kind: recurrent
+    description: Any named company, team, business unit, or group involved in the project — client organisations,
+      delivery partners, vendors, or internal teams.
+    type_examples:
+    - client
+    - delivery_partner
+    - vendor
+    - internal_team
+    - steering_committee
+    - business_unit
+    - regulator
+    - third_party
+    properties:
+      org_type:
+        hint: client | delivery_partner | vendor | regulator | etc.
+      relationship:
+        hint: who they are to whom
+      involvement:
+        hint: how they participate in the project
+      size_or_geography:
+        hint: if mentioned
+    relates_to:
+      TECHNOLOGY:
+      - owns
+      - operates
+      - provides
+      - uses
+      - is_replacing
+  RISK:
+    kind: recurrent
+    description: An identified risk that could negatively impact the project if it materialises. Risks
+      are potential, not yet realised.
+    type_examples:
+    - delivery_risk
+    - technical_risk
+    - resource_risk
+    - dependency_risk
+    - regulatory_risk
+    - commercial_risk
+    - schedule_risk
+    - scope_risk
+    properties:
+      probability:
+        hint: High | Medium | Low
+      impact:
+        hint: High | Medium | Low
+      status:
+        hint: open | mitigated | closed | escalated
+      mitigation_approach:
+        hint: if described
+      owner:
+        hint: who is responsible for managing it
+      category:
+        hint: schedule | resource | technical | commercial | regulatory
+    relates_to:
+      MILESTONE:
+      - threatens
+      - could_delay
+      - is_tied_to
+      PROJECT:
+      - affects
+      - could_impact
+    guidance: A risk is potential -- something that could negatively impact the project but has not yet
+      materialised. Distinguish from ISSUE, which is already occurring.
+  ISSUE:
+    kind: recurrent
+    description: An active problem, blocker, or impediment that is currently affecting the project. Issues
+      are already occurring, not merely potential.
+    type_examples:
+    - blocker
+    - technical_issue
+    - resource_gap
+    - process_issue
+    - dependency_issue
+    - quality_issue
+    - communication_issue
+    - scope_issue
+    properties:
+      severity:
+        hint: Critical | High | Medium | Low
+      status:
+        hint: open | in_progress | resolved | escalated
+      resolution_approach:
+        hint: if described
+      owner:
+        hint: who is resolving it
+      impact_on_project: {}
+      date_raised:
+        hint: if mentioned
+    relates_to:
+      ACTION:
+      - resolved_by
+      - requires
+      - created
+      - triggered
+      PROJECT:
+      - impacts
+      - blocks
+      - affects
+    guidance: An issue is already occurring -- an active problem or blocker, not merely potential. Distinguish
+      from RISK, which has not yet materialised.
+  DECISION:
+    kind: occurrent
+    description: A governance decision, approval, direction change, or key agreement captured in the document.
+      Decisions reflect choices made by named individuals or bodies.
+    type_examples:
+    - scope_decision
+    - go_no_go
+    - design_approval
+    - resource_decision
+    - commercial_decision
+    - escalation_outcome
+    - policy_change
+    - prioritisation
+    properties:
+      outcome:
+        hint: the decision that was made
+      rationale:
+        hint: why it was made
+      made_by:
+        hint: person or body
+      impact_on_project: {}
+      alternatives_considered:
+        hint: if mentioned
+      date:
+        hint: if mentioned
+    relates_to:
+      PROJECT:
+      - directs
+      - unlocks
+      - affects_scope_of
+      MILESTONE:
+      - enables
+      - delays
+      - confirms
+  ACTION:
+    kind: recurrent
+    description: A specific task, next step, or follow-up item assigned to an owner with a due date or
+      implied urgency. Actions are concrete and assignable.
+    type_examples:
+    - investigation
+    - development
+    - approval
+    - communication
+    - coordination
+    - review
+    - planning
+    - onboarding
+    - escalation
+    - analysis
+    properties:
+      owner:
+        hint: who is responsible
+      status:
+        hint: open | in_progress | completed
+      priority:
+        hint: High | Medium | Low
+      context:
+        hint: what triggered this action
+      dependencies: {}
+      due_date:
+        temporal: valid_from
+        hint: or timeframe
+    relates_to:
+      MILESTONE:
+      - required_for
+      - contributes_to
+      - clears_path_to
+  TECHNOLOGY:
+    kind: recurrent
+    description: A named platform, system, tool, framework, or technical component referenced in the project
+      context — either being used, built, migrated, or replaced.
+    type_examples:
+    - platform
+    - legacy_system
+    - cloud_platform
+    - database
+    - framework
+    - tool
+    - api
+    - service
+    - data_warehouse
+    - automation_tool
+    - integration
+    properties:
+      technology_type:
+        hint: platform | database | tool | framework | etc.
+      current_status:
+        hint: in_use | being_migrated | being_replaced | being_built | decommissioning
+      role_in_project:
+        hint: source | target | enabler | component
+      vendor_or_provider: {}
+      version_or_generation:
+        hint: if mentioned
+    relates_to:
+      TECHNOLOGY:
+      - replaces
+      - integrates_with
+      - feeds_into
+      - migrating_to
+  OBJECT:
+    kind: recurrent
+    description: Any physical item, document, deliverable, or tangible asset relevant to the project governance
+      context.
+    type_examples:
+    - deliverable
+    - document
+    - tool
+    - equipment
+    - asset
+    - resource
+    - report
+    - contract
+    properties:
+      object_type:
+        hint: deliverable | document | equipment | etc.
+      owner_or_responsible:
+        hint: person or team
+      status:
+        hint: in_progress | complete | pending | at_risk
+      related_milestone:
+        hint: if applicable
+      version:
+        hint: if versioned
+    relates_to:
+      PROJECT:
+      - produced_by
+      - required_by
+      - documents
+      - part_of
+      MILESTONE:
+      - due_at
+      - produced_for
+      - marks_completion_of
+      PERSON:
+      - owned_by
+      - authored_by
+      - reviewed_by
+      - approved_by
+  LOCATION:
+    kind: recurrent
+    description: Any place, site, office, or geographic area referenced in the governance context — where
+      work is performed, teams are based, or delivery takes place.
+    type_examples:
+    - office
+    - site
+    - country
+    - region
+    - city
+    - facility
+    - remote_location
+    - data_centre
+    properties:
+      location_type:
+        hint: office | site | country | etc.
+      relevance:
+        hint: where work happens | where team is based | delivery location
+      timezone:
+        hint: if relevant to governance
+    relates_to:
+      PROJECT:
+      - hosts
+      - is_delivery_location_for
+      - operates_in
+      PERSON:
+      - based_at
+      - works_from
+      - assigned_to
+      ORGANIZATION:
+      - headquartered_at
+      - operates_from
+      - office_of
+  STATE_CHANGE:
+    kind: occurrent
+    description: A change in an entity's state, status, or relationship over time — extract when the document
+      records that something became different from before (a project's RAG status shifting, a risk escalating,
+      a workstream starting or ending). Carry the date it happened.
+    type_examples:
+    - mood_shift
+    - relationship_change
+    - plan_started
+    - plan_ended
+    - status_change
+    properties:
+      what_changed:
+        hint: the entity or relationship affected
+      from_state: {}
+      to_state: {}
+      date_or_time:
+        hint: when the change occurred — anchored to the document date if relative
+      due_date:
+        temporal: valid_from
+    relates_to:
+      PERSON:
+      - state_of
+      - affects
+      - involves
+      MILESTONE:
+      - triggered_by
+      - resulted_from

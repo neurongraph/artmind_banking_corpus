@@ -1,0 +1,360 @@
+{
+  "chunk_seq": 5,
+  "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+  "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+  "text": "### End of Business (17:00 PM)  \n**Checklist (10 minutes):**  \n- [ ] **Payment Settlement Confirmation** — Verify daily settlement completed\n- Expected: All FPS/BACS payments settled by 17:30  \n- [ ] **Reconciliation Report** — Run nightly reconciliation\n- Command: `python /scripts/reconciliation.py`\n- Expected: \"PASS: All transactions reconciled\"  \n- [ ] **Backup Initiation** — Trigger nightly backup\n- Command: `aws s3 sync /data/backups s3://firstuk-backups/ --sse AES256`\n- Expected: \"Backup complete: XXX MB uploaded\"  \n- [ ] **Data Warehouse Load** — Trigger nightly DW load\n- Command: `spark-submit /scripts/dw_load.py`\n- Expected: \"Load complete: NNN rows inserted\"  \n---",
+  "name": "Chunk 5/21",
+  "_domain": "banking.reference",
+  "prev_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+  "next_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_006",
+  "raw_entities": [
+    {
+      "id": "ra_001",
+      "name": "Payment Settlement Confirmation",
+      "aliases": [
+        "Settlement Verification",
+        "Daily Settlement Check"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "End-of-business verification that all FPS and BACS payments have been settled by the expected cutoff time of 17:30. This is a daily operational checkpoint performed at 17:00 PM as part of the end-of-business checklist.",
+      "context": [
+        "Payment Settlement Confirmation — Verify daily settlement completed",
+        "Expected: All FPS/BACS payments settled by 17:30"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Reconciliation Report",
+      "aliases": [
+        "Nightly Reconciliation",
+        "Transaction Reconciliation"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Nightly reconciliation process executed via automated script to verify all transactions have been reconciled. The process is triggered by running the reconciliation.py script and expects a PASS result confirming full reconciliation.",
+      "context": [
+        "Reconciliation Report — Run nightly reconciliation",
+        "Command: `python /scripts/reconciliation.py`",
+        "Expected: \"PASS: All transactions reconciled\""
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Backup Initiation",
+      "aliases": [
+        "Nightly Backup",
+        "Data Backup"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "Nightly backup procedure that synchronizes data from the local backup directory to AWS S3 storage using AES256 encryption. Executed as part of the end-of-business checklist to ensure data protection and disaster recovery capability.",
+      "context": [
+        "Backup Initiation — Trigger nightly backup",
+        "Command: `aws s3 sync /data/backups s3://firstuk-backups/ --sse AES256`",
+        "Expected: \"Backup complete: XXX MB uploaded\""
+      ]
+    },
+    {
+      "id": "ra_004",
+      "name": "Data Warehouse Load",
+      "aliases": [
+        "Nightly DW Load",
+        "DW Load Process"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "Nightly data warehouse load process triggered via Spark job submission that inserts reconciled transaction data into the data warehouse. Executed as the final step of the end-of-business checklist.",
+      "context": [
+        "Data Warehouse Load — Trigger nightly DW load",
+        "Command: `spark-submit /scripts/dw_load.py`",
+        "Expected: \"Load complete: NNN rows inserted\""
+      ]
+    }
+  ],
+  "id_map": {
+    "ra_001": "01a07393-e320-7264-b05f-7163527566c2_005_ra_001",
+    "ra_002": "01a07393-e320-7264-b05f-7163527566c2_005_ra_002",
+    "ra_003": "01a07393-e320-7264-b05f-7163527566c2_005_ra_003",
+    "ra_004": "01a07393-e320-7264-b05f-7163527566c2_005_ra_004"
+  },
+  "entities": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_001",
+      "name": "Payment Settlement Confirmation",
+      "aliases": [
+        "Settlement Verification",
+        "Daily Settlement Check"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "End-of-business verification that all FPS and BACS payments have been settled by the expected cutoff time of 17:30. This is a daily operational checkpoint performed at 17:00 PM as part of the end-of-business checklist.",
+      "context": [
+        "Payment Settlement Confirmation — Verify daily settlement completed",
+        "Expected: All FPS/BACS payments settled by 17:30"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_002",
+      "name": "Reconciliation Report",
+      "aliases": [
+        "Nightly Reconciliation",
+        "Transaction Reconciliation"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Nightly reconciliation process executed via automated script to verify all transactions have been reconciled. The process is triggered by running the reconciliation.py script and expects a PASS result confirming full reconciliation.",
+      "context": [
+        "Reconciliation Report — Run nightly reconciliation",
+        "Command: `python /scripts/reconciliation.py`",
+        "Expected: \"PASS: All transactions reconciled\""
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_003",
+      "name": "Backup Initiation",
+      "aliases": [
+        "Nightly Backup",
+        "Data Backup"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "Nightly backup procedure that synchronizes data from the local backup directory to AWS S3 storage using AES256 encryption. Executed as part of the end-of-business checklist to ensure data protection and disaster recovery capability.",
+      "context": [
+        "Backup Initiation — Trigger nightly backup",
+        "Command: `aws s3 sync /data/backups s3://firstuk-backups/ --sse AES256`",
+        "Expected: \"Backup complete: XXX MB uploaded\""
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_004",
+      "name": "Data Warehouse Load",
+      "aliases": [
+        "Nightly DW Load",
+        "DW Load Process"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "Nightly data warehouse load process triggered via Spark job submission that inserts reconciled transaction data into the data warehouse. Executed as the final step of the end-of-business checklist.",
+      "context": [
+        "Data Warehouse Load — Trigger nightly DW load",
+        "Command: `spark-submit /scripts/dw_load.py`",
+        "Expected: \"Load complete: NNN rows inserted\""
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_001",
+      "name": "Payment Settlement Confirmation",
+      "properties": {
+        "action_phase": "recovery",
+        "actor": "operations team",
+        "timeline": "by 17:30",
+        "output_or_artifact": "settlement verification that all FPS/BACS payments settled",
+        "trigger_condition": "end of business checklist at 17:00"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_002",
+      "name": "Reconciliation Report",
+      "properties": {
+        "action_phase": "recovery",
+        "actor": "operations team",
+        "tools_or_systems": "python /scripts/reconciliation.py",
+        "output_or_artifact": "nightly reconciliation report with expected result 'PASS: All transactions reconciled'",
+        "trigger_condition": "end of business checklist at 17:00"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_003",
+      "name": "Backup Initiation",
+      "properties": {
+        "action_phase": "recovery",
+        "actor": "operations team",
+        "tools_or_systems": "aws s3 sync with AES256 encryption",
+        "output_or_artifact": "backup completion confirmation with MB uploaded",
+        "trigger_condition": "end of business checklist at 17:00"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_004",
+      "name": "Data Warehouse Load",
+      "properties": {
+        "action_phase": "recovery",
+        "actor": "operations team",
+        "tools_or_systems": "spark-submit /scripts/dw_load.py",
+        "output_or_artifact": "load completion confirmation with number of rows inserted",
+        "trigger_condition": "end of business checklist at 17:00"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_001",
+      "source_name": "Payment Settlement Confirmation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_002",
+      "target_name": "Reconciliation Report",
+      "rel_type": "followed_by",
+      "description": "Payment Settlement Confirmation is followed by Reconciliation Report in the end-of-business checklist sequence",
+      "properties": {
+        "sequence_order": 1,
+        "checklist_phase": "End of Business (17:00 PM)",
+        "time_window": "within 10 minutes"
+      },
+      "context": "Checklist (10 minutes): Payment Settlement Confirmation — Verify daily settlement completed... Reconciliation Report — Run nightly reconciliation",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_002",
+      "source_name": "Reconciliation Report",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_003",
+      "target_name": "Backup Initiation",
+      "rel_type": "followed_by",
+      "description": "Reconciliation Report is followed by Backup Initiation in the end-of-business checklist sequence",
+      "properties": {
+        "sequence_order": 2,
+        "checklist_phase": "End of Business (17:00 PM)",
+        "time_window": "within 10 minutes"
+      },
+      "context": "Reconciliation Report — Run nightly reconciliation... Backup Initiation — Trigger nightly backup",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_003",
+      "source_name": "Backup Initiation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_004",
+      "target_name": "Data Warehouse Load",
+      "rel_type": "followed_by",
+      "description": "Backup Initiation is followed by Data Warehouse Load in the end-of-business checklist sequence",
+      "properties": {
+        "sequence_order": 3,
+        "checklist_phase": "End of Business (17:00 PM)",
+        "time_window": "within 10 minutes"
+      },
+      "context": "Backup Initiation — Trigger nightly backup... Data Warehouse Load — Trigger nightly DW load",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_002",
+      "source_name": "Reconciliation Report",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_001",
+      "target_name": "Payment Settlement Confirmation",
+      "rel_type": "preceded_by",
+      "description": "Reconciliation Report is preceded by Payment Settlement Confirmation in the end-of-business checklist sequence",
+      "properties": {
+        "sequence_order": 1,
+        "checklist_phase": "End of Business (17:00 PM)",
+        "dependency": "Payment Settlement must complete before reconciliation"
+      },
+      "context": "Checklist (10 minutes): Payment Settlement Confirmation — Verify daily settlement completed... Reconciliation Report — Run nightly reconciliation",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_003",
+      "source_name": "Backup Initiation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_002",
+      "target_name": "Reconciliation Report",
+      "rel_type": "preceded_by",
+      "description": "Backup Initiation is preceded by Reconciliation Report in the end-of-business checklist sequence",
+      "properties": {
+        "sequence_order": 2,
+        "checklist_phase": "End of Business (17:00 PM)",
+        "dependency": "Reconciliation must complete before backup"
+      },
+      "context": "Reconciliation Report — Run nightly reconciliation... Backup Initiation — Trigger nightly backup",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_004",
+      "source_name": "Data Warehouse Load",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_003",
+      "target_name": "Backup Initiation",
+      "rel_type": "preceded_by",
+      "description": "Data Warehouse Load is preceded by Backup Initiation in the end-of-business checklist sequence",
+      "properties": {
+        "sequence_order": 3,
+        "checklist_phase": "End of Business (17:00 PM)",
+        "dependency": "Backup must complete before data warehouse load"
+      },
+      "context": "Backup Initiation — Trigger nightly backup... Data Warehouse Load — Trigger nightly DW load",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_001",
+      "source_name": "Payment Settlement Confirmation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_002",
+      "source_name": "Reconciliation Report",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_003",
+      "source_name": "Backup Initiation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_005_ra_004",
+      "source_name": "Data Warehouse Load",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ]
+}

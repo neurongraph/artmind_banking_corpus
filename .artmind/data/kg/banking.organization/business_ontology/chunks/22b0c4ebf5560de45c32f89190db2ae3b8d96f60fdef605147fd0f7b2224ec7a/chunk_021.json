@@ -1,0 +1,863 @@
+{
+  "chunk_seq": 21,
+  "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+  "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+  "text": "### Entity: Suspicious Activity Report (SAR)  \n**Definition:** A report filed with National Crime Agency (NCA) for suspected financial crime.  \n**Attributes:**\n- `sar_id` — Unique identifier\n- `customer_id` — Customer involved\n- `filing_date` — Date filed with NCA\n- `nca_reference` — NCA assigned reference number\n- `activity_type` — Money laundering, Fraud, Sanctions, Other\n- `activity_description` — Detailed description of suspicious activity\n- `amount_involved` — Money involved (if applicable)\n- `evidence` — Supporting evidence summary\n- `status` — Filed, Acknowledged, Investigated, Closed\n- `internal_reviewer` — Staff member who filed SAR  \n**Example Activity Types:**\n- Large cash deposit followed by immediate transfer out\n- Multiple accounts opened with similar identity\n- Transactions with sanctioned country\n- Round-tripping (money in and out same day)  \n**Key Business Rules:**\n- SAR must be filed within 30 days of suspicion\n- Customer not informed (reporting confidential)\n- Account may be frozen pending investigation\n- Failure to file SAR = regulatory breach  \n**Relationships:**\n- `for_customer` → Customer (1:many)\n- `triggered_by_transactions` → Transaction (1:many)\n- `based_on_aml_screening` → AML_Screening (0:1)  \n---",
+  "name": "Chunk 21/37",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+  "next_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+  "raw_entities": [
+    {
+      "id": "bc_001",
+      "name": "Suspicious Activity Report",
+      "aliases": [
+        "SAR"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sar",
+      "description": "A report filed with the National Crime Agency (NCA) for suspected financial crime. The SAR documents suspicious activity including money laundering, fraud, sanctions violations, or other financial crimes, and must be filed within 30 days of suspicion. Customer notification is prohibited and accounts may be frozen pending investigation.",
+      "context": [
+        "A report filed with National Crime Agency (NCA) for suspected financial crime.",
+        "SAR must be filed within 30 days of suspicion",
+        "Customer not informed (reporting confidential)",
+        "Account may be frozen pending investigation"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "SAR Identifier",
+      "aliases": [
+        "sar_id"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sar",
+      "description": "Unique identifier assigned to each Suspicious Activity Report for tracking and reference purposes.",
+      "context": [
+        "`sar_id` — Unique identifier"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "NCA Reference Number",
+      "aliases": [
+        "nca_reference"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sar",
+      "description": "Reference number assigned by the National Crime Agency upon receipt and acknowledgment of a filed Suspicious Activity Report.",
+      "context": [
+        "`nca_reference` — NCA assigned reference number"
+      ]
+    },
+    {
+      "id": "bc_004",
+      "name": "SAR Activity Type",
+      "aliases": [
+        "activity_type"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sar",
+      "description": "Classification of the suspicious activity triggering the SAR filing, including money laundering, fraud, sanctions violations, or other financial crimes.",
+      "context": [
+        "`activity_type` — Money laundering, Fraud, Sanctions, Other"
+      ]
+    },
+    {
+      "id": "bc_005",
+      "name": "SAR Filing Status",
+      "aliases": [
+        "status"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sar",
+      "description": "The current state of a Suspicious Activity Report throughout its lifecycle, progressing from filing through acknowledgment, investigation, and closure.",
+      "context": [
+        "`status` — Filed, Acknowledged, Investigated, Closed"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "SAR Filing Deadline",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "Regulatory requirement mandating that a Suspicious Activity Report must be filed with the NCA within 30 days of the initial suspicion of financial crime.",
+      "context": [
+        "SAR must be filed within 30 days of suspicion"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "SAR Confidentiality Obligation",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "Regulatory constraint prohibiting the bank from informing the customer that a Suspicious Activity Report has been filed, maintaining confidentiality of the reporting to the NCA.",
+      "context": [
+        "Customer not informed (reporting confidential)"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "Account Freeze Authority",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "Authority to freeze a customer account pending investigation of suspicious activity reported in a Suspicious Activity Report, restricting account access and transactions.",
+      "context": [
+        "Account may be frozen pending investigation"
+      ]
+    },
+    {
+      "id": "br_004",
+      "name": "SAR Filing Compliance Obligation",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Regulatory requirement that failure to file a required Suspicious Activity Report constitutes a regulatory breach with potential enforcement consequences.",
+      "context": [
+        "Failure to file SAR = regulatory breach"
+      ]
+    },
+    {
+      "id": "org_001",
+      "name": "National Crime Agency",
+      "aliases": [
+        "NCA"
+      ],
+      "entity_class": "ORGANIZATIONAL_UNIT",
+      "type": "regulatory_body",
+      "description": "The regulatory authority responsible for receiving and investigating Suspicious Activity Reports filed by financial institutions for suspected financial crime.",
+      "context": [
+        "A report filed with National Crime Agency (NCA) for suspected financial crime.",
+        "`nca_reference` — NCA assigned reference number"
+      ]
+    },
+    {
+      "id": "mt_001",
+      "name": "SAR Filing Deadline",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "sla",
+      "description": "Service level agreement specifying the maximum time window for filing a Suspicious Activity Report after suspicion is identified.",
+      "context": [
+        "SAR must be filed within 30 days of suspicion"
+      ]
+    }
+  ],
+  "id_map": {
+    "bc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_001",
+    "bc_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_002",
+    "bc_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_003",
+    "bc_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_004",
+    "bc_005": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_005",
+    "br_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_001",
+    "br_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_002",
+    "br_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_003",
+    "br_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_004",
+    "org_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_org_001",
+    "mt_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_mt_001"
+  },
+  "entities": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_001",
+      "name": "Suspicious Activity Report",
+      "aliases": [
+        "SAR"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sar",
+      "description": "A report filed with the National Crime Agency (NCA) for suspected financial crime. The SAR documents suspicious activity including money laundering, fraud, sanctions violations, or other financial crimes, and must be filed within 30 days of suspicion. Customer notification is prohibited and accounts may be frozen pending investigation.",
+      "context": [
+        "A report filed with National Crime Agency (NCA) for suspected financial crime.",
+        "SAR must be filed within 30 days of suspicion",
+        "Customer not informed (reporting confidential)",
+        "Account may be frozen pending investigation"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_002",
+      "name": "SAR Identifier",
+      "aliases": [
+        "sar_id"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sar",
+      "description": "Unique identifier assigned to each Suspicious Activity Report for tracking and reference purposes.",
+      "context": [
+        "`sar_id` — Unique identifier"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_003",
+      "name": "NCA Reference Number",
+      "aliases": [
+        "nca_reference"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sar",
+      "description": "Reference number assigned by the National Crime Agency upon receipt and acknowledgment of a filed Suspicious Activity Report.",
+      "context": [
+        "`nca_reference` — NCA assigned reference number"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_004",
+      "name": "SAR Activity Type",
+      "aliases": [
+        "activity_type"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sar",
+      "description": "Classification of the suspicious activity triggering the SAR filing, including money laundering, fraud, sanctions violations, or other financial crimes.",
+      "context": [
+        "`activity_type` — Money laundering, Fraud, Sanctions, Other"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_005",
+      "name": "SAR Filing Status",
+      "aliases": [
+        "status"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sar",
+      "description": "The current state of a Suspicious Activity Report throughout its lifecycle, progressing from filing through acknowledgment, investigation, and closure.",
+      "context": [
+        "`status` — Filed, Acknowledged, Investigated, Closed"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_001",
+      "name": "SAR Filing Deadline",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "Regulatory requirement mandating that a Suspicious Activity Report must be filed with the NCA within 30 days of the initial suspicion of financial crime.",
+      "context": [
+        "SAR must be filed within 30 days of suspicion"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_002",
+      "name": "SAR Confidentiality Obligation",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "Regulatory constraint prohibiting the bank from informing the customer that a Suspicious Activity Report has been filed, maintaining confidentiality of the reporting to the NCA.",
+      "context": [
+        "Customer not informed (reporting confidential)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_003",
+      "name": "Account Freeze Authority",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "Authority to freeze a customer account pending investigation of suspicious activity reported in a Suspicious Activity Report, restricting account access and transactions.",
+      "context": [
+        "Account may be frozen pending investigation"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_004",
+      "name": "SAR Filing Compliance Obligation",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Regulatory requirement that failure to file a required Suspicious Activity Report constitutes a regulatory breach with potential enforcement consequences.",
+      "context": [
+        "Failure to file SAR = regulatory breach"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_org_001",
+      "name": "National Crime Agency",
+      "aliases": [
+        "NCA"
+      ],
+      "entity_class": "ORGANIZATIONAL_UNIT",
+      "type": "regulatory_body",
+      "description": "The regulatory authority responsible for receiving and investigating Suspicious Activity Reports filed by financial institutions for suspected financial crime.",
+      "context": [
+        "A report filed with National Crime Agency (NCA) for suspected financial crime.",
+        "`nca_reference` — NCA assigned reference number"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_mt_001",
+      "name": "SAR Filing Deadline",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "sla",
+      "description": "Service level agreement specifying the maximum time window for filing a Suspicious Activity Report after suspicion is identified.",
+      "context": [
+        "SAR must be filed within 30 days of suspicion"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_001",
+      "name": "Suspicious Activity Report",
+      "properties": {
+        "definition": "A report filed with National Crime Agency (NCA) for suspected financial crime",
+        "key_attributes": [
+          "sar_id",
+          "customer_id",
+          "filing_date",
+          "nca_reference",
+          "activity_type",
+          "activity_description",
+          "amount_involved",
+          "evidence",
+          "status",
+          "internal_reviewer"
+        ],
+        "subtypes": [
+          "Money laundering",
+          "Fraud",
+          "Sanctions",
+          "Other"
+        ],
+        "business_rules": [
+          "SAR must be filed within 30 days of suspicion",
+          "Customer not informed (reporting confidential)",
+          "Account may be frozen pending investigation",
+          "Failure to file SAR = regulatory breach"
+        ],
+        "relationships_to": [
+          "Customer",
+          "Transaction",
+          "AML_Screening"
+        ],
+        "ontology_domain": "Compliance and Reporting"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_002",
+      "name": "SAR Identifier",
+      "properties": {
+        "definition": "Unique identifier assigned to a Suspicious Activity Report",
+        "key_attributes": [
+          "sar_id"
+        ],
+        "business_rules": [
+          "Must be unique per SAR filing"
+        ],
+        "relationships_to": [
+          "Suspicious Activity Report"
+        ],
+        "ontology_domain": "Compliance and Reporting"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_003",
+      "name": "NCA Reference Number",
+      "properties": {
+        "definition": "Reference number assigned by the National Crime Agency upon receipt of a SAR",
+        "key_attributes": [
+          "nca_reference"
+        ],
+        "business_rules": [
+          "Assigned by NCA after SAR filing"
+        ],
+        "relationships_to": [
+          "Suspicious Activity Report",
+          "National Crime Agency"
+        ],
+        "ontology_domain": "Compliance and Reporting"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_004",
+      "name": "SAR Activity Type",
+      "properties": {
+        "definition": "Classification of the type of suspicious financial activity reported in a SAR",
+        "key_attributes": [
+          "activity_type",
+          "activity_description"
+        ],
+        "subtypes": [
+          "Money laundering",
+          "Fraud",
+          "Sanctions",
+          "Other"
+        ],
+        "example": [
+          "Large cash deposit followed by immediate transfer out",
+          "Multiple accounts opened with similar identity",
+          "Transactions with sanctioned country",
+          "Round-tripping (money in and out same day)"
+        ],
+        "ontology_domain": "Compliance and Reporting"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_005",
+      "name": "SAR Filing Status",
+      "properties": {
+        "definition": "Current status of a Suspicious Activity Report in its lifecycle",
+        "key_attributes": [
+          "status"
+        ],
+        "subtypes": [
+          "Filed",
+          "Acknowledged",
+          "Investigated",
+          "Closed"
+        ],
+        "ontology_domain": "Compliance and Reporting"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_001",
+      "name": "SAR Filing Deadline",
+      "properties": {
+        "rule_statement": "SAR must be filed within 30 days of suspicion",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Suspicious Activity Report"
+        ],
+        "regulatory_source": "NCA",
+        "consequence": "Regulatory breach if not filed within deadline"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_002",
+      "name": "SAR Confidentiality Obligation",
+      "properties": {
+        "rule_statement": "Customer must not be informed of SAR filing; reporting is confidential",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Suspicious Activity Report",
+          "Customer"
+        ],
+        "regulatory_source": "NCA",
+        "consequence": "Breach of confidentiality obligation if customer is informed"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_003",
+      "name": "Account Freeze Authority",
+      "properties": {
+        "rule_statement": "Account may be frozen pending investigation of suspicious activity",
+        "rule_type": "authority",
+        "applies_to": [
+          "Account",
+          "Suspicious Activity Report"
+        ],
+        "enforcement": "Internal compliance and investigation teams"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_004",
+      "name": "SAR Filing Compliance Obligation",
+      "properties": {
+        "rule_statement": "Failure to file SAR constitutes a regulatory breach",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Suspicious Activity Report"
+        ],
+        "regulatory_source": "NCA",
+        "consequence": "Regulatory breach and potential enforcement action"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_org_001",
+      "name": "National Crime Agency",
+      "properties": {
+        "mission": "Receive and investigate Suspicious Activity Reports for suspected financial crime",
+        "key_functions": [
+          "Receive SAR filings",
+          "Assign reference numbers to SARs",
+          "Investigate reported suspicious activity",
+          "Coordinate financial crime enforcement"
+        ],
+        "regulatory_responsibilities": [
+          "Financial crime investigation",
+          "SAR receipt and processing"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_mt_001",
+      "name": "SAR Filing Deadline",
+      "properties": {
+        "value": 30,
+        "unit": "days",
+        "what_it_measures": "Maximum time allowed to file a Suspicious Activity Report after suspicion is identified",
+        "owner": "Compliance and AML teams",
+        "frequency": "Per SAR filing",
+        "context": "Regulatory obligation to NCA; failure to meet deadline constitutes regulatory breach"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_001",
+      "source_name": "Suspicious Activity Report",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_002",
+      "target_name": "SAR Identifier",
+      "rel_type": "has_subtype",
+      "description": "SAR Identifier is a component attribute of Suspicious Activity Report",
+      "properties": {
+        "attribute_name": "sar_id",
+        "attribute_type": "unique identifier"
+      },
+      "context": "`sar_id` — Unique identifier",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_001",
+      "source_name": "Suspicious Activity Report",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_003",
+      "target_name": "NCA Reference Number",
+      "rel_type": "has_subtype",
+      "description": "NCA Reference Number is a component attribute of Suspicious Activity Report",
+      "properties": {
+        "attribute_name": "nca_reference",
+        "attribute_type": "NCA assigned reference number"
+      },
+      "context": "`nca_reference` — NCA assigned reference number",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_001",
+      "source_name": "Suspicious Activity Report",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_004",
+      "target_name": "SAR Activity Type",
+      "rel_type": "has_subtype",
+      "description": "SAR Activity Type is a component attribute of Suspicious Activity Report",
+      "properties": {
+        "attribute_name": "activity_type",
+        "possible_values": [
+          "Money laundering",
+          "Fraud",
+          "Sanctions",
+          "Other"
+        ]
+      },
+      "context": "`activity_type` — Money laundering, Fraud, Sanctions, Other",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_001",
+      "source_name": "Suspicious Activity Report",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_005",
+      "target_name": "SAR Filing Status",
+      "rel_type": "has_subtype",
+      "description": "SAR Filing Status is a component attribute of Suspicious Activity Report",
+      "properties": {
+        "attribute_name": "status",
+        "possible_values": [
+          "Filed",
+          "Acknowledged",
+          "Investigated",
+          "Closed"
+        ]
+      },
+      "context": "`status` — Filed, Acknowledged, Investigated, Closed",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_001",
+      "source_name": "Suspicious Activity Report",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_001",
+      "target_name": "SAR Filing Deadline",
+      "rel_type": "governed_by",
+      "description": "Suspicious Activity Report is governed by the SAR Filing Deadline business rule",
+      "properties": {
+        "deadline_days": 30,
+        "trigger": "suspicion"
+      },
+      "context": "SAR must be filed within 30 days of suspicion",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_001",
+      "source_name": "Suspicious Activity Report",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_002",
+      "target_name": "SAR Confidentiality Obligation",
+      "rel_type": "governed_by",
+      "description": "Suspicious Activity Report is governed by the SAR Confidentiality Obligation business rule",
+      "properties": {
+        "obligation": "Customer not informed",
+        "reporting_status": "confidential"
+      },
+      "context": "Customer not informed (reporting confidential)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_001",
+      "source_name": "Suspicious Activity Report",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_003",
+      "target_name": "Account Freeze Authority",
+      "rel_type": "governed_by",
+      "description": "Suspicious Activity Report is governed by the Account Freeze Authority business rule",
+      "properties": {
+        "action": "Account may be frozen",
+        "trigger": "pending investigation"
+      },
+      "context": "Account may be frozen pending investigation",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_001",
+      "source_name": "Suspicious Activity Report",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_004",
+      "target_name": "SAR Filing Compliance Obligation",
+      "rel_type": "governed_by",
+      "description": "Suspicious Activity Report is governed by the SAR Filing Compliance Obligation business rule",
+      "properties": {
+        "violation": "Failure to file SAR",
+        "consequence": "regulatory breach"
+      },
+      "context": "Failure to file SAR = regulatory breach",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_001",
+      "source_name": "Suspicious Activity Report",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_org_001",
+      "target_name": "National Crime Agency",
+      "rel_type": "linked_to",
+      "description": "Suspicious Activity Report is filed with and linked to the National Crime Agency",
+      "properties": {
+        "filing_destination": "NCA",
+        "relationship_type": "regulatory reporting"
+      },
+      "context": "A report filed with National Crime Agency (NCA) for suspected financial crime",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_001",
+      "source_name": "Suspicious Activity Report",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_mt_001",
+      "target_name": "SAR Filing Deadline",
+      "rel_type": "measured_by",
+      "description": "Suspicious Activity Report compliance is measured by the SAR Filing Deadline metric",
+      "properties": {
+        "metric_type": "deadline",
+        "measurement_unit": "days",
+        "target_value": 30
+      },
+      "context": "SAR must be filed within 30 days of suspicion",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_001",
+      "source_name": "SAR Filing Deadline",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_mt_001",
+      "target_name": "SAR Filing Deadline",
+      "rel_type": "defines",
+      "description": "SAR Filing Deadline business rule defines the SAR Filing Deadline metric target",
+      "properties": {
+        "deadline_days": 30,
+        "trigger_event": "suspicion"
+      },
+      "context": "SAR must be filed within 30 days of suspicion",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_001",
+      "source_name": "Suspicious Activity Report",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_002",
+      "source_name": "SAR Identifier",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_003",
+      "source_name": "NCA Reference Number",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_004",
+      "source_name": "SAR Activity Type",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_bc_005",
+      "source_name": "SAR Filing Status",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_001",
+      "source_name": "SAR Filing Deadline",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_002",
+      "source_name": "SAR Confidentiality Obligation",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_003",
+      "source_name": "Account Freeze Authority",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_br_004",
+      "source_name": "SAR Filing Compliance Obligation",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_org_001",
+      "source_name": "National Crime Agency",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021_mt_001",
+      "source_name": "SAR Filing Deadline",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ]
+}

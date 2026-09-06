@@ -1,0 +1,938 @@
+{
+  "chunk_seq": 11,
+  "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+  "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+  "text": "## Step 5: System Recording  \n### Document Entry in AMS  \n**Fields to Complete:**\n- Customer ID (linked)\n- Document Type (Passport / Driving License)\n- Document Number\n- Issue Date\n- Expiry Date\n- Verification Method (In-branch examination / Online upload / Postal)\n- Verification Date\n- Verified By (staff member name/ID)\n- Status (Verified / Pending / Failed)  \n**Address Entry:**\n- Address Line 1\n- Address Line 2 (if applicable)\n- City/Town\n- Postcode\n- Country\n- Address Type (Registered / Correspondence)\n- Address Verification Date\n- Document Type (Utility Bill / Council Tax / etc.)  \n**Risk Assessment Entry:**\n- Risk Level (Low / Medium / High)\n- EDD Flag (Yes / No)\n- Reason (if EDD flagged)\n- Next Review Date (per risk-based schedule)  \n---",
+  "name": "Chunk 11/22",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_010",
+  "next_chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_012",
+  "raw_entities": [
+    {
+      "id": "ps_001",
+      "name": "System Recording",
+      "aliases": [
+        "Document Entry in AMS"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "A process step in which customer identity documents, address information, and risk assessment data are formally entered and recorded in the Account Management System (AMS). This step captures verification outcomes, document details, address records, and risk classifications for compliance and operational purposes.",
+      "context": [
+        "Step 5: System Recording",
+        "Document Entry in AMS",
+        "Verified By (staff member name/ID)",
+        "Status (Verified / Pending / Failed)"
+      ]
+    },
+    {
+      "id": "ps_002",
+      "name": "Document Entry in AMS",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The sub-step within System Recording where identity document details are entered into the AMS, including document type, number, issue date, expiry date, verification method, and verification status.",
+      "context": [
+        "Document Entry in AMS",
+        "Document Type (Passport / Driving License)",
+        "Document Number",
+        "Issue Date",
+        "Expiry Date"
+      ]
+    },
+    {
+      "id": "ps_003",
+      "name": "Address Entry in AMS",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The sub-step within System Recording where customer address information is entered into the AMS, including address lines, city, postcode, country, address type classification, and supporting document type.",
+      "context": [
+        "Address Entry:",
+        "Address Line 1",
+        "Address Type (Registered / Correspondence)",
+        "Document Type (Utility Bill / Council Tax / etc.)"
+      ]
+    },
+    {
+      "id": "ps_004",
+      "name": "Risk Assessment Entry in AMS",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The sub-step within System Recording where customer risk classification is recorded in the AMS, including risk level assignment, Enhanced Due Diligence flag status, and the next scheduled review date based on risk-based scheduling.",
+      "context": [
+        "Risk Assessment Entry:",
+        "Risk Level (Low / Medium / High)",
+        "EDD Flag (Yes / No)",
+        "Next Review Date (per risk-based schedule)"
+      ]
+    },
+    {
+      "id": "id_001",
+      "name": "Passport Verification",
+      "aliases": [
+        "Passport"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "passport_verification",
+      "description": "An accepted form of identity document collected and verified during the account opening process. Passport details including document number, issue date, and expiry date are recorded in the AMS.",
+      "context": [
+        "Document Type (Passport / Driving License)",
+        "Expiry Date"
+      ]
+    },
+    {
+      "id": "id_002",
+      "name": "Driving Licence Check",
+      "aliases": [
+        "Driving License"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "driving_licence_check",
+      "description": "An accepted form of identity document collected and verified during the account opening process. Driving licence details including document number, issue date, and expiry date are recorded in the AMS.",
+      "context": [
+        "Document Type (Passport / Driving License)"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Address Verification",
+      "aliases": [],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "The process of recording and verifying customer address information in the AMS, including address lines, city, postcode, country, and address type classification (Registered or Correspondence).",
+      "context": [
+        "Address Entry:",
+        "Address Line 1",
+        "Address Type (Registered / Correspondence)",
+        "Address Verification Date"
+      ]
+    },
+    {
+      "id": "addr_002",
+      "name": "Proof of Address",
+      "aliases": [],
+      "entity_class": "ADDRESS",
+      "type": "proof_of_address",
+      "description": "Supporting documentation used to verify customer address, including utility bills, council tax documents, and other acceptable proof of address documents recorded in the AMS.",
+      "context": [
+        "Document Type (Utility Bill / Council Tax / etc.)"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Customer Risk Classification",
+      "aliases": [
+        "Risk Assessment"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A mandatory compliance gate where customer risk level is assessed and recorded in the AMS as Low, Medium, or High, with Enhanced Due Diligence flagging and scheduled review dates based on risk-based assessment protocols.",
+      "context": [
+        "Risk Assessment Entry:",
+        "Risk Level (Low / Medium / High)",
+        "EDD Flag (Yes / No)",
+        "Next Review Date (per risk-based schedule)"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Enhanced Due Diligence Flag",
+      "aliases": [
+        "EDD Flag"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A compliance control that flags customers requiring Enhanced Due Diligence based on risk assessment outcomes. The flag status (Yes/No) and reason are recorded in the AMS with a documented rationale.",
+      "context": [
+        "EDD Flag (Yes / No)",
+        "Reason (if EDD flagged)"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Verification Method Recording",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "The recording of the method used to verify customer identity documents, including in-branch examination, online upload, or postal verification, along with the verification date and staff member identifier.",
+      "context": [
+        "Verification Method (In-branch examination / Online upload / Postal)",
+        "Verification Date",
+        "Verified By (staff member name/ID)"
+      ]
+    }
+  ],
+  "id_map": {
+    "ps_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_001",
+    "ps_002": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_002",
+    "ps_003": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_003",
+    "ps_004": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_004",
+    "id_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_id_001",
+    "id_002": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_id_002",
+    "addr_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_addr_001",
+    "addr_002": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_addr_002",
+    "ra_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ra_001",
+    "ra_002": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ra_002"
+  },
+  "entities": [
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_001",
+      "name": "System Recording",
+      "aliases": [
+        "Document Entry in AMS"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "A process step in which customer identity documents, address information, and risk assessment data are formally entered and recorded in the Account Management System (AMS). This step captures verification outcomes, document details, address records, and risk classifications for compliance and operational purposes.",
+      "context": [
+        "Step 5: System Recording",
+        "Document Entry in AMS",
+        "Verified By (staff member name/ID)",
+        "Status (Verified / Pending / Failed)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_002",
+      "name": "Document Entry in AMS",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The sub-step within System Recording where identity document details are entered into the AMS, including document type, number, issue date, expiry date, verification method, and verification status.",
+      "context": [
+        "Document Entry in AMS",
+        "Document Type (Passport / Driving License)",
+        "Document Number",
+        "Issue Date",
+        "Expiry Date"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_003",
+      "name": "Address Entry in AMS",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The sub-step within System Recording where customer address information is entered into the AMS, including address lines, city, postcode, country, address type classification, and supporting document type.",
+      "context": [
+        "Address Entry:",
+        "Address Line 1",
+        "Address Type (Registered / Correspondence)",
+        "Document Type (Utility Bill / Council Tax / etc.)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_004",
+      "name": "Risk Assessment Entry in AMS",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The sub-step within System Recording where customer risk classification is recorded in the AMS, including risk level assignment, Enhanced Due Diligence flag status, and the next scheduled review date based on risk-based scheduling.",
+      "context": [
+        "Risk Assessment Entry:",
+        "Risk Level (Low / Medium / High)",
+        "EDD Flag (Yes / No)",
+        "Next Review Date (per risk-based schedule)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_id_001",
+      "name": "Passport Verification",
+      "aliases": [
+        "Passport"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "passport_verification",
+      "description": "An accepted form of identity document collected and verified during the account opening process. Passport details including document number, issue date, and expiry date are recorded in the AMS.",
+      "context": [
+        "Document Type (Passport / Driving License)",
+        "Expiry Date"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_id_002",
+      "name": "Driving Licence Check",
+      "aliases": [
+        "Driving License"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "driving_licence_check",
+      "description": "An accepted form of identity document collected and verified during the account opening process. Driving licence details including document number, issue date, and expiry date are recorded in the AMS.",
+      "context": [
+        "Document Type (Passport / Driving License)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_addr_001",
+      "name": "Address Verification",
+      "aliases": [],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "The process of recording and verifying customer address information in the AMS, including address lines, city, postcode, country, and address type classification (Registered or Correspondence).",
+      "context": [
+        "Address Entry:",
+        "Address Line 1",
+        "Address Type (Registered / Correspondence)",
+        "Address Verification Date"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_addr_002",
+      "name": "Proof of Address",
+      "aliases": [],
+      "entity_class": "ADDRESS",
+      "type": "proof_of_address",
+      "description": "Supporting documentation used to verify customer address, including utility bills, council tax documents, and other acceptable proof of address documents recorded in the AMS.",
+      "context": [
+        "Document Type (Utility Bill / Council Tax / etc.)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ra_001",
+      "name": "Customer Risk Classification",
+      "aliases": [
+        "Risk Assessment"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A mandatory compliance gate where customer risk level is assessed and recorded in the AMS as Low, Medium, or High, with Enhanced Due Diligence flagging and scheduled review dates based on risk-based assessment protocols.",
+      "context": [
+        "Risk Assessment Entry:",
+        "Risk Level (Low / Medium / High)",
+        "EDD Flag (Yes / No)",
+        "Next Review Date (per risk-based schedule)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ra_002",
+      "name": "Enhanced Due Diligence Flag",
+      "aliases": [
+        "EDD Flag"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A compliance control that flags customers requiring Enhanced Due Diligence based on risk assessment outcomes. The flag status (Yes/No) and reason are recorded in the AMS with a documented rationale.",
+      "context": [
+        "EDD Flag (Yes / No)",
+        "Reason (if EDD flagged)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ra_001",
+      "name": "Verification Method Recording",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "The recording of the method used to verify customer identity documents, including in-branch examination, online upload, or postal verification, along with the verification date and staff member identifier.",
+      "context": [
+        "Verification Method (In-branch examination / Online upload / Postal)",
+        "Verification Date",
+        "Verified By (staff member name/ID)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_001",
+      "name": "System Recording",
+      "properties": {
+        "step_number": 5,
+        "actor": "Staff member",
+        "channel": "system",
+        "input": [
+          "Customer ID",
+          "Document Type",
+          "Document Number",
+          "Issue Date",
+          "Expiry Date",
+          "Verification Method",
+          "Verification Date",
+          "Address details",
+          "Risk assessment data"
+        ],
+        "output": "Records entered in AMS",
+        "tools_or_systems": [
+          "AMS"
+        ],
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_002",
+      "name": "Document Entry in AMS",
+      "properties": {
+        "step_number": 5.1,
+        "actor": "Staff member",
+        "channel": "system",
+        "input": [
+          "Customer ID",
+          "Document Type",
+          "Document Number",
+          "Issue Date",
+          "Expiry Date",
+          "Verification Method",
+          "Verification Date",
+          "Verified By staff member name/ID",
+          "Verification Status"
+        ],
+        "output": "Document record in AMS",
+        "tools_or_systems": [
+          "AMS"
+        ],
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_003",
+      "name": "Address Entry in AMS",
+      "properties": {
+        "step_number": 5.2,
+        "actor": "Staff member",
+        "channel": "system",
+        "input": [
+          "Address Line 1",
+          "Address Line 2",
+          "City/Town",
+          "Postcode",
+          "Country",
+          "Address Type",
+          "Address Verification Date",
+          "Proof of Address Document Type"
+        ],
+        "output": "Address record in AMS",
+        "tools_or_systems": [
+          "AMS"
+        ],
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_004",
+      "name": "Risk Assessment Entry in AMS",
+      "properties": {
+        "step_number": 5.3,
+        "actor": "Staff member",
+        "channel": "system",
+        "input": [
+          "Risk Level",
+          "EDD Flag status",
+          "EDD Reason",
+          "Next Review Date"
+        ],
+        "output": "Risk assessment record in AMS",
+        "tools_or_systems": [
+          "AMS"
+        ],
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_id_001",
+      "name": "Passport Verification",
+      "properties": {
+        "accepted_types": [
+          "Passport"
+        ],
+        "collection_steps": [
+          "In-branch examination",
+          "Online upload",
+          "Postal"
+        ],
+        "verification_steps": [
+          "Document Type entry",
+          "Document Number entry",
+          "Issue Date entry",
+          "Expiry Date entry",
+          "Verification Method recording",
+          "Verification Date recording",
+          "Status assignment"
+        ],
+        "recording_obligation": "AMS system entry with Verified By staff member identification",
+        "expiry_check": "yes"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_id_002",
+      "name": "Driving Licence Check",
+      "properties": {
+        "accepted_types": [
+          "Driving License"
+        ],
+        "collection_steps": [
+          "In-branch examination",
+          "Online upload",
+          "Postal"
+        ],
+        "verification_steps": [
+          "Document Type entry",
+          "Document Number entry",
+          "Issue Date entry",
+          "Expiry Date entry",
+          "Verification Method recording",
+          "Verification Date recording",
+          "Status assignment"
+        ],
+        "recording_obligation": "AMS system entry with Verified By staff member identification",
+        "expiry_check": "yes"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_addr_001",
+      "name": "Address Verification",
+      "properties": {
+        "collection_steps": [
+          "Address Line 1 entry",
+          "Address Line 2 entry (if applicable)",
+          "City/Town entry",
+          "Postcode entry",
+          "Country entry"
+        ],
+        "verification_steps": [
+          "Address Type classification (Registered / Correspondence)",
+          "Address Verification Date recording",
+          "Proof of Address Document Type entry"
+        ],
+        "recording_system": "AMS"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_addr_002",
+      "name": "Proof of Address",
+      "properties": {
+        "acceptable_proof": [
+          "Utility Bill",
+          "Council Tax"
+        ],
+        "recording_system": "AMS",
+        "collection_steps": [
+          "Document Type entry in AMS"
+        ]
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ra_001",
+      "name": "Customer Risk Classification",
+      "properties": {
+        "checkpoint_name": "Risk Level Assessment",
+        "mandatory": "yes",
+        "evidence_required": [
+          "Customer ID",
+          "Document verification records",
+          "Address verification records"
+        ],
+        "performed_by": "Staff member",
+        "timing": "Step 5 of account opening process",
+        "system_used": "AMS",
+        "criteria": [
+          "Low",
+          "Medium",
+          "High"
+        ]
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ra_002",
+      "name": "Enhanced Due Diligence Flag",
+      "properties": {
+        "checkpoint_name": "EDD Flag Assessment",
+        "mandatory": "yes",
+        "evidence_required": [
+          "Risk Level determination",
+          "EDD Flag status (Yes / No)",
+          "Reason for EDD flag (if applicable)"
+        ],
+        "performed_by": "Staff member",
+        "timing": "Step 5 of account opening process",
+        "system_used": "AMS",
+        "criteria": [
+          "Yes",
+          "No"
+        ]
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ra_001",
+      "name": "Verification Method Recording",
+      "properties": {
+        "step_number": 5.4,
+        "actor": "Staff member",
+        "channel": "system",
+        "input": [
+          "Verification Method",
+          "Verification Date",
+          "Verified By staff member identification"
+        ],
+        "output": "Verification method record in AMS",
+        "tools_or_systems": [
+          "AMS"
+        ],
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_001",
+      "source_name": "System Recording",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_002",
+      "target_name": "Document Entry in AMS",
+      "rel_type": "followed_by",
+      "description": "System Recording is followed by Document Entry in AMS as part of the sequential process flow",
+      "properties": {
+        "sequence_order": 1,
+        "stage": "data_entry"
+      },
+      "context": "Step 5: System Recording → Document Entry in AMS",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_002",
+      "source_name": "Document Entry in AMS",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_003",
+      "target_name": "Address Entry in AMS",
+      "rel_type": "followed_by",
+      "description": "Document Entry in AMS is followed by Address Entry in AMS",
+      "properties": {
+        "sequence_order": 2,
+        "stage": "data_entry"
+      },
+      "context": "Document Entry in AMS → Address Entry in AMS",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_003",
+      "source_name": "Address Entry in AMS",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_004",
+      "target_name": "Risk Assessment Entry in AMS",
+      "rel_type": "followed_by",
+      "description": "Address Entry in AMS is followed by Risk Assessment Entry in AMS",
+      "properties": {
+        "sequence_order": 3,
+        "stage": "data_entry"
+      },
+      "context": "Address Entry in AMS → Risk Assessment Entry in AMS",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_002",
+      "source_name": "Document Entry in AMS",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_id_001",
+      "target_name": "Passport Verification",
+      "rel_type": "records",
+      "description": "Document Entry in AMS records Passport Verification details including document number, issue date, and expiry date",
+      "properties": {
+        "fields_captured": [
+          "Document Type",
+          "Document Number",
+          "Issue Date",
+          "Expiry Date",
+          "Verification Method",
+          "Verification Date",
+          "Verified By",
+          "Status"
+        ]
+      },
+      "context": "Document Type (Passport / Driving License), Document Number, Issue Date, Expiry Date, Verification Method, Verification Date, Verified By, Status (Verified / Pending / Failed)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_002",
+      "source_name": "Document Entry in AMS",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_id_002",
+      "target_name": "Driving Licence Check",
+      "rel_type": "records",
+      "description": "Document Entry in AMS records Driving Licence Check details including document number, issue date, and expiry date",
+      "properties": {
+        "fields_captured": [
+          "Document Type",
+          "Document Number",
+          "Issue Date",
+          "Expiry Date",
+          "Verification Method",
+          "Verification Date",
+          "Verified By",
+          "Status"
+        ]
+      },
+      "context": "Document Type (Passport / Driving License), Document Number, Issue Date, Expiry Date, Verification Method, Verification Date, Verified By, Status (Verified / Pending / Failed)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_003",
+      "source_name": "Address Entry in AMS",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_addr_001",
+      "target_name": "Address Verification",
+      "rel_type": "records",
+      "description": "Address Entry in AMS records Address Verification details including address lines, city, postcode, country, and verification date",
+      "properties": {
+        "fields_captured": [
+          "Address Line 1",
+          "Address Line 2",
+          "City/Town",
+          "Postcode",
+          "Country",
+          "Address Type",
+          "Address Verification Date",
+          "Document Type"
+        ]
+      },
+      "context": "Address Line 1, Address Line 2 (if applicable), City/Town, Postcode, Country, Address Type (Registered / Correspondence), Address Verification Date, Document Type (Utility Bill / Council Tax / etc.)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_003",
+      "source_name": "Address Entry in AMS",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_addr_002",
+      "target_name": "Proof of Address",
+      "rel_type": "records",
+      "description": "Address Entry in AMS records Proof of Address documentation type and verification details",
+      "properties": {
+        "document_types": [
+          "Utility Bill",
+          "Council Tax"
+        ],
+        "fields_captured": [
+          "Document Type",
+          "Address Verification Date"
+        ]
+      },
+      "context": "Document Type (Utility Bill / Council Tax / etc.)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_004",
+      "source_name": "Risk Assessment Entry in AMS",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ra_001",
+      "target_name": "Customer Risk Classification",
+      "rel_type": "records",
+      "description": "Risk Assessment Entry in AMS records Customer Risk Classification with risk level assignment",
+      "properties": {
+        "risk_levels": [
+          "Low",
+          "Medium",
+          "High"
+        ],
+        "fields_captured": [
+          "Risk Level",
+          "Next Review Date"
+        ]
+      },
+      "context": "Risk Level (Low / Medium / High), Next Review Date (per risk-based schedule)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_004",
+      "source_name": "Risk Assessment Entry in AMS",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ra_002",
+      "target_name": "Enhanced Due Diligence Flag",
+      "rel_type": "records",
+      "description": "Risk Assessment Entry in AMS records Enhanced Due Diligence Flag status and reason",
+      "properties": {
+        "edd_flag_values": [
+          "Yes",
+          "No"
+        ],
+        "fields_captured": [
+          "EDD Flag",
+          "Reason"
+        ]
+      },
+      "context": "EDD Flag (Yes / No), Reason (if EDD flagged)",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_001",
+      "source_name": "System Recording",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_002",
+      "source_name": "Document Entry in AMS",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_003",
+      "source_name": "Address Entry in AMS",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ps_004",
+      "source_name": "Risk Assessment Entry in AMS",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_id_001",
+      "source_name": "Passport Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_id_002",
+      "source_name": "Driving Licence Check",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_addr_001",
+      "source_name": "Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_addr_002",
+      "source_name": "Proof of Address",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ra_001",
+      "source_name": "Customer Risk Classification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ra_002",
+      "source_name": "Enhanced Due Diligence Flag",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011_ra_001",
+      "source_name": "Verification Method Recording",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_011",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

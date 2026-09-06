@@ -1,0 +1,1623 @@
+{
+  "chunk_seq": 46,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "## Escalation Triggers  \n### Escalate to Manager If:\n- Customer disputes address change\n- Multiple address changes in short period\n- Address is in high-risk country\n- Proof of address cannot be obtained (timeout >30 days)\n- AML screening produces match (to Compliance Head)\n- Joint account holders dispute change",
+  "name": "Chunk 46/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_045",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_047",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Address Change Process",
+      "aliases": [
+        "Address Update Procedure"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "An operational workflow governing customer address changes, including verification, dispute handling, and escalation to management when specific risk triggers are identified. The process includes AML screening integration and special handling for joint account holders.",
+      "context": [
+        "Customer disputes address change",
+        "Multiple address changes in short period",
+        "Address is in high-risk country",
+        "Proof of address cannot be obtained (timeout >30 days)"
+      ]
+    },
+    {
+      "id": "ps_001",
+      "name": "Address Dispute Resolution",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "A discrete step triggered when a customer disputes an address change, requiring escalation to management for investigation and resolution.",
+      "context": [
+        "Customer disputes address change"
+      ]
+    },
+    {
+      "id": "ps_002",
+      "name": "Multiple Address Changes Review",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "A verification step that flags and escalates to management when multiple address changes occur within a short timeframe, indicating potential account compromise or fraud.",
+      "context": [
+        "Multiple address changes in short period"
+      ]
+    },
+    {
+      "id": "ps_003",
+      "name": "High-Risk Country Address Check",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "A compliance check that identifies when a customer address is located in a high-risk country and escalates the change to management for approval.",
+      "context": [
+        "Address is in high-risk country"
+      ]
+    },
+    {
+      "id": "ps_004",
+      "name": "Proof of Address Collection",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "A step requiring collection of proof of address documentation from the customer, with a 30-day timeout threshold. Failure to obtain proof within this period triggers escalation to management.",
+      "context": [
+        "Proof of address cannot be obtained (timeout >30 days)"
+      ]
+    },
+    {
+      "id": "ps_005",
+      "name": "AML Screening Execution",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "An automated or manual AML screening step performed on address changes that produces matches against sanctions or PEP lists, requiring immediate escalation to the Compliance Head.",
+      "context": [
+        "AML screening produces match (to Compliance Head)"
+      ]
+    },
+    {
+      "id": "ps_006",
+      "name": "Joint Account Holder Dispute Resolution",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "A step addressing disputes between joint account holders regarding an address change, requiring escalation to management for mediation and resolution.",
+      "context": [
+        "Joint account holders dispute change"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Branch Manager",
+      "aliases": [
+        "Manager"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "branch_manager",
+      "description": "The manager responsible for reviewing and approving escalated address change cases, including disputes, high-risk addresses, and multiple changes within short periods.",
+      "context": [
+        "Escalate to Manager If:",
+        "Customer disputes address change",
+        "Multiple address changes in short period"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Compliance Head",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "The compliance officer responsible for reviewing and approving address changes when AML screening produces a match against sanctions or PEP lists.",
+      "context": [
+        "AML screening produces match (to Compliance Head)"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Address Change Dispute Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A decision gate determining whether a customer's dispute over an address change is valid, with escalation to manager as the path when a dispute is raised.",
+      "context": [
+        "Customer disputes address change"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Multiple Changes Frequency Check",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "A decision gate that checks whether multiple address changes have occurred within a short period, triggering escalation to manager if the threshold is exceeded.",
+      "context": [
+        "Multiple address changes in short period"
+      ]
+    },
+    {
+      "id": "dp_003",
+      "name": "High-Risk Country Address Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "A decision gate that identifies whether an address is located in a high-risk country, triggering escalation to manager for approval if the condition is met.",
+      "context": [
+        "Address is in high-risk country"
+      ]
+    },
+    {
+      "id": "dp_004",
+      "name": "Proof of Address Timeout Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "timeout_check",
+      "description": "A decision gate that checks whether proof of address has been obtained within 30 days, escalating to manager if the timeout is exceeded without documentation.",
+      "context": [
+        "Proof of address cannot be obtained (timeout >30 days)"
+      ]
+    },
+    {
+      "id": "dp_005",
+      "name": "AML Screening Match Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "A decision gate that determines whether AML screening has produced a match against sanctions or PEP lists, escalating to Compliance Head if a match is identified.",
+      "context": [
+        "AML screening produces match (to Compliance Head)"
+      ]
+    },
+    {
+      "id": "dp_006",
+      "name": "Joint Account Holder Dispute Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A decision gate determining whether joint account holders are in dispute over an address change, triggering escalation to manager for resolution if a dispute exists.",
+      "context": [
+        "Joint account holders dispute change"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "AML Screening Compliance Checkpoint",
+      "aliases": [],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "A mandatory regulatory gate verifying that AML screening has been completed on address changes, with results recorded and escalation triggered if matches are identified.",
+      "context": [
+        "AML screening produces match (to Compliance Head)"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Proof of Address",
+      "aliases": [],
+      "entity_class": "ADDRESS",
+      "type": "proof_of_address",
+      "description": "Documentation required to verify a customer's address change, with a 30-day collection timeout. Failure to obtain proof triggers escalation to management.",
+      "context": [
+        "Proof of address cannot be obtained (timeout >30 days)"
+      ]
+    },
+    {
+      "id": "addr_002",
+      "name": "High-Risk Country Address",
+      "aliases": [],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "A customer address located in a high-risk country, requiring management approval and escalation during the address change process.",
+      "context": [
+        "Address is in high-risk country"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "Sanctions and PEP Screening",
+      "aliases": [
+        "AML Screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "An AML screening process executed on address changes to identify matches against sanctions lists and PEP (Politically Exposed Person) databases, with escalation to Compliance Head if matches are found.",
+      "context": [
+        "AML screening produces match (to Compliance Head)"
+      ]
+    },
+    {
+      "id": "ja_001",
+      "name": "Joint Account Arrangement",
+      "aliases": [],
+      "entity_class": "JOINT_ACCOUNT",
+      "type": "joint_and_several",
+      "description": "An account held by multiple customers where disputes over address changes require special handling and escalation to management for resolution between joint holders.",
+      "context": [
+        "Joint account holders dispute change"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+    "ps_001": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_001",
+    "ps_002": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_002",
+    "ps_003": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_003",
+    "ps_004": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_004",
+    "ps_005": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_005",
+    "ps_006": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_006",
+    "ra_001": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_001",
+    "ra_002": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_002",
+    "dp_001": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_001",
+    "dp_002": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_002",
+    "dp_003": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_003",
+    "dp_004": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_004",
+    "dp_005": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_005",
+    "dp_006": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_006",
+    "cc_001": "01a07400-ba86-72f1-8b22-d07b32649491_046_cc_001",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_046_addr_001",
+    "addr_002": "01a07400-ba86-72f1-8b22-d07b32649491_046_addr_002",
+    "aml_001": "01a07400-ba86-72f1-8b22-d07b32649491_046_aml_001",
+    "ja_001": "01a07400-ba86-72f1-8b22-d07b32649491_046_ja_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "name": "Address Change Process",
+      "aliases": [
+        "Address Update Procedure"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "An operational workflow governing customer address changes, including verification, dispute handling, and escalation to management when specific risk triggers are identified. The process includes AML screening integration and special handling for joint account holders.",
+      "context": [
+        "Customer disputes address change",
+        "Multiple address changes in short period",
+        "Address is in high-risk country",
+        "Proof of address cannot be obtained (timeout >30 days)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_001",
+      "name": "Address Dispute Resolution",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "A discrete step triggered when a customer disputes an address change, requiring escalation to management for investigation and resolution.",
+      "context": [
+        "Customer disputes address change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_002",
+      "name": "Multiple Address Changes Review",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "A verification step that flags and escalates to management when multiple address changes occur within a short timeframe, indicating potential account compromise or fraud.",
+      "context": [
+        "Multiple address changes in short period"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_003",
+      "name": "High-Risk Country Address Check",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "A compliance check that identifies when a customer address is located in a high-risk country and escalates the change to management for approval.",
+      "context": [
+        "Address is in high-risk country"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_004",
+      "name": "Proof of Address Collection",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "A step requiring collection of proof of address documentation from the customer, with a 30-day timeout threshold. Failure to obtain proof within this period triggers escalation to management.",
+      "context": [
+        "Proof of address cannot be obtained (timeout >30 days)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_005",
+      "name": "AML Screening Execution",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "An automated or manual AML screening step performed on address changes that produces matches against sanctions or PEP lists, requiring immediate escalation to the Compliance Head.",
+      "context": [
+        "AML screening produces match (to Compliance Head)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_006",
+      "name": "Joint Account Holder Dispute Resolution",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "A step addressing disputes between joint account holders regarding an address change, requiring escalation to management for mediation and resolution.",
+      "context": [
+        "Joint account holders dispute change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_001",
+      "name": "Branch Manager",
+      "aliases": [
+        "Manager"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "branch_manager",
+      "description": "The manager responsible for reviewing and approving escalated address change cases, including disputes, high-risk addresses, and multiple changes within short periods.",
+      "context": [
+        "Escalate to Manager If:",
+        "Customer disputes address change",
+        "Multiple address changes in short period"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_002",
+      "name": "Compliance Head",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "The compliance officer responsible for reviewing and approving address changes when AML screening produces a match against sanctions or PEP lists.",
+      "context": [
+        "AML screening produces match (to Compliance Head)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_001",
+      "name": "Address Change Dispute Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A decision gate determining whether a customer's dispute over an address change is valid, with escalation to manager as the path when a dispute is raised.",
+      "context": [
+        "Customer disputes address change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_002",
+      "name": "Multiple Changes Frequency Check",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "A decision gate that checks whether multiple address changes have occurred within a short period, triggering escalation to manager if the threshold is exceeded.",
+      "context": [
+        "Multiple address changes in short period"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_003",
+      "name": "High-Risk Country Address Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "A decision gate that identifies whether an address is located in a high-risk country, triggering escalation to manager for approval if the condition is met.",
+      "context": [
+        "Address is in high-risk country"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_004",
+      "name": "Proof of Address Timeout Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "timeout_check",
+      "description": "A decision gate that checks whether proof of address has been obtained within 30 days, escalating to manager if the timeout is exceeded without documentation.",
+      "context": [
+        "Proof of address cannot be obtained (timeout >30 days)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_005",
+      "name": "AML Screening Match Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "A decision gate that determines whether AML screening has produced a match against sanctions or PEP lists, escalating to Compliance Head if a match is identified.",
+      "context": [
+        "AML screening produces match (to Compliance Head)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_006",
+      "name": "Joint Account Holder Dispute Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A decision gate determining whether joint account holders are in dispute over an address change, triggering escalation to manager for resolution if a dispute exists.",
+      "context": [
+        "Joint account holders dispute change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_cc_001",
+      "name": "AML Screening Compliance Checkpoint",
+      "aliases": [],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "A mandatory regulatory gate verifying that AML screening has been completed on address changes, with results recorded and escalation triggered if matches are identified.",
+      "context": [
+        "AML screening produces match (to Compliance Head)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_addr_001",
+      "name": "Proof of Address",
+      "aliases": [],
+      "entity_class": "ADDRESS",
+      "type": "proof_of_address",
+      "description": "Documentation required to verify a customer's address change, with a 30-day collection timeout. Failure to obtain proof triggers escalation to management.",
+      "context": [
+        "Proof of address cannot be obtained (timeout >30 days)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_addr_002",
+      "name": "High-Risk Country Address",
+      "aliases": [],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "A customer address located in a high-risk country, requiring management approval and escalation during the address change process.",
+      "context": [
+        "Address is in high-risk country"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_aml_001",
+      "name": "Sanctions and PEP Screening",
+      "aliases": [
+        "AML Screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "An AML screening process executed on address changes to identify matches against sanctions lists and PEP (Politically Exposed Person) databases, with escalation to Compliance Head if matches are found.",
+      "context": [
+        "AML screening produces match (to Compliance Head)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ja_001",
+      "name": "Joint Account Arrangement",
+      "aliases": [],
+      "entity_class": "JOINT_ACCOUNT",
+      "type": "joint_and_several",
+      "description": "An account held by multiple customers where disputes over address changes require special handling and escalation to management for resolution between joint holders.",
+      "context": [
+        "Joint account holders dispute change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "name": "Address Change Process",
+      "properties": {
+        "scope": "address changes for all account types",
+        "trigger": "customer initiates address change request",
+        "departments_involved": [
+          "branch operations",
+          "compliance"
+        ],
+        "owner": "Branch Manager"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_001",
+      "name": "Address Dispute Resolution",
+      "properties": {
+        "step_number": 1,
+        "actor": "Branch Manager",
+        "input": "customer dispute notification regarding address change",
+        "output": "dispute investigation record",
+        "channel": "branch",
+        "mandatory": "yes",
+        "failure_path": "escalate to Compliance Head"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_002",
+      "name": "Multiple Address Changes Review",
+      "properties": {
+        "step_number": 2,
+        "actor": "Branch Manager",
+        "input": "customer address change history",
+        "output": "frequency assessment record",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "escalate to Compliance Head for review"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_003",
+      "name": "High-Risk Country Address Check",
+      "properties": {
+        "step_number": 3,
+        "actor": "Branch Manager",
+        "input": "proposed address details",
+        "output": "country risk classification",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "escalate to Compliance Head"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_004",
+      "name": "Proof of Address Collection",
+      "properties": {
+        "step_number": 4,
+        "actor": "Branch Manager",
+        "input": "customer request for address change",
+        "output": "proof of address documentation",
+        "estimated_duration": "30 days",
+        "channel": "branch",
+        "mandatory": "yes",
+        "failure_path": "escalate to Compliance Head if timeout exceeded"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_005",
+      "name": "AML Screening Execution",
+      "properties": {
+        "step_number": 5,
+        "actor": "Compliance Head",
+        "input": "customer details with new address",
+        "output": "AML screening result",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "AML screening system"
+        ],
+        "failure_path": "escalate if match detected"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_006",
+      "name": "Joint Account Holder Dispute Resolution",
+      "properties": {
+        "step_number": 6,
+        "actor": "Branch Manager",
+        "input": "joint account holder dispute notification",
+        "output": "dispute resolution record",
+        "channel": "branch",
+        "mandatory": "yes",
+        "failure_path": "escalate to Compliance Head"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_001",
+      "name": "Branch Manager",
+      "properties": {
+        "role_type": "human",
+        "department": "branch operations",
+        "authority_level": "operational decision-making",
+        "channels": [
+          "branch",
+          "system"
+        ],
+        "response_time_sla": "same business day"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_002",
+      "name": "Compliance Head",
+      "properties": {
+        "role_type": "human",
+        "department": "compliance",
+        "authority_level": "regulatory and escalation authority",
+        "channels": [
+          "system",
+          "email"
+        ],
+        "response_time_sla": "2 business days"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_001",
+      "name": "Address Change Dispute Gate",
+      "properties": {
+        "decision_question": "Has the customer disputed the address change?",
+        "criteria": "customer dispute notification received",
+        "decision_maker": "Branch Manager",
+        "path_yes": "escalate to Compliance Head",
+        "path_no": "proceed to next verification step"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_002",
+      "name": "Multiple Changes Frequency Check",
+      "properties": {
+        "decision_question": "Have multiple address changes occurred in a short period?",
+        "criteria": "address change history analysis",
+        "decision_maker": "Branch Manager",
+        "path_yes": "escalate to Compliance Head",
+        "path_no": "proceed to high-risk country check"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_003",
+      "name": "High-Risk Country Address Gate",
+      "properties": {
+        "decision_question": "Is the new address in a high-risk country?",
+        "criteria": "country risk classification against compliance list",
+        "decision_maker": "Branch Manager",
+        "path_yes": "escalate to Compliance Head",
+        "path_no": "proceed to proof of address collection"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_004",
+      "name": "Proof of Address Timeout Gate",
+      "properties": {
+        "decision_question": "Has proof of address been obtained within 30 days?",
+        "criteria": "30-day timeout threshold",
+        "decision_maker": "Branch Manager",
+        "path_yes": "proceed to AML screening",
+        "path_no": "escalate to Compliance Head",
+        "time_limit": "30 days"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_005",
+      "name": "AML Screening Match Gate",
+      "properties": {
+        "decision_question": "Does AML screening produce a match?",
+        "criteria": "sanctions and PEP list screening results",
+        "decision_maker": "Compliance Head",
+        "path_yes": "escalate to Compliance Head for investigation",
+        "path_no": "approve address change"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_006",
+      "name": "Joint Account Holder Dispute Gate",
+      "properties": {
+        "decision_question": "Have joint account holders disputed the address change?",
+        "criteria": "dispute notification from joint account holder",
+        "decision_maker": "Branch Manager",
+        "path_yes": "escalate to Compliance Head",
+        "path_no": "proceed with address change"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_cc_001",
+      "name": "AML Screening Compliance Checkpoint",
+      "properties": {
+        "regulatory_basis": "AML regulations",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": "AML screening result record",
+        "performed_by": "Compliance Head",
+        "timing": "after proof of address collection",
+        "system_used": "AML screening system",
+        "failure_consequence": "escalation and investigation required"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_addr_001",
+      "name": "Proof of Address",
+      "properties": {
+        "collection_steps": "Branch Manager collects from customer",
+        "verification_steps": "validation against acceptable proof documents",
+        "recording_system": "customer account system",
+        "update_process": "address change request triggers collection and verification"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_addr_002",
+      "name": "High-Risk Country Address",
+      "properties": {
+        "collection_steps": "captured during address change request",
+        "verification_steps": "country risk classification check",
+        "recording_system": "compliance system",
+        "escalation_trigger": "address in high-risk country identified"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_aml_001",
+      "name": "Sanctions and PEP Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": "sanctions lists and PEP registers",
+        "hit_or_match_response": "escalate to Compliance Head",
+        "regulatory_basis": "AML regulations"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ja_001",
+      "name": "Joint Account Arrangement",
+      "properties": {
+        "consent_requirements": "both joint account holders must consent to address change",
+        "dual_kyc_or_aml_requirement": "yes",
+        "closure_consent": "dispute resolution required if holders disagree"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_001",
+      "target_name": "Address Dispute Resolution",
+      "rel_type": "contains",
+      "description": "Address Change Process includes Address Dispute Resolution as a process step",
+      "properties": {
+        "sequence_position": "included"
+      },
+      "context": "Escalate to Manager If: Customer disputes address change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_002",
+      "target_name": "Multiple Address Changes Review",
+      "rel_type": "contains",
+      "description": "Address Change Process includes Multiple Address Changes Review as a process step",
+      "properties": {
+        "sequence_position": "included"
+      },
+      "context": "Multiple address changes in short period",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_003",
+      "target_name": "High-Risk Country Address Check",
+      "rel_type": "contains",
+      "description": "Address Change Process includes High-Risk Country Address Check as a process step",
+      "properties": {
+        "sequence_position": "included"
+      },
+      "context": "Address is in high-risk country",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_004",
+      "target_name": "Proof of Address Collection",
+      "rel_type": "contains",
+      "description": "Address Change Process includes Proof of Address Collection as a process step",
+      "properties": {
+        "sequence_position": "included"
+      },
+      "context": "Proof of address cannot be obtained (timeout >30 days)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_005",
+      "target_name": "AML Screening Execution",
+      "rel_type": "contains",
+      "description": "Address Change Process includes AML Screening Execution as a process step",
+      "properties": {
+        "sequence_position": "included"
+      },
+      "context": "AML screening produces match (to Compliance Head)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_006",
+      "target_name": "Joint Account Holder Dispute Resolution",
+      "rel_type": "contains",
+      "description": "Address Change Process includes Joint Account Holder Dispute Resolution as a process step",
+      "properties": {
+        "sequence_position": "included"
+      },
+      "context": "Joint account holders dispute change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_001",
+      "target_name": "Address Change Dispute Gate",
+      "rel_type": "branches_at",
+      "description": "Address Change Process branches at Address Change Dispute Gate decision point",
+      "properties": {
+        "trigger_condition": "customer disputes address change"
+      },
+      "context": "Escalate to Manager If: Customer disputes address change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_002",
+      "target_name": "Multiple Changes Frequency Check",
+      "rel_type": "branches_at",
+      "description": "Address Change Process branches at Multiple Changes Frequency Check decision point",
+      "properties": {
+        "trigger_condition": "multiple address changes in short period"
+      },
+      "context": "Multiple address changes in short period",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_003",
+      "target_name": "High-Risk Country Address Gate",
+      "rel_type": "branches_at",
+      "description": "Address Change Process branches at High-Risk Country Address Gate decision point",
+      "properties": {
+        "trigger_condition": "address is in high-risk country"
+      },
+      "context": "Address is in high-risk country",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_004",
+      "target_name": "Proof of Address Timeout Gate",
+      "rel_type": "branches_at",
+      "description": "Address Change Process branches at Proof of Address Timeout Gate decision point",
+      "properties": {
+        "trigger_condition": "proof of address cannot be obtained within 30 days"
+      },
+      "context": "Proof of address cannot be obtained (timeout >30 days)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_005",
+      "target_name": "AML Screening Match Gate",
+      "rel_type": "branches_at",
+      "description": "Address Change Process branches at AML Screening Match Gate decision point",
+      "properties": {
+        "trigger_condition": "AML screening produces match"
+      },
+      "context": "AML screening produces match (to Compliance Head)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_006",
+      "target_name": "Joint Account Holder Dispute Gate",
+      "rel_type": "branches_at",
+      "description": "Address Change Process branches at Joint Account Holder Dispute Gate decision point",
+      "properties": {
+        "trigger_condition": "joint account holders dispute change"
+      },
+      "context": "Joint account holders dispute change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_cc_001",
+      "target_name": "AML Screening Compliance Checkpoint",
+      "rel_type": "mandated_to_include",
+      "description": "Address Change Process mandates inclusion of AML Screening Compliance Checkpoint",
+      "properties": {
+        "requirement_type": "compliance"
+      },
+      "context": "AML screening produces match (to Compliance Head)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_001",
+      "source_name": "Address Dispute Resolution",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_001",
+      "target_name": "Address Change Dispute Gate",
+      "rel_type": "leads_to",
+      "description": "Address Dispute Resolution process step leads to Address Change Dispute Gate decision point",
+      "properties": {
+        "outcome_determines": "escalation to manager"
+      },
+      "context": "Escalate to Manager If: Customer disputes address change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_001",
+      "source_name": "Address Dispute Resolution",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_001",
+      "target_name": "Branch Manager",
+      "rel_type": "escalated_to",
+      "description": "Address Dispute Resolution escalates to Branch Manager when customer disputes address change",
+      "properties": {
+        "escalation_trigger": "customer dispute"
+      },
+      "context": "Escalate to Manager If: Customer disputes address change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_002",
+      "source_name": "Multiple Address Changes Review",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_002",
+      "target_name": "Multiple Changes Frequency Check",
+      "rel_type": "leads_to",
+      "description": "Multiple Address Changes Review process step leads to Multiple Changes Frequency Check decision point",
+      "properties": {
+        "outcome_determines": "escalation based on frequency"
+      },
+      "context": "Multiple address changes in short period",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_002",
+      "source_name": "Multiple Address Changes Review",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_001",
+      "target_name": "Branch Manager",
+      "rel_type": "escalated_to",
+      "description": "Multiple Address Changes Review escalates to Branch Manager when multiple changes detected in short period",
+      "properties": {
+        "escalation_trigger": "multiple changes in short period"
+      },
+      "context": "Multiple address changes in short period",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_003",
+      "source_name": "High-Risk Country Address Check",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_addr_002",
+      "target_name": "High-Risk Country Address",
+      "rel_type": "verifies",
+      "description": "High-Risk Country Address Check process step verifies High-Risk Country Address",
+      "properties": {
+        "verification_type": "geographic risk assessment"
+      },
+      "context": "Address is in high-risk country",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_003",
+      "source_name": "High-Risk Country Address Check",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_003",
+      "target_name": "High-Risk Country Address Gate",
+      "rel_type": "leads_to",
+      "description": "High-Risk Country Address Check process step leads to High-Risk Country Address Gate decision point",
+      "properties": {
+        "outcome_determines": "escalation based on country risk"
+      },
+      "context": "Address is in high-risk country",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_003",
+      "source_name": "High-Risk Country Address Check",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_001",
+      "target_name": "Branch Manager",
+      "rel_type": "escalated_to",
+      "description": "High-Risk Country Address Check escalates to Branch Manager when address is in high-risk country",
+      "properties": {
+        "escalation_trigger": "high-risk country address"
+      },
+      "context": "Address is in high-risk country",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_004",
+      "source_name": "Proof of Address Collection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_addr_001",
+      "target_name": "Proof of Address",
+      "rel_type": "collects",
+      "description": "Proof of Address Collection process step collects Proof of Address documentation",
+      "properties": {
+        "collection_type": "supporting documentation"
+      },
+      "context": "Proof of address cannot be obtained (timeout >30 days)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_004",
+      "source_name": "Proof of Address Collection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_004",
+      "target_name": "Proof of Address Timeout Gate",
+      "rel_type": "leads_to",
+      "description": "Proof of Address Collection process step leads to Proof of Address Timeout Gate decision point",
+      "properties": {
+        "outcome_determines": "escalation if timeout exceeds 30 days",
+        "timeout_threshold_days": 30
+      },
+      "context": "Proof of address cannot be obtained (timeout >30 days)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_004",
+      "source_name": "Proof of Address Collection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_001",
+      "target_name": "Branch Manager",
+      "rel_type": "escalated_to",
+      "description": "Proof of Address Collection escalates to Branch Manager when proof cannot be obtained within timeout period",
+      "properties": {
+        "escalation_trigger": "proof of address timeout exceeds 30 days"
+      },
+      "context": "Proof of address cannot be obtained (timeout >30 days)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_005",
+      "source_name": "AML Screening Execution",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_aml_001",
+      "target_name": "Sanctions and PEP Screening",
+      "rel_type": "executes",
+      "description": "AML Screening Execution process step executes Sanctions and PEP Screening",
+      "properties": {
+        "screening_type": "sanctions and PEP"
+      },
+      "context": "AML screening produces match (to Compliance Head)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_005",
+      "source_name": "AML Screening Execution",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_005",
+      "target_name": "AML Screening Match Gate",
+      "rel_type": "leads_to",
+      "description": "AML Screening Execution process step leads to AML Screening Match Gate decision point",
+      "properties": {
+        "outcome_determines": "escalation if match found"
+      },
+      "context": "AML screening produces match (to Compliance Head)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_005",
+      "source_name": "AML Screening Execution",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_cc_001",
+      "target_name": "AML Screening Compliance Checkpoint",
+      "rel_type": "satisfies",
+      "description": "AML Screening Execution process step satisfies AML Screening Compliance Checkpoint requirement",
+      "properties": {
+        "checkpoint_satisfaction": "screening execution"
+      },
+      "context": "AML screening produces match (to Compliance Head)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_005",
+      "source_name": "AML Screening Execution",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_002",
+      "target_name": "Compliance Head",
+      "rel_type": "escalated_to",
+      "description": "AML Screening Execution escalates to Compliance Head when AML screening produces match",
+      "properties": {
+        "escalation_trigger": "AML screening match found"
+      },
+      "context": "AML screening produces match (to Compliance Head)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_006",
+      "source_name": "Joint Account Holder Dispute Resolution",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ja_001",
+      "target_name": "Joint Account Arrangement",
+      "rel_type": "verifies",
+      "description": "Joint Account Holder Dispute Resolution process step verifies Joint Account Arrangement",
+      "properties": {
+        "verification_type": "joint holder dispute"
+      },
+      "context": "Joint account holders dispute change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_006",
+      "source_name": "Joint Account Holder Dispute Resolution",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_006",
+      "target_name": "Joint Account Holder Dispute Gate",
+      "rel_type": "leads_to",
+      "description": "Joint Account Holder Dispute Resolution process step leads to Joint Account Holder Dispute Gate decision point",
+      "properties": {
+        "outcome_determines": "escalation based on dispute"
+      },
+      "context": "Joint account holders dispute change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_006",
+      "source_name": "Joint Account Holder Dispute Resolution",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_001",
+      "target_name": "Branch Manager",
+      "rel_type": "escalated_to",
+      "description": "Joint Account Holder Dispute Resolution escalates to Branch Manager when joint account holders dispute change",
+      "properties": {
+        "escalation_trigger": "joint account holder dispute"
+      },
+      "context": "Joint account holders dispute change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_001",
+      "source_name": "Address Change Dispute Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_001",
+      "target_name": "Branch Manager",
+      "rel_type": "routes_to",
+      "description": "Address Change Dispute Gate routes to Branch Manager for decision",
+      "properties": {
+        "routing_condition": "customer dispute confirmed"
+      },
+      "context": "Escalate to Manager If: Customer disputes address change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_002",
+      "source_name": "Multiple Changes Frequency Check",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_001",
+      "target_name": "Branch Manager",
+      "rel_type": "routes_to",
+      "description": "Multiple Changes Frequency Check routes to Branch Manager for decision",
+      "properties": {
+        "routing_condition": "multiple changes detected in short period"
+      },
+      "context": "Multiple address changes in short period",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_003",
+      "source_name": "High-Risk Country Address Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_001",
+      "target_name": "Branch Manager",
+      "rel_type": "routes_to",
+      "description": "High-Risk Country Address Gate routes to Branch Manager for decision",
+      "properties": {
+        "routing_condition": "address in high-risk country"
+      },
+      "context": "Address is in high-risk country",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_004",
+      "source_name": "Proof of Address Timeout Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_001",
+      "target_name": "Branch Manager",
+      "rel_type": "routes_to",
+      "description": "Proof of Address Timeout Gate routes to Branch Manager for decision",
+      "properties": {
+        "routing_condition": "proof of address timeout exceeds 30 days"
+      },
+      "context": "Proof of address cannot be obtained (timeout >30 days)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_005",
+      "source_name": "AML Screening Match Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_002",
+      "target_name": "Compliance Head",
+      "rel_type": "routes_to",
+      "description": "AML Screening Match Gate routes to Compliance Head for decision",
+      "properties": {
+        "routing_condition": "AML screening match found"
+      },
+      "context": "AML screening produces match (to Compliance Head)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_006",
+      "source_name": "Joint Account Holder Dispute Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_001",
+      "target_name": "Branch Manager",
+      "rel_type": "routes_to",
+      "description": "Joint Account Holder Dispute Gate routes to Branch Manager for decision",
+      "properties": {
+        "routing_condition": "joint account holder dispute confirmed"
+      },
+      "context": "Joint account holders dispute change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_cc_001",
+      "source_name": "AML Screening Compliance Checkpoint",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_005",
+      "target_name": "AML Screening Match Gate",
+      "rel_type": "gates",
+      "description": "AML Screening Compliance Checkpoint gates AML Screening Match Gate decision point",
+      "properties": {
+        "gate_condition": "AML screening must be completed and result evaluated"
+      },
+      "context": "AML screening produces match (to Compliance Head)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_001",
+      "source_name": "Address Dispute Resolution",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_002",
+      "source_name": "Multiple Address Changes Review",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_003",
+      "source_name": "High-Risk Country Address Check",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_004",
+      "source_name": "Proof of Address Collection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_005",
+      "source_name": "AML Screening Execution",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ps_006",
+      "source_name": "Joint Account Holder Dispute Resolution",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_001",
+      "source_name": "Branch Manager",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ra_002",
+      "source_name": "Compliance Head",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_001",
+      "source_name": "Address Change Dispute Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_002",
+      "source_name": "Multiple Changes Frequency Check",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_003",
+      "source_name": "High-Risk Country Address Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_004",
+      "source_name": "Proof of Address Timeout Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_005",
+      "source_name": "AML Screening Match Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_dp_006",
+      "source_name": "Joint Account Holder Dispute Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_cc_001",
+      "source_name": "AML Screening Compliance Checkpoint",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_addr_001",
+      "source_name": "Proof of Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_addr_002",
+      "source_name": "High-Risk Country Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_aml_001",
+      "source_name": "Sanctions and PEP Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_046_ja_001",
+      "source_name": "Joint Account Arrangement",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_046",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

@@ -1,0 +1,1593 @@
+{
+  "chunk_seq": 10,
+  "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+  "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+  "text": "### Operational Incidents/System Outages  \n**Duration: <1 hour**\n- Handler: IT Operations\n- Level: 1–2\n- Customer Impact: Minimal\n- Timeline: Resolve within 1 hour\n- Reporting: Log incident, no escalation if <1 hour  \n**Duration: 1–4 hours**\n- Handler: IT Operations + CTO\n- Level: 2–3\n- Customer Impact: Significant\n- Timeline: Resolve within 4 hours\n- Reporting: Escalate to CRO + COO after 2 hours\n- Communication: Update customers if >2 hours  \n**Duration: >4 hours**\n- Handler: CTO + CEO\n- Level: 4–5\n- Customer Impact: Critical\n- Timeline: Immediate response + hourly updates\n- Reporting: Executive committee meeting (if >4 hours)\n- Regulatory: May require FCA notification\n- Board: Update (if >8 hours)",
+  "name": "Chunk 10/22",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_009",
+  "next_chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_011",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Operational Incidents and System Outages Management",
+      "aliases": [
+        "System Outage Response",
+        "Incident Management"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "End-to-end procedure for managing operational incidents and system outages, with escalation tiers based on duration and customer impact. The process defines handler responsibilities, escalation triggers, communication requirements, and regulatory notification obligations across three severity levels.",
+      "context": [
+        "Operational Incidents/System Outages",
+        "Handler: IT Operations",
+        "Escalate to CRO + COO after 2 hours",
+        "May require FCA notification"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Incident Logging and Initial Assessment",
+      "aliases": [
+        "Log incident"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Initial step where operational incidents are logged and assessed for duration and customer impact. This step determines the severity tier and whether escalation is required.",
+      "context": [
+        "Log incident, no escalation if <1 hour"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Short Duration Incident Resolution",
+      "aliases": [
+        "<1 hour resolution"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Resolution pathway for incidents lasting less than 1 hour with minimal customer impact. Handled by IT Operations with no escalation required.",
+      "context": [
+        "Duration: <1 hour",
+        "Handler: IT Operations",
+        "Resolve within 1 hour"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Medium Duration Incident Resolution and Escalation",
+      "aliases": [
+        "1-4 hour resolution"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Resolution pathway for incidents lasting 1–4 hours with significant customer impact. Handled by IT Operations and CTO, with escalation to CRO and COO after 2 hours and customer communication if duration exceeds 2 hours.",
+      "context": [
+        "Duration: 1–4 hours",
+        "Handler: IT Operations + CTO",
+        "Escalate to CRO + COO after 2 hours",
+        "Communication: Update customers if >2 hours"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Long Duration Incident Resolution and Executive Escalation",
+      "aliases": [
+        ">4 hour resolution"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Resolution pathway for incidents lasting more than 4 hours with critical customer impact. Handled by CTO and CEO with immediate response, hourly updates, executive committee meeting, potential FCA notification, and board update if duration exceeds 8 hours.",
+      "context": [
+        "Duration: >4 hours",
+        "Handler: CTO + CEO",
+        "Timeline: Immediate response + hourly updates",
+        "May require FCA notification"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Incident Duration Classification Gate",
+      "aliases": [
+        "Duration threshold decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "escalate_or_resolve",
+      "description": "Branching decision point that classifies incidents into three severity tiers based on duration: <1 hour (minimal impact), 1–4 hours (significant impact), or >4 hours (critical impact). Each path triggers different handler assignments, escalation timelines, and communication protocols.",
+      "context": [
+        "Duration: <1 hour",
+        "Duration: 1–4 hours",
+        "Duration: >4 hours"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Two-Hour Escalation Trigger",
+      "aliases": [
+        "2-hour escalation gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "escalate_or_resolve",
+      "description": "Decision point within the 1–4 hour incident pathway that triggers escalation to CRO and COO if the incident has not been resolved after 2 hours, and mandates customer communication.",
+      "context": [
+        "Escalate to CRO + COO after 2 hours",
+        "Communication: Update customers if >2 hours"
+      ]
+    },
+    {
+      "id": "dp_003",
+      "name": "Eight-Hour Board Notification Trigger",
+      "aliases": [
+        "8-hour board gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "escalate_or_resolve",
+      "description": "Decision point within the >4 hour incident pathway that mandates board update notification if the incident duration exceeds 8 hours.",
+      "context": [
+        "Board: Update (if >8 hours)"
+      ]
+    },
+    {
+      "id": "elev_001",
+      "name": "Level 1–2 — IT Operations Short Duration Response",
+      "aliases": [
+        "Level 1-2"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "frontline",
+      "description": "Frontline escalation tier for incidents lasting less than 1 hour with minimal customer impact. Handled by IT Operations with no escalation required and resolution target of 1 hour.",
+      "context": [
+        "Handler: IT Operations",
+        "Level: 1–2",
+        "Customer Impact: Minimal",
+        "Timeline: Resolve within 1 hour"
+      ]
+    },
+    {
+      "id": "elev_002",
+      "name": "Level 2–3 — IT Operations and CTO Medium Duration Response",
+      "aliases": [
+        "Level 2-3"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "supervisor",
+      "description": "Supervisor-level escalation tier for incidents lasting 1–4 hours with significant customer impact. Handled by IT Operations and CTO, with escalation to CRO and COO after 2 hours and resolution target of 4 hours.",
+      "context": [
+        "Handler: IT Operations + CTO",
+        "Level: 2–3",
+        "Customer Impact: Significant",
+        "Timeline: Resolve within 4 hours"
+      ]
+    },
+    {
+      "id": "elev_003",
+      "name": "Level 4–5 — Executive Long Duration Response",
+      "aliases": [
+        "Level 4-5"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "executive",
+      "description": "Executive-level escalation tier for incidents lasting more than 4 hours with critical customer impact. Handled by CTO and CEO with immediate response, hourly updates, executive committee meeting, potential FCA notification, and board update if duration exceeds 8 hours.",
+      "context": [
+        "Handler: CTO + CEO",
+        "Level: 4–5",
+        "Customer Impact: Critical",
+        "Timeline: Immediate response + hourly updates"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "IT Operations",
+      "aliases": [
+        "IT Ops"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations team responsible for handling and resolving operational incidents and system outages. Primary handler for incidents lasting less than 1 hour and co-handler for incidents lasting 1–4 hours.",
+      "context": [
+        "Handler: IT Operations",
+        "Handler: IT Operations + CTO"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Chief Technology Officer",
+      "aliases": [
+        "CTO"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "Senior technology executive responsible for co-handling medium-duration incidents (1–4 hours) and leading response to long-duration incidents (>4 hours). Involved in escalation decisions and executive coordination.",
+      "context": [
+        "Handler: IT Operations + CTO",
+        "Handler: CTO + CEO"
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Chief Executive Officer",
+      "aliases": [
+        "CEO"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "executive_committee",
+      "description": "Executive leader responsible for co-handling and directing response to long-duration incidents (>4 hours) with critical customer impact. Involved in immediate response coordination and executive committee meetings.",
+      "context": [
+        "Handler: CTO + CEO"
+      ]
+    },
+    {
+      "id": "ra_004",
+      "name": "Chief Risk Officer",
+      "aliases": [
+        "CRO"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "Risk management executive who receives escalation notification after 2 hours for medium-duration incidents (1–4 hours) and is involved in risk assessment and mitigation decisions.",
+      "context": [
+        "Escalate to CRO + COO after 2 hours"
+      ]
+    },
+    {
+      "id": "ra_005",
+      "name": "Chief Operating Officer",
+      "aliases": [
+        "COO"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "Operations executive who receives escalation notification after 2 hours for medium-duration incidents (1–4 hours) and is involved in operational response coordination.",
+      "context": [
+        "Escalate to CRO + COO after 2 hours"
+      ]
+    },
+    {
+      "id": "ra_006",
+      "name": "Executive Committee",
+      "aliases": [
+        "Exec Committee"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "executive_committee",
+      "description": "Senior leadership body convened for incident review and decision-making when long-duration incidents (>4 hours) occur. Responsible for strategic response and regulatory coordination.",
+      "context": [
+        "Reporting: Executive committee meeting (if >4 hours)"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Regulatory Notification Compliance Gate",
+      "aliases": [
+        "FCA notification gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "regulatory_reporting",
+      "description": "Mandatory compliance checkpoint requiring assessment and potential notification to the Financial Conduct Authority (FCA) for long-duration incidents (>4 hours) with critical customer impact. Determines whether regulatory reporting obligation is triggered.",
+      "context": [
+        "Regulatory: May require FCA notification"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_proc_001",
+    "pstep_001": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_001",
+    "pstep_002": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_002",
+    "pstep_003": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_003",
+    "pstep_004": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_004",
+    "dp_001": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_001",
+    "dp_002": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_002",
+    "dp_003": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_003",
+    "elev_001": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_001",
+    "elev_002": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_002",
+    "elev_003": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_003",
+    "ra_001": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_001",
+    "ra_002": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_002",
+    "ra_003": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_003",
+    "ra_004": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_004",
+    "ra_005": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_005",
+    "ra_006": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_006",
+    "cc_001": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_cc_001"
+  },
+  "entities": [
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_proc_001",
+      "name": "Operational Incidents and System Outages Management",
+      "aliases": [
+        "System Outage Response",
+        "Incident Management"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "End-to-end procedure for managing operational incidents and system outages, with escalation tiers based on duration and customer impact. The process defines handler responsibilities, escalation triggers, communication requirements, and regulatory notification obligations across three severity levels.",
+      "context": [
+        "Operational Incidents/System Outages",
+        "Handler: IT Operations",
+        "Escalate to CRO + COO after 2 hours",
+        "May require FCA notification"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_001",
+      "name": "Incident Logging and Initial Assessment",
+      "aliases": [
+        "Log incident"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Initial step where operational incidents are logged and assessed for duration and customer impact. This step determines the severity tier and whether escalation is required.",
+      "context": [
+        "Log incident, no escalation if <1 hour"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_002",
+      "name": "Short Duration Incident Resolution",
+      "aliases": [
+        "<1 hour resolution"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Resolution pathway for incidents lasting less than 1 hour with minimal customer impact. Handled by IT Operations with no escalation required.",
+      "context": [
+        "Duration: <1 hour",
+        "Handler: IT Operations",
+        "Resolve within 1 hour"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_003",
+      "name": "Medium Duration Incident Resolution and Escalation",
+      "aliases": [
+        "1-4 hour resolution"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Resolution pathway for incidents lasting 1–4 hours with significant customer impact. Handled by IT Operations and CTO, with escalation to CRO and COO after 2 hours and customer communication if duration exceeds 2 hours.",
+      "context": [
+        "Duration: 1–4 hours",
+        "Handler: IT Operations + CTO",
+        "Escalate to CRO + COO after 2 hours",
+        "Communication: Update customers if >2 hours"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_004",
+      "name": "Long Duration Incident Resolution and Executive Escalation",
+      "aliases": [
+        ">4 hour resolution"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Resolution pathway for incidents lasting more than 4 hours with critical customer impact. Handled by CTO and CEO with immediate response, hourly updates, executive committee meeting, potential FCA notification, and board update if duration exceeds 8 hours.",
+      "context": [
+        "Duration: >4 hours",
+        "Handler: CTO + CEO",
+        "Timeline: Immediate response + hourly updates",
+        "May require FCA notification"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_001",
+      "name": "Incident Duration Classification Gate",
+      "aliases": [
+        "Duration threshold decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "escalate_or_resolve",
+      "description": "Branching decision point that classifies incidents into three severity tiers based on duration: <1 hour (minimal impact), 1–4 hours (significant impact), or >4 hours (critical impact). Each path triggers different handler assignments, escalation timelines, and communication protocols.",
+      "context": [
+        "Duration: <1 hour",
+        "Duration: 1–4 hours",
+        "Duration: >4 hours"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_002",
+      "name": "Two-Hour Escalation Trigger",
+      "aliases": [
+        "2-hour escalation gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "escalate_or_resolve",
+      "description": "Decision point within the 1–4 hour incident pathway that triggers escalation to CRO and COO if the incident has not been resolved after 2 hours, and mandates customer communication.",
+      "context": [
+        "Escalate to CRO + COO after 2 hours",
+        "Communication: Update customers if >2 hours"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_003",
+      "name": "Eight-Hour Board Notification Trigger",
+      "aliases": [
+        "8-hour board gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "escalate_or_resolve",
+      "description": "Decision point within the >4 hour incident pathway that mandates board update notification if the incident duration exceeds 8 hours.",
+      "context": [
+        "Board: Update (if >8 hours)"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_001",
+      "name": "Level 1–2 — IT Operations Short Duration Response",
+      "aliases": [
+        "Level 1-2"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "frontline",
+      "description": "Frontline escalation tier for incidents lasting less than 1 hour with minimal customer impact. Handled by IT Operations with no escalation required and resolution target of 1 hour.",
+      "context": [
+        "Handler: IT Operations",
+        "Level: 1–2",
+        "Customer Impact: Minimal",
+        "Timeline: Resolve within 1 hour"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_002",
+      "name": "Level 2–3 — IT Operations and CTO Medium Duration Response",
+      "aliases": [
+        "Level 2-3"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "supervisor",
+      "description": "Supervisor-level escalation tier for incidents lasting 1–4 hours with significant customer impact. Handled by IT Operations and CTO, with escalation to CRO and COO after 2 hours and resolution target of 4 hours.",
+      "context": [
+        "Handler: IT Operations + CTO",
+        "Level: 2–3",
+        "Customer Impact: Significant",
+        "Timeline: Resolve within 4 hours"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_003",
+      "name": "Level 4–5 — Executive Long Duration Response",
+      "aliases": [
+        "Level 4-5"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "executive",
+      "description": "Executive-level escalation tier for incidents lasting more than 4 hours with critical customer impact. Handled by CTO and CEO with immediate response, hourly updates, executive committee meeting, potential FCA notification, and board update if duration exceeds 8 hours.",
+      "context": [
+        "Handler: CTO + CEO",
+        "Level: 4–5",
+        "Customer Impact: Critical",
+        "Timeline: Immediate response + hourly updates"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_001",
+      "name": "IT Operations",
+      "aliases": [
+        "IT Ops"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations team responsible for handling and resolving operational incidents and system outages. Primary handler for incidents lasting less than 1 hour and co-handler for incidents lasting 1–4 hours.",
+      "context": [
+        "Handler: IT Operations",
+        "Handler: IT Operations + CTO"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_002",
+      "name": "Chief Technology Officer",
+      "aliases": [
+        "CTO"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "Senior technology executive responsible for co-handling medium-duration incidents (1–4 hours) and leading response to long-duration incidents (>4 hours). Involved in escalation decisions and executive coordination.",
+      "context": [
+        "Handler: IT Operations + CTO",
+        "Handler: CTO + CEO"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_003",
+      "name": "Chief Executive Officer",
+      "aliases": [
+        "CEO"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "executive_committee",
+      "description": "Executive leader responsible for co-handling and directing response to long-duration incidents (>4 hours) with critical customer impact. Involved in immediate response coordination and executive committee meetings.",
+      "context": [
+        "Handler: CTO + CEO"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_004",
+      "name": "Chief Risk Officer",
+      "aliases": [
+        "CRO"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "Risk management executive who receives escalation notification after 2 hours for medium-duration incidents (1–4 hours) and is involved in risk assessment and mitigation decisions.",
+      "context": [
+        "Escalate to CRO + COO after 2 hours"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_005",
+      "name": "Chief Operating Officer",
+      "aliases": [
+        "COO"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "Operations executive who receives escalation notification after 2 hours for medium-duration incidents (1–4 hours) and is involved in operational response coordination.",
+      "context": [
+        "Escalate to CRO + COO after 2 hours"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_006",
+      "name": "Executive Committee",
+      "aliases": [
+        "Exec Committee"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "executive_committee",
+      "description": "Senior leadership body convened for incident review and decision-making when long-duration incidents (>4 hours) occur. Responsible for strategic response and regulatory coordination.",
+      "context": [
+        "Reporting: Executive committee meeting (if >4 hours)"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_cc_001",
+      "name": "Regulatory Notification Compliance Gate",
+      "aliases": [
+        "FCA notification gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "regulatory_reporting",
+      "description": "Mandatory compliance checkpoint requiring assessment and potential notification to the Financial Conduct Authority (FCA) for long-duration incidents (>4 hours) with critical customer impact. Determines whether regulatory reporting obligation is triggered.",
+      "context": [
+        "Regulatory: May require FCA notification"
+      ],
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_proc_001",
+      "name": "Operational Incidents and System Outages Management",
+      "properties": {
+        "purpose": "Manage and resolve operational incidents and system outages with escalation based on duration and impact",
+        "scope": "All operational incidents and system outages affecting banking services",
+        "owner": "IT Operations",
+        "departments_involved": [
+          "IT Operations",
+          "Chief Technology Officer",
+          "Chief Risk Officer",
+          "Chief Operating Officer",
+          "Executive Committee"
+        ],
+        "regulatory_references": [
+          "FCA notification requirements"
+        ],
+        "trigger": "Detection of operational incident or system outage",
+        "outcome_success": "Incident resolved within defined timeline with appropriate escalation and customer communication",
+        "outcome_failure": "Unresolved incident, missed escalation deadlines, or regulatory non-compliance"
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_001",
+      "name": "Incident Logging and Initial Assessment",
+      "properties": {
+        "step_number": 1,
+        "actor": "IT Operations",
+        "input": "Incident detection and initial report",
+        "output": "Logged incident with duration classification",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Incident logging system"
+        ],
+        "failure_path": "Incident not tracked; escalation delays"
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_002",
+      "name": "Short Duration Incident Resolution",
+      "properties": {
+        "step_number": 2,
+        "actor": "IT Operations",
+        "input": "Logged incident classified as <1 hour duration",
+        "output": "Resolved incident",
+        "estimated_duration": "1 hour",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Incident management system"
+        ],
+        "failure_path": "Escalate to Level 2–3 if resolution exceeds 1 hour"
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_003",
+      "name": "Medium Duration Incident Resolution and Escalation",
+      "properties": {
+        "step_number": 3,
+        "actor": "IT Operations, Chief Technology Officer",
+        "input": "Incident classified as 1–4 hours duration",
+        "output": "Escalation notification to CRO and COO; customer communication if >2 hours",
+        "estimated_duration": "4 hours",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Incident management system",
+          "Communication platform"
+        ],
+        "failure_path": "Escalate to Level 4–5 if resolution exceeds 4 hours"
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_004",
+      "name": "Long Duration Incident Resolution and Executive Escalation",
+      "properties": {
+        "step_number": 4,
+        "actor": "Chief Technology Officer, Chief Executive Officer, Executive Committee",
+        "input": "Incident classified as >4 hours duration",
+        "output": "Executive committee meeting convened; hourly updates; regulatory notification if required; board update if >8 hours",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Incident management system",
+          "Communication platform"
+        ],
+        "failure_path": "Regulatory breach; reputational damage; customer impact escalation"
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_001",
+      "name": "Incident Duration Classification Gate",
+      "properties": {
+        "decision_question": "What is the estimated duration of the incident?",
+        "criteria": "Incident duration threshold: <1 hour, 1–4 hours, or >4 hours",
+        "decision_maker": "IT Operations",
+        "path_yes": "Route to appropriate escalation level based on duration",
+        "path_no": "Re-assess incident duration",
+        "override_possible": "yes"
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_002",
+      "name": "Two-Hour Escalation Trigger",
+      "properties": {
+        "decision_question": "Has the incident duration exceeded 2 hours?",
+        "criteria": "Incident active time ≥ 2 hours",
+        "decision_maker": "IT Operations",
+        "path_yes": "Escalate to CRO and COO; initiate customer communication",
+        "path_no": "Continue resolution efforts; monitor for escalation trigger",
+        "override_possible": "no",
+        "time_limit": "2 hours from incident start"
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_003",
+      "name": "Eight-Hour Board Notification Trigger",
+      "properties": {
+        "decision_question": "Has the incident duration exceeded 8 hours?",
+        "criteria": "Incident active time ≥ 8 hours",
+        "decision_maker": "Chief Executive Officer",
+        "path_yes": "Notify Board of Directors; escalate regulatory notification",
+        "path_no": "Continue executive escalation and hourly updates",
+        "override_possible": "no",
+        "time_limit": "8 hours from incident start"
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_001",
+      "name": "Level 1–2 — IT Operations Short Duration Response",
+      "properties": {
+        "level_number": 1,
+        "authority": "IT Operations",
+        "response_time": "1 hour",
+        "examples": [
+          "System outages <1 hour",
+          "Minor service degradation"
+        ],
+        "escalation_trigger": "Incident unresolved after 1 hour",
+        "escalates_to": "Level 2–3 — IT Operations and CTO Medium Duration Response"
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_002",
+      "name": "Level 2–3 — IT Operations and CTO Medium Duration Response",
+      "properties": {
+        "level_number": 2,
+        "authority": "Chief Technology Officer, IT Operations",
+        "response_time": "4 hours",
+        "examples": [
+          "System outages 1–4 hours",
+          "Significant customer impact"
+        ],
+        "escalation_trigger": "Incident unresolved after 2 hours; escalate to CRO and COO",
+        "escalates_to": "Level 4–5 — Executive Long Duration Response"
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_003",
+      "name": "Level 4–5 — Executive Long Duration Response",
+      "properties": {
+        "level_number": 4,
+        "authority": "Chief Executive Officer, Chief Technology Officer, Executive Committee",
+        "response_time": "Immediate with hourly updates",
+        "examples": [
+          "System outages >4 hours",
+          "Critical customer impact",
+          "Regulatory notification required"
+        ],
+        "escalation_trigger": "Incident unresolved after 4 hours; Board notification if >8 hours",
+        "escalates_to": "Board of Directors (if >8 hours)"
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_001",
+      "name": "IT Operations",
+      "properties": {
+        "role_type": "human",
+        "department": "Information Technology",
+        "authority_level": "Operational incident detection and initial resolution",
+        "response_time_sla": "1 hour for short duration incidents",
+        "channels": [
+          "system",
+          "email"
+        ]
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_002",
+      "name": "Chief Technology Officer",
+      "properties": {
+        "role_type": "human",
+        "department": "Technology",
+        "authority_level": "Medium and long duration incident escalation and resolution",
+        "response_time_sla": "4 hours for medium duration; immediate for long duration",
+        "channels": [
+          "system",
+          "email",
+          "phone"
+        ]
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_003",
+      "name": "Chief Executive Officer",
+      "properties": {
+        "role_type": "human",
+        "department": "Executive",
+        "authority_level": "Long duration incident escalation; Board notification decision",
+        "response_time_sla": "Immediate for incidents >4 hours",
+        "channels": [
+          "system",
+          "email",
+          "phone"
+        ]
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_004",
+      "name": "Chief Risk Officer",
+      "properties": {
+        "role_type": "human",
+        "department": "Risk Management",
+        "authority_level": "Escalation approval for medium duration incidents",
+        "response_time_sla": "2 hours from escalation trigger",
+        "channels": [
+          "system",
+          "email",
+          "phone"
+        ]
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_005",
+      "name": "Chief Operating Officer",
+      "properties": {
+        "role_type": "human",
+        "department": "Operations",
+        "authority_level": "Escalation approval for medium duration incidents",
+        "response_time_sla": "2 hours from escalation trigger",
+        "channels": [
+          "system",
+          "email",
+          "phone"
+        ]
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_006",
+      "name": "Executive Committee",
+      "properties": {
+        "role_type": "human",
+        "department": "Executive",
+        "authority_level": "Long duration incident governance and decision-making",
+        "response_time_sla": "Immediate meeting convened for incidents >4 hours",
+        "channels": [
+          "system",
+          "email",
+          "phone",
+          "in-person"
+        ]
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_cc_001",
+      "name": "Regulatory Notification Compliance Gate",
+      "properties": {
+        "regulatory_basis": "FCA notification requirements",
+        "mandatory": "conditional",
+        "applies_to_channels": "all",
+        "evidence_required": "Incident log, duration classification, impact assessment",
+        "performed_by": "Chief Executive Officer, Chief Technology Officer",
+        "timing": "Triggered if incident duration >4 hours; Board notification if >8 hours",
+        "failure_consequence": "Regulatory breach; potential FCA enforcement action"
+      },
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_proc_001",
+      "source_name": "Operational Incidents and System Outages Management",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_001",
+      "target_name": "Incident Logging and Initial Assessment",
+      "rel_type": "starts_with",
+      "description": "The operational incidents management process begins with incident logging and initial assessment",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Log incident, no escalation if <1 hour",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_001",
+      "source_name": "Incident Logging and Initial Assessment",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_001",
+      "target_name": "Incident Duration Classification Gate",
+      "rel_type": "leads_to",
+      "description": "Initial assessment leads to classification of incident duration",
+      "properties": {
+        "classification_criteria": "incident duration"
+      },
+      "context": "Duration: <1 hour, Duration: 1–4 hours, Duration: >4 hours",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_001",
+      "source_name": "Incident Duration Classification Gate",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_002",
+      "target_name": "Short Duration Incident Resolution",
+      "rel_type": "routes_to_on_pass",
+      "description": "Incidents classified as <1 hour duration route to short duration resolution",
+      "properties": {
+        "duration_threshold": "<1 hour",
+        "customer_impact": "Minimal"
+      },
+      "context": "Duration: <1 hour - Handler: IT Operations - Level: 1–2 - Customer Impact: Minimal - Timeline: Resolve within 1 hour",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_001",
+      "source_name": "Incident Duration Classification Gate",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_003",
+      "target_name": "Medium Duration Incident Resolution and Escalation",
+      "rel_type": "routes_to_on_pass",
+      "description": "Incidents classified as 1–4 hours duration route to medium duration resolution",
+      "properties": {
+        "duration_threshold": "1–4 hours",
+        "customer_impact": "Significant"
+      },
+      "context": "Duration: 1–4 hours - Handler: IT Operations + CTO - Level: 2–3 - Customer Impact: Significant - Timeline: Resolve within 4 hours",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_001",
+      "source_name": "Incident Duration Classification Gate",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_004",
+      "target_name": "Long Duration Incident Resolution and Executive Escalation",
+      "rel_type": "routes_to_on_pass",
+      "description": "Incidents classified as >4 hours duration route to long duration resolution",
+      "properties": {
+        "duration_threshold": ">4 hours",
+        "customer_impact": "Critical"
+      },
+      "context": "Duration: >4 hours - Handler: CTO + CEO - Level: 4–5 - Customer Impact: Critical - Timeline: Immediate response + hourly updates",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_002",
+      "source_name": "Short Duration Incident Resolution",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_001",
+      "target_name": "IT Operations",
+      "rel_type": "performed_by",
+      "description": "Short duration incident resolution is performed by IT Operations",
+      "properties": {
+        "duration_threshold": "<1 hour",
+        "escalation_level": "1–2"
+      },
+      "context": "Duration: <1 hour - Handler: IT Operations - Level: 1–2",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_002",
+      "source_name": "Short Duration Incident Resolution",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_001",
+      "target_name": "Level 1–2 — IT Operations Short Duration Response",
+      "rel_type": "routes_to",
+      "description": "Short duration incidents are handled at escalation level 1–2",
+      "properties": {
+        "duration_threshold": "<1 hour",
+        "handler": "IT Operations"
+      },
+      "context": "Duration: <1 hour - Handler: IT Operations - Level: 1–2",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_003",
+      "source_name": "Medium Duration Incident Resolution and Escalation",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_001",
+      "target_name": "IT Operations",
+      "rel_type": "performed_by",
+      "description": "Medium duration incident resolution involves IT Operations",
+      "properties": {
+        "duration_threshold": "1–4 hours",
+        "escalation_level": "2–3"
+      },
+      "context": "Duration: 1–4 hours - Handler: IT Operations + CTO - Level: 2–3",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_003",
+      "source_name": "Medium Duration Incident Resolution and Escalation",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_002",
+      "target_name": "Chief Technology Officer",
+      "rel_type": "performed_by",
+      "description": "Medium duration incident resolution involves the Chief Technology Officer",
+      "properties": {
+        "duration_threshold": "1–4 hours",
+        "escalation_level": "2–3"
+      },
+      "context": "Duration: 1–4 hours - Handler: IT Operations + CTO - Level: 2–3",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_003",
+      "source_name": "Medium Duration Incident Resolution and Escalation",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_002",
+      "target_name": "Two-Hour Escalation Trigger",
+      "rel_type": "triggers",
+      "description": "Medium duration incident resolution triggers the two-hour escalation decision point",
+      "properties": {
+        "trigger_condition": "after 2 hours",
+        "escalation_targets": [
+          "CRO",
+          "COO"
+        ]
+      },
+      "context": "Reporting: Escalate to CRO + COO after 2 hours",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_003",
+      "source_name": "Medium Duration Incident Resolution and Escalation",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_002",
+      "target_name": "Level 2–3 — IT Operations and CTO Medium Duration Response",
+      "rel_type": "routes_to",
+      "description": "Medium duration incidents are handled at escalation level 2–3",
+      "properties": {
+        "duration_threshold": "1–4 hours",
+        "handlers": [
+          "IT Operations",
+          "CTO"
+        ]
+      },
+      "context": "Duration: 1–4 hours - Handler: IT Operations + CTO - Level: 2–3",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_002",
+      "source_name": "Two-Hour Escalation Trigger",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_004",
+      "target_name": "Chief Risk Officer",
+      "rel_type": "escalated_to",
+      "description": "Two-hour escalation trigger routes to Chief Risk Officer",
+      "properties": {
+        "trigger_time": "2 hours",
+        "incident_duration": "1–4 hours"
+      },
+      "context": "Reporting: Escalate to CRO + COO after 2 hours",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_002",
+      "source_name": "Two-Hour Escalation Trigger",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_005",
+      "target_name": "Chief Operating Officer",
+      "rel_type": "escalated_to",
+      "description": "Two-hour escalation trigger routes to Chief Operating Officer",
+      "properties": {
+        "trigger_time": "2 hours",
+        "incident_duration": "1–4 hours"
+      },
+      "context": "Reporting: Escalate to CRO + COO after 2 hours",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_004",
+      "source_name": "Long Duration Incident Resolution and Executive Escalation",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_002",
+      "target_name": "Chief Technology Officer",
+      "rel_type": "performed_by",
+      "description": "Long duration incident resolution involves the Chief Technology Officer",
+      "properties": {
+        "duration_threshold": ">4 hours",
+        "escalation_level": "4–5"
+      },
+      "context": "Duration: >4 hours - Handler: CTO + CEO - Level: 4–5",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_004",
+      "source_name": "Long Duration Incident Resolution and Executive Escalation",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_003",
+      "target_name": "Chief Executive Officer",
+      "rel_type": "performed_by",
+      "description": "Long duration incident resolution involves the Chief Executive Officer",
+      "properties": {
+        "duration_threshold": ">4 hours",
+        "escalation_level": "4–5"
+      },
+      "context": "Duration: >4 hours - Handler: CTO + CEO - Level: 4–5",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_004",
+      "source_name": "Long Duration Incident Resolution and Executive Escalation",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_003",
+      "target_name": "Eight-Hour Board Notification Trigger",
+      "rel_type": "triggers",
+      "description": "Long duration incident resolution triggers the eight-hour board notification decision point",
+      "properties": {
+        "trigger_condition": "if >8 hours",
+        "notification_target": "Board"
+      },
+      "context": "Board: Update (if >8 hours)",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_004",
+      "source_name": "Long Duration Incident Resolution and Executive Escalation",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_003",
+      "target_name": "Level 4–5 — Executive Long Duration Response",
+      "rel_type": "routes_to",
+      "description": "Long duration incidents are handled at escalation level 4–5",
+      "properties": {
+        "duration_threshold": ">4 hours",
+        "handlers": [
+          "CTO",
+          "CEO"
+        ]
+      },
+      "context": "Duration: >4 hours - Handler: CTO + CEO - Level: 4–5",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_004",
+      "source_name": "Long Duration Incident Resolution and Executive Escalation",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_cc_001",
+      "target_name": "Regulatory Notification Compliance Gate",
+      "rel_type": "required_before",
+      "description": "Long duration incident resolution must satisfy regulatory notification compliance requirements",
+      "properties": {
+        "regulatory_body": "FCA",
+        "trigger_condition": ">4 hours"
+      },
+      "context": "Regulatory: May require FCA notification",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_003",
+      "source_name": "Eight-Hour Board Notification Trigger",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_006",
+      "target_name": "Executive Committee",
+      "rel_type": "escalated_to",
+      "description": "Eight-hour escalation trigger routes to Executive Committee",
+      "properties": {
+        "trigger_time": "8 hours",
+        "incident_duration": ">4 hours"
+      },
+      "context": "Board: Update (if >8 hours)",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_001",
+      "source_name": "Level 1–2 — IT Operations Short Duration Response",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_001",
+      "target_name": "IT Operations",
+      "rel_type": "handled_by",
+      "description": "Level 1–2 escalation is handled by IT Operations",
+      "properties": {
+        "duration_threshold": "<1 hour"
+      },
+      "context": "Duration: <1 hour - Handler: IT Operations - Level: 1–2",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_002",
+      "source_name": "Level 2–3 — IT Operations and CTO Medium Duration Response",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_001",
+      "target_name": "IT Operations",
+      "rel_type": "handled_by",
+      "description": "Level 2–3 escalation is handled by IT Operations",
+      "properties": {
+        "duration_threshold": "1–4 hours"
+      },
+      "context": "Duration: 1–4 hours - Handler: IT Operations + CTO - Level: 2–3",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_002",
+      "source_name": "Level 2–3 — IT Operations and CTO Medium Duration Response",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_002",
+      "target_name": "Chief Technology Officer",
+      "rel_type": "handled_by",
+      "description": "Level 2–3 escalation is handled by Chief Technology Officer",
+      "properties": {
+        "duration_threshold": "1–4 hours"
+      },
+      "context": "Duration: 1–4 hours - Handler: IT Operations + CTO - Level: 2–3",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_003",
+      "source_name": "Level 4–5 — Executive Long Duration Response",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_002",
+      "target_name": "Chief Technology Officer",
+      "rel_type": "handled_by",
+      "description": "Level 4–5 escalation is handled by Chief Technology Officer",
+      "properties": {
+        "duration_threshold": ">4 hours"
+      },
+      "context": "Duration: >4 hours - Handler: CTO + CEO - Level: 4–5",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_003",
+      "source_name": "Level 4–5 — Executive Long Duration Response",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_003",
+      "target_name": "Chief Executive Officer",
+      "rel_type": "handled_by",
+      "description": "Level 4–5 escalation is handled by Chief Executive Officer",
+      "properties": {
+        "duration_threshold": ">4 hours"
+      },
+      "context": "Duration: >4 hours - Handler: CTO + CEO - Level: 4–5",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_cc_001",
+      "source_name": "Regulatory Notification Compliance Gate",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_004",
+      "target_name": "Chief Risk Officer",
+      "rel_type": "performed_by",
+      "description": "Regulatory notification compliance is performed by Chief Risk Officer",
+      "properties": {
+        "regulatory_body": "FCA",
+        "trigger_condition": ">4 hours"
+      },
+      "context": "Regulatory: May require FCA notification",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_proc_001",
+      "source_name": "Operational Incidents and System Outages Management",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_002",
+      "target_name": "Short Duration Incident Resolution",
+      "rel_type": "includes_optional",
+      "description": "Operational incidents management process includes short duration incident resolution as an optional path",
+      "properties": {
+        "duration_threshold": "<1 hour",
+        "condition": "if incident duration <1 hour"
+      },
+      "context": "Duration: <1 hour - Handler: IT Operations - Level: 1–2",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_proc_001",
+      "source_name": "Operational Incidents and System Outages Management",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_003",
+      "target_name": "Medium Duration Incident Resolution and Escalation",
+      "rel_type": "includes_optional",
+      "description": "Operational incidents management process includes medium duration incident resolution as an optional path",
+      "properties": {
+        "duration_threshold": "1–4 hours",
+        "condition": "if incident duration 1–4 hours"
+      },
+      "context": "Duration: 1–4 hours - Handler: IT Operations + CTO - Level: 2–3",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_proc_001",
+      "source_name": "Operational Incidents and System Outages Management",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_004",
+      "target_name": "Long Duration Incident Resolution and Executive Escalation",
+      "rel_type": "includes_optional",
+      "description": "Operational incidents management process includes long duration incident resolution as an optional path",
+      "properties": {
+        "duration_threshold": ">4 hours",
+        "condition": "if incident duration >4 hours"
+      },
+      "context": "Duration: >4 hours - Handler: CTO + CEO - Level: 4–5",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_proc_001",
+      "source_name": "Operational Incidents and System Outages Management",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_001",
+      "target_name": "Incident Duration Classification Gate",
+      "rel_type": "branches_at",
+      "description": "Operational incidents management process branches at incident duration classification",
+      "properties": {
+        "classification_criteria": "incident duration",
+        "branches": [
+          "<1 hour",
+          "1–4 hours",
+          ">4 hours"
+        ]
+      },
+      "context": "Duration: <1 hour, Duration: 1–4 hours, Duration: >4 hours",
+      "bidirectional": false,
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_proc_001",
+      "source_name": "Operational Incidents and System Outages Management",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_001",
+      "source_name": "Incident Logging and Initial Assessment",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_002",
+      "source_name": "Short Duration Incident Resolution",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_003",
+      "source_name": "Medium Duration Incident Resolution and Escalation",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_pstep_004",
+      "source_name": "Long Duration Incident Resolution and Executive Escalation",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_001",
+      "source_name": "Incident Duration Classification Gate",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_002",
+      "source_name": "Two-Hour Escalation Trigger",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_dp_003",
+      "source_name": "Eight-Hour Board Notification Trigger",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_001",
+      "source_name": "Level 1–2 — IT Operations Short Duration Response",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_002",
+      "source_name": "Level 2–3 — IT Operations and CTO Medium Duration Response",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_elev_003",
+      "source_name": "Level 4–5 — Executive Long Duration Response",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_001",
+      "source_name": "IT Operations",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_002",
+      "source_name": "Chief Technology Officer",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_003",
+      "source_name": "Chief Executive Officer",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_004",
+      "source_name": "Chief Risk Officer",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_005",
+      "source_name": "Chief Operating Officer",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_ra_006",
+      "source_name": "Executive Committee",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010_cc_001",
+      "source_name": "Regulatory Notification Compliance Gate",
+      "target_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "target_name": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3_010",
+      "doc_id": "01a072c7-a18c-702a-bbed-45c3fea9dac3",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

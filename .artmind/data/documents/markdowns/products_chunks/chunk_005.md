@@ -1,0 +1,2 @@
+### Product Description  
+A flexible, easy-access savings account with competitive interest rates, no monthly fees, and digital-first onboarding. Designed for customers who want straightforward savings with easy access to funds.

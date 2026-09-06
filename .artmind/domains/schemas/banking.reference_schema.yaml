@@ -1,0 +1,701 @@
+name: banking.reference
+description: Operational reference materials for FirstUK Bank — covering live interest rate schedules,
+  incident response plans, technology production runbooks, application landscape documents, and customer
+  welcome packs. Documents that staff and customers consult for quick, authoritative lookups.
+subject: banking operational reference document analysis
+persona: an operations manager
+temporal:
+  document:
+    valid_from:
+    - Effective Date
+    - effective_date
+    version:
+    - Version
+  relative_anchor: document.valid_from
+  defaults:
+    valid_from: ingestion_date
+    valid_to: null
+    superseded_by: null
+    time_source: default_ingestion
+    valid_from_inferred: true
+entity_types:
+  RATE_ENTRY:
+    kind: recurrent
+    description: A specific published interest rate, overdraft rate, or fee as recorded in the live rate
+      schedule — the authoritative, date-stamped version. Include the product, balance tier (if applicable),
+      rate value, effective date, and rate basis as a single entity. Also capture calculation examples
+      as part of the entity description.
+    type_examples:
+    - savings_rate_tier
+    - overdraft_rate
+    - mortgage_rate
+    - variable_rate
+    - fixed_rate
+    - fee_table_entry
+    - rate_basis
+    properties:
+      product_id:
+        hint: e.g., SAV-001
+      product_name:
+        hint: e.g., SmartSaver Account
+      rate_value:
+        hint: numeric, e.g., 4.50
+      rate_format:
+        hint: AER | Gross | APR
+      balance_min:
+        hint: numeric, no currency symbol or thousands separators, e.g., 10001
+      balance_max:
+        hint: numeric, no currency symbol or thousands separators, e.g., 50000; the
+          string "unlimited" if the tier has no upper bound
+      effective_date:
+        hint: when this rate applies from
+        temporal: valid_from
+      next_review_date:
+        hint: when rate is next reviewed
+      rate_basis:
+        hint: the variation formula only, e.g., "BoE Base Rate + 2.50% margin". Not the
+          rate type ("Variable") and not the quoting basis ("AER") -- those are rate_format.
+      current_boe_rate:
+        hint: Bank of England base rate at time of publication
+      calculation_example:
+        hint: the worked example for THIS tier, verbatim. Omit it when the document's
+          example is for a different tier -- do not borrow another tier's example.
+      accrual_method:
+        hint: daily | monthly
+      payment_frequency:
+        hint: monthly | annual
+    relates_to:
+      RATE_ENTRY:
+      - higher_tier_than
+      - adjacent_to
+      - applies_same_basis_as
+      - supersedes
+      CUSTOMER_GUIDE_ITEM:
+      - explained_in
+      - referenced_by
+      - illustrated_by
+      PRODUCT:
+      - applies_to
+      - earned_on
+      - published_for
+      ACCOUNT:
+      - applies_to_account_type
+      - determines_interest_on
+      CUSTOMER:
+      - applicable_to
+      - earned_by
+    guidance: |-
+      Each interest rate tier captured as a separate RATE_ENTRY with product and rate value.
+      RATE_ENTRY entities include rate_value, balance range, effective_date, rate_basis.
+      RATE_ENTRY tier ordering captured (higher_tier_than between all adjacent tiers).
+      Naming: identify the TIER, never its current rate. The rate and the effective date go
+      in properties -- they are precisely what changes each month, and a name carrying them
+      cannot be recognised as the same tier in next month's schedule.
+        RIGHT:   { "name": "SmartSaver Account Tier 1 Rate", "rate_value": 4.50, "effective_date": "2026-01-15" }
+        WRONG:   { "name": "SmartSaver Account Tier 1 Rate -- 4.50% AER (£0-£10,000), effective 2026-01-15" }
+  INCIDENT_TYPE:
+    kind: recurrent
+    description: 'A named category or scenario of operational incident, security event, or system failure
+      with defining characteristics and examples. Each top-level incident category (Cybersecurity Incident,
+      Data Breach, System Incident, etc.) is a separate entity. Also extract specific subtypes (e.g.,
+      Ransomware Attack, Customer Data Breach) when they have distinct response requirements. Note: fraud
+      events that generate detection alerts are captured as FRAUD_ALERT entities; use INCIDENT_TYPE for
+      system, security, data, and operational failures, not for fraud alert events.'
+    type_examples:
+    - cybersecurity_incident
+    - data_breach
+    - system_outage
+    - physical_security
+    - performance_degradation
+    - integration_failure
+    - backup_failure
+    - credential_compromise
+    - ransomware
+    - operational_failure
+    properties:
+      category:
+        hint: the top-level category this falls under
+      subtypes:
+        hint: list of specific scenarios in this category
+      indicators:
+        hint: how this incident type is detected
+      typical_impact:
+        hint: what tends to be affected
+      regulatory_reporting_required:
+        hint: yes/no and which regulator
+      customer_notification_required:
+        hint: yes/no and when
+      primary_response_team:
+        hint: who handles first
+    relates_to:
+      SEVERITY_LEVEL:
+      - classified_at
+      - typically_reaches
+      - can_escalate_to
+      RESPONSE_ACTION:
+      - triggers
+      - requires
+      - initiates
+      - mandates
+      NOTIFICATION_CONTACT:
+      - requires_notification_of
+      - escalated_to
+      - reported_to
+      INCIDENT_TYPE:
+      - can_lead_to
+      - related_to
+      - subtype_of
+      - co_occurs_with
+      CUSTOMER:
+      - requires_notification_of
+      - affects
+      - triggers_communication_to
+      ACCOUNT:
+      - affects
+      - may_trigger_freeze_of
+      - disrupts_operations_on
+      TRANSACTION:
+      - disrupts
+      - may_involve_suspicious
+      - triggers_investigation_of
+      CARD:
+      - may_compromise
+      - triggers_block_of
+      - involves
+      FRAUD_ALERT:
+      - triggers
+      - classified_as
+      - corresponds_to
+    guidance: |-
+      Each incident category captured as a separate INCIDENT_TYPE.
+      INCIDENT_TYPE entities include subtypes, indicators, primary_response_team.
+      INCIDENT_TYPE → INCIDENT_TYPE subtype relationships captured.
+      Naming: use the exact category name from the document. RIGHT:   { "name": "Cybersecurity Incident", "aliases": ["Malware", "Ransomware Attack"] }
+  SEVERITY_LEVEL:
+    kind: recurrent
+    description: A defined incident severity tier with quantified impact thresholds (financial, customer
+      scope, system downtime), specific response time targets, and mandatory escalation requirements.
+      Each severity level is a separate entity.
+    type_examples:
+    - critical_p1
+    - high_p2
+    - medium_p3
+    - low_p4
+    - informational
+    properties:
+      level_number:
+        hint: 1, 2, 3, 4
+      severity_label:
+        hint: Critical | High | Medium | Low
+      financial_impact_threshold:
+        hint: e.g., ">£100,000"
+      customer_scope_threshold:
+        hint: e.g., ">1,000 customers"
+      system_downtime_threshold:
+        hint: e.g., ">4 hours"
+      response_time_target:
+        hint: how quickly response must begin
+      escalation_required_to:
+        hint: roles that must be notified
+      regulatory_notification_required:
+        hint: yes/no
+      examples:
+        hint: list of incidents at this severity
+    relates_to:
+      RESPONSE_ACTION:
+      - requires
+      - mandates_escalation_to
+      - triggers
+      NOTIFICATION_CONTACT:
+      - requires_notification_of
+      - escalates_to
+      SEVERITY_LEVEL:
+      - escalates_to
+      - more_severe_than
+      CUSTOMER:
+      - determines_notification_obligation_toward
+      - triggers_communication_to
+    guidance: |-
+      Each severity level captured as a separate SEVERITY_LEVEL with impact threshold.
+      SEVERITY_LEVEL entities include level_number, impact thresholds, response_time_target.
+      Naming: identify the LEVEL, never its current thresholds. The severity number and its
+      label are identity and belong in the name; the impact and outage thresholds are values
+      that get revised, and belong in properties.
+        RIGHT:   { "name": "Severity 1 (Critical)", "impact_threshold": ">£100,000", "response_time_target": "4 hours" }
+        WRONG:   { "name": "Severity 1 (Critical) -- >£100,000 impact or >4-hour system outage" }
+  RESPONSE_ACTION:
+    kind: recurrent
+    description: A specific action, procedure, or step required during incident response, business continuity,
+      or production operations. Includes detection steps, containment actions, notifications to send,
+      recovery procedures, and post-incident reviews. Each distinct named action or phase is a separate
+      entity.
+    type_examples:
+    - detection
+    - containment
+    - investigation
+    - notification
+    - escalation
+    - recovery
+    - post_incident_review
+    - regulatory_notification
+    - customer_notification
+    - system_restore
+    - access_revocation
+    - forensics
+    properties:
+      action_phase:
+        hint: detection | containment | investigation | recovery | post_incident
+      actor:
+        hint: who performs this action
+      timeline:
+        hint: when it must be done, e.g., "within 1 hour"
+      mandatory_for_severities:
+        hint: which severity levels require this action
+      tools_or_systems:
+        hint: what tools are used
+      output_or_artifact:
+        hint: what is produced by this action
+      escalation_trigger:
+        hint: if this action reveals more than expected, what happens
+    relates_to:
+      RESPONSE_ACTION:
+      - followed_by
+      - preceded_by
+      - triggered_by
+      - parallel_to
+      - enables
+      NOTIFICATION_CONTACT:
+      - notifies
+      - involves
+      - escalates_to
+      CUSTOMER:
+      - notifies
+      - communicates_to
+      - protects
+      ACCOUNT:
+      - freezes
+      - restores
+      - investigates
+      CARD:
+      - blocks
+      - replaces
+      - investigates
+      FRAUD_ALERT:
+      - responds_to
+      - investigates
+      - closes
+    guidance: |-
+      Each named response phase captured as a RESPONSE_ACTION.
+      RESPONSE_ACTION entities include actor, timeline, mandatory_for_severities.
+  NOTIFICATION_CONTACT:
+    kind: recurrent
+    description: A named contact, team, regulator, or external party that must be notified under specific
+      conditions — with contact details, trigger conditions, and required timeframes when stated. Extract
+      from escalation lists, emergency contacts, and regulatory notification requirements.
+    type_examples:
+    - internal_team
+    - executive
+    - regulator
+    - law_enforcement
+    - customer
+    - external_partner
+    - media_spokesperson
+    - legal_counsel
+    - insurance_provider
+    properties:
+      contact_name_or_role:
+        hint: the specific contact or role
+      contact_method:
+        hint: phone | email | in_person | portal
+      contact_details:
+        hint: phone number or email if stated
+      trigger_condition:
+        hint: when this contact must be notified
+      notification_timeframe:
+        hint: regulatory deadline, e.g., "within 72 hours for GDPR breach"
+      required_information:
+        hint: what must be communicated
+      jurisdiction:
+        hint: UK | EU | international, if regulatory
+    relates_to:
+      NOTIFICATION_CONTACT:
+      - reports_to
+      - escalates_to
+      - coordinates_with
+    guidance: All notification contacts captured as NOTIFICATION_CONTACT.
+  CUSTOMER_GUIDE_ITEM:
+    kind: recurrent
+    description: A piece of customer-facing guidance from the welcome pack or customer reference materials
+      — explaining how to use an account feature, how to contact the bank, what to expect during onboarding,
+      or how a product works. Each distinct guidance point or section is a separate entity.
+    type_examples:
+    - getting_started
+    - account_management
+    - feature_guide
+    - contact_info
+    - regulatory_protection
+    - security_guidance
+    - opening_process
+    - channel_guide
+    - faq_reference
+    - complaint_path
+    properties:
+      topic:
+        hint: what this guide section covers
+      target_customer:
+        hint: new customer | existing | joint account holder
+      key_points:
+        hint: list of main guidance points
+      relevant_channels:
+        hint: how the guidance applies across channels
+      action_required:
+        hint: what the customer must do
+      contact_for_help:
+        hint: support channel referenced
+      related_product:
+        hint: which product this guidance applies to
+    relates_to:
+      CUSTOMER_GUIDE_ITEM:
+      - related_to
+      - leads_to
+      - prerequisite_for
+      NOTIFICATION_CONTACT:
+      - refers_customer_to
+      - escalates_to
+      ACCOUNT:
+      - provides_guidance_on
+      - explains_management_of
+      PRODUCT:
+      - explains_features_of
+      - guides_use_of
+      CARD:
+      - explains_usage_of
+      - guides_management_of
+      STANDING_ORDER:
+      - explains_setup_of
+      - guides_management_of
+      DIRECT_DEBIT:
+      - explains_setup_of
+      - guides_management_of
+      - describes_guarantee_of
+      TRANSACTION:
+      - explains_processing_of
+      - describes_monitoring_of
+    guidance: All distinct customer guidance sections captured as CUSTOMER_GUIDE_ITEM.
+  PRODUCT:
+    kind: recurrent
+    description: A banking product referenced in a rate schedule, incident scope, or welcome pack. Extract
+      when the product is the primary subject or the governing context of a reference document entry.
+    type_examples:
+    - smartsaver_account
+    - current_account
+    - mortgage
+    - card_product
+    properties:
+      product_id:
+        hint: e.g., SAV-001
+      rate_entries:
+        hint: list of rate entries associated with this product
+      welcome_pack_section:
+        hint: which welcome pack section covers this product
+  ACCOUNT:
+    kind: recurrent
+    description: A customer account opened, held, modified, or closed under a banking product — savings,
+      current, or joint. Extract when the document defines rules, state, or events that apply to the account
+      itself.
+    type_examples:
+    - savings_account
+    - current_account
+    - joint_account
+    - new_account
+    - dormant_account
+    - frozen_account
+    - closed_account
+    properties:
+      account_type:
+        hint: savings | current | joint
+      account_state:
+        hint: new | active | dormant | frozen | closed
+      balance_minimum:
+        hint: numeric, no currency symbol or thousands separators, e.g., 500; the
+          string "none" if the account has no stated minimum
+      balance_maximum:
+        hint: numeric, no currency symbol or thousands separators, e.g., 50000; the
+          string "unlimited" if the account has no stated maximum
+      dormancy_threshold:
+        hint: how long with no activity before the account is classified dormant,
+          e.g., "12 months"
+      closure_or_freeze_conditions: {}
+    relates_to:
+      ACCOUNT_HOLDER:
+      - has_holder
+      - held_by
+      CARD:
+      - linked_to
+      - issues
+      JOINT_ACCOUNT:
+      - classified_as
+      - structured_as
+      TRANSACTION:
+      - records
+      - generates
+      - has_associated
+      KYC_VERIFICATION:
+      - gate_for_opening
+      - required_before_activating
+      AML_SCREENING:
+      - required_before_opening
+      - ongoing_monitoring_of
+      FRAUD_ALERT:
+      - raised_on
+      - results_in_freeze_of
+      STANDING_ORDER:
+      - set_up_on
+      - deducts_from
+      DIRECT_DEBIT:
+      - set_up_on
+      - deducts_from
+  ACCOUNT_HOLDER:
+    kind: recurrent
+    description: A person with legal rights and obligations over an account — primary, joint, or secondary
+      holder — including their liability, authority, and due-diligence obligations.
+    type_examples:
+    - primary_holder
+    - joint_holder
+    - secondary_holder
+    - beneficial_owner
+    - signatory
+    properties:
+      holder_type:
+        hint: primary | joint | secondary
+      liability_scope: {}
+      withdrawal_or_signing_authority: {}
+      due_diligence_requirement: {}
+    relates_to:
+      JOINT_ACCOUNT:
+      - party_to
+      - has_rights_in
+      - liable_under
+  AML_SCREENING:
+    kind: recurrent
+    description: Anti-Money Laundering screening — sanctions/PEP list checks, transaction monitoring,
+      or ongoing screening — as mandated, executed, or reviewed by the document.
+    type_examples:
+    - sanctions_screening
+    - pep_screening
+    - transaction_monitoring
+    - ongoing_monitoring
+    - adverse_media_check
+    properties:
+      mandatory:
+        hint: yes/no
+      screening_lists_or_scope: {}
+      hit_or_match_response: {}
+      regulatory_basis: {}
+    relates_to:
+      TRANSACTION:
+      - monitors
+      - screens_for_patterns_in
+      SAR:
+      - triggers
+      - leads_to_filing_of
+  CARD:
+    kind: recurrent
+    description: A payment card issued to, or referenced in connection with, a customer account — its
+      issuance, use, blocking, or replacement.
+    type_examples:
+    - debit_card
+    - credit_card
+    - prepaid
+    - contactless
+    - replacement_card
+    - card_fraud_scenario
+    properties:
+      card_type:
+        hint: debit | credit | prepaid
+      card_state:
+        hint: issuance | active | blocked | replacement
+      block_or_replacement_conditions: {}
+      daily_or_contactless_limit: {}
+  CUSTOMER:
+    kind: recurrent
+    description: A natural person who holds, applies for, or is otherwise the subject of a banking relationship
+      — an account, product, transaction, or compliance process. Extract as a first-class entity whenever
+      the customer is a defined party in the document, not merely mentioned in passing.
+    type_examples:
+    - individual_customer
+    - joint_account_holder
+    - new_customer
+    - existing_customer
+    - high_risk_customer
+    - pep_customer
+    - applicant
+    - prospective_customer
+    properties:
+      customer_type:
+        hint: individual | joint_applicant | existing | new | high_risk | pep
+      risk_classification:
+        hint: standard | high_risk | pep | sanctioned
+      eligibility_or_verification_status:
+        hint: as stated in this document
+      context_role:
+        hint: how this customer appears in this document
+    relates_to:
+      ACCOUNT:
+      - holds
+      - opens
+      - closes
+      - liable_for
+      ACCOUNT_HOLDER:
+      - designated_as
+      - has_role_as
+      AML_SCREENING:
+      - screened_by
+      - applied_to
+      - required_for
+      KYC_VERIFICATION:
+      - required_to_complete
+      - verified_by
+      - subject_to
+      SAR:
+      - filed_about
+      - concerns
+      JOINT_ACCOUNT:
+      - held_jointly_by
+      - requires_consent_of_both
+      STANDING_ORDER:
+      - initiated_by
+      - belongs_to
+      DIRECT_DEBIT:
+      - authorised_by
+      - belongs_to
+  DIRECT_DEBIT:
+    kind: recurrent
+    description: A direct debit mandate on a customer account — its setup, the Direct Debit Guarantee,
+      amendment, cancellation, or dispute.
+    type_examples:
+    - dd_mandate_setup
+    - dd_guarantee
+    - dd_cancellation
+    - dd_dispute
+    - indemnity_claim
+    properties:
+      mandate_process: {}
+      dd_guarantee_coverage: {}
+      cancellation_or_dispute_process: {}
+  FRAUD_ALERT:
+    kind: recurrent
+    description: A fraud detection alert or fraud response — its generation, investigation, escalation,
+      or the customer-facing action it triggers.
+    type_examples:
+    - fraud_detection_obligation
+    - card_fraud_event
+    - account_takeover
+    - fraud_investigation
+    - customer_reimbursement
+    properties:
+      generation_trigger: {}
+      investigation_or_escalation_path: {}
+      customer_notification: {}
+      reimbursement_obligation: {}
+    relates_to:
+      CARD:
+      - raised_for
+      - protects
+      TRANSACTION:
+      - triggered_by
+      - raised_on
+  JOINT_ACCOUNT:
+    kind: recurrent
+    description: An account arrangement held jointly by two or more customers with shared rights, liabilities,
+      and consent requirements.
+    type_examples:
+    - joint_and_several
+    - tenants_in_common
+    - joint_account_arrangement
+    properties:
+      liability_type:
+        hint: joint_and_several | tenants_in_common
+      consent_requirements: {}
+      dual_kyc_or_aml_requirement: {}
+      closure_consent: {}
+  KYC_VERIFICATION:
+    kind: recurrent
+    description: The Know Your Customer identity/address verification process — as a compliance obligation,
+      an operational procedure, or an audited control. Extract when the document defines, executes, or
+      evaluates KYC requirements.
+    type_examples:
+    - identity_verification
+    - address_verification
+    - enhanced_due_diligence
+    - periodic_refresh
+    - document_collection
+    properties:
+      mandatory:
+        hint: yes/no
+      timing_or_refresh_frequency: {}
+      verification_method: {}
+      consequence_of_failure: {}
+    relates_to:
+      JOINT_ACCOUNT:
+      - required_for_both_holders_of
+      - applied_to
+  SAR:
+    kind: occurrent
+    description: A Suspicious Activity Report — the obligation, preparation, filing, or tracking of a
+      SAR to the relevant authority (e.g. the NCA).
+    type_examples:
+    - sar_obligation
+    - sar_filing_deadline
+    - internal_sar
+    - external_sar
+    - sar_confidentiality
+    properties:
+      filing_obligation: {}
+      filing_deadline: {}
+      confidentiality_rule: {}
+      consequence_of_non_filing: {}
+    relates_to:
+      TRANSACTION:
+      - triggered_by
+      - based_on_evidence_from
+  STANDING_ORDER:
+    kind: recurrent
+    description: A standing order payment instruction on a customer account — its setup, amendment, cancellation,
+      or failure handling.
+    type_examples:
+    - standing_order_setup
+    - standing_order_amendment
+    - standing_order_cancellation
+    - payment_failure_handling
+    properties:
+      setup_or_amendment_process: {}
+      beneficiary_validation: {}
+      cancellation_process: {}
+      failure_handling: {}
+  TRANSACTION:
+    kind: occurrent
+    description: A financial event on a customer account — a deposit, withdrawal, transfer, payment, or
+      fee charge — referenced because it is monitored, disputed, reported, or otherwise governed by the
+      document.
+    type_examples:
+    - deposit
+    - withdrawal
+    - transfer
+    - fee_charge
+    - suspicious_transaction
+    - high_value_transaction
+    - disputed_transaction
+    - monitored_transaction
+    properties:
+      transaction_type:
+        hint: deposit | withdrawal | transfer | fee_charge | suspicious | disputed
+      monitoring_or_reporting_obligation: {}
+      threshold_value:
+        hint: numeric, no currency symbol or thousands separators, e.g., 10000
+      dispute_or_reversal_rules: {}
+guidance:
+  relationships: |-
+    All SEVERITY_LEVEL → RESPONSE_ACTION mandatory actions captured.
+    All RESPONSE_ACTION → NOTIFICATION_CONTACT notification links captured.
+    Full incident response chain captured end-to-end: INCIDENT_TYPE classified_at SEVERITY_LEVEL, SEVERITY_LEVEL requires RESPONSE_ACTION, RESPONSE_ACTION notifies NOTIFICATION_CONTACT.

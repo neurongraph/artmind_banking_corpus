@@ -1,0 +1,284 @@
+name: fiction
+description: Stories and fictional content. Typically would have characters, places, events, interactions
+  between characters. Flowing prose.
+subject: fiction analysis
+persona: a knowledgeable literary analyst
+entity_types:
+  PERSON:
+    kind: recurrent
+    description: Any person who appears, is named, or is meaningfully referenced in the story. Include
+      persons who are talked about but do not appear directly.
+    type_examples:
+    - protagonist
+    - antagonist
+    - supporting
+    - minor
+    - non-human
+    properties:
+      role:
+        hint: specific to this story, e.g., "consulting detective"
+      personality_traits:
+        hint: list
+      physical_description: {}
+      motivations:
+        hint: list
+      narrative_arc:
+        hint: how they change
+      occupation: {}
+      signature_behaviours:
+        hint: distinctive actions
+      archetype:
+        hint: if clear
+      distinctive_qualities:
+        hint: any other distinctive qualities
+    relates_to:
+      PERSON:
+      - knows
+      - emotions_felt
+      - employs
+      - employed_by
+      - married_to
+      - parent_of
+      - engaged_to
+      - deceives
+      - assists
+      - investigates
+      - imprisons
+      - bribes
+      - rescues
+      - evaluates
+      - confides_in
+      - informs
+      - impersonates
+      - fears
+      - trusts
+      - works_with
+      LOCATION:
+      - resides_at
+      - visits
+      - works_at
+      - imprisoned_at
+      - owns_property
+      - flees
+      - surveils
+      - emotions_felt
+      OBJECT:
+      - owns
+      - uses
+      - emotions_felt
+      - discovers
+      - conceals
+      - wears
+      - controls
+      EVENT:
+      - 'participates_in (properties: {role: investigator|victim|perpetrator|witness|helper})'
+      - emotions_felt
+      - causes
+      - solves
+    guidance: Include persons who are only talked about but never appear directly on the page.
+  LOCATION:
+    kind: recurrent
+    description: Any place where events occur or are meaningfully referenced. Include sub-locations (e.g.,
+      a room within a house).
+    type_examples:
+    - residence
+    - city
+    - institution
+    - landmark
+    - region
+    - room
+    - forest
+    - region
+    - country
+    properties:
+      atmosphere:
+        hint: mood, tone
+      physical_description: {}
+      narrative_function:
+        hint: why does it matter?
+      isolation_level: {}
+      who_controls:
+        hint: or owns it
+      symbolic_meaning:
+        hint: if any
+      parent_location:
+        hint: if sub-location
+      real_world_or_fictional:
+        hint: real world vs fictional
+  OBJECT:
+    kind: recurrent
+    description: Any physical item, animal, document, or symbolic item that plays a role in the narrative.
+      Extract only those that matter to character, plot, or theme — not mundane background objects.
+    type_examples:
+    - physical
+    - document
+    - animal
+    - clothing
+    - weapon
+    - symbolic
+    properties:
+      physical_description: {}
+      narrative_role:
+        hint: clue, symbol, etc.
+      owner_or_user:
+        hint: who owns or uses it
+      symbolic_meaning:
+        hint: if any
+      significance_status:
+        hint: resolved or mysterious
+      plot_connection:
+        hint: how it connects to plot or mystery
+  EVENT:
+    kind: occurrent
+    description: Any significant happening that advances the plot, reveals character, or changes the situation.
+      Not every action — only those with narrative weight.
+    type_examples:
+    - meeting
+    - crime
+    - discovery
+    - confrontation
+    - revelation
+    - journey
+    - escape
+    - resolution
+    - deception
+    - investigation
+    - conversation
+    - conflict
+    - ceremony
+    - episode
+    properties:
+      sequence_number:
+        hint: chronological position
+      what_changed:
+        hint: consequence
+      who_was_involved:
+        hint: list with roles
+      emotions:
+        hint: emptions felt or expressed by characters
+      is_turning_point: {}
+      cause: {}
+      immediate_consequence: {}
+      why_it_matters: {}
+      date_or_time:
+        temporal: valid_from
+        hint: date and/or time
+    relates_to:
+      LOCATION:
+      - occurs_at
+  ORGANIZATION:
+    kind: recurrent
+    description: Any group, institution, or collective entity that plays a role in the narrative. Includes
+      formal organizations, informal factions, and named collectives that influence events, interact with
+      characters
+    type_examples:
+    - faction
+    - corporation
+    - government
+    - religious group
+    - criminal syndicate
+    - club
+    - military
+    - family
+    - alliance
+    - guild
+    - society
+    properties:
+      structure:
+        hint: hierarchy, leadership model, or operational style
+      leadership:
+        hint: primary figure(s) or governing body
+      status:
+        hint: active, hidden, disbanded, public, or transitioning
+      plot_impact:
+        hint: how it advances, complicates, or resolves storylines
+      purpose_or_goal:
+        hint: core objective, ideology, or driving motive
+      resources_or_assets:
+        hint: funding, territory, tools, or influence
+    relates_to:
+      PERSON:
+      - employs
+      - founded_by
+      - leads
+      - belongs_to
+      - opposes
+      - infiltrates
+      - represents
+      - recruits
+      - monitors
+      - funds
+      - rivals
+      - betrays
+      LOCATION:
+      - headquartered_at
+      - controls
+      - operates_from
+      - occupies
+      - defends
+      - owns
+      - surveils
+      - inhabits
+      OBJECT:
+      - owns
+      - manufactures
+      - distributes
+      - uses
+      - protects
+      - commissions
+      - hoards
+      - intercepts
+  CONCEPT:
+    kind: recurrent
+    description: Abstract ideas, mysteries, themes, organisations, deductions, or motives that are important
+      to understanding the story.
+    type_examples:
+    - theme
+    - mystery
+    - deduction
+    - motive
+    - symbol
+    - movement
+    - paradox
+    properties: {}
+    relates_to:
+      other:
+      - involves
+      - expressed_through
+      - resolved_by
+      - triggers
+      - resolves
+    guidance: 'Properties vary by concept type: if a theme, note how it manifests and which characters/events
+      embody it; if a mystery, the puzzle, whether it is resolved, and the resolution; if a deduction,
+      the observation, inference, conclusion, certainty, and method; if a motive, whose motive, what they
+      want, and what they will do for it.'
+  STATE_CHANGE:
+    kind: occurrent
+    description: A change in an entity's state, status, or relationship over time — extract when the narrative
+      marks that something became different from before (a character's allegiance shifting, a relationship
+      breaking, a plan starting or ending). Carry the point in the story it happened.
+    type_examples:
+    - mood_shift
+    - relationship_change
+    - plan_started
+    - plan_ended
+    - status_change
+    properties:
+      what_changed:
+        hint: the entity or relationship affected
+      from_state: {}
+      to_state: {}
+      date_or_time:
+        hint: when the change occurred in the story's timeline
+        temporal: valid_from
+    relates_to:
+      PERSON:
+      - state_of
+      - affects
+      - involves
+      EVENT:
+      - triggered_by
+      - resulted_from
+guidance:
+  relationships: Character arcs (how a relationship between two PERSON entities evolves) are captured
+    with multiple edges across the story, not collapsed into one.

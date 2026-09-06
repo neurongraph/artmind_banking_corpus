@@ -1,0 +1,724 @@
+{
+  "chunk_seq": 19,
+  "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+  "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+  "text": "## Step 6: Risk Assessment  \n### Risk Scoring  \n**Customer Risk Level Determined By:**\n- Age (18–65 = lower risk, >65 = higher)\n- Nationality/residence (UK = lower, foreign = higher)\n- PEP status (yes = higher)\n- Adverse media (yes = higher)\n- Product/account size (standard = lower, high-value = higher)  \n**Risk Categories:**\n- **Low Risk:** Standard customer, standard product, standard amount\n- **Medium Risk:** Higher-value account or foreign residence\n- **High Risk:** PEP, PEP family, adverse media, foreign high-value",
+  "name": "Chunk 19/37",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+  "next_chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_020",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Risk Assessment Process",
+      "aliases": [
+        "Risk Scoring"
+      ],
+      "entity_class": "PROCESS",
+      "type": "risk_assessment",
+      "description": "A systematic process for determining customer risk level based on multiple factors including age, nationality, PEP status, adverse media presence, and product/account characteristics. The process categorizes customers into Low, Medium, or High Risk tiers to inform compliance and onboarding decisions.",
+      "context": [
+        "Step 6: Risk Assessment",
+        "Risk Scoring",
+        "Customer Risk Level Determined By:",
+        "Risk Categories:"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Customer Risk Level Determination",
+      "aliases": [
+        "Risk Scoring"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The step in which customer risk is evaluated and scored based on five key factors: age, nationality/residence, PEP status, adverse media findings, and product/account size. This determination feeds into the risk categorization decision.",
+      "context": [
+        "Customer Risk Level Determined By:",
+        "Age (18–65 = lower risk, >65 = higher)",
+        "Nationality/residence (UK = lower, foreign = higher)",
+        "PEP status (yes = higher)"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Risk Category Classification Gate",
+      "aliases": [
+        "Risk Tier Assignment"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "A branching decision point that assigns customers to one of three risk categories (Low, Medium, or High) based on the aggregated risk scoring factors. Each category triggers different compliance and operational pathways.",
+      "context": [
+        "Risk Categories:",
+        "Low Risk: Standard customer, standard product, standard amount",
+        "Medium Risk: Higher-value account or foreign residence",
+        "High Risk: PEP, PEP family, adverse media, foreign high-value"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "PEP Status Screening Checkpoint",
+      "aliases": [
+        "PEP Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "pep_screening",
+      "description": "A mandatory compliance gate that verifies whether a customer or their family members hold Politically Exposed Person status. PEP status is a key risk factor that elevates the customer to Medium or High Risk category.",
+      "context": [
+        "PEP status (yes = higher)",
+        "High Risk: PEP, PEP family, adverse media, foreign high-value"
+      ]
+    },
+    {
+      "id": "cc_002",
+      "name": "Adverse Media Screening Checkpoint",
+      "aliases": [
+        "Adverse Media Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "adverse_media_check",
+      "description": "A mandatory compliance gate that checks for adverse media findings associated with the customer. Presence of adverse media elevates risk classification to Medium or High Risk.",
+      "context": [
+        "Adverse media (yes = higher)",
+        "High Risk: PEP, PEP family, adverse media, foreign high-value"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Individual Customer",
+      "aliases": [
+        "Customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A natural person subject to risk assessment during the onboarding or account management process. Customer risk profile is determined by demographic, geographic, regulatory, and product-related factors.",
+      "context": [
+        "Customer Risk Level Determined By:",
+        "Standard customer, standard product, standard amount",
+        "Higher-value account or foreign residence"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Standard Account",
+      "aliases": [
+        "Standard Product Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "A standard-tier account product that carries lower risk classification when held by a standard customer with standard transaction amounts.",
+      "context": [
+        "Low Risk: Standard customer, standard product, standard amount",
+        "Product/account size (standard = lower, high-value = higher)"
+      ]
+    },
+    {
+      "id": "acc_002",
+      "name": "High-Value Account",
+      "aliases": [
+        "High-Value Product"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "A higher-tier account product with elevated transaction amounts or balances that increases risk classification, particularly when combined with foreign residence or other risk factors.",
+      "context": [
+        "Medium Risk: Higher-value account or foreign residence",
+        "High Risk: PEP, PEP family, adverse media, foreign high-value",
+        "Product/account size (standard = lower, high-value = higher)"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_proc_001",
+    "pstep_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_pstep_001",
+    "dp_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_dp_001",
+    "cc_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cc_001",
+    "cc_002": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cc_002",
+    "cust_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cust_001",
+    "acc_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_acc_001",
+    "acc_002": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_acc_002"
+  },
+  "entities": [
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_proc_001",
+      "name": "Risk Assessment Process",
+      "aliases": [
+        "Risk Scoring"
+      ],
+      "entity_class": "PROCESS",
+      "type": "risk_assessment",
+      "description": "A systematic process for determining customer risk level based on multiple factors including age, nationality, PEP status, adverse media presence, and product/account characteristics. The process categorizes customers into Low, Medium, or High Risk tiers to inform compliance and onboarding decisions.",
+      "context": [
+        "Step 6: Risk Assessment",
+        "Risk Scoring",
+        "Customer Risk Level Determined By:",
+        "Risk Categories:"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_pstep_001",
+      "name": "Customer Risk Level Determination",
+      "aliases": [
+        "Risk Scoring"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The step in which customer risk is evaluated and scored based on five key factors: age, nationality/residence, PEP status, adverse media findings, and product/account size. This determination feeds into the risk categorization decision.",
+      "context": [
+        "Customer Risk Level Determined By:",
+        "Age (18–65 = lower risk, >65 = higher)",
+        "Nationality/residence (UK = lower, foreign = higher)",
+        "PEP status (yes = higher)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_dp_001",
+      "name": "Risk Category Classification Gate",
+      "aliases": [
+        "Risk Tier Assignment"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "A branching decision point that assigns customers to one of three risk categories (Low, Medium, or High) based on the aggregated risk scoring factors. Each category triggers different compliance and operational pathways.",
+      "context": [
+        "Risk Categories:",
+        "Low Risk: Standard customer, standard product, standard amount",
+        "Medium Risk: Higher-value account or foreign residence",
+        "High Risk: PEP, PEP family, adverse media, foreign high-value"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cc_001",
+      "name": "PEP Status Screening Checkpoint",
+      "aliases": [
+        "PEP Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "pep_screening",
+      "description": "A mandatory compliance gate that verifies whether a customer or their family members hold Politically Exposed Person status. PEP status is a key risk factor that elevates the customer to Medium or High Risk category.",
+      "context": [
+        "PEP status (yes = higher)",
+        "High Risk: PEP, PEP family, adverse media, foreign high-value"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cc_002",
+      "name": "Adverse Media Screening Checkpoint",
+      "aliases": [
+        "Adverse Media Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "adverse_media_check",
+      "description": "A mandatory compliance gate that checks for adverse media findings associated with the customer. Presence of adverse media elevates risk classification to Medium or High Risk.",
+      "context": [
+        "Adverse media (yes = higher)",
+        "High Risk: PEP, PEP family, adverse media, foreign high-value"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cust_001",
+      "name": "Individual Customer",
+      "aliases": [
+        "Customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A natural person subject to risk assessment during the onboarding or account management process. Customer risk profile is determined by demographic, geographic, regulatory, and product-related factors.",
+      "context": [
+        "Customer Risk Level Determined By:",
+        "Standard customer, standard product, standard amount",
+        "Higher-value account or foreign residence"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_acc_001",
+      "name": "Standard Account",
+      "aliases": [
+        "Standard Product Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "A standard-tier account product that carries lower risk classification when held by a standard customer with standard transaction amounts.",
+      "context": [
+        "Low Risk: Standard customer, standard product, standard amount",
+        "Product/account size (standard = lower, high-value = higher)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_acc_002",
+      "name": "High-Value Account",
+      "aliases": [
+        "High-Value Product"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "A higher-tier account product with elevated transaction amounts or balances that increases risk classification, particularly when combined with foreign residence or other risk factors.",
+      "context": [
+        "Medium Risk: Higher-value account or foreign residence",
+        "High Risk: PEP, PEP family, adverse media, foreign high-value",
+        "Product/account size (standard = lower, high-value = higher)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_proc_001",
+      "name": "Risk Assessment Process",
+      "properties": {
+        "purpose": "Determine customer risk level based on multiple criteria including age, nationality, PEP status, adverse media, and account size",
+        "scope": "All customers and account types",
+        "owner": "Risk Assessment Team",
+        "trigger": "Account opening or periodic review",
+        "outcome_success": "Customer assigned to appropriate risk category (Low, Medium, or High Risk)",
+        "risk_classification_factors": [
+          "Age",
+          "Nationality/residence",
+          "PEP status",
+          "Adverse media presence",
+          "Product/account size"
+        ]
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_pstep_001",
+      "name": "Customer Risk Level Determination",
+      "properties": {
+        "step_number": 6,
+        "actor": "Risk Assessment Team",
+        "input": [
+          "Customer age",
+          "Customer nationality/residence",
+          "PEP status",
+          "Adverse media screening results",
+          "Account type and size"
+        ],
+        "output": "Risk score and risk category assignment",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Risk scoring system",
+          "PEP database",
+          "Adverse media database"
+        ]
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_dp_001",
+      "name": "Risk Category Classification Gate",
+      "properties": {
+        "decision_question": "What risk category should the customer be assigned to based on scoring criteria?",
+        "criteria": [
+          "Age: 18–65 = lower risk, >65 = higher",
+          "Nationality/residence: UK = lower, foreign = higher",
+          "PEP status: yes = higher risk",
+          "Adverse media: yes = higher risk",
+          "Account size: standard = lower, high-value = higher"
+        ],
+        "decision_maker": "Risk Assessment System/Team",
+        "path_yes": "Assign to Low Risk category",
+        "path_no": "Escalate to Medium or High Risk category based on criteria",
+        "possible_outcomes": [
+          "Low Risk",
+          "Medium Risk",
+          "High Risk"
+        ]
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cc_001",
+      "name": "PEP Status Screening Checkpoint",
+      "properties": {
+        "regulatory_basis": "FCA COBS, MLR 2017",
+        "mandatory": true,
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "PEP database match results",
+          "Family relationship verification if applicable"
+        ],
+        "performed_by": "Risk Assessment Team",
+        "timing": "During risk assessment step",
+        "failure_consequence": "Customer classified as High Risk; enhanced due diligence required"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cc_002",
+      "name": "Adverse Media Screening Checkpoint",
+      "properties": {
+        "regulatory_basis": "FCA COBS, MLR 2017",
+        "mandatory": true,
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "Adverse media database search results",
+          "Media source documentation if hit identified"
+        ],
+        "performed_by": "Risk Assessment Team",
+        "timing": "During risk assessment step",
+        "failure_consequence": "Customer classified as High Risk; enhanced due diligence required"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cust_001",
+      "name": "Individual Customer",
+      "properties": {
+        "customer_type": "individual",
+        "risk_classification_factors": [
+          "Age",
+          "Nationality/residence",
+          "PEP status",
+          "Adverse media presence",
+          "Account type and size"
+        ]
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_acc_001",
+      "name": "Standard Account",
+      "properties": {
+        "account_type": "standard",
+        "risk_profile": "Lower risk",
+        "risk_factor_contribution": "Standard product and standard amount = lower risk component"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_acc_002",
+      "name": "High-Value Account",
+      "properties": {
+        "account_type": "high-value",
+        "risk_profile": "Medium to High risk",
+        "risk_factor_contribution": "Higher-value account = elevated risk component; foreign residence elevates to Medium Risk; PEP or adverse media elevates to High Risk"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_proc_001",
+      "source_name": "Risk Assessment Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_pstep_001",
+      "target_name": "Customer Risk Level Determination",
+      "rel_type": "contains",
+      "description": "Risk Assessment Process includes the Customer Risk Level Determination step",
+      "properties": {
+        "sequence_position": "step_6",
+        "mandatory": true
+      },
+      "context": "Step 6: Risk Assessment - Customer Risk Level Determined By: Age, Nationality/residence, PEP status, Adverse media, Product/account size",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_pstep_001",
+      "source_name": "Customer Risk Level Determination",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_dp_001",
+      "target_name": "Risk Category Classification Gate",
+      "rel_type": "leads_to",
+      "description": "Customer Risk Level Determination step leads to Risk Category Classification decision point",
+      "properties": {
+        "decision_criteria": [
+          "age",
+          "nationality",
+          "residence",
+          "PEP_status",
+          "adverse_media",
+          "product_type",
+          "account_size"
+        ]
+      },
+      "context": "Customer Risk Level Determined By: Age (18–65 = lower risk, >65 = higher), Nationality/residence (UK = lower, foreign = higher), PEP status (yes = higher), Adverse media (yes = higher), Product/account size (standard = lower, high-value = higher)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_pstep_001",
+      "source_name": "Customer Risk Level Determination",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cc_001",
+      "target_name": "PEP Status Screening Checkpoint",
+      "rel_type": "triggers",
+      "description": "Customer Risk Level Determination triggers PEP Status Screening Checkpoint",
+      "properties": {
+        "checkpoint_type": "compliance_verification",
+        "risk_factor": "PEP_status"
+      },
+      "context": "PEP status (yes = higher) - Risk Categories include High Risk: PEP, PEP family",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_pstep_001",
+      "source_name": "Customer Risk Level Determination",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cc_002",
+      "target_name": "Adverse Media Screening Checkpoint",
+      "rel_type": "triggers",
+      "description": "Customer Risk Level Determination triggers Adverse Media Screening Checkpoint",
+      "properties": {
+        "checkpoint_type": "compliance_verification",
+        "risk_factor": "adverse_media"
+      },
+      "context": "Adverse media (yes = higher) - Risk Categories include High Risk: adverse media",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cc_001",
+      "source_name": "PEP Status Screening Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_dp_001",
+      "target_name": "Risk Category Classification Gate",
+      "rel_type": "determines_outcome_of",
+      "description": "PEP Status Screening Checkpoint determines outcome of Risk Category Classification decision",
+      "properties": {
+        "risk_impact": "high",
+        "classification_factor": "PEP_status"
+      },
+      "context": "PEP status (yes = higher) - High Risk: PEP, PEP family",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cc_002",
+      "source_name": "Adverse Media Screening Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_dp_001",
+      "target_name": "Risk Category Classification Gate",
+      "rel_type": "determines_outcome_of",
+      "description": "Adverse Media Screening Checkpoint determines outcome of Risk Category Classification decision",
+      "properties": {
+        "risk_impact": "high",
+        "classification_factor": "adverse_media"
+      },
+      "context": "Adverse media (yes = higher) - High Risk: adverse media",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_dp_001",
+      "source_name": "Risk Category Classification Gate",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "classifies",
+      "description": "Risk Category Classification Gate classifies Individual Customer into risk category",
+      "properties": {
+        "risk_categories": [
+          "Low Risk",
+          "Medium Risk",
+          "High Risk"
+        ],
+        "classification_basis": [
+          "age",
+          "nationality",
+          "residence",
+          "PEP_status",
+          "adverse_media",
+          "product_type",
+          "account_size"
+        ]
+      },
+      "context": "Risk Categories: Low Risk: Standard customer, standard product, standard amount; Medium Risk: Higher-value account or foreign residence; High Risk: PEP, PEP family, adverse media, foreign high-value",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cust_001",
+      "source_name": "Individual Customer",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_acc_001",
+      "target_name": "Standard Account",
+      "rel_type": "holds",
+      "description": "Individual Customer holds Standard Account",
+      "properties": {
+        "account_type": "standard",
+        "risk_profile": "low"
+      },
+      "context": "Low Risk: Standard customer, standard product, standard amount",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cust_001",
+      "source_name": "Individual Customer",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_acc_002",
+      "target_name": "High-Value Account",
+      "rel_type": "holds",
+      "description": "Individual Customer holds High-Value Account",
+      "properties": {
+        "account_type": "high-value",
+        "risk_profile": "medium_to_high"
+      },
+      "context": "Medium Risk: Higher-value account or foreign residence; High Risk: foreign high-value",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_acc_001",
+      "source_name": "Standard Account",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_dp_001",
+      "target_name": "Risk Category Classification Gate",
+      "rel_type": "routes_based_on_risk_of",
+      "description": "Standard Account type influences Risk Category Classification decision",
+      "properties": {
+        "account_size": "standard",
+        "risk_factor": "product_account_size",
+        "risk_level": "lower"
+      },
+      "context": "Product/account size (standard = lower, high-value = higher) - Low Risk: Standard customer, standard product, standard amount",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_acc_002",
+      "source_name": "High-Value Account",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_dp_001",
+      "target_name": "Risk Category Classification Gate",
+      "rel_type": "routes_based_on_risk_of",
+      "description": "High-Value Account type influences Risk Category Classification decision",
+      "properties": {
+        "account_size": "high-value",
+        "risk_factor": "product_account_size",
+        "risk_level": "higher"
+      },
+      "context": "Product/account size (standard = lower, high-value = higher) - Medium Risk: Higher-value account or foreign residence; High Risk: foreign high-value",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_proc_001",
+      "source_name": "Risk Assessment Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_pstep_001",
+      "source_name": "Customer Risk Level Determination",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_dp_001",
+      "source_name": "Risk Category Classification Gate",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cc_001",
+      "source_name": "PEP Status Screening Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cc_002",
+      "source_name": "Adverse Media Screening Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_cust_001",
+      "source_name": "Individual Customer",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_acc_001",
+      "source_name": "Standard Account",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019_acc_002",
+      "source_name": "High-Value Account",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

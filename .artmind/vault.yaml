@@ -1,0 +1,41 @@
+# artmind ingest manifest (docs/vault.md).
+#
+# `mappings` does two jobs: it says which domain governs a path's extraction,
+# AND whether to ingest it at all. An unmapped path is never ingested -- so an
+# attachments folder needs no ignore rule, and an unmapped Inbox/ is a drafting
+# area where MOVING a note into a mapped folder is what says "this is ready".
+#
+# First match wins, so put a specific rule above a general one. Paths are globs
+# relative to the vault root; `**` matches any depth.
+#
+# Domain precedence, highest first:
+#   --setDomain  >  the file's own _domain frontmatter  >  a mapping  >  --domain
+ingest:
+  trigger: manual
+  mappings:
+    - path: organization/**
+      domain: banking.organization
+    - path: products/**
+      domain: banking.products
+    - path: faqs/**
+      domain: banking.products
+    - path: sop_procedures/**
+      domain: banking.sop_guides
+    - path: guides/**
+      domain: banking.sop_guides
+    - path: policies/**
+      domain: banking.policy
+    - path: risk_compliance/**
+      domain: banking.risk_governance
+    - path: governance/**
+      domain: banking.risk_governance
+    - path: regulations/**
+      domain: banking.risk_governance
+    - path: reference/**
+      domain: banking.reference
+    - path: templates/**
+      domain: banking.communications
+    - path: training/**
+      domain: banking.communications
+    - path: cases/**
+      domain: banking.cases

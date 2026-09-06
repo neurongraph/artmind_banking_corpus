@@ -1,0 +1,812 @@
+{
+  "chunk_seq": 6,
+  "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+  "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+  "text": "### Entity: Customer  \n**Definition:** A natural person (individual) who holds at least one account with FirstUK Bank.  \n**Attributes:**\n- `customer_id` — Unique identifier (linked to Party)\n- `first_name` — Given name\n- `last_name` — Family name\n- `date_of_birth` — DoB (required for AML)\n- `nationality` — Country of citizenship\n- `email` — Email address\n- `phone` — Primary phone number\n- `address` — Registered address (see Address concept)\n- `customer_status` — Active, Dormant, Closed, Suspended  \n**Key Business Rules:**\n- Every customer must have a valid identity (see KYC concept)\n- Every customer must pass AML screening before account opening\n- Customer can hold multiple accounts\n- Customer can have joint account holders  \n**Relationships:**\n- `has_accounts` → Account (1:many)\n- `has_address` → Address (1:many)\n- `has_kyc_verification` → KYC_Verification (1:many)  \n**Example:**\n```\nCustomer: Sarah Johnson\n- customer_id: CUST-00001\n- date_of_birth: 1985-03-15\n- nationality: UK\n- email: sarah.johnson@email.com\n- customer_status: Active\n- has_accounts: [ACC-00001, ACC-00002]\n```  \n---",
+  "name": "Chunk 6/37",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_005",
+  "next_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_007",
+  "raw_entities": [
+    {
+      "id": "bc_001",
+      "name": "Customer",
+      "aliases": [
+        "individual_customer",
+        "account_holder"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "customer",
+      "description": "A natural person who holds at least one account with FirstUK Bank. Customers are identified by unique customer_id and must complete KYC verification and AML screening before account opening. Each customer can hold multiple accounts and may participate in joint account arrangements.",
+      "context": [
+        "A natural person (individual) who holds at least one account with FirstUK Bank",
+        "Every customer must have a valid identity (see KYC concept)",
+        "Every customer must pass AML screening before account opening",
+        "Customer can hold multiple accounts"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Account",
+      "aliases": [
+        "customer_account"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "A banking account held by a customer with FirstUK Bank. Accounts are linked to customers through a one-to-many relationship and form the primary vehicle for customer banking relationships.",
+      "context": [
+        "A natural person (individual) who holds at least one account with FirstUK Bank",
+        "Customer can hold multiple accounts",
+        "has_accounts → Account (1:many)"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "KYC Verification",
+      "aliases": [
+        "identity_verification",
+        "kyc"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "identity_verification",
+      "description": "The Know Your Customer identity verification process required for all customers before account opening. KYC verification is a mandatory compliance obligation and is linked to customers on a one-to-many basis to support periodic refresh and enhanced due diligence.",
+      "context": [
+        "Every customer must have a valid identity (see KYC concept)",
+        "has_kyc_verification → KYC_Verification (1:many)"
+      ]
+    },
+    {
+      "id": "bc_004",
+      "name": "AML Screening",
+      "aliases": [
+        "aml_check",
+        "anti_money_laundering"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sanctions_screening",
+      "description": "Anti-Money Laundering screening that must be completed for every customer before account opening. AML screening is a mandatory regulatory obligation to prevent money laundering and terrorist financing.",
+      "context": [
+        "Every customer must pass AML screening before account opening"
+      ]
+    },
+    {
+      "id": "bc_005",
+      "name": "Address",
+      "aliases": [
+        "customer_address",
+        "registered_address"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "address",
+      "description": "The registered address associated with a customer. Customers can have multiple addresses linked to their profile for KYC and compliance purposes.",
+      "context": [
+        "address — Registered address (see Address concept)",
+        "has_address → Address (1:many)"
+      ]
+    },
+    {
+      "id": "bc_006",
+      "name": "Party",
+      "aliases": [
+        "party_identifier"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "party",
+      "description": "The foundational entity representing a natural or legal person in the FirstUK Bank system. Customer identifiers are linked to Party records for unified identity management.",
+      "context": [
+        "customer_id — Unique identifier (linked to Party)"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "Customer Identity Requirement",
+      "aliases": [
+        "kyc_mandate"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "A mandatory business rule requiring every customer to have a valid identity verified through the KYC process before or during their relationship with FirstUK Bank.",
+      "context": [
+        "Every customer must have a valid identity (see KYC concept)"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Customer AML Screening Requirement",
+      "aliases": [
+        "aml_mandate"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "A mandatory business rule requiring every customer to pass AML screening before account opening. This is a regulatory obligation to prevent money laundering and terrorist financing.",
+      "context": [
+        "Every customer must pass AML screening before account opening"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "Multiple Account Holding",
+      "aliases": [
+        "multi_account_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "A business rule permitting customers to hold multiple accounts simultaneously with FirstUK Bank, enabling diverse product holdings and account arrangements.",
+      "context": [
+        "Customer can hold multiple accounts"
+      ]
+    },
+    {
+      "id": "br_004",
+      "name": "Joint Account Holder Permission",
+      "aliases": [
+        "joint_account_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "A business rule permitting customers to participate as joint account holders on accounts with other customers, enabling shared account arrangements.",
+      "context": [
+        "Customer can have joint account holders"
+      ]
+    }
+  ],
+  "id_map": {
+    "bc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_001",
+    "bc_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_002",
+    "bc_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_003",
+    "bc_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_004",
+    "bc_005": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_005",
+    "bc_006": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_006",
+    "br_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_001",
+    "br_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_002",
+    "br_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_003",
+    "br_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_004"
+  },
+  "entities": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_001",
+      "name": "Customer",
+      "aliases": [
+        "individual_customer",
+        "account_holder"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "customer",
+      "description": "A natural person who holds at least one account with FirstUK Bank. Customers are identified by unique customer_id and must complete KYC verification and AML screening before account opening. Each customer can hold multiple accounts and may participate in joint account arrangements.",
+      "context": [
+        "A natural person (individual) who holds at least one account with FirstUK Bank",
+        "Every customer must have a valid identity (see KYC concept)",
+        "Every customer must pass AML screening before account opening",
+        "Customer can hold multiple accounts"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_002",
+      "name": "Account",
+      "aliases": [
+        "customer_account"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "A banking account held by a customer with FirstUK Bank. Accounts are linked to customers through a one-to-many relationship and form the primary vehicle for customer banking relationships.",
+      "context": [
+        "A natural person (individual) who holds at least one account with FirstUK Bank",
+        "Customer can hold multiple accounts",
+        "has_accounts → Account (1:many)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_003",
+      "name": "KYC Verification",
+      "aliases": [
+        "identity_verification",
+        "kyc"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "identity_verification",
+      "description": "The Know Your Customer identity verification process required for all customers before account opening. KYC verification is a mandatory compliance obligation and is linked to customers on a one-to-many basis to support periodic refresh and enhanced due diligence.",
+      "context": [
+        "Every customer must have a valid identity (see KYC concept)",
+        "has_kyc_verification → KYC_Verification (1:many)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_004",
+      "name": "AML Screening",
+      "aliases": [
+        "aml_check",
+        "anti_money_laundering"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sanctions_screening",
+      "description": "Anti-Money Laundering screening that must be completed for every customer before account opening. AML screening is a mandatory regulatory obligation to prevent money laundering and terrorist financing.",
+      "context": [
+        "Every customer must pass AML screening before account opening"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_005",
+      "name": "Address",
+      "aliases": [
+        "customer_address",
+        "registered_address"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "address",
+      "description": "The registered address associated with a customer. Customers can have multiple addresses linked to their profile for KYC and compliance purposes.",
+      "context": [
+        "address — Registered address (see Address concept)",
+        "has_address → Address (1:many)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_006",
+      "name": "Party",
+      "aliases": [
+        "party_identifier"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "party",
+      "description": "The foundational entity representing a natural or legal person in the FirstUK Bank system. Customer identifiers are linked to Party records for unified identity management.",
+      "context": [
+        "customer_id — Unique identifier (linked to Party)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_001",
+      "name": "Customer Identity Requirement",
+      "aliases": [
+        "kyc_mandate"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "A mandatory business rule requiring every customer to have a valid identity verified through the KYC process before or during their relationship with FirstUK Bank.",
+      "context": [
+        "Every customer must have a valid identity (see KYC concept)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_002",
+      "name": "Customer AML Screening Requirement",
+      "aliases": [
+        "aml_mandate"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "A mandatory business rule requiring every customer to pass AML screening before account opening. This is a regulatory obligation to prevent money laundering and terrorist financing.",
+      "context": [
+        "Every customer must pass AML screening before account opening"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_003",
+      "name": "Multiple Account Holding",
+      "aliases": [
+        "multi_account_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "A business rule permitting customers to hold multiple accounts simultaneously with FirstUK Bank, enabling diverse product holdings and account arrangements.",
+      "context": [
+        "Customer can hold multiple accounts"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_004",
+      "name": "Joint Account Holder Permission",
+      "aliases": [
+        "joint_account_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "A business rule permitting customers to participate as joint account holders on accounts with other customers, enabling shared account arrangements.",
+      "context": [
+        "Customer can have joint account holders"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_001",
+      "name": "Customer",
+      "properties": {
+        "definition": "A natural person (individual) who holds at least one account with FirstUK Bank",
+        "key_attributes": [
+          "customer_id",
+          "first_name",
+          "last_name",
+          "date_of_birth",
+          "nationality",
+          "email",
+          "phone",
+          "address",
+          "customer_status"
+        ],
+        "business_rules": [
+          "Every customer must have a valid identity",
+          "Every customer must pass AML screening before account opening",
+          "Customer can hold multiple accounts",
+          "Customer can have joint account holders"
+        ],
+        "relationships_to": [
+          "Account",
+          "Address",
+          "KYC_Verification",
+          "Party"
+        ],
+        "ontology_domain": "Customer Management"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_002",
+      "name": "Account",
+      "properties": {
+        "definition": "A financial account held by a customer with FirstUK Bank",
+        "key_attributes": [
+          "account_id",
+          "account_type",
+          "account_status",
+          "balance",
+          "currency"
+        ],
+        "relationships_to": [
+          "Customer",
+          "Transaction",
+          "Joint Account Holder"
+        ],
+        "ontology_domain": "Account Management"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_003",
+      "name": "KYC Verification",
+      "properties": {
+        "definition": "Know Your Customer verification process to establish and verify customer identity",
+        "key_attributes": [
+          "verification_id",
+          "customer_id",
+          "verification_status",
+          "verification_date",
+          "verification_method"
+        ],
+        "business_rules": [
+          "Every customer must have a valid identity"
+        ],
+        "regulatory_significance": "Required for customer onboarding and ongoing compliance",
+        "ontology_domain": "Compliance & KYC"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_004",
+      "name": "AML Screening",
+      "properties": {
+        "definition": "Anti-Money Laundering screening process to assess customer risk and detect suspicious activity",
+        "key_attributes": [
+          "screening_id",
+          "customer_id",
+          "screening_date",
+          "screening_status",
+          "risk_classification"
+        ],
+        "business_rules": [
+          "Every customer must pass AML screening before account opening"
+        ],
+        "regulatory_significance": "Mandatory compliance requirement for financial institutions",
+        "ontology_domain": "Compliance & AML"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_005",
+      "name": "Address",
+      "properties": {
+        "definition": "Registered address information associated with a customer",
+        "key_attributes": [
+          "address_id",
+          "customer_id",
+          "street_address",
+          "city",
+          "postal_code",
+          "country",
+          "address_type"
+        ],
+        "relationships_to": [
+          "Customer"
+        ],
+        "ontology_domain": "Customer Management"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_006",
+      "name": "Party",
+      "properties": {
+        "definition": "A legal entity or natural person that can hold accounts and enter into banking relationships",
+        "key_attributes": [
+          "party_id",
+          "party_type",
+          "party_name"
+        ],
+        "relationships_to": [
+          "Customer",
+          "Account"
+        ],
+        "ontology_domain": "Party Management"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_001",
+      "name": "Customer Identity Requirement",
+      "properties": {
+        "rule_statement": "Every customer must have a valid identity established through KYC verification",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Customer"
+        ],
+        "regulatory_source": "KYC regulations",
+        "enforcement": "FirstUK Bank Compliance",
+        "consequence": "Customer cannot open or maintain accounts without valid identity verification"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_002",
+      "name": "Customer AML Screening Requirement",
+      "properties": {
+        "rule_statement": "Every customer must pass AML screening before account opening",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Customer",
+          "Account"
+        ],
+        "regulatory_source": "AML/CFT regulations",
+        "enforcement": "FirstUK Bank Compliance",
+        "consequence": "Account opening is blocked if customer fails AML screening"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_003",
+      "name": "Multiple Account Holding",
+      "properties": {
+        "rule_statement": "A customer can hold multiple accounts with FirstUK Bank",
+        "rule_type": "authority",
+        "applies_to": [
+          "Customer",
+          "Account"
+        ],
+        "enforcement": "FirstUK Bank Account Management"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_004",
+      "name": "Joint Account Holder Permission",
+      "properties": {
+        "rule_statement": "A customer can have joint account holders on their accounts",
+        "rule_type": "authority",
+        "applies_to": [
+          "Customer",
+          "Account"
+        ],
+        "enforcement": "FirstUK Bank Account Management"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_001",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_002",
+      "target_name": "Account",
+      "rel_type": "linked_to",
+      "description": "Customer holds at least one account with FirstUK Bank",
+      "properties": {
+        "cardinality": "1:many",
+        "relationship_name": "has_accounts"
+      },
+      "context": "A natural person (individual) who holds at least one account with FirstUK Bank. `has_accounts` → Account (1:many)",
+      "bidirectional": true,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_001",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_005",
+      "target_name": "Address",
+      "rel_type": "linked_to",
+      "description": "Customer has one or more registered addresses",
+      "properties": {
+        "cardinality": "1:many",
+        "relationship_name": "has_address",
+        "address_type": "Registered address"
+      },
+      "context": "`has_address` → Address (1:many). address — Registered address (see Address concept)",
+      "bidirectional": true,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_001",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_003",
+      "target_name": "KYC Verification",
+      "rel_type": "linked_to",
+      "description": "Customer has one or more KYC verification records",
+      "properties": {
+        "cardinality": "1:many",
+        "relationship_name": "has_kyc_verification"
+      },
+      "context": "`has_kyc_verification` → KYC_Verification (1:many)",
+      "bidirectional": true,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_001",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_001",
+      "target_name": "Customer Identity Requirement",
+      "rel_type": "governed_by",
+      "description": "Every customer must have a valid identity as required by KYC business rule",
+      "properties": {
+        "requirement_type": "mandatory",
+        "enforcement_point": "account_opening"
+      },
+      "context": "Every customer must have a valid identity (see KYC concept)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_001",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_002",
+      "target_name": "Customer AML Screening Requirement",
+      "rel_type": "governed_by",
+      "description": "Every customer must pass AML screening before account opening",
+      "properties": {
+        "requirement_type": "mandatory",
+        "enforcement_point": "before_account_opening"
+      },
+      "context": "Every customer must pass AML screening before account opening",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_001",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_003",
+      "target_name": "Multiple Account Holding",
+      "rel_type": "governed_by",
+      "description": "Customer can hold multiple accounts as permitted by business rule",
+      "properties": {
+        "requirement_type": "permissive",
+        "cardinality": "many"
+      },
+      "context": "Customer can hold multiple accounts",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_001",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_004",
+      "target_name": "Joint Account Holder Permission",
+      "rel_type": "governed_by",
+      "description": "Customer can have joint account holders as permitted by business rule",
+      "properties": {
+        "requirement_type": "permissive",
+        "relationship_type": "joint_account_holder"
+      },
+      "context": "Customer can have joint account holders",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_001",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_006",
+      "target_name": "Party",
+      "rel_type": "linked_to",
+      "description": "Customer identifier is linked to Party entity",
+      "properties": {
+        "linking_attribute": "customer_id"
+      },
+      "context": "`customer_id` — Unique identifier (linked to Party)",
+      "bidirectional": true,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_003",
+      "source_name": "KYC Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_001",
+      "target_name": "Customer Identity Requirement",
+      "rel_type": "enforces",
+      "description": "KYC Verification concept enforces the Customer Identity Requirement business rule",
+      "properties": {
+        "enforcement_mechanism": "identity_validation"
+      },
+      "context": "Every customer must have a valid identity (see KYC concept)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_004",
+      "source_name": "AML Screening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_002",
+      "target_name": "Customer AML Screening Requirement",
+      "rel_type": "enforces",
+      "description": "AML Screening concept enforces the Customer AML Screening Requirement business rule",
+      "properties": {
+        "enforcement_mechanism": "aml_screening_process",
+        "enforcement_point": "before_account_opening"
+      },
+      "context": "Every customer must pass AML screening before account opening",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_001",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_002",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_003",
+      "source_name": "KYC Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_004",
+      "source_name": "AML Screening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_005",
+      "source_name": "Address",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_bc_006",
+      "source_name": "Party",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_001",
+      "source_name": "Customer Identity Requirement",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_002",
+      "source_name": "Customer AML Screening Requirement",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_003",
+      "source_name": "Multiple Account Holding",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006_br_004",
+      "source_name": "Joint Account Holder Permission",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_006",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ]
+}

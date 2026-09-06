@@ -1,0 +1,755 @@
+{
+  "chunk_seq": 8,
+  "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+  "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+  "text": "## Step 3: Address Verification  \n### Document Examination  \n1. **Check Address Format**\n- Verify UK postcode format: A(1,2)9(1,2)A 9A(2)\n- Confirm address is in United Kingdom\n- Note any address concerns  \n2. **Match Address Documents**\n- Compare address on ID with address on secondary document\n- Confirm both show same address\n- If addresses differ: Investigate (recent move? spelling variance?)  \n3. **Document Currency**\n- Utility bill, council tax: Dated within 3 months\n- Bank statement: Current (within last 3 months)\n- Tenancy agreement: Must be signed and current\n- Insurance policy: Must be active policy  \n**Pass Criteria:**\n- ✅ Address on ID matches secondary document\n- ✅ Address is in UK\n- ✅ Secondary document is current (within 3 months)\n- ✅ Address format valid (proper postcode)  \n**Fail Criteria:**\n- ❌ Addresses don't match\n- ❌ Document outdated (>3 months old)\n- ❌ Non-UK address\n- ❌ Invalid postcode format  \n---",
+  "name": "Chunk 8/22",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_007",
+  "next_chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_009",
+  "raw_entities": [
+    {
+      "id": "ps_001",
+      "name": "Address Verification",
+      "aliases": [
+        "Step 3: Address Verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_verification",
+      "description": "A discrete verification step within KYC that examines address format compliance, matches addresses across identity and secondary documents, and validates document currency. The step applies pass/fail criteria based on address matching, UK residency confirmation, document recency, and postcode format validity.",
+      "context": [
+        "Step 3: Address Verification",
+        "Verify UK postcode format: A(1,2)9(1,2)A 9A(2)",
+        "Compare address on ID with address on secondary document",
+        "Utility bill, council tax: Dated within 3 months"
+      ]
+    },
+    {
+      "id": "ps_002",
+      "name": "Check Address Format",
+      "aliases": [
+        "Document Examination - Check Address Format"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "A sub-step within Address Verification that validates the format and location of the customer's address. Includes verification of UK postcode format compliance (A(1,2)9(1,2)A 9A(2)), confirmation of United Kingdom residency, and notation of any address concerns.",
+      "context": [
+        "Verify UK postcode format: A(1,2)9(1,2)A 9A(2)",
+        "Confirm address is in United Kingdom",
+        "Note any address concerns"
+      ]
+    },
+    {
+      "id": "ps_003",
+      "name": "Match Address Documents",
+      "aliases": [
+        "Document Examination - Match Address Documents"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "A sub-step within Address Verification that compares the address shown on the primary identity document with the address on a secondary supporting document. Investigates discrepancies such as recent moves or spelling variations.",
+      "context": [
+        "Compare address on ID with address on secondary document",
+        "Confirm both show same address",
+        "If addresses differ: Investigate (recent move? spelling variance?)"
+      ]
+    },
+    {
+      "id": "ps_004",
+      "name": "Document Currency Check",
+      "aliases": [
+        "Document Examination - Document Currency"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "A sub-step within Address Verification that validates the recency and active status of secondary address documents. Applies different currency thresholds depending on document type: utility bills and council tax within 3 months, bank statements within 3 months, tenancy agreements must be signed and current, and insurance policies must be active.",
+      "context": [
+        "Utility bill, council tax: Dated within 3 months",
+        "Bank statement: Current (within last 3 months)",
+        "Tenancy agreement: Must be signed and current",
+        "Insurance policy: Must be active policy"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Address Verification Pass/Fail Gate",
+      "aliases": [
+        "Address Verification Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "A branching gate in the Address Verification step that determines whether the customer's address has met all compliance criteria. Pass outcomes require address matching across documents, UK residency, current secondary documentation, and valid postcode format. Fail outcomes are triggered by address mismatches, outdated documents, non-UK addresses, or invalid postcode format.",
+      "context": [
+        "Pass Criteria: Address on ID matches secondary document",
+        "Fail Criteria: Addresses don't match",
+        "Secondary document is current (within 3 months)",
+        "Invalid postcode format"
+      ]
+    },
+    {
+      "id": "id_001",
+      "name": "Primary Identity Document",
+      "aliases": [
+        "ID",
+        "Identity Document"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "document_recording",
+      "description": "The primary identity document presented by the customer during address verification, whose address is compared against secondary supporting documents as part of the KYC process.",
+      "context": [
+        "Compare address on ID with address on secondary document",
+        "Address on ID matches secondary document"
+      ]
+    },
+    {
+      "id": "id_002",
+      "name": "Secondary Address Document",
+      "aliases": [
+        "Secondary Document",
+        "Proof of Address Document"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "proof_of_address",
+      "description": "A supporting document used to verify the customer's address during KYC. Acceptable document types include utility bills, council tax statements, bank statements, tenancy agreements, and insurance policies, each with specific currency and validity requirements.",
+      "context": [
+        "Match Address Documents: Compare address on ID with address on secondary document",
+        "Utility bill, council tax: Dated within 3 months",
+        "Bank statement: Current (within last 3 months)",
+        "Tenancy agreement: Must be signed and current"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Customer Address",
+      "aliases": [
+        "Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "The customer's residential address subject to verification during the KYC process. Must be located in the United Kingdom, formatted with a valid UK postcode (A(1,2)9(1,2)A 9A(2)), and consistently recorded across identity and secondary documents.",
+      "context": [
+        "Verify UK postcode format: A(1,2)9(1,2)A 9A(2)",
+        "Confirm address is in United Kingdom",
+        "Address on ID matches secondary document"
+      ]
+    }
+  ],
+  "id_map": {
+    "ps_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_001",
+    "ps_002": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_002",
+    "ps_003": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_003",
+    "ps_004": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_004",
+    "dp_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_dp_001",
+    "id_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_id_001",
+    "id_002": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_id_002",
+    "addr_001": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_addr_001"
+  },
+  "entities": [
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_001",
+      "name": "Address Verification",
+      "aliases": [
+        "Step 3: Address Verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_verification",
+      "description": "A discrete verification step within KYC that examines address format compliance, matches addresses across identity and secondary documents, and validates document currency. The step applies pass/fail criteria based on address matching, UK residency confirmation, document recency, and postcode format validity.",
+      "context": [
+        "Step 3: Address Verification",
+        "Verify UK postcode format: A(1,2)9(1,2)A 9A(2)",
+        "Compare address on ID with address on secondary document",
+        "Utility bill, council tax: Dated within 3 months"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_002",
+      "name": "Check Address Format",
+      "aliases": [
+        "Document Examination - Check Address Format"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "A sub-step within Address Verification that validates the format and location of the customer's address. Includes verification of UK postcode format compliance (A(1,2)9(1,2)A 9A(2)), confirmation of United Kingdom residency, and notation of any address concerns.",
+      "context": [
+        "Verify UK postcode format: A(1,2)9(1,2)A 9A(2)",
+        "Confirm address is in United Kingdom",
+        "Note any address concerns"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_003",
+      "name": "Match Address Documents",
+      "aliases": [
+        "Document Examination - Match Address Documents"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "A sub-step within Address Verification that compares the address shown on the primary identity document with the address on a secondary supporting document. Investigates discrepancies such as recent moves or spelling variations.",
+      "context": [
+        "Compare address on ID with address on secondary document",
+        "Confirm both show same address",
+        "If addresses differ: Investigate (recent move? spelling variance?)"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_004",
+      "name": "Document Currency Check",
+      "aliases": [
+        "Document Examination - Document Currency"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "A sub-step within Address Verification that validates the recency and active status of secondary address documents. Applies different currency thresholds depending on document type: utility bills and council tax within 3 months, bank statements within 3 months, tenancy agreements must be signed and current, and insurance policies must be active.",
+      "context": [
+        "Utility bill, council tax: Dated within 3 months",
+        "Bank statement: Current (within last 3 months)",
+        "Tenancy agreement: Must be signed and current",
+        "Insurance policy: Must be active policy"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_dp_001",
+      "name": "Address Verification Pass/Fail Gate",
+      "aliases": [
+        "Address Verification Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "A branching gate in the Address Verification step that determines whether the customer's address has met all compliance criteria. Pass outcomes require address matching across documents, UK residency, current secondary documentation, and valid postcode format. Fail outcomes are triggered by address mismatches, outdated documents, non-UK addresses, or invalid postcode format.",
+      "context": [
+        "Pass Criteria: Address on ID matches secondary document",
+        "Fail Criteria: Addresses don't match",
+        "Secondary document is current (within 3 months)",
+        "Invalid postcode format"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_id_001",
+      "name": "Primary Identity Document",
+      "aliases": [
+        "ID",
+        "Identity Document"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "document_recording",
+      "description": "The primary identity document presented by the customer during address verification, whose address is compared against secondary supporting documents as part of the KYC process.",
+      "context": [
+        "Compare address on ID with address on secondary document",
+        "Address on ID matches secondary document"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_id_002",
+      "name": "Secondary Address Document",
+      "aliases": [
+        "Secondary Document",
+        "Proof of Address Document"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "proof_of_address",
+      "description": "A supporting document used to verify the customer's address during KYC. Acceptable document types include utility bills, council tax statements, bank statements, tenancy agreements, and insurance policies, each with specific currency and validity requirements.",
+      "context": [
+        "Match Address Documents: Compare address on ID with address on secondary document",
+        "Utility bill, council tax: Dated within 3 months",
+        "Bank statement: Current (within last 3 months)",
+        "Tenancy agreement: Must be signed and current"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_addr_001",
+      "name": "Customer Address",
+      "aliases": [
+        "Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "The customer's residential address subject to verification during the KYC process. Must be located in the United Kingdom, formatted with a valid UK postcode (A(1,2)9(1,2)A 9A(2)), and consistently recorded across identity and secondary documents.",
+      "context": [
+        "Verify UK postcode format: A(1,2)9(1,2)A 9A(2)",
+        "Confirm address is in United Kingdom",
+        "Address on ID matches secondary document"
+      ],
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_001",
+      "name": "Address Verification",
+      "properties": {
+        "step_number": 3,
+        "actor": "KYC Verification Officer",
+        "input": [
+          "Primary identity document with address",
+          "Secondary address document"
+        ],
+        "output": "Address verification result (pass/fail)",
+        "channel": "manual",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Address verification system",
+          "Postcode validation tool"
+        ],
+        "failure_path": "Escalate to supervisor for investigation or request updated documentation"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_002",
+      "name": "Check Address Format",
+      "properties": {
+        "step_number": "3.1",
+        "actor": "KYC Verification Officer",
+        "input": "Customer address from primary identity document",
+        "output": "Address format validation result",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Postcode validation tool"
+        ],
+        "failure_path": "Flag as invalid postcode format; proceed to fail gate"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_003",
+      "name": "Match Address Documents",
+      "properties": {
+        "step_number": "3.2",
+        "actor": "KYC Verification Officer",
+        "input": [
+          "Address on primary identity document",
+          "Address on secondary document"
+        ],
+        "output": "Address match result and investigation notes if variance detected",
+        "channel": "manual",
+        "mandatory": "yes",
+        "failure_path": "Investigate discrepancy (recent move, spelling variance); escalate if unresolved"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_004",
+      "name": "Document Currency Check",
+      "properties": {
+        "step_number": "3.3",
+        "actor": "KYC Verification Officer",
+        "input": "Secondary address document with issue/effective date",
+        "output": "Currency validation result",
+        "channel": "manual",
+        "mandatory": "yes",
+        "failure_path": "Flag as outdated; request current documentation"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_dp_001",
+      "name": "Address Verification Pass/Fail Gate",
+      "properties": {
+        "decision_question": "Does the customer's address meet all verification criteria?",
+        "criteria": [
+          "Address on ID matches secondary document",
+          "Address is in United Kingdom",
+          "Secondary document is current (within 3 months)",
+          "Address format valid (proper UK postcode format A(1,2)9(1,2)A 9A(2))"
+        ],
+        "decision_maker": "KYC Verification Officer",
+        "path_yes": "Proceed to next KYC step; record address as verified",
+        "path_no": "Reject address verification; escalate for supervisor review or request updated documentation",
+        "override_possible": "yes"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_id_001",
+      "name": "Primary Identity Document",
+      "properties": {
+        "accepted_types": [
+          "Passport",
+          "Driving licence",
+          "National ID card"
+        ],
+        "collection_steps": "Obtained during customer onboarding",
+        "verification_steps": [
+          "Check address format",
+          "Match against secondary document"
+        ],
+        "recording_obligation": "Record in KYC system with verification date",
+        "expiry_check": "yes"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_id_002",
+      "name": "Secondary Address Document",
+      "properties": {
+        "accepted_types": [
+          "Utility bill",
+          "Council tax document",
+          "Bank statement",
+          "Tenancy agreement",
+          "Insurance policy"
+        ],
+        "collection_steps": "Obtained during address verification step",
+        "verification_steps": [
+          "Check document currency",
+          "Match address with primary ID",
+          "Validate document authenticity"
+        ],
+        "recording_obligation": "Record in KYC system with verification date",
+        "currency_requirement": "Dated within 3 months (utility bill, council tax, bank statement); must be signed and current (tenancy agreement); must be active policy (insurance)"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_addr_001",
+      "name": "Customer Address",
+      "properties": {
+        "collection_steps": "Captured from primary identity document and secondary address document",
+        "verification_steps": [
+          "Check UK postcode format A(1,2)9(1,2)A 9A(2)",
+          "Confirm address is in United Kingdom",
+          "Match address across primary and secondary documents"
+        ],
+        "acceptable_proof": [
+          "Utility bill (within 3 months)",
+          "Council tax document (within 3 months)",
+          "Bank statement (within 3 months)",
+          "Signed current tenancy agreement",
+          "Active insurance policy"
+        ],
+        "recording_system": "KYC verification system",
+        "update_process": "Request updated secondary address document if address changes or document expires"
+      },
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_001",
+      "source_name": "Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_002",
+      "target_name": "Check Address Format",
+      "rel_type": "contains",
+      "description": "Address Verification process includes the Check Address Format step as its first sub-step",
+      "properties": {
+        "sequence": 1,
+        "phase": "document_examination"
+      },
+      "context": "Step 3: Address Verification ### Document Examination 1. **Check Address Format**",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_002",
+      "source_name": "Check Address Format",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_003",
+      "target_name": "Match Address Documents",
+      "rel_type": "followed_by",
+      "description": "Check Address Format is followed by Match Address Documents in the verification sequence",
+      "properties": {
+        "sequence_order": "2nd to 3rd"
+      },
+      "context": "1. **Check Address Format** ... 2. **Match Address Documents**",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_003",
+      "source_name": "Match Address Documents",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_004",
+      "target_name": "Document Currency Check",
+      "rel_type": "followed_by",
+      "description": "Match Address Documents is followed by Document Currency Check",
+      "properties": {
+        "sequence_order": "3rd to 4th"
+      },
+      "context": "2. **Match Address Documents** ... 3. **Document Currency**",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_004",
+      "source_name": "Document Currency Check",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_dp_001",
+      "target_name": "Address Verification Pass/Fail Gate",
+      "rel_type": "leads_to",
+      "description": "Document Currency Check leads to the Address Verification Pass/Fail Gate decision point",
+      "properties": {
+        "gate_type": "compliance_gate",
+        "outcome_determines": "verification_success"
+      },
+      "context": "**Pass Criteria:** ... **Fail Criteria:**",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_002",
+      "source_name": "Check Address Format",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_addr_001",
+      "target_name": "Customer Address",
+      "rel_type": "verifies",
+      "description": "Check Address Format step verifies the Customer Address for UK postcode format and location",
+      "properties": {
+        "validation_type": "format_and_location",
+        "format_pattern": "A(1,2)9(1,2)A 9A(2)",
+        "location_requirement": "United Kingdom"
+      },
+      "context": "Verify UK postcode format: A(1,2)9(1,2)A 9A(2) ... Confirm address is in United Kingdom",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_003",
+      "source_name": "Match Address Documents",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_id_001",
+      "target_name": "Primary Identity Document",
+      "rel_type": "verifies_identity_of",
+      "description": "Match Address Documents step verifies the address shown on the Primary Identity Document",
+      "properties": {
+        "verification_aspect": "address_on_id"
+      },
+      "context": "Compare address on ID with address on secondary document",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_003",
+      "source_name": "Match Address Documents",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_id_002",
+      "target_name": "Secondary Address Document",
+      "rel_type": "verifies_identity_of",
+      "description": "Match Address Documents step verifies the address shown on the Secondary Address Document",
+      "properties": {
+        "verification_aspect": "address_on_secondary_document"
+      },
+      "context": "Compare address on ID with address on secondary document ... Confirm both show same address",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_004",
+      "source_name": "Document Currency Check",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_id_002",
+      "target_name": "Secondary Address Document",
+      "rel_type": "records",
+      "description": "Document Currency Check validates and records the currency status of the Secondary Address Document",
+      "properties": {
+        "currency_requirements": {
+          "utility_bill": "within_3_months",
+          "council_tax": "within_3_months",
+          "bank_statement": "within_3_months",
+          "tenancy_agreement": "signed_and_current",
+          "insurance_policy": "active_policy"
+        }
+      },
+      "context": "Utility bill, council tax: Dated within 3 months ... Bank statement: Current (within last 3 months) ... Tenancy agreement: Must be signed and current ... Insurance policy: Must be active policy",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_dp_001",
+      "source_name": "Address Verification Pass/Fail Gate",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_addr_001",
+      "target_name": "Customer Address",
+      "rel_type": "routes_based_on_risk_of",
+      "description": "Address Verification Pass/Fail Gate routes based on validation of Customer Address against pass/fail criteria",
+      "properties": {
+        "pass_criteria": [
+          "Address on ID matches secondary document",
+          "Address is in UK",
+          "Secondary document is current (within 3 months)",
+          "Address format valid (proper postcode)"
+        ],
+        "fail_criteria": [
+          "Addresses don't match",
+          "Document outdated (>3 months old)",
+          "Non-UK address",
+          "Invalid postcode format"
+        ]
+      },
+      "context": "**Pass Criteria:** ... **Fail Criteria:**",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_id_001",
+      "source_name": "Primary Identity Document",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_addr_001",
+      "target_name": "Customer Address",
+      "rel_type": "registered_to",
+      "description": "Primary Identity Document contains the registered Customer Address",
+      "properties": {
+        "document_field": "address_on_id"
+      },
+      "context": "Compare address on ID with address on secondary document",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_id_002",
+      "source_name": "Secondary Address Document",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_addr_001",
+      "target_name": "Customer Address",
+      "rel_type": "registered_to",
+      "description": "Secondary Address Document contains the registered Customer Address",
+      "properties": {
+        "document_types": [
+          "utility_bill",
+          "council_tax",
+          "bank_statement",
+          "tenancy_agreement",
+          "insurance_policy"
+        ]
+      },
+      "context": "Compare address on ID with address on secondary document ... Confirm both show same address",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_001",
+      "source_name": "Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_dp_001",
+      "target_name": "Address Verification Pass/Fail Gate",
+      "rel_type": "concludes_at",
+      "description": "Address Verification process concludes at the Address Verification Pass/Fail Gate decision point",
+      "properties": {
+        "gate_type": "final_decision_gate"
+      },
+      "context": "**Pass Criteria:** ... **Fail Criteria:**",
+      "bidirectional": false,
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_001",
+      "source_name": "Address Verification",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_002",
+      "source_name": "Check Address Format",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_003",
+      "source_name": "Match Address Documents",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_ps_004",
+      "source_name": "Document Currency Check",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_dp_001",
+      "source_name": "Address Verification Pass/Fail Gate",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_id_001",
+      "source_name": "Primary Identity Document",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_id_002",
+      "source_name": "Secondary Address Document",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008_addr_001",
+      "source_name": "Customer Address",
+      "target_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "target_name": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3_008",
+      "doc_id": "01a0741a-ea75-723a-b9d4-4cee026de2f3",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

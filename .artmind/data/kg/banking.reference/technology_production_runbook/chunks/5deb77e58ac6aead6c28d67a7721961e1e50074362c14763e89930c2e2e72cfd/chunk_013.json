@@ -1,0 +1,919 @@
+{
+  "chunk_seq": 13,
+  "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+  "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+  "text": "## 5. INCIDENT RESPONSE FLOWCHART  \n```\nIssue Detected\n↓\nSeverity Assessment\n├─ Critical (System Down) → IMMEDIATE ESCALATION\n├─ High (Partial Outage) → Escalate within 1 hour\n└─ Low (Degraded) → Escalate within 4 hours\n↓\nInvestigate (See Troubleshooting)\n├─ Issue Identified → Apply Fix\n└─ Issue Not Found → Escalate to Team\n↓\nImplement Fix\n├─ Rollback? → Roll back deployment\n├─ Restart? → Restart service\n└─ Config Change? → Update and reload\n↓\nVerify Recovery\n├─ PASS → Close incident, document\n└─ FAIL → Escalate to team lead\n↓\nDocument Incident\n- Record in incident log\n- Timeline of actions\n- Root cause analysis\n- Prevention measures for future\n```  \n---",
+  "name": "Chunk 13/21",
+  "_domain": "banking.reference",
+  "prev_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+  "next_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_014",
+  "raw_entities": [
+    {
+      "id": "sev_001",
+      "name": "Severity Level - Critical",
+      "aliases": [
+        "Critical",
+        "System Down",
+        "P1"
+      ],
+      "entity_class": "SEVERITY_LEVEL",
+      "type": "critical_p1",
+      "description": "Critical severity level triggered when system is completely down. Requires immediate escalation with no delay. This is the highest priority incident classification in the response flowchart.",
+      "context": [
+        "Critical (System Down) → IMMEDIATE ESCALATION",
+        "Severity Assessment ├─ Critical (System Down)"
+      ]
+    },
+    {
+      "id": "sev_002",
+      "name": "Severity Level - High",
+      "aliases": [
+        "High",
+        "Partial Outage",
+        "P2"
+      ],
+      "entity_class": "SEVERITY_LEVEL",
+      "type": "high_p2",
+      "description": "High severity level triggered by partial system outage affecting some functionality. Requires escalation within 1 hour of detection.",
+      "context": [
+        "High (Partial Outage) → Escalate within 1 hour",
+        "├─ High (Partial Outage)"
+      ]
+    },
+    {
+      "id": "sev_003",
+      "name": "Severity Level - Low",
+      "aliases": [
+        "Low",
+        "Degraded",
+        "P3"
+      ],
+      "entity_class": "SEVERITY_LEVEL",
+      "type": "medium_p3",
+      "description": "Low severity level triggered by degraded system performance. Requires escalation within 4 hours of detection.",
+      "context": [
+        "Low (Degraded) → Escalate within 4 hours",
+        "└─ Low (Degraded)"
+      ]
+    },
+    {
+      "id": "resp_001",
+      "name": "Severity Assessment",
+      "aliases": [
+        "Assessment",
+        "Triage"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Initial triage action to classify detected issues into Critical, High, or Low severity categories. Determines the escalation timeline and response urgency.",
+      "context": [
+        "Severity Assessment ├─ Critical (System Down) → IMMEDIATE ESCALATION",
+        "Issue Detected ↓ Severity Assessment"
+      ]
+    },
+    {
+      "id": "resp_002",
+      "name": "Investigation",
+      "aliases": [
+        "Troubleshooting",
+        "Diagnosis"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Systematic troubleshooting phase to identify the root cause of the detected issue. Branches into either issue identification leading to fix application, or escalation to team if issue cannot be found.",
+      "context": [
+        "Investigate (See Troubleshooting) ├─ Issue Identified → Apply Fix",
+        "└─ Issue Not Found → Escalate to Team"
+      ]
+    },
+    {
+      "id": "resp_003",
+      "name": "Fix Implementation",
+      "aliases": [
+        "Remediation",
+        "Fix Application"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "Execution of corrective actions following issue identification. Options include rollback of deployment, service restart, or configuration changes with reload.",
+      "context": [
+        "Implement Fix ├─ Rollback? → Roll back deployment",
+        "├─ Restart? → Restart service └─ Config Change? → Update and reload"
+      ]
+    },
+    {
+      "id": "resp_004",
+      "name": "Recovery Verification",
+      "aliases": [
+        "Verification",
+        "Testing"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "Validation step to confirm that the applied fix has resolved the issue. Pass results in incident closure and documentation; failure triggers escalation to team lead.",
+      "context": [
+        "Verify Recovery ├─ PASS → Close incident, document",
+        "└─ FAIL → Escalate to team lead"
+      ]
+    },
+    {
+      "id": "resp_005",
+      "name": "Incident Documentation",
+      "aliases": [
+        "Documentation",
+        "Post-Incident Review"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "post_incident_review",
+      "description": "Final phase capturing complete incident record including timeline of actions, root cause analysis, and preventive measures. Ensures organizational learning and future prevention.",
+      "context": [
+        "Document Incident - Record in incident log",
+        "- Timeline of actions - Root cause analysis - Prevention measures for future"
+      ]
+    },
+    {
+      "id": "resp_006",
+      "name": "Immediate Escalation",
+      "aliases": [
+        "Critical Escalation"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "escalation",
+      "description": "Mandatory immediate escalation action triggered for Critical severity incidents with no time delay permitted.",
+      "context": [
+        "Critical (System Down) → IMMEDIATE ESCALATION"
+      ]
+    },
+    {
+      "id": "resp_007",
+      "name": "One-Hour Escalation",
+      "aliases": [
+        "High Escalation"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "escalation",
+      "description": "Escalation action required for High severity incidents within a 1-hour window from detection.",
+      "context": [
+        "High (Partial Outage) → Escalate within 1 hour"
+      ]
+    },
+    {
+      "id": "resp_008",
+      "name": "Four-Hour Escalation",
+      "aliases": [
+        "Low Escalation"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "escalation",
+      "description": "Escalation action required for Low severity incidents within a 4-hour window from detection.",
+      "context": [
+        "Low (Degraded) → Escalate within 4 hours"
+      ]
+    },
+    {
+      "id": "inc_001",
+      "name": "System Incident",
+      "aliases": [
+        "System Outage",
+        "System Failure"
+      ],
+      "entity_class": "INCIDENT_TYPE",
+      "type": "system_outage",
+      "description": "Operational incident involving system unavailability or degradation. Classified by severity (Critical for complete downtime, High for partial outage, Low for degradation) with corresponding response procedures and escalation timelines.",
+      "context": [
+        "Issue Detected ↓ Severity Assessment ├─ Critical (System Down)",
+        "├─ High (Partial Outage) → Escalate within 1 hour └─ Low (Degraded)"
+      ]
+    }
+  ],
+  "id_map": {
+    "sev_001": "01a07393-e320-7264-b05f-7163527566c2_013_sev_001",
+    "sev_002": "01a07393-e320-7264-b05f-7163527566c2_013_sev_002",
+    "sev_003": "01a07393-e320-7264-b05f-7163527566c2_013_sev_003",
+    "resp_001": "01a07393-e320-7264-b05f-7163527566c2_013_resp_001",
+    "resp_002": "01a07393-e320-7264-b05f-7163527566c2_013_resp_002",
+    "resp_003": "01a07393-e320-7264-b05f-7163527566c2_013_resp_003",
+    "resp_004": "01a07393-e320-7264-b05f-7163527566c2_013_resp_004",
+    "resp_005": "01a07393-e320-7264-b05f-7163527566c2_013_resp_005",
+    "resp_006": "01a07393-e320-7264-b05f-7163527566c2_013_resp_006",
+    "resp_007": "01a07393-e320-7264-b05f-7163527566c2_013_resp_007",
+    "resp_008": "01a07393-e320-7264-b05f-7163527566c2_013_resp_008",
+    "inc_001": "01a07393-e320-7264-b05f-7163527566c2_013_inc_001"
+  },
+  "entities": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_001",
+      "name": "Severity Level - Critical",
+      "aliases": [
+        "Critical",
+        "System Down",
+        "P1"
+      ],
+      "entity_class": "SEVERITY_LEVEL",
+      "type": "critical_p1",
+      "description": "Critical severity level triggered when system is completely down. Requires immediate escalation with no delay. This is the highest priority incident classification in the response flowchart.",
+      "context": [
+        "Critical (System Down) → IMMEDIATE ESCALATION",
+        "Severity Assessment ├─ Critical (System Down)"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_002",
+      "name": "Severity Level - High",
+      "aliases": [
+        "High",
+        "Partial Outage",
+        "P2"
+      ],
+      "entity_class": "SEVERITY_LEVEL",
+      "type": "high_p2",
+      "description": "High severity level triggered by partial system outage affecting some functionality. Requires escalation within 1 hour of detection.",
+      "context": [
+        "High (Partial Outage) → Escalate within 1 hour",
+        "├─ High (Partial Outage)"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_003",
+      "name": "Severity Level - Low",
+      "aliases": [
+        "Low",
+        "Degraded",
+        "P3"
+      ],
+      "entity_class": "SEVERITY_LEVEL",
+      "type": "medium_p3",
+      "description": "Low severity level triggered by degraded system performance. Requires escalation within 4 hours of detection.",
+      "context": [
+        "Low (Degraded) → Escalate within 4 hours",
+        "└─ Low (Degraded)"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_001",
+      "name": "Severity Assessment",
+      "aliases": [
+        "Assessment",
+        "Triage"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Initial triage action to classify detected issues into Critical, High, or Low severity categories. Determines the escalation timeline and response urgency.",
+      "context": [
+        "Severity Assessment ├─ Critical (System Down) → IMMEDIATE ESCALATION",
+        "Issue Detected ↓ Severity Assessment"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_002",
+      "name": "Investigation",
+      "aliases": [
+        "Troubleshooting",
+        "Diagnosis"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Systematic troubleshooting phase to identify the root cause of the detected issue. Branches into either issue identification leading to fix application, or escalation to team if issue cannot be found.",
+      "context": [
+        "Investigate (See Troubleshooting) ├─ Issue Identified → Apply Fix",
+        "└─ Issue Not Found → Escalate to Team"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_003",
+      "name": "Fix Implementation",
+      "aliases": [
+        "Remediation",
+        "Fix Application"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "Execution of corrective actions following issue identification. Options include rollback of deployment, service restart, or configuration changes with reload.",
+      "context": [
+        "Implement Fix ├─ Rollback? → Roll back deployment",
+        "├─ Restart? → Restart service └─ Config Change? → Update and reload"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_004",
+      "name": "Recovery Verification",
+      "aliases": [
+        "Verification",
+        "Testing"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "Validation step to confirm that the applied fix has resolved the issue. Pass results in incident closure and documentation; failure triggers escalation to team lead.",
+      "context": [
+        "Verify Recovery ├─ PASS → Close incident, document",
+        "└─ FAIL → Escalate to team lead"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_005",
+      "name": "Incident Documentation",
+      "aliases": [
+        "Documentation",
+        "Post-Incident Review"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "post_incident_review",
+      "description": "Final phase capturing complete incident record including timeline of actions, root cause analysis, and preventive measures. Ensures organizational learning and future prevention.",
+      "context": [
+        "Document Incident - Record in incident log",
+        "- Timeline of actions - Root cause analysis - Prevention measures for future"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_006",
+      "name": "Immediate Escalation",
+      "aliases": [
+        "Critical Escalation"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "escalation",
+      "description": "Mandatory immediate escalation action triggered for Critical severity incidents with no time delay permitted.",
+      "context": [
+        "Critical (System Down) → IMMEDIATE ESCALATION"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_007",
+      "name": "One-Hour Escalation",
+      "aliases": [
+        "High Escalation"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "escalation",
+      "description": "Escalation action required for High severity incidents within a 1-hour window from detection.",
+      "context": [
+        "High (Partial Outage) → Escalate within 1 hour"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_008",
+      "name": "Four-Hour Escalation",
+      "aliases": [
+        "Low Escalation"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "escalation",
+      "description": "Escalation action required for Low severity incidents within a 4-hour window from detection.",
+      "context": [
+        "Low (Degraded) → Escalate within 4 hours"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_inc_001",
+      "name": "System Incident",
+      "aliases": [
+        "System Outage",
+        "System Failure"
+      ],
+      "entity_class": "INCIDENT_TYPE",
+      "type": "system_outage",
+      "description": "Operational incident involving system unavailability or degradation. Classified by severity (Critical for complete downtime, High for partial outage, Low for degradation) with corresponding response procedures and escalation timelines.",
+      "context": [
+        "Issue Detected ↓ Severity Assessment ├─ Critical (System Down)",
+        "├─ High (Partial Outage) → Escalate within 1 hour └─ Low (Degraded)"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_001",
+      "name": "Severity Level - Critical",
+      "properties": {
+        "level_number": 1,
+        "severity_label": "Critical",
+        "trigger_condition": "System Down",
+        "response_time_target": "Immediate",
+        "escalation_required": true
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_002",
+      "name": "Severity Level - High",
+      "properties": {
+        "level_number": 2,
+        "severity_label": "High",
+        "trigger_condition": "Partial Outage",
+        "response_time_target": "Within 1 hour",
+        "escalation_required": true
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_003",
+      "name": "Severity Level - Low",
+      "properties": {
+        "level_number": 3,
+        "severity_label": "Low",
+        "trigger_condition": "Degraded",
+        "response_time_target": "Within 4 hours",
+        "escalation_required": true
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_001",
+      "name": "Severity Assessment",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "First responder",
+        "timeline": "Immediate upon issue detection",
+        "output_or_artifact": "Severity classification (Critical/High/Low)",
+        "escalation_trigger": "Severity determination routes to appropriate escalation path"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_002",
+      "name": "Investigation",
+      "properties": {
+        "action_phase": "investigation",
+        "actor": "Support team",
+        "timeline": "Following severity assessment",
+        "output_or_artifact": "Issue identification or escalation decision",
+        "escalation_trigger": "Issue not found triggers escalation to team"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_003",
+      "name": "Fix Implementation",
+      "properties": {
+        "action_phase": "recovery",
+        "actor": "Technical team",
+        "timeline": "Following issue identification",
+        "tools_or_system": [
+          "Rollback deployment",
+          "Service restart",
+          "Configuration update"
+        ],
+        "output_or_artifact": "Applied fix (rollback, restart, or config change)"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_004",
+      "name": "Recovery Verification",
+      "properties": {
+        "action_phase": "recovery",
+        "actor": "Technical team",
+        "timeline": "Immediately after fix implementation",
+        "output_or_artifact": "Pass/Fail verification result",
+        "escalation_trigger": "Failure triggers escalation to team lead"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_005",
+      "name": "Incident Documentation",
+      "properties": {
+        "action_phase": "post_incident",
+        "actor": "Incident owner",
+        "timeline": "Following incident closure",
+        "output_or_artifact": "Incident log entry with timeline, root cause analysis, and prevention measures"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_006",
+      "name": "Immediate Escalation",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "First responder",
+        "timeline": "Immediate",
+        "mandatory_for_severities": [
+          1
+        ],
+        "trigger_condition": "Critical severity (System Down)"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_007",
+      "name": "One-Hour Escalation",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "First responder",
+        "timeline": "Within 1 hour",
+        "mandatory_for_severities": [
+          2
+        ],
+        "trigger_condition": "High severity (Partial Outage)"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_008",
+      "name": "Four-Hour Escalation",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "First responder",
+        "timeline": "Within 4 hours",
+        "mandatory_for_severities": [
+          3
+        ],
+        "trigger_condition": "Low severity (Degraded)"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_013_inc_001",
+      "name": "System Incident",
+      "properties": {
+        "category": "System Incident",
+        "subtypes": [
+          "System Down",
+          "Partial Outage",
+          "Degraded Performance"
+        ],
+        "indicators": [
+          "Issue detection",
+          "Service unavailability",
+          "Performance degradation"
+        ],
+        "typical_impact": [
+          "System availability",
+          "Service performance",
+          "Customer access"
+        ],
+        "response_process": "Severity Assessment → Investigation → Fix Implementation → Recovery Verification → Documentation"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_inc_001",
+      "source_name": "System Incident",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_001",
+      "target_name": "Severity Assessment",
+      "rel_type": "triggers",
+      "description": "System Incident triggers initial Severity Assessment response action",
+      "properties": {
+        "sequence": "first_action",
+        "context": "incident_response_flow"
+      },
+      "context": "Issue Detected ↓ Severity Assessment",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_001",
+      "source_name": "Severity Level - Critical",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_006",
+      "target_name": "Immediate Escalation",
+      "rel_type": "mandates_escalation_to",
+      "description": "Critical severity level mandates immediate escalation response",
+      "properties": {
+        "timing": "immediate",
+        "trigger_condition": "System Down"
+      },
+      "context": "Critical (System Down) → IMMEDIATE ESCALATION",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_002",
+      "source_name": "Severity Level - High",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_007",
+      "target_name": "One-Hour Escalation",
+      "rel_type": "mandates_escalation_to",
+      "description": "High severity level mandates escalation within one hour",
+      "properties": {
+        "timing": "1_hour",
+        "trigger_condition": "Partial Outage"
+      },
+      "context": "High (Partial Outage) → Escalate within 1 hour",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_003",
+      "source_name": "Severity Level - Low",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_008",
+      "target_name": "Four-Hour Escalation",
+      "rel_type": "mandates_escalation_to",
+      "description": "Low severity level mandates escalation within four hours",
+      "properties": {
+        "timing": "4_hours",
+        "trigger_condition": "Degraded"
+      },
+      "context": "Low (Degraded) → Escalate within 4 hours",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_001",
+      "source_name": "Severity Assessment",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_002",
+      "target_name": "Investigation",
+      "rel_type": "followed_by",
+      "description": "Severity Assessment is followed by Investigation response action",
+      "properties": {
+        "sequence": "second_action"
+      },
+      "context": "Severity Assessment ↓ Investigate (See Troubleshooting)",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_002",
+      "source_name": "Investigation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_003",
+      "target_name": "Fix Implementation",
+      "rel_type": "followed_by",
+      "description": "Investigation is followed by Fix Implementation when issue is identified",
+      "properties": {
+        "sequence": "third_action",
+        "condition": "Issue Identified"
+      },
+      "context": "Issue Identified → Apply Fix ↓ Implement Fix",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_003",
+      "source_name": "Fix Implementation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_004",
+      "target_name": "Recovery Verification",
+      "rel_type": "followed_by",
+      "description": "Fix Implementation is followed by Recovery Verification",
+      "properties": {
+        "sequence": "fourth_action"
+      },
+      "context": "Implement Fix ↓ Verify Recovery",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_004",
+      "source_name": "Recovery Verification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_005",
+      "target_name": "Incident Documentation",
+      "rel_type": "followed_by",
+      "description": "Successful Recovery Verification is followed by Incident Documentation",
+      "properties": {
+        "sequence": "fifth_action",
+        "condition": "PASS"
+      },
+      "context": "PASS → Close incident, document ↓ Document Incident",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_002",
+      "source_name": "Investigation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_006",
+      "target_name": "Immediate Escalation",
+      "rel_type": "triggered_by",
+      "description": "Investigation may trigger escalation when issue is not found",
+      "properties": {
+        "condition": "Issue Not Found",
+        "escalation_type": "to_team"
+      },
+      "context": "Issue Not Found → Escalate to Team",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_004",
+      "source_name": "Recovery Verification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_006",
+      "target_name": "Immediate Escalation",
+      "rel_type": "triggered_by",
+      "description": "Failed Recovery Verification triggers escalation to team lead",
+      "properties": {
+        "condition": "FAIL",
+        "escalation_target": "team_lead"
+      },
+      "context": "FAIL → Escalate to team lead",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_001",
+      "source_name": "Severity Level - Critical",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_002",
+      "target_name": "Severity Level - High",
+      "rel_type": "more_severe_than",
+      "description": "Critical severity is more severe than High severity",
+      "properties": {
+        "severity_hierarchy": "critical_above_high"
+      },
+      "context": "Critical (System Down) vs High (Partial Outage)",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_002",
+      "source_name": "Severity Level - High",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_003",
+      "target_name": "Severity Level - Low",
+      "rel_type": "more_severe_than",
+      "description": "High severity is more severe than Low severity",
+      "properties": {
+        "severity_hierarchy": "high_above_low"
+      },
+      "context": "High (Partial Outage) vs Low (Degraded)",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_001",
+      "source_name": "Severity Level - Critical",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_002",
+      "source_name": "Severity Level - High",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_sev_003",
+      "source_name": "Severity Level - Low",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_001",
+      "source_name": "Severity Assessment",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_002",
+      "source_name": "Investigation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_003",
+      "source_name": "Fix Implementation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_004",
+      "source_name": "Recovery Verification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_005",
+      "source_name": "Incident Documentation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_006",
+      "source_name": "Immediate Escalation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_007",
+      "source_name": "One-Hour Escalation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_resp_008",
+      "source_name": "Four-Hour Escalation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_013_inc_001",
+      "source_name": "System Incident",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ]
+}

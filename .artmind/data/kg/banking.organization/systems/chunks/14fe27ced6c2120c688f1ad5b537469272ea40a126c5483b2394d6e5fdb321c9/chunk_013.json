@@ -1,0 +1,960 @@
+{
+  "chunk_seq": 13,
+  "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+  "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+  "text": "## System Context Diagram  \n```\n┌─────────────────────────────────────────────────────────┐\n│                    External Systems                      │\n├─────────────────────────────────────────────────────────┤\n│  Bank of England Settlement Systems                      │\n│  Payment Scheme Operators (FPS, BACS, CHAPS)            │\n│  Regulatory Authorities (FCA, PRA)                      │\n└─────────────────────────────────────────────────────────┘\n│\n┌─────────────────┼─────────────────┐\n│                 │                 │\n┌───▼────┐     ┌─────▼──────┐   ┌─────▼──────┐\n│  IBP   │     │   Mobile   │   │   Branch   │\n│ Portal │     │     App    │   │  Systems   │\n└───┬────┘     └─────┬──────┘   └─────┬──────┘\n│                 │                 │\n└─────────────────┼─────────────────┘\n│\n┌─────▼──────────┐\n│  API Gateway   │\n│   (Kong)       │\n└─────┬──────────┘\n│\n┌─────────────────┼─────────────────────────┐\n│                 │                         │\n┌───▼────┐  ┌────────▼──────┐  ┌──────────────▼─┐\n│  AMS   │  │  Fraud        │  │  Payment       │\n│        │  │  Detection    │  │  Processing    │\n└────────┘  │  Engine       │  │  System        │\n└───────────────┘  └────────────────┘\n\n┌──────────────┐\n│ Data         │\n│ Warehouse    │\n└──────────────┘\n```  \n---",
+  "name": "Chunk 13/39",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_012",
+  "next_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+  "raw_entities": [
+    {
+      "id": "sys_001",
+      "name": "Internet Banking Portal",
+      "aliases": [
+        "IBP Portal",
+        "IBP"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "internet_banking",
+      "description": "Customer-facing digital channel providing access to banking services through a web portal interface. Connects to the API Gateway for transaction processing and account management.",
+      "context": [
+        "IBP Portal",
+        "┌───▼────┐     ┌─────▼──────┐   ┌─────▼──────┐\n│  IBP   │     │   Mobile   │   │   Branch   │\n│ Portal │     │     App    │   │  Systems   │"
+      ]
+    },
+    {
+      "id": "sys_002",
+      "name": "Mobile Application",
+      "aliases": [
+        "Mobile App"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "mobile_banking",
+      "description": "Mobile banking application providing customer access to accounts and transactions. Integrated with the API Gateway for real-time processing.",
+      "context": [
+        "Mobile App",
+        "┌───▼────┐     ┌─────▼──────┐   ┌─────▼──────┐\n│  IBP   │     │   Mobile   │   │   Branch   │\n│ Portal │     │     App    │   │  Systems   │"
+      ]
+    },
+    {
+      "id": "sys_003",
+      "name": "Branch Systems",
+      "aliases": [
+        "Branch"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "core_banking",
+      "description": "On-premise banking systems deployed at branch locations for customer-facing transactions and account management. Connected to the API Gateway infrastructure.",
+      "context": [
+        "Branch Systems",
+        "┌───▼────┐     ┌─────▼──────┐   ┌─────▼──────┐\n│  IBP   │     │   Mobile   │   │   Branch   │\n│ Portal │     │     App    │   │  Systems   │"
+      ]
+    },
+    {
+      "id": "sys_004",
+      "name": "API Gateway",
+      "aliases": [
+        "Kong"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "api_gateway",
+      "description": "Central API gateway (Kong) serving as the integration hub between customer-facing channels (IBP, Mobile, Branch) and backend processing systems. Routes requests to AMS, Fraud Detection Engine, and Payment Processing System.",
+      "context": [
+        "API Gateway (Kong)",
+        "└─────┬──────────┘\n│\n┌─────────────────┼─────────────────────────┐"
+      ]
+    },
+    {
+      "id": "sys_005",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "core_banking",
+      "description": "Core system responsible for account lifecycle management, customer data, and account state. Accessible through the API Gateway from all customer channels.",
+      "context": [
+        "AMS",
+        "┌───▼────┐  ┌────────▼──────┐  ┌──────────────▼─┐\n│  AMS   │  │  Fraud        │  │  Payment       │"
+      ]
+    },
+    {
+      "id": "sys_006",
+      "name": "Fraud Detection Engine",
+      "aliases": [
+        "Fraud Detection"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "fraud_detection",
+      "description": "Real-time fraud detection system monitoring transactions and account activity. Integrated with the API Gateway to flag suspicious transactions and prevent fraudulent activity.",
+      "context": [
+        "Fraud Detection Engine",
+        "┌───▼────┐  ┌────────▼──────┐  ┌──────────────▼─┐\n│  AMS   │  │  Fraud        │  │  Payment       │\n│        │  │  Detection    │  │  Processing    │\n└────────┘  │  Engine       │  │  System        │"
+      ]
+    },
+    {
+      "id": "sys_007",
+      "name": "Payment Processing System",
+      "aliases": [
+        "Payment Processing"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "payment_processor",
+      "description": "System handling payment execution and settlement. Processes transactions through payment scheme operators and connects to Bank of England settlement systems.",
+      "context": [
+        "Payment Processing System",
+        "┌───▼────┐  ┌────────▼──────┐  ┌──────────────▼─┐\n│  AMS   │  │  Fraud        │  │  Payment       │\n│        │  │  Detection    │  │  Processing    │\n└────────┘  │  Engine       │  │  System        │"
+      ]
+    },
+    {
+      "id": "sys_008",
+      "name": "Data Warehouse",
+      "aliases": [
+        "DW"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "analytics",
+      "description": "Central repository for historical transaction data, customer analytics, and reporting. Supports business intelligence and regulatory reporting requirements.",
+      "context": [
+        "Data Warehouse",
+        "┌──────────────┐\n│ Data         │\n│ Warehouse    │\n└──────────────┘"
+      ]
+    },
+    {
+      "id": "org_001",
+      "name": "Bank of England",
+      "aliases": [
+        "BoE"
+      ],
+      "entity_class": "ORGANIZATIONAL_UNIT",
+      "type": "external_agency",
+      "description": "Central bank providing settlement infrastructure and payment system oversight. Operates settlement systems used by FirstUK Bank for payment clearing and settlement.",
+      "context": [
+        "Bank of England Settlement Systems",
+        "│  Bank of England Settlement Systems                      │"
+      ]
+    },
+    {
+      "id": "org_002",
+      "name": "Payment Scheme Operators",
+      "aliases": [
+        "FPS",
+        "BACS",
+        "CHAPS"
+      ],
+      "entity_class": "ORGANIZATIONAL_UNIT",
+      "type": "external_agency",
+      "description": "External payment scheme operators managing Faster Payments Service (FPS), Bankers' Automated Clearing Services (BACS), and Clearing House Automated Payment System (CHAPS). FirstUK Bank participates in these schemes for payment processing.",
+      "context": [
+        "Payment Scheme Operators (FPS, BACS, CHAPS)",
+        "│  Payment Scheme Operators (FPS, BACS, CHAPS)            │"
+      ]
+    },
+    {
+      "id": "org_003",
+      "name": "Financial Conduct Authority",
+      "aliases": [
+        "FCA"
+      ],
+      "entity_class": "ORGANIZATIONAL_UNIT",
+      "type": "regulatory_body",
+      "description": "UK financial regulator responsible for conduct regulation and consumer protection. Exercises regulatory authority over FirstUK Bank's operations.",
+      "context": [
+        "Regulatory Authorities (FCA, PRA)",
+        "│  Regulatory Authorities (FCA, PRA)                      │"
+      ]
+    },
+    {
+      "id": "org_004",
+      "name": "Prudential Regulation Authority",
+      "aliases": [
+        "PRA"
+      ],
+      "entity_class": "ORGANIZATIONAL_UNIT",
+      "type": "regulatory_body",
+      "description": "UK prudential regulator responsible for safety and soundness of banks. Exercises regulatory authority over FirstUK Bank's capital and risk management.",
+      "context": [
+        "Regulatory Authorities (FCA, PRA)",
+        "│  Regulatory Authorities (FCA, PRA)                      │"
+      ]
+    }
+  ],
+  "id_map": {
+    "sys_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_001",
+    "sys_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_002",
+    "sys_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_003",
+    "sys_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_004",
+    "sys_005": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_005",
+    "sys_006": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_006",
+    "sys_007": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_007",
+    "sys_008": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_008",
+    "org_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_001",
+    "org_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_002",
+    "org_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_003",
+    "org_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_004"
+  },
+  "entities": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_001",
+      "name": "Internet Banking Portal",
+      "aliases": [
+        "IBP Portal",
+        "IBP"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "internet_banking",
+      "description": "Customer-facing digital channel providing access to banking services through a web portal interface. Connects to the API Gateway for transaction processing and account management.",
+      "context": [
+        "IBP Portal",
+        "┌───▼────┐     ┌─────▼──────┐   ┌─────▼──────┐\n│  IBP   │     │   Mobile   │   │   Branch   │\n│ Portal │     │     App    │   │  Systems   │"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_002",
+      "name": "Mobile Application",
+      "aliases": [
+        "Mobile App"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "mobile_banking",
+      "description": "Mobile banking application providing customer access to accounts and transactions. Integrated with the API Gateway for real-time processing.",
+      "context": [
+        "Mobile App",
+        "┌───▼────┐     ┌─────▼──────┐   ┌─────▼──────┐\n│  IBP   │     │   Mobile   │   │   Branch   │\n│ Portal │     │     App    │   │  Systems   │"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_003",
+      "name": "Branch Systems",
+      "aliases": [
+        "Branch"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "core_banking",
+      "description": "On-premise banking systems deployed at branch locations for customer-facing transactions and account management. Connected to the API Gateway infrastructure.",
+      "context": [
+        "Branch Systems",
+        "┌───▼────┐     ┌─────▼──────┐   ┌─────▼──────┐\n│  IBP   │     │   Mobile   │   │   Branch   │\n│ Portal │     │     App    │   │  Systems   │"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_004",
+      "name": "API Gateway",
+      "aliases": [
+        "Kong"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "api_gateway",
+      "description": "Central API gateway (Kong) serving as the integration hub between customer-facing channels (IBP, Mobile, Branch) and backend processing systems. Routes requests to AMS, Fraud Detection Engine, and Payment Processing System.",
+      "context": [
+        "API Gateway (Kong)",
+        "└─────┬──────────┘\n│\n┌─────────────────┼─────────────────────────┐"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_005",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "core_banking",
+      "description": "Core system responsible for account lifecycle management, customer data, and account state. Accessible through the API Gateway from all customer channels.",
+      "context": [
+        "AMS",
+        "┌───▼────┐  ┌────────▼──────┐  ┌──────────────▼─┐\n│  AMS   │  │  Fraud        │  │  Payment       │"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_006",
+      "name": "Fraud Detection Engine",
+      "aliases": [
+        "Fraud Detection"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "fraud_detection",
+      "description": "Real-time fraud detection system monitoring transactions and account activity. Integrated with the API Gateway to flag suspicious transactions and prevent fraudulent activity.",
+      "context": [
+        "Fraud Detection Engine",
+        "┌───▼────┐  ┌────────▼──────┐  ┌──────────────▼─┐\n│  AMS   │  │  Fraud        │  │  Payment       │\n│        │  │  Detection    │  │  Processing    │\n└────────┘  │  Engine       │  │  System        │"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_007",
+      "name": "Payment Processing System",
+      "aliases": [
+        "Payment Processing"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "payment_processor",
+      "description": "System handling payment execution and settlement. Processes transactions through payment scheme operators and connects to Bank of England settlement systems.",
+      "context": [
+        "Payment Processing System",
+        "┌───▼────┐  ┌────────▼──────┐  ┌──────────────▼─┐\n│  AMS   │  │  Fraud        │  │  Payment       │\n│        │  │  Detection    │  │  Processing    │\n└────────┘  │  Engine       │  │  System        │"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_008",
+      "name": "Data Warehouse",
+      "aliases": [
+        "DW"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "analytics",
+      "description": "Central repository for historical transaction data, customer analytics, and reporting. Supports business intelligence and regulatory reporting requirements.",
+      "context": [
+        "Data Warehouse",
+        "┌──────────────┐\n│ Data         │\n│ Warehouse    │\n└──────────────┘"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_001",
+      "name": "Bank of England",
+      "aliases": [
+        "BoE"
+      ],
+      "entity_class": "ORGANIZATIONAL_UNIT",
+      "type": "external_agency",
+      "description": "Central bank providing settlement infrastructure and payment system oversight. Operates settlement systems used by FirstUK Bank for payment clearing and settlement.",
+      "context": [
+        "Bank of England Settlement Systems",
+        "│  Bank of England Settlement Systems                      │"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_002",
+      "name": "Payment Scheme Operators",
+      "aliases": [
+        "FPS",
+        "BACS",
+        "CHAPS"
+      ],
+      "entity_class": "ORGANIZATIONAL_UNIT",
+      "type": "external_agency",
+      "description": "External payment scheme operators managing Faster Payments Service (FPS), Bankers' Automated Clearing Services (BACS), and Clearing House Automated Payment System (CHAPS). FirstUK Bank participates in these schemes for payment processing.",
+      "context": [
+        "Payment Scheme Operators (FPS, BACS, CHAPS)",
+        "│  Payment Scheme Operators (FPS, BACS, CHAPS)            │"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_003",
+      "name": "Financial Conduct Authority",
+      "aliases": [
+        "FCA"
+      ],
+      "entity_class": "ORGANIZATIONAL_UNIT",
+      "type": "regulatory_body",
+      "description": "UK financial regulator responsible for conduct regulation and consumer protection. Exercises regulatory authority over FirstUK Bank's operations.",
+      "context": [
+        "Regulatory Authorities (FCA, PRA)",
+        "│  Regulatory Authorities (FCA, PRA)                      │"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_004",
+      "name": "Prudential Regulation Authority",
+      "aliases": [
+        "PRA"
+      ],
+      "entity_class": "ORGANIZATIONAL_UNIT",
+      "type": "regulatory_body",
+      "description": "UK prudential regulator responsible for safety and soundness of banks. Exercises regulatory authority over FirstUK Bank's capital and risk management.",
+      "context": [
+        "Regulatory Authorities (FCA, PRA)",
+        "│  Regulatory Authorities (FCA, PRA)                      │"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_001",
+      "name": "Internet Banking Portal",
+      "properties": {
+        "system_id": "IBP",
+        "purpose": "Provides internet-based banking access for customers",
+        "deployment": "cloud",
+        "integrations": [
+          "API Gateway"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_002",
+      "name": "Mobile Application",
+      "properties": {
+        "purpose": "Provides mobile banking access for customers",
+        "deployment": "cloud",
+        "integrations": [
+          "API Gateway"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_003",
+      "name": "Branch Systems",
+      "properties": {
+        "purpose": "Supports banking operations at branch locations",
+        "deployment": "on-premises",
+        "integrations": [
+          "API Gateway"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_004",
+      "name": "API Gateway",
+      "properties": {
+        "system_id": "Kong",
+        "purpose": "Central gateway for routing and managing API traffic between client systems and backend services",
+        "deployment": "cloud",
+        "integrations": [
+          "Internet Banking Portal",
+          "Mobile Application",
+          "Branch Systems",
+          "Account Management System",
+          "Fraud Detection Engine",
+          "Payment Processing System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_005",
+      "name": "Account Management System",
+      "properties": {
+        "system_id": "AMS",
+        "purpose": "Manages customer accounts and account-related operations",
+        "integrations": [
+          "API Gateway"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_006",
+      "name": "Fraud Detection Engine",
+      "properties": {
+        "purpose": "Detects and flags fraudulent transactions and activities",
+        "integrations": [
+          "API Gateway"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_007",
+      "name": "Payment Processing System",
+      "properties": {
+        "purpose": "Processes payments and manages payment transactions",
+        "integrations": [
+          "API Gateway",
+          "Payment Scheme Operators",
+          "Bank of England Settlement Systems"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_008",
+      "name": "Data Warehouse",
+      "properties": {
+        "purpose": "Centralized repository for data storage and analytics"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_001",
+      "name": "Bank of England",
+      "properties": {
+        "key_functions": [
+          "Settlement Systems operation"
+        ],
+        "cross_functional_interfaces": [
+          "Payment Processing System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_002",
+      "name": "Payment Scheme Operators",
+      "properties": {
+        "key_functions": [
+          "FPS operation",
+          "BACS operation",
+          "CHAPS operation"
+        ],
+        "cross_functional_interfaces": [
+          "Payment Processing System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_003",
+      "name": "Financial Conduct Authority",
+      "properties": {
+        "regulatory_responsibilities": [
+          "Financial conduct regulation and oversight"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_004",
+      "name": "Prudential Regulation Authority",
+      "properties": {
+        "regulatory_responsibilities": [
+          "Prudential regulation and oversight"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_001",
+      "source_name": "Internet Banking Portal",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_004",
+      "target_name": "API Gateway",
+      "rel_type": "calls_api",
+      "description": "Internet Banking Portal calls the API Gateway to communicate with backend systems",
+      "properties": {
+        "communication_pattern": "synchronous_api_call"
+      },
+      "context": "IBP Portal connects through API Gateway (Kong)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_002",
+      "source_name": "Mobile Application",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_004",
+      "target_name": "API Gateway",
+      "rel_type": "calls_api",
+      "description": "Mobile Application calls the API Gateway to communicate with backend systems",
+      "properties": {
+        "communication_pattern": "synchronous_api_call"
+      },
+      "context": "Mobile App connects through API Gateway (Kong)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_003",
+      "source_name": "Branch Systems",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_004",
+      "target_name": "API Gateway",
+      "rel_type": "calls_api",
+      "description": "Branch Systems calls the API Gateway to communicate with backend systems",
+      "properties": {
+        "communication_pattern": "synchronous_api_call"
+      },
+      "context": "Branch Systems connect through API Gateway (Kong)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_004",
+      "source_name": "API Gateway",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_005",
+      "target_name": "Account Management System",
+      "rel_type": "calls_api",
+      "description": "API Gateway routes requests to the Account Management System",
+      "properties": {
+        "communication_pattern": "backend_routing"
+      },
+      "context": "API Gateway connects to AMS (Account Management System)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_004",
+      "source_name": "API Gateway",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_006",
+      "target_name": "Fraud Detection Engine",
+      "rel_type": "calls_api",
+      "description": "API Gateway routes requests to the Fraud Detection Engine",
+      "properties": {
+        "communication_pattern": "backend_routing"
+      },
+      "context": "API Gateway connects to Fraud Detection Engine",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_004",
+      "source_name": "API Gateway",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_007",
+      "target_name": "Payment Processing System",
+      "rel_type": "calls_api",
+      "description": "API Gateway routes requests to the Payment Processing System",
+      "properties": {
+        "communication_pattern": "backend_routing"
+      },
+      "context": "API Gateway connects to Payment Processing System",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_005",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_008",
+      "target_name": "Data Warehouse",
+      "rel_type": "feeds_data_to",
+      "description": "Account Management System feeds account data to the Data Warehouse",
+      "properties": {
+        "data_flow": "operational_to_analytical"
+      },
+      "context": "AMS connects to Data Warehouse for data storage and analytics",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_006",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_008",
+      "target_name": "Data Warehouse",
+      "rel_type": "feeds_data_to",
+      "description": "Fraud Detection Engine feeds fraud detection results to the Data Warehouse",
+      "properties": {
+        "data_flow": "operational_to_analytical"
+      },
+      "context": "Fraud Detection Engine connects to Data Warehouse for data storage and analytics",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_007",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_008",
+      "target_name": "Data Warehouse",
+      "rel_type": "feeds_data_to",
+      "description": "Payment Processing System feeds payment transaction data to the Data Warehouse",
+      "properties": {
+        "data_flow": "operational_to_analytical"
+      },
+      "context": "Payment Processing System connects to Data Warehouse for data storage and analytics",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_007",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_002",
+      "target_name": "Payment Scheme Operators",
+      "rel_type": "integrates_with",
+      "description": "Payment Processing System integrates with Payment Scheme Operators (FPS, BACS, CHAPS)",
+      "properties": {
+        "schemes": [
+          "FPS",
+          "BACS",
+          "CHAPS"
+        ]
+      },
+      "context": "Payment Scheme Operators (FPS, BACS, CHAPS) are external systems that Payment Processing System connects to",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_007",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_001",
+      "target_name": "Bank of England",
+      "rel_type": "integrates_with",
+      "description": "Payment Processing System integrates with Bank of England Settlement Systems",
+      "properties": {
+        "integration_type": "settlement"
+      },
+      "context": "Bank of England Settlement Systems are external systems that Payment Processing System connects to",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_003",
+      "source_name": "Financial Conduct Authority",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_001",
+      "target_name": "Internet Banking Portal",
+      "rel_type": "governs",
+      "description": "Financial Conduct Authority regulates the Internet Banking Portal operations",
+      "properties": {
+        "regulatory_scope": "conduct_and_consumer_protection"
+      },
+      "context": "Regulatory Authorities (FCA, PRA) are external systems overseeing the banking systems",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_003",
+      "source_name": "Financial Conduct Authority",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_002",
+      "target_name": "Mobile Application",
+      "rel_type": "governs",
+      "description": "Financial Conduct Authority regulates the Mobile Application operations",
+      "properties": {
+        "regulatory_scope": "conduct_and_consumer_protection"
+      },
+      "context": "Regulatory Authorities (FCA, PRA) are external systems overseeing the banking systems",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_003",
+      "source_name": "Financial Conduct Authority",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_007",
+      "target_name": "Payment Processing System",
+      "rel_type": "governs",
+      "description": "Financial Conduct Authority regulates the Payment Processing System operations",
+      "properties": {
+        "regulatory_scope": "conduct_and_consumer_protection"
+      },
+      "context": "Regulatory Authorities (FCA, PRA) are external systems overseeing the banking systems",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_004",
+      "source_name": "Prudential Regulation Authority",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_001",
+      "target_name": "Internet Banking Portal",
+      "rel_type": "governs",
+      "description": "Prudential Regulation Authority regulates the Internet Banking Portal operations",
+      "properties": {
+        "regulatory_scope": "prudential_and_safety"
+      },
+      "context": "Regulatory Authorities (FCA, PRA) are external systems overseeing the banking systems",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_004",
+      "source_name": "Prudential Regulation Authority",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_002",
+      "target_name": "Mobile Application",
+      "rel_type": "governs",
+      "description": "Prudential Regulation Authority regulates the Mobile Application operations",
+      "properties": {
+        "regulatory_scope": "prudential_and_safety"
+      },
+      "context": "Regulatory Authorities (FCA, PRA) are external systems overseeing the banking systems",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_004",
+      "source_name": "Prudential Regulation Authority",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_007",
+      "target_name": "Payment Processing System",
+      "rel_type": "governs",
+      "description": "Prudential Regulation Authority regulates the Payment Processing System operations",
+      "properties": {
+        "regulatory_scope": "prudential_and_safety"
+      },
+      "context": "Regulatory Authorities (FCA, PRA) are external systems overseeing the banking systems",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_001",
+      "source_name": "Internet Banking Portal",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_002",
+      "source_name": "Mobile Application",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_003",
+      "source_name": "Branch Systems",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_004",
+      "source_name": "API Gateway",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_005",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_006",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_007",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_sys_008",
+      "source_name": "Data Warehouse",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_001",
+      "source_name": "Bank of England",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_002",
+      "source_name": "Payment Scheme Operators",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_003",
+      "source_name": "Financial Conduct Authority",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013_org_004",
+      "source_name": "Prudential Regulation Authority",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ]
+}

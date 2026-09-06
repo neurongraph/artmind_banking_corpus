@@ -1,0 +1,789 @@
+{
+  "chunk_seq": 29,
+  "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+  "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+  "text": "### Backup Strategy  \n**Database Backups:**\n- Continuous replication to standby (real-time)\n- Daily encrypted backup to S3 (retention: 30 days)\n- Weekly backup to cold storage (retention: 1 year)  \n**Application Backups:**\n- Source code in Git (GitHub)\n- Docker images in registry (AWS ECR)\n- Configuration in version control",
+  "name": "Chunk 29/39",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_028",
+  "next_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_030",
+  "raw_entities": [
+    {
+      "id": "sysapp_001",
+      "name": "Database Backup System",
+      "aliases": [
+        "DB Backup",
+        "Database Replication"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "Core database backup infrastructure supporting FirstUK Bank operations through continuous replication to standby systems, daily encrypted backups to S3, and weekly backups to cold storage. Implements multi-tier retention strategy with real-time failover capability.",
+      "context": [
+        "Continuous replication to standby (real-time)",
+        "Daily encrypted backup to S3 (retention: 30 days)",
+        "Weekly backup to cold storage (retention: 1 year)"
+      ]
+    },
+    {
+      "id": "sysapp_002",
+      "name": "Amazon S3 Storage",
+      "aliases": [
+        "S3",
+        "AWS S3"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "caching_layer",
+      "description": "Cloud storage service used for daily encrypted database backups with 30-day retention policy as part of FirstUK Bank's backup strategy.",
+      "context": [
+        "Daily encrypted backup to S3 (retention: 30 days)"
+      ]
+    },
+    {
+      "id": "sysapp_003",
+      "name": "Cold Storage System",
+      "aliases": [
+        "Cold Storage",
+        "Archive Storage"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "Long-term archival storage system for weekly database backups with 1-year retention policy, providing extended data preservation for FirstUK Bank.",
+      "context": [
+        "Weekly backup to cold storage (retention: 1 year)"
+      ]
+    },
+    {
+      "id": "sysapp_004",
+      "name": "Git Repository",
+      "aliases": [
+        "Git",
+        "GitHub"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "document_management",
+      "description": "Version control system storing FirstUK Bank application source code with full revision history and collaborative development capabilities.",
+      "context": [
+        "Source code in Git (GitHub)"
+      ]
+    },
+    {
+      "id": "sysapp_005",
+      "name": "AWS Elastic Container Registry",
+      "aliases": [
+        "ECR",
+        "AWS ECR",
+        "Docker Registry"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "api_gateway",
+      "description": "Container image registry service hosting FirstUK Bank Docker images for application deployment and version management.",
+      "context": [
+        "Docker images in registry (AWS ECR)"
+      ]
+    },
+    {
+      "id": "sysapp_006",
+      "name": "Configuration Version Control",
+      "aliases": [
+        "Config Management",
+        "Version Control"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "document_management",
+      "description": "Version control system maintaining FirstUK Bank application configuration files with full audit trail and change tracking.",
+      "context": [
+        "Configuration in version control"
+      ]
+    },
+    {
+      "id": "metric_001",
+      "name": "Database Backup Retention Period - S3",
+      "aliases": [
+        "S3 Retention",
+        "Daily Backup Retention"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Operational target specifying the retention duration for daily encrypted database backups stored in S3.",
+      "context": [
+        "Daily encrypted backup to S3 (retention: 30 days)"
+      ]
+    },
+    {
+      "id": "metric_002",
+      "name": "Database Backup Retention Period - Cold Storage",
+      "aliases": [
+        "Cold Storage Retention",
+        "Weekly Backup Retention"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Operational target specifying the retention duration for weekly database backups stored in cold storage.",
+      "context": [
+        "Weekly backup to cold storage (retention: 1 year)"
+      ]
+    },
+    {
+      "id": "metric_003",
+      "name": "Database Replication Recovery Time Objective",
+      "aliases": [
+        "RTO",
+        "Standby Replication"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "availability_target",
+      "description": "Availability target for continuous real-time database replication to standby systems, enabling immediate failover capability.",
+      "context": [
+        "Continuous replication to standby (real-time)"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "Encrypted Backup Requirement",
+      "aliases": [
+        "Encryption Mandate",
+        "Backup Encryption"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Operational constraint requiring all daily database backups to S3 to be encrypted, ensuring data protection and regulatory compliance.",
+      "context": [
+        "Daily encrypted backup to S3 (retention: 30 days)"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Continuous Database Replication Requirement",
+      "aliases": [
+        "Real-time Replication",
+        "Standby Requirement"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "Operational constraint mandating continuous real-time replication of database to standby systems for disaster recovery and business continuity.",
+      "context": [
+        "Continuous replication to standby (real-time)"
+      ]
+    }
+  ],
+  "id_map": {
+    "sysapp_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_001",
+    "sysapp_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_002",
+    "sysapp_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_003",
+    "sysapp_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_004",
+    "sysapp_005": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_005",
+    "sysapp_006": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_006",
+    "metric_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_metric_001",
+    "metric_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_metric_002",
+    "metric_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_metric_003",
+    "br_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_br_001",
+    "br_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_br_002"
+  },
+  "entities": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_001",
+      "name": "Database Backup System",
+      "aliases": [
+        "DB Backup",
+        "Database Replication"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "Core database backup infrastructure supporting FirstUK Bank operations through continuous replication to standby systems, daily encrypted backups to S3, and weekly backups to cold storage. Implements multi-tier retention strategy with real-time failover capability.",
+      "context": [
+        "Continuous replication to standby (real-time)",
+        "Daily encrypted backup to S3 (retention: 30 days)",
+        "Weekly backup to cold storage (retention: 1 year)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_002",
+      "name": "Amazon S3 Storage",
+      "aliases": [
+        "S3",
+        "AWS S3"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "caching_layer",
+      "description": "Cloud storage service used for daily encrypted database backups with 30-day retention policy as part of FirstUK Bank's backup strategy.",
+      "context": [
+        "Daily encrypted backup to S3 (retention: 30 days)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_003",
+      "name": "Cold Storage System",
+      "aliases": [
+        "Cold Storage",
+        "Archive Storage"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "Long-term archival storage system for weekly database backups with 1-year retention policy, providing extended data preservation for FirstUK Bank.",
+      "context": [
+        "Weekly backup to cold storage (retention: 1 year)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_004",
+      "name": "Git Repository",
+      "aliases": [
+        "Git",
+        "GitHub"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "document_management",
+      "description": "Version control system storing FirstUK Bank application source code with full revision history and collaborative development capabilities.",
+      "context": [
+        "Source code in Git (GitHub)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_005",
+      "name": "AWS Elastic Container Registry",
+      "aliases": [
+        "ECR",
+        "AWS ECR",
+        "Docker Registry"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "api_gateway",
+      "description": "Container image registry service hosting FirstUK Bank Docker images for application deployment and version management.",
+      "context": [
+        "Docker images in registry (AWS ECR)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_006",
+      "name": "Configuration Version Control",
+      "aliases": [
+        "Config Management",
+        "Version Control"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "document_management",
+      "description": "Version control system maintaining FirstUK Bank application configuration files with full audit trail and change tracking.",
+      "context": [
+        "Configuration in version control"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_metric_001",
+      "name": "Database Backup Retention Period - S3",
+      "aliases": [
+        "S3 Retention",
+        "Daily Backup Retention"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Operational target specifying the retention duration for daily encrypted database backups stored in S3.",
+      "context": [
+        "Daily encrypted backup to S3 (retention: 30 days)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_metric_002",
+      "name": "Database Backup Retention Period - Cold Storage",
+      "aliases": [
+        "Cold Storage Retention",
+        "Weekly Backup Retention"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Operational target specifying the retention duration for weekly database backups stored in cold storage.",
+      "context": [
+        "Weekly backup to cold storage (retention: 1 year)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_metric_003",
+      "name": "Database Replication Recovery Time Objective",
+      "aliases": [
+        "RTO",
+        "Standby Replication"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "availability_target",
+      "description": "Availability target for continuous real-time database replication to standby systems, enabling immediate failover capability.",
+      "context": [
+        "Continuous replication to standby (real-time)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_br_001",
+      "name": "Encrypted Backup Requirement",
+      "aliases": [
+        "Encryption Mandate",
+        "Backup Encryption"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Operational constraint requiring all daily database backups to S3 to be encrypted, ensuring data protection and regulatory compliance.",
+      "context": [
+        "Daily encrypted backup to S3 (retention: 30 days)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_br_002",
+      "name": "Continuous Database Replication Requirement",
+      "aliases": [
+        "Real-time Replication",
+        "Standby Requirement"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "Operational constraint mandating continuous real-time replication of database to standby systems for disaster recovery and business continuity.",
+      "context": [
+        "Continuous replication to standby (real-time)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_001",
+      "name": "Database Backup System",
+      "properties": {
+        "purpose": "Perform continuous replication and daily encrypted backups of databases",
+        "key_features": [
+          "Continuous replication to standby",
+          "Daily encrypted backup to S3",
+          "Weekly backup to cold storage"
+        ],
+        "integrations": [
+          "Amazon S3 Storage",
+          "Cold Storage System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_002",
+      "name": "Amazon S3 Storage",
+      "properties": {
+        "purpose": "Store daily encrypted database backups",
+        "deployment": "cloud",
+        "data_stored": "encrypted database backups",
+        "integrations": [
+          "Database Backup System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_003",
+      "name": "Cold Storage System",
+      "properties": {
+        "purpose": "Store weekly database backups for long-term retention",
+        "deployment": "on-premises",
+        "data_stored": "weekly database backups",
+        "integrations": [
+          "Database Backup System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_004",
+      "name": "Git Repository",
+      "properties": {
+        "purpose": "Version control for application source code",
+        "key_features": [
+          "Source code storage",
+          "Version history tracking"
+        ],
+        "data_stored": "application source code"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_005",
+      "name": "AWS Elastic Container Registry",
+      "properties": {
+        "purpose": "Store and manage Docker container images",
+        "deployment": "cloud",
+        "key_features": [
+          "Docker image registry",
+          "Container image versioning"
+        ],
+        "data_stored": "Docker images"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_006",
+      "name": "Configuration Version Control",
+      "properties": {
+        "purpose": "Maintain version control for application configuration",
+        "key_features": [
+          "Configuration tracking",
+          "Version history"
+        ],
+        "data_stored": "application configuration"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_metric_001",
+      "name": "Database Backup Retention Period - S3",
+      "properties": {
+        "value": 30,
+        "unit": "days",
+        "what_it_measures": "How long daily encrypted database backups are retained in S3",
+        "context": "Short-term backup retention for rapid recovery"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_metric_002",
+      "name": "Database Backup Retention Period - Cold Storage",
+      "properties": {
+        "value": 1,
+        "unit": "years",
+        "what_it_measures": "How long weekly database backups are retained in cold storage",
+        "context": "Long-term backup retention for archival and compliance"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_metric_003",
+      "name": "Database Replication Recovery Time Objective",
+      "properties": {
+        "what_it_measures": "Time to recover from continuous replication to standby",
+        "context": "Real-time replication enables near-zero recovery time objective"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_br_001",
+      "name": "Encrypted Backup Requirement",
+      "properties": {
+        "rule_statement": "All database backups must be encrypted",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Daily backups to S3",
+          "Weekly backups to cold storage"
+        ],
+        "context": "Security control to protect sensitive data at rest"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_br_002",
+      "name": "Continuous Database Replication Requirement",
+      "properties": {
+        "rule_statement": "Database must maintain continuous real-time replication to standby",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Database Backup System"
+        ],
+        "context": "Ensures high availability and minimal data loss"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_001",
+      "source_name": "Database Backup System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_002",
+      "target_name": "Amazon S3 Storage",
+      "rel_type": "feeds_data_to",
+      "description": "Database Backup System sends daily encrypted backups to Amazon S3 Storage",
+      "properties": {
+        "frequency": "daily",
+        "encryption": true,
+        "retention_days": 30
+      },
+      "context": "Daily encrypted backup to S3 (retention: 30 days)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_001",
+      "source_name": "Database Backup System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_003",
+      "target_name": "Cold Storage System",
+      "rel_type": "feeds_data_to",
+      "description": "Database Backup System sends weekly backups to Cold Storage System",
+      "properties": {
+        "frequency": "weekly",
+        "retention_years": 1
+      },
+      "context": "Weekly backup to cold storage (retention: 1 year)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_001",
+      "source_name": "Database Backup System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_br_001",
+      "target_name": "Encrypted Backup Requirement",
+      "rel_type": "implements",
+      "description": "Database Backup System implements the Encrypted Backup Requirement business rule",
+      "properties": {
+        "compliance": true
+      },
+      "context": "Daily encrypted backup to S3",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_001",
+      "source_name": "Database Backup System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_br_002",
+      "target_name": "Continuous Database Replication Requirement",
+      "rel_type": "implements",
+      "description": "Database Backup System implements continuous replication to standby",
+      "properties": {
+        "replication_type": "real-time"
+      },
+      "context": "Continuous replication to standby (real-time)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_002",
+      "source_name": "Amazon S3 Storage",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_metric_001",
+      "target_name": "Database Backup Retention Period - S3",
+      "rel_type": "tracks",
+      "description": "Amazon S3 Storage tracks the Database Backup Retention Period metric",
+      "properties": {
+        "retention_days": 30
+      },
+      "context": "Daily encrypted backup to S3 (retention: 30 days)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_003",
+      "source_name": "Cold Storage System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_metric_002",
+      "target_name": "Database Backup Retention Period - Cold Storage",
+      "rel_type": "tracks",
+      "description": "Cold Storage System tracks the Database Backup Retention Period metric",
+      "properties": {
+        "retention_years": 1
+      },
+      "context": "Weekly backup to cold storage (retention: 1 year)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_001",
+      "source_name": "Database Backup System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_metric_003",
+      "target_name": "Database Replication Recovery Time Objective",
+      "rel_type": "tracks",
+      "description": "Database Backup System tracks the Database Replication Recovery Time Objective metric",
+      "properties": {
+        "replication_type": "real-time"
+      },
+      "context": "Continuous replication to standby (real-time)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_004",
+      "source_name": "Git Repository",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_006",
+      "target_name": "Configuration Version Control",
+      "rel_type": "integrates_with",
+      "description": "Git Repository integrates with Configuration Version Control for source code management",
+      "properties": {
+        "purpose": "application_backup"
+      },
+      "context": "Source code in Git (GitHub)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_005",
+      "source_name": "AWS Elastic Container Registry",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_004",
+      "target_name": "Git Repository",
+      "rel_type": "depends_on",
+      "description": "AWS Elastic Container Registry depends on Git Repository for Docker image source",
+      "properties": {
+        "artifact_type": "docker_images"
+      },
+      "context": "Docker images in registry (AWS ECR)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_001",
+      "source_name": "Database Backup System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_002",
+      "source_name": "Amazon S3 Storage",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_003",
+      "source_name": "Cold Storage System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_004",
+      "source_name": "Git Repository",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_005",
+      "source_name": "AWS Elastic Container Registry",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_sysapp_006",
+      "source_name": "Configuration Version Control",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_metric_001",
+      "source_name": "Database Backup Retention Period - S3",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_metric_002",
+      "source_name": "Database Backup Retention Period - Cold Storage",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_metric_003",
+      "source_name": "Database Replication Recovery Time Objective",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_br_001",
+      "source_name": "Encrypted Backup Requirement",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029_br_002",
+      "source_name": "Continuous Database Replication Requirement",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_029",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ]
+}

@@ -1,0 +1,763 @@
+{
+  "chunk_seq": 33,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "### Direct Debit System Update  \n**If Customer Has Direct Debits:**  \n**Mandate Address Field:**\n- Direct Debit mandates may have customer address field\n- Update customer address in mandate record\n- May require confirmation to biller (automated ARUDD message)  \n**Notification to Billers:**\n- System automatically notifies billers of address change\n- Billers update their records\n- No interruption to DD payments expected  \n**Actions:**\n- [ ] Identify all active Direct Debits\n- [ ] Update customer address in mandate file\n- [ ] Send automated ARUDD update to billers\n- [ ] Confirm updates processed (check response messages)  \n---",
+  "name": "Chunk 33/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Direct Debit System Update",
+      "aliases": [
+        "DD System Update"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit_setup",
+      "description": "A process for updating customer address information in active Direct Debit mandates and notifying billers of the change. The system automatically sends ARUDD messages to billers to update their records, with confirmation of successful processing required.",
+      "context": [
+        "Direct Debit System Update",
+        "If Customer Has Direct Debits:",
+        "System automatically notifies billers of address change",
+        "Send automated ARUDD update to billers"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Identify Active Direct Debits",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The initial step to locate and identify all active Direct Debit mandates associated with the customer account that may require address updates.",
+      "context": [
+        "Identify all active Direct Debits"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Update Customer Address in Mandate File",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_verification",
+      "description": "Update the customer address field within the Direct Debit mandate record to reflect the new address information.",
+      "context": [
+        "Update customer address in mandate record",
+        "Update customer address in mandate file"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Send Automated ARUDD Update to Billers",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "The system automatically sends an ARUDD (Automated Return of Unpaid Direct Debit) message to all relevant billers to notify them of the customer address change, enabling them to update their records.",
+      "context": [
+        "May require confirmation to biller (automated ARUDD message)",
+        "Send automated ARUDD update to billers",
+        "System automatically notifies billers of address change"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Confirm Updates Processed",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "quality_check",
+      "description": "Verification step to confirm that all address updates have been successfully processed by checking response messages from billers.",
+      "context": [
+        "Confirm updates processed (check response messages)"
+      ]
+    },
+    {
+      "id": "ract_001",
+      "name": "Banking System",
+      "aliases": [
+        "System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "The automated banking system responsible for identifying active Direct Debits, updating mandate records, and sending ARUDD notifications to billers.",
+      "context": [
+        "System automatically notifies billers of address change",
+        "Send automated ARUDD update to billers"
+      ]
+    },
+    {
+      "id": "ract_002",
+      "name": "Biller",
+      "aliases": [
+        "Billers"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External organizations that receive Direct Debit payments from the customer and maintain their own mandate records. They receive automated ARUDD notifications and update their records accordingly.",
+      "context": [
+        "Notification to Billers:",
+        "Billers update their records",
+        "No interruption to DD payments expected"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "DD Mandate",
+        "Active Direct Debits"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Active Direct Debit mandates on the customer account that contain address field information requiring update when the customer's address changes. The mandate record must be updated and billers notified to maintain payment continuity.",
+      "context": [
+        "If Customer Has Direct Debits:",
+        "Direct Debit mandates may have customer address field",
+        "Identify all active Direct Debits"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Customer Address in Mandate",
+      "aliases": [
+        "Mandate Address Field"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The customer address field stored within Direct Debit mandate records that must be updated when the customer's address changes, with subsequent notification to billers via automated ARUDD message.",
+      "context": [
+        "Mandate Address Field:",
+        "Direct Debit mandates may have customer address field",
+        "Update customer address in mandate record"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_033_proc_001",
+    "pstep_001": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_001",
+    "pstep_002": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_002",
+    "pstep_003": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_003",
+    "pstep_004": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_004",
+    "ract_001": "01a07400-ba86-72f1-8b22-d07b32649491_033_ract_001",
+    "ract_002": "01a07400-ba86-72f1-8b22-d07b32649491_033_ract_002",
+    "dd_001": "01a07400-ba86-72f1-8b22-d07b32649491_033_dd_001",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_033_addr_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_proc_001",
+      "name": "Direct Debit System Update",
+      "aliases": [
+        "DD System Update"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit_setup",
+      "description": "A process for updating customer address information in active Direct Debit mandates and notifying billers of the change. The system automatically sends ARUDD messages to billers to update their records, with confirmation of successful processing required.",
+      "context": [
+        "Direct Debit System Update",
+        "If Customer Has Direct Debits:",
+        "System automatically notifies billers of address change",
+        "Send automated ARUDD update to billers"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_001",
+      "name": "Identify Active Direct Debits",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The initial step to locate and identify all active Direct Debit mandates associated with the customer account that may require address updates.",
+      "context": [
+        "Identify all active Direct Debits"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_002",
+      "name": "Update Customer Address in Mandate File",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_verification",
+      "description": "Update the customer address field within the Direct Debit mandate record to reflect the new address information.",
+      "context": [
+        "Update customer address in mandate record",
+        "Update customer address in mandate file"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_003",
+      "name": "Send Automated ARUDD Update to Billers",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "The system automatically sends an ARUDD (Automated Return of Unpaid Direct Debit) message to all relevant billers to notify them of the customer address change, enabling them to update their records.",
+      "context": [
+        "May require confirmation to biller (automated ARUDD message)",
+        "Send automated ARUDD update to billers",
+        "System automatically notifies billers of address change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_004",
+      "name": "Confirm Updates Processed",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "quality_check",
+      "description": "Verification step to confirm that all address updates have been successfully processed by checking response messages from billers.",
+      "context": [
+        "Confirm updates processed (check response messages)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_ract_001",
+      "name": "Banking System",
+      "aliases": [
+        "System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "The automated banking system responsible for identifying active Direct Debits, updating mandate records, and sending ARUDD notifications to billers.",
+      "context": [
+        "System automatically notifies billers of address change",
+        "Send automated ARUDD update to billers"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_ract_002",
+      "name": "Biller",
+      "aliases": [
+        "Billers"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External organizations that receive Direct Debit payments from the customer and maintain their own mandate records. They receive automated ARUDD notifications and update their records accordingly.",
+      "context": [
+        "Notification to Billers:",
+        "Billers update their records",
+        "No interruption to DD payments expected"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "DD Mandate",
+        "Active Direct Debits"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Active Direct Debit mandates on the customer account that contain address field information requiring update when the customer's address changes. The mandate record must be updated and billers notified to maintain payment continuity.",
+      "context": [
+        "If Customer Has Direct Debits:",
+        "Direct Debit mandates may have customer address field",
+        "Identify all active Direct Debits"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_addr_001",
+      "name": "Customer Address in Mandate",
+      "aliases": [
+        "Mandate Address Field"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The customer address field stored within Direct Debit mandate records that must be updated when the customer's address changes, with subsequent notification to billers via automated ARUDD message.",
+      "context": [
+        "Mandate Address Field:",
+        "Direct Debit mandates may have customer address field",
+        "Update customer address in mandate record"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_proc_001",
+      "name": "Direct Debit System Update",
+      "properties": {
+        "purpose": "Update customer address in direct debit mandates and notify billers of address changes",
+        "scope": "Customers with active direct debits",
+        "channels": [
+          "system"
+        ],
+        "owner": "Banking System",
+        "departments_involved": [
+          "Direct Debit Operations",
+          "Customer Services"
+        ],
+        "trigger": "Customer address change",
+        "outcome_success": "Address updated in mandate file, billers notified via ARUDD, no interruption to DD payments",
+        "outcome_failure": "Address mismatch between bank and biller records, potential payment failures"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_001",
+      "name": "Identify Active Direct Debits",
+      "properties": {
+        "step_number": 1,
+        "actor": "Banking System",
+        "output": "List of all active direct debits for the customer",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Direct Debit Management System"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_002",
+      "name": "Update Customer Address in Mandate File",
+      "properties": {
+        "step_number": 2,
+        "actor": "Banking System",
+        "input": "New customer address, active direct debit mandate records",
+        "output": "Updated mandate file with new address",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Direct Debit Management System",
+          "Mandate File"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_003",
+      "name": "Send Automated ARUDD Update to Billers",
+      "properties": {
+        "step_number": 3,
+        "actor": "Banking System",
+        "input": "Updated customer address from mandate file",
+        "output": "ARUDD message sent to all associated billers",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "ARUDD Messaging System"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_004",
+      "name": "Confirm Updates Processed",
+      "properties": {
+        "step_number": 4,
+        "actor": "Banking System",
+        "input": "Response messages from billers",
+        "output": "Confirmation that all updates have been processed",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Direct Debit Management System"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_ract_001",
+      "name": "Banking System",
+      "properties": {
+        "role_type": "system",
+        "authority_level": "Automated processing",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_ract_002",
+      "name": "Biller",
+      "properties": {
+        "role_type": "external",
+        "authority_level": "Update own records",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_dd_001",
+      "name": "Direct Debit Mandate",
+      "properties": {
+        "mandate_process": "Address field may be updated when customer address changes",
+        "dd_guarantee_coverage": "No interruption to DD payments expected during address update"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_033_addr_001",
+      "name": "Customer Address in Mandate",
+      "properties": {
+        "collection_steps": "Captured from customer address change request",
+        "recording_system": "Direct Debit Mandate File",
+        "update_process": "System automatically updates mandate record and sends ARUDD notification to billers"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_proc_001",
+      "source_name": "Direct Debit System Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_001",
+      "target_name": "Identify Active Direct Debits",
+      "rel_type": "starts_with",
+      "description": "The Direct Debit System Update process begins with identifying all active Direct Debits",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Actions: [ ] Identify all active Direct Debits",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_001",
+      "source_name": "Identify Active Direct Debits",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_002",
+      "target_name": "Update Customer Address in Mandate File",
+      "rel_type": "followed_by",
+      "description": "Identifying active Direct Debits is followed by updating the customer address in the mandate file",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Actions: [ ] Identify all active Direct Debits [ ] Update customer address in mandate file",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_002",
+      "source_name": "Update Customer Address in Mandate File",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_003",
+      "target_name": "Send Automated ARUDD Update to Billers",
+      "rel_type": "followed_by",
+      "description": "Updating the customer address in the mandate file is followed by sending automated ARUDD updates to billers",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Actions: [ ] Update customer address in mandate file [ ] Send automated ARUDD update to billers",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_003",
+      "source_name": "Send Automated ARUDD Update to Billers",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_004",
+      "target_name": "Confirm Updates Processed",
+      "rel_type": "followed_by",
+      "description": "Sending automated ARUDD updates to billers is followed by confirming that updates have been processed",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "Actions: [ ] Send automated ARUDD update to billers [ ] Confirm updates processed (check response messages)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_proc_001",
+      "source_name": "Direct Debit System Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "amends",
+      "description": "The Direct Debit System Update process amends Direct Debit mandates by updating address information",
+      "properties": {
+        "amendment_type": "address_update"
+      },
+      "context": "Direct Debit mandates may have customer address field. Update customer address in mandate record.",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_002",
+      "source_name": "Update Customer Address in Mandate File",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "updates",
+      "description": "This step updates the customer address field within the Direct Debit mandate record",
+      "properties": {
+        "field_updated": "customer_address"
+      },
+      "context": "Update customer address in mandate record",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_002",
+      "source_name": "Update Customer Address in Mandate File",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_addr_001",
+      "target_name": "Customer Address in Mandate",
+      "rel_type": "updates",
+      "description": "This step updates the customer address stored in the mandate file",
+      "properties": {
+        "location": "mandate_file"
+      },
+      "context": "Update customer address in mandate file",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_003",
+      "source_name": "Send Automated ARUDD Update to Billers",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_ract_002",
+      "target_name": "Biller",
+      "rel_type": "notifies",
+      "description": "This step automatically notifies billers of the address change via ARUDD message",
+      "properties": {
+        "notification_type": "ARUDD",
+        "automation": true
+      },
+      "context": "System automatically notifies billers of address change. Send automated ARUDD update to billers.",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_001",
+      "source_name": "Identify Active Direct Debits",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_ract_001",
+      "target_name": "Banking System",
+      "rel_type": "performed_by",
+      "description": "The Banking System performs the identification of all active Direct Debits",
+      "properties": {
+        "automation_level": "automated"
+      },
+      "context": "Identify all active Direct Debits - system action",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_002",
+      "source_name": "Update Customer Address in Mandate File",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_ract_001",
+      "target_name": "Banking System",
+      "rel_type": "performed_by",
+      "description": "The Banking System performs the update of customer address in the mandate file",
+      "properties": {
+        "automation_level": "automated"
+      },
+      "context": "Update customer address in mandate file - system action",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_003",
+      "source_name": "Send Automated ARUDD Update to Billers",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_ract_001",
+      "target_name": "Banking System",
+      "rel_type": "performed_by",
+      "description": "The Banking System automatically sends ARUDD updates to billers",
+      "properties": {
+        "automation_level": "automated"
+      },
+      "context": "System automatically notifies billers of address change. Send automated ARUDD update to billers.",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_004",
+      "source_name": "Confirm Updates Processed",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_ract_001",
+      "target_name": "Banking System",
+      "rel_type": "performed_by",
+      "description": "The Banking System confirms that updates have been processed by checking response messages",
+      "properties": {
+        "verification_method": "response_message_check"
+      },
+      "context": "Confirm updates processed (check response messages)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_proc_001",
+      "source_name": "Direct Debit System Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_002",
+      "target_name": "Update Customer Address in Mandate File",
+      "rel_type": "includes_step_for",
+      "description": "The Direct Debit System Update process includes a step to update customer address in the mandate file",
+      "properties": {
+        "step_type": "address_update"
+      },
+      "context": "Update customer address in mandate record. May require confirmation to biller (automated ARUDD message)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_proc_001",
+      "source_name": "Direct Debit System Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_003",
+      "target_name": "Send Automated ARUDD Update to Billers",
+      "rel_type": "includes_step_for",
+      "description": "The Direct Debit System Update process includes a step to send automated ARUDD updates to billers",
+      "properties": {
+        "step_type": "biller_notification"
+      },
+      "context": "May require confirmation to biller (automated ARUDD message). Send automated ARUDD update to billers.",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_addr_001",
+      "target_name": "Customer Address in Mandate",
+      "rel_type": "has_associated",
+      "description": "Direct Debit mandates have an associated customer address field",
+      "properties": {
+        "field_name": "customer_address"
+      },
+      "context": "Direct Debit mandates may have customer address field",
+      "bidirectional": true,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_proc_001",
+      "source_name": "Direct Debit System Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_001",
+      "source_name": "Identify Active Direct Debits",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_002",
+      "source_name": "Update Customer Address in Mandate File",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_003",
+      "source_name": "Send Automated ARUDD Update to Billers",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_pstep_004",
+      "source_name": "Confirm Updates Processed",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_ract_001",
+      "source_name": "Banking System",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_ract_002",
+      "source_name": "Biller",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_033_addr_001",
+      "source_name": "Customer Address in Mandate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

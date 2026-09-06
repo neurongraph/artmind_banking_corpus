@@ -1,0 +1,387 @@
+name: technical_paper
+description: Formal documents presenting research, experiments, theoretical arguments, or technological
+  advancements. Includes journal papers, conference proceedings, white papers, preprints, and technical
+  reports covering methods, findings, models, and concepts.
+subject: technical and scientific paper analysis
+persona: a knowledgeable technical analyst
+entity_types:
+  CONCEPT:
+    kind: recurrent
+    description: Abstract ideas, theories, paradigms, problems, or research areas that are central to
+      the paper's discourse. Extract concepts that the paper explains, builds upon, challenges, or advances.
+    type_examples:
+    - theory
+    - paradigm
+    - problem
+    - research_area
+    - principle
+    - framework
+    - phenomenon
+    - technique_category
+    - capability
+    - limitation
+    properties:
+      definition:
+        hint: concise, as used in this paper
+      related_fields:
+        hint: list of relevant domains
+      maturity:
+        hint: emerging | established | foundational
+      how_paper_uses_it:
+        hint: extends | critiques | introduces | applies
+      importance_stated:
+        hint: why the paper says this matters
+      key_challenge_or_open_problem:
+        hint: if stated
+    relates_to:
+      CONCEPT:
+      - extends
+      - underpins
+      - contrasts_with
+      - related_to
+      - specialises
+      - generalises
+      - enables
+      - challenges
+      - replaces
+      - complements
+      METHOD:
+      - implemented_by
+      - realised_through
+      - motivates
+      - grounded_in
+      APPLICATION:
+      - applied_in
+      - demonstrated_by
+      - unlocks
+      - required_for
+  METHOD:
+    kind: recurrent
+    description: A specific technique, algorithm, procedure, training strategy, or approach described
+      or used in the paper. Methods are actionable — they describe how something is done.
+    type_examples:
+    - training_technique
+    - optimisation_strategy
+    - evaluation_approach
+    - data_processing
+    - inference_technique
+    - fine_tuning
+    - alignment
+    - architecture_design
+    - augmentation
+    properties:
+      how_it_works:
+        hint: brief mechanism
+      key_advantage:
+        hint: what problem it solves better
+      limitations:
+        hint: if stated
+      where_applied:
+        hint: which models/tasks
+      novelty:
+        hint: is it new in this paper or adopted from prior work
+      computational_cost:
+        hint: if mentioned
+    relates_to:
+      MODEL:
+      - used_by
+      - improves
+      - trains
+      - fine_tunes
+      - evaluates
+      - applied_to
+      CONCEPT:
+      - addresses
+      - exploits
+      - overcomes_limitation_of
+      DATASET:
+      - applied_to
+      - tested_on
+      - pre_trains_on
+  MODEL:
+    kind: recurrent
+    description: A named AI model, system, architecture, or implementation — either proposed in the paper
+      or referenced as a baseline or comparison point.
+    type_examples:
+    - language_model
+    - vision_model
+    - multimodal_model
+    - architecture
+    - embedding_model
+    - baseline
+    - proposed_system
+    - benchmark_model
+    properties:
+      architecture_type:
+        hint: transformer | CNN | hybrid | etc.
+      scale:
+        hint: parameters, layers if mentioned
+      key_capabilities:
+        hint: list
+      training_approach:
+        hint: if described
+      performance_highlights:
+        hint: benchmark results mentioned
+      proposed_in_this_paper:
+        hint: true | false
+      compared_to:
+        hint: list of baselines if mentioned
+    relates_to:
+      DATASET:
+      - trained_on
+      - evaluated_on
+      - benchmarked_against
+      - fine_tuned_on
+      METRIC:
+      - achieves
+      - measured_by
+      - optimises_for
+      - reports
+      MODEL:
+      - outperforms
+      - compared_to
+      - derived_from
+      - extends
+      - replaces
+      - inspired_by
+      APPLICATION:
+      - deployed_in
+      - enables
+      - demonstrated_for
+      - adapted_for
+  FINDING:
+    kind: occurrent
+    description: A result, conclusion, observation, or empirical claim stated in the paper. Findings are
+      what the paper asserts or demonstrates, grounded in evidence.
+    type_examples:
+    - experimental_result
+    - empirical_observation
+    - theoretical_claim
+    - benchmark_result
+    - ablation_finding
+    - negative_result
+    - key_insight
+    properties:
+      claim:
+        hint: the core assertion in plain language
+      evidence_type:
+        hint: experimental | theoretical | empirical | qualitative
+      significance:
+        hint: why it matters
+      certainty_level:
+        hint: established | suggested | speculative
+      implications:
+        hint: what it enables or challenges
+      contradicts_prior_work:
+        hint: if stated
+    relates_to:
+      METHOD:
+      - produced_by
+      - supports
+      - challenges
+      - validates
+      MODEL:
+      - describes
+      - characterises
+      - reported_for
+      CONCEPT:
+      - advances
+      - clarifies
+      - contradicts
+      - confirms
+      METRIC:
+      - quantified_by
+      - measured_with
+  DATASET:
+    kind: recurrent
+    description: Any named training corpus, evaluation benchmark, or data collection used or referenced
+      in the paper.
+    type_examples:
+    - training_corpus
+    - benchmark
+    - evaluation_set
+    - curated_dataset
+    - synthetic_dataset
+    - real_world_dataset
+    properties:
+      domain:
+        hint: what type of data
+      size:
+        hint: if mentioned
+      source:
+        hint: where it comes from
+      how_used:
+        hint: training | evaluation | fine_tuning | pre_training
+      notable_characteristics: {}
+  PERSON:
+    kind: recurrent
+    description: Named researchers, academics, or practitioners who created, co-authored, or are cited
+      in the paper.
+    type_examples:
+    - primary_author
+    - co_author
+    - cited_researcher
+    - lab_representative
+    properties:
+      affiliation:
+        hint: institution or company
+      role_in_paper:
+        hint: primary | co-author | cited
+      area_of_expertise:
+        hint: if inferable from paper
+    relates_to:
+      MODEL:
+      - proposes
+      - evaluates
+      - critiques
+      - introduces
+      METHOD:
+      - proposes
+      - refines
+      - applies
+      ORGANIZATION:
+      - affiliated_with
+      - works_at
+      - funded_by
+      - collaborates_with
+  METRIC:
+    kind: recurrent
+    description: A quantitative or qualitative measure used to evaluate performance, compare systems,
+      or characterise results.
+    type_examples:
+    - accuracy_metric
+    - efficiency_metric
+    - quality_metric
+    - safety_metric
+    - scalability_metric
+    - human_evaluation
+    - composite_metric
+    properties:
+      what_it_measures: {}
+      higher_is_better:
+        hint: true | false
+      used_in_context:
+        hint: what it evaluates in this paper
+      typical_range_or_benchmark_value:
+        hint: if given
+  APPLICATION:
+    kind: recurrent
+    description: A real-world domain, use case, or deployment context in which the paper's ideas are applied
+      or have implications.
+    type_examples:
+    - healthcare
+    - creative_ai
+    - code_generation
+    - education
+    - scientific_discovery
+    - accessibility
+    - finance
+    - robotics
+    - information_retrieval
+    - safety
+    properties:
+      industry_domain: {}
+      specific_use_case: {}
+      current_maturity:
+        hint: research | prototype | production
+      benefit_stated:
+        hint: what the application gains from the paper's contributions
+      example_system:
+        hint: if mentioned
+    relates_to:
+      CONCEPT:
+      - leverages
+      - depends_on
+      FINDING:
+      - motivated_by
+      - benefits_from
+  ORGANIZATION:
+    kind: recurrent
+    description: Any research institution, company, university, or formal group associated with the work
+      — as producer, funder, or named collaborator.
+    type_examples:
+    - university
+    - research_lab
+    - company
+    - consortium
+    - standards_body
+    - funding_agency
+    - government_body
+    properties:
+      org_type:
+        hint: university | company | research_lab | etc.
+      country_or_region:
+        hint: if mentioned
+      role_in_paper:
+        hint: conducted_research | funded | collaborated | cited
+      affiliation_of:
+        hint: which authors are affiliated
+    relates_to:
+      MODEL:
+      - developed
+      - published
+      - maintains
+      - contributed_to
+      DATASET:
+      - created
+      - maintains
+      - funded
+      - released
+      CONCEPT:
+      - pioneered
+      - advocates
+      - researches
+  LOCATION:
+    kind: recurrent
+    description: Any geographic location, country, or region referenced in the paper — where research
+      was conducted, datasets collected, or systems deployed.
+    type_examples:
+    - country
+    - city
+    - institution_location
+    - deployment_region
+    - research_site
+    properties:
+      country_or_region: {}
+      relevance:
+        hint: where experiments ran | where data collected | deployment target
+      specific_site:
+        hint: if named
+    relates_to:
+      DATASET:
+      - source_of
+      - collected_in
+      - evaluated_in
+      ORGANIZATION:
+      - located_in
+      - operates_in
+  OBJECT:
+    kind: recurrent
+    description: Any physical piece of hardware, equipment, device, or tangible system described or used
+      in the research.
+    type_examples:
+    - hardware
+    - device
+    - equipment
+    - sensor
+    - compute_cluster
+    - physical_system
+    - robot
+    properties:
+      hardware_type:
+        hint: GPU | sensor | robot | etc.
+      specifications:
+        hint: if mentioned
+      role_in_paper:
+        hint: used_for | evaluated_on | described
+      manufacturer:
+        hint: if mentioned
+    relates_to:
+      METHOD:
+      - used_in
+      - enables
+      - tested_with
+      MODEL:
+      - runs_on
+      - evaluated_on
+      - deployed_on

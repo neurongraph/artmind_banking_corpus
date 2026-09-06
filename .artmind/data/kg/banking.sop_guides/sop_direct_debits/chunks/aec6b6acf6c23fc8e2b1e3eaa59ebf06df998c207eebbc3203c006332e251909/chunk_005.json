@@ -1,0 +1,1060 @@
+{
+  "chunk_seq": 5,
+  "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+  "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+  "text": "## Process Overview  \n```\nBiller Requests Authorization\n↓\nCustomer Signs DD Mandate\n↓\nMandate Setup in System\n↓\nBiller Submits Payment Instruction\n↓\nPayment Processed (Auto-debit)\n↓\n✅ Payment Complete\n↓\nCustomer Can Dispute/Cancel Anytime\n```  \n---",
+  "name": "Chunk 5/26",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_004",
+  "next_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Direct Debit Setup and Payment Processing",
+      "aliases": [
+        "DD Process",
+        "Direct Debit Workflow"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit_setup",
+      "description": "End-to-end process for establishing a direct debit mandate and processing recurring payments. Begins with biller authorization request, proceeds through customer mandate signing and system setup, and culminates in automated payment processing with customer dispute/cancellation rights.",
+      "context": [
+        "Biller Requests Authorization",
+        "Customer Signs DD Mandate",
+        "Mandate Setup in System",
+        "Biller Submits Payment Instruction",
+        "Payment Processed (Auto-debit)",
+        "Customer Can Dispute/Cancel Anytime"
+      ]
+    },
+    {
+      "id": "pst_001",
+      "name": "Biller Authorization Request",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial step where the biller formally requests authorization to set up a direct debit arrangement with the customer.",
+      "context": [
+        "Biller Requests Authorization"
+      ]
+    },
+    {
+      "id": "pst_002",
+      "name": "Customer Direct Debit Mandate Signing",
+      "aliases": [
+        "Mandate Signing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Customer executes the direct debit mandate document, providing legal consent for the biller to collect payments via direct debit.",
+      "context": [
+        "Customer Signs DD Mandate"
+      ]
+    },
+    {
+      "id": "pst_003",
+      "name": "Mandate System Recording",
+      "aliases": [
+        "System Setup"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "The signed direct debit mandate is recorded and activated in the banking system to enable automated payment processing.",
+      "context": [
+        "Mandate Setup in System"
+      ]
+    },
+    {
+      "id": "pst_004",
+      "name": "Biller Payment Instruction Submission",
+      "aliases": [
+        "Payment Instruction Submission"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Biller submits the payment instruction to the bank, specifying the amount and timing for the direct debit collection.",
+      "context": [
+        "Biller Submits Payment Instruction"
+      ]
+    },
+    {
+      "id": "pst_005",
+      "name": "Automated Payment Processing",
+      "aliases": [
+        "Auto-debit",
+        "Payment Processing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "The banking system automatically processes the direct debit payment from the customer's account based on the biller's instruction.",
+      "context": [
+        "Payment Processed (Auto-debit)"
+      ]
+    },
+    {
+      "id": "pst_006",
+      "name": "Payment Completion Confirmation",
+      "aliases": [
+        "Payment Complete"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Confirmation that the direct debit payment has been successfully processed and completed.",
+      "context": [
+        "✅ Payment Complete"
+      ]
+    },
+    {
+      "id": "pst_007",
+      "name": "Customer Dispute and Cancellation Rights",
+      "aliases": [
+        "Dispute/Cancel"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Customer retains the right to dispute individual payments or cancel the direct debit mandate at any time during or after the process.",
+      "context": [
+        "Customer Can Dispute/Cancel Anytime"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Biller",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External party that requests authorization and submits payment instructions to collect funds via direct debit from the customer's account.",
+      "context": [
+        "Biller Requests Authorization",
+        "Biller Submits Payment Instruction"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer",
+      "description": "Account holder who signs the direct debit mandate, authorizes payments, and retains rights to dispute or cancel the arrangement.",
+      "context": [
+        "Customer Signs DD Mandate",
+        "Customer Can Dispute/Cancel Anytime"
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Banking System",
+      "aliases": [
+        "Automated System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated banking system responsible for recording the mandate and processing direct debit payments according to biller instructions.",
+      "context": [
+        "Mandate Setup in System",
+        "Payment Processed (Auto-debit)"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "DD Mandate"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Legal authorization document signed by the customer that permits the biller to collect recurring payments via direct debit from the customer's account.",
+      "context": [
+        "Customer Signs DD Mandate",
+        "Mandate Setup in System"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Direct Debit Customer",
+      "aliases": [
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Natural person who holds the account subject to the direct debit arrangement and retains dispute and cancellation rights.",
+      "context": [
+        "Customer Signs DD Mandate",
+        "Customer Can Dispute/Cancel Anytime"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_proc_001",
+    "pst_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_001",
+    "pst_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_002",
+    "pst_003": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_003",
+    "pst_004": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_004",
+    "pst_005": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_005",
+    "pst_006": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_006",
+    "pst_007": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_007",
+    "ra_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_001",
+    "ra_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_002",
+    "ra_003": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_003",
+    "dd_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_dd_001",
+    "cust_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_proc_001",
+      "name": "Direct Debit Setup and Payment Processing",
+      "aliases": [
+        "DD Process",
+        "Direct Debit Workflow"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit_setup",
+      "description": "End-to-end process for establishing a direct debit mandate and processing recurring payments. Begins with biller authorization request, proceeds through customer mandate signing and system setup, and culminates in automated payment processing with customer dispute/cancellation rights.",
+      "context": [
+        "Biller Requests Authorization",
+        "Customer Signs DD Mandate",
+        "Mandate Setup in System",
+        "Biller Submits Payment Instruction",
+        "Payment Processed (Auto-debit)",
+        "Customer Can Dispute/Cancel Anytime"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_001",
+      "name": "Biller Authorization Request",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial step where the biller formally requests authorization to set up a direct debit arrangement with the customer.",
+      "context": [
+        "Biller Requests Authorization"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_002",
+      "name": "Customer Direct Debit Mandate Signing",
+      "aliases": [
+        "Mandate Signing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Customer executes the direct debit mandate document, providing legal consent for the biller to collect payments via direct debit.",
+      "context": [
+        "Customer Signs DD Mandate"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_003",
+      "name": "Mandate System Recording",
+      "aliases": [
+        "System Setup"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "The signed direct debit mandate is recorded and activated in the banking system to enable automated payment processing.",
+      "context": [
+        "Mandate Setup in System"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_004",
+      "name": "Biller Payment Instruction Submission",
+      "aliases": [
+        "Payment Instruction Submission"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Biller submits the payment instruction to the bank, specifying the amount and timing for the direct debit collection.",
+      "context": [
+        "Biller Submits Payment Instruction"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_005",
+      "name": "Automated Payment Processing",
+      "aliases": [
+        "Auto-debit",
+        "Payment Processing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "The banking system automatically processes the direct debit payment from the customer's account based on the biller's instruction.",
+      "context": [
+        "Payment Processed (Auto-debit)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_006",
+      "name": "Payment Completion Confirmation",
+      "aliases": [
+        "Payment Complete"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Confirmation that the direct debit payment has been successfully processed and completed.",
+      "context": [
+        "✅ Payment Complete"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_007",
+      "name": "Customer Dispute and Cancellation Rights",
+      "aliases": [
+        "Dispute/Cancel"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Customer retains the right to dispute individual payments or cancel the direct debit mandate at any time during or after the process.",
+      "context": [
+        "Customer Can Dispute/Cancel Anytime"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_001",
+      "name": "Biller",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External party that requests authorization and submits payment instructions to collect funds via direct debit from the customer's account.",
+      "context": [
+        "Biller Requests Authorization",
+        "Biller Submits Payment Instruction"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_002",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer",
+      "description": "Account holder who signs the direct debit mandate, authorizes payments, and retains rights to dispute or cancel the arrangement.",
+      "context": [
+        "Customer Signs DD Mandate",
+        "Customer Can Dispute/Cancel Anytime"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_003",
+      "name": "Banking System",
+      "aliases": [
+        "Automated System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated banking system responsible for recording the mandate and processing direct debit payments according to biller instructions.",
+      "context": [
+        "Mandate Setup in System",
+        "Payment Processed (Auto-debit)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "DD Mandate"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Legal authorization document signed by the customer that permits the biller to collect recurring payments via direct debit from the customer's account.",
+      "context": [
+        "Customer Signs DD Mandate",
+        "Mandate Setup in System"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_cust_001",
+      "name": "Direct Debit Customer",
+      "aliases": [
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Natural person who holds the account subject to the direct debit arrangement and retains dispute and cancellation rights.",
+      "context": [
+        "Customer Signs DD Mandate",
+        "Customer Can Dispute/Cancel Anytime"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_proc_001",
+      "name": "Direct Debit Setup and Payment Processing",
+      "properties": {
+        "purpose": "Enable automated recurring payments from customer accounts via direct debit mandate",
+        "scope": "All customers establishing direct debit arrangements with billers",
+        "channels": [
+          "branch",
+          "online"
+        ],
+        "departments_involved": [
+          "Payments",
+          "Compliance",
+          "Customer Service"
+        ],
+        "trigger": "Biller requests authorization for recurring payment collection",
+        "outcome_success": "Mandate established, payments processed automatically, customer retains dispute and cancellation rights",
+        "outcome_failure": "Mandate not established; payment instruction rejected; customer unable to authorize"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_001",
+      "name": "Biller Authorization Request",
+      "properties": {
+        "step_number": 1,
+        "actor": "Biller",
+        "output": "Authorization request for direct debit collection",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_002",
+      "name": "Customer Direct Debit Mandate Signing",
+      "properties": {
+        "step_number": 2,
+        "actor": "Customer",
+        "input": "Direct debit mandate document",
+        "output": "Signed mandate authorizing recurring payments",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_003",
+      "name": "Mandate System Recording",
+      "properties": {
+        "step_number": 3,
+        "actor": "Banking System",
+        "input": "Signed direct debit mandate",
+        "output": "Mandate recorded in system with customer and biller details",
+        "channel": "system",
+        "tools_or_systems": [
+          "Banking System"
+        ],
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_004",
+      "name": "Biller Payment Instruction Submission",
+      "properties": {
+        "step_number": 4,
+        "actor": "Biller",
+        "input": "Established direct debit mandate",
+        "output": "Payment instruction submitted to banking system",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_005",
+      "name": "Automated Payment Processing",
+      "properties": {
+        "step_number": 5,
+        "actor": "Banking System",
+        "input": "Payment instruction from biller",
+        "output": "Funds debited from customer account",
+        "channel": "system",
+        "tools_or_systems": [
+          "Banking System"
+        ],
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_006",
+      "name": "Payment Completion Confirmation",
+      "properties": {
+        "step_number": 6,
+        "actor": "Banking System",
+        "input": "Processed payment transaction",
+        "output": "Confirmation notification to customer and biller",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_007",
+      "name": "Customer Dispute and Cancellation Rights",
+      "properties": {
+        "step_number": 7,
+        "actor": "Customer",
+        "input": "Payment transaction record",
+        "output": "Dispute filed or mandate cancellation request",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": "no"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_001",
+      "name": "Biller",
+      "properties": {
+        "role_type": "external",
+        "authority_level": "Can request authorization and submit payment instructions within established mandate terms",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_002",
+      "name": "Customer",
+      "properties": {
+        "role_type": "human",
+        "authority_level": "Can authorize mandate, dispute payments, and cancel arrangement",
+        "channels": [
+          "branch",
+          "online"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_003",
+      "name": "Banking System",
+      "properties": {
+        "role_type": "system",
+        "authority_level": "Executes mandate recording, payment processing, and confirmation",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_dd_001",
+      "name": "Direct Debit Mandate",
+      "properties": {
+        "mandate_process": "Customer signs mandate authorizing biller to collect recurring payments; mandate recorded in banking system",
+        "dd_guarantee_coverage": "Customer retains right to dispute unauthorized or erroneous payments",
+        "cancellation_or_dispute_process": "Customer can dispute individual payments or cancel mandate at any time"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_cust_001",
+      "name": "Direct Debit Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Account holder authorizing recurring payments via direct debit mandate",
+        "eligibility_or_verification_status": "Must sign mandate and maintain active account"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_proc_001",
+      "source_name": "Direct Debit Setup and Payment Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_001",
+      "target_name": "Biller Authorization Request",
+      "rel_type": "starts_with",
+      "description": "The Direct Debit Setup and Payment Processing process begins with the Biller Authorization Request step",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Biller Requests Authorization ↓",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_proc_001",
+      "source_name": "Direct Debit Setup and Payment Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_007",
+      "target_name": "Customer Dispute and Cancellation Rights",
+      "rel_type": "ends_with",
+      "description": "The Direct Debit Setup and Payment Processing process concludes with the Customer Dispute and Cancellation Rights step",
+      "properties": {
+        "sequence_position": 7
+      },
+      "context": "Customer Can Dispute/Cancel Anytime",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_proc_001",
+      "source_name": "Direct Debit Setup and Payment Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "sets_up",
+      "description": "The Direct Debit Setup and Payment Processing process sets up a Direct Debit Mandate",
+      "properties": {},
+      "context": "Customer Signs DD Mandate ↓ Mandate Setup in System",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_proc_001",
+      "source_name": "Direct Debit Setup and Payment Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_cust_001",
+      "target_name": "Direct Debit Customer",
+      "rel_type": "serves",
+      "description": "The Direct Debit Setup and Payment Processing process serves the Direct Debit Customer",
+      "properties": {},
+      "context": "Customer Signs DD Mandate, Customer Can Dispute/Cancel Anytime",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_001",
+      "source_name": "Biller Authorization Request",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_002",
+      "target_name": "Customer Direct Debit Mandate Signing",
+      "rel_type": "followed_by",
+      "description": "Biller Authorization Request is followed by Customer Direct Debit Mandate Signing",
+      "properties": {
+        "sequence_position": "1 to 2"
+      },
+      "context": "Biller Requests Authorization ↓ Customer Signs DD Mandate",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_001",
+      "source_name": "Biller Authorization Request",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_001",
+      "target_name": "Biller",
+      "rel_type": "performed_by",
+      "description": "The Biller Authorization Request step is performed by the Biller",
+      "properties": {},
+      "context": "Biller Requests Authorization",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_002",
+      "source_name": "Customer Direct Debit Mandate Signing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_003",
+      "target_name": "Mandate System Recording",
+      "rel_type": "followed_by",
+      "description": "Customer Direct Debit Mandate Signing is followed by Mandate System Recording",
+      "properties": {
+        "sequence_position": "2 to 3"
+      },
+      "context": "Customer Signs DD Mandate ↓ Mandate Setup in System",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_002",
+      "source_name": "Customer Direct Debit Mandate Signing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_002",
+      "target_name": "Customer",
+      "rel_type": "performed_by",
+      "description": "The Customer Direct Debit Mandate Signing step is performed by the Customer",
+      "properties": {},
+      "context": "Customer Signs DD Mandate",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_002",
+      "source_name": "Customer Direct Debit Mandate Signing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "sets_up_mandate_for",
+      "description": "The Customer Direct Debit Mandate Signing step sets up the Direct Debit Mandate",
+      "properties": {},
+      "context": "Customer Signs DD Mandate",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_003",
+      "source_name": "Mandate System Recording",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_004",
+      "target_name": "Biller Payment Instruction Submission",
+      "rel_type": "followed_by",
+      "description": "Mandate System Recording is followed by Biller Payment Instruction Submission",
+      "properties": {
+        "sequence_position": "3 to 4"
+      },
+      "context": "Mandate Setup in System ↓ Biller Submits Payment Instruction",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_003",
+      "source_name": "Mandate System Recording",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_003",
+      "target_name": "Banking System",
+      "rel_type": "performed_by",
+      "description": "The Mandate System Recording step is performed by the Banking System",
+      "properties": {},
+      "context": "Mandate Setup in System",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_003",
+      "source_name": "Mandate System Recording",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "records",
+      "description": "The Mandate System Recording step records the Direct Debit Mandate in the system",
+      "properties": {},
+      "context": "Mandate Setup in System",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_004",
+      "source_name": "Biller Payment Instruction Submission",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_005",
+      "target_name": "Automated Payment Processing",
+      "rel_type": "followed_by",
+      "description": "Biller Payment Instruction Submission is followed by Automated Payment Processing",
+      "properties": {
+        "sequence_position": "4 to 5"
+      },
+      "context": "Biller Submits Payment Instruction ↓ Payment Processed (Auto-debit)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_004",
+      "source_name": "Biller Payment Instruction Submission",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_001",
+      "target_name": "Biller",
+      "rel_type": "performed_by",
+      "description": "The Biller Payment Instruction Submission step is performed by the Biller",
+      "properties": {},
+      "context": "Biller Submits Payment Instruction",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_005",
+      "source_name": "Automated Payment Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_006",
+      "target_name": "Payment Completion Confirmation",
+      "rel_type": "followed_by",
+      "description": "Automated Payment Processing is followed by Payment Completion Confirmation",
+      "properties": {
+        "sequence_position": "5 to 6"
+      },
+      "context": "Payment Processed (Auto-debit) ↓ ✅ Payment Complete",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_005",
+      "source_name": "Automated Payment Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_003",
+      "target_name": "Banking System",
+      "rel_type": "performed_by",
+      "description": "The Automated Payment Processing step is performed by the Banking System",
+      "properties": {},
+      "context": "Payment Processed (Auto-debit)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_006",
+      "source_name": "Payment Completion Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_007",
+      "target_name": "Customer Dispute and Cancellation Rights",
+      "rel_type": "followed_by",
+      "description": "Payment Completion Confirmation is followed by Customer Dispute and Cancellation Rights",
+      "properties": {
+        "sequence_position": "6 to 7"
+      },
+      "context": "✅ Payment Complete ↓ Customer Can Dispute/Cancel Anytime",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_006",
+      "source_name": "Payment Completion Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_003",
+      "target_name": "Banking System",
+      "rel_type": "performed_by",
+      "description": "The Payment Completion Confirmation step is performed by the Banking System",
+      "properties": {},
+      "context": "✅ Payment Complete",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_007",
+      "source_name": "Customer Dispute and Cancellation Rights",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_002",
+      "target_name": "Customer",
+      "rel_type": "performed_by",
+      "description": "The Customer Dispute and Cancellation Rights step is performed by the Customer",
+      "properties": {},
+      "context": "Customer Can Dispute/Cancel Anytime",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_007",
+      "source_name": "Customer Dispute and Cancellation Rights",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "cancels",
+      "description": "The Customer Dispute and Cancellation Rights step allows cancellation of the Direct Debit Mandate",
+      "properties": {},
+      "context": "Customer Can Dispute/Cancel Anytime",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_cust_001",
+      "target_name": "Direct Debit Customer",
+      "rel_type": "belongs_to",
+      "description": "The Direct Debit Mandate belongs to the Direct Debit Customer",
+      "properties": {},
+      "context": "Customer Signs DD Mandate, Customer Can Dispute/Cancel Anytime",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_cust_001",
+      "source_name": "Direct Debit Customer",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "authorised_by",
+      "description": "The Direct Debit Mandate is authorised by the Direct Debit Customer",
+      "properties": {},
+      "context": "Customer Signs DD Mandate",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_proc_001",
+      "source_name": "Direct Debit Setup and Payment Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_001",
+      "source_name": "Biller Authorization Request",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_002",
+      "source_name": "Customer Direct Debit Mandate Signing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_003",
+      "source_name": "Mandate System Recording",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_004",
+      "source_name": "Biller Payment Instruction Submission",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_005",
+      "source_name": "Automated Payment Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_006",
+      "source_name": "Payment Completion Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_pst_007",
+      "source_name": "Customer Dispute and Cancellation Rights",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_001",
+      "source_name": "Biller",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_002",
+      "source_name": "Customer",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_ra_003",
+      "source_name": "Banking System",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005_cust_001",
+      "source_name": "Direct Debit Customer",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

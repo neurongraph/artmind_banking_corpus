@@ -1,0 +1,851 @@
+{
+  "chunk_seq": 6,
+  "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+  "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+  "text": "### Step 2: Borrower Credit Scoring  \n**Automated Credit Score (0–100):**  \n| Factor | Weight | Assessment |\n|---|---|---|\n| **Payment History** | 35% | No missed payments (excellent) → Regular late payments (poor) |\n| **Credit Utilization** | 20% | Low balance on cards (good) → High balance (poor) |\n| **Credit Age** | 15% | Longer credit history (good) → New credit only (poor) |\n| **Credit Inquiries** | 10% | Few recent inquiries (good) → Many recent inquiries (poor) |\n| **Default/Delinquency** | 20% | No defaults (excellent) → Recent defaults (poor) |  \n**Credit Score Ranges:**  \n| Score | Rating | Risk | Action |\n|---|---|---|---|\n| **90–100** | Excellent | Very Low | Auto-Approve (if other criteria met) |\n| **80–89** | Good | Low | Standard Underwriting |\n| **70–79** | Fair | Medium | Enhanced Review |\n| **60–69** | Poor | High | Manager Review (may decline) |\n| **<60** | Very Poor | Very High | Decline |  \n---",
+  "name": "Chunk 6/23",
+  "_domain": "banking.risk_governance",
+  "prev_chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_005",
+  "next_chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_007",
+  "raw_entities": [
+    {
+      "id": "risk_001",
+      "name": "Payment History Risk",
+      "aliases": [
+        "Payment Default Risk",
+        "Late Payment Risk"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Credit risk factor assessing borrower payment behaviour, weighted at 35% in the automated credit scoring model. Ranges from no missed payments (excellent) to regular late payments (poor), directly influencing credit score and lending decision.",
+      "context": [
+        "Payment History | 35% | No missed payments (excellent) → Regular late payments (poor)",
+        "Factor | Weight | Assessment"
+      ]
+    },
+    {
+      "id": "risk_002",
+      "name": "Credit Utilization Risk",
+      "aliases": [
+        "Card Balance Risk",
+        "Utilization Risk"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Credit risk factor measuring the proportion of available credit used by the borrower, weighted at 20% in the scoring model. Low card balances indicate good credit management, while high balances signal elevated risk.",
+      "context": [
+        "Credit Utilization | 20% | Low balance on cards (good) → High balance (poor)",
+        "Factor | Weight | Assessment"
+      ]
+    },
+    {
+      "id": "risk_003",
+      "name": "Credit Age Risk",
+      "aliases": [
+        "Credit History Length Risk",
+        "Account Age Risk"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Credit risk factor reflecting the length of the borrower's credit history, weighted at 15% in the scoring model. Longer credit history demonstrates established creditworthiness, while new credit only indicates higher risk.",
+      "context": [
+        "Credit Age | 15% | Longer credit history (good) → New credit only (poor)",
+        "Factor | Weight | Assessment"
+      ]
+    },
+    {
+      "id": "risk_004",
+      "name": "Credit Inquiry Risk",
+      "aliases": [
+        "Recent Inquiry Risk",
+        "Hard Inquiry Risk"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Credit risk factor assessing the frequency of recent credit inquiries, weighted at 10% in the scoring model. Few recent inquiries indicate stable credit-seeking behaviour, while many recent inquiries suggest financial distress or over-leveraging.",
+      "context": [
+        "Credit Inquiries | 10% | Few recent inquiries (good) → Many recent inquiries (poor)",
+        "Factor | Weight | Assessment"
+      ]
+    },
+    {
+      "id": "risk_005",
+      "name": "Default and Delinquency Risk",
+      "aliases": [
+        "Default Risk",
+        "Delinquency Risk"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Credit risk factor measuring the borrower's history of defaults or delinquencies, weighted at 20% in the automated credit scoring model. No defaults indicate excellent credit standing, while recent defaults signal very high risk.",
+      "context": [
+        "Default/Delinquency | 20% | No defaults (excellent) → Recent defaults (poor)",
+        "Factor | Weight | Assessment"
+      ]
+    },
+    {
+      "id": "risk_metric_001",
+      "name": "Automated Credit Score",
+      "aliases": [
+        "Credit Score",
+        "Borrower Credit Score"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "credit_risk",
+      "description": "Quantitative credit scoring metric on a 0–100 scale used to assess borrower creditworthiness and determine lending decisions. Score ranges from Very Poor (<60) to Excellent (90–100), with corresponding risk ratings and automated or manual underwriting actions.",
+      "context": [
+        "Automated Credit Score (0–100):",
+        "Score | Rating | Risk | Action",
+        "90–100 | Excellent | Very Low | Auto-Approve (if other criteria met)",
+        "<60 | Very Poor | Very High | Decline"
+      ]
+    },
+    {
+      "id": "risk_metric_002",
+      "name": "Excellent Credit Score Threshold",
+      "aliases": [
+        "Auto-Approve Threshold",
+        "90-100 Score Range"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "Credit score range indicating excellent creditworthiness with very low risk, triggering automatic approval if other lending criteria are met. Represents the bank's appetite for lowest-risk borrowers.",
+      "context": [
+        "90–100 | Excellent | Very Low | Auto-Approve (if other criteria met)"
+      ]
+    },
+    {
+      "id": "risk_metric_003",
+      "name": "Good Credit Score Threshold",
+      "aliases": [
+        "Standard Underwriting Threshold",
+        "80-89 Score Range"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "Credit score range indicating good creditworthiness with low risk, requiring standard underwriting procedures. Represents the bank's appetite for low-risk borrowers with routine review.",
+      "context": [
+        "80–89 | Good | Low | Standard Underwriting"
+      ]
+    },
+    {
+      "id": "risk_metric_004",
+      "name": "Fair Credit Score Threshold",
+      "aliases": [
+        "Enhanced Review Threshold",
+        "70-79 Score Range"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "Credit score range indicating fair creditworthiness with medium risk, requiring enhanced review procedures. Represents the bank's tolerance for medium-risk borrowers with additional scrutiny.",
+      "context": [
+        "70–79 | Fair | Medium | Enhanced Review"
+      ]
+    },
+    {
+      "id": "risk_metric_005",
+      "name": "Poor Credit Score Threshold",
+      "aliases": [
+        "Manager Review Threshold",
+        "60-69 Score Range"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "Credit score range indicating poor creditworthiness with high risk, requiring manager review and potential decline. Represents the bank's lower tolerance for high-risk borrowers.",
+      "context": [
+        "60–69 | Poor | High | Manager Review (may decline)"
+      ]
+    },
+    {
+      "id": "risk_metric_006",
+      "name": "Very Poor Credit Score Threshold",
+      "aliases": [
+        "Decline Threshold",
+        "Below 60 Score Range"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "Credit score range indicating very poor creditworthiness with very high risk, resulting in automatic decline. Represents the bank's minimum acceptable credit quality threshold.",
+      "context": [
+        "<60 | Very Poor | Very High | Decline"
+      ]
+    }
+  ],
+  "id_map": {
+    "risk_001": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_001",
+    "risk_002": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_002",
+    "risk_003": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_003",
+    "risk_004": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_004",
+    "risk_005": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_005",
+    "risk_metric_001": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_001",
+    "risk_metric_002": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_002",
+    "risk_metric_003": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_003",
+    "risk_metric_004": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_004",
+    "risk_metric_005": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_005",
+    "risk_metric_006": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_006"
+  },
+  "entities": [
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_001",
+      "name": "Payment History Risk",
+      "aliases": [
+        "Payment Default Risk",
+        "Late Payment Risk"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Credit risk factor assessing borrower payment behaviour, weighted at 35% in the automated credit scoring model. Ranges from no missed payments (excellent) to regular late payments (poor), directly influencing credit score and lending decision.",
+      "context": [
+        "Payment History | 35% | No missed payments (excellent) → Regular late payments (poor)",
+        "Factor | Weight | Assessment"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_002",
+      "name": "Credit Utilization Risk",
+      "aliases": [
+        "Card Balance Risk",
+        "Utilization Risk"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Credit risk factor measuring the proportion of available credit used by the borrower, weighted at 20% in the scoring model. Low card balances indicate good credit management, while high balances signal elevated risk.",
+      "context": [
+        "Credit Utilization | 20% | Low balance on cards (good) → High balance (poor)",
+        "Factor | Weight | Assessment"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_003",
+      "name": "Credit Age Risk",
+      "aliases": [
+        "Credit History Length Risk",
+        "Account Age Risk"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Credit risk factor reflecting the length of the borrower's credit history, weighted at 15% in the scoring model. Longer credit history demonstrates established creditworthiness, while new credit only indicates higher risk.",
+      "context": [
+        "Credit Age | 15% | Longer credit history (good) → New credit only (poor)",
+        "Factor | Weight | Assessment"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_004",
+      "name": "Credit Inquiry Risk",
+      "aliases": [
+        "Recent Inquiry Risk",
+        "Hard Inquiry Risk"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Credit risk factor assessing the frequency of recent credit inquiries, weighted at 10% in the scoring model. Few recent inquiries indicate stable credit-seeking behaviour, while many recent inquiries suggest financial distress or over-leveraging.",
+      "context": [
+        "Credit Inquiries | 10% | Few recent inquiries (good) → Many recent inquiries (poor)",
+        "Factor | Weight | Assessment"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_005",
+      "name": "Default and Delinquency Risk",
+      "aliases": [
+        "Default Risk",
+        "Delinquency Risk"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Credit risk factor measuring the borrower's history of defaults or delinquencies, weighted at 20% in the automated credit scoring model. No defaults indicate excellent credit standing, while recent defaults signal very high risk.",
+      "context": [
+        "Default/Delinquency | 20% | No defaults (excellent) → Recent defaults (poor)",
+        "Factor | Weight | Assessment"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_001",
+      "name": "Automated Credit Score",
+      "aliases": [
+        "Credit Score",
+        "Borrower Credit Score"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "credit_risk",
+      "description": "Quantitative credit scoring metric on a 0–100 scale used to assess borrower creditworthiness and determine lending decisions. Score ranges from Very Poor (<60) to Excellent (90–100), with corresponding risk ratings and automated or manual underwriting actions.",
+      "context": [
+        "Automated Credit Score (0–100):",
+        "Score | Rating | Risk | Action",
+        "90–100 | Excellent | Very Low | Auto-Approve (if other criteria met)",
+        "<60 | Very Poor | Very High | Decline"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_002",
+      "name": "Excellent Credit Score Threshold",
+      "aliases": [
+        "Auto-Approve Threshold",
+        "90-100 Score Range"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "Credit score range indicating excellent creditworthiness with very low risk, triggering automatic approval if other lending criteria are met. Represents the bank's appetite for lowest-risk borrowers.",
+      "context": [
+        "90–100 | Excellent | Very Low | Auto-Approve (if other criteria met)"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_003",
+      "name": "Good Credit Score Threshold",
+      "aliases": [
+        "Standard Underwriting Threshold",
+        "80-89 Score Range"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "Credit score range indicating good creditworthiness with low risk, requiring standard underwriting procedures. Represents the bank's appetite for low-risk borrowers with routine review.",
+      "context": [
+        "80–89 | Good | Low | Standard Underwriting"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_004",
+      "name": "Fair Credit Score Threshold",
+      "aliases": [
+        "Enhanced Review Threshold",
+        "70-79 Score Range"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "Credit score range indicating fair creditworthiness with medium risk, requiring enhanced review procedures. Represents the bank's tolerance for medium-risk borrowers with additional scrutiny.",
+      "context": [
+        "70–79 | Fair | Medium | Enhanced Review"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_005",
+      "name": "Poor Credit Score Threshold",
+      "aliases": [
+        "Manager Review Threshold",
+        "60-69 Score Range"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "Credit score range indicating poor creditworthiness with high risk, requiring manager review and potential decline. Represents the bank's lower tolerance for high-risk borrowers.",
+      "context": [
+        "60–69 | Poor | High | Manager Review (may decline)"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_006",
+      "name": "Very Poor Credit Score Threshold",
+      "aliases": [
+        "Decline Threshold",
+        "Below 60 Score Range"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "Credit score range indicating very poor creditworthiness with very high risk, resulting in automatic decline. Represents the bank's minimum acceptable credit quality threshold.",
+      "context": [
+        "<60 | Very Poor | Very High | Decline"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_001",
+      "name": "Payment History Risk",
+      "properties": {
+        "risk_category": "credit",
+        "appetite_level": "low",
+        "appetite_rationale": "Payment history is the largest factor (35% weight) in credit scoring; missed or late payments indicate borrower default risk",
+        "controls_in_place": [
+          "Automated credit score assessment",
+          "Payment history tracking as 35% weighting factor"
+        ],
+        "stated_prohibitions": [
+          "Regular late payments result in poor credit assessment"
+        ]
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_002",
+      "name": "Credit Utilization Risk",
+      "properties": {
+        "risk_category": "credit",
+        "appetite_level": "low",
+        "appetite_rationale": "High credit card balances relative to limits indicate elevated financial stress and default risk",
+        "controls_in_place": [
+          "Credit utilization monitoring as 20% weighting factor in automated scoring"
+        ],
+        "stated_prohibitions": [
+          "High balance on cards results in poor credit assessment"
+        ]
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_003",
+      "name": "Credit Age Risk",
+      "properties": {
+        "risk_category": "credit",
+        "appetite_level": "moderate",
+        "appetite_rationale": "Longer credit history demonstrates established borrowing behavior; new credit only indicates limited track record",
+        "controls_in_place": [
+          "Credit age assessment as 15% weighting factor in automated scoring"
+        ]
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_004",
+      "name": "Credit Inquiry Risk",
+      "properties": {
+        "risk_category": "credit",
+        "appetite_level": "moderate",
+        "appetite_rationale": "Multiple recent credit inquiries may signal financial distress or aggressive credit-seeking behavior",
+        "controls_in_place": [
+          "Credit inquiry monitoring as 10% weighting factor in automated scoring"
+        ],
+        "stated_prohibitions": [
+          "Many recent inquiries result in poor credit assessment"
+        ]
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_005",
+      "name": "Default and Delinquency Risk",
+      "properties": {
+        "risk_category": "credit",
+        "appetite_level": "low",
+        "appetite_rationale": "Recent defaults or delinquencies are strong indicators of imminent default risk on new credit",
+        "controls_in_place": [
+          "Default and delinquency history assessment as 20% weighting factor in automated scoring"
+        ],
+        "stated_prohibitions": [
+          "Recent defaults result in very high risk classification"
+        ]
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_001",
+      "name": "Automated Credit Score",
+      "properties": {
+        "metric_name": "Automated Credit Score",
+        "target_threshold": "90-100",
+        "actual_value": "0-100",
+        "period": "per borrower assessment",
+        "context": "Composite score derived from five credit risk factors; used to determine underwriting pathway and approval decision",
+        "breach_threshold": "<60"
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_002",
+      "name": "Excellent Credit Score Threshold",
+      "properties": {
+        "metric_name": "Excellent Credit Score Threshold",
+        "target_threshold": "90-100",
+        "actual_value": "90-100",
+        "period": "per borrower assessment",
+        "owner": "Underwriting",
+        "context": "Score range indicating very low risk; triggers auto-approval if other criteria are met",
+        "risk_classification": "Very Low"
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_003",
+      "name": "Good Credit Score Threshold",
+      "properties": {
+        "metric_name": "Good Credit Score Threshold",
+        "target_threshold": "80-89",
+        "actual_value": "80-89",
+        "period": "per borrower assessment",
+        "owner": "Underwriting",
+        "context": "Score range indicating low risk; triggers standard underwriting process",
+        "risk_classification": "Low"
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_004",
+      "name": "Fair Credit Score Threshold",
+      "properties": {
+        "metric_name": "Fair Credit Score Threshold",
+        "target_threshold": "70-79",
+        "actual_value": "70-79",
+        "period": "per borrower assessment",
+        "owner": "Underwriting",
+        "context": "Score range indicating medium risk; triggers enhanced review process",
+        "risk_classification": "Medium"
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_005",
+      "name": "Poor Credit Score Threshold",
+      "properties": {
+        "metric_name": "Poor Credit Score Threshold",
+        "target_threshold": "60-69",
+        "actual_value": "60-69",
+        "period": "per borrower assessment",
+        "owner": "Underwriting",
+        "context": "Score range indicating high risk; triggers manager review with potential for decline",
+        "risk_classification": "High"
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_006",
+      "name": "Very Poor Credit Score Threshold",
+      "properties": {
+        "metric_name": "Very Poor Credit Score Threshold",
+        "target_threshold": "<60",
+        "actual_value": "<60",
+        "period": "per borrower assessment",
+        "owner": "Underwriting",
+        "context": "Score range indicating very high risk; automatic decline",
+        "risk_classification": "Very High"
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_001",
+      "source_name": "Payment History Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_001",
+      "target_name": "Automated Credit Score",
+      "rel_type": "quantified_by",
+      "description": "Payment History Risk is quantified through the Automated Credit Score metric, with a 35% weighting factor",
+      "properties": {
+        "weight": "35%",
+        "assessment_range": "No missed payments (excellent) → Regular late payments (poor)"
+      },
+      "context": "| **Payment History** | 35% | No missed payments (excellent) → Regular late payments (poor) |",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_002",
+      "source_name": "Credit Utilization Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_001",
+      "target_name": "Automated Credit Score",
+      "rel_type": "quantified_by",
+      "description": "Credit Utilization Risk is quantified through the Automated Credit Score metric, with a 20% weighting factor",
+      "properties": {
+        "weight": "20%",
+        "assessment_range": "Low balance on cards (good) → High balance (poor)"
+      },
+      "context": "| **Credit Utilization** | 20% | Low balance on cards (good) → High balance (poor) |",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_003",
+      "source_name": "Credit Age Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_001",
+      "target_name": "Automated Credit Score",
+      "rel_type": "quantified_by",
+      "description": "Credit Age Risk is quantified through the Automated Credit Score metric, with a 15% weighting factor",
+      "properties": {
+        "weight": "15%",
+        "assessment_range": "Longer credit history (good) → New credit only (poor)"
+      },
+      "context": "| **Credit Age** | 15% | Longer credit history (good) → New credit only (poor) |",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_004",
+      "source_name": "Credit Inquiry Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_001",
+      "target_name": "Automated Credit Score",
+      "rel_type": "quantified_by",
+      "description": "Credit Inquiry Risk is quantified through the Automated Credit Score metric, with a 10% weighting factor",
+      "properties": {
+        "weight": "10%",
+        "assessment_range": "Few recent inquiries (good) → Many recent inquiries (poor)"
+      },
+      "context": "| **Credit Inquiries** | 10% | Few recent inquiries (good) → Many recent inquiries (poor) |",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_005",
+      "source_name": "Default and Delinquency Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_001",
+      "target_name": "Automated Credit Score",
+      "rel_type": "quantified_by",
+      "description": "Default and Delinquency Risk is quantified through the Automated Credit Score metric, with a 20% weighting factor",
+      "properties": {
+        "weight": "20%",
+        "assessment_range": "No defaults (excellent) → Recent defaults (poor)"
+      },
+      "context": "| **Default/Delinquency** | 20% | No defaults (excellent) → Recent defaults (poor) |",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_001",
+      "source_name": "Automated Credit Score",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_002",
+      "target_name": "Excellent Credit Score Threshold",
+      "rel_type": "has_appetite_threshold",
+      "description": "Automated Credit Score has an appetite threshold defined by the Excellent Credit Score range of 90–100",
+      "properties": {
+        "score_range": "90–100",
+        "rating": "Excellent",
+        "risk_level": "Very Low",
+        "action": "Auto-Approve (if other criteria met)"
+      },
+      "context": "| **90–100** | Excellent | Very Low | Auto-Approve (if other criteria met) |",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_001",
+      "source_name": "Automated Credit Score",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_003",
+      "target_name": "Good Credit Score Threshold",
+      "rel_type": "has_appetite_threshold",
+      "description": "Automated Credit Score has an appetite threshold defined by the Good Credit Score range of 80–89",
+      "properties": {
+        "score_range": "80–89",
+        "rating": "Good",
+        "risk_level": "Low",
+        "action": "Standard Underwriting"
+      },
+      "context": "| **80–89** | Good | Low | Standard Underwriting |",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_001",
+      "source_name": "Automated Credit Score",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_004",
+      "target_name": "Fair Credit Score Threshold",
+      "rel_type": "has_appetite_threshold",
+      "description": "Automated Credit Score has an appetite threshold defined by the Fair Credit Score range of 70–79",
+      "properties": {
+        "score_range": "70–79",
+        "rating": "Fair",
+        "risk_level": "Medium",
+        "action": "Enhanced Review"
+      },
+      "context": "| **70–79** | Fair | Medium | Enhanced Review |",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_001",
+      "source_name": "Automated Credit Score",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_005",
+      "target_name": "Poor Credit Score Threshold",
+      "rel_type": "has_appetite_threshold",
+      "description": "Automated Credit Score has an appetite threshold defined by the Poor Credit Score range of 60–69",
+      "properties": {
+        "score_range": "60–69",
+        "rating": "Poor",
+        "risk_level": "High",
+        "action": "Manager Review (may decline)"
+      },
+      "context": "| **60–69** | Poor | High | Manager Review (may decline) |",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_001",
+      "source_name": "Automated Credit Score",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_006",
+      "target_name": "Very Poor Credit Score Threshold",
+      "rel_type": "has_appetite_threshold",
+      "description": "Automated Credit Score has an appetite threshold defined by the Very Poor Credit Score range of <60",
+      "properties": {
+        "score_range": "<60",
+        "rating": "Very Poor",
+        "risk_level": "Very High",
+        "action": "Decline"
+      },
+      "context": "| **<60** | Very Poor | Very High | Decline |",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_001",
+      "source_name": "Payment History Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_002",
+      "source_name": "Credit Utilization Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_003",
+      "source_name": "Credit Age Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_004",
+      "source_name": "Credit Inquiry Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_005",
+      "source_name": "Default and Delinquency Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_001",
+      "source_name": "Automated Credit Score",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_002",
+      "source_name": "Excellent Credit Score Threshold",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_003",
+      "source_name": "Good Credit Score Threshold",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_004",
+      "source_name": "Fair Credit Score Threshold",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_005",
+      "source_name": "Poor Credit Score Threshold",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_006_risk_metric_006",
+      "source_name": "Very Poor Credit Score Threshold",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_006",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    }
+  ]
+}

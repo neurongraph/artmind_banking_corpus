@@ -1,0 +1,1049 @@
+{
+  "chunk_seq": 8,
+  "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+  "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+  "text": "#### 5. Payment Processing System (PPS)  \n**System ID:** PPS-001\n**Purpose:** Process customer payments and inter-bank settlements\n**Technology:** Java microservices, message queue (RabbitMQ)\n**Deployment:** Cloud (AWS)\n**Processing: 24/7 real-time + batch overnight (BACS)  \n**Key Functions:**\n- Transfer initiation and validation\n- Standing order processing\n- Direct debit processing\n- Settlement to other banks\n- Reconciliation and reporting  \n**Payment Methods Supported:**\n- Faster Payments Service (FPS) — Real-time, up to £1M\n- BACS — Overnight, high volume\n- CHAPS — High-value, real-time\n- Internal transfers (same bank)  \n**Batch Processing Schedule:**\n- FPS: Real-time (immediate)\n- BACS Submission: 20:00 GMT daily\n- CHAPS: Real-time (during hours)  \n**Performance:**\n- FPS processing: <15 minutes\n- BACS processing: Next business day\n- Success rate: 99.95%\n- Failed transactions: <5 per day  \n**Integration:**\n- Account Management System (AMS) — account validation\n- Fraud Detection Engine (FDE) — fraud check\n- Bank of England Settlement Systems (external)\n- Treasury System — reconciliation  \n---",
+  "name": "Chunk 8/39",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_007",
+  "next_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_009",
+  "raw_entities": [
+    {
+      "id": "sys_001",
+      "name": "Payment Processing System",
+      "aliases": [
+        "PPS",
+        "PPS-001"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "payment_processor",
+      "description": "Core payment processing platform handling customer payments and inter-bank settlements in real-time and batch modes. Processes Faster Payments Service, BACS, CHAPS, and internal transfers with 24/7 availability and 99.95% success rate.",
+      "context": [
+        "Process customer payments and inter-bank settlements",
+        "Technology: Java microservices, message queue (RabbitMQ)",
+        "Deployment: Cloud (AWS)",
+        "Processing: 24/7 real-time + batch overnight (BACS)"
+      ]
+    },
+    {
+      "id": "sys_002",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "core_banking",
+      "description": "System responsible for account validation and management functions integrated with the Payment Processing System to validate accounts during payment processing.",
+      "context": [
+        "Account Management System (AMS) — account validation"
+      ]
+    },
+    {
+      "id": "sys_003",
+      "name": "Fraud Detection Engine",
+      "aliases": [
+        "FDE"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "fraud_detection",
+      "description": "Fraud detection system integrated with Payment Processing System to perform fraud checks on payment transactions before settlement.",
+      "context": [
+        "Fraud Detection Engine (FDE) — fraud check"
+      ]
+    },
+    {
+      "id": "sys_004",
+      "name": "Treasury System",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "analytics",
+      "description": "System responsible for reconciliation and reporting functions integrated with Payment Processing System for settlement reconciliation.",
+      "context": [
+        "Treasury System — reconciliation"
+      ]
+    },
+    {
+      "id": "sys_005",
+      "name": "Bank of England Settlement Systems",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "api_gateway",
+      "description": "External settlement infrastructure operated by the Bank of England for inter-bank payment settlement and clearing.",
+      "context": [
+        "Bank of England Settlement Systems (external)"
+      ]
+    },
+    {
+      "id": "bc_001",
+      "name": "Standing Order",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "standing_order",
+      "description": "Recurring payment instruction processed by the Payment Processing System as a key function of the payment platform.",
+      "context": [
+        "Standing order processing"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Direct Debit",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "direct_debit",
+      "description": "Direct debit payment instruction processed by the Payment Processing System as a core payment method.",
+      "context": [
+        "Direct debit processing"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "Transfer",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "Payment transfer initiated and validated through the Payment Processing System, including internal transfers between accounts at the same bank.",
+      "context": [
+        "Transfer initiation and validation",
+        "Internal transfers (same bank)"
+      ]
+    },
+    {
+      "id": "mt_001",
+      "name": "FPS Processing Time",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "response_time",
+      "description": "Service level target for Faster Payments Service processing completion.",
+      "context": [
+        "FPS processing: <15 minutes"
+      ]
+    },
+    {
+      "id": "mt_002",
+      "name": "BACS Processing Time",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "response_time",
+      "description": "Service level target for BACS batch payment processing completion.",
+      "context": [
+        "BACS processing: Next business day"
+      ]
+    },
+    {
+      "id": "mt_003",
+      "name": "Payment Processing Success Rate",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "kpi",
+      "description": "Overall success rate target for payment transactions processed through the Payment Processing System.",
+      "context": [
+        "Success rate: 99.95%"
+      ]
+    },
+    {
+      "id": "mt_004",
+      "name": "Failed Transactions Daily Threshold",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "kpi",
+      "description": "Maximum acceptable number of failed payment transactions per day in the Payment Processing System.",
+      "context": [
+        "Failed transactions: <5 per day"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "BACS Submission Deadline",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "Operational constraint specifying the daily submission deadline for BACS batch payments to the clearing system.",
+      "context": [
+        "BACS Submission: 20:00 GMT daily"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Faster Payments Service Limit",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "Maximum transaction value limit for Faster Payments Service payments processed through the Payment Processing System.",
+      "context": [
+        "Faster Payments Service (FPS) — Real-time, up to £1M"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "CHAPS Real-Time Processing Constraint",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "Operational rule restricting CHAPS real-time processing to business hours only.",
+      "context": [
+        "CHAPS: Real-time (during hours)"
+      ]
+    }
+  ],
+  "id_map": {
+    "sys_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_001",
+    "sys_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_002",
+    "sys_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_003",
+    "sys_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_004",
+    "sys_005": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_005",
+    "bc_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_001",
+    "bc_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_002",
+    "bc_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_003",
+    "mt_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_001",
+    "mt_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_002",
+    "mt_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_003",
+    "mt_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_004",
+    "br_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_001",
+    "br_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_002",
+    "br_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_003"
+  },
+  "entities": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_001",
+      "name": "Payment Processing System",
+      "aliases": [
+        "PPS",
+        "PPS-001"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "payment_processor",
+      "description": "Core payment processing platform handling customer payments and inter-bank settlements in real-time and batch modes. Processes Faster Payments Service, BACS, CHAPS, and internal transfers with 24/7 availability and 99.95% success rate.",
+      "context": [
+        "Process customer payments and inter-bank settlements",
+        "Technology: Java microservices, message queue (RabbitMQ)",
+        "Deployment: Cloud (AWS)",
+        "Processing: 24/7 real-time + batch overnight (BACS)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_002",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "core_banking",
+      "description": "System responsible for account validation and management functions integrated with the Payment Processing System to validate accounts during payment processing.",
+      "context": [
+        "Account Management System (AMS) — account validation"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_003",
+      "name": "Fraud Detection Engine",
+      "aliases": [
+        "FDE"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "fraud_detection",
+      "description": "Fraud detection system integrated with Payment Processing System to perform fraud checks on payment transactions before settlement.",
+      "context": [
+        "Fraud Detection Engine (FDE) — fraud check"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_004",
+      "name": "Treasury System",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "analytics",
+      "description": "System responsible for reconciliation and reporting functions integrated with Payment Processing System for settlement reconciliation.",
+      "context": [
+        "Treasury System — reconciliation"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_005",
+      "name": "Bank of England Settlement Systems",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "api_gateway",
+      "description": "External settlement infrastructure operated by the Bank of England for inter-bank payment settlement and clearing.",
+      "context": [
+        "Bank of England Settlement Systems (external)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_001",
+      "name": "Standing Order",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "standing_order",
+      "description": "Recurring payment instruction processed by the Payment Processing System as a key function of the payment platform.",
+      "context": [
+        "Standing order processing"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_002",
+      "name": "Direct Debit",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "direct_debit",
+      "description": "Direct debit payment instruction processed by the Payment Processing System as a core payment method.",
+      "context": [
+        "Direct debit processing"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_003",
+      "name": "Transfer",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "Payment transfer initiated and validated through the Payment Processing System, including internal transfers between accounts at the same bank.",
+      "context": [
+        "Transfer initiation and validation",
+        "Internal transfers (same bank)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_001",
+      "name": "FPS Processing Time",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "response_time",
+      "description": "Service level target for Faster Payments Service processing completion.",
+      "context": [
+        "FPS processing: <15 minutes"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_002",
+      "name": "BACS Processing Time",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "response_time",
+      "description": "Service level target for BACS batch payment processing completion.",
+      "context": [
+        "BACS processing: Next business day"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_003",
+      "name": "Payment Processing Success Rate",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "kpi",
+      "description": "Overall success rate target for payment transactions processed through the Payment Processing System.",
+      "context": [
+        "Success rate: 99.95%"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_004",
+      "name": "Failed Transactions Daily Threshold",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "kpi",
+      "description": "Maximum acceptable number of failed payment transactions per day in the Payment Processing System.",
+      "context": [
+        "Failed transactions: <5 per day"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_001",
+      "name": "BACS Submission Deadline",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "Operational constraint specifying the daily submission deadline for BACS batch payments to the clearing system.",
+      "context": [
+        "BACS Submission: 20:00 GMT daily"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_002",
+      "name": "Faster Payments Service Limit",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "Maximum transaction value limit for Faster Payments Service payments processed through the Payment Processing System.",
+      "context": [
+        "Faster Payments Service (FPS) — Real-time, up to £1M"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_003",
+      "name": "CHAPS Real-Time Processing Constraint",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "Operational rule restricting CHAPS real-time processing to business hours only.",
+      "context": [
+        "CHAPS: Real-time (during hours)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_001",
+      "name": "Payment Processing System",
+      "properties": {
+        "system_id": "PPS-001",
+        "purpose": "Process customer payments and inter-bank settlements",
+        "technology_stack": [
+          "Java microservices",
+          "RabbitMQ"
+        ],
+        "deployment": "cloud",
+        "key_features": [
+          "Transfer initiation and validation",
+          "Standing order processing",
+          "Direct debit processing",
+          "Settlement to other banks",
+          "Reconciliation and reporting"
+        ],
+        "payment_method_support": [
+          "Faster Payments Service (FPS)",
+          "BACS",
+          "CHAPS",
+          "Internal transfers"
+        ],
+        "integrations": [
+          "Account Management System",
+          "Fraud Detection Engine",
+          "Bank of England Settlement Systems",
+          "Treasury System"
+        ],
+        "operational_mode": "24/7 real-time + batch overnight (BACS)"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_002",
+      "name": "Account Management System",
+      "properties": {
+        "purpose": "Account validation and management",
+        "key_functions": [
+          "Account validation"
+        ],
+        "integrations": [
+          "Payment Processing System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_003",
+      "name": "Fraud Detection Engine",
+      "properties": {
+        "purpose": "Fraud screening and detection for payments",
+        "key_functions": [
+          "Fraud check"
+        ],
+        "integrations": [
+          "Payment Processing System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_004",
+      "name": "Treasury System",
+      "properties": {
+        "purpose": "Reconciliation and treasury management",
+        "key_functions": [
+          "Reconciliation"
+        ],
+        "integrations": [
+          "Payment Processing System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_005",
+      "name": "Bank of England Settlement Systems",
+      "properties": {
+        "purpose": "External settlement infrastructure",
+        "integrations": [
+          "Payment Processing System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_001",
+      "name": "Standing Order",
+      "properties": {
+        "definition": "Recurring payment instruction processed by the Payment Processing System",
+        "ontology_domain": "payments",
+        "processing_system": "Payment Processing System"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_002",
+      "name": "Direct Debit",
+      "properties": {
+        "definition": "Payment collection mechanism processed by the Payment Processing System",
+        "ontology_domain": "payments",
+        "processing_system": "Payment Processing System"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_003",
+      "name": "Transfer",
+      "properties": {
+        "definition": "Movement of funds between accounts, initiated and validated by the Payment Processing System",
+        "ontology_domain": "payments",
+        "key_attributes": [
+          "transfer initiation",
+          "transfer validation"
+        ],
+        "processing_system": "Payment Processing System"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_001",
+      "name": "FPS Processing Time",
+      "properties": {
+        "value": 15,
+        "unit": "minutes",
+        "what_it_measures": "Faster Payments Service processing latency",
+        "context": "Real-time payment processing target"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_002",
+      "name": "BACS Processing Time",
+      "properties": {
+        "value": 1,
+        "unit": "days",
+        "what_it_measures": "BACS overnight batch processing completion",
+        "context": "Next business day delivery for high-volume payments"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_003",
+      "name": "Payment Processing Success Rate",
+      "properties": {
+        "value": 99.95,
+        "unit": "percentage",
+        "what_it_measures": "Successful payment transactions as proportion of total",
+        "context": "System reliability and operational performance"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_004",
+      "name": "Failed Transactions Daily Threshold",
+      "properties": {
+        "value": 5,
+        "unit": "count",
+        "what_it_measures": "Maximum acceptable failed transactions per day",
+        "context": "Operational threshold for Payment Processing System"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_001",
+      "name": "BACS Submission Deadline",
+      "properties": {
+        "rule_statement": "BACS batch must be submitted by 20:00 GMT daily",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Payment Processing System",
+          "BACS"
+        ],
+        "enforcement": "Payment Processing System batch scheduling"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_002",
+      "name": "Faster Payments Service Limit",
+      "properties": {
+        "rule_statement": "Faster Payments Service transactions limited to £1M per transaction",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Faster Payments Service"
+        ],
+        "threshold_value": 1000000,
+        "threshold_unit": "GBP"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_003",
+      "name": "CHAPS Real-Time Processing Constraint",
+      "properties": {
+        "rule_statement": "CHAPS payments processed in real-time during business hours",
+        "rule_type": "constraint",
+        "applies_to": [
+          "CHAPS"
+        ],
+        "processing_mode": "real-time",
+        "operational_window": "business hours"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_001",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_001",
+      "target_name": "Standing Order",
+      "rel_type": "processes",
+      "description": "Payment Processing System processes Standing Order payments",
+      "properties": {
+        "function": "Standing order processing"
+      },
+      "context": "Standing order processing",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_001",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_002",
+      "target_name": "Direct Debit",
+      "rel_type": "processes",
+      "description": "Payment Processing System processes Direct Debit payments",
+      "properties": {
+        "function": "Direct debit processing"
+      },
+      "context": "Direct debit processing",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_001",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_003",
+      "target_name": "Transfer",
+      "rel_type": "processes",
+      "description": "Payment Processing System processes Transfer transactions",
+      "properties": {
+        "function": "Transfer initiation and validation"
+      },
+      "context": "Transfer initiation and validation",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_001",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_002",
+      "target_name": "Account Management System",
+      "rel_type": "depends_on",
+      "description": "Payment Processing System depends on Account Management System for account validation",
+      "properties": {
+        "purpose": "account validation"
+      },
+      "context": "Account Management System (AMS) — account validation",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_001",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_003",
+      "target_name": "Fraud Detection Engine",
+      "rel_type": "depends_on",
+      "description": "Payment Processing System depends on Fraud Detection Engine for fraud checking",
+      "properties": {
+        "purpose": "fraud check"
+      },
+      "context": "Fraud Detection Engine (FDE) — fraud check",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_001",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_005",
+      "target_name": "Bank of England Settlement Systems",
+      "rel_type": "integrates_with",
+      "description": "Payment Processing System integrates with Bank of England Settlement Systems for inter-bank settlements",
+      "properties": {
+        "type": "external integration",
+        "purpose": "settlement to other banks"
+      },
+      "context": "Bank of England Settlement Systems (external)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_001",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_004",
+      "target_name": "Treasury System",
+      "rel_type": "integrates_with",
+      "description": "Payment Processing System integrates with Treasury System for reconciliation",
+      "properties": {
+        "purpose": "reconciliation"
+      },
+      "context": "Treasury System — reconciliation",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_001",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_001",
+      "target_name": "FPS Processing Time",
+      "rel_type": "tracks",
+      "description": "Payment Processing System tracks FPS Processing Time metric",
+      "properties": {
+        "target_value": "<15 minutes",
+        "payment_method": "Faster Payments Service"
+      },
+      "context": "FPS processing: <15 minutes",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_001",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_002",
+      "target_name": "BACS Processing Time",
+      "rel_type": "tracks",
+      "description": "Payment Processing System tracks BACS Processing Time metric",
+      "properties": {
+        "target_value": "Next business day",
+        "payment_method": "BACS"
+      },
+      "context": "BACS processing: Next business day",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_001",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_003",
+      "target_name": "Payment Processing Success Rate",
+      "rel_type": "tracks",
+      "description": "Payment Processing System tracks Payment Processing Success Rate metric",
+      "properties": {
+        "target_value": "99.95%"
+      },
+      "context": "Success rate: 99.95%",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_001",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_004",
+      "target_name": "Failed Transactions Daily Threshold",
+      "rel_type": "tracks",
+      "description": "Payment Processing System tracks Failed Transactions Daily Threshold metric",
+      "properties": {
+        "target_value": "<5 per day"
+      },
+      "context": "Failed transactions: <5 per day",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_001",
+      "source_name": "Standing Order",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_001",
+      "target_name": "BACS Submission Deadline",
+      "rel_type": "governed_by",
+      "description": "Standing Order processing is governed by BACS Submission Deadline business rule",
+      "properties": {
+        "deadline": "20:00 GMT daily"
+      },
+      "context": "BACS Submission: 20:00 GMT daily",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_002",
+      "source_name": "Direct Debit",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_001",
+      "target_name": "BACS Submission Deadline",
+      "rel_type": "governed_by",
+      "description": "Direct Debit processing is governed by BACS Submission Deadline business rule",
+      "properties": {
+        "deadline": "20:00 GMT daily"
+      },
+      "context": "BACS Submission: 20:00 GMT daily",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_003",
+      "source_name": "Transfer",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_002",
+      "target_name": "Faster Payments Service Limit",
+      "rel_type": "governed_by",
+      "description": "Transfer via Faster Payments Service is governed by FPS Limit business rule",
+      "properties": {
+        "limit": "up to £1M",
+        "processing": "Real-time, immediate"
+      },
+      "context": "Faster Payments Service (FPS) — Real-time, up to £1M",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_003",
+      "source_name": "Transfer",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_003",
+      "target_name": "CHAPS Real-Time Processing Constraint",
+      "rel_type": "governed_by",
+      "description": "Transfer via CHAPS is governed by CHAPS Real-Time Processing Constraint business rule",
+      "properties": {
+        "type": "High-value, real-time",
+        "processing": "Real-time (during hours)"
+      },
+      "context": "CHAPS — High-value, real-time",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_001",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_002",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_003",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_004",
+      "source_name": "Treasury System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_sys_005",
+      "source_name": "Bank of England Settlement Systems",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_001",
+      "source_name": "Standing Order",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_002",
+      "source_name": "Direct Debit",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_bc_003",
+      "source_name": "Transfer",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_001",
+      "source_name": "FPS Processing Time",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_002",
+      "source_name": "BACS Processing Time",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_003",
+      "source_name": "Payment Processing Success Rate",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_mt_004",
+      "source_name": "Failed Transactions Daily Threshold",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_001",
+      "source_name": "BACS Submission Deadline",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_002",
+      "source_name": "Faster Payments Service Limit",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008_br_003",
+      "source_name": "CHAPS Real-Time Processing Constraint",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_008",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ]
+}

@@ -1,0 +1,991 @@
+{
+  "chunk_seq": 10,
+  "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+  "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+  "text": "## Step 4: Manual Review Process (Hit Assessment)  \n### Step 4A: Preliminary Assessment  \n**Financial Crime Staff Reviews:**\n1. **Match Score:** How close is the match? (80%+ = likely match)\n2. **Name Variance:** Typo/nickname vs. exact match?\n3. **Date of Birth:** Does DOB match or differ significantly?\n4. **Nationality:** Same or different country?\n5. **Business:** Is match against individual or organization?  \n**Initial Decision Options:**\n- **A) Clear False Positive:** Similar name but different person → Clear to proceed\n- **B) Likely True Positive:** Name, DOB, nationality all match → Escalate immediately\n- **C) Uncertain:** Partial match requiring investigation → Deeper research",
+  "name": "Chunk 10/23",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+  "next_chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_011",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Manual Review Process",
+      "aliases": [
+        "Hit Assessment"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "A manual review workflow executed by Financial Crime Staff to assess sanctions/PEP screening matches. The process evaluates match quality, demographic alignment, and entity type to determine whether a hit represents a true positive requiring escalation, a false positive allowing clearance, or an uncertain case requiring deeper investigation.",
+      "context": [
+        "Step 4: Manual Review Process (Hit Assessment)",
+        "Financial Crime Staff Reviews:",
+        "Initial Decision Options:"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Preliminary Assessment",
+      "aliases": [
+        "Step 4A"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The initial evaluation phase where Financial Crime Staff systematically review screening match characteristics including match score, name variance, date of birth alignment, nationality, and entity type classification.",
+      "context": [
+        "Step 4A: Preliminary Assessment",
+        "Financial Crime Staff Reviews:"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Match Score Evaluation",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Assessment of the numerical match score between the customer record and the sanctions/PEP list entry, with 80% or higher indicating a likely match requiring further consideration.",
+      "context": [
+        "Match Score: How close is the match? (80%+ = likely match)"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Name Variance Analysis",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Examination of differences between the customer name and the matched list entry to distinguish between typographical errors, nicknames, or legitimate name variations versus exact matches.",
+      "context": [
+        "Name Variance: Typo/nickname vs. exact match?"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Date of Birth Verification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Comparison of the customer's date of birth against the matched list entry to determine alignment or significant discrepancies that may indicate a different person.",
+      "context": [
+        "Date of Birth: Does DOB match or differ significantly?"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Nationality Verification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Verification that the customer's nationality matches or differs from the matched list entry, used as a discriminating factor in hit assessment.",
+      "context": [
+        "Nationality: Same or different country?"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Entity Type Classification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Determination of whether the screening match is against an individual person or an organization, to assess relevance to the customer record being reviewed.",
+      "context": [
+        "Business: Is match against individual or organization?"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Hit Assessment Decision",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A three-way branching decision point where Financial Crime Staff classify the screening match as a clear false positive, a likely true positive requiring escalation, or an uncertain case requiring deeper investigation based on preliminary assessment findings.",
+      "context": [
+        "Initial Decision Options:",
+        "A) Clear False Positive",
+        "B) Likely True Positive",
+        "C) Uncertain"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Clear False Positive Classification",
+      "aliases": [
+        "Decision A"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Outcome path where the match is determined to be a false positive due to similar name but different person, allowing the customer to proceed without escalation.",
+      "context": [
+        "A) Clear False Positive: Similar name but different person → Clear to proceed"
+      ]
+    },
+    {
+      "id": "dp_003",
+      "name": "Likely True Positive Classification",
+      "aliases": [
+        "Decision B"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "escalate_or_resolve",
+      "description": "Outcome path where name, date of birth, and nationality all match the list entry, triggering immediate escalation of the case for compliance action.",
+      "context": [
+        "B) Likely True Positive: Name, DOB, nationality all match → Escalate immediately"
+      ]
+    },
+    {
+      "id": "dp_004",
+      "name": "Uncertain Match Classification",
+      "aliases": [
+        "Decision C"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Outcome path where the match shows partial alignment across demographic fields, requiring deeper investigation and research before a final determination can be made.",
+      "context": [
+        "C) Uncertain: Partial match requiring investigation → Deeper research"
+      ]
+    },
+    {
+      "id": "role_001",
+      "name": "Financial Crime Staff",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "financial_crime_team",
+      "description": "The operational team responsible for executing the manual review process, evaluating screening matches against defined criteria, and making initial hit assessment decisions.",
+      "context": [
+        "Financial Crime Staff Reviews:",
+        "Initial Decision Options:"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "Sanctions and PEP List Screening",
+      "aliases": [
+        "Hit Assessment Screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "The automated or system-generated screening process that produces matches against sanctions and PEP lists, which are then subject to manual review and hit assessment by Financial Crime Staff.",
+      "context": [
+        "Step 4: Manual Review Process (Hit Assessment)",
+        "Match Score: How close is the match?"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_proc_001",
+    "pstep_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_001",
+    "pstep_002": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_002",
+    "pstep_003": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_003",
+    "pstep_004": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_004",
+    "pstep_005": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_005",
+    "pstep_006": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_006",
+    "dp_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_001",
+    "dp_002": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_002",
+    "dp_003": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_003",
+    "dp_004": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_004",
+    "role_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_role_001",
+    "aml_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_aml_001"
+  },
+  "entities": [
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_proc_001",
+      "name": "Manual Review Process",
+      "aliases": [
+        "Hit Assessment"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "A manual review workflow executed by Financial Crime Staff to assess sanctions/PEP screening matches. The process evaluates match quality, demographic alignment, and entity type to determine whether a hit represents a true positive requiring escalation, a false positive allowing clearance, or an uncertain case requiring deeper investigation.",
+      "context": [
+        "Step 4: Manual Review Process (Hit Assessment)",
+        "Financial Crime Staff Reviews:",
+        "Initial Decision Options:"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_001",
+      "name": "Preliminary Assessment",
+      "aliases": [
+        "Step 4A"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The initial evaluation phase where Financial Crime Staff systematically review screening match characteristics including match score, name variance, date of birth alignment, nationality, and entity type classification.",
+      "context": [
+        "Step 4A: Preliminary Assessment",
+        "Financial Crime Staff Reviews:"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_002",
+      "name": "Match Score Evaluation",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Assessment of the numerical match score between the customer record and the sanctions/PEP list entry, with 80% or higher indicating a likely match requiring further consideration.",
+      "context": [
+        "Match Score: How close is the match? (80%+ = likely match)"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_003",
+      "name": "Name Variance Analysis",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Examination of differences between the customer name and the matched list entry to distinguish between typographical errors, nicknames, or legitimate name variations versus exact matches.",
+      "context": [
+        "Name Variance: Typo/nickname vs. exact match?"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_004",
+      "name": "Date of Birth Verification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Comparison of the customer's date of birth against the matched list entry to determine alignment or significant discrepancies that may indicate a different person.",
+      "context": [
+        "Date of Birth: Does DOB match or differ significantly?"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_005",
+      "name": "Nationality Verification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Verification that the customer's nationality matches or differs from the matched list entry, used as a discriminating factor in hit assessment.",
+      "context": [
+        "Nationality: Same or different country?"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_006",
+      "name": "Entity Type Classification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Determination of whether the screening match is against an individual person or an organization, to assess relevance to the customer record being reviewed.",
+      "context": [
+        "Business: Is match against individual or organization?"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_001",
+      "name": "Hit Assessment Decision",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A three-way branching decision point where Financial Crime Staff classify the screening match as a clear false positive, a likely true positive requiring escalation, or an uncertain case requiring deeper investigation based on preliminary assessment findings.",
+      "context": [
+        "Initial Decision Options:",
+        "A) Clear False Positive",
+        "B) Likely True Positive",
+        "C) Uncertain"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_002",
+      "name": "Clear False Positive Classification",
+      "aliases": [
+        "Decision A"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Outcome path where the match is determined to be a false positive due to similar name but different person, allowing the customer to proceed without escalation.",
+      "context": [
+        "A) Clear False Positive: Similar name but different person → Clear to proceed"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_003",
+      "name": "Likely True Positive Classification",
+      "aliases": [
+        "Decision B"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "escalate_or_resolve",
+      "description": "Outcome path where name, date of birth, and nationality all match the list entry, triggering immediate escalation of the case for compliance action.",
+      "context": [
+        "B) Likely True Positive: Name, DOB, nationality all match → Escalate immediately"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_004",
+      "name": "Uncertain Match Classification",
+      "aliases": [
+        "Decision C"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Outcome path where the match shows partial alignment across demographic fields, requiring deeper investigation and research before a final determination can be made.",
+      "context": [
+        "C) Uncertain: Partial match requiring investigation → Deeper research"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_role_001",
+      "name": "Financial Crime Staff",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "financial_crime_team",
+      "description": "The operational team responsible for executing the manual review process, evaluating screening matches against defined criteria, and making initial hit assessment decisions.",
+      "context": [
+        "Financial Crime Staff Reviews:",
+        "Initial Decision Options:"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_aml_001",
+      "name": "Sanctions and PEP List Screening",
+      "aliases": [
+        "Hit Assessment Screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "The automated or system-generated screening process that produces matches against sanctions and PEP lists, which are then subject to manual review and hit assessment by Financial Crime Staff.",
+      "context": [
+        "Step 4: Manual Review Process (Hit Assessment)",
+        "Match Score: How close is the match?"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_proc_001",
+      "name": "Manual Review Process",
+      "properties": {
+        "purpose": "Assess sanctions and PEP list hits to determine if matches are true positives or false positives",
+        "scope": "All customer screening hits requiring manual investigation",
+        "owner": "Financial Crime Staff",
+        "departments_involved": [
+          "Financial Crime"
+        ],
+        "trigger": "Automated screening system generates a hit match",
+        "outcome_success": "Accurate classification of match as false positive, true positive, or uncertain requiring escalation",
+        "outcome_failure": "Misclassification leading to regulatory breach or customer onboarding delay"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_001",
+      "name": "Preliminary Assessment",
+      "properties": {
+        "step_number": 1,
+        "actor": "Financial Crime Staff",
+        "purpose": "Conduct initial review of screening hit using multiple verification criteria",
+        "input": [
+          "Match score",
+          "Customer name",
+          "Date of birth",
+          "Nationality",
+          "Business type",
+          "Screening list record"
+        ],
+        "output": "Assessment findings documenting match characteristics",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Screening system",
+          "Customer record database"
+        ]
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_002",
+      "name": "Match Score Evaluation",
+      "properties": {
+        "step_number": 2,
+        "actor": "Financial Crime Staff",
+        "purpose": "Assess the confidence level of the screening match",
+        "input": [
+          "Match score percentage"
+        ],
+        "output": "Match score classification (80%+ = likely match)",
+        "channel": "system",
+        "mandatory": true,
+        "criteria": "80% or higher indicates likely match"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_003",
+      "name": "Name Variance Analysis",
+      "properties": {
+        "step_number": 3,
+        "actor": "Financial Crime Staff",
+        "purpose": "Determine if name differences are due to typos, nicknames, or indicate different person",
+        "input": [
+          "Customer name",
+          "Screening list name"
+        ],
+        "output": "Name variance classification",
+        "channel": "manual",
+        "mandatory": true
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_004",
+      "name": "Date of Birth Verification",
+      "properties": {
+        "step_number": 4,
+        "actor": "Financial Crime Staff",
+        "purpose": "Verify if date of birth matches or differs significantly",
+        "input": [
+          "Customer DOB",
+          "Screening list DOB"
+        ],
+        "output": "DOB match determination",
+        "channel": "manual",
+        "mandatory": true
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_005",
+      "name": "Nationality Verification",
+      "properties": {
+        "step_number": 5,
+        "actor": "Financial Crime Staff",
+        "purpose": "Confirm if nationality is same or different",
+        "input": [
+          "Customer nationality",
+          "Screening list nationality"
+        ],
+        "output": "Nationality match determination",
+        "channel": "manual",
+        "mandatory": true
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_006",
+      "name": "Entity Type Classification",
+      "properties": {
+        "step_number": 6,
+        "actor": "Financial Crime Staff",
+        "purpose": "Determine if match is against individual or organization",
+        "input": [
+          "Customer entity type",
+          "Screening list entity type"
+        ],
+        "output": "Entity type classification",
+        "channel": "manual",
+        "mandatory": true
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_001",
+      "name": "Hit Assessment Decision",
+      "properties": {
+        "decision_question": "Based on preliminary assessment, is this a clear false positive, likely true positive, or uncertain match?",
+        "criteria": [
+          "Match score",
+          "Name variance",
+          "Date of birth alignment",
+          "Nationality match",
+          "Entity type alignment"
+        ],
+        "decision_maker": "Financial Crime Staff",
+        "path_yes": "Proceed to appropriate classification (false positive, true positive, or uncertain)",
+        "path_no": "Return to preliminary assessment for additional review"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_002",
+      "name": "Clear False Positive Classification",
+      "properties": {
+        "decision_question": "Is this a clear false positive?",
+        "criteria": "Similar name but different person confirmed through DOB, nationality, or entity type mismatch",
+        "decision_maker": "Financial Crime Staff",
+        "path_yes": "Clear to proceed with customer onboarding",
+        "path_no": "Evaluate as likely true positive or uncertain match"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_003",
+      "name": "Likely True Positive Classification",
+      "properties": {
+        "decision_question": "Is this a likely true positive match?",
+        "criteria": "Name, date of birth, and nationality all match",
+        "decision_maker": "Financial Crime Staff",
+        "path_yes": "Escalate immediately for further investigation and potential customer rejection",
+        "path_no": "Evaluate as uncertain match"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_004",
+      "name": "Uncertain Match Classification",
+      "properties": {
+        "decision_question": "Is this an uncertain match requiring deeper investigation?",
+        "criteria": "Partial match with some but not all verification criteria aligned",
+        "decision_maker": "Financial Crime Staff",
+        "path_yes": "Conduct deeper research and investigation",
+        "path_no": "Classify as false positive or true positive"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_role_001",
+      "name": "Financial Crime Staff",
+      "properties": {
+        "role_type": "human",
+        "department": "Financial Crime",
+        "authority_level": "Investigator with escalation authority",
+        "channels": [
+          "system",
+          "manual review"
+        ],
+        "responsibilities": [
+          "Conduct preliminary assessment",
+          "Evaluate match scores",
+          "Analyze name variance",
+          "Verify DOB and nationality",
+          "Classify entity type",
+          "Make hit assessment decisions",
+          "Escalate true positives"
+        ]
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_aml_001",
+      "name": "Sanctions and PEP List Screening",
+      "properties": {
+        "mandatory": true,
+        "screening_scope": [
+          "Sanctions lists",
+          "PEP (Politically Exposed Persons) lists"
+        ],
+        "hit_response": "Trigger manual review process for assessment and classification",
+        "regulatory_basis": [
+          "FCA COBS",
+          "MLR 2017"
+        ],
+        "applies_to_channels": [
+          "all"
+        ],
+        "match_score_threshold": "80%+"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_proc_001",
+      "source_name": "Manual Review Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_001",
+      "target_name": "Preliminary Assessment",
+      "rel_type": "starts_with",
+      "description": "Manual Review Process begins with Preliminary Assessment step",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Step 4A: Preliminary Assessment",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_001",
+      "source_name": "Preliminary Assessment",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_role_001",
+      "target_name": "Financial Crime Staff",
+      "rel_type": "performed_by",
+      "description": "Preliminary Assessment is performed by Financial Crime Staff",
+      "properties": {
+        "activity": "reviews match score, name variance, DOB, nationality, and business type"
+      },
+      "context": "Financial Crime Staff Reviews: 1. Match Score 2. Name Variance 3. Date of Birth 4. Nationality 5. Business",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_001",
+      "source_name": "Preliminary Assessment",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_002",
+      "target_name": "Match Score Evaluation",
+      "rel_type": "followed_by",
+      "description": "Preliminary Assessment is followed by Match Score Evaluation",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Match Score: How close is the match? (80%+ = likely match)",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_002",
+      "source_name": "Match Score Evaluation",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_003",
+      "target_name": "Name Variance Analysis",
+      "rel_type": "followed_by",
+      "description": "Match Score Evaluation is followed by Name Variance Analysis",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Name Variance: Typo/nickname vs. exact match?",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_003",
+      "source_name": "Name Variance Analysis",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_004",
+      "target_name": "Date of Birth Verification",
+      "rel_type": "followed_by",
+      "description": "Name Variance Analysis is followed by Date of Birth Verification",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "Date of Birth: Does DOB match or differ significantly?",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_004",
+      "source_name": "Date of Birth Verification",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_005",
+      "target_name": "Nationality Verification",
+      "rel_type": "followed_by",
+      "description": "Date of Birth Verification is followed by Nationality Verification",
+      "properties": {
+        "sequence_position": 5
+      },
+      "context": "Nationality: Same or different country?",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_005",
+      "source_name": "Nationality Verification",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_006",
+      "target_name": "Entity Type Classification",
+      "rel_type": "followed_by",
+      "description": "Nationality Verification is followed by Entity Type Classification",
+      "properties": {
+        "sequence_position": 6
+      },
+      "context": "Business: Is match against individual or organization?",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_006",
+      "source_name": "Entity Type Classification",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_001",
+      "target_name": "Hit Assessment Decision",
+      "rel_type": "leads_to",
+      "description": "Entity Type Classification leads to Hit Assessment Decision",
+      "properties": {
+        "decision_trigger": "completion of all preliminary assessment checks"
+      },
+      "context": "Initial Decision Options: A) Clear False Positive B) Likely True Positive C) Uncertain",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_001",
+      "source_name": "Hit Assessment Decision",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_002",
+      "target_name": "Clear False Positive Classification",
+      "rel_type": "routes_to_on_pass",
+      "description": "Hit Assessment Decision routes to Clear False Positive Classification when criteria met",
+      "properties": {
+        "criteria": "Similar name but different person",
+        "outcome": "Clear to proceed"
+      },
+      "context": "A) Clear False Positive: Similar name but different person → Clear to proceed",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_001",
+      "source_name": "Hit Assessment Decision",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_003",
+      "target_name": "Likely True Positive Classification",
+      "rel_type": "routes_to_on_pass",
+      "description": "Hit Assessment Decision routes to Likely True Positive Classification when criteria met",
+      "properties": {
+        "criteria": "Name, DOB, nationality all match",
+        "outcome": "Escalate immediately"
+      },
+      "context": "B) Likely True Positive: Name, DOB, nationality all match → Escalate immediately",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_001",
+      "source_name": "Hit Assessment Decision",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_004",
+      "target_name": "Uncertain Match Classification",
+      "rel_type": "routes_to_on_fail",
+      "description": "Hit Assessment Decision routes to Uncertain Match Classification when criteria unclear",
+      "properties": {
+        "criteria": "Partial match requiring investigation",
+        "outcome": "Deeper research required"
+      },
+      "context": "C) Uncertain: Partial match requiring investigation → Deeper research",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_001",
+      "source_name": "Hit Assessment Decision",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_role_001",
+      "target_name": "Financial Crime Staff",
+      "rel_type": "decided_by",
+      "description": "Hit Assessment Decision is decided by Financial Crime Staff",
+      "properties": {
+        "decision_authority": "based on preliminary assessment findings"
+      },
+      "context": "Financial Crime Staff Reviews and makes Initial Decision Options",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_proc_001",
+      "source_name": "Manual Review Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_aml_001",
+      "target_name": "Sanctions and PEP List Screening",
+      "rel_type": "requires",
+      "description": "Manual Review Process requires Sanctions and PEP List Screening results",
+      "properties": {
+        "dependency": "manual review is triggered by screening hits"
+      },
+      "context": "Step 4: Manual Review Process (Hit Assessment) - follows from Sanctions and PEP List Screening",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_proc_001",
+      "source_name": "Manual Review Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_role_001",
+      "target_name": "Financial Crime Staff",
+      "rel_type": "executed_by",
+      "description": "Manual Review Process is executed by Financial Crime Staff",
+      "properties": {
+        "responsibility": "conduct hit assessment and make classification decisions"
+      },
+      "context": "Financial Crime Staff Reviews: Match Score, Name Variance, Date of Birth, Nationality, Business",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_proc_001",
+      "source_name": "Manual Review Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_001",
+      "source_name": "Preliminary Assessment",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_002",
+      "source_name": "Match Score Evaluation",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_003",
+      "source_name": "Name Variance Analysis",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_004",
+      "source_name": "Date of Birth Verification",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_005",
+      "source_name": "Nationality Verification",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_pstep_006",
+      "source_name": "Entity Type Classification",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_001",
+      "source_name": "Hit Assessment Decision",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_002",
+      "source_name": "Clear False Positive Classification",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_003",
+      "source_name": "Likely True Positive Classification",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_dp_004",
+      "source_name": "Uncertain Match Classification",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_role_001",
+      "source_name": "Financial Crime Staff",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010_aml_001",
+      "source_name": "Sanctions and PEP List Screening",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

@@ -1,0 +1,1328 @@
+{
+  "chunk_seq": 41,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "## Step 11: Notify Customer  \n### Notification Methods  \n**Primary: Email (Preferred)**  \n```\nSubject: Your Address Change Confirmation — FirstUK Bank\n\nDear [Customer Name],\n\nYour address has been successfully updated with FirstUK Bank.\n\nOld Address:\n123 Oak Lane\nManchester, M1 1AA\nUnited Kingdom\n\nNew Address:\n456 Elm Street\nNew York, NY 10001\nUSA\n\nEffective Date: January 15, 2026\n\nWhat Happens Next:\n- Your statements will be sent to your new address starting [date]\n- All correspondence will use your new address\n- Your account remains fully active\n- Standing orders and Direct Debits continue normally\n\nIf You Didn't Request This Change:\nContact us immediately: 0800-555-2265 (fraud line)\n\nQuestions?\n- Phone: 0800-555-2265\n- Email: support@firstuk.bank\n- Online Chat: www.firstuk.bank\n\nThank you,\nFirstUK Bank Customer Service\n```  \n**Secondary: SMS (If International Move)**  \n```\nFirstUK: Your address has been changed to [NEW CITY/COUNTRY].\nStatements will go to new address. Questions? Call 0800-555-2265.\nIf you didn't request this, call immediately.\n```  \n**Tertiary: Letter to Old Address (GDPR Requirement)**  \n**Why?** To verify customer actually moved (detect account takeover fraud)  \n```\nDear [Customer Name],\n\nWe are writing to confirm that your address with FirstUK Bank\nhas been updated from:\n\n[OLD ADDRESS]\n\nto:\n\n[NEW ADDRESS]\n\nEffective Date: [date]\n\nIf you did NOT request this change, or if you believe this is\nfraudulent, contact us immediately:\n\nPhone: 0800-555-2265 (24/7 Fraud Line)\nEmail: support@firstuk.bank\n\nThis letter is sent to your old address as a security check.\n\nBest regards,\nFirstUK Bank\n```  \n---",
+  "name": "Chunk 41/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_040",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_042",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Address Change Notification Process",
+      "aliases": [
+        "Step 11",
+        "Notify Customer"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "The final step in an address change workflow where FirstUK Bank notifies the customer of their successful address update through multiple channels (email, SMS, and letter). The process includes fraud detection safeguards by sending confirmation to both new and old addresses, with clear instructions for customers to report unauthorized changes.",
+      "context": [
+        "Step 11: Notify Customer",
+        "Your address has been successfully updated with FirstUK Bank",
+        "This letter is sent to your old address as a security check"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Send Email Notification to New Address",
+      "aliases": [
+        "Primary notification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Primary notification method where an email confirmation is sent to the customer at their new address, detailing the old and new addresses, effective date, and reassurance that standing orders and direct debits continue normally.",
+      "context": [
+        "Primary: Email (Preferred)",
+        "Your address has been successfully updated with FirstUK Bank",
+        "Standing orders and Direct Debits continue normally"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Send SMS Notification for International Move",
+      "aliases": [
+        "Secondary notification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Secondary notification method triggered when a customer relocates internationally, delivering a brief SMS alert to confirm the address change and direct them to the fraud line if the change was unauthorized.",
+      "context": [
+        "Secondary: SMS (If International Move)",
+        "FirstUK: Your address has been changed to [NEW CITY/COUNTRY]",
+        "If you didn't request this, call immediately"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Send Confirmation Letter to Old Address",
+      "aliases": [
+        "Tertiary notification",
+        "GDPR letter"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Tertiary notification sent to the customer's old address as a GDPR-mandated security check to verify the customer actually moved and detect potential account takeover fraud. The letter instructs the customer to contact the fraud line immediately if the change was not authorized.",
+      "context": [
+        "Tertiary: Letter to Old Address (GDPR Requirement)",
+        "To verify customer actually moved (detect account takeover fraud)",
+        "This letter is sent to your old address as a security check"
+      ]
+    },
+    {
+      "id": "ract_001",
+      "name": "FirstUK Bank Customer Service",
+      "aliases": [
+        "Customer Service team"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer_service",
+      "description": "The team responsible for sending address change notifications to customers via email, SMS, and letter, and providing customer support through multiple channels including phone, email, and online chat.",
+      "context": [
+        "FirstUK Bank Customer Service",
+        "Phone: 0800-555-2265",
+        "Email: support@firstuk.bank"
+      ]
+    },
+    {
+      "id": "ract_002",
+      "name": "Fraud Detection Team",
+      "aliases": [
+        "Fraud line",
+        "24/7 Fraud Line"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "financial_crime_team",
+      "description": "The team responsible for receiving and investigating fraud reports from customers who did not authorize address changes, operating 24/7 to detect and respond to account takeover attempts.",
+      "context": [
+        "Contact us immediately: 0800-555-2265 (fraud line)",
+        "Phone: 0800-555-2265 (24/7 Fraud Line)",
+        "If you didn't request this change, or if you believe this is fraudulent, contact us immediately"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Old Address",
+      "aliases": [
+        "Previous address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The customer's previous address (123 Oak Lane, Manchester, M1 1AA, United Kingdom) that is being replaced in the address change process. This address is retained for fraud detection purposes and receives a confirmation letter.",
+      "context": [
+        "Old Address: 123 Oak Lane, Manchester, M1 1AA, United Kingdom",
+        "[OLD ADDRESS]",
+        "This letter is sent to your old address as a security check"
+      ]
+    },
+    {
+      "id": "addr_002",
+      "name": "New Address",
+      "aliases": [
+        "Updated address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The customer's new address (456 Elm Street, New York, NY 10001, USA) to which all future statements and correspondence will be sent, effective January 15, 2026.",
+      "context": [
+        "New Address: 456 Elm Street, New York, NY 10001, USA",
+        "[NEW ADDRESS]",
+        "Your statements will be sent to your new address starting [date]"
+      ]
+    },
+    {
+      "id": "compchk_001",
+      "name": "GDPR Address Change Verification",
+      "aliases": [
+        "GDPR requirement"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "data_protection_check",
+      "description": "A mandatory GDPR compliance control requiring that a confirmation letter be sent to the customer's old address to verify the address change is legitimate and detect account takeover fraud.",
+      "context": [
+        "Tertiary: Letter to Old Address (GDPR Requirement)",
+        "Why? To verify customer actually moved (detect account takeover fraud)",
+        "This letter is sent to your old address as a security check"
+      ]
+    },
+    {
+      "id": "fraud_001",
+      "name": "Unauthorized Address Change Detection",
+      "aliases": [
+        "Account takeover fraud detection"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "account_takeover",
+      "description": "A fraud detection mechanism embedded in the address change notification process where customers are prompted to report unauthorized address changes via the 24/7 fraud line, with the letter to the old address serving as a key control to identify account takeover attempts.",
+      "context": [
+        "If You Didn't Request This Change: Contact us immediately: 0800-555-2265 (fraud line)",
+        "If you didn't request this, call immediately",
+        "If you believe this is fraudulent, contact us immediately"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Standing orders"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "A recurring payment instruction on the customer's account that continues normally following an address change, with no interruption to the payment schedule.",
+      "context": [
+        "Standing orders and Direct Debits continue normally",
+        "All correspondence will use your new address"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit",
+      "aliases": [
+        "Direct Debits"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "A direct debit mandate on the customer's account that continues normally following an address change, with no interruption to the payment schedule.",
+      "context": [
+        "Standing orders and Direct Debits continue normally",
+        "All correspondence will use your new address"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Individual Customer",
+      "aliases": [
+        "Customer",
+        "Account holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The customer whose address is being changed and who receives notifications via email, SMS, and letter. The customer is responsible for reporting any unauthorized address changes to the fraud line.",
+      "context": [
+        "Dear [Customer Name]",
+        "Your address has been successfully updated with FirstUK Bank",
+        "If You Didn't Request This Change: Contact us immediately"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer's account with FirstUK Bank that remains fully active following an address change, with all future statements and correspondence directed to the new address.",
+      "context": [
+        "Your account remains fully active",
+        "All correspondence will use your new address",
+        "Standing orders and Direct Debits continue normally"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_041_proc_001",
+    "pstep_001": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_001",
+    "pstep_002": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_002",
+    "pstep_003": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_003",
+    "ract_001": "01a07400-ba86-72f1-8b22-d07b32649491_041_ract_001",
+    "ract_002": "01a07400-ba86-72f1-8b22-d07b32649491_041_ract_002",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_041_addr_001",
+    "addr_002": "01a07400-ba86-72f1-8b22-d07b32649491_041_addr_002",
+    "compchk_001": "01a07400-ba86-72f1-8b22-d07b32649491_041_compchk_001",
+    "fraud_001": "01a07400-ba86-72f1-8b22-d07b32649491_041_fraud_001",
+    "so_001": "01a07400-ba86-72f1-8b22-d07b32649491_041_so_001",
+    "dd_001": "01a07400-ba86-72f1-8b22-d07b32649491_041_dd_001",
+    "cust_001": "01a07400-ba86-72f1-8b22-d07b32649491_041_cust_001",
+    "acc_001": "01a07400-ba86-72f1-8b22-d07b32649491_041_acc_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_proc_001",
+      "name": "Address Change Notification Process",
+      "aliases": [
+        "Step 11",
+        "Notify Customer"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "The final step in an address change workflow where FirstUK Bank notifies the customer of their successful address update through multiple channels (email, SMS, and letter). The process includes fraud detection safeguards by sending confirmation to both new and old addresses, with clear instructions for customers to report unauthorized changes.",
+      "context": [
+        "Step 11: Notify Customer",
+        "Your address has been successfully updated with FirstUK Bank",
+        "This letter is sent to your old address as a security check"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_001",
+      "name": "Send Email Notification to New Address",
+      "aliases": [
+        "Primary notification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Primary notification method where an email confirmation is sent to the customer at their new address, detailing the old and new addresses, effective date, and reassurance that standing orders and direct debits continue normally.",
+      "context": [
+        "Primary: Email (Preferred)",
+        "Your address has been successfully updated with FirstUK Bank",
+        "Standing orders and Direct Debits continue normally"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_002",
+      "name": "Send SMS Notification for International Move",
+      "aliases": [
+        "Secondary notification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Secondary notification method triggered when a customer relocates internationally, delivering a brief SMS alert to confirm the address change and direct them to the fraud line if the change was unauthorized.",
+      "context": [
+        "Secondary: SMS (If International Move)",
+        "FirstUK: Your address has been changed to [NEW CITY/COUNTRY]",
+        "If you didn't request this, call immediately"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_003",
+      "name": "Send Confirmation Letter to Old Address",
+      "aliases": [
+        "Tertiary notification",
+        "GDPR letter"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Tertiary notification sent to the customer's old address as a GDPR-mandated security check to verify the customer actually moved and detect potential account takeover fraud. The letter instructs the customer to contact the fraud line immediately if the change was not authorized.",
+      "context": [
+        "Tertiary: Letter to Old Address (GDPR Requirement)",
+        "To verify customer actually moved (detect account takeover fraud)",
+        "This letter is sent to your old address as a security check"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_ract_001",
+      "name": "FirstUK Bank Customer Service",
+      "aliases": [
+        "Customer Service team"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer_service",
+      "description": "The team responsible for sending address change notifications to customers via email, SMS, and letter, and providing customer support through multiple channels including phone, email, and online chat.",
+      "context": [
+        "FirstUK Bank Customer Service",
+        "Phone: 0800-555-2265",
+        "Email: support@firstuk.bank"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_ract_002",
+      "name": "Fraud Detection Team",
+      "aliases": [
+        "Fraud line",
+        "24/7 Fraud Line"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "financial_crime_team",
+      "description": "The team responsible for receiving and investigating fraud reports from customers who did not authorize address changes, operating 24/7 to detect and respond to account takeover attempts.",
+      "context": [
+        "Contact us immediately: 0800-555-2265 (fraud line)",
+        "Phone: 0800-555-2265 (24/7 Fraud Line)",
+        "If you didn't request this change, or if you believe this is fraudulent, contact us immediately"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_addr_001",
+      "name": "Old Address",
+      "aliases": [
+        "Previous address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The customer's previous address (123 Oak Lane, Manchester, M1 1AA, United Kingdom) that is being replaced in the address change process. This address is retained for fraud detection purposes and receives a confirmation letter.",
+      "context": [
+        "Old Address: 123 Oak Lane, Manchester, M1 1AA, United Kingdom",
+        "[OLD ADDRESS]",
+        "This letter is sent to your old address as a security check"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_addr_002",
+      "name": "New Address",
+      "aliases": [
+        "Updated address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The customer's new address (456 Elm Street, New York, NY 10001, USA) to which all future statements and correspondence will be sent, effective January 15, 2026.",
+      "context": [
+        "New Address: 456 Elm Street, New York, NY 10001, USA",
+        "[NEW ADDRESS]",
+        "Your statements will be sent to your new address starting [date]"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_compchk_001",
+      "name": "GDPR Address Change Verification",
+      "aliases": [
+        "GDPR requirement"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "data_protection_check",
+      "description": "A mandatory GDPR compliance control requiring that a confirmation letter be sent to the customer's old address to verify the address change is legitimate and detect account takeover fraud.",
+      "context": [
+        "Tertiary: Letter to Old Address (GDPR Requirement)",
+        "Why? To verify customer actually moved (detect account takeover fraud)",
+        "This letter is sent to your old address as a security check"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_fraud_001",
+      "name": "Unauthorized Address Change Detection",
+      "aliases": [
+        "Account takeover fraud detection"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "account_takeover",
+      "description": "A fraud detection mechanism embedded in the address change notification process where customers are prompted to report unauthorized address changes via the 24/7 fraud line, with the letter to the old address serving as a key control to identify account takeover attempts.",
+      "context": [
+        "If You Didn't Request This Change: Contact us immediately: 0800-555-2265 (fraud line)",
+        "If you didn't request this, call immediately",
+        "If you believe this is fraudulent, contact us immediately"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Standing orders"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "A recurring payment instruction on the customer's account that continues normally following an address change, with no interruption to the payment schedule.",
+      "context": [
+        "Standing orders and Direct Debits continue normally",
+        "All correspondence will use your new address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_dd_001",
+      "name": "Direct Debit",
+      "aliases": [
+        "Direct Debits"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "A direct debit mandate on the customer's account that continues normally following an address change, with no interruption to the payment schedule.",
+      "context": [
+        "Standing orders and Direct Debits continue normally",
+        "All correspondence will use your new address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_cust_001",
+      "name": "Individual Customer",
+      "aliases": [
+        "Customer",
+        "Account holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The customer whose address is being changed and who receives notifications via email, SMS, and letter. The customer is responsible for reporting any unauthorized address changes to the fraud line.",
+      "context": [
+        "Dear [Customer Name]",
+        "Your address has been successfully updated with FirstUK Bank",
+        "If You Didn't Request This Change: Contact us immediately"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer's account with FirstUK Bank that remains fully active following an address change, with all future statements and correspondence directed to the new address.",
+      "context": [
+        "Your account remains fully active",
+        "All correspondence will use your new address",
+        "Standing orders and Direct Debits continue normally"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_proc_001",
+      "name": "Address Change Notification Process",
+      "properties": {
+        "purpose": "Notify customer of address change via multiple channels and verify legitimacy to detect account takeover fraud",
+        "scope": "All individual customers with address changes",
+        "channels": [
+          "email",
+          "sms",
+          "postal"
+        ],
+        "owner": "FirstUK Bank Customer Service",
+        "departments_involved": [
+          "Customer Service",
+          "Fraud Detection"
+        ],
+        "regulatory_references": [
+          "GDPR"
+        ],
+        "trigger": "Address change request processed and confirmed",
+        "outcome_success": "Customer receives notification via all applicable channels; old address letter triggers fraud detection verification",
+        "outcome_failure": "Customer does not receive notification; fraudulent address change goes undetected"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_001",
+      "name": "Send Email Notification to New Address",
+      "properties": {
+        "step_number": 1,
+        "actor": "FirstUK Bank Customer Service",
+        "input": [
+          "Customer email address",
+          "Old address",
+          "New address",
+          "Effective date"
+        ],
+        "output": "Email confirmation sent to customer",
+        "channel": "email",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Email system"
+        ],
+        "failure_path": "Escalate to Fraud Detection Team; attempt SMS or postal contact"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_002",
+      "name": "Send SMS Notification for International Move",
+      "properties": {
+        "step_number": 2,
+        "actor": "FirstUK Bank Customer Service",
+        "input": [
+          "Customer phone number",
+          "New city/country"
+        ],
+        "output": "SMS alert sent to customer",
+        "channel": "sms",
+        "mandatory": "conditional",
+        "tools_or_systems": [
+          "SMS system"
+        ],
+        "failure_path": "Proceed to postal notification"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_003",
+      "name": "Send Confirmation Letter to Old Address",
+      "properties": {
+        "step_number": 3,
+        "actor": "FirstUK Bank Customer Service",
+        "input": [
+          "Old address",
+          "New address",
+          "Effective date"
+        ],
+        "output": "Confirmation letter posted to old address",
+        "channel": "postal",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Postal system"
+        ],
+        "failure_path": "Flag for manual fraud review if letter returned undelivered"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_ract_001",
+      "name": "FirstUK Bank Customer Service",
+      "properties": {
+        "role_type": "human",
+        "department": "Customer Service",
+        "authority_level": "Operational",
+        "channels": [
+          "phone",
+          "email",
+          "online_chat"
+        ],
+        "response_time_sla": "24/7 availability"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_ract_002",
+      "name": "Fraud Detection Team",
+      "properties": {
+        "role_type": "human",
+        "department": "Fraud Detection",
+        "authority_level": "Investigation and escalation",
+        "channels": [
+          "system",
+          "phone"
+        ],
+        "response_time_sla": "Immediate upon alert"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_addr_001",
+      "name": "Old Address",
+      "properties": {
+        "collection_steps": "Captured from customer account records",
+        "verification_steps": "Used as security check; letter sent to old address to verify customer actually moved",
+        "recording_system": "Customer account system",
+        "update_process": "Retained for fraud detection and audit trail"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_addr_002",
+      "name": "New Address",
+      "properties": {
+        "collection_steps": "Captured from customer address change request",
+        "verification_steps": "Confirmed via letter sent to old address; email and SMS sent to new address",
+        "recording_system": "Customer account system",
+        "update_process": "Effective date recorded; used for all future correspondence and statements"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_compchk_001",
+      "name": "GDPR Address Change Verification",
+      "properties": {
+        "regulatory_basis": "GDPR",
+        "mandatory": "yes",
+        "applies_to_channels": "all",
+        "evidence_required": [
+          "Confirmation letter sent to old address",
+          "Email confirmation",
+          "SMS confirmation if international"
+        ],
+        "performed_by": "FirstUK Bank Customer Service",
+        "timing": "Immediately upon address change processing",
+        "failure_consequence": "Potential GDPR non-compliance; fraud risk unmitigated"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_fraud_001",
+      "name": "Unauthorized Address Change Detection",
+      "properties": {
+        "generation_trigger": "Customer reports address change not requested; letter to old address returned undelivered; customer calls fraud line",
+        "investigation_or_escalation_path": "Escalate to Fraud Detection Team; freeze account if takeover suspected",
+        "customer_notification": "Immediate contact via phone (fraud line 0800-555-2265)",
+        "reimbursement_obligation": "Applicable if unauthorized transactions detected post-address change"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_so_001",
+      "name": "Standing Order",
+      "properties": {
+        "setup_or_amendment_process": "Continues normally after address change; no interruption",
+        "failure_handling": "Standing orders remain active; address change does not affect payment processing"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_dd_001",
+      "name": "Direct Debit",
+      "properties": {
+        "mandate_process": "Continues normally after address change; no interruption",
+        "failure_handling": "Direct Debits remain active; address change does not affect payment processing"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_cust_001",
+      "name": "Individual Customer",
+      "properties": {
+        "customer_type": "individual",
+        "context_role": "Recipient of address change notifications; subject of fraud detection verification"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_041_acc_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_state": "active",
+        "closure_or_freeze_conditions": "Account remains fully active after address change; may be frozen if unauthorized address change detected"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_proc_001",
+      "source_name": "Address Change Notification Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_001",
+      "target_name": "Send Email Notification to New Address",
+      "rel_type": "contains",
+      "description": "The Address Change Notification Process includes sending an email notification to the new address as a primary notification method",
+      "properties": {
+        "sequence": 1,
+        "priority": "primary",
+        "method": "email"
+      },
+      "context": "Primary: Email (Preferred) - Your address has been successfully updated with FirstUK Bank",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_proc_001",
+      "source_name": "Address Change Notification Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_002",
+      "target_name": "Send SMS Notification for International Move",
+      "rel_type": "contains",
+      "description": "The Address Change Notification Process includes sending an SMS notification as a secondary method for international moves",
+      "properties": {
+        "sequence": 2,
+        "priority": "secondary",
+        "method": "sms",
+        "condition": "if_international_move"
+      },
+      "context": "Secondary: SMS (If International Move) - FirstUK: Your address has been changed to [NEW CITY/COUNTRY]",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_proc_001",
+      "source_name": "Address Change Notification Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_003",
+      "target_name": "Send Confirmation Letter to Old Address",
+      "rel_type": "contains",
+      "description": "The Address Change Notification Process includes sending a confirmation letter to the old address as a tertiary notification method",
+      "properties": {
+        "sequence": 3,
+        "priority": "tertiary",
+        "method": "letter",
+        "compliance_requirement": "GDPR"
+      },
+      "context": "Tertiary: Letter to Old Address (GDPR Requirement) - To verify customer actually moved (detect account takeover fraud)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_proc_001",
+      "source_name": "Address Change Notification Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_ract_001",
+      "target_name": "FirstUK Bank Customer Service",
+      "rel_type": "executed_by",
+      "description": "The Address Change Notification Process is executed by FirstUK Bank Customer Service",
+      "properties": {
+        "contact_methods": [
+          "phone",
+          "email",
+          "online_chat"
+        ]
+      },
+      "context": "Thank you, FirstUK Bank Customer Service",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_proc_001",
+      "source_name": "Address Change Notification Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_compchk_001",
+      "target_name": "GDPR Address Change Verification",
+      "rel_type": "mandated_to_include",
+      "description": "The Address Change Notification Process is mandated to include GDPR Address Change Verification compliance checkpoint",
+      "properties": {
+        "requirement_type": "regulatory",
+        "regulation": "GDPR"
+      },
+      "context": "Tertiary: Letter to Old Address (GDPR Requirement) - To verify customer actually moved",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_proc_001",
+      "source_name": "Address Change Notification Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "serves",
+      "description": "The Address Change Notification Process serves the Individual Customer",
+      "properties": {
+        "service_type": "notification"
+      },
+      "context": "Your address has been successfully updated with FirstUK Bank",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_proc_001",
+      "source_name": "Address Change Notification Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "modifies",
+      "description": "The Address Change Notification Process modifies the Customer Account by updating address information",
+      "properties": {
+        "modification_type": "address_update"
+      },
+      "context": "Your account remains fully active - Standing orders and Direct Debits continue normally",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_001",
+      "source_name": "Send Email Notification to New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_002",
+      "target_name": "Send SMS Notification for International Move",
+      "rel_type": "followed_by",
+      "description": "Sending email notification is followed by sending SMS notification for international moves",
+      "properties": {
+        "sequence": "primary_to_secondary"
+      },
+      "context": "Primary: Email (Preferred) followed by Secondary: SMS (If International Move)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_002",
+      "source_name": "Send SMS Notification for International Move",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_003",
+      "target_name": "Send Confirmation Letter to Old Address",
+      "rel_type": "followed_by",
+      "description": "Sending SMS notification is followed by sending confirmation letter to old address",
+      "properties": {
+        "sequence": "secondary_to_tertiary"
+      },
+      "context": "Secondary: SMS (If International Move) followed by Tertiary: Letter to Old Address (GDPR Requirement)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_001",
+      "source_name": "Send Email Notification to New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_ract_001",
+      "target_name": "FirstUK Bank Customer Service",
+      "rel_type": "performed_by",
+      "description": "Sending email notification to new address is performed by FirstUK Bank Customer Service",
+      "properties": {
+        "contact_channel": "email",
+        "support_email": "support@firstuk.bank"
+      },
+      "context": "Email: support@firstuk.bank - Thank you, FirstUK Bank Customer Service",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_002",
+      "source_name": "Send SMS Notification for International Move",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_ract_001",
+      "target_name": "FirstUK Bank Customer Service",
+      "rel_type": "performed_by",
+      "description": "Sending SMS notification for international move is performed by FirstUK Bank Customer Service",
+      "properties": {
+        "contact_channel": "sms",
+        "trigger_condition": "international_move"
+      },
+      "context": "Secondary: SMS (If International Move) - FirstUK: Your address has been changed to [NEW CITY/COUNTRY]",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_003",
+      "source_name": "Send Confirmation Letter to Old Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_ract_001",
+      "target_name": "FirstUK Bank Customer Service",
+      "rel_type": "performed_by",
+      "description": "Sending confirmation letter to old address is performed by FirstUK Bank Customer Service",
+      "properties": {
+        "contact_channel": "letter",
+        "compliance_requirement": "GDPR"
+      },
+      "context": "Tertiary: Letter to Old Address (GDPR Requirement) - Best regards, FirstUK Bank",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_003",
+      "source_name": "Send Confirmation Letter to Old Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_ract_002",
+      "target_name": "Fraud Detection Team",
+      "rel_type": "notifies",
+      "description": "Sending confirmation letter to old address notifies the Fraud Detection Team for account takeover fraud detection",
+      "properties": {
+        "purpose": "fraud_detection",
+        "fraud_type": "account_takeover"
+      },
+      "context": "Why? To verify customer actually moved (detect account takeover fraud)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_001",
+      "source_name": "Send Email Notification to New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_addr_002",
+      "target_name": "New Address",
+      "rel_type": "collects",
+      "description": "Sending email notification to new address collects and uses the new address information",
+      "properties": {
+        "address_type": "destination",
+        "notification_method": "email"
+      },
+      "context": "New Address: 456 Elm Street, New York, NY 10001, USA - Your statements will be sent to your new address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_003",
+      "source_name": "Send Confirmation Letter to Old Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_addr_001",
+      "target_name": "Old Address",
+      "rel_type": "collects",
+      "description": "Sending confirmation letter to old address collects and uses the old address information",
+      "properties": {
+        "address_type": "source",
+        "notification_method": "letter",
+        "purpose": "verification"
+      },
+      "context": "This letter is sent to your old address as a security check",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_003",
+      "source_name": "Send Confirmation Letter to Old Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_compchk_001",
+      "target_name": "GDPR Address Change Verification",
+      "rel_type": "satisfies",
+      "description": "Sending confirmation letter to old address satisfies the GDPR Address Change Verification compliance checkpoint",
+      "properties": {
+        "compliance_requirement": "GDPR",
+        "verification_method": "letter_to_old_address"
+      },
+      "context": "Tertiary: Letter to Old Address (GDPR Requirement) - To verify customer actually moved",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_001",
+      "source_name": "Send Email Notification to New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "notifies",
+      "description": "Sending email notification to new address notifies the Individual Customer of address change",
+      "properties": {
+        "notification_method": "email",
+        "content": "address_change_confirmation"
+      },
+      "context": "Dear [Customer Name], Your address has been successfully updated with FirstUK Bank",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_002",
+      "source_name": "Send SMS Notification for International Move",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "notifies",
+      "description": "Sending SMS notification notifies the Individual Customer of international address change",
+      "properties": {
+        "notification_method": "sms",
+        "trigger_condition": "international_move",
+        "content": "address_change_confirmation"
+      },
+      "context": "Secondary: SMS (If International Move) - FirstUK: Your address has been changed to [NEW CITY/COUNTRY]",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_003",
+      "source_name": "Send Confirmation Letter to Old Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "notifies",
+      "description": "Sending confirmation letter to old address notifies the Individual Customer of address change as a security check",
+      "properties": {
+        "notification_method": "letter",
+        "purpose": "security_verification",
+        "content": "address_change_confirmation"
+      },
+      "context": "Dear [Customer Name], We are writing to confirm that your address with FirstUK Bank has been updated",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_001",
+      "source_name": "Send Email Notification to New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "notifies",
+      "description": "Email notification informs customer that Standing Orders continue normally after address change",
+      "properties": {
+        "status": "continues_normally",
+        "impact": "no_disruption"
+      },
+      "context": "Standing orders and Direct Debits continue normally",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_001",
+      "source_name": "Send Email Notification to New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_dd_001",
+      "target_name": "Direct Debit",
+      "rel_type": "notifies",
+      "description": "Email notification informs customer that Direct Debits continue normally after address change",
+      "properties": {
+        "status": "continues_normally",
+        "impact": "no_disruption"
+      },
+      "context": "Standing orders and Direct Debits continue normally",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_001",
+      "source_name": "Send Email Notification to New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_fraud_001",
+      "target_name": "Unauthorized Address Change Detection",
+      "rel_type": "generates",
+      "description": "Email notification includes fraud alert mechanism for unauthorized address changes",
+      "properties": {
+        "alert_trigger": "unauthorized_change",
+        "contact_method": "fraud_line"
+      },
+      "context": "If You Didn't Request This Change: Contact us immediately: 0800-555-2265 (fraud line)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_003",
+      "source_name": "Send Confirmation Letter to Old Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_fraud_001",
+      "target_name": "Unauthorized Address Change Detection",
+      "rel_type": "generates",
+      "description": "Confirmation letter to old address generates fraud alert for unauthorized address changes",
+      "properties": {
+        "alert_trigger": "unauthorized_change",
+        "detection_method": "letter_to_old_address",
+        "contact_method": "fraud_line"
+      },
+      "context": "If you did NOT request this change, or if you believe this is fraudulent, contact us immediately: Phone: 0800-555-2265 (24/7 Fraud Line)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_addr_001",
+      "source_name": "Old Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "registered_to",
+      "description": "Old Address is registered to the Individual Customer",
+      "properties": {
+        "address_value": "123 Oak Lane, Manchester, M1 1AA, United Kingdom",
+        "status": "previous"
+      },
+      "context": "Old Address: 123 Oak Lane, Manchester, M1 1AA, United Kingdom",
+      "bidirectional": true,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_addr_002",
+      "source_name": "New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "registered_to",
+      "description": "New Address is registered to the Individual Customer",
+      "properties": {
+        "address_value": "456 Elm Street, New York, NY 10001, USA",
+        "status": "current",
+        "effective_date": "January 15, 2026"
+      },
+      "context": "New Address: 456 Elm Street, New York, NY 10001, USA - Effective Date: January 15, 2026",
+      "bidirectional": true,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_cust_001",
+      "source_name": "Individual Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "holds",
+      "description": "Individual Customer holds the Customer Account",
+      "properties": {
+        "account_status": "fully_active"
+      },
+      "context": "Your account remains fully active",
+      "bidirectional": true,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "set_up_on",
+      "description": "Standing Order is set up on the Customer Account",
+      "properties": {
+        "status": "continues_normally"
+      },
+      "context": "Standing orders and Direct Debits continue normally",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_dd_001",
+      "target_name": "Direct Debit",
+      "rel_type": "set_up_on",
+      "description": "Direct Debit is set up on the Customer Account",
+      "properties": {
+        "status": "continues_normally"
+      },
+      "context": "Standing orders and Direct Debits continue normally",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_proc_001",
+      "source_name": "Address Change Notification Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_001",
+      "source_name": "Send Email Notification to New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_002",
+      "source_name": "Send SMS Notification for International Move",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_pstep_003",
+      "source_name": "Send Confirmation Letter to Old Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_ract_001",
+      "source_name": "FirstUK Bank Customer Service",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_ract_002",
+      "source_name": "Fraud Detection Team",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_addr_001",
+      "source_name": "Old Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_addr_002",
+      "source_name": "New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_compchk_001",
+      "source_name": "GDPR Address Change Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_fraud_001",
+      "source_name": "Unauthorized Address Change Detection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_dd_001",
+      "source_name": "Direct Debit",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_cust_001",
+      "source_name": "Individual Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_041_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_041",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

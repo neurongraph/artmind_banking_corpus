@@ -1,0 +1,521 @@
+{
+  "chunk_seq": 11,
+  "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+  "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+  "text": "### Issue: \"Payment Processing Slow\"  \n**Symptoms:** FPS transfers taking >15 minutes, BACS delayed  \n**Steps:**\n```\n1. Check payment queue\ncurl https://api.firstuk.bank/pps/queue-length\n\n2. If queue growing\nMonitor: kubectl logs -f deployment/pps | grep \"pending\"\n\n3. Check if database is bottleneck\npsql -U postgres -c \"SELECT count(*) FROM pg_stat_activity WHERE wait_event_type='IO';\"\n\n4. If high I/O wait\nIncrease database resources: kubectl set resources deployment/ams --limits=memory=4Gi,cpu=2\n\n5. Monitor recovery\nWatch queue decrease: watch 'curl https://api.firstuk.bank/pps/queue-length'\n\n6. If not improving\nEscalate to database team (see Step 6)\n```",
+  "name": "Chunk 11/21",
+  "_domain": "banking.reference",
+  "prev_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+  "next_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+  "raw_entities": [
+    {
+      "id": "inc_001",
+      "name": "Payment Processing Slow",
+      "aliases": [
+        "Payment Processing Delay",
+        "PPS Slowdown"
+      ],
+      "entity_class": "INCIDENT_TYPE",
+      "type": "performance_degradation",
+      "description": "A performance degradation incident affecting Faster Payment Service (FPS) transfers and BACS payments, characterized by transfers taking longer than 15 minutes to process. The incident involves monitoring payment queue length, database I/O wait events, and resource constraints on the payment processing system.",
+      "context": [
+        "FPS transfers taking >15 minutes, BACS delayed",
+        "If queue growing Monitor: kubectl logs -f deployment/pps | grep \"pending\"",
+        "If high I/O wait Increase database resources: kubectl set resources deployment/ams --limits=memory=4Gi,cpu=2"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Check Payment Queue",
+      "aliases": [
+        "Queue Length Check"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Initial detection step to assess the payment processing queue status by querying the payment processing system API endpoint. This is the first diagnostic action in the Payment Processing Slow incident response procedure.",
+      "context": [
+        "Check payment queue curl https://api.firstuk.bank/pps/queue-length"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Monitor Payment Queue Logs",
+      "aliases": [
+        "Queue Log Monitoring"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Conditional investigation step executed when the payment queue is growing, using Kubernetes logs to identify pending payment transactions in the payment processing system deployment.",
+      "context": [
+        "If queue growing Monitor: kubectl logs -f deployment/pps | grep \"pending\""
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Check Database I/O Wait Events",
+      "aliases": [
+        "Database Bottleneck Check"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Diagnostic query executed against the PostgreSQL database to determine if I/O wait events are causing the payment processing bottleneck. Identifies whether database resource constraints are the root cause.",
+      "context": [
+        "Check if database is bottleneck psql -U postgres -c \"SELECT count(*) FROM pg_stat_activity WHERE wait_event_type='IO';\""
+      ]
+    },
+    {
+      "id": "ra_004",
+      "name": "Increase Database Resources",
+      "aliases": [
+        "Database Resource Scaling"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "Containment and recovery action triggered when high I/O wait is detected on the database. Increases memory and CPU limits on the application management system (AMS) deployment to resolve resource constraints.",
+      "context": [
+        "If high I/O wait Increase database resources: kubectl set resources deployment/ams --limits=memory=4Gi,cpu=2"
+      ]
+    },
+    {
+      "id": "ra_005",
+      "name": "Monitor Queue Recovery",
+      "aliases": [
+        "Recovery Monitoring"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Post-remediation monitoring step to verify that the payment queue is decreasing and the incident is resolving. Continuously polls the payment processing system API to track recovery progress.",
+      "context": [
+        "Monitor recovery Watch queue decrease: watch 'curl https://api.firstuk.bank/pps/queue-length'"
+      ]
+    },
+    {
+      "id": "ra_006",
+      "name": "Escalate to Database Team",
+      "aliases": [
+        "Database Team Escalation"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "escalation",
+      "description": "Final escalation action executed if the payment queue does not improve after resource increase. Transfers incident ownership to the database team for deeper investigation and remediation.",
+      "context": [
+        "If not improving Escalate to database team (see Step 6)"
+      ]
+    }
+  ],
+  "id_map": {
+    "inc_001": "01a07393-e320-7264-b05f-7163527566c2_011_inc_001",
+    "ra_001": "01a07393-e320-7264-b05f-7163527566c2_011_ra_001",
+    "ra_002": "01a07393-e320-7264-b05f-7163527566c2_011_ra_002",
+    "ra_003": "01a07393-e320-7264-b05f-7163527566c2_011_ra_003",
+    "ra_004": "01a07393-e320-7264-b05f-7163527566c2_011_ra_004",
+    "ra_005": "01a07393-e320-7264-b05f-7163527566c2_011_ra_005",
+    "ra_006": "01a07393-e320-7264-b05f-7163527566c2_011_ra_006"
+  },
+  "entities": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_011_inc_001",
+      "name": "Payment Processing Slow",
+      "aliases": [
+        "Payment Processing Delay",
+        "PPS Slowdown"
+      ],
+      "entity_class": "INCIDENT_TYPE",
+      "type": "performance_degradation",
+      "description": "A performance degradation incident affecting Faster Payment Service (FPS) transfers and BACS payments, characterized by transfers taking longer than 15 minutes to process. The incident involves monitoring payment queue length, database I/O wait events, and resource constraints on the payment processing system.",
+      "context": [
+        "FPS transfers taking >15 minutes, BACS delayed",
+        "If queue growing Monitor: kubectl logs -f deployment/pps | grep \"pending\"",
+        "If high I/O wait Increase database resources: kubectl set resources deployment/ams --limits=memory=4Gi,cpu=2"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_001",
+      "name": "Check Payment Queue",
+      "aliases": [
+        "Queue Length Check"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Initial detection step to assess the payment processing queue status by querying the payment processing system API endpoint. This is the first diagnostic action in the Payment Processing Slow incident response procedure.",
+      "context": [
+        "Check payment queue curl https://api.firstuk.bank/pps/queue-length"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_002",
+      "name": "Monitor Payment Queue Logs",
+      "aliases": [
+        "Queue Log Monitoring"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Conditional investigation step executed when the payment queue is growing, using Kubernetes logs to identify pending payment transactions in the payment processing system deployment.",
+      "context": [
+        "If queue growing Monitor: kubectl logs -f deployment/pps | grep \"pending\""
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_003",
+      "name": "Check Database I/O Wait Events",
+      "aliases": [
+        "Database Bottleneck Check"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Diagnostic query executed against the PostgreSQL database to determine if I/O wait events are causing the payment processing bottleneck. Identifies whether database resource constraints are the root cause.",
+      "context": [
+        "Check if database is bottleneck psql -U postgres -c \"SELECT count(*) FROM pg_stat_activity WHERE wait_event_type='IO';\""
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_004",
+      "name": "Increase Database Resources",
+      "aliases": [
+        "Database Resource Scaling"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "Containment and recovery action triggered when high I/O wait is detected on the database. Increases memory and CPU limits on the application management system (AMS) deployment to resolve resource constraints.",
+      "context": [
+        "If high I/O wait Increase database resources: kubectl set resources deployment/ams --limits=memory=4Gi,cpu=2"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_005",
+      "name": "Monitor Queue Recovery",
+      "aliases": [
+        "Recovery Monitoring"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Post-remediation monitoring step to verify that the payment queue is decreasing and the incident is resolving. Continuously polls the payment processing system API to track recovery progress.",
+      "context": [
+        "Monitor recovery Watch queue decrease: watch 'curl https://api.firstuk.bank/pps/queue-length'"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_006",
+      "name": "Escalate to Database Team",
+      "aliases": [
+        "Database Team Escalation"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "escalation",
+      "description": "Final escalation action executed if the payment queue does not improve after resource increase. Transfers incident ownership to the database team for deeper investigation and remediation.",
+      "context": [
+        "If not improving Escalate to database team (see Step 6)"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_011_inc_001",
+      "name": "Payment Processing Slow",
+      "properties": {
+        "category": "Payment Processing",
+        "subtypes": [
+          "FPS transfers delayed",
+          "BACS delayed"
+        ],
+        "indicators": [
+          "FPS transfers taking >15 minutes",
+          "BACS delayed"
+        ],
+        "typical_impact": [
+          "Payment queue growth",
+          "Database I/O bottleneck"
+        ]
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_001",
+      "name": "Check Payment Queue",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "On-call engineer",
+        "tools_or_systems": [
+          "curl",
+          "https://api.firstuk.bank/pps/queue-length"
+        ],
+        "output_or_artifact": "Payment queue length metric",
+        "escalation_trigger": "If queue is growing, proceed to monitoring logs"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_002",
+      "name": "Monitor Payment Queue Logs",
+      "properties": {
+        "action_phase": "investigation",
+        "actor": "On-call engineer",
+        "tools_or_systems": [
+          "kubectl",
+          "deployment/pps"
+        ],
+        "output_or_artifact": "Pending payment queue logs",
+        "escalation_trigger": "If database I/O is identified as bottleneck, proceed to database checks"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_003",
+      "name": "Check Database I/O Wait Events",
+      "properties": {
+        "action_phase": "investigation",
+        "actor": "On-call engineer",
+        "tools_or_systems": [
+          "psql",
+          "pg_stat_activity"
+        ],
+        "output_or_artifact": "Count of database connections in I/O wait state",
+        "escalation_trigger": "If high I/O wait detected, increase database resources"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_004",
+      "name": "Increase Database Resources",
+      "properties": {
+        "action_phase": "containment",
+        "actor": "On-call engineer",
+        "tools_or_systems": [
+          "kubectl"
+        ],
+        "output_or_artifact": "Database deployment resource limits updated",
+        "resource_adjustment": "memory=4Gi, cpu=2"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_005",
+      "name": "Monitor Queue Recovery",
+      "properties": {
+        "action_phase": "recovery",
+        "actor": "On-call engineer",
+        "tools_or_systems": [
+          "curl",
+          "watch command"
+        ],
+        "output_or_artifact": "Continuous queue length monitoring",
+        "success_criteria": "Queue length decreasing"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_006",
+      "name": "Escalate to Database Team",
+      "properties": {
+        "action_phase": "escalation",
+        "actor": "On-call engineer",
+        "trigger_condition": "If queue not improving after resource increase",
+        "escalation_target": "Database team"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_011_inc_001",
+      "source_name": "Payment Processing Slow",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_001",
+      "target_name": "Check Payment Queue",
+      "rel_type": "triggers",
+      "description": "Payment Processing Slow incident triggers the initial diagnostic action of checking the payment queue",
+      "properties": {
+        "sequence": 1,
+        "condition": "incident_detected"
+      },
+      "context": "Steps: 1. Check payment queue curl https://api.firstuk.bank/pps/queue-length",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_001",
+      "source_name": "Check Payment Queue",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_002",
+      "target_name": "Monitor Payment Queue Logs",
+      "rel_type": "followed_by",
+      "description": "Checking payment queue is followed by monitoring queue logs if queue is growing",
+      "properties": {
+        "sequence": 2,
+        "condition": "if queue growing"
+      },
+      "context": "2. If queue growing Monitor: kubectl logs -f deployment/pps | grep \"pending\"",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_002",
+      "source_name": "Monitor Payment Queue Logs",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_003",
+      "target_name": "Check Database I/O Wait Events",
+      "rel_type": "followed_by",
+      "description": "Monitoring queue logs is followed by checking if database is the bottleneck",
+      "properties": {
+        "sequence": 3,
+        "condition": "diagnostic progression"
+      },
+      "context": "3. Check if database is bottleneck psql -U postgres -c \"SELECT count(*) FROM pg_stat_activity WHERE wait_event_type='IO';\"",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_003",
+      "source_name": "Check Database I/O Wait Events",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_004",
+      "target_name": "Increase Database Resources",
+      "rel_type": "followed_by",
+      "description": "Checking database I/O wait events is followed by increasing database resources if high I/O wait detected",
+      "properties": {
+        "sequence": 4,
+        "condition": "if high I/O wait"
+      },
+      "context": "4. If high I/O wait Increase database resources: kubectl set resources deployment/ams --limits=memory=4Gi,cpu=2",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_004",
+      "source_name": "Increase Database Resources",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_005",
+      "target_name": "Monitor Queue Recovery",
+      "rel_type": "followed_by",
+      "description": "Increasing database resources is followed by monitoring queue recovery",
+      "properties": {
+        "sequence": 5,
+        "condition": "after resource increase"
+      },
+      "context": "5. Monitor recovery Watch queue decrease: watch 'curl https://api.firstuk.bank/pps/queue-length'",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_005",
+      "source_name": "Monitor Queue Recovery",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_006",
+      "target_name": "Escalate to Database Team",
+      "rel_type": "followed_by",
+      "description": "Monitoring queue recovery is followed by escalation to database team if recovery is not improving",
+      "properties": {
+        "sequence": 6,
+        "condition": "if not improving"
+      },
+      "context": "6. If not improving Escalate to database team (see Step 6)",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_011_inc_001",
+      "source_name": "Payment Processing Slow",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_001",
+      "source_name": "Check Payment Queue",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_002",
+      "source_name": "Monitor Payment Queue Logs",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_003",
+      "source_name": "Check Database I/O Wait Events",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_004",
+      "source_name": "Increase Database Resources",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_005",
+      "source_name": "Monitor Queue Recovery",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_011_ra_006",
+      "source_name": "Escalate to Database Team",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ]
+}

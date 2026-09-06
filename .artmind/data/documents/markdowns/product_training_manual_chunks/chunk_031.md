@@ -1,0 +1,12 @@
+## Training Checklist  
+- [ ] Understand SmartSaver features, rates, and tiers
+- [ ] Know how interest is calculated
+- [ ] Be able to explain variable vs. fixed rates
+- [ ] Know Current Account features
+- [ ] Understand mortgage rates and LTV
+- [ ] Know all fees
+- [ ] Understand KYC requirements
+- [ ] Be able to handle common objections
+- [ ] Know when to escalate (amounts >£5k, complex cases)
+- [ ] Understand COBS and GDPR basics  
+---

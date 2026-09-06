@@ -1,0 +1,953 @@
+{
+  "chunk_seq": 17,
+  "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+  "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+  "text": "### Scenario 5: Account Restrictions  \n**Your Issue:** \"My account was frozen without explanation.\"  \n**What We Investigate:**\n- Why was it frozen? (Regulatory reason? Fraud hold? Other?)\n- Was proper notice given?\n- Was the freeze justified?  \n**Possible Outcomes:**\n- **Justified:** Explain reason (e.g., KYC compliance, fraud investigation); timeline for resolution\n- **Unjustified:** Unfreeze immediately; apologize; compensation\n- **Process error:** Unfreeze; improve process  \n**Typical Resolution Time:** 3–5 business days  \n---",
+  "name": "Chunk 17/27",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_016",
+  "next_chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_018",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Account Restrictions Investigation Process",
+      "aliases": [
+        "Account Freeze Investigation",
+        "Frozen Account Resolution"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "An end-to-end investigation procedure triggered when a customer reports their account has been frozen without explanation. The process determines the cause of the freeze (regulatory, fraud-related, or other), verifies whether proper notice was given, assesses justification, and determines the appropriate resolution path. Typical resolution timeline is 3–5 business days.",
+      "context": [
+        "My account was frozen without explanation.",
+        "Why was it frozen? (Regulatory reason? Fraud hold? Other?)",
+        "Typical Resolution Time: 3–5 business days"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Freeze Cause Investigation",
+      "aliases": [
+        "Determine Freeze Reason"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "The initial investigative step to determine the root cause of the account freeze, including whether it was triggered by regulatory compliance requirements, fraud detection, or other operational reasons.",
+      "context": [
+        "Why was it frozen? (Regulatory reason? Fraud hold? Other?)"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Notice Verification",
+      "aliases": [
+        "Proper Notice Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "quality_check",
+      "description": "A verification step to confirm whether the customer was provided with proper notice of the account freeze and the reasons for it.",
+      "context": [
+        "Was proper notice given?"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Freeze Justification Assessment",
+      "aliases": [
+        "Justification Review"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "An assessment step to evaluate whether the account freeze was justified based on the identified cause and applicable policies or regulatory requirements.",
+      "context": [
+        "Was the freeze justified?"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Freeze Justification Decision",
+      "aliases": [
+        "Justified vs. Unjustified vs. Process Error"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A three-way decision gate that branches the resolution path based on whether the freeze was justified, unjustified, or caused by a process error. Each outcome leads to a distinct resolution action.",
+      "context": [
+        "Possible Outcomes: Justified: Explain reason (e.g., KYC compliance, fraud investigation); timeline for resolution; Unjustified: Unfreeze immediately; apologize; compensation; Process error: Unfreeze; improve process"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Justified Freeze Resolution",
+      "aliases": [
+        "Justified Outcome Handling"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Resolution step for justified freezes: explain the regulatory or fraud-related reason to the customer and provide a timeline for resolution.",
+      "context": [
+        "Justified: Explain reason (e.g., KYC compliance, fraud investigation); timeline for resolution"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Unjustified Freeze Remediation",
+      "aliases": [
+        "Unjustified Outcome Handling"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Resolution step for unjustified freezes: immediately unfreeze the account, provide an apology to the customer, and process compensation as appropriate.",
+      "context": [
+        "Unjustified: Unfreeze immediately; apologize; compensation"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Process Error Correction",
+      "aliases": [
+        "Process Error Outcome Handling"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Resolution step for process errors: unfreeze the account immediately and initiate process improvement measures to prevent recurrence.",
+      "context": [
+        "Process error: Unfreeze; improve process"
+      ]
+    },
+    {
+      "id": "acct_001",
+      "name": "Frozen Account",
+      "aliases": [
+        "Restricted Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "frozen_account",
+      "description": "A customer account that has been placed under restriction or freeze, preventing normal transaction activity. The account is the subject of investigation to determine the cause and appropriate resolution.",
+      "context": [
+        "My account was frozen without explanation.",
+        "Why was it frozen?"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Account Holder",
+      "aliases": [
+        "Customer",
+        "Account Owner"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual customer who holds the frozen account and has initiated a complaint regarding the unexplained freeze. This customer is the subject of the investigation and resolution process.",
+      "context": [
+        "My account was frozen without explanation."
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "KYC Compliance Checkpoint",
+      "aliases": [
+        "KYC Freeze Verification"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A compliance gate that may trigger account freezes when KYC (Know Your Customer) compliance requirements are not met or require verification. This checkpoint is one potential regulatory reason for account restriction.",
+      "context": [
+        "Explain reason (e.g., KYC compliance, fraud investigation)"
+      ]
+    },
+    {
+      "id": "fa_001",
+      "name": "Fraud Investigation Hold",
+      "aliases": [
+        "Fraud Hold",
+        "Fraud-Related Freeze"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "A fraud-related account freeze triggered by fraud detection systems or investigation procedures. This is one of the potential causes investigated when determining why an account was frozen.",
+      "context": [
+        "Why was it frozen? (Regulatory reason? Fraud hold? Other?)",
+        "Explain reason (e.g., KYC compliance, fraud investigation)"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_proc_001",
+    "pstep_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_001",
+    "pstep_002": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_002",
+    "pstep_003": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_003",
+    "dp_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_dp_001",
+    "pstep_004": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_004",
+    "pstep_005": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_005",
+    "pstep_006": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_006",
+    "acct_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_acct_001",
+    "cust_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_cust_001",
+    "cc_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_cc_001",
+    "fa_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_fa_001"
+  },
+  "entities": [
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_proc_001",
+      "name": "Account Restrictions Investigation Process",
+      "aliases": [
+        "Account Freeze Investigation",
+        "Frozen Account Resolution"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "An end-to-end investigation procedure triggered when a customer reports their account has been frozen without explanation. The process determines the cause of the freeze (regulatory, fraud-related, or other), verifies whether proper notice was given, assesses justification, and determines the appropriate resolution path. Typical resolution timeline is 3–5 business days.",
+      "context": [
+        "My account was frozen without explanation.",
+        "Why was it frozen? (Regulatory reason? Fraud hold? Other?)",
+        "Typical Resolution Time: 3–5 business days"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_001",
+      "name": "Freeze Cause Investigation",
+      "aliases": [
+        "Determine Freeze Reason"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "The initial investigative step to determine the root cause of the account freeze, including whether it was triggered by regulatory compliance requirements, fraud detection, or other operational reasons.",
+      "context": [
+        "Why was it frozen? (Regulatory reason? Fraud hold? Other?)"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_002",
+      "name": "Notice Verification",
+      "aliases": [
+        "Proper Notice Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "quality_check",
+      "description": "A verification step to confirm whether the customer was provided with proper notice of the account freeze and the reasons for it.",
+      "context": [
+        "Was proper notice given?"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_003",
+      "name": "Freeze Justification Assessment",
+      "aliases": [
+        "Justification Review"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "An assessment step to evaluate whether the account freeze was justified based on the identified cause and applicable policies or regulatory requirements.",
+      "context": [
+        "Was the freeze justified?"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_dp_001",
+      "name": "Freeze Justification Decision",
+      "aliases": [
+        "Justified vs. Unjustified vs. Process Error"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A three-way decision gate that branches the resolution path based on whether the freeze was justified, unjustified, or caused by a process error. Each outcome leads to a distinct resolution action.",
+      "context": [
+        "Possible Outcomes: Justified: Explain reason (e.g., KYC compliance, fraud investigation); timeline for resolution; Unjustified: Unfreeze immediately; apologize; compensation; Process error: Unfreeze; improve process"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_004",
+      "name": "Justified Freeze Resolution",
+      "aliases": [
+        "Justified Outcome Handling"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Resolution step for justified freezes: explain the regulatory or fraud-related reason to the customer and provide a timeline for resolution.",
+      "context": [
+        "Justified: Explain reason (e.g., KYC compliance, fraud investigation); timeline for resolution"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_005",
+      "name": "Unjustified Freeze Remediation",
+      "aliases": [
+        "Unjustified Outcome Handling"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Resolution step for unjustified freezes: immediately unfreeze the account, provide an apology to the customer, and process compensation as appropriate.",
+      "context": [
+        "Unjustified: Unfreeze immediately; apologize; compensation"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_006",
+      "name": "Process Error Correction",
+      "aliases": [
+        "Process Error Outcome Handling"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Resolution step for process errors: unfreeze the account immediately and initiate process improvement measures to prevent recurrence.",
+      "context": [
+        "Process error: Unfreeze; improve process"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_acct_001",
+      "name": "Frozen Account",
+      "aliases": [
+        "Restricted Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "frozen_account",
+      "description": "A customer account that has been placed under restriction or freeze, preventing normal transaction activity. The account is the subject of investigation to determine the cause and appropriate resolution.",
+      "context": [
+        "My account was frozen without explanation.",
+        "Why was it frozen?"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_cust_001",
+      "name": "Account Holder",
+      "aliases": [
+        "Customer",
+        "Account Owner"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual customer who holds the frozen account and has initiated a complaint regarding the unexplained freeze. This customer is the subject of the investigation and resolution process.",
+      "context": [
+        "My account was frozen without explanation."
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_cc_001",
+      "name": "KYC Compliance Checkpoint",
+      "aliases": [
+        "KYC Freeze Verification"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A compliance gate that may trigger account freezes when KYC (Know Your Customer) compliance requirements are not met or require verification. This checkpoint is one potential regulatory reason for account restriction.",
+      "context": [
+        "Explain reason (e.g., KYC compliance, fraud investigation)"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_fa_001",
+      "name": "Fraud Investigation Hold",
+      "aliases": [
+        "Fraud Hold",
+        "Fraud-Related Freeze"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "A fraud-related account freeze triggered by fraud detection systems or investigation procedures. This is one of the potential causes investigated when determining why an account was frozen.",
+      "context": [
+        "Why was it frozen? (Regulatory reason? Fraud hold? Other?)",
+        "Explain reason (e.g., KYC compliance, fraud investigation)"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_proc_001",
+      "name": "Account Restrictions Investigation Process",
+      "properties": {
+        "purpose": "Investigate reasons for account freeze and determine appropriate remediation",
+        "scope": "Frozen accounts requiring justification review",
+        "timeline_sla": "3–5 business days",
+        "trigger": "Customer complaint regarding unexplained account freeze",
+        "outcome_success": "Freeze justified with explanation and timeline, or unjustified freeze lifted with compensation, or process error corrected",
+        "departments_involved": [
+          "Compliance",
+          "Fraud Investigation",
+          "Customer Service",
+          "Operations"
+        ]
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_001",
+      "name": "Freeze Cause Investigation",
+      "properties": {
+        "step_number": 1,
+        "purpose": "Determine the root cause of the account freeze",
+        "input": "Account freeze record, customer complaint",
+        "output": "Documented freeze cause (regulatory, fraud hold, or other)",
+        "actor": "Compliance Officer or Fraud Investigation Team",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Account Management System",
+          "Compliance Records"
+        ]
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_002",
+      "name": "Notice Verification",
+      "properties": {
+        "step_number": 2,
+        "purpose": "Verify whether proper notice was given to the customer",
+        "input": "Customer communication records, freeze notification logs",
+        "output": "Confirmation of notice delivery or identification of notice gap",
+        "actor": "Customer Service Representative",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Communication Tracking System",
+          "Account Management System"
+        ]
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_003",
+      "name": "Freeze Justification Assessment",
+      "properties": {
+        "step_number": 3,
+        "purpose": "Evaluate whether the freeze was justified based on regulatory or operational grounds",
+        "input": "Freeze cause documentation, compliance requirements, fraud investigation findings",
+        "output": "Justification assessment report",
+        "actor": "Compliance Officer or Fraud Investigation Lead",
+        "channel": "system",
+        "mandatory": true
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_dp_001",
+      "name": "Freeze Justification Decision",
+      "properties": {
+        "decision_question": "Was the account freeze justified?",
+        "criteria": [
+          "Regulatory compliance requirement (e.g., KYC)",
+          "Active fraud investigation",
+          "Operational or process error"
+        ],
+        "decision_maker": "Compliance Officer or Fraud Investigation Lead",
+        "path_yes": "Proceed to Justified Freeze Resolution (pstep_004)",
+        "path_no": "Proceed to Unjustified Freeze Remediation (pstep_005) or Process Error Correction (pstep_006)",
+        "override_possible": true
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_004",
+      "name": "Justified Freeze Resolution",
+      "properties": {
+        "step_number": 4,
+        "purpose": "Communicate freeze justification and resolution timeline to customer",
+        "input": "Justification assessment, regulatory or fraud investigation details",
+        "output": "Customer notification with explanation and expected resolution date",
+        "actor": "Customer Service Representative or Compliance Officer",
+        "channel": [
+          "branch",
+          "email",
+          "phone"
+        ],
+        "mandatory": true,
+        "failure_path": "Escalate to management if customer disputes justification"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_005",
+      "name": "Unjustified Freeze Remediation",
+      "properties": {
+        "step_number": 5,
+        "purpose": "Remedy unjustified freeze by unfreezing account and providing compensation",
+        "input": "Justification assessment confirming freeze was unjustified",
+        "output": "Unfrozen account, apology letter, compensation offer",
+        "actor": "Operations Team and Customer Service Manager",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Account Management System"
+        ],
+        "estimated_duration": "1 business day"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_006",
+      "name": "Process Error Correction",
+      "properties": {
+        "step_number": 6,
+        "purpose": "Correct process errors that led to unjustified freeze and prevent recurrence",
+        "input": "Root cause analysis of process failure",
+        "output": "Unfrozen account, process improvement documentation, internal training update",
+        "actor": "Operations Manager and Process Improvement Team",
+        "channel": "system",
+        "mandatory": true,
+        "failure_path": "Escalate to senior management for systemic review"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_acct_001",
+      "name": "Frozen Account",
+      "properties": {
+        "account_state": "frozen",
+        "closure_or_freeze_conditions": "Regulatory compliance hold, fraud investigation hold, or process error"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_cust_001",
+      "name": "Account Holder",
+      "properties": {
+        "holder_type": "primary",
+        "context_role": "Complainant regarding unexplained account freeze",
+        "eligibility_or_verification_status": "Subject to freeze investigation and justification review"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_cc_001",
+      "name": "KYC Compliance Checkpoint",
+      "properties": {
+        "regulatory_basis": "KYC (Know Your Customer) compliance requirements",
+        "mandatory": true,
+        "evidence_required": [
+          "Customer identification documents",
+          "Address verification",
+          "Beneficial ownership confirmation"
+        ],
+        "performed_by": "Compliance Officer",
+        "timing": "During freeze cause investigation",
+        "failure_consequence": "Account remains frozen pending KYC completion"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_fa_001",
+      "name": "Fraud Investigation Hold",
+      "properties": {
+        "generation_trigger": "Suspected fraudulent activity detected on account",
+        "investigation_or_escalation_path": "Freeze Cause Investigation → Freeze Justification Assessment → Decision Point",
+        "customer_notification": "Notification provided during Justified Freeze Resolution step",
+        "reimbursement_obligation": "If freeze determined unjustified, compensation offered"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_proc_001",
+      "source_name": "Account Restrictions Investigation Process",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_001",
+      "target_name": "Freeze Cause Investigation",
+      "rel_type": "starts_with",
+      "description": "The Account Restrictions Investigation Process begins with investigating the cause of the account freeze",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Why was it frozen? (Regulatory reason? Fraud hold? Other?)",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_001",
+      "source_name": "Freeze Cause Investigation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_002",
+      "target_name": "Notice Verification",
+      "rel_type": "followed_by",
+      "description": "Freeze Cause Investigation is followed by verification of proper notice",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Was proper notice given?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_002",
+      "source_name": "Notice Verification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_003",
+      "target_name": "Freeze Justification Assessment",
+      "rel_type": "followed_by",
+      "description": "Notice Verification is followed by assessment of whether the freeze was justified",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Was the freeze justified?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_003",
+      "source_name": "Freeze Justification Assessment",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_dp_001",
+      "target_name": "Freeze Justification Decision",
+      "rel_type": "leads_to",
+      "description": "Freeze Justification Assessment leads to a decision point determining if the freeze was justified",
+      "properties": {
+        "decision_criteria": "justification of account freeze"
+      },
+      "context": "Was the freeze justified? Possible Outcomes: Justified, Unjustified, Process error",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_dp_001",
+      "source_name": "Freeze Justification Decision",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_004",
+      "target_name": "Justified Freeze Resolution",
+      "rel_type": "routes_to_on_pass",
+      "description": "If freeze is determined to be justified, the process routes to Justified Freeze Resolution",
+      "properties": {
+        "outcome": "justified",
+        "action": "Explain reason (e.g., KYC compliance, fraud investigation); timeline for resolution"
+      },
+      "context": "Justified: Explain reason (e.g., KYC compliance, fraud investigation); timeline for resolution",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_dp_001",
+      "source_name": "Freeze Justification Decision",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_005",
+      "target_name": "Unjustified Freeze Remediation",
+      "rel_type": "routes_to_on_fail",
+      "description": "If freeze is determined to be unjustified, the process routes to Unjustified Freeze Remediation",
+      "properties": {
+        "outcome": "unjustified",
+        "action": "Unfreeze immediately; apologize; compensation"
+      },
+      "context": "Unjustified: Unfreeze immediately; apologize; compensation",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_dp_001",
+      "source_name": "Freeze Justification Decision",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_006",
+      "target_name": "Process Error Correction",
+      "rel_type": "routes_to_on_fail",
+      "description": "If freeze is determined to be a process error, the process routes to Process Error Correction",
+      "properties": {
+        "outcome": "process_error",
+        "action": "Unfreeze; improve process"
+      },
+      "context": "Process error: Unfreeze; improve process",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_proc_001",
+      "source_name": "Account Restrictions Investigation Process",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_acct_001",
+      "target_name": "Frozen Account",
+      "rel_type": "operates_on",
+      "description": "The Account Restrictions Investigation Process operates on a frozen account",
+      "properties": {
+        "account_status": "frozen"
+      },
+      "context": "My account was frozen without explanation.",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_proc_001",
+      "source_name": "Account Restrictions Investigation Process",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_cust_001",
+      "target_name": "Account Holder",
+      "rel_type": "serves",
+      "description": "The Account Restrictions Investigation Process serves the account holder",
+      "properties": {
+        "service_type": "investigation and resolution"
+      },
+      "context": "Your Issue: My account was frozen without explanation.",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_acct_001",
+      "source_name": "Frozen Account",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_cust_001",
+      "target_name": "Account Holder",
+      "rel_type": "held_by",
+      "description": "The frozen account is held by the account holder",
+      "properties": {},
+      "context": "My account was frozen without explanation.",
+      "bidirectional": true,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_004",
+      "source_name": "Justified Freeze Resolution",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_cc_001",
+      "target_name": "KYC Compliance Checkpoint",
+      "rel_type": "satisfies",
+      "description": "Justified Freeze Resolution may satisfy KYC Compliance Checkpoint when freeze is due to KYC compliance",
+      "properties": {
+        "compliance_reason": "KYC compliance"
+      },
+      "context": "Explain reason (e.g., KYC compliance, fraud investigation); timeline for resolution",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_004",
+      "source_name": "Justified Freeze Resolution",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_fa_001",
+      "target_name": "Fraud Investigation Hold",
+      "rel_type": "satisfies",
+      "description": "Justified Freeze Resolution may satisfy Fraud Investigation Hold when freeze is due to fraud investigation",
+      "properties": {
+        "compliance_reason": "fraud investigation"
+      },
+      "context": "Explain reason (e.g., KYC compliance, fraud investigation); timeline for resolution",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_005",
+      "source_name": "Unjustified Freeze Remediation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_acct_001",
+      "target_name": "Frozen Account",
+      "rel_type": "activates",
+      "description": "Unjustified Freeze Remediation unfreezes the account",
+      "properties": {
+        "action": "unfreeze immediately"
+      },
+      "context": "Unjustified: Unfreeze immediately; apologize; compensation",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_006",
+      "source_name": "Process Error Correction",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_acct_001",
+      "target_name": "Frozen Account",
+      "rel_type": "activates",
+      "description": "Process Error Correction unfreezes the account due to process error",
+      "properties": {
+        "action": "unfreeze"
+      },
+      "context": "Process error: Unfreeze; improve process",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_proc_001",
+      "source_name": "Account Restrictions Investigation Process",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_dp_001",
+      "target_name": "Freeze Justification Decision",
+      "rel_type": "branches_at",
+      "description": "The Account Restrictions Investigation Process branches at the Freeze Justification Decision point",
+      "properties": {
+        "decision_branches": 3,
+        "outcomes": [
+          "justified",
+          "unjustified",
+          "process_error"
+        ]
+      },
+      "context": "Possible Outcomes: Justified, Unjustified, Process error",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_proc_001",
+      "source_name": "Account Restrictions Investigation Process",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_001",
+      "source_name": "Freeze Cause Investigation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_002",
+      "source_name": "Notice Verification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_003",
+      "source_name": "Freeze Justification Assessment",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_dp_001",
+      "source_name": "Freeze Justification Decision",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_004",
+      "source_name": "Justified Freeze Resolution",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_005",
+      "source_name": "Unjustified Freeze Remediation",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_pstep_006",
+      "source_name": "Process Error Correction",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_acct_001",
+      "source_name": "Frozen Account",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_cust_001",
+      "source_name": "Account Holder",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_cc_001",
+      "source_name": "KYC Compliance Checkpoint",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017_fa_001",
+      "source_name": "Fraud Investigation Hold",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_017",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

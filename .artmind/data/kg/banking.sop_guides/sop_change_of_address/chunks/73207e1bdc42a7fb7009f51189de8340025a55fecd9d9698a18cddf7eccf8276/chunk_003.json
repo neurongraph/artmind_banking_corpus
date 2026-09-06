@@ -1,0 +1,768 @@
+{
+  "chunk_seq": 3,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "## Why Address Change Is Complex  \nAddress change triggers multiple regulatory and operational requirements:  \n| Requirement | Reason | Impact |\n|---|---|---|\n| **KYC Re-verification** | Proof of address validity | Account functionality may be restricted |\n| **AML Re-screening** | New address may be in sanctions country | Transaction blocks if sanctions match |\n| **GDPR Compliance** | Ensure data accuracy | Customer rights (deletion, portability) |\n| **Standing Order Updates** | Recipient address may change | Payment routing implications |\n| **Direct Debit Updates** | Mandate tied to address | Payment processing |\n| **Statement Delivery** | Physical mail routing | Customer communication interruption |\n| **Tax/Regulatory** | Different jurisdictions | Tax reporting requirements |\n| **Joint Accounts** | Both account holders | Whose address takes precedence? |\n| **Multiple Accounts** | Customer may have >1 account | Each account needs updating |  \n---",
+  "name": "Chunk 3/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_002",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_004",
+  "raw_entities": [
+    {
+      "id": "kyc_001",
+      "name": "KYC Re-verification",
+      "aliases": [
+        "Know Your Customer Re-verification",
+        "Address-triggered KYC refresh"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "periodic_refresh",
+      "description": "Mandatory re-verification of customer identity and proof of address triggered by an address change. Required to validate the new address and maintain account compliance. Account functionality may be restricted if re-verification is not completed.",
+      "context": [
+        "KYC Re-verification | Proof of address validity | Account functionality may be restricted",
+        "Address change triggers multiple regulatory and operational requirements"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "AML Re-screening",
+      "aliases": [
+        "Sanctions re-check",
+        "Address-triggered AML screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Mandatory re-screening of the customer against sanctions lists when a new address is provided. Required because the new address may be located in a sanctions country, which would trigger transaction blocks if a match is detected.",
+      "context": [
+        "AML Re-screening | New address may be in sanctions country | Transaction blocks if sanctions match",
+        "Address change triggers multiple regulatory and operational requirements"
+      ]
+    },
+    {
+      "id": "cmp_001",
+      "name": "GDPR Compliance Check",
+      "aliases": [
+        "Data accuracy verification",
+        "GDPR data protection check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "data_protection_check",
+      "description": "Mandatory data protection compliance gate ensuring address data accuracy following a change. Required to uphold customer rights including data deletion and portability under GDPR.",
+      "context": [
+        "GDPR Compliance | Ensure data accuracy | Customer rights (deletion, portability)",
+        "Address change triggers multiple regulatory and operational requirements"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order Update",
+      "aliases": [
+        "Standing order address update",
+        "Recipient address update"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_amendment",
+      "description": "Amendment of standing order instructions when a customer's address changes, as the recipient address may also change. Required to ensure correct payment routing and delivery.",
+      "context": [
+        "Standing Order Updates | Recipient address may change | Payment routing implications",
+        "Address change triggers multiple regulatory and operational requirements"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Mandate Update",
+      "aliases": [
+        "Direct debit address update",
+        "DD mandate amendment"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Amendment of direct debit mandate tied to the customer's address when an address change occurs. Required to maintain correct payment processing and mandate validity.",
+      "context": [
+        "Direct Debit Updates | Mandate tied to address | Payment processing",
+        "Address change triggers multiple regulatory and operational requirements"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Address Verification",
+      "aliases": [
+        "Proof of address validation",
+        "Address change verification"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "Verification process for the new address provided by the customer during an address change. Required to validate proof of address and maintain KYC compliance.",
+      "context": [
+        "KYC Re-verification | Proof of address validity",
+        "Address change triggers multiple regulatory and operational requirements"
+      ]
+    },
+    {
+      "id": "addr_002",
+      "name": "Statement Delivery Address",
+      "aliases": [
+        "Physical mail routing address",
+        "Statement mailing address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_recording",
+      "description": "The address used for physical mail routing of customer statements and communications. Address changes require updating to prevent communication interruption.",
+      "context": [
+        "Statement Delivery | Physical mail routing | Customer communication interruption",
+        "Address change triggers multiple regulatory and operational requirements"
+      ]
+    },
+    {
+      "id": "ja_001",
+      "name": "Joint Account Address Requirement",
+      "aliases": [
+        "Joint account holder address",
+        "Multiple account holder address"
+      ],
+      "entity_class": "JOINT_ACCOUNT",
+      "type": "joint_and_several",
+      "description": "Address management requirement for joint accounts where both account holders must be considered. Raises the question of which account holder's address takes precedence when an address change is requested.",
+      "context": [
+        "Joint Accounts | Both account holders | Whose address takes precedence?",
+        "Address change triggers multiple regulatory and operational requirements"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Multiple accounts",
+        "Customer accounts"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "new_account",
+      "description": "Customer accounts that require individual address updates when a customer initiates an address change. A customer may hold multiple accounts, each requiring separate updating.",
+      "context": [
+        "Multiple Accounts | Customer may have >1 account | Each account needs updating",
+        "Address change triggers multiple regulatory and operational requirements"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account holder",
+        "Individual customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The natural person initiating an address change, who may hold multiple accounts and be subject to various regulatory and operational requirements triggered by the address change.",
+      "context": [
+        "Address change triggers multiple regulatory and operational requirements",
+        "Customer may have >1 account"
+      ]
+    }
+  ],
+  "id_map": {
+    "kyc_001": "01a07400-ba86-72f1-8b22-d07b32649491_003_kyc_001",
+    "aml_001": "01a07400-ba86-72f1-8b22-d07b32649491_003_aml_001",
+    "cmp_001": "01a07400-ba86-72f1-8b22-d07b32649491_003_cmp_001",
+    "so_001": "01a07400-ba86-72f1-8b22-d07b32649491_003_so_001",
+    "dd_001": "01a07400-ba86-72f1-8b22-d07b32649491_003_dd_001",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_001",
+    "addr_002": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_002",
+    "ja_001": "01a07400-ba86-72f1-8b22-d07b32649491_003_ja_001",
+    "acc_001": "01a07400-ba86-72f1-8b22-d07b32649491_003_acc_001",
+    "cust_001": "01a07400-ba86-72f1-8b22-d07b32649491_003_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_kyc_001",
+      "name": "KYC Re-verification",
+      "aliases": [
+        "Know Your Customer Re-verification",
+        "Address-triggered KYC refresh"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "periodic_refresh",
+      "description": "Mandatory re-verification of customer identity and proof of address triggered by an address change. Required to validate the new address and maintain account compliance. Account functionality may be restricted if re-verification is not completed.",
+      "context": [
+        "KYC Re-verification | Proof of address validity | Account functionality may be restricted",
+        "Address change triggers multiple regulatory and operational requirements"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_aml_001",
+      "name": "AML Re-screening",
+      "aliases": [
+        "Sanctions re-check",
+        "Address-triggered AML screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Mandatory re-screening of the customer against sanctions lists when a new address is provided. Required because the new address may be located in a sanctions country, which would trigger transaction blocks if a match is detected.",
+      "context": [
+        "AML Re-screening | New address may be in sanctions country | Transaction blocks if sanctions match",
+        "Address change triggers multiple regulatory and operational requirements"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_cmp_001",
+      "name": "GDPR Compliance Check",
+      "aliases": [
+        "Data accuracy verification",
+        "GDPR data protection check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "data_protection_check",
+      "description": "Mandatory data protection compliance gate ensuring address data accuracy following a change. Required to uphold customer rights including data deletion and portability under GDPR.",
+      "context": [
+        "GDPR Compliance | Ensure data accuracy | Customer rights (deletion, portability)",
+        "Address change triggers multiple regulatory and operational requirements"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_so_001",
+      "name": "Standing Order Update",
+      "aliases": [
+        "Standing order address update",
+        "Recipient address update"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_amendment",
+      "description": "Amendment of standing order instructions when a customer's address changes, as the recipient address may also change. Required to ensure correct payment routing and delivery.",
+      "context": [
+        "Standing Order Updates | Recipient address may change | Payment routing implications",
+        "Address change triggers multiple regulatory and operational requirements"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_dd_001",
+      "name": "Direct Debit Mandate Update",
+      "aliases": [
+        "Direct debit address update",
+        "DD mandate amendment"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Amendment of direct debit mandate tied to the customer's address when an address change occurs. Required to maintain correct payment processing and mandate validity.",
+      "context": [
+        "Direct Debit Updates | Mandate tied to address | Payment processing",
+        "Address change triggers multiple regulatory and operational requirements"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_001",
+      "name": "Address Verification",
+      "aliases": [
+        "Proof of address validation",
+        "Address change verification"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "Verification process for the new address provided by the customer during an address change. Required to validate proof of address and maintain KYC compliance.",
+      "context": [
+        "KYC Re-verification | Proof of address validity",
+        "Address change triggers multiple regulatory and operational requirements"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_002",
+      "name": "Statement Delivery Address",
+      "aliases": [
+        "Physical mail routing address",
+        "Statement mailing address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_recording",
+      "description": "The address used for physical mail routing of customer statements and communications. Address changes require updating to prevent communication interruption.",
+      "context": [
+        "Statement Delivery | Physical mail routing | Customer communication interruption",
+        "Address change triggers multiple regulatory and operational requirements"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_ja_001",
+      "name": "Joint Account Address Requirement",
+      "aliases": [
+        "Joint account holder address",
+        "Multiple account holder address"
+      ],
+      "entity_class": "JOINT_ACCOUNT",
+      "type": "joint_and_several",
+      "description": "Address management requirement for joint accounts where both account holders must be considered. Raises the question of which account holder's address takes precedence when an address change is requested.",
+      "context": [
+        "Joint Accounts | Both account holders | Whose address takes precedence?",
+        "Address change triggers multiple regulatory and operational requirements"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Multiple accounts",
+        "Customer accounts"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "new_account",
+      "description": "Customer accounts that require individual address updates when a customer initiates an address change. A customer may hold multiple accounts, each requiring separate updating.",
+      "context": [
+        "Multiple Accounts | Customer may have >1 account | Each account needs updating",
+        "Address change triggers multiple regulatory and operational requirements"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account holder",
+        "Individual customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The natural person initiating an address change, who may hold multiple accounts and be subject to various regulatory and operational requirements triggered by the address change.",
+      "context": [
+        "Address change triggers multiple regulatory and operational requirements",
+        "Customer may have >1 account"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_kyc_001",
+      "name": "KYC Re-verification",
+      "properties": {
+        "mandatory": true,
+        "timing_or_refresh_frequency": "triggered by address change",
+        "verification_method": "proof of address validity",
+        "consequence_of_failure": "account functionality may be restricted"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_aml_001",
+      "name": "AML Re-screening",
+      "properties": {
+        "mandatory": true,
+        "screening_lists_or_scope": "sanctions country screening",
+        "hit_or_match_response": "transaction blocks if sanctions match",
+        "regulatory_basis": "sanctions compliance"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_cmp_001",
+      "name": "GDPR Compliance Check",
+      "properties": {
+        "regulatory_basis": "GDPR",
+        "mandatory": true,
+        "timing": "triggered by address change",
+        "failure_consequence": "customer rights (deletion, portability) may be compromised"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_so_001",
+      "name": "Standing Order Update",
+      "properties": {
+        "setup_or_amendment_process": "recipient address may change",
+        "failure_handling": "payment routing implications"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_dd_001",
+      "name": "Direct Debit Mandate Update",
+      "properties": {
+        "mandate_process": "mandate tied to address",
+        "failure_handling": "payment processing disruption"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_001",
+      "name": "Address Verification",
+      "properties": {
+        "collection_steps": "triggered by customer address change",
+        "verification_steps": "proof of address validity required",
+        "update_process": "address change triggers multiple regulatory and operational requirements"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_002",
+      "name": "Statement Delivery Address",
+      "properties": {
+        "collection_steps": "physical mail routing",
+        "recording_system": "statement delivery system",
+        "update_process": "address change affects customer communication routing"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_ja_001",
+      "name": "Joint Account Address Requirement",
+      "properties": {
+        "consent_requirements": "both account holders involved",
+        "dual_kyc_or_aml_requirement": true,
+        "closure_consent": "address precedence determination required for joint holders"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_acc_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_state": "active",
+        "update_process": "address change may affect multiple accounts per customer"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_003_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "account holder subject to address change requirements",
+        "eligibility_or_verification_status": "may have multiple accounts requiring individual updates"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_001",
+      "source_name": "Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_kyc_001",
+      "target_name": "KYC Re-verification",
+      "rel_type": "triggers",
+      "description": "Address change triggers KYC re-verification to validate proof of address",
+      "properties": {
+        "reason": "Proof of address validity",
+        "impact": "Account functionality may be restricted"
+      },
+      "context": "KYC Re-verification | Proof of address validity | Account functionality may be restricted",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_001",
+      "source_name": "Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_aml_001",
+      "target_name": "AML Re-screening",
+      "rel_type": "triggers",
+      "description": "Address change triggers AML re-screening to check if new address is in sanctions country",
+      "properties": {
+        "reason": "New address may be in sanctions country",
+        "impact": "Transaction blocks if sanctions match"
+      },
+      "context": "AML Re-screening | New address may be in sanctions country | Transaction blocks if sanctions match",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_001",
+      "source_name": "Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_cmp_001",
+      "target_name": "GDPR Compliance Check",
+      "rel_type": "triggers",
+      "description": "Address change triggers GDPR compliance check to ensure data accuracy",
+      "properties": {
+        "reason": "Ensure data accuracy",
+        "impact": "Customer rights (deletion, portability)"
+      },
+      "context": "GDPR Compliance | Ensure data accuracy | Customer rights (deletion, portability)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_001",
+      "source_name": "Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_so_001",
+      "target_name": "Standing Order Update",
+      "rel_type": "triggers",
+      "description": "Address change may trigger standing order updates as recipient address may change",
+      "properties": {
+        "reason": "Recipient address may change",
+        "impact": "Payment routing implications"
+      },
+      "context": "Standing Order Updates | Recipient address may change | Payment routing implications",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_001",
+      "source_name": "Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_dd_001",
+      "target_name": "Direct Debit Mandate Update",
+      "rel_type": "triggers",
+      "description": "Address change triggers direct debit mandate update as mandate is tied to address",
+      "properties": {
+        "reason": "Mandate tied to address",
+        "impact": "Payment processing"
+      },
+      "context": "Direct Debit Updates | Mandate tied to address | Payment processing",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_002",
+      "source_name": "Statement Delivery Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_cust_001",
+      "target_name": "Customer",
+      "rel_type": "registered_to",
+      "description": "Statement delivery address is registered to customer for physical mail routing",
+      "properties": {
+        "purpose": "Physical mail routing",
+        "impact": "Customer communication interruption"
+      },
+      "context": "Statement Delivery | Physical mail routing | Customer communication interruption",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_ja_001",
+      "source_name": "Joint Account Address Requirement",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_001",
+      "target_name": "Address Verification",
+      "rel_type": "requires_collection_of",
+      "description": "Joint account address requirement necessitates address verification for both account holders",
+      "properties": {
+        "complexity": "Both account holders",
+        "question": "Whose address takes precedence?"
+      },
+      "context": "Joint Accounts | Both account holders | Whose address takes precedence?",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_001",
+      "target_name": "Address Verification",
+      "rel_type": "requires",
+      "description": "Customer account requires address verification when address changes",
+      "properties": {
+        "scope": "Multiple accounts",
+        "requirement": "Each account needs updating"
+      },
+      "context": "Multiple Accounts | Customer may have >1 account | Each account needs updating",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "holds",
+      "description": "Customer holds account which requires address updates",
+      "properties": {
+        "scope": "Multiple accounts possible"
+      },
+      "context": "Multiple Accounts | Customer may have >1 account | Each account needs updating",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_001",
+      "target_name": "Address Verification",
+      "rel_type": "belongs_to",
+      "description": "Address verification is associated with customer identity",
+      "properties": {
+        "context": "KYC and regulatory requirements"
+      },
+      "context": "KYC Re-verification | Proof of address validity",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_kyc_001",
+      "source_name": "KYC Re-verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "gate_for_opening",
+      "description": "KYC re-verification gates account functionality after address change",
+      "properties": {
+        "impact": "Account functionality may be restricted"
+      },
+      "context": "KYC Re-verification | Proof of address validity | Account functionality may be restricted",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_aml_001",
+      "source_name": "AML Re-screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "ongoing_monitoring_of",
+      "description": "AML re-screening monitors account for sanctions compliance after address change",
+      "properties": {
+        "impact": "Transaction blocks if sanctions match"
+      },
+      "context": "AML Re-screening | New address may be in sanctions country | Transaction blocks if sanctions match",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_kyc_001",
+      "source_name": "KYC Re-verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_aml_001",
+      "source_name": "AML Re-screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_cmp_001",
+      "source_name": "GDPR Compliance Check",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_so_001",
+      "source_name": "Standing Order Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_dd_001",
+      "source_name": "Direct Debit Mandate Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_001",
+      "source_name": "Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_addr_002",
+      "source_name": "Statement Delivery Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_ja_001",
+      "source_name": "Joint Account Address Requirement",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_003_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_003",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

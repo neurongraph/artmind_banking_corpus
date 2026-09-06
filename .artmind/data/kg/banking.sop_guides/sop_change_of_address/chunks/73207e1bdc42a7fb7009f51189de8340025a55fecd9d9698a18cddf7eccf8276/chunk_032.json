@@ -1,0 +1,1074 @@
+{
+  "chunk_seq": 32,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "### Standing Order System Update  \n**If Customer Has Standing Orders:**  \n**Question:** Do standing orders have recipient addresses that need updating?  \n**Scenario A: Standing Order to Another FirstUK Bank Account**\n- No action needed\n- Standing order uses account numbers, not addresses\n- Continue processing normally  \n**Scenario B: Standing Order to External Bank (Recipient May Have Moved)**\n- Ask customer: \"Is recipient's address still correct?\"\n- If YES: No change needed\n- If NO: Customer must update recipient address (separate process)\n- Document in standing order: \"Recipient address updated by customer [date]\"  \n**Scenario C: Standing Order FROM This Customer to External Party**\n- No recipient address change needed\n- Sender's address change doesn't affect standing order\n- Continue processing  \n---",
+  "name": "Chunk 32/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_031",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Standing Order System Update",
+      "aliases": [
+        "Standing Order Address Update Process"
+      ],
+      "entity_class": "PROCESS",
+      "type": "standing_order_setup",
+      "description": "A process to determine whether standing orders require recipient address updates following a customer address change. The process branches into three scenarios based on standing order type: internal FirstUK transfers, external bank transfers with potential recipient address changes, or outbound transfers where sender address changes are irrelevant.",
+      "context": [
+        "If Customer Has Standing Orders:",
+        "Do standing orders have recipient addresses that need updating?",
+        "Standing order uses account numbers, not addresses"
+      ]
+    },
+    {
+      "id": "ps_001",
+      "name": "Standing Order Recipient Address Assessment",
+      "aliases": [
+        "Address Update Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The initial step where the system or staff member determines whether the customer has standing orders and whether those standing orders have recipient addresses that require updating.",
+      "context": [
+        "If Customer Has Standing Orders:",
+        "Do standing orders have recipient addresses that need updating?"
+      ]
+    },
+    {
+      "id": "ps_002",
+      "name": "Internal FirstUK Standing Order Verification",
+      "aliases": [
+        "Scenario A Processing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Verification step for standing orders to another FirstUK Bank account, confirming that no action is needed because standing orders use account numbers rather than addresses.",
+      "context": [
+        "Standing Order to Another FirstUK Bank Account",
+        "Standing order uses account numbers, not addresses",
+        "Continue processing normally"
+      ]
+    },
+    {
+      "id": "ps_003",
+      "name": "External Bank Recipient Address Confirmation",
+      "aliases": [
+        "Scenario B Processing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer inquiry step for standing orders to external banks where the recipient may have moved. The customer is asked to confirm whether the recipient's address is still correct.",
+      "context": [
+        "Standing Order to External Bank (Recipient May Have Moved)",
+        "Ask customer: \"Is recipient's address still correct?\""
+      ]
+    },
+    {
+      "id": "ps_004",
+      "name": "External Recipient Address Update",
+      "aliases": [
+        "Recipient Address Change"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step where the customer updates the recipient address for an external standing order if the recipient has moved. The update is documented in the standing order record with the date of change.",
+      "context": [
+        "Customer must update recipient address (separate process)",
+        "Document in standing order: \"Recipient address updated by customer [date]\""
+      ]
+    },
+    {
+      "id": "ps_005",
+      "name": "Outbound Standing Order Sender Address Verification",
+      "aliases": [
+        "Scenario C Processing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Verification step for standing orders from the customer to external parties, confirming that the customer's address change does not affect the standing order and processing can continue normally.",
+      "context": [
+        "Standing Order FROM This Customer to External Party",
+        "Sender's address change doesn't affect standing order",
+        "Continue processing"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Standing Order Type Classification",
+      "aliases": [
+        "Standing Order Scenario Branch"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate that classifies the standing order into one of three scenarios: internal FirstUK transfer (no action), external bank transfer with potential recipient address change (conditional action), or outbound transfer from customer (no action needed).",
+      "context": [
+        "Scenario A: Standing Order to Another FirstUK Bank Account",
+        "Scenario B: Standing Order to External Bank (Recipient May Have Moved)",
+        "Scenario C: Standing Order FROM This Customer to External Party"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Recipient Address Correctness Confirmation",
+      "aliases": [
+        "Address Verification Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Decision gate in Scenario B where the customer confirms whether the external recipient's address is still correct. YES path requires no change; NO path triggers customer-initiated address update.",
+      "context": [
+        "Ask customer: \"Is recipient's address still correct?\"",
+        "If YES: No change needed",
+        "If NO: Customer must update recipient address (separate process)"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Customer Service Representative",
+      "aliases": [
+        "Staff Member",
+        "System Operator"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The staff member or automated system responsible for assessing standing orders, asking the customer confirmation questions, and documenting address updates in the standing order record.",
+      "context": [
+        "Ask customer: \"Is recipient's address still correct?\"",
+        "Document in standing order: \"Recipient address updated by customer [date]\""
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer",
+      "description": "The customer who holds the standing order and is responsible for confirming recipient address accuracy and initiating any necessary address updates for external standing orders.",
+      "context": [
+        "If Customer Has Standing Orders:",
+        "Ask customer: \"Is recipient's address still correct?\"",
+        "Customer must update recipient address (separate process)"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Standing Order Instruction",
+        "Recurring Payment"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "A recurring payment instruction on a customer account that may require address verification or updates depending on whether it is directed to another FirstUK account, an external bank, or originates from the customer. The process determines whether recipient address changes are necessary.",
+      "context": [
+        "If Customer Has Standing Orders:",
+        "Do standing orders have recipient addresses that need updating?",
+        "Standing order uses account numbers, not addresses"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Recipient Address Verification",
+      "aliases": [
+        "External Recipient Address Check"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "Verification step for recipient addresses on standing orders to external banks, where the customer confirms whether the recipient's address remains current or requires updating.",
+      "context": [
+        "Standing Order to External Bank (Recipient May Have Moved)",
+        "Ask customer: \"Is recipient's address still correct?\"",
+        "Customer must update recipient address (separate process)"
+      ]
+    },
+    {
+      "id": "addr_002",
+      "name": "Sender Address Change",
+      "aliases": [
+        "Customer Address Update"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The customer's own address change, which is confirmed to have no impact on standing orders where the customer is the sender to external parties.",
+      "context": [
+        "Standing Order FROM This Customer to External Party",
+        "Sender's address change doesn't affect standing order"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_032_proc_001",
+    "ps_001": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_001",
+    "ps_002": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_002",
+    "ps_003": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_003",
+    "ps_004": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_004",
+    "ps_005": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_005",
+    "dp_001": "01a07400-ba86-72f1-8b22-d07b32649491_032_dp_001",
+    "dp_002": "01a07400-ba86-72f1-8b22-d07b32649491_032_dp_002",
+    "ra_001": "01a07400-ba86-72f1-8b22-d07b32649491_032_ra_001",
+    "ra_002": "01a07400-ba86-72f1-8b22-d07b32649491_032_ra_002",
+    "so_001": "01a07400-ba86-72f1-8b22-d07b32649491_032_so_001",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_032_addr_001",
+    "addr_002": "01a07400-ba86-72f1-8b22-d07b32649491_032_addr_002"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_proc_001",
+      "name": "Standing Order System Update",
+      "aliases": [
+        "Standing Order Address Update Process"
+      ],
+      "entity_class": "PROCESS",
+      "type": "standing_order_setup",
+      "description": "A process to determine whether standing orders require recipient address updates following a customer address change. The process branches into three scenarios based on standing order type: internal FirstUK transfers, external bank transfers with potential recipient address changes, or outbound transfers where sender address changes are irrelevant.",
+      "context": [
+        "If Customer Has Standing Orders:",
+        "Do standing orders have recipient addresses that need updating?",
+        "Standing order uses account numbers, not addresses"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_001",
+      "name": "Standing Order Recipient Address Assessment",
+      "aliases": [
+        "Address Update Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The initial step where the system or staff member determines whether the customer has standing orders and whether those standing orders have recipient addresses that require updating.",
+      "context": [
+        "If Customer Has Standing Orders:",
+        "Do standing orders have recipient addresses that need updating?"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_002",
+      "name": "Internal FirstUK Standing Order Verification",
+      "aliases": [
+        "Scenario A Processing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Verification step for standing orders to another FirstUK Bank account, confirming that no action is needed because standing orders use account numbers rather than addresses.",
+      "context": [
+        "Standing Order to Another FirstUK Bank Account",
+        "Standing order uses account numbers, not addresses",
+        "Continue processing normally"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_003",
+      "name": "External Bank Recipient Address Confirmation",
+      "aliases": [
+        "Scenario B Processing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer inquiry step for standing orders to external banks where the recipient may have moved. The customer is asked to confirm whether the recipient's address is still correct.",
+      "context": [
+        "Standing Order to External Bank (Recipient May Have Moved)",
+        "Ask customer: \"Is recipient's address still correct?\""
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_004",
+      "name": "External Recipient Address Update",
+      "aliases": [
+        "Recipient Address Change"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step where the customer updates the recipient address for an external standing order if the recipient has moved. The update is documented in the standing order record with the date of change.",
+      "context": [
+        "Customer must update recipient address (separate process)",
+        "Document in standing order: \"Recipient address updated by customer [date]\""
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_005",
+      "name": "Outbound Standing Order Sender Address Verification",
+      "aliases": [
+        "Scenario C Processing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Verification step for standing orders from the customer to external parties, confirming that the customer's address change does not affect the standing order and processing can continue normally.",
+      "context": [
+        "Standing Order FROM This Customer to External Party",
+        "Sender's address change doesn't affect standing order",
+        "Continue processing"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_dp_001",
+      "name": "Standing Order Type Classification",
+      "aliases": [
+        "Standing Order Scenario Branch"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate that classifies the standing order into one of three scenarios: internal FirstUK transfer (no action), external bank transfer with potential recipient address change (conditional action), or outbound transfer from customer (no action needed).",
+      "context": [
+        "Scenario A: Standing Order to Another FirstUK Bank Account",
+        "Scenario B: Standing Order to External Bank (Recipient May Have Moved)",
+        "Scenario C: Standing Order FROM This Customer to External Party"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_dp_002",
+      "name": "Recipient Address Correctness Confirmation",
+      "aliases": [
+        "Address Verification Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Decision gate in Scenario B where the customer confirms whether the external recipient's address is still correct. YES path requires no change; NO path triggers customer-initiated address update.",
+      "context": [
+        "Ask customer: \"Is recipient's address still correct?\"",
+        "If YES: No change needed",
+        "If NO: Customer must update recipient address (separate process)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ra_001",
+      "name": "Customer Service Representative",
+      "aliases": [
+        "Staff Member",
+        "System Operator"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The staff member or automated system responsible for assessing standing orders, asking the customer confirmation questions, and documenting address updates in the standing order record.",
+      "context": [
+        "Ask customer: \"Is recipient's address still correct?\"",
+        "Document in standing order: \"Recipient address updated by customer [date]\""
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ra_002",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer",
+      "description": "The customer who holds the standing order and is responsible for confirming recipient address accuracy and initiating any necessary address updates for external standing orders.",
+      "context": [
+        "If Customer Has Standing Orders:",
+        "Ask customer: \"Is recipient's address still correct?\"",
+        "Customer must update recipient address (separate process)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Standing Order Instruction",
+        "Recurring Payment"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "A recurring payment instruction on a customer account that may require address verification or updates depending on whether it is directed to another FirstUK account, an external bank, or originates from the customer. The process determines whether recipient address changes are necessary.",
+      "context": [
+        "If Customer Has Standing Orders:",
+        "Do standing orders have recipient addresses that need updating?",
+        "Standing order uses account numbers, not addresses"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_addr_001",
+      "name": "Recipient Address Verification",
+      "aliases": [
+        "External Recipient Address Check"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "Verification step for recipient addresses on standing orders to external banks, where the customer confirms whether the recipient's address remains current or requires updating.",
+      "context": [
+        "Standing Order to External Bank (Recipient May Have Moved)",
+        "Ask customer: \"Is recipient's address still correct?\"",
+        "Customer must update recipient address (separate process)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_addr_002",
+      "name": "Sender Address Change",
+      "aliases": [
+        "Customer Address Update"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The customer's own address change, which is confirmed to have no impact on standing orders where the customer is the sender to external parties.",
+      "context": [
+        "Standing Order FROM This Customer to External Party",
+        "Sender's address change doesn't affect standing order"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_proc_001",
+      "name": "Standing Order System Update",
+      "properties": {
+        "purpose": "Assess and manage standing order recipient address updates during customer account changes",
+        "scope": [
+          "standing orders to external banks",
+          "standing orders between FirstUK accounts",
+          "outbound standing orders"
+        ],
+        "channels": [
+          "branch",
+          "online"
+        ],
+        "owner": "Customer Service Representative",
+        "departments_involved": [
+          "Customer Service",
+          "Operations"
+        ],
+        "trigger": "Customer initiates account or address change process with existing standing orders",
+        "outcome_success": "Standing orders correctly classified, recipient addresses verified or updated as needed, no service interruption",
+        "outcome_failure": "Standing order disrupted, incorrect recipient address, payment failure"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_001",
+      "name": "Standing Order Recipient Address Assessment",
+      "properties": {
+        "step_number": 1,
+        "actor": "Customer Service Representative",
+        "input": "Customer account details, standing order records",
+        "output": "Classification of standing order type (internal FirstUK, external bank, or outbound)",
+        "channel": "branch",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Standing Order Management System"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_002",
+      "name": "Internal FirstUK Standing Order Verification",
+      "properties": {
+        "step_number": 2,
+        "actor": "Customer Service Representative",
+        "input": "Standing order details for FirstUK-to-FirstUK transfers",
+        "output": "Confirmation that no action is required",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Escalate if standing order details are unclear or account numbers cannot be verified"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_003",
+      "name": "External Bank Recipient Address Confirmation",
+      "properties": {
+        "step_number": 3,
+        "actor": "Customer Service Representative",
+        "input": "Standing order recipient address on file, customer confirmation",
+        "output": "Verified recipient address or identification of address change requirement",
+        "channel": "branch",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Standing Order Management System"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_004",
+      "name": "External Recipient Address Update",
+      "properties": {
+        "step_number": 4,
+        "actor": "Customer",
+        "input": "New recipient address details",
+        "output": "Updated standing order record with new recipient address and date of change",
+        "channel": "branch",
+        "mandatory": "conditional",
+        "failure_path": "Standing order continues with outdated address; customer responsible for payment failure consequences"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_005",
+      "name": "Outbound Standing Order Sender Address Verification",
+      "properties": {
+        "step_number": 5,
+        "actor": "Customer Service Representative",
+        "input": "Sender address change request, standing order records",
+        "output": "Confirmation that sender address change does not affect standing order processing",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_dp_001",
+      "name": "Standing Order Type Classification",
+      "properties": {
+        "decision_question": "What is the type of standing order: internal FirstUK transfer, external bank transfer, or outbound standing order?",
+        "criteria": [
+          "Recipient account location (FirstUK vs. external bank)",
+          "Direction of payment (inbound vs. outbound)"
+        ],
+        "decision_maker": "Customer Service Representative",
+        "path_yes": "Route to appropriate verification step (ps_002, ps_003, or ps_005)",
+        "path_no": "Escalate for manual review"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_dp_002",
+      "name": "Recipient Address Correctness Confirmation",
+      "properties": {
+        "decision_question": "Is the recipient's address still correct?",
+        "criteria": [
+          "Customer confirmation of current recipient address"
+        ],
+        "decision_maker": "Customer",
+        "path_yes": "No change needed; continue processing",
+        "path_no": "Customer must update recipient address via separate process (ps_004)",
+        "override_possible": "no"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ra_001",
+      "name": "Customer Service Representative",
+      "properties": {
+        "role_type": "human",
+        "department": "Customer Service",
+        "authority_level": "operational",
+        "channels": [
+          "branch",
+          "system"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ra_002",
+      "name": "Customer",
+      "properties": {
+        "role_type": "human",
+        "authority_level": "decision_maker",
+        "channels": [
+          "branch"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_so_001",
+      "name": "Standing Order",
+      "properties": {
+        "setup_or_amendment_process": "Customer initiates standing order; system classifies recipient type; address verification performed based on recipient bank location",
+        "beneficiary_validation": "Recipient address verified for external bank transfers; account number verified for internal FirstUK transfers",
+        "cancellation_process": "Customer may request cancellation; standing order continues until explicitly cancelled"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_addr_001",
+      "name": "Recipient Address Verification",
+      "properties": {
+        "collection_steps": [
+          "Customer Service Representative retrieves standing order recipient address from system",
+          "Customer confirms current address accuracy"
+        ],
+        "verification_steps": [
+          "Customer confirms address is still correct (dp_002)",
+          "If incorrect, customer initiates separate address update process"
+        ],
+        "acceptable_proof": "Customer verbal or written confirmation",
+        "recording_system": "Standing Order Management System",
+        "update_process": "Customer must initiate separate process to update recipient address; documented with date of change"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_032_addr_002",
+      "name": "Sender Address Change",
+      "properties": {
+        "collection_steps": [
+          "Customer initiates address change request"
+        ],
+        "verification_steps": [
+          "Verification that sender address change does not affect standing order processing"
+        ],
+        "recording_system": "Customer Account System",
+        "update_process": "Sender address change processed independently; standing orders continue unaffected"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_proc_001",
+      "source_name": "Standing Order System Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_001",
+      "target_name": "Standing Order Recipient Address Assessment",
+      "rel_type": "contains",
+      "description": "The Standing Order System Update process includes the Standing Order Recipient Address Assessment as its first step",
+      "properties": {
+        "sequence": 1,
+        "mandatory": true
+      },
+      "context": "If Customer Has Standing Orders: Question: Do standing orders have recipient addresses that need updating?",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_001",
+      "source_name": "Standing Order Recipient Address Assessment",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_dp_001",
+      "target_name": "Standing Order Type Classification",
+      "rel_type": "leads_to",
+      "description": "Standing Order Recipient Address Assessment leads to classification of standing order type",
+      "properties": {
+        "decision_required": true
+      },
+      "context": "Do standing orders have recipient addresses that need updating? Scenario A, B, C classification",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_dp_001",
+      "source_name": "Standing Order Type Classification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_002",
+      "target_name": "Internal FirstUK Standing Order Verification",
+      "rel_type": "routes_to_on_pass",
+      "description": "If standing order is to another FirstUK Bank Account (Scenario A), route to Internal FirstUK Standing Order Verification",
+      "properties": {
+        "scenario": "A",
+        "condition": "Standing order to another FirstUK Bank Account"
+      },
+      "context": "Scenario A: Standing Order to Another FirstUK Bank Account - No action needed - Standing order uses account numbers, not addresses - Continue processing normally",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_dp_001",
+      "source_name": "Standing Order Type Classification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_003",
+      "target_name": "External Bank Recipient Address Confirmation",
+      "rel_type": "routes_to_on_pass",
+      "description": "If standing order is to external bank (Scenario B), route to External Bank Recipient Address Confirmation",
+      "properties": {
+        "scenario": "B",
+        "condition": "Standing order to external bank with potential address change"
+      },
+      "context": "Scenario B: Standing Order to External Bank (Recipient May Have Moved) - Ask customer: Is recipient's address still correct?",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_dp_001",
+      "source_name": "Standing Order Type Classification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_005",
+      "target_name": "Outbound Standing Order Sender Address Verification",
+      "rel_type": "routes_to_on_pass",
+      "description": "If standing order is from this customer to external party (Scenario C), route to Outbound Standing Order Sender Address Verification",
+      "properties": {
+        "scenario": "C",
+        "condition": "Standing order from customer to external party"
+      },
+      "context": "Scenario C: Standing Order FROM This Customer to External Party - No recipient address change needed - Sender's address change doesn't affect standing order",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_003",
+      "source_name": "External Bank Recipient Address Confirmation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_dp_002",
+      "target_name": "Recipient Address Correctness Confirmation",
+      "rel_type": "leads_to",
+      "description": "External Bank Recipient Address Confirmation leads to decision on whether recipient address is correct",
+      "properties": {
+        "decision_required": true
+      },
+      "context": "Ask customer: Is recipient's address still correct? If YES: No change needed. If NO: Customer must update recipient address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_dp_002",
+      "source_name": "Recipient Address Correctness Confirmation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_004",
+      "target_name": "External Recipient Address Update",
+      "rel_type": "routes_to_on_fail",
+      "description": "If recipient address is not correct, route to External Recipient Address Update",
+      "properties": {
+        "condition": "Customer confirms address is incorrect",
+        "action": "Customer must update recipient address"
+      },
+      "context": "If NO: Customer must update recipient address (separate process) - Document in standing order: Recipient address updated by customer [date]",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_001",
+      "source_name": "Standing Order Recipient Address Assessment",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ra_002",
+      "target_name": "Customer",
+      "rel_type": "collects_data_from",
+      "description": "Standing Order Recipient Address Assessment collects information from the customer",
+      "properties": {
+        "data_type": "standing order details and address verification"
+      },
+      "context": "Ask customer: Is recipient's address still correct?",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_003",
+      "source_name": "External Bank Recipient Address Confirmation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ra_002",
+      "target_name": "Customer",
+      "rel_type": "verifies_identity_of",
+      "description": "External Bank Recipient Address Confirmation verifies customer's confirmation of recipient address",
+      "properties": {
+        "verification_type": "recipient address correctness confirmation"
+      },
+      "context": "Ask customer: Is recipient's address still correct?",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_004",
+      "source_name": "External Recipient Address Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_addr_001",
+      "target_name": "Recipient Address Verification",
+      "rel_type": "updates",
+      "description": "External Recipient Address Update step updates the recipient address verification",
+      "properties": {
+        "action": "update",
+        "documentation": "Document in standing order: Recipient address updated by customer [date]"
+      },
+      "context": "Customer must update recipient address (separate process) - Document in standing order: Recipient address updated by customer [date]",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_005",
+      "source_name": "Outbound Standing Order Sender Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_addr_002",
+      "target_name": "Sender Address Change",
+      "rel_type": "verifies",
+      "description": "Outbound Standing Order Sender Address Verification verifies that sender address change does not affect standing order",
+      "properties": {
+        "impact": "no impact on standing order"
+      },
+      "context": "Sender's address change doesn't affect standing order - Continue processing",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_proc_001",
+      "source_name": "Standing Order System Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "amends",
+      "description": "Standing Order System Update process amends standing orders as needed",
+      "properties": {
+        "amendment_type": "recipient address update"
+      },
+      "context": "Document in standing order: Recipient address updated by customer [date]",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_002",
+      "source_name": "Internal FirstUK Standing Order Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "validates",
+      "description": "Internal FirstUK Standing Order Verification validates standing order using account numbers",
+      "properties": {
+        "validation_method": "account number based",
+        "action": "continue processing normally"
+      },
+      "context": "Standing order uses account numbers, not addresses - Continue processing normally",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ra_001",
+      "source_name": "Customer Service Representative",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_001",
+      "target_name": "Standing Order Recipient Address Assessment",
+      "rel_type": "performed_by",
+      "description": "Standing Order Recipient Address Assessment is performed by Customer Service Representative",
+      "properties": {
+        "role": "Customer Service Representative"
+      },
+      "context": "Ask customer: Do standing orders have recipient addresses that need updating?",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_002",
+      "source_name": "Internal FirstUK Standing Order Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_003",
+      "target_name": "External Bank Recipient Address Confirmation",
+      "rel_type": "alternative_to",
+      "description": "Internal FirstUK Standing Order Verification is an alternative path to External Bank Recipient Address Confirmation based on standing order type",
+      "properties": {
+        "condition": "standing order type classification"
+      },
+      "context": "Scenario A vs Scenario B classification determines which path is taken",
+      "bidirectional": true,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_003",
+      "source_name": "External Bank Recipient Address Confirmation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_004",
+      "target_name": "External Recipient Address Update",
+      "rel_type": "triggered_by",
+      "description": "External Recipient Address Update is triggered by External Bank Recipient Address Confirmation when address is incorrect",
+      "properties": {
+        "trigger_condition": "customer confirms address is incorrect"
+      },
+      "context": "If NO: Customer must update recipient address (separate process)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_dp_002",
+      "source_name": "Recipient Address Correctness Confirmation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ra_002",
+      "target_name": "Customer",
+      "rel_type": "classifies",
+      "description": "Recipient Address Correctness Confirmation classifies customer response regarding address correctness",
+      "properties": {
+        "classification_options": [
+          "YES - address correct",
+          "NO - address incorrect"
+        ]
+      },
+      "context": "If YES: No change needed. If NO: Customer must update recipient address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_proc_001",
+      "source_name": "Standing Order System Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_001",
+      "source_name": "Standing Order Recipient Address Assessment",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_002",
+      "source_name": "Internal FirstUK Standing Order Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_003",
+      "source_name": "External Bank Recipient Address Confirmation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_004",
+      "source_name": "External Recipient Address Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ps_005",
+      "source_name": "Outbound Standing Order Sender Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_dp_001",
+      "source_name": "Standing Order Type Classification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_dp_002",
+      "source_name": "Recipient Address Correctness Confirmation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ra_001",
+      "source_name": "Customer Service Representative",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_ra_002",
+      "source_name": "Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_addr_001",
+      "source_name": "Recipient Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_032_addr_002",
+      "source_name": "Sender Address Change",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_032",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

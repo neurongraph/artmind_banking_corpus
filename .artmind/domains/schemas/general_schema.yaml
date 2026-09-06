@@ -1,0 +1,437 @@
+name: general
+description: Catch-all domain for documents that do not fit a more specific domain. Suitable for reports,
+  memos, articles, presentations, and miscellaneous content covering any subject. Uses broad entity classes
+  that can capture the essential knowledge structure of virtually any document type.
+subject: documents of any type
+guidance:
+  entities: 'CHOOSE THE MOST SPECIFIC CLASS: if content could fit multiple classes, pick the one that
+    best captures its role in THIS document. E.g., "GDP growth rate" is a METRIC, not a CONCEPT. "Inflation"
+    is a CONCEPT, not a METRIC. Prefer PERSON/ORGANIZATION/LOCATION over the generic THING class where
+    applicable.'
+  relationships: |-
+    CLAIM STRUCTURE IS CORE: for general documents, the most important graph structure is often THING makes CLAIM, CLAIM is supported_by METRIC, CLAIM is sourced_from SOURCE. Always look for this chain.
+    CLAIM→METRIC and CLAIM→SOURCE chains captured.
+    THING→CLAIM authorship captured where present.
+entity_types:
+  THING:
+    kind: recurrent
+    description: Any named real-world object, person, organisation, product, place, or system that plays
+      a concrete role in the document. Use this for the "who" and "what" of the document.
+    type_examples:
+    - person
+    - organisation
+    - product
+    - place
+    - system
+    - service
+    - institution
+    - brand
+    - asset
+    - resource
+    - group
+    - document
+    properties:
+      entity_subtype:
+        hint: person | organisation | product | place | system | etc.
+      role_in_document:
+        hint: what function this entity serves in the document's narrative
+      attributes:
+        hint: any factual characteristics stated — size, age, status, location, etc.
+      significance:
+        hint: why this entity matters in this document's context
+      relationships_stated:
+        hint: brief note on key connections if complex
+    relates_to:
+      THING:
+      - associated_with
+      - part_of
+      - owns
+      - operates
+      - competes_with
+      - partners_with
+      - founded_by
+      - leads
+      - located_in
+      - employs
+      - produces
+      - acquires
+      - funds
+      - regulates
+      CONCEPT:
+      - exemplifies
+      - represents
+      - applies
+      - discusses
+      - challenges
+      - advances
+      - is_subject_of
+      - related_to
+      - specialises_in
+      EVENT:
+      - participates_in
+      - caused
+      - was_affected_by
+      - announced
+      - organised
+      - attended
+      - triggered
+      - responded_to
+      CLAIM:
+      - makes
+      - refutes
+      - supports
+      - is_subject_of
+      - is_author_of
+      METRIC:
+      - measured_by
+      - achieves
+      - reported
+      - is_characterised_by
+      SOURCE:
+      - cites
+      - referenced_in
+      - authored_by
+      - published_by
+      - regulated_by
+  CONCEPT:
+    kind: recurrent
+    description: Abstract ideas, topics, theories, principles, themes, or categories of knowledge discussed
+      in the document. Use this for the intellectual content and subject matter.
+    type_examples:
+    - theory
+    - principle
+    - topic
+    - theme
+    - category
+    - framework
+    - problem
+    - domain
+    - phenomenon
+    - strategy
+    - policy
+    - trend
+    properties:
+      definition:
+        hint: how THIS document defines or uses it — not a textbook definition
+      importance:
+        hint: why the document emphasises it
+      how_presented:
+        hint: introduced | critiqued | applied | compared | defined
+      related_topics:
+        hint: list
+      domain:
+        hint: the field or area it belongs to
+    relates_to:
+      CONCEPT:
+      - related_to
+      - underpins
+      - contrasts_with
+      - extends
+      - generalises
+      - specialises
+      - enables
+      - challenges
+      - complements
+      - leads_to
+      CLAIM:
+      - central_to
+      - supports
+      - is_about
+      - challenged_by
+      - instantiates
+      EVENT:
+      - exemplified_by
+      - relevant_to
+      - triggered_by
+      - changed_by
+      METRIC:
+      - quantified_by
+      - measured_through
+  EVENT:
+    kind: occurrent
+    description: Any named or described occurrence, happening, development, or episode referenced in the
+      document — past, present, or planned.
+    type_examples:
+    - announcement
+    - publication
+    - launch
+    - incident
+    - transaction
+    - meeting
+    - decision
+    - discovery
+    - change
+    - milestone
+    - crisis
+    - policy_change
+    properties:
+      date_or_period:
+        hint: if mentioned
+      participants:
+        hint: who was involved
+      outcome:
+        hint: what resulted
+      significance:
+        hint: why this event is mentioned
+      status:
+        hint: past | ongoing | planned | hypothetical
+    relates_to:
+      EVENT:
+      - preceded_by
+      - caused
+      - led_to
+      - concurrent_with
+      - part_of
+      - contradicts
+  CLAIM:
+    kind: occurrent
+    description: An assertion, argument, conclusion, recommendation, or stated opinion made in the document.
+      Claims are what the document is trying to say or establish.
+    type_examples:
+    - finding
+    - recommendation
+    - argument
+    - prediction
+    - conclusion
+    - warning
+    - opinion
+    - hypothesis
+    - assertion
+    - commitment
+    properties:
+      assertion:
+        hint: the claim in plain language
+      claim_type:
+        hint: finding | recommendation | prediction | warning | opinion | etc.
+      certainty:
+        hint: established | probable | speculative | contested
+      supporting_evidence:
+        hint: what evidence backs it up, if stated
+      who_makes_it:
+        hint: the author, the document, a cited source
+      implications:
+        hint: what follows if the claim is true
+    relates_to:
+      CLAIM:
+      - supports
+      - contradicts
+      - qualifies
+      - strengthens
+      - weakens
+      - implies
+      METRIC:
+      - supported_by
+      - quantified_by
+      - evidence_for
+      - inconsistent_with
+      SOURCE:
+      - sourced_from
+      - cited_in
+      - derived_from
+      - challenged_by
+      EVENT:
+      - triggered_by
+      - about
+      - motivated_by
+      - illustrated_by
+  METRIC:
+    kind: recurrent
+    description: A quantitative measurement, statistic, figure, or data point presented in the document.
+    type_examples:
+    - financial
+    - performance
+    - demographic
+    - scientific
+    - operational
+    - percentage
+    - growth_rate
+    - count
+    - ranking
+    - ratio
+    - benchmark
+    properties:
+      value:
+        hint: the number or measurement
+      unit:
+        hint: dollars, percent, count, etc.
+      what_it_measures: {}
+      time_period:
+        hint: when it was measured
+      source:
+        hint: where the number comes from
+      context:
+        hint: what makes this number significant
+      direction:
+        hint: positive | negative | neutral from document's perspective
+    relates_to:
+      METRIC:
+      - compared_to
+      - derived_from
+      - component_of
+      - trend_relative_to
+      SOURCE:
+      - sourced_from
+      - published_in
+      - measured_by
+    guidance: Quantitative data points captured as METRIC entities.
+  SOURCE:
+    kind: recurrent
+    description: A named reference, citation, data provider, publication, or authority that the document
+      draws on or points to.
+    type_examples:
+    - publication
+    - dataset
+    - report
+    - regulation
+    - standard
+    - organisation
+    - expert
+    - survey
+    - database
+    - authority
+    properties:
+      source_type:
+        hint: publication | dataset | regulation | organisation | expert | etc.
+      relevance:
+        hint: how it is used in the document
+      how_cited:
+        hint: directly quoted | paraphrased | mentioned
+      credibility_or_authority:
+        hint: if indicated
+      date_or_recency:
+        hint: if mentioned
+  PERSON:
+    kind: recurrent
+    description: Any named individual referenced in the document — authors, subjects, experts, decision-makers,
+      or people mentioned by name. Use when the entity is clearly an individual person rather than an
+      organisation.
+    type_examples:
+    - author
+    - subject
+    - expert
+    - decision_maker
+    - official
+    - researcher
+    - spokesperson
+    - executive
+    properties:
+      role_in_document:
+        hint: author | subject | expert | official | etc.
+      affiliation:
+        hint: organisation they belong to
+      significance:
+        hint: why they are mentioned
+      expertise:
+        hint: domain or field, if stated
+    relates_to:
+      ORGANIZATION:
+      - works_at
+      - founded
+      - leads
+      - cited_by
+      - affiliated_with
+      - represents
+      - regulates
+      EVENT:
+      - participated_in
+      - caused
+      - attended
+      - announced
+      - responded_to
+      CLAIM:
+      - makes
+      - challenges
+      - supports
+      - authored
+      METRIC:
+      - cited
+      - reported
+      - achieved
+      LOCATION:
+      - located_in
+      - visited
+      - operates_in
+      - cited_from
+  OBJECT:
+    kind: recurrent
+    description: Any physical item, product, system, or tangible entity referenced in the document. Use
+      when the entity is clearly a physical object rather than an organisation or abstract concept.
+    type_examples:
+    - product
+    - system
+    - device
+    - tool
+    - artifact
+    - infrastructure
+    - document_item
+    properties:
+      object_type:
+        hint: product | system | device | etc.
+      description:
+        hint: brief physical or functional description
+      significance_in_document:
+        hint: why it is mentioned
+      owner_or_operator:
+        hint: if stated
+    relates_to:
+      LOCATION:
+      - located_at
+      - deployed_in
+      - manufactured_in
+      METRIC:
+      - measured_by
+      - characterised_by
+  ORGANIZATION:
+    kind: recurrent
+    description: Any company, institution, government body, NGO, or formal group referenced in the document.
+      Use instead of THING when the entity is clearly an organisation.
+    type_examples:
+    - company
+    - government
+    - institution
+    - ngo
+    - standards_body
+    - association
+    - regulator
+    - partnership
+    properties:
+      org_type:
+        hint: company | government | institution | etc.
+      role_in_document:
+        hint: subject | author | referenced | regulator
+      size_or_scale:
+        hint: if mentioned
+      geographic_scope:
+        hint: if mentioned
+    relates_to:
+      LOCATION:
+      - located_in
+      - operates_in
+      - regulates
+      - serves
+      OBJECT:
+      - owns
+      - produces
+      - operates
+      - distributes
+  LOCATION:
+    kind: recurrent
+    description: Any geographic area, place, site, or address referenced in the document.
+    type_examples:
+    - country
+    - city
+    - region
+    - site
+    - office
+    - facility
+    - address
+    - market
+    properties:
+      location_type:
+        hint: country | city | region | site | etc.
+      role_in_document:
+        hint: subject | setting | referenced
+      geographic_context:
+        hint: continent or country it belongs to, if stated
+      significance:
+        hint: why it is mentioned

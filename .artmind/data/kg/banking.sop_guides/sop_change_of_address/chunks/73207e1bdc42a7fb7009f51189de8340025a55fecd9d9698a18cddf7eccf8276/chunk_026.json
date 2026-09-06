@@ -1,0 +1,1453 @@
+{
+  "chunk_seq": 26,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "### Address Change History  \n**Document in System:**  \n```\nAddress Change Log:\nTimestamp: 2026-01-15 14:30 UTC\nOld Address: 123 Oak Lane, Manchester, M1 1AA, UK\nNew Address: 456 Elm Street, New York, NY 10001, USA\nChange Type: Permanent relocation\nInitiated By: Customer (online)\nVerified By: John Smith (CSR)\nProof of Address: Utility bill (dated Jan 10, 2026)\nKYC Status: Verified\nAML Status: Cleared (US address, low-risk)\nChange Request ID: ADDR-REQ-00001\nStatus: Approved\n```  \n**Keep 6-Year Audit Trail** (per [[policy_retention]])  \n---",
+  "name": "Chunk 26/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_025",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Address Change Process",
+      "aliases": [
+        "Address Update Procedure",
+        "Change of Address"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "End-to-end procedure for processing customer address changes, including verification by customer service staff, proof of address validation, and compliance clearance. The process captures the change request, maintains audit trail for 6 years, and updates KYC and AML status.",
+      "context": [
+        "Address Change Log",
+        "Change Type: Permanent relocation",
+        "Keep 6-Year Audit Trail (per [[policy_retention]])"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Address Change Initiation",
+      "aliases": [
+        "Change Request Submission"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer initiates address change request through online channel, providing old and new address details and change type classification.",
+      "context": [
+        "Initiated By: Customer (online)",
+        "Old Address: 123 Oak Lane, Manchester, M1 1AA, UK",
+        "New Address: 456 Elm Street, New York, NY 10001, USA"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Address Change Verification",
+      "aliases": [
+        "CSR Verification",
+        "Address Proof Review"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Customer service representative verifies the address change request by reviewing proof of address documentation and validating the new address details.",
+      "context": [
+        "Verified By: John Smith (CSR)",
+        "Proof of Address: Utility bill (dated Jan 10, 2026)"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "KYC Status Update",
+      "aliases": [
+        "KYC Verification Update"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "KYC verification status is confirmed and updated following successful address change verification.",
+      "context": [
+        "KYC Status: Verified"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "AML Screening for Address Change",
+      "aliases": [
+        "AML Clearance",
+        "Risk Assessment for New Address"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "AML screening is performed on the new address to assess jurisdictional and risk factors, with clearance status recorded.",
+      "context": [
+        "AML Status: Cleared (US address, low-risk)"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Address Change Approval",
+      "aliases": [
+        "Change Request Approval"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Final approval decision is made on the address change request following successful verification and compliance clearance.",
+      "context": [
+        "Status: Approved"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Customer Service Representative",
+      "aliases": [
+        "CSR",
+        "Verification Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer_service",
+      "description": "Customer service staff member responsible for verifying address change requests and reviewing proof of address documentation. In this instance, John Smith performed the verification.",
+      "context": [
+        "Verified By: John Smith (CSR)"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder",
+        "Applicant"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer",
+      "description": "Individual customer who initiates the address change request through the online channel.",
+      "context": [
+        "Initiated By: Customer (online)"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Address Verification Compliance Checkpoint",
+      "aliases": [
+        "Address Proof Validation Gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "data_protection_check",
+      "description": "Mandatory verification gate ensuring proof of address documentation is valid and current before address change is approved. Requires utility bill or equivalent proof dated within acceptable timeframe.",
+      "context": [
+        "Proof of Address: Utility bill (dated Jan 10, 2026)",
+        "KYC Status: Verified"
+      ]
+    },
+    {
+      "id": "cc_002",
+      "name": "AML Screening Compliance Checkpoint",
+      "aliases": [
+        "AML Clearance Gate",
+        "Jurisdictional Risk Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory AML compliance gate that screens the new address jurisdiction and risk profile before approving the address change. Jurisdictional factors and sanctions exposure are evaluated.",
+      "context": [
+        "AML Status: Cleared (US address, low-risk)"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Old Address",
+      "aliases": [
+        "Previous Address",
+        "Manchester Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "Customer's previous residential address in Manchester, United Kingdom, prior to permanent relocation.",
+      "context": [
+        "Old Address: 123 Oak Lane, Manchester, M1 1AA, UK"
+      ]
+    },
+    {
+      "id": "addr_002",
+      "name": "New Address",
+      "aliases": [
+        "Updated Address",
+        "New York Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "Customer's new residential address in New York, United States, following permanent relocation.",
+      "context": [
+        "New Address: 456 Elm Street, New York, NY 10001, USA"
+      ]
+    },
+    {
+      "id": "id_doc_001",
+      "name": "Proof of Address",
+      "aliases": [
+        "Address Verification Document",
+        "Utility Bill"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "proof_of_address",
+      "description": "Utility bill document dated January 10, 2026, used to verify the customer's new address during the address change process.",
+      "context": [
+        "Proof of Address: Utility bill (dated Jan 10, 2026)"
+      ]
+    },
+    {
+      "id": "kyc_001",
+      "name": "KYC Verification for Address Change",
+      "aliases": [
+        "Identity Verification Update"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "address_verification",
+      "description": "KYC verification process component confirming the customer's identity and address details are current and compliant following the address change.",
+      "context": [
+        "KYC Status: Verified"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "AML Screening for New Address Jurisdiction",
+      "aliases": [
+        "Sanctions Screening",
+        "Jurisdictional Risk Assessment"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "AML screening process evaluating the new US address for sanctions exposure and jurisdictional risk factors, resulting in low-risk clearance.",
+      "context": [
+        "AML Status: Cleared (US address, low-risk)"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Address Change Approval Gate",
+      "aliases": [
+        "Change Request Approval Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Binary approval decision point determining whether the address change request is approved or rejected based on verification and compliance clearance outcomes.",
+      "context": [
+        "Status: Approved"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_026_proc_001",
+    "pstep_001": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_001",
+    "pstep_002": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_002",
+    "pstep_003": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_003",
+    "pstep_004": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_004",
+    "pstep_005": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_005",
+    "ra_001": "01a07400-ba86-72f1-8b22-d07b32649491_026_ra_001",
+    "ra_002": "01a07400-ba86-72f1-8b22-d07b32649491_026_ra_002",
+    "cc_001": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_001",
+    "cc_002": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_002",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_026_addr_001",
+    "addr_002": "01a07400-ba86-72f1-8b22-d07b32649491_026_addr_002",
+    "id_doc_001": "01a07400-ba86-72f1-8b22-d07b32649491_026_id_doc_001",
+    "kyc_001": "01a07400-ba86-72f1-8b22-d07b32649491_026_kyc_001",
+    "aml_001": "01a07400-ba86-72f1-8b22-d07b32649491_026_aml_001",
+    "dp_001": "01a07400-ba86-72f1-8b22-d07b32649491_026_dp_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_proc_001",
+      "name": "Address Change Process",
+      "aliases": [
+        "Address Update Procedure",
+        "Change of Address"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "End-to-end procedure for processing customer address changes, including verification by customer service staff, proof of address validation, and compliance clearance. The process captures the change request, maintains audit trail for 6 years, and updates KYC and AML status.",
+      "context": [
+        "Address Change Log",
+        "Change Type: Permanent relocation",
+        "Keep 6-Year Audit Trail (per [[policy_retention]])"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_001",
+      "name": "Address Change Initiation",
+      "aliases": [
+        "Change Request Submission"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer initiates address change request through online channel, providing old and new address details and change type classification.",
+      "context": [
+        "Initiated By: Customer (online)",
+        "Old Address: 123 Oak Lane, Manchester, M1 1AA, UK",
+        "New Address: 456 Elm Street, New York, NY 10001, USA"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_002",
+      "name": "Address Change Verification",
+      "aliases": [
+        "CSR Verification",
+        "Address Proof Review"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Customer service representative verifies the address change request by reviewing proof of address documentation and validating the new address details.",
+      "context": [
+        "Verified By: John Smith (CSR)",
+        "Proof of Address: Utility bill (dated Jan 10, 2026)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_003",
+      "name": "KYC Status Update",
+      "aliases": [
+        "KYC Verification Update"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "KYC verification status is confirmed and updated following successful address change verification.",
+      "context": [
+        "KYC Status: Verified"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_004",
+      "name": "AML Screening for Address Change",
+      "aliases": [
+        "AML Clearance",
+        "Risk Assessment for New Address"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "AML screening is performed on the new address to assess jurisdictional and risk factors, with clearance status recorded.",
+      "context": [
+        "AML Status: Cleared (US address, low-risk)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_005",
+      "name": "Address Change Approval",
+      "aliases": [
+        "Change Request Approval"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Final approval decision is made on the address change request following successful verification and compliance clearance.",
+      "context": [
+        "Status: Approved"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_ra_001",
+      "name": "Customer Service Representative",
+      "aliases": [
+        "CSR",
+        "Verification Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer_service",
+      "description": "Customer service staff member responsible for verifying address change requests and reviewing proof of address documentation. In this instance, John Smith performed the verification.",
+      "context": [
+        "Verified By: John Smith (CSR)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_ra_002",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder",
+        "Applicant"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer",
+      "description": "Individual customer who initiates the address change request through the online channel.",
+      "context": [
+        "Initiated By: Customer (online)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_001",
+      "name": "Address Verification Compliance Checkpoint",
+      "aliases": [
+        "Address Proof Validation Gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "data_protection_check",
+      "description": "Mandatory verification gate ensuring proof of address documentation is valid and current before address change is approved. Requires utility bill or equivalent proof dated within acceptable timeframe.",
+      "context": [
+        "Proof of Address: Utility bill (dated Jan 10, 2026)",
+        "KYC Status: Verified"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_002",
+      "name": "AML Screening Compliance Checkpoint",
+      "aliases": [
+        "AML Clearance Gate",
+        "Jurisdictional Risk Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory AML compliance gate that screens the new address jurisdiction and risk profile before approving the address change. Jurisdictional factors and sanctions exposure are evaluated.",
+      "context": [
+        "AML Status: Cleared (US address, low-risk)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_addr_001",
+      "name": "Old Address",
+      "aliases": [
+        "Previous Address",
+        "Manchester Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "Customer's previous residential address in Manchester, United Kingdom, prior to permanent relocation.",
+      "context": [
+        "Old Address: 123 Oak Lane, Manchester, M1 1AA, UK"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_addr_002",
+      "name": "New Address",
+      "aliases": [
+        "Updated Address",
+        "New York Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "Customer's new residential address in New York, United States, following permanent relocation.",
+      "context": [
+        "New Address: 456 Elm Street, New York, NY 10001, USA"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_id_doc_001",
+      "name": "Proof of Address",
+      "aliases": [
+        "Address Verification Document",
+        "Utility Bill"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "proof_of_address",
+      "description": "Utility bill document dated January 10, 2026, used to verify the customer's new address during the address change process.",
+      "context": [
+        "Proof of Address: Utility bill (dated Jan 10, 2026)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_kyc_001",
+      "name": "KYC Verification for Address Change",
+      "aliases": [
+        "Identity Verification Update"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "address_verification",
+      "description": "KYC verification process component confirming the customer's identity and address details are current and compliant following the address change.",
+      "context": [
+        "KYC Status: Verified"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_aml_001",
+      "name": "AML Screening for New Address Jurisdiction",
+      "aliases": [
+        "Sanctions Screening",
+        "Jurisdictional Risk Assessment"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "AML screening process evaluating the new US address for sanctions exposure and jurisdictional risk factors, resulting in low-risk clearance.",
+      "context": [
+        "AML Status: Cleared (US address, low-risk)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_dp_001",
+      "name": "Address Change Approval Gate",
+      "aliases": [
+        "Change Request Approval Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Binary approval decision point determining whether the address change request is approved or rejected based on verification and compliance clearance outcomes.",
+      "context": [
+        "Status: Approved"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_proc_001",
+      "name": "Address Change Process",
+      "properties": {
+        "purpose": "Process customer requests to change registered address",
+        "scope": "All customers initiating permanent address changes",
+        "channels": [
+          "online",
+          "branch"
+        ],
+        "trigger": "Customer submits address change request",
+        "outcome_success": "New address verified, KYC and AML cleared, address updated in system",
+        "outcome_failure": "Address change rejected or escalated for manual review",
+        "regulatory_references": [
+          "KYC verification requirements",
+          "AML screening obligations"
+        ],
+        "document_id": "ADDR-REQ-00001",
+        "retention_requirement": "6-year audit trail"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_001",
+      "name": "Address Change Initiation",
+      "properties": {
+        "step_number": 1,
+        "actor": "Customer",
+        "channel": "online",
+        "input": "Customer-provided new address and change type",
+        "output": "Address change request created with request ID",
+        "mandatory": "yes",
+        "trigger": "Customer submits address change via online channel"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_002",
+      "name": "Address Change Verification",
+      "properties": {
+        "step_number": 2,
+        "actor": "Customer Service Representative",
+        "channel": "system",
+        "input": "Proof of address document (utility bill)",
+        "output": "Address verified and recorded in system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Document verification system"
+        ],
+        "estimated_duration": "Same day"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_003",
+      "name": "KYC Status Update",
+      "properties": {
+        "step_number": 3,
+        "actor": "System",
+        "channel": "system",
+        "input": "New address details",
+        "output": "KYC status verified and updated",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "KYC verification system"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_004",
+      "name": "AML Screening for Address Change",
+      "properties": {
+        "step_number": 4,
+        "actor": "System",
+        "channel": "system",
+        "input": "New address jurisdiction (USA)",
+        "output": "AML screening result (cleared or flagged)",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "AML screening system"
+        ],
+        "failure_path": "Escalate to compliance team for manual review"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_005",
+      "name": "Address Change Approval",
+      "properties": {
+        "step_number": 5,
+        "actor": "System",
+        "channel": "system",
+        "input": "Verification and screening results",
+        "output": "Address change approved and applied to account",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_ra_001",
+      "name": "Customer Service Representative",
+      "properties": {
+        "role_type": "human",
+        "department": "Customer Service",
+        "authority_level": "Verification and document review",
+        "channels": [
+          "system",
+          "branch"
+        ],
+        "context": "Verifies proof of address documents"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_ra_002",
+      "name": "Customer",
+      "properties": {
+        "role_type": "human",
+        "authority_level": "Initiates address change request",
+        "channels": [
+          "online"
+        ],
+        "context": "Submits address change and provides proof of address"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_001",
+      "name": "Address Verification Compliance Checkpoint",
+      "properties": {
+        "regulatory_basis": "KYC verification requirements",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "Utility bill or equivalent proof of address"
+        ],
+        "performed_by": "Customer Service Representative",
+        "timing": "Step 2 of address change process",
+        "failure_consequence": "Address change cannot proceed"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_002",
+      "name": "AML Screening Compliance Checkpoint",
+      "properties": {
+        "regulatory_basis": "AML screening obligations",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "New address jurisdiction details"
+        ],
+        "performed_by": "System",
+        "timing": "Step 4 of address change process",
+        "failure_consequence": "Escalate to compliance team for manual review"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_addr_001",
+      "name": "Old Address",
+      "properties": {
+        "address_value": "123 Oak Lane, Manchester, M1 1AA, UK",
+        "collection_steps": "Retrieved from existing customer record",
+        "recording_system": "Customer account system"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_addr_002",
+      "name": "New Address",
+      "properties": {
+        "address_value": "456 Elm Street, New York, NY 10001, USA",
+        "collection_steps": "Customer-provided via online channel",
+        "verification_steps": "Verified against utility bill dated Jan 10, 2026",
+        "acceptable_proof": [
+          "Utility bill"
+        ],
+        "recording_system": "Customer account system",
+        "jurisdiction": "USA"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_id_doc_001",
+      "name": "Proof of Address",
+      "properties": {
+        "accepted_types": [
+          "Utility bill"
+        ],
+        "collection_steps": "Customer provides utility bill as proof of new address",
+        "verification_steps": "CSR verifies document authenticity and date",
+        "expiry_check": "yes",
+        "recording_obligation": "Document reference recorded in audit trail",
+        "document_date": "2026-01-10"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_kyc_001",
+      "name": "KYC Verification for Address Change",
+      "properties": {
+        "mandatory": "yes",
+        "timing_or_refresh_frequency": "Upon address change",
+        "verification_method": "System-based verification against new address",
+        "consequence_of_failure": "Address change cannot be approved",
+        "status": "Verified"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_aml_001",
+      "name": "AML Screening for New Address Jurisdiction",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": "USA jurisdiction screening",
+        "hit_or_match_response": "Cleared (low-risk)",
+        "regulatory_basis": "AML screening obligations",
+        "status": "Cleared"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_026_dp_001",
+      "name": "Address Change Approval Gate",
+      "properties": {
+        "decision_question": "Are all verification and screening checks passed?",
+        "criteria": [
+          "Address verified against proof document",
+          "KYC status verified",
+          "AML screening cleared"
+        ],
+        "decision_maker": "System",
+        "path_yes": "Approve address change and update customer record",
+        "path_no": "Escalate to compliance team for manual review",
+        "override_possible": "yes"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_001",
+      "target_name": "Address Change Initiation",
+      "rel_type": "starts_with",
+      "description": "The Address Change Process begins with the Address Change Initiation step where the customer initiates the address change request online.",
+      "properties": {
+        "sequence_position": 1,
+        "initiation_method": "online"
+      },
+      "context": "Initiated By: Customer (online)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_001",
+      "source_name": "Address Change Initiation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_002",
+      "target_name": "Address Change Verification",
+      "rel_type": "followed_by",
+      "description": "Address Change Initiation is followed by Address Change Verification where the CSR verifies the address change request.",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Verified By: John Smith (CSR)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_002",
+      "source_name": "Address Change Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_003",
+      "target_name": "KYC Status Update",
+      "rel_type": "followed_by",
+      "description": "Address Change Verification is followed by KYC Status Update to ensure KYC compliance for the address change.",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "KYC Status: Verified",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_003",
+      "source_name": "KYC Status Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_004",
+      "target_name": "AML Screening for Address Change",
+      "rel_type": "followed_by",
+      "description": "KYC Status Update is followed by AML Screening for Address Change to screen the new address jurisdiction.",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "AML Status: Cleared (US address, low-risk)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_004",
+      "source_name": "AML Screening for Address Change",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_005",
+      "target_name": "Address Change Approval",
+      "rel_type": "followed_by",
+      "description": "AML Screening for Address Change is followed by Address Change Approval upon successful screening.",
+      "properties": {
+        "sequence_position": 5
+      },
+      "context": "Status: Approved",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_002",
+      "target_name": "Address Change Verification",
+      "rel_type": "includes",
+      "description": "The Address Change Process includes the Address Change Verification step as a mandatory component.",
+      "properties": {},
+      "context": "Verified By: John Smith (CSR)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_003",
+      "target_name": "KYC Status Update",
+      "rel_type": "includes",
+      "description": "The Address Change Process includes the KYC Status Update step.",
+      "properties": {},
+      "context": "KYC Status: Verified",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_004",
+      "target_name": "AML Screening for Address Change",
+      "rel_type": "includes",
+      "description": "The Address Change Process includes the AML Screening for Address Change step.",
+      "properties": {},
+      "context": "AML Status: Cleared (US address, low-risk)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_005",
+      "target_name": "Address Change Approval",
+      "rel_type": "ends_with",
+      "description": "The Address Change Process concludes with the Address Change Approval step.",
+      "properties": {
+        "final_status": "Approved"
+      },
+      "context": "Status: Approved",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_ra_001",
+      "target_name": "Customer Service Representative",
+      "rel_type": "executed_by",
+      "description": "The Address Change Process is executed by the Customer Service Representative who verifies the address change.",
+      "properties": {
+        "actor_name": "John Smith"
+      },
+      "context": "Verified By: John Smith (CSR)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_001",
+      "target_name": "Address Verification Compliance Checkpoint",
+      "rel_type": "mandated_to_include",
+      "description": "The Address Change Process mandates inclusion of the Address Verification Compliance Checkpoint.",
+      "properties": {},
+      "context": "Verified By: John Smith (CSR)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_002",
+      "target_name": "AML Screening Compliance Checkpoint",
+      "rel_type": "mandated_to_include",
+      "description": "The Address Change Process mandates inclusion of the AML Screening Compliance Checkpoint.",
+      "properties": {},
+      "context": "AML Status: Cleared (US address, low-risk)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_kyc_001",
+      "target_name": "KYC Verification for Address Change",
+      "rel_type": "requires",
+      "description": "The Address Change Process requires KYC Verification for Address Change to be completed.",
+      "properties": {
+        "kyc_status": "Verified"
+      },
+      "context": "KYC Status: Verified",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_aml_001",
+      "target_name": "AML Screening for New Address Jurisdiction",
+      "rel_type": "requires",
+      "description": "The Address Change Process requires AML Screening for New Address Jurisdiction to be completed.",
+      "properties": {
+        "aml_status": "Cleared",
+        "risk_level": "low-risk"
+      },
+      "context": "AML Status: Cleared (US address, low-risk)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_dp_001",
+      "target_name": "Address Change Approval Gate",
+      "rel_type": "concludes_at",
+      "description": "The Address Change Process concludes at the Address Change Approval Gate decision point.",
+      "properties": {
+        "decision_outcome": "Approved"
+      },
+      "context": "Status: Approved",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_001",
+      "source_name": "Address Change Initiation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_ra_002",
+      "target_name": "Customer",
+      "rel_type": "collects_data_from",
+      "description": "Address Change Initiation step collects address change data from the Customer.",
+      "properties": {
+        "data_collected": "address change request"
+      },
+      "context": "Initiated By: Customer (online)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_002",
+      "source_name": "Address Change Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_ra_001",
+      "target_name": "Customer Service Representative",
+      "rel_type": "performed_by",
+      "description": "Address Change Verification step is performed by the Customer Service Representative.",
+      "properties": {
+        "actor_name": "John Smith"
+      },
+      "context": "Verified By: John Smith (CSR)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_002",
+      "source_name": "Address Change Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_id_doc_001",
+      "target_name": "Proof of Address",
+      "rel_type": "verifies",
+      "description": "Address Change Verification step verifies the Proof of Address document.",
+      "properties": {
+        "document_type": "Utility bill",
+        "document_date": "Jan 10, 2026"
+      },
+      "context": "Proof of Address: Utility bill (dated Jan 10, 2026)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_002",
+      "source_name": "Address Change Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_001",
+      "target_name": "Address Verification Compliance Checkpoint",
+      "rel_type": "satisfies",
+      "description": "Address Change Verification step satisfies the Address Verification Compliance Checkpoint.",
+      "properties": {},
+      "context": "Verified By: John Smith (CSR)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_003",
+      "source_name": "KYC Status Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_kyc_001",
+      "target_name": "KYC Verification for Address Change",
+      "rel_type": "executes",
+      "description": "KYC Status Update step executes the KYC Verification for Address Change.",
+      "properties": {
+        "kyc_status": "Verified"
+      },
+      "context": "KYC Status: Verified",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_004",
+      "source_name": "AML Screening for Address Change",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_aml_001",
+      "target_name": "AML Screening for New Address Jurisdiction",
+      "rel_type": "executes",
+      "description": "AML Screening for Address Change step executes the AML Screening for New Address Jurisdiction.",
+      "properties": {
+        "aml_status": "Cleared",
+        "risk_level": "low-risk"
+      },
+      "context": "AML Status: Cleared (US address, low-risk)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_004",
+      "source_name": "AML Screening for Address Change",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_002",
+      "target_name": "AML Screening Compliance Checkpoint",
+      "rel_type": "satisfies",
+      "description": "AML Screening for Address Change step satisfies the AML Screening Compliance Checkpoint.",
+      "properties": {},
+      "context": "AML Status: Cleared (US address, low-risk)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_005",
+      "source_name": "Address Change Approval",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_dp_001",
+      "target_name": "Address Change Approval Gate",
+      "rel_type": "routes_to_on_pass",
+      "description": "Address Change Approval step routes to the Address Change Approval Gate decision point upon successful completion.",
+      "properties": {
+        "outcome": "Approved"
+      },
+      "context": "Status: Approved",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_001",
+      "source_name": "Address Verification Compliance Checkpoint",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_dp_001",
+      "target_name": "Address Change Approval Gate",
+      "rel_type": "gates",
+      "description": "Address Verification Compliance Checkpoint gates the Address Change Approval Gate decision point.",
+      "properties": {},
+      "context": "Verified By: John Smith (CSR)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_002",
+      "source_name": "AML Screening Compliance Checkpoint",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_dp_001",
+      "target_name": "Address Change Approval Gate",
+      "rel_type": "gates",
+      "description": "AML Screening Compliance Checkpoint gates the Address Change Approval Gate decision point.",
+      "properties": {},
+      "context": "AML Status: Cleared (US address, low-risk)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_001",
+      "source_name": "Address Verification Compliance Checkpoint",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_id_doc_001",
+      "target_name": "Proof of Address",
+      "rel_type": "requires_collection_of",
+      "description": "Address Verification Compliance Checkpoint requires collection of Proof of Address document.",
+      "properties": {
+        "document_type": "Utility bill"
+      },
+      "context": "Proof of Address: Utility bill (dated Jan 10, 2026)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_002",
+      "source_name": "AML Screening Compliance Checkpoint",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_aml_001",
+      "target_name": "AML Screening for New Address Jurisdiction",
+      "rel_type": "verifies_completion_of",
+      "description": "AML Screening Compliance Checkpoint verifies completion of AML Screening for New Address Jurisdiction.",
+      "properties": {
+        "aml_status": "Cleared"
+      },
+      "context": "AML Status: Cleared (US address, low-risk)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_addr_001",
+      "source_name": "Old Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_ra_002",
+      "target_name": "Customer",
+      "rel_type": "registered_to",
+      "description": "Old Address is registered to the Customer.",
+      "properties": {
+        "address": "123 Oak Lane, Manchester, M1 1AA, UK"
+      },
+      "context": "Old Address: 123 Oak Lane, Manchester, M1 1AA, UK",
+      "bidirectional": true,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_addr_002",
+      "source_name": "New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_ra_002",
+      "target_name": "Customer",
+      "rel_type": "registered_to",
+      "description": "New Address is registered to the Customer.",
+      "properties": {
+        "address": "456 Elm Street, New York, NY 10001, USA",
+        "change_type": "Permanent relocation"
+      },
+      "context": "New Address: 456 Elm Street, New York, NY 10001, USA",
+      "bidirectional": true,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_id_doc_001",
+      "source_name": "Proof of Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_ra_002",
+      "target_name": "Customer",
+      "rel_type": "proves_identity_of",
+      "description": "Proof of Address document proves the identity and address of the Customer.",
+      "properties": {
+        "document_type": "Utility bill",
+        "document_date": "Jan 10, 2026"
+      },
+      "context": "Proof of Address: Utility bill (dated Jan 10, 2026)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_kyc_001",
+      "source_name": "KYC Verification for Address Change",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_id_doc_001",
+      "target_name": "Proof of Address",
+      "rel_type": "verified_using",
+      "description": "KYC Verification for Address Change is verified using the Proof of Address document.",
+      "properties": {
+        "document_type": "Utility bill"
+      },
+      "context": "Proof of Address: Utility bill (dated Jan 10, 2026)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_kyc_001",
+      "source_name": "KYC Verification for Address Change",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_addr_002",
+      "target_name": "New Address",
+      "rel_type": "verifies",
+      "description": "KYC Verification for Address Change verifies the New Address.",
+      "properties": {
+        "kyc_status": "Verified"
+      },
+      "context": "KYC Status: Verified",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_aml_001",
+      "source_name": "AML Screening for New Address Jurisdiction",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_addr_002",
+      "target_name": "New Address",
+      "rel_type": "screens_for_patterns_in",
+      "description": "AML Screening for New Address Jurisdiction screens the New Address for AML risk patterns.",
+      "properties": {
+        "jurisdiction": "US",
+        "risk_level": "low-risk",
+        "aml_status": "Cleared"
+      },
+      "context": "AML Status: Cleared (US address, low-risk)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_proc_001",
+      "source_name": "Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_001",
+      "source_name": "Address Change Initiation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_002",
+      "source_name": "Address Change Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_003",
+      "source_name": "KYC Status Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_004",
+      "source_name": "AML Screening for Address Change",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_pstep_005",
+      "source_name": "Address Change Approval",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_ra_001",
+      "source_name": "Customer Service Representative",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_ra_002",
+      "source_name": "Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_001",
+      "source_name": "Address Verification Compliance Checkpoint",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_cc_002",
+      "source_name": "AML Screening Compliance Checkpoint",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_addr_001",
+      "source_name": "Old Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_addr_002",
+      "source_name": "New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_id_doc_001",
+      "source_name": "Proof of Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_kyc_001",
+      "source_name": "KYC Verification for Address Change",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_aml_001",
+      "source_name": "AML Screening for New Address Jurisdiction",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_026_dp_001",
+      "source_name": "Address Change Approval Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

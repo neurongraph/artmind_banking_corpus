@@ -1,0 +1,653 @@
+{
+  "chunk_seq": 10,
+  "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+  "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+  "text": "## 4. COMMON ISSUES & TROUBLESHOOTING  \n### Issue: \"AMS Service Unavailable\"  \n**Symptoms:** API returns 503, IBP shows error  \n**Steps:**\n```\n1. Check service status\nkubectl get pod -n production | grep ams\n\n2. Check logs\nkubectl logs -f deployment/ams | tail -50\n\n3. Check database connection\ncurl https://api.firstuk.bank/ams/health/db\n\n4. If DB connection issue\nVerify PostgreSQL running: systemctl status postgresql@main\nVerify connection pool: psql -U postgres -c \"SELECT count(*) FROM pg_stat_activity WHERE datname='firstuk_prod';\"\n\n5. Restart service\nkubectl rollout restart deployment/ams\nkubectl rollout status deployment/ams --timeout=5m\n\n6. Verify recovery\ncurl https://api.firstuk.bank/accounts -H \"Authorization: Bearer [token]\"\n(Should return account list)\n```",
+  "name": "Chunk 10/21",
+  "_domain": "banking.reference",
+  "prev_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+  "next_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+  "raw_entities": [
+    {
+      "id": "inc_001",
+      "name": "AMS Service Unavailable",
+      "aliases": [
+        "AMS Service Outage",
+        "API 503 Error"
+      ],
+      "entity_class": "INCIDENT_TYPE",
+      "type": "system_outage",
+      "description": "A system outage affecting the AMS (Account Management Service) API, characterized by 503 service unavailable responses and error display in the IBP interface. The incident may stem from service pod failures, database connectivity issues, or connection pool exhaustion.",
+      "context": [
+        "API returns 503, IBP shows error",
+        "Check service status kubectl get pod -n production | grep ams",
+        "Verify PostgreSQL running: systemctl status postgresql@main",
+        "Restart service kubectl rollout restart deployment/ams"
+      ]
+    },
+    {
+      "id": "resp_001",
+      "name": "Service Status Check",
+      "aliases": [
+        "Pod Status Verification"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Initial diagnostic step to verify the operational status of AMS service pods in the production Kubernetes cluster. Executed as the first troubleshooting action when AMS Service Unavailable is reported.",
+      "context": [
+        "Check service status",
+        "kubectl get pod -n production | grep ams"
+      ]
+    },
+    {
+      "id": "resp_002",
+      "name": "Service Log Review",
+      "aliases": [
+        "Log Tail Analysis"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Examination of the most recent 50 lines of AMS deployment logs to identify error messages, stack traces, or operational anomalies contributing to the outage.",
+      "context": [
+        "Check logs",
+        "kubectl logs -f deployment/ams | tail -50"
+      ]
+    },
+    {
+      "id": "resp_003",
+      "name": "Database Connection Health Check",
+      "aliases": [
+        "DB Health Verification"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "API-based health check to verify connectivity between the AMS service and its PostgreSQL database backend. A successful response indicates the database connection is operational.",
+      "context": [
+        "Check database connection",
+        "curl https://api.firstuk.bank/ams/health/db"
+      ]
+    },
+    {
+      "id": "resp_004",
+      "name": "PostgreSQL Service Verification",
+      "aliases": [
+        "Database Service Status Check"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "System-level verification that the PostgreSQL database service is running on the main instance. Executed when database connectivity issues are suspected.",
+      "context": [
+        "If DB connection issue",
+        "Verify PostgreSQL running: systemctl status postgresql@main"
+      ]
+    },
+    {
+      "id": "resp_005",
+      "name": "Database Connection Pool Analysis",
+      "aliases": [
+        "Connection Pool Status Check"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Query of PostgreSQL system tables to count active database connections for the firstuk_prod database. Identifies connection pool exhaustion as a potential root cause.",
+      "context": [
+        "Verify connection pool: psql -U postgres -c \"SELECT count(*) FROM pg_stat_activity WHERE datname='firstuk_prod';\""
+      ]
+    },
+    {
+      "id": "resp_006",
+      "name": "AMS Service Restart",
+      "aliases": [
+        "Deployment Rollout Restart"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "Kubernetes-based restart of the AMS deployment to recover from transient failures or resource exhaustion. Includes rollout status monitoring with a 5-minute timeout.",
+      "context": [
+        "Restart service",
+        "kubectl rollout restart deployment/ams",
+        "kubectl rollout status deployment/ams --timeout=5m"
+      ]
+    },
+    {
+      "id": "resp_007",
+      "name": "Service Recovery Verification",
+      "aliases": [
+        "Post-Recovery Functional Test"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "API call to the accounts endpoint with bearer token authentication to confirm that the AMS service has recovered and is returning account data successfully.",
+      "context": [
+        "Verify recovery",
+        "curl https://api.firstuk.bank/accounts -H \"Authorization: Bearer [token]\"",
+        "(Should return account list)"
+      ]
+    }
+  ],
+  "id_map": {
+    "inc_001": "01a07393-e320-7264-b05f-7163527566c2_010_inc_001",
+    "resp_001": "01a07393-e320-7264-b05f-7163527566c2_010_resp_001",
+    "resp_002": "01a07393-e320-7264-b05f-7163527566c2_010_resp_002",
+    "resp_003": "01a07393-e320-7264-b05f-7163527566c2_010_resp_003",
+    "resp_004": "01a07393-e320-7264-b05f-7163527566c2_010_resp_004",
+    "resp_005": "01a07393-e320-7264-b05f-7163527566c2_010_resp_005",
+    "resp_006": "01a07393-e320-7264-b05f-7163527566c2_010_resp_006",
+    "resp_007": "01a07393-e320-7264-b05f-7163527566c2_010_resp_007"
+  },
+  "entities": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_inc_001",
+      "name": "AMS Service Unavailable",
+      "aliases": [
+        "AMS Service Outage",
+        "API 503 Error"
+      ],
+      "entity_class": "INCIDENT_TYPE",
+      "type": "system_outage",
+      "description": "A system outage affecting the AMS (Account Management Service) API, characterized by 503 service unavailable responses and error display in the IBP interface. The incident may stem from service pod failures, database connectivity issues, or connection pool exhaustion.",
+      "context": [
+        "API returns 503, IBP shows error",
+        "Check service status kubectl get pod -n production | grep ams",
+        "Verify PostgreSQL running: systemctl status postgresql@main",
+        "Restart service kubectl rollout restart deployment/ams"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_001",
+      "name": "Service Status Check",
+      "aliases": [
+        "Pod Status Verification"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Initial diagnostic step to verify the operational status of AMS service pods in the production Kubernetes cluster. Executed as the first troubleshooting action when AMS Service Unavailable is reported.",
+      "context": [
+        "Check service status",
+        "kubectl get pod -n production | grep ams"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_002",
+      "name": "Service Log Review",
+      "aliases": [
+        "Log Tail Analysis"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Examination of the most recent 50 lines of AMS deployment logs to identify error messages, stack traces, or operational anomalies contributing to the outage.",
+      "context": [
+        "Check logs",
+        "kubectl logs -f deployment/ams | tail -50"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_003",
+      "name": "Database Connection Health Check",
+      "aliases": [
+        "DB Health Verification"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "API-based health check to verify connectivity between the AMS service and its PostgreSQL database backend. A successful response indicates the database connection is operational.",
+      "context": [
+        "Check database connection",
+        "curl https://api.firstuk.bank/ams/health/db"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_004",
+      "name": "PostgreSQL Service Verification",
+      "aliases": [
+        "Database Service Status Check"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "System-level verification that the PostgreSQL database service is running on the main instance. Executed when database connectivity issues are suspected.",
+      "context": [
+        "If DB connection issue",
+        "Verify PostgreSQL running: systemctl status postgresql@main"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_005",
+      "name": "Database Connection Pool Analysis",
+      "aliases": [
+        "Connection Pool Status Check"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Query of PostgreSQL system tables to count active database connections for the firstuk_prod database. Identifies connection pool exhaustion as a potential root cause.",
+      "context": [
+        "Verify connection pool: psql -U postgres -c \"SELECT count(*) FROM pg_stat_activity WHERE datname='firstuk_prod';\""
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_006",
+      "name": "AMS Service Restart",
+      "aliases": [
+        "Deployment Rollout Restart"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "Kubernetes-based restart of the AMS deployment to recover from transient failures or resource exhaustion. Includes rollout status monitoring with a 5-minute timeout.",
+      "context": [
+        "Restart service",
+        "kubectl rollout restart deployment/ams",
+        "kubectl rollout status deployment/ams --timeout=5m"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_007",
+      "name": "Service Recovery Verification",
+      "aliases": [
+        "Post-Recovery Functional Test"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "API call to the accounts endpoint with bearer token authentication to confirm that the AMS service has recovered and is returning account data successfully.",
+      "context": [
+        "Verify recovery",
+        "curl https://api.firstuk.bank/accounts -H \"Authorization: Bearer [token]\"",
+        "(Should return account list)"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_inc_001",
+      "name": "AMS Service Unavailable",
+      "properties": {
+        "category": "Service Availability",
+        "indicator": [
+          "API returns 503",
+          "IBP shows error"
+        ],
+        "typical_impact": "API unavailable, account information inaccessible"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_001",
+      "name": "Service Status Check",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "Operations team",
+        "tools_or_systems": [
+          "kubectl"
+        ],
+        "output_or_artifact": "Pod status report",
+        "command": "kubectl get pod -n production | grep ams"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_002",
+      "name": "Service Log Review",
+      "properties": {
+        "action_phase": "investigation",
+        "actor": "Operations team",
+        "tools_or_systems": [
+          "kubectl"
+        ],
+        "output_or_artifact": "Last 50 log entries from AMS deployment",
+        "command": "kubectl logs -f deployment/ams | tail -50"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_003",
+      "name": "Database Connection Health Check",
+      "properties": {
+        "action_phase": "investigation",
+        "actor": "Operations team",
+        "tools_or_systems": [
+          "curl"
+        ],
+        "output_or_artifact": "Database connection health status",
+        "command": "curl https://api.firstuk.bank/ams/health/db"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_004",
+      "name": "PostgreSQL Service Verification",
+      "properties": {
+        "action_phase": "investigation",
+        "actor": "Operations team",
+        "tools_or_systems": [
+          "systemctl"
+        ],
+        "output_or_artifact": "PostgreSQL service status",
+        "command": "systemctl status postgresql@main",
+        "escalation_trigger": "If PostgreSQL service is not running"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_005",
+      "name": "Database Connection Pool Analysis",
+      "properties": {
+        "action_phase": "investigation",
+        "actor": "Operations team",
+        "tools_or_systems": [
+          "psql"
+        ],
+        "output_or_artifact": "Active database connection count for firstuk_prod",
+        "command": "psql -U postgres -c \"SELECT count(*) FROM pg_stat_activity WHERE datname='firstuk_prod';\""
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_006",
+      "name": "AMS Service Restart",
+      "properties": {
+        "action_phase": "recovery",
+        "actor": "Operations team",
+        "tools_or_systems": [
+          "kubectl"
+        ],
+        "timeline": "within 5 minutes",
+        "command": "kubectl rollout restart deployment/ams && kubectl rollout status deployment/ams --timeout=5m"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_007",
+      "name": "Service Recovery Verification",
+      "properties": {
+        "action_phase": "post_incident",
+        "actor": "Operations team",
+        "tools_or_systems": [
+          "curl"
+        ],
+        "output_or_artifact": "Account list response confirming API functionality",
+        "command": "curl https://api.firstuk.bank/accounts -H \"Authorization: Bearer [token]\""
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_inc_001",
+      "source_name": "AMS Service Unavailable",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_001",
+      "target_name": "Service Status Check",
+      "rel_type": "triggers",
+      "description": "AMS Service Unavailable incident triggers the initial Service Status Check response action",
+      "properties": {
+        "sequence": 1,
+        "command": "kubectl get pod -n production | grep ams"
+      },
+      "context": "Issue: \"AMS Service Unavailable\" ... Steps: 1. Check service status kubectl get pod -n production | grep ams",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_001",
+      "source_name": "Service Status Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_002",
+      "target_name": "Service Log Review",
+      "rel_type": "followed_by",
+      "description": "Service Status Check is followed by Service Log Review in the troubleshooting sequence",
+      "properties": {
+        "sequence": 2,
+        "command": "kubectl logs -f deployment/ams | tail -50"
+      },
+      "context": "1. Check service status ... 2. Check logs kubectl logs -f deployment/ams | tail -50",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_002",
+      "source_name": "Service Log Review",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_003",
+      "target_name": "Database Connection Health Check",
+      "rel_type": "followed_by",
+      "description": "Service Log Review is followed by Database Connection Health Check",
+      "properties": {
+        "sequence": 3,
+        "command": "curl https://api.firstuk.bank/ams/health/db"
+      },
+      "context": "2. Check logs ... 3. Check database connection curl https://api.firstuk.bank/ams/health/db",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_003",
+      "source_name": "Database Connection Health Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_004",
+      "target_name": "PostgreSQL Service Verification",
+      "rel_type": "followed_by",
+      "description": "Database Connection Health Check is followed by PostgreSQL Service Verification if DB connection issue detected",
+      "properties": {
+        "sequence": 4,
+        "condition": "If DB connection issue",
+        "command": "systemctl status postgresql@main"
+      },
+      "context": "3. Check database connection ... 4. If DB connection issue Verify PostgreSQL running: systemctl status postgresql@main",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_004",
+      "source_name": "PostgreSQL Service Verification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_005",
+      "target_name": "Database Connection Pool Analysis",
+      "rel_type": "followed_by",
+      "description": "PostgreSQL Service Verification is followed by Database Connection Pool Analysis",
+      "properties": {
+        "sequence": 5,
+        "command": "psql -U postgres -c \"SELECT count(*) FROM pg_stat_activity WHERE datname='firstuk_prod';\""
+      },
+      "context": "Verify PostgreSQL running: systemctl status postgresql@main Verify connection pool: psql -U postgres -c \"SELECT count(*) FROM pg_stat_activity WHERE datname='firstuk_prod';\"",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_005",
+      "source_name": "Database Connection Pool Analysis",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_006",
+      "target_name": "AMS Service Restart",
+      "rel_type": "followed_by",
+      "description": "Database Connection Pool Analysis is followed by AMS Service Restart",
+      "properties": {
+        "sequence": 6,
+        "command": "kubectl rollout restart deployment/ams"
+      },
+      "context": "Verify connection pool: ... 5. Restart service kubectl rollout restart deployment/ams",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_006",
+      "source_name": "AMS Service Restart",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_007",
+      "target_name": "Service Recovery Verification",
+      "rel_type": "followed_by",
+      "description": "AMS Service Restart is followed by Service Recovery Verification",
+      "properties": {
+        "sequence": 7,
+        "command": "curl https://api.firstuk.bank/accounts -H \"Authorization: Bearer [token]\""
+      },
+      "context": "5. Restart service kubectl rollout restart deployment/ams ... 6. Verify recovery curl https://api.firstuk.bank/accounts -H \"Authorization: Bearer [token]\"",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_inc_001",
+      "source_name": "AMS Service Unavailable",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_002",
+      "target_name": "Service Log Review",
+      "rel_type": "requires",
+      "description": "AMS Service Unavailable incident requires Service Log Review as part of troubleshooting",
+      "properties": {
+        "sequence": 2,
+        "purpose": "Diagnose root cause"
+      },
+      "context": "Issue: \"AMS Service Unavailable\" ... Steps: 2. Check logs kubectl logs -f deployment/ams | tail -50",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_inc_001",
+      "source_name": "AMS Service Unavailable",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_003",
+      "target_name": "Database Connection Health Check",
+      "rel_type": "requires",
+      "description": "AMS Service Unavailable incident requires Database Connection Health Check to identify connectivity issues",
+      "properties": {
+        "sequence": 3,
+        "purpose": "Verify database connectivity"
+      },
+      "context": "Issue: \"AMS Service Unavailable\" ... 3. Check database connection curl https://api.firstuk.bank/ams/health/db",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_inc_001",
+      "source_name": "AMS Service Unavailable",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_006",
+      "target_name": "AMS Service Restart",
+      "rel_type": "requires",
+      "description": "AMS Service Unavailable incident requires AMS Service Restart as remediation action",
+      "properties": {
+        "sequence": 6,
+        "purpose": "Restore service availability"
+      },
+      "context": "Issue: \"AMS Service Unavailable\" ... 5. Restart service kubectl rollout restart deployment/ams",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_inc_001",
+      "source_name": "AMS Service Unavailable",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_001",
+      "source_name": "Service Status Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_002",
+      "source_name": "Service Log Review",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_003",
+      "source_name": "Database Connection Health Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_004",
+      "source_name": "PostgreSQL Service Verification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_005",
+      "source_name": "Database Connection Pool Analysis",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_006",
+      "source_name": "AMS Service Restart",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_010_resp_007",
+      "source_name": "Service Recovery Verification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ]
+}

@@ -1,0 +1,801 @@
+{
+  "chunk_seq": 11,
+  "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+  "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+  "text": "## SCENARIO 8: Direct Debit Question  \n**Customer:** \"Why was I charged by Direct Debit?\"  \n**Agent Script:**  \n```\nAgent: \"Let me look that up for you. A Direct Debit is when\na company (like a utility or insurance) automatically deducts\npayment from your account.\n\nCan you tell me:\n- Which company charged you?\n- When was the charge?\n- How much was it?\n\n[Customer provides details]\n\nI found it. This is for [Company Name], your [utility/subscription].\nYou authorized this Direct Debit when you signed up.\n\nIf you didn't authorize it or want to cancel, I can help:\n\nOption 1: Cancel the Direct Debit with us (immediate)\nOption 2: Contact [Company] directly to cancel\n\nEither way, if you were charged without authorization, we'll\nrefund you within 10 days.\n\nWould you like to cancel this Direct Debit?\"\n```  \n---",
+  "name": "Chunk 11/17",
+  "_domain": "banking.communications",
+  "prev_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+  "next_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+  "raw_entities": [
+    {
+      "id": "ct_001",
+      "name": "Direct Debit Question Agent Script",
+      "aliases": [
+        "DD Question Script",
+        "Why Was I Charged by Direct Debit Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre agent script for handling customer inquiries about Direct Debit charges. The script guides the agent to identify the charging company, transaction amount and date, confirm customer authorization, and offer cancellation or refund options. It includes a 10-day refund commitment for unauthorized charges.",
+      "context": [
+        "A Direct Debit is when a company (like a utility or insurance) automatically deducts payment from your account.",
+        "You authorized this Direct Debit when you signed up.",
+        "If you were charged without authorization, we'll refund you within 10 days.",
+        "Option 1: Cancel the Direct Debit with us (immediate)\nOption 2: Contact [Company] directly to cancel"
+      ]
+    },
+    {
+      "id": "tv_001",
+      "name": "Charging Company Name",
+      "aliases": [
+        "Company Name"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "reference_field",
+      "description": "A placeholder variable representing the name of the company or organization that initiated the Direct Debit charge on the customer's account.",
+      "context": [
+        "Which company charged you?",
+        "I found it. This is for [Company Name], your [utility/subscription]."
+      ]
+    },
+    {
+      "id": "tv_002",
+      "name": "Charge Date",
+      "aliases": [
+        "Transaction Date",
+        "When was the charge"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "A placeholder variable representing the date on which the Direct Debit charge was applied to the customer's account.",
+      "context": [
+        "When was the charge?",
+        "[Customer provides details]"
+      ]
+    },
+    {
+      "id": "tv_003",
+      "name": "Charge Amount",
+      "aliases": [
+        "Transaction Amount",
+        "How much was it"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "A placeholder variable representing the monetary value of the Direct Debit charge deducted from the customer's account.",
+      "context": [
+        "How much was it?",
+        "[Customer provides details]"
+      ]
+    },
+    {
+      "id": "tv_004",
+      "name": "Service Type",
+      "aliases": [
+        "utility/subscription",
+        "Product Type"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "product_data",
+      "description": "A placeholder variable representing the category or nature of the service for which the Direct Debit charge was made, such as utility or subscription.",
+      "context": [
+        "I found it. This is for [Company Name], your [utility/subscription]."
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Mandate Authorization",
+      "aliases": [
+        "DD Authorization",
+        "Direct Debit Setup"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "The customer's authorization of a Direct Debit mandate with a company at the time of service signup. The script confirms that the customer authorized the Direct Debit when they signed up for the service.",
+      "context": [
+        "You authorized this Direct Debit when you signed up."
+      ]
+    },
+    {
+      "id": "dd_002",
+      "name": "Direct Debit Cancellation",
+      "aliases": [
+        "DD Cancellation",
+        "Cancel Direct Debit"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_cancellation",
+      "description": "The process by which a customer can cancel an active Direct Debit mandate. The script offers two cancellation options: immediate cancellation through the bank or direct cancellation with the charging company.",
+      "context": [
+        "Option 1: Cancel the Direct Debit with us (immediate)",
+        "Option 2: Contact [Company] directly to cancel",
+        "Would you like to cancel this Direct Debit?"
+      ]
+    },
+    {
+      "id": "dd_003",
+      "name": "Unauthorized Direct Debit Refund",
+      "aliases": [
+        "DD Refund",
+        "Unauthorized Charge Refund"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_dispute",
+      "description": "The bank's commitment to refund a Direct Debit charge that was applied without customer authorization. The refund is processed within 10 days of the customer reporting the unauthorized charge.",
+      "context": [
+        "If you didn't authorize it or want to cancel, I can help",
+        "If you were charged without authorization, we'll refund you within 10 days."
+      ]
+    },
+    {
+      "id": "co_001",
+      "name": "Unauthorized Direct Debit Refund Obligation",
+      "aliases": [
+        "DD Refund Obligation",
+        "Unauthorized Charge Refund Duty"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "mandatory_action",
+      "description": "The bank's mandatory obligation to refund a customer within 10 days if they were charged by Direct Debit without authorization. This is a consumer protection requirement.",
+      "context": [
+        "If you were charged without authorization, we'll refund you within 10 days."
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Direct Debit Inquiry Customer",
+      "aliases": [
+        "Customer",
+        "Caller"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A customer contacting the bank to inquire about or dispute a Direct Debit charge on their account. The customer may not recall authorizing the charge or may wish to cancel it.",
+      "context": [
+        "Customer: \"Why was I charged by Direct Debit?\"",
+        "Can you tell me: - Which company charged you? - When was the charge? - How much was it?"
+      ]
+    }
+  ],
+  "id_map": {
+    "ct_001": "01a07428-c932-773f-a5f8-da98f9df05b5_011_ct_001",
+    "tv_001": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_001",
+    "tv_002": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_002",
+    "tv_003": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_003",
+    "tv_004": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_004",
+    "dd_001": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_001",
+    "dd_002": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_002",
+    "dd_003": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_003",
+    "co_001": "01a07428-c932-773f-a5f8-da98f9df05b5_011_co_001",
+    "cust_001": "01a07428-c932-773f-a5f8-da98f9df05b5_011_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_ct_001",
+      "name": "Direct Debit Question Agent Script",
+      "aliases": [
+        "DD Question Script",
+        "Why Was I Charged by Direct Debit Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre agent script for handling customer inquiries about Direct Debit charges. The script guides the agent to identify the charging company, transaction amount and date, confirm customer authorization, and offer cancellation or refund options. It includes a 10-day refund commitment for unauthorized charges.",
+      "context": [
+        "A Direct Debit is when a company (like a utility or insurance) automatically deducts payment from your account.",
+        "You authorized this Direct Debit when you signed up.",
+        "If you were charged without authorization, we'll refund you within 10 days.",
+        "Option 1: Cancel the Direct Debit with us (immediate)\nOption 2: Contact [Company] directly to cancel"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_001",
+      "name": "Charging Company Name",
+      "aliases": [
+        "Company Name"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "reference_field",
+      "description": "A placeholder variable representing the name of the company or organization that initiated the Direct Debit charge on the customer's account.",
+      "context": [
+        "Which company charged you?",
+        "I found it. This is for [Company Name], your [utility/subscription]."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_002",
+      "name": "Charge Date",
+      "aliases": [
+        "Transaction Date",
+        "When was the charge"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "A placeholder variable representing the date on which the Direct Debit charge was applied to the customer's account.",
+      "context": [
+        "When was the charge?",
+        "[Customer provides details]"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_003",
+      "name": "Charge Amount",
+      "aliases": [
+        "Transaction Amount",
+        "How much was it"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "A placeholder variable representing the monetary value of the Direct Debit charge deducted from the customer's account.",
+      "context": [
+        "How much was it?",
+        "[Customer provides details]"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_004",
+      "name": "Service Type",
+      "aliases": [
+        "utility/subscription",
+        "Product Type"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "product_data",
+      "description": "A placeholder variable representing the category or nature of the service for which the Direct Debit charge was made, such as utility or subscription.",
+      "context": [
+        "I found it. This is for [Company Name], your [utility/subscription]."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_001",
+      "name": "Direct Debit Mandate Authorization",
+      "aliases": [
+        "DD Authorization",
+        "Direct Debit Setup"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "The customer's authorization of a Direct Debit mandate with a company at the time of service signup. The script confirms that the customer authorized the Direct Debit when they signed up for the service.",
+      "context": [
+        "You authorized this Direct Debit when you signed up."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_002",
+      "name": "Direct Debit Cancellation",
+      "aliases": [
+        "DD Cancellation",
+        "Cancel Direct Debit"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_cancellation",
+      "description": "The process by which a customer can cancel an active Direct Debit mandate. The script offers two cancellation options: immediate cancellation through the bank or direct cancellation with the charging company.",
+      "context": [
+        "Option 1: Cancel the Direct Debit with us (immediate)",
+        "Option 2: Contact [Company] directly to cancel",
+        "Would you like to cancel this Direct Debit?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_003",
+      "name": "Unauthorized Direct Debit Refund",
+      "aliases": [
+        "DD Refund",
+        "Unauthorized Charge Refund"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_dispute",
+      "description": "The bank's commitment to refund a Direct Debit charge that was applied without customer authorization. The refund is processed within 10 days of the customer reporting the unauthorized charge.",
+      "context": [
+        "If you didn't authorize it or want to cancel, I can help",
+        "If you were charged without authorization, we'll refund you within 10 days."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_co_001",
+      "name": "Unauthorized Direct Debit Refund Obligation",
+      "aliases": [
+        "DD Refund Obligation",
+        "Unauthorized Charge Refund Duty"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "mandatory_action",
+      "description": "The bank's mandatory obligation to refund a customer within 10 days if they were charged by Direct Debit without authorization. This is a consumer protection requirement.",
+      "context": [
+        "If you were charged without authorization, we'll refund you within 10 days."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_cust_001",
+      "name": "Direct Debit Inquiry Customer",
+      "aliases": [
+        "Customer",
+        "Caller"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A customer contacting the bank to inquire about or dispute a Direct Debit charge on their account. The customer may not recall authorizing the charge or may wish to cancel it.",
+      "context": [
+        "Customer: \"Why was I charged by Direct Debit?\"",
+        "Can you tell me: - Which company charged you? - When was the charge? - How much was it?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_ct_001",
+      "name": "Direct Debit Question Agent Script",
+      "properties": {
+        "channel": "call",
+        "trigger_event": "customer_inquiry_about_direct_debit_charge",
+        "recipient": "customer",
+        "tone": "friendly",
+        "key_content": [
+          "Explanation of what a Direct Debit is",
+          "Request for charge details (company, date, amount)",
+          "Confirmation of authorization status",
+          "Cancellation options (bank or company)",
+          "Unauthorized charge refund guarantee"
+        ],
+        "variables_used": [
+          "[Company Name]",
+          "[utility/subscription]"
+        ],
+        "owner": "customer_service"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_001",
+      "name": "Charging Company Name",
+      "properties": {
+        "variable_placeholder": "[Company Name]",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Direct Debit Question Agent Script"
+        ],
+        "context": "name of the company that initiated the Direct Debit charge"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_002",
+      "name": "Charge Date",
+      "properties": {
+        "variable_placeholder": "[Charge Date]",
+        "data_type": "date",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Direct Debit Question Agent Script"
+        ],
+        "context": "date when the Direct Debit charge was applied"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_003",
+      "name": "Charge Amount",
+      "properties": {
+        "variable_placeholder": "[Charge Amount]",
+        "data_type": "currency",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Direct Debit Question Agent Script"
+        ],
+        "context": "monetary value of the Direct Debit charge"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_004",
+      "name": "Service Type",
+      "properties": {
+        "variable_placeholder": "[utility/subscription]",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Direct Debit Question Agent Script"
+        ],
+        "context": "category of service (e.g., utility, insurance, subscription)"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_001",
+      "name": "Direct Debit Mandate Authorization",
+      "properties": {
+        "mandate_process": "customer authorization at signup",
+        "context": "agent confirms customer authorized the Direct Debit when they signed up for the service"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_002",
+      "name": "Direct Debit Cancellation",
+      "properties": {
+        "cancellation_or_dispute_process": [
+          "Cancel with bank (immediate)",
+          "Contact charging company directly to cancel"
+        ],
+        "context": "customer has two options to stop a Direct Debit"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_003",
+      "name": "Unauthorized Direct Debit Refund",
+      "properties": {
+        "dd_guarantee_coverage": "unauthorized charges",
+        "refund_timeframe": "within 10 days",
+        "context": "bank guarantees refund if customer was charged without authorization"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_co_001",
+      "name": "Unauthorized Direct Debit Refund Obligation",
+      "properties": {
+        "obligation_type": "refund_duty",
+        "applies_to": "all_staff_handling_direct_debit_disputes",
+        "timeframe": "within 10 days",
+        "consequence_of_failure": "breach of direct debit guarantee",
+        "regulatory_source": "Direct Debit Scheme rules",
+        "verification_method": "customer confirmation of lack of authorization"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_cust_001",
+      "name": "Direct Debit Inquiry Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "customer questioning a Direct Debit charge on their account",
+        "eligibility_or_verification_status": "authorized Direct Debit holder"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_ct_001",
+      "source_name": "Direct Debit Question Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_001",
+      "target_name": "Charging Company Name",
+      "rel_type": "contains",
+      "description": "The agent script template contains a variable for the charging company name to personalize responses",
+      "properties": {
+        "placeholder": "[Company Name]",
+        "usage_context": "identification of the company that initiated the direct debit charge"
+      },
+      "context": "I found it. This is for [Company Name], your [utility/subscription].",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_ct_001",
+      "source_name": "Direct Debit Question Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_002",
+      "target_name": "Charge Date",
+      "rel_type": "contains",
+      "description": "The agent script template contains a variable for the charge date to personalize responses",
+      "properties": {
+        "placeholder": "When was the charge?",
+        "usage_context": "temporal identification of the direct debit transaction"
+      },
+      "context": "Can you tell me: - When was the charge?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_ct_001",
+      "source_name": "Direct Debit Question Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_003",
+      "target_name": "Charge Amount",
+      "rel_type": "contains",
+      "description": "The agent script template contains a variable for the charge amount to personalize responses",
+      "properties": {
+        "placeholder": "How much was it?",
+        "usage_context": "monetary identification of the direct debit transaction"
+      },
+      "context": "Can you tell me: - How much was it?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_ct_001",
+      "source_name": "Direct Debit Question Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_004",
+      "target_name": "Service Type",
+      "rel_type": "contains",
+      "description": "The agent script template contains a variable for the service type to personalize responses",
+      "properties": {
+        "placeholder": "[utility/subscription]",
+        "usage_context": "categorization of the service for which the direct debit was authorized"
+      },
+      "context": "I found it. This is for [Company Name], your [utility/subscription].",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_ct_001",
+      "source_name": "Direct Debit Question Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_001",
+      "target_name": "Direct Debit Mandate Authorization",
+      "rel_type": "references",
+      "description": "The agent script references the original direct debit mandate authorization to explain the charge",
+      "properties": {
+        "context_in_script": "authorization verification"
+      },
+      "context": "You authorized this Direct Debit when you signed up.",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_ct_001",
+      "source_name": "Direct Debit Question Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_002",
+      "target_name": "Direct Debit Cancellation",
+      "rel_type": "references",
+      "description": "The agent script provides guidance on direct debit cancellation as a resolution option",
+      "properties": {
+        "options_offered": 2,
+        "option_1": "Cancel the Direct Debit with us (immediate)",
+        "option_2": "Contact [Company] directly to cancel"
+      },
+      "context": "If you didn't authorize it or want to cancel, I can help: Option 1: Cancel the Direct Debit with us (immediate) Option 2: Contact [Company] directly to cancel",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_ct_001",
+      "source_name": "Direct Debit Question Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_003",
+      "target_name": "Unauthorized Direct Debit Refund",
+      "rel_type": "references",
+      "description": "The agent script references the unauthorized direct debit refund process as a customer protection measure",
+      "properties": {
+        "refund_timeline": "within 10 days",
+        "trigger_condition": "charged without authorization"
+      },
+      "context": "Either way, if you were charged without authorization, we'll refund you within 10 days.",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_ct_001",
+      "source_name": "Direct Debit Question Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_co_001",
+      "target_name": "Unauthorized Direct Debit Refund Obligation",
+      "rel_type": "satisfies",
+      "description": "The agent script satisfies the compliance obligation to inform customers of their refund rights for unauthorized direct debits",
+      "properties": {
+        "obligation_type": "customer protection disclosure",
+        "timeline_commitment": "10 days"
+      },
+      "context": "Either way, if you were charged without authorization, we'll refund you within 10 days.",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_ct_001",
+      "source_name": "Direct Debit Question Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_cust_001",
+      "target_name": "Direct Debit Inquiry Customer",
+      "rel_type": "addressed_to",
+      "description": "The agent script is addressed to customers inquiring about direct debit charges",
+      "properties": {
+        "inquiry_type": "direct debit charge explanation",
+        "customer_concern": "unauthorized or unexplained charges"
+      },
+      "context": "Customer: 'Why was I charged by Direct Debit?'",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_001",
+      "source_name": "Direct Debit Mandate Authorization",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_002",
+      "target_name": "Direct Debit Cancellation",
+      "rel_type": "related_to",
+      "description": "Direct debit mandate authorization is related to the cancellation process as the authorization must exist before it can be cancelled",
+      "properties": {
+        "relationship_type": "prerequisite"
+      },
+      "context": "You authorized this Direct Debit when you signed up. If you didn't authorize it or want to cancel, I can help",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_003",
+      "source_name": "Unauthorized Direct Debit Refund",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_co_001",
+      "target_name": "Unauthorized Direct Debit Refund Obligation",
+      "rel_type": "related_to",
+      "description": "The unauthorized direct debit refund process is directly related to the compliance obligation governing such refunds",
+      "properties": {
+        "obligation_type": "regulatory requirement",
+        "timeline": "10 days"
+      },
+      "context": "Either way, if you were charged without authorization, we'll refund you within 10 days.",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_cust_001",
+      "source_name": "Direct Debit Inquiry Customer",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_001",
+      "target_name": "Direct Debit Mandate Authorization",
+      "rel_type": "authorised_by",
+      "description": "The customer authorized the direct debit mandate when they signed up for the service",
+      "properties": {
+        "authorization_context": "service signup"
+      },
+      "context": "You authorized this Direct Debit when you signed up.",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_ct_001",
+      "source_name": "Direct Debit Question Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_001",
+      "source_name": "Charging Company Name",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_002",
+      "source_name": "Charge Date",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_003",
+      "source_name": "Charge Amount",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_tv_004",
+      "source_name": "Service Type",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_001",
+      "source_name": "Direct Debit Mandate Authorization",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_002",
+      "source_name": "Direct Debit Cancellation",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_dd_003",
+      "source_name": "Unauthorized Direct Debit Refund",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_co_001",
+      "source_name": "Unauthorized Direct Debit Refund Obligation",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011_cust_001",
+      "source_name": "Direct Debit Inquiry Customer",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ]
+}

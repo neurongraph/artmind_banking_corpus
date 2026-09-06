@@ -1,0 +1,1184 @@
+{
+  "chunk_seq": 5,
+  "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+  "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+  "text": "#### 2. Internet Banking Platform (IBP)  \n**System ID:** IBP-001\n**Purpose:** Web-based customer portal for account access and self-service\n**Technology:** React.js frontend, Node.js backend\n**Deployment:** Cloud (AWS)\n**Availability:** 99.8% (SLA)  \n**Key Features:**\n- Secure login (username/password + OTP)\n- Account information dashboard\n- Transaction history and search\n- Standing orders and direct debits\n- Beneficiary management\n- Money transfer\n- E-statements\n- Profile and settings management  \n**Security:**\n- TLS 1.3 encryption\n- Session management (15-min idle timeout)\n- Two-factor authentication (OTP via email/SMS)\n- XSS/CSRF protection\n- SQL injection prevention  \n**Usage:**\n- Daily active users: 200–300\n- Peak traffic: 10:00–12:00 GMT\n- Response time: <2 seconds (p95)  \n**Integration:**\n- Account Management System (AMS) — account data\n- Fraud Detection Engine — transaction validation\n- Payment Processing System (PPS) — transfer execution  \n---",
+  "name": "Chunk 5/39",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_004",
+  "next_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_006",
+  "raw_entities": [
+    {
+      "id": "sys_001",
+      "name": "Internet Banking Platform",
+      "aliases": [
+        "IBP",
+        "IBP-001"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "internet_banking",
+      "description": "Web-based customer portal enabling self-service account access, transaction management, and payment operations. Built on React.js frontend and Node.js backend, deployed on AWS cloud infrastructure with 99.8% availability SLA. Provides secure login via username/password and OTP, account dashboards, transaction history, standing orders, direct debits, beneficiary management, money transfers, and e-statements.",
+      "context": [
+        "Web-based customer portal for account access and self-service",
+        "React.js frontend, Node.js backend",
+        "Deployment: Cloud (AWS)",
+        "Availability: 99.8% (SLA)"
+      ]
+    },
+    {
+      "id": "sys_002",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "core_banking",
+      "description": "Core banking system providing account data integration to the Internet Banking Platform. Serves as the authoritative source for customer account information accessed through IBP.",
+      "context": [
+        "Account Management System (AMS) — account data"
+      ]
+    },
+    {
+      "id": "sys_003",
+      "name": "Fraud Detection Engine",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "fraud_detection",
+      "description": "System responsible for transaction validation and fraud detection, integrated with the Internet Banking Platform to monitor and validate customer transactions in real-time.",
+      "context": [
+        "Fraud Detection Engine — transaction validation"
+      ]
+    },
+    {
+      "id": "sys_004",
+      "name": "Payment Processing System",
+      "aliases": [
+        "PPS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "payment_processor",
+      "description": "System that executes money transfer and payment operations initiated through the Internet Banking Platform, handling the settlement and processing of customer-initiated transfers.",
+      "context": [
+        "Payment Processing System (PPS) — transfer execution"
+      ]
+    },
+    {
+      "id": "mt_001",
+      "name": "Internet Banking Platform Availability Target",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "availability_target",
+      "description": "Service level agreement specifying the required uptime for the Internet Banking Platform.",
+      "context": [
+        "Availability: 99.8% (SLA)"
+      ]
+    },
+    {
+      "id": "mt_002",
+      "name": "Internet Banking Platform Response Time Target",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "response_time",
+      "description": "Performance target for the 95th percentile response time of the Internet Banking Platform under normal operating conditions.",
+      "context": [
+        "Response time: <2 seconds (p95)"
+      ]
+    },
+    {
+      "id": "mt_003",
+      "name": "Internet Banking Platform Daily Active Users",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Operational metric tracking the typical daily active user count on the Internet Banking Platform.",
+      "context": [
+        "Daily active users: 200–300"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "Session Idle Timeout Control",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "control",
+      "description": "Security control requiring automatic session termination after 15 minutes of user inactivity on the Internet Banking Platform to protect against unauthorized access.",
+      "context": [
+        "Session management (15-min idle timeout)"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Two-Factor Authentication Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "control",
+      "description": "Security control mandating two-factor authentication via OTP delivered through email or SMS for all Internet Banking Platform logins.",
+      "context": [
+        "Two-factor authentication (OTP via email/SMS)"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "TLS 1.3 Encryption Standard",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "control",
+      "description": "Encryption standard requirement for all data in transit on the Internet Banking Platform, enforcing TLS 1.3 protocol.",
+      "context": [
+        "TLS 1.3 encryption"
+      ]
+    },
+    {
+      "id": "br_004",
+      "name": "XSS and CSRF Protection Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "control",
+      "description": "Security control requiring implementation of Cross-Site Scripting (XSS) and Cross-Site Request Forgery (CSRF) protection mechanisms on the Internet Banking Platform.",
+      "context": [
+        "XSS/CSRF protection"
+      ]
+    },
+    {
+      "id": "br_005",
+      "name": "SQL Injection Prevention Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "control",
+      "description": "Security control requiring implementation of SQL injection prevention mechanisms across the Internet Banking Platform backend systems.",
+      "context": [
+        "SQL injection prevention"
+      ]
+    },
+    {
+      "id": "bc_001",
+      "name": "Standing Order",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "standing_order",
+      "description": "A recurring payment instruction that customers can set up, manage, and cancel through the Internet Banking Platform as part of self-service payment capabilities.",
+      "context": [
+        "Standing orders and direct debits"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Direct Debit",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "direct_debit",
+      "description": "A payment mandate that customers can establish and manage through the Internet Banking Platform for recurring payments to third parties.",
+      "context": [
+        "Standing orders and direct debits"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "Transaction",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "Financial events on customer accounts including deposits, withdrawals, transfers, and payments that are displayed in transaction history and monitored for fraud through the Internet Banking Platform.",
+      "context": [
+        "Transaction history and search",
+        "Fraud Detection Engine — transaction validation"
+      ]
+    },
+    {
+      "id": "bc_004",
+      "name": "Money Transfer",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transfer",
+      "description": "A customer-initiated payment operation executed through the Internet Banking Platform and processed by the Payment Processing System.",
+      "context": [
+        "Money transfer"
+      ]
+    },
+    {
+      "id": "bc_005",
+      "name": "Beneficiary",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "party",
+      "description": "A third-party recipient that customers can register and manage through the Internet Banking Platform for payment and transfer operations.",
+      "context": [
+        "Beneficiary management"
+      ]
+    }
+  ],
+  "id_map": {
+    "sys_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+    "sys_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_002",
+    "sys_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_003",
+    "sys_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_004",
+    "mt_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_mt_001",
+    "mt_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_mt_002",
+    "mt_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_mt_003",
+    "br_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_001",
+    "br_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_002",
+    "br_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_003",
+    "br_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_004",
+    "br_005": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_005",
+    "bc_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_001",
+    "bc_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_002",
+    "bc_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_003",
+    "bc_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_004",
+    "bc_005": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_005"
+  },
+  "entities": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "name": "Internet Banking Platform",
+      "aliases": [
+        "IBP",
+        "IBP-001"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "internet_banking",
+      "description": "Web-based customer portal enabling self-service account access, transaction management, and payment operations. Built on React.js frontend and Node.js backend, deployed on AWS cloud infrastructure with 99.8% availability SLA. Provides secure login via username/password and OTP, account dashboards, transaction history, standing orders, direct debits, beneficiary management, money transfers, and e-statements.",
+      "context": [
+        "Web-based customer portal for account access and self-service",
+        "React.js frontend, Node.js backend",
+        "Deployment: Cloud (AWS)",
+        "Availability: 99.8% (SLA)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_002",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "core_banking",
+      "description": "Core banking system providing account data integration to the Internet Banking Platform. Serves as the authoritative source for customer account information accessed through IBP.",
+      "context": [
+        "Account Management System (AMS) — account data"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_003",
+      "name": "Fraud Detection Engine",
+      "aliases": [],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "fraud_detection",
+      "description": "System responsible for transaction validation and fraud detection, integrated with the Internet Banking Platform to monitor and validate customer transactions in real-time.",
+      "context": [
+        "Fraud Detection Engine — transaction validation"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_004",
+      "name": "Payment Processing System",
+      "aliases": [
+        "PPS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "payment_processor",
+      "description": "System that executes money transfer and payment operations initiated through the Internet Banking Platform, handling the settlement and processing of customer-initiated transfers.",
+      "context": [
+        "Payment Processing System (PPS) — transfer execution"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_mt_001",
+      "name": "Internet Banking Platform Availability Target",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "availability_target",
+      "description": "Service level agreement specifying the required uptime for the Internet Banking Platform.",
+      "context": [
+        "Availability: 99.8% (SLA)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_mt_002",
+      "name": "Internet Banking Platform Response Time Target",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "response_time",
+      "description": "Performance target for the 95th percentile response time of the Internet Banking Platform under normal operating conditions.",
+      "context": [
+        "Response time: <2 seconds (p95)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_mt_003",
+      "name": "Internet Banking Platform Daily Active Users",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Operational metric tracking the typical daily active user count on the Internet Banking Platform.",
+      "context": [
+        "Daily active users: 200–300"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_001",
+      "name": "Session Idle Timeout Control",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "control",
+      "description": "Security control requiring automatic session termination after 15 minutes of user inactivity on the Internet Banking Platform to protect against unauthorized access.",
+      "context": [
+        "Session management (15-min idle timeout)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_002",
+      "name": "Two-Factor Authentication Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "control",
+      "description": "Security control mandating two-factor authentication via OTP delivered through email or SMS for all Internet Banking Platform logins.",
+      "context": [
+        "Two-factor authentication (OTP via email/SMS)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_003",
+      "name": "TLS 1.3 Encryption Standard",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "control",
+      "description": "Encryption standard requirement for all data in transit on the Internet Banking Platform, enforcing TLS 1.3 protocol.",
+      "context": [
+        "TLS 1.3 encryption"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_004",
+      "name": "XSS and CSRF Protection Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "control",
+      "description": "Security control requiring implementation of Cross-Site Scripting (XSS) and Cross-Site Request Forgery (CSRF) protection mechanisms on the Internet Banking Platform.",
+      "context": [
+        "XSS/CSRF protection"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_005",
+      "name": "SQL Injection Prevention Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "control",
+      "description": "Security control requiring implementation of SQL injection prevention mechanisms across the Internet Banking Platform backend systems.",
+      "context": [
+        "SQL injection prevention"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_001",
+      "name": "Standing Order",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "standing_order",
+      "description": "A recurring payment instruction that customers can set up, manage, and cancel through the Internet Banking Platform as part of self-service payment capabilities.",
+      "context": [
+        "Standing orders and direct debits"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_002",
+      "name": "Direct Debit",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "direct_debit",
+      "description": "A payment mandate that customers can establish and manage through the Internet Banking Platform for recurring payments to third parties.",
+      "context": [
+        "Standing orders and direct debits"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_003",
+      "name": "Transaction",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "Financial events on customer accounts including deposits, withdrawals, transfers, and payments that are displayed in transaction history and monitored for fraud through the Internet Banking Platform.",
+      "context": [
+        "Transaction history and search",
+        "Fraud Detection Engine — transaction validation"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_004",
+      "name": "Money Transfer",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transfer",
+      "description": "A customer-initiated payment operation executed through the Internet Banking Platform and processed by the Payment Processing System.",
+      "context": [
+        "Money transfer"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_005",
+      "name": "Beneficiary",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "party",
+      "description": "A third-party recipient that customers can register and manage through the Internet Banking Platform for payment and transfer operations.",
+      "context": [
+        "Beneficiary management"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "name": "Internet Banking Platform",
+      "properties": {
+        "system_id": "IBP-001",
+        "purpose": "Web-based customer portal for account access and self-service",
+        "technology_stack": [
+          "React.js",
+          "Node.js"
+        ],
+        "deployment": "cloud",
+        "availability_sla": "99.8%",
+        "key_features": [
+          "Secure login (username/password + OTP)",
+          "Account information dashboard",
+          "Transaction history and search",
+          "Standing orders and direct debits",
+          "Beneficiary management",
+          "Money transfer",
+          "E-statements",
+          "Profile and settings management"
+        ],
+        "security_controls": [
+          "TLS 1.3 encryption",
+          "Session management with 15-minute idle timeout",
+          "Two-factor authentication via OTP (email/SMS)",
+          "XSS/CSRF protection",
+          "SQL injection prevention"
+        ],
+        "integrations": [
+          "Account Management System",
+          "Fraud Detection Engine",
+          "Payment Processing System"
+        ],
+        "peak_traffic_window": "10:00–12:00 GMT"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_002",
+      "name": "Account Management System",
+      "properties": {
+        "purpose": "Stores and manages account data",
+        "integrations": [
+          "Internet Banking Platform"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_003",
+      "name": "Fraud Detection Engine",
+      "properties": {
+        "purpose": "Validates transactions for fraud detection",
+        "integrations": [
+          "Internet Banking Platform"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_004",
+      "name": "Payment Processing System",
+      "properties": {
+        "purpose": "Executes money transfers",
+        "integrations": [
+          "Internet Banking Platform"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_mt_001",
+      "name": "Internet Banking Platform Availability Target",
+      "properties": {
+        "value": "99.8",
+        "unit": "percentage",
+        "what_it_measures": "System uptime availability for Internet Banking Platform"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_mt_002",
+      "name": "Internet Banking Platform Response Time Target",
+      "properties": {
+        "value": "2",
+        "unit": "seconds",
+        "what_it_measures": "95th percentile response time for Internet Banking Platform requests"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_mt_003",
+      "name": "Internet Banking Platform Daily Active Users",
+      "properties": {
+        "value": "200–300",
+        "unit": "count",
+        "what_it_measures": "Daily active users on Internet Banking Platform"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_001",
+      "name": "Session Idle Timeout Control",
+      "properties": {
+        "rule_statement": "User sessions must automatically terminate after 15 minutes of inactivity",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Internet Banking Platform"
+        ],
+        "context": "Security control to prevent unauthorized access from unattended terminals"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_002",
+      "name": "Two-Factor Authentication Requirement",
+      "properties": {
+        "rule_statement": "All customer logins to Internet Banking Platform must use two-factor authentication via OTP delivered by email or SMS",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Internet Banking Platform"
+        ],
+        "context": "Security control to verify customer identity"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_003",
+      "name": "TLS 1.3 Encryption Standard",
+      "properties": {
+        "rule_statement": "All data in transit on Internet Banking Platform must be encrypted using TLS 1.3",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Internet Banking Platform"
+        ],
+        "context": "Encryption standard for protecting customer data during transmission"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_004",
+      "name": "XSS and CSRF Protection Requirement",
+      "properties": {
+        "rule_statement": "Internet Banking Platform must implement XSS (Cross-Site Scripting) and CSRF (Cross-Site Request Forgery) protection controls",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Internet Banking Platform"
+        ],
+        "context": "Security controls to prevent common web application attacks"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_005",
+      "name": "SQL Injection Prevention Requirement",
+      "properties": {
+        "rule_statement": "Internet Banking Platform must implement SQL injection prevention controls",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Internet Banking Platform"
+        ],
+        "context": "Security control to prevent database attacks through malicious SQL queries"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_001",
+      "name": "Standing Order",
+      "properties": {
+        "definition": "A recurring payment instruction set up by a customer to transfer funds at regular intervals to a specified beneficiary",
+        "key_attributes": [
+          "Frequency (daily, weekly, monthly, etc.)",
+          "Amount",
+          "Beneficiary account",
+          "Start date",
+          "End date or indefinite"
+        ],
+        "ontology_domain": "Payments and Transfers"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_002",
+      "name": "Direct Debit",
+      "properties": {
+        "definition": "A payment instruction that allows a third party to withdraw funds from a customer's account on agreed dates and amounts",
+        "key_attributes": [
+          "Mandate",
+          "Creditor",
+          "Amount (fixed or variable)",
+          "Frequency",
+          "Customer authorization"
+        ],
+        "ontology_domain": "Payments and Transfers"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_003",
+      "name": "Transaction",
+      "properties": {
+        "definition": "A financial movement of funds between accounts, including deposits, withdrawals, transfers, and fees",
+        "key_attributes": [
+          "Transaction type",
+          "Amount",
+          "Date and time",
+          "Source account",
+          "Destination account",
+          "Status"
+        ],
+        "ontology_domain": "Transactions and Monitoring"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_004",
+      "name": "Money Transfer",
+      "properties": {
+        "definition": "A transaction that moves funds from one account to another, either within the bank or to external beneficiaries",
+        "key_attributes": [
+          "Source account",
+          "Destination account/beneficiary",
+          "Amount",
+          "Transfer date",
+          "Reference/narrative"
+        ],
+        "ontology_domain": "Payments and Transfers"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_005",
+      "name": "Beneficiary",
+      "properties": {
+        "definition": "A third party designated by a customer to receive funds through standing orders, direct debits, or money transfers",
+        "key_attributes": [
+          "Beneficiary name",
+          "Account number",
+          "Sort code or routing information",
+          "Bank details",
+          "Relationship to customer"
+        ],
+        "ontology_domain": "Payments and Transfers"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_mt_001",
+      "target_name": "Internet Banking Platform Availability Target",
+      "rel_type": "measured_by",
+      "description": "Internet Banking Platform is measured against an availability SLA target of 99.8%",
+      "properties": {
+        "sla_percentage": 99.8
+      },
+      "context": "Availability: 99.8% (SLA)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_mt_002",
+      "target_name": "Internet Banking Platform Response Time Target",
+      "rel_type": "measured_by",
+      "description": "Internet Banking Platform is measured against a response time target of less than 2 seconds at p95",
+      "properties": {
+        "response_time_p95_seconds": 2,
+        "percentile": "p95"
+      },
+      "context": "Response time: <2 seconds (p95)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_mt_003",
+      "target_name": "Internet Banking Platform Daily Active Users",
+      "rel_type": "measured_by",
+      "description": "Internet Banking Platform is measured by daily active user count of 200–300 users",
+      "properties": {
+        "daily_active_users_min": 200,
+        "daily_active_users_max": 300
+      },
+      "context": "Daily active users: 200–300",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_001",
+      "target_name": "Session Idle Timeout Control",
+      "rel_type": "enforces",
+      "description": "Internet Banking Platform enforces session idle timeout control with a 15-minute timeout",
+      "properties": {
+        "timeout_minutes": 15
+      },
+      "context": "Session management (15-min idle timeout)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_002",
+      "target_name": "Two-Factor Authentication Requirement",
+      "rel_type": "enforces",
+      "description": "Internet Banking Platform enforces two-factor authentication via OTP through email or SMS",
+      "properties": {
+        "method": "OTP",
+        "delivery_channels": [
+          "email",
+          "SMS"
+        ]
+      },
+      "context": "Two-factor authentication (OTP via email/SMS)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_003",
+      "target_name": "TLS 1.3 Encryption Standard",
+      "rel_type": "enforces",
+      "description": "Internet Banking Platform enforces TLS 1.3 encryption standard for data transmission",
+      "properties": {
+        "encryption_protocol": "TLS 1.3"
+      },
+      "context": "TLS 1.3 encryption",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_004",
+      "target_name": "XSS and CSRF Protection Requirement",
+      "rel_type": "enforces",
+      "description": "Internet Banking Platform enforces XSS and CSRF protection requirements",
+      "properties": {
+        "protection_types": [
+          "XSS",
+          "CSRF"
+        ]
+      },
+      "context": "XSS/CSRF protection",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_005",
+      "target_name": "SQL Injection Prevention Requirement",
+      "rel_type": "enforces",
+      "description": "Internet Banking Platform enforces SQL injection prevention requirements",
+      "properties": {
+        "protection_type": "SQL Injection Prevention"
+      },
+      "context": "SQL injection prevention",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_001",
+      "target_name": "Standing Order",
+      "rel_type": "manages",
+      "description": "Internet Banking Platform manages standing orders functionality for customers",
+      "properties": {
+        "feature": "Standing orders management"
+      },
+      "context": "Standing orders and direct debits",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_002",
+      "target_name": "Direct Debit",
+      "rel_type": "manages",
+      "description": "Internet Banking Platform manages direct debits functionality for customers",
+      "properties": {
+        "feature": "Direct debits management"
+      },
+      "context": "Standing orders and direct debits",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_003",
+      "target_name": "Transaction",
+      "rel_type": "tracks",
+      "description": "Internet Banking Platform tracks and displays transaction history for customers",
+      "properties": {
+        "feature": "Transaction history and search"
+      },
+      "context": "Transaction history and search",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_004",
+      "target_name": "Money Transfer",
+      "rel_type": "manages",
+      "description": "Internet Banking Platform manages money transfer functionality",
+      "properties": {
+        "feature": "Money transfer"
+      },
+      "context": "Money transfer",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_005",
+      "target_name": "Beneficiary",
+      "rel_type": "manages",
+      "description": "Internet Banking Platform manages beneficiary information and settings",
+      "properties": {
+        "feature": "Beneficiary management"
+      },
+      "context": "Beneficiary management",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_002",
+      "target_name": "Account Management System",
+      "rel_type": "depends_on",
+      "description": "Internet Banking Platform depends on Account Management System for account data",
+      "properties": {
+        "data_type": "account data"
+      },
+      "context": "Account Management System (AMS) — account data",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_003",
+      "target_name": "Fraud Detection Engine",
+      "rel_type": "depends_on",
+      "description": "Internet Banking Platform depends on Fraud Detection Engine for transaction validation",
+      "properties": {
+        "purpose": "transaction validation"
+      },
+      "context": "Fraud Detection Engine — transaction validation",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_004",
+      "target_name": "Payment Processing System",
+      "rel_type": "depends_on",
+      "description": "Internet Banking Platform depends on Payment Processing System for transfer execution",
+      "properties": {
+        "purpose": "transfer execution"
+      },
+      "context": "Payment Processing System (PPS) — transfer execution",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_001",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_002",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_003",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_sys_004",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_mt_001",
+      "source_name": "Internet Banking Platform Availability Target",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_mt_002",
+      "source_name": "Internet Banking Platform Response Time Target",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_mt_003",
+      "source_name": "Internet Banking Platform Daily Active Users",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_001",
+      "source_name": "Session Idle Timeout Control",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_002",
+      "source_name": "Two-Factor Authentication Requirement",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_003",
+      "source_name": "TLS 1.3 Encryption Standard",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_004",
+      "source_name": "XSS and CSRF Protection Requirement",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_br_005",
+      "source_name": "SQL Injection Prevention Requirement",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_001",
+      "source_name": "Standing Order",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_002",
+      "source_name": "Direct Debit",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_003",
+      "source_name": "Transaction",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_004",
+      "source_name": "Money Transfer",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005_bc_005",
+      "source_name": "Beneficiary",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_005",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ]
+}

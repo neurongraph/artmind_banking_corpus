@@ -1,0 +1,1109 @@
+{
+  "chunk_seq": 7,
+  "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+  "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+  "text": "### Step 2: Transaction Analysis  \n**For Each Disputed/Flagged Transaction:**  \n```\nTransaction Details:\n- Transaction ID: [ID]\n- Date/Time: [Exact timestamp]\n- Amount: [£Amount]\n- Type: [Transfer / Card / Check / Other]\n- Merchant/Recipient: [Name, ID]\n- Merchant Category: [Retail / Airline / Casino / Other]\n- Device Used: [Online / Mobile App / ATM / Branch / Phone]\n- IP Address (if digital): [IP]\n- Geo-location: [City, Country]\n\nTransaction Legitimacy Assessment:\n- Is amount typical for customer? ☐ Yes ☐ No ☐ Unusual\n- Is merchant typical for customer? ☐ Yes ☐ No ☐ Unusual\n- Is timing consistent with known patterns? ☐ Yes ☐ No\n- Is device new/unusual? ☐ Yes ☐ No\n- Is geo-location different from normal? ☐ Yes ☐ No ☐ Impossible\n\nRed Flags:\n- ☐ Multiple transactions in short time (velocity)\n- ☐ Transactions at 3 AM (unusual time)\n- ☐ High-risk merchants (casinos, money transfer)\n- ☐ Geo-impossibility (2 transactions on opposite sides of world within minutes)\n- ☐ Change from habitual pattern (customer never transfers to this recipient)\n```  \n---",
+  "name": "Chunk 7/24",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_006",
+  "next_chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_008",
+  "raw_entities": [
+    {
+      "id": "prc_001",
+      "name": "Transaction Analysis Process",
+      "aliases": [
+        "Disputed/Flagged Transaction Analysis",
+        "Step 2"
+      ],
+      "entity_class": "PROCESS",
+      "type": "fraud_investigation",
+      "description": "A systematic procedure for analyzing disputed or flagged transactions to assess legitimacy and detect fraud indicators. The process captures transaction details, evaluates consistency with customer patterns, and identifies red flags including velocity, timing anomalies, high-risk merchants, and geo-impossibilities.",
+      "context": [
+        "Step 2: Transaction Analysis",
+        "For Each Disputed/Flagged Transaction:",
+        "Transaction Legitimacy Assessment",
+        "Red Flags"
+      ]
+    },
+    {
+      "id": "pst_001",
+      "name": "Transaction Details Collection",
+      "aliases": [
+        "Transaction Details Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Collects and records comprehensive transaction metadata including transaction ID, exact timestamp, amount, transaction type, merchant/recipient information, merchant category, device used, IP address for digital transactions, and geo-location data.",
+      "context": [
+        "Transaction Details:",
+        "- Transaction ID: [ID]",
+        "- Date/Time: [Exact timestamp]",
+        "- Amount: [£Amount]"
+      ]
+    },
+    {
+      "id": "pst_002",
+      "name": "Transaction Legitimacy Assessment",
+      "aliases": [
+        "Legitimacy Check",
+        "Pattern Consistency Review"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Evaluates whether a transaction aligns with the customer's known behavior and patterns by assessing amount typicality, merchant familiarity, timing consistency, device novelty, and geo-location deviation from normal activity.",
+      "context": [
+        "Transaction Legitimacy Assessment:",
+        "- Is amount typical for customer? ☐ Yes ☐ No ☐ Unusual",
+        "- Is merchant typical for customer? ☐ Yes ☐ No ☐ Unusual",
+        "- Is timing consistent with known patterns? ☐ Yes ☐ No"
+      ]
+    },
+    {
+      "id": "pst_003",
+      "name": "Red Flag Identification",
+      "aliases": [
+        "Fraud Indicator Detection"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Identifies and flags specific fraud indicators and suspicious patterns including transaction velocity, unusual timing (3 AM transactions), high-risk merchant categories, geo-impossibilities, and deviations from habitual customer behavior.",
+      "context": [
+        "Red Flags:",
+        "- ☐ Multiple transactions in short time (velocity)",
+        "- ☐ Transactions at 3 AM (unusual time)",
+        "- ☐ High-risk merchants (casinos, money transfer)"
+      ]
+    },
+    {
+      "id": "dec_001",
+      "name": "Amount Typicality Decision",
+      "aliases": [
+        "Amount Assessment Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Determines whether the transaction amount is typical, unusual, or atypical for the customer's normal spending patterns. Outcomes inform risk scoring and escalation decisions.",
+      "context": [
+        "- Is amount typical for customer? ☐ Yes ☐ No ☐ Unusual"
+      ]
+    },
+    {
+      "id": "dec_002",
+      "name": "Merchant Typicality Decision",
+      "aliases": [
+        "Merchant Familiarity Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Assesses whether the merchant or recipient is typical for the customer or represents an unusual or new transaction partner. Flags deviations from habitual patterns.",
+      "context": [
+        "- Is merchant typical for customer? ☐ Yes ☐ No ☐ Unusual",
+        "- Change from habitual pattern (customer never transfers to this recipient)"
+      ]
+    },
+    {
+      "id": "dec_003",
+      "name": "Timing Consistency Decision",
+      "aliases": [
+        "Pattern Timing Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Evaluates whether the transaction timing aligns with the customer's known activity patterns. Flags transactions at unusual hours (e.g., 3 AM) or inconsistent with historical behavior.",
+      "context": [
+        "- Is timing consistent with known patterns? ☐ Yes ☐ No",
+        "- ☐ Transactions at 3 AM (unusual time)"
+      ]
+    },
+    {
+      "id": "dec_004",
+      "name": "Device Novelty Decision",
+      "aliases": [
+        "Device Familiarity Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Determines whether the device used for the transaction is new or unusual compared to the customer's typical transaction methods.",
+      "context": [
+        "- Is device new/unusual? ☐ Yes ☐ No"
+      ]
+    },
+    {
+      "id": "dec_005",
+      "name": "Geo-location Deviation Decision",
+      "aliases": [
+        "Location Consistency Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Assesses whether the transaction geo-location differs from the customer's normal activity area or represents a geo-impossibility (multiple transactions in geographically distant locations within an impossible timeframe).",
+      "context": [
+        "- Is geo-location different from normal? ☐ Yes ☐ No ☐ Impossible",
+        "- ☐ Geo-impossibility (2 transactions on opposite sides of world within minutes)"
+      ]
+    },
+    {
+      "id": "dec_006",
+      "name": "Velocity Check Decision",
+      "aliases": [
+        "Transaction Velocity Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "fraud_flag",
+      "description": "Flags transactions occurring in rapid succession (multiple transactions in short time), a common indicator of account compromise or fraudulent activity.",
+      "context": [
+        "- ☐ Multiple transactions in short time (velocity)"
+      ]
+    },
+    {
+      "id": "dec_007",
+      "name": "High-Risk Merchant Category Decision",
+      "aliases": [
+        "Merchant Risk Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "fraud_flag",
+      "description": "Identifies transactions with high-risk merchant categories including casinos, money transfer services, and other categories associated with fraud or money laundering.",
+      "context": [
+        "- ☐ High-risk merchants (casinos, money transfer)",
+        "- Merchant Category: [Retail / Airline / Casino / Other]"
+      ]
+    },
+    {
+      "id": "tra_001",
+      "name": "Disputed Transaction",
+      "aliases": [
+        "Flagged Transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "A financial transaction on a customer account that has been flagged as potentially fraudulent or disputed, requiring detailed analysis of transaction details, legitimacy assessment, and red flag evaluation.",
+      "context": [
+        "For Each Disputed/Flagged Transaction:",
+        "Transaction Details:",
+        "Transaction Legitimacy Assessment"
+      ]
+    },
+    {
+      "id": "frd_001",
+      "name": "Fraud Investigation",
+      "aliases": [
+        "Transaction Fraud Assessment"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "The systematic investigation of disputed or flagged transactions to determine fraud likelihood through pattern analysis, red flag identification, and legitimacy assessment.",
+      "context": [
+        "Step 2: Transaction Analysis",
+        "For Each Disputed/Flagged Transaction:",
+        "Red Flags"
+      ]
+    }
+  ],
+  "id_map": {
+    "prc_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_prc_001",
+    "pst_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_001",
+    "pst_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_002",
+    "pst_003": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_003",
+    "dec_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_001",
+    "dec_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_002",
+    "dec_003": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_003",
+    "dec_004": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_004",
+    "dec_005": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_005",
+    "dec_006": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_006",
+    "dec_007": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_007",
+    "tra_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_tra_001",
+    "frd_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_frd_001"
+  },
+  "entities": [
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_prc_001",
+      "name": "Transaction Analysis Process",
+      "aliases": [
+        "Disputed/Flagged Transaction Analysis",
+        "Step 2"
+      ],
+      "entity_class": "PROCESS",
+      "type": "fraud_investigation",
+      "description": "A systematic procedure for analyzing disputed or flagged transactions to assess legitimacy and detect fraud indicators. The process captures transaction details, evaluates consistency with customer patterns, and identifies red flags including velocity, timing anomalies, high-risk merchants, and geo-impossibilities.",
+      "context": [
+        "Step 2: Transaction Analysis",
+        "For Each Disputed/Flagged Transaction:",
+        "Transaction Legitimacy Assessment",
+        "Red Flags"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_001",
+      "name": "Transaction Details Collection",
+      "aliases": [
+        "Transaction Details Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Collects and records comprehensive transaction metadata including transaction ID, exact timestamp, amount, transaction type, merchant/recipient information, merchant category, device used, IP address for digital transactions, and geo-location data.",
+      "context": [
+        "Transaction Details:",
+        "- Transaction ID: [ID]",
+        "- Date/Time: [Exact timestamp]",
+        "- Amount: [£Amount]"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_002",
+      "name": "Transaction Legitimacy Assessment",
+      "aliases": [
+        "Legitimacy Check",
+        "Pattern Consistency Review"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Evaluates whether a transaction aligns with the customer's known behavior and patterns by assessing amount typicality, merchant familiarity, timing consistency, device novelty, and geo-location deviation from normal activity.",
+      "context": [
+        "Transaction Legitimacy Assessment:",
+        "- Is amount typical for customer? ☐ Yes ☐ No ☐ Unusual",
+        "- Is merchant typical for customer? ☐ Yes ☐ No ☐ Unusual",
+        "- Is timing consistent with known patterns? ☐ Yes ☐ No"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_003",
+      "name": "Red Flag Identification",
+      "aliases": [
+        "Fraud Indicator Detection"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Identifies and flags specific fraud indicators and suspicious patterns including transaction velocity, unusual timing (3 AM transactions), high-risk merchant categories, geo-impossibilities, and deviations from habitual customer behavior.",
+      "context": [
+        "Red Flags:",
+        "- ☐ Multiple transactions in short time (velocity)",
+        "- ☐ Transactions at 3 AM (unusual time)",
+        "- ☐ High-risk merchants (casinos, money transfer)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_001",
+      "name": "Amount Typicality Decision",
+      "aliases": [
+        "Amount Assessment Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Determines whether the transaction amount is typical, unusual, or atypical for the customer's normal spending patterns. Outcomes inform risk scoring and escalation decisions.",
+      "context": [
+        "- Is amount typical for customer? ☐ Yes ☐ No ☐ Unusual"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_002",
+      "name": "Merchant Typicality Decision",
+      "aliases": [
+        "Merchant Familiarity Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Assesses whether the merchant or recipient is typical for the customer or represents an unusual or new transaction partner. Flags deviations from habitual patterns.",
+      "context": [
+        "- Is merchant typical for customer? ☐ Yes ☐ No ☐ Unusual",
+        "- Change from habitual pattern (customer never transfers to this recipient)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_003",
+      "name": "Timing Consistency Decision",
+      "aliases": [
+        "Pattern Timing Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Evaluates whether the transaction timing aligns with the customer's known activity patterns. Flags transactions at unusual hours (e.g., 3 AM) or inconsistent with historical behavior.",
+      "context": [
+        "- Is timing consistent with known patterns? ☐ Yes ☐ No",
+        "- ☐ Transactions at 3 AM (unusual time)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_004",
+      "name": "Device Novelty Decision",
+      "aliases": [
+        "Device Familiarity Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Determines whether the device used for the transaction is new or unusual compared to the customer's typical transaction methods.",
+      "context": [
+        "- Is device new/unusual? ☐ Yes ☐ No"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_005",
+      "name": "Geo-location Deviation Decision",
+      "aliases": [
+        "Location Consistency Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Assesses whether the transaction geo-location differs from the customer's normal activity area or represents a geo-impossibility (multiple transactions in geographically distant locations within an impossible timeframe).",
+      "context": [
+        "- Is geo-location different from normal? ☐ Yes ☐ No ☐ Impossible",
+        "- ☐ Geo-impossibility (2 transactions on opposite sides of world within minutes)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_006",
+      "name": "Velocity Check Decision",
+      "aliases": [
+        "Transaction Velocity Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "fraud_flag",
+      "description": "Flags transactions occurring in rapid succession (multiple transactions in short time), a common indicator of account compromise or fraudulent activity.",
+      "context": [
+        "- ☐ Multiple transactions in short time (velocity)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_007",
+      "name": "High-Risk Merchant Category Decision",
+      "aliases": [
+        "Merchant Risk Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "fraud_flag",
+      "description": "Identifies transactions with high-risk merchant categories including casinos, money transfer services, and other categories associated with fraud or money laundering.",
+      "context": [
+        "- ☐ High-risk merchants (casinos, money transfer)",
+        "- Merchant Category: [Retail / Airline / Casino / Other]"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_tra_001",
+      "name": "Disputed Transaction",
+      "aliases": [
+        "Flagged Transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "A financial transaction on a customer account that has been flagged as potentially fraudulent or disputed, requiring detailed analysis of transaction details, legitimacy assessment, and red flag evaluation.",
+      "context": [
+        "For Each Disputed/Flagged Transaction:",
+        "Transaction Details:",
+        "Transaction Legitimacy Assessment"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_frd_001",
+      "name": "Fraud Investigation",
+      "aliases": [
+        "Transaction Fraud Assessment"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "The systematic investigation of disputed or flagged transactions to determine fraud likelihood through pattern analysis, red flag identification, and legitimacy assessment.",
+      "context": [
+        "Step 2: Transaction Analysis",
+        "For Each Disputed/Flagged Transaction:",
+        "Red Flags"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_prc_001",
+      "name": "Transaction Analysis Process",
+      "properties": {
+        "purpose": "Analyze disputed or flagged transactions to assess legitimacy and identify fraud indicators",
+        "scope": "All transaction types including transfers, card payments, checks, and other payment methods",
+        "channels": [
+          "online",
+          "mobile_app",
+          "atm",
+          "branch",
+          "phone"
+        ],
+        "departments_involved": [
+          "fraud_investigation",
+          "transaction_monitoring"
+        ],
+        "trigger": "Transaction flagged as disputed or suspicious in the system",
+        "outcome_success": "Transaction legitimacy determined and red flags documented for investigation or clearance"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_001",
+      "name": "Transaction Details Collection",
+      "properties": {
+        "step_number": 1,
+        "actor": "Fraud Analyst",
+        "input": [
+          "transaction_id",
+          "timestamp",
+          "amount",
+          "transaction_type",
+          "merchant_name",
+          "merchant_id",
+          "merchant_category",
+          "device_used",
+          "ip_address",
+          "geolocation"
+        ],
+        "output": "Structured transaction record with all details captured",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "transaction_management_system",
+          "fraud_detection_platform"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_002",
+      "name": "Transaction Legitimacy Assessment",
+      "properties": {
+        "step_number": 2,
+        "actor": "Fraud Analyst",
+        "input": [
+          "transaction_details",
+          "customer_profile",
+          "historical_transaction_patterns"
+        ],
+        "output": "Assessment results for amount typicality, merchant typicality, timing consistency, device novelty, and geolocation deviation",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "fraud_detection_platform",
+          "customer_profile_system"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_003",
+      "name": "Red Flag Identification",
+      "properties": {
+        "step_number": 3,
+        "actor": "Fraud Analyst",
+        "input": [
+          "transaction_legitimacy_assessment",
+          "transaction_details"
+        ],
+        "output": "List of identified red flags for escalation or investigation",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "fraud_detection_platform"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_001",
+      "name": "Amount Typicality Decision",
+      "properties": {
+        "decision_question": "Is the transaction amount typical for this customer?",
+        "criteria": [
+          "customer_historical_transaction_amounts",
+          "account_profile"
+        ],
+        "decision_maker": "Fraud Detection System / Fraud Analyst",
+        "path_yes": "Proceed to next assessment",
+        "path_no": "Flag as unusual amount; escalate for review"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_002",
+      "name": "Merchant Typicality Decision",
+      "properties": {
+        "decision_question": "Is the merchant typical for this customer?",
+        "criteria": [
+          "customer_historical_merchants",
+          "merchant_category",
+          "customer_spending_profile"
+        ],
+        "decision_maker": "Fraud Detection System / Fraud Analyst",
+        "path_yes": "Proceed to next assessment",
+        "path_no": "Flag as unusual merchant; escalate for review"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_003",
+      "name": "Timing Consistency Decision",
+      "properties": {
+        "decision_question": "Is the transaction timing consistent with known customer patterns?",
+        "criteria": [
+          "customer_historical_transaction_times",
+          "time_of_day",
+          "day_of_week"
+        ],
+        "decision_maker": "Fraud Detection System / Fraud Analyst",
+        "path_yes": "Proceed to next assessment",
+        "path_no": "Flag as unusual timing; escalate for review"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_004",
+      "name": "Device Novelty Decision",
+      "properties": {
+        "decision_question": "Is the device used new or unusual for this customer?",
+        "criteria": [
+          "customer_known_devices",
+          "device_type",
+          "device_identifier"
+        ],
+        "decision_maker": "Fraud Detection System / Fraud Analyst",
+        "path_yes": "Proceed to next assessment",
+        "path_no": "Flag as new/unusual device; escalate for review"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_005",
+      "name": "Geo-location Deviation Decision",
+      "properties": {
+        "decision_question": "Is the geolocation different from the customer's normal location?",
+        "criteria": [
+          "customer_known_locations",
+          "transaction_geolocation",
+          "geo_impossibility_check"
+        ],
+        "decision_maker": "Fraud Detection System / Fraud Analyst",
+        "path_yes": "Proceed to next assessment",
+        "path_no": "Flag as unusual geolocation; escalate for review"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_006",
+      "name": "Velocity Check Decision",
+      "properties": {
+        "decision_question": "Are multiple transactions occurring in an unusually short time period?",
+        "criteria": [
+          "transaction_frequency",
+          "time_window",
+          "transaction_count"
+        ],
+        "decision_maker": "Fraud Detection System / Fraud Analyst",
+        "path_yes": "Proceed to next assessment",
+        "path_no": "Flag as high velocity; escalate for review"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_007",
+      "name": "High-Risk Merchant Category Decision",
+      "properties": {
+        "decision_question": "Is the merchant in a high-risk category?",
+        "criteria": [
+          "merchant_category",
+          "high_risk_categories"
+        ],
+        "high_risk_categories": [
+          "casino",
+          "money_transfer",
+          "gambling"
+        ],
+        "decision_maker": "Fraud Detection System / Fraud Analyst",
+        "path_yes": "Flag as high-risk merchant; escalate for review",
+        "path_no": "Proceed to next assessment"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_tra_001",
+      "name": "Disputed Transaction",
+      "properties": {
+        "transaction_type": "disputed",
+        "monitoring_or_reporting_obligation": "Fraud investigation and analysis required",
+        "analysis_requirement": "Legitimacy assessment and red flag identification"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_frd_001",
+      "name": "Fraud Investigation",
+      "properties": {
+        "generation_trigger": [
+          "disputed_transaction_flagged",
+          "red_flags_identified"
+        ],
+        "investigation_or_escalation_path": "Fraud analyst reviews transaction details, legitimacy assessment, and red flags; escalates based on findings",
+        "red_flag_categories": [
+          "velocity_check",
+          "unusual_timing",
+          "high_risk_merchant",
+          "geo_impossibility",
+          "pattern_deviation"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_prc_001",
+      "source_name": "Transaction Analysis Process",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_001",
+      "target_name": "Transaction Details Collection",
+      "rel_type": "starts_with",
+      "description": "Transaction Analysis Process begins with collecting transaction details",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "For Each Disputed/Flagged Transaction: Transaction Details: - Transaction ID, Date/Time, Amount, Type, Merchant/Recipient, Merchant Category, Device Used, IP Address, Geo-location",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_001",
+      "source_name": "Transaction Details Collection",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_002",
+      "target_name": "Transaction Legitimacy Assessment",
+      "rel_type": "followed_by",
+      "description": "Transaction Details Collection is followed by Transaction Legitimacy Assessment",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Transaction Details: [collected data] Transaction Legitimacy Assessment: - Is amount typical for customer? Is merchant typical for customer? Is timing consistent with known patterns?",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_002",
+      "source_name": "Transaction Legitimacy Assessment",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_003",
+      "target_name": "Red Flag Identification",
+      "rel_type": "followed_by",
+      "description": "Transaction Legitimacy Assessment is followed by Red Flag Identification",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Transaction Legitimacy Assessment: [assessment questions] Red Flags: - Multiple transactions in short time (velocity), Transactions at 3 AM, High-risk merchants, Geo-impossibility, Change from habitual pattern",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_002",
+      "source_name": "Transaction Legitimacy Assessment",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_001",
+      "target_name": "Amount Typicality Decision",
+      "rel_type": "leads_to",
+      "description": "Transaction Legitimacy Assessment leads to Amount Typicality Decision",
+      "properties": {
+        "assessment_question": "Is amount typical for customer?"
+      },
+      "context": "Is amount typical for customer? ☐ Yes ☐ No ☐ Unusual",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_002",
+      "source_name": "Transaction Legitimacy Assessment",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_002",
+      "target_name": "Merchant Typicality Decision",
+      "rel_type": "leads_to",
+      "description": "Transaction Legitimacy Assessment leads to Merchant Typicality Decision",
+      "properties": {
+        "assessment_question": "Is merchant typical for customer?"
+      },
+      "context": "Is merchant typical for customer? ☐ Yes ☐ No ☐ Unusual",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_002",
+      "source_name": "Transaction Legitimacy Assessment",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_003",
+      "target_name": "Timing Consistency Decision",
+      "rel_type": "leads_to",
+      "description": "Transaction Legitimacy Assessment leads to Timing Consistency Decision",
+      "properties": {
+        "assessment_question": "Is timing consistent with known patterns?"
+      },
+      "context": "Is timing consistent with known patterns? ☐ Yes ☐ No",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_002",
+      "source_name": "Transaction Legitimacy Assessment",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_004",
+      "target_name": "Device Novelty Decision",
+      "rel_type": "leads_to",
+      "description": "Transaction Legitimacy Assessment leads to Device Novelty Decision",
+      "properties": {
+        "assessment_question": "Is device new/unusual?"
+      },
+      "context": "Is device new/unusual? ☐ Yes ☐ No",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_002",
+      "source_name": "Transaction Legitimacy Assessment",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_005",
+      "target_name": "Geo-location Deviation Decision",
+      "rel_type": "leads_to",
+      "description": "Transaction Legitimacy Assessment leads to Geo-location Deviation Decision",
+      "properties": {
+        "assessment_question": "Is geo-location different from normal?"
+      },
+      "context": "Is geo-location different from normal? ☐ Yes ☐ No ☐ Impossible",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_003",
+      "source_name": "Red Flag Identification",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_006",
+      "target_name": "Velocity Check Decision",
+      "rel_type": "leads_to",
+      "description": "Red Flag Identification leads to Velocity Check Decision",
+      "properties": {
+        "red_flag": "Multiple transactions in short time (velocity)"
+      },
+      "context": "Red Flags: - ☐ Multiple transactions in short time (velocity)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_003",
+      "source_name": "Red Flag Identification",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_003",
+      "target_name": "Timing Consistency Decision",
+      "rel_type": "leads_to",
+      "description": "Red Flag Identification leads to Timing Consistency Decision for unusual time patterns",
+      "properties": {
+        "red_flag": "Transactions at 3 AM (unusual time)"
+      },
+      "context": "Red Flags: - ☐ Transactions at 3 AM (unusual time)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_003",
+      "source_name": "Red Flag Identification",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_007",
+      "target_name": "High-Risk Merchant Category Decision",
+      "rel_type": "leads_to",
+      "description": "Red Flag Identification leads to High-Risk Merchant Category Decision",
+      "properties": {
+        "red_flag": "High-risk merchants (casinos, money transfer)"
+      },
+      "context": "Red Flags: - ☐ High-risk merchants (casinos, money transfer)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_003",
+      "source_name": "Red Flag Identification",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_005",
+      "target_name": "Geo-location Deviation Decision",
+      "rel_type": "leads_to",
+      "description": "Red Flag Identification leads to Geo-location Deviation Decision for geo-impossibility",
+      "properties": {
+        "red_flag": "Geo-impossibility (2 transactions on opposite sides of world within minutes)"
+      },
+      "context": "Red Flags: - ☐ Geo-impossibility (2 transactions on opposite sides of world within minutes)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_003",
+      "source_name": "Red Flag Identification",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_002",
+      "target_name": "Merchant Typicality Decision",
+      "rel_type": "leads_to",
+      "description": "Red Flag Identification leads to Merchant Typicality Decision for habitual pattern changes",
+      "properties": {
+        "red_flag": "Change from habitual pattern (customer never transfers to this recipient)"
+      },
+      "context": "Red Flags: - ☐ Change from habitual pattern (customer never transfers to this recipient)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_prc_001",
+      "source_name": "Transaction Analysis Process",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_tra_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "operates_on",
+      "description": "Transaction Analysis Process operates on Disputed Transactions",
+      "properties": {
+        "scope": "For Each Disputed/Flagged Transaction"
+      },
+      "context": "For Each Disputed/Flagged Transaction: Transaction Details Collection, Transaction Legitimacy Assessment, Red Flag Identification",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_001",
+      "source_name": "Transaction Details Collection",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_tra_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "collects_data_from",
+      "description": "Transaction Details Collection step collects data from Disputed Transaction",
+      "properties": {
+        "data_collected": [
+          "Transaction ID",
+          "Date/Time",
+          "Amount",
+          "Type",
+          "Merchant/Recipient",
+          "Merchant Category",
+          "Device Used",
+          "IP Address",
+          "Geo-location"
+        ]
+      },
+      "context": "Transaction Details: - Transaction ID: [ID], Date/Time: [Exact timestamp], Amount: [£Amount], Type: [Transfer / Card / Check / Other], Merchant/Recipient: [Name, ID], Merchant Category: [Retail / Airline / Casino / Other], Device Used: [Online / Mobile App / ATM / Branch / Phone], IP Address (if digital): [IP], Geo-location: [City, Country]",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_frd_001",
+      "source_name": "Fraud Investigation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_tra_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "raised_on",
+      "description": "Fraud Investigation is raised on Disputed Transaction",
+      "properties": {
+        "trigger": "Transaction flagged for analysis"
+      },
+      "context": "For Each Disputed/Flagged Transaction: [analysis process]",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_prc_001",
+      "source_name": "Transaction Analysis Process",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_frd_001",
+      "target_name": "Fraud Investigation",
+      "rel_type": "may_result_in_filing_of",
+      "description": "Transaction Analysis Process may result in Fraud Investigation",
+      "properties": {
+        "trigger_condition": "Red flags identified during analysis"
+      },
+      "context": "Red Flags: [multiple indicators that trigger fraud investigation]",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_prc_001",
+      "source_name": "Transaction Analysis Process",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_001",
+      "source_name": "Transaction Details Collection",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_002",
+      "source_name": "Transaction Legitimacy Assessment",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_pst_003",
+      "source_name": "Red Flag Identification",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_001",
+      "source_name": "Amount Typicality Decision",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_002",
+      "source_name": "Merchant Typicality Decision",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_003",
+      "source_name": "Timing Consistency Decision",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_004",
+      "source_name": "Device Novelty Decision",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_005",
+      "source_name": "Geo-location Deviation Decision",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_006",
+      "source_name": "Velocity Check Decision",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_dec_007",
+      "source_name": "High-Risk Merchant Category Decision",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_tra_001",
+      "source_name": "Disputed Transaction",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007_frd_001",
+      "source_name": "Fraud Investigation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_007",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

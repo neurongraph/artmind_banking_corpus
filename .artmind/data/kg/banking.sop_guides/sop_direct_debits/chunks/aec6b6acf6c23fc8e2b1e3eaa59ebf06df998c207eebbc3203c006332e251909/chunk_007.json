@@ -1,0 +1,1094 @@
+{
+  "chunk_seq": 7,
+  "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+  "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+  "text": "### FirstUK Bank's Role  \n**When Mandate Reaches FirstUK:**\n1. Mandate received from biller or customer\n2. Account details verified (valid format, exists)\n3. Customer identity confirmed\n4. Mandate recorded in system\n5. Biller notified of setup (ARUDD message)\n6. Customer receives confirmation  \n**Note:** FirstUK doesn't issue the mandate; customer signs it and biller sends it to us  \n---",
+  "name": "Chunk 7/26",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+  "next_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_008",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Direct Debit Mandate Setup",
+      "aliases": [
+        "DD Mandate Setup",
+        "Mandate Processing"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit_setup",
+      "description": "End-to-end procedure for receiving, verifying, and recording a direct debit mandate when it reaches FirstUK Bank from a biller or customer. The process includes account validation, customer identity confirmation, system recording, biller notification via ARUDD message, and customer confirmation.",
+      "context": [
+        "When Mandate Reaches FirstUK",
+        "Mandate received from biller or customer",
+        "Biller notified of setup (ARUDD message)",
+        "Customer receives confirmation"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Mandate Receipt",
+      "aliases": [
+        "Step 1"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial step where the direct debit mandate is received by FirstUK Bank, either directly from the biller or from the customer.",
+      "context": [
+        "Mandate received from biller or customer"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Account Details Verification",
+      "aliases": [
+        "Step 2"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step to confirm that the account details provided in the mandate are in valid format and that the account exists in FirstUK's system.",
+      "context": [
+        "Account details verified (valid format, exists)"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Customer Identity Confirmation",
+      "aliases": [
+        "Step 3"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Step to confirm the identity of the customer associated with the mandate before proceeding with mandate recording.",
+      "context": [
+        "Customer identity confirmed"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Mandate System Recording",
+      "aliases": [
+        "Step 4"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step where the verified mandate details are recorded in FirstUK's system for ongoing management and reference.",
+      "context": [
+        "Mandate recorded in system"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Biller Notification",
+      "aliases": [
+        "Step 5",
+        "ARUDD Message"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Step where the biller is notified of successful mandate setup via an ARUDD (Automated Return of Unpaid Direct Debit) message, confirming the mandate is active.",
+      "context": [
+        "Biller notified of setup (ARUDD message)"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Customer Confirmation",
+      "aliases": [
+        "Step 6"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Final step where the customer receives confirmation that their direct debit mandate has been successfully set up.",
+      "context": [
+        "Customer receives confirmation"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "FirstUK Bank Operations Staff",
+      "aliases": [
+        "FirstUK",
+        "Bank Staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "FirstUK Bank's operational team responsible for receiving, verifying, recording, and notifying parties of direct debit mandate setup.",
+      "context": [
+        "When Mandate Reaches FirstUK",
+        "FirstUK doesn't issue the mandate"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Biller",
+      "aliases": [
+        "Creditor"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External party that either sends the mandate to FirstUK Bank or receives notification of mandate setup via ARUDD message.",
+      "context": [
+        "Mandate received from biller or customer",
+        "Biller notified of setup (ARUDD message)"
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer",
+      "description": "The customer who signs the direct debit mandate and may send it to FirstUK Bank, or receives confirmation of mandate setup.",
+      "context": [
+        "Mandate received from biller or customer",
+        "Customer identity confirmed",
+        "Customer receives confirmation",
+        "customer signs it and biller sends it to us"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "DD Mandate",
+        "Mandate"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "A direct debit mandate received by FirstUK Bank from a biller or customer, which authorizes recurring payments from a customer's account. The mandate is signed by the customer and sent to FirstUK for recording and activation.",
+      "context": [
+        "Mandate received from biller or customer",
+        "Mandate recorded in system",
+        "customer signs it and biller sends it to us"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Individual Customer",
+      "aliases": [
+        "Account Holder",
+        "Mandate Signatory"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A natural person who signs a direct debit mandate authorizing FirstUK Bank to process recurring payments on their account.",
+      "context": [
+        "Customer identity confirmed",
+        "Customer receives confirmation",
+        "customer signs it and biller sends it to us"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "A customer's account held at FirstUK Bank against which a direct debit mandate is set up. The account details must be verified for valid format and existence before the mandate can be recorded.",
+      "context": [
+        "Account details verified (valid format, exists)",
+        "Customer identity confirmed"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_proc_001",
+    "pstep_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_001",
+    "pstep_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_002",
+    "pstep_003": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_003",
+    "pstep_004": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_004",
+    "pstep_005": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_005",
+    "pstep_006": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_006",
+    "ra_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_001",
+    "ra_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_002",
+    "ra_003": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_003",
+    "dd_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_dd_001",
+    "cust_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_cust_001",
+    "acc_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_acc_001"
+  },
+  "entities": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_proc_001",
+      "name": "Direct Debit Mandate Setup",
+      "aliases": [
+        "DD Mandate Setup",
+        "Mandate Processing"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit_setup",
+      "description": "End-to-end procedure for receiving, verifying, and recording a direct debit mandate when it reaches FirstUK Bank from a biller or customer. The process includes account validation, customer identity confirmation, system recording, biller notification via ARUDD message, and customer confirmation.",
+      "context": [
+        "When Mandate Reaches FirstUK",
+        "Mandate received from biller or customer",
+        "Biller notified of setup (ARUDD message)",
+        "Customer receives confirmation"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_001",
+      "name": "Mandate Receipt",
+      "aliases": [
+        "Step 1"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial step where the direct debit mandate is received by FirstUK Bank, either directly from the biller or from the customer.",
+      "context": [
+        "Mandate received from biller or customer"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_002",
+      "name": "Account Details Verification",
+      "aliases": [
+        "Step 2"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step to confirm that the account details provided in the mandate are in valid format and that the account exists in FirstUK's system.",
+      "context": [
+        "Account details verified (valid format, exists)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_003",
+      "name": "Customer Identity Confirmation",
+      "aliases": [
+        "Step 3"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Step to confirm the identity of the customer associated with the mandate before proceeding with mandate recording.",
+      "context": [
+        "Customer identity confirmed"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_004",
+      "name": "Mandate System Recording",
+      "aliases": [
+        "Step 4"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step where the verified mandate details are recorded in FirstUK's system for ongoing management and reference.",
+      "context": [
+        "Mandate recorded in system"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_005",
+      "name": "Biller Notification",
+      "aliases": [
+        "Step 5",
+        "ARUDD Message"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Step where the biller is notified of successful mandate setup via an ARUDD (Automated Return of Unpaid Direct Debit) message, confirming the mandate is active.",
+      "context": [
+        "Biller notified of setup (ARUDD message)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_006",
+      "name": "Customer Confirmation",
+      "aliases": [
+        "Step 6"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Final step where the customer receives confirmation that their direct debit mandate has been successfully set up.",
+      "context": [
+        "Customer receives confirmation"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_001",
+      "name": "FirstUK Bank Operations Staff",
+      "aliases": [
+        "FirstUK",
+        "Bank Staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "FirstUK Bank's operational team responsible for receiving, verifying, recording, and notifying parties of direct debit mandate setup.",
+      "context": [
+        "When Mandate Reaches FirstUK",
+        "FirstUK doesn't issue the mandate"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_002",
+      "name": "Biller",
+      "aliases": [
+        "Creditor"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External party that either sends the mandate to FirstUK Bank or receives notification of mandate setup via ARUDD message.",
+      "context": [
+        "Mandate received from biller or customer",
+        "Biller notified of setup (ARUDD message)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_003",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer",
+      "description": "The customer who signs the direct debit mandate and may send it to FirstUK Bank, or receives confirmation of mandate setup.",
+      "context": [
+        "Mandate received from biller or customer",
+        "Customer identity confirmed",
+        "Customer receives confirmation",
+        "customer signs it and biller sends it to us"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "DD Mandate",
+        "Mandate"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "A direct debit mandate received by FirstUK Bank from a biller or customer, which authorizes recurring payments from a customer's account. The mandate is signed by the customer and sent to FirstUK for recording and activation.",
+      "context": [
+        "Mandate received from biller or customer",
+        "Mandate recorded in system",
+        "customer signs it and biller sends it to us"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_cust_001",
+      "name": "Individual Customer",
+      "aliases": [
+        "Account Holder",
+        "Mandate Signatory"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A natural person who signs a direct debit mandate authorizing FirstUK Bank to process recurring payments on their account.",
+      "context": [
+        "Customer identity confirmed",
+        "Customer receives confirmation",
+        "customer signs it and biller sends it to us"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "A customer's account held at FirstUK Bank against which a direct debit mandate is set up. The account details must be verified for valid format and existence before the mandate can be recorded.",
+      "context": [
+        "Account details verified (valid format, exists)",
+        "Customer identity confirmed"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_proc_001",
+      "name": "Direct Debit Mandate Setup",
+      "properties": {
+        "purpose": "Receive, verify, and record direct debit mandates from billers or customers",
+        "scope": "Individual customers with valid bank accounts",
+        "channels": [
+          "branch",
+          "postal"
+        ],
+        "owner": "FirstUK Bank Operations Staff",
+        "departments_involved": [
+          "Operations",
+          "Payments"
+        ],
+        "trigger": "Mandate received from biller or customer",
+        "outcome_success": "Mandate recorded in system, biller notified, customer confirmed",
+        "outcome_failure": "Mandate rejected due to account verification failure or identity confirmation failure"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_001",
+      "name": "Mandate Receipt",
+      "properties": {
+        "step_number": 1,
+        "actor": "FirstUK Bank Operations Staff",
+        "input": "Direct debit mandate document from biller or customer",
+        "output": "Mandate accepted for processing",
+        "channel": "postal",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_002",
+      "name": "Account Details Verification",
+      "properties": {
+        "step_number": 2,
+        "actor": "FirstUK Bank Operations Staff",
+        "input": "Account details from mandate",
+        "output": "Verified account exists and is in valid format",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account verification system"
+        ],
+        "failure_path": "Mandate rejected; customer and biller notified"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_003",
+      "name": "Customer Identity Confirmation",
+      "properties": {
+        "step_number": 3,
+        "actor": "FirstUK Bank Operations Staff",
+        "input": "Customer identity details from mandate",
+        "output": "Customer identity confirmed",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Mandate rejected; customer and biller notified"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_004",
+      "name": "Mandate System Recording",
+      "properties": {
+        "step_number": 4,
+        "actor": "FirstUK Bank Operations Staff",
+        "input": "Verified mandate details",
+        "output": "Mandate recorded in system with active status",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Mandate recording system"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_005",
+      "name": "Biller Notification",
+      "properties": {
+        "step_number": 5,
+        "actor": "FirstUK Bank Operations Staff",
+        "input": "Recorded mandate details",
+        "output": "ARUDD message sent to biller",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "ARUDD messaging system"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_006",
+      "name": "Customer Confirmation",
+      "properties": {
+        "step_number": 6,
+        "actor": "FirstUK Bank Operations Staff",
+        "input": "Recorded mandate details",
+        "output": "Confirmation sent to customer",
+        "channel": "postal",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_001",
+      "name": "FirstUK Bank Operations Staff",
+      "properties": {
+        "role_type": "human",
+        "department": "Operations",
+        "authority_level": "operational",
+        "channels": [
+          "system",
+          "postal"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_002",
+      "name": "Biller",
+      "properties": {
+        "role_type": "external",
+        "authority_level": "mandate_submission",
+        "channels": [
+          "postal",
+          "system"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_003",
+      "name": "Customer",
+      "properties": {
+        "role_type": "human",
+        "authority_level": "mandate_authorization",
+        "channels": [
+          "postal"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_dd_001",
+      "name": "Direct Debit Mandate",
+      "properties": {
+        "mandate_process": "Customer signs mandate; biller submits to FirstUK Bank; FirstUK verifies and records",
+        "setup_trigger": "Mandate received from biller or customer"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_cust_001",
+      "name": "Individual Customer",
+      "properties": {
+        "customer_type": "individual",
+        "context_role": "mandate authorizer and account holder"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_acc_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_type": "current",
+        "account_state": "active",
+        "verification_requirement": "Account details must be in valid format and exist in system"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_proc_001",
+      "source_name": "Direct Debit Mandate Setup",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_001",
+      "target_name": "Mandate Receipt",
+      "rel_type": "starts_with",
+      "description": "The Direct Debit Mandate Setup process begins with the Mandate Receipt step",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Mandate received from biller or customer",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_001",
+      "source_name": "Mandate Receipt",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_002",
+      "target_name": "Account Details Verification",
+      "rel_type": "followed_by",
+      "description": "Mandate Receipt is followed by Account Details Verification",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "1. Mandate received from biller or customer 2. Account details verified (valid format, exists)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_002",
+      "source_name": "Account Details Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_003",
+      "target_name": "Customer Identity Confirmation",
+      "rel_type": "followed_by",
+      "description": "Account Details Verification is followed by Customer Identity Confirmation",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "2. Account details verified (valid format, exists) 3. Customer identity confirmed",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_003",
+      "source_name": "Customer Identity Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_004",
+      "target_name": "Mandate System Recording",
+      "rel_type": "followed_by",
+      "description": "Customer Identity Confirmation is followed by Mandate System Recording",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "3. Customer identity confirmed 4. Mandate recorded in system",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_004",
+      "source_name": "Mandate System Recording",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_005",
+      "target_name": "Biller Notification",
+      "rel_type": "followed_by",
+      "description": "Mandate System Recording is followed by Biller Notification",
+      "properties": {
+        "sequence_position": 5
+      },
+      "context": "4. Mandate recorded in system 5. Biller notified of setup (ARUDD message)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_005",
+      "source_name": "Biller Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_006",
+      "target_name": "Customer Confirmation",
+      "rel_type": "followed_by",
+      "description": "Biller Notification is followed by Customer Confirmation",
+      "properties": {
+        "sequence_position": 6
+      },
+      "context": "5. Biller notified of setup (ARUDD message) 6. Customer receives confirmation",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_proc_001",
+      "source_name": "Direct Debit Mandate Setup",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_006",
+      "target_name": "Customer Confirmation",
+      "rel_type": "ends_with",
+      "description": "The Direct Debit Mandate Setup process concludes with Customer Confirmation",
+      "properties": {
+        "sequence_position": 6
+      },
+      "context": "6. Customer receives confirmation",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_001",
+      "source_name": "Mandate Receipt",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_001",
+      "target_name": "FirstUK Bank Operations Staff",
+      "rel_type": "performed_by",
+      "description": "Mandate Receipt step is performed by FirstUK Bank Operations Staff",
+      "properties": {
+        "action": "receive mandate"
+      },
+      "context": "Mandate received from biller or customer",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_002",
+      "source_name": "Account Details Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_001",
+      "target_name": "FirstUK Bank Operations Staff",
+      "rel_type": "performed_by",
+      "description": "Account Details Verification step is performed by FirstUK Bank Operations Staff",
+      "properties": {
+        "action": "verify account details"
+      },
+      "context": "Account details verified (valid format, exists)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_003",
+      "source_name": "Customer Identity Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_001",
+      "target_name": "FirstUK Bank Operations Staff",
+      "rel_type": "performed_by",
+      "description": "Customer Identity Confirmation step is performed by FirstUK Bank Operations Staff",
+      "properties": {
+        "action": "confirm customer identity"
+      },
+      "context": "Customer identity confirmed",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_004",
+      "source_name": "Mandate System Recording",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_001",
+      "target_name": "FirstUK Bank Operations Staff",
+      "rel_type": "performed_by",
+      "description": "Mandate System Recording step is performed by FirstUK Bank Operations Staff",
+      "properties": {
+        "action": "record mandate in system"
+      },
+      "context": "Mandate recorded in system",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_005",
+      "source_name": "Biller Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_001",
+      "target_name": "FirstUK Bank Operations Staff",
+      "rel_type": "performed_by",
+      "description": "Biller Notification step is performed by FirstUK Bank Operations Staff",
+      "properties": {
+        "action": "notify biller via ARUDD message"
+      },
+      "context": "Biller notified of setup (ARUDD message)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_006",
+      "source_name": "Customer Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_001",
+      "target_name": "FirstUK Bank Operations Staff",
+      "rel_type": "performed_by",
+      "description": "Customer Confirmation step is performed by FirstUK Bank Operations Staff",
+      "properties": {
+        "action": "send confirmation to customer"
+      },
+      "context": "Customer receives confirmation",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_005",
+      "source_name": "Biller Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_002",
+      "target_name": "Biller",
+      "rel_type": "notifies",
+      "description": "Biller Notification step notifies the Biller of mandate setup",
+      "properties": {
+        "notification_method": "ARUDD message"
+      },
+      "context": "Biller notified of setup (ARUDD message)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_006",
+      "source_name": "Customer Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_003",
+      "target_name": "Customer",
+      "rel_type": "notifies",
+      "description": "Customer Confirmation step notifies the Customer of mandate setup",
+      "properties": {
+        "action": "send confirmation"
+      },
+      "context": "Customer receives confirmation",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_002",
+      "source_name": "Account Details Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "updates",
+      "description": "Account Details Verification step verifies the Customer Account details",
+      "properties": {
+        "verification_criteria": "valid format, exists"
+      },
+      "context": "Account details verified (valid format, exists)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_003",
+      "source_name": "Customer Identity Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "verifies_identity_of",
+      "description": "Customer Identity Confirmation step verifies the identity of the Individual Customer",
+      "properties": {
+        "action": "confirm identity"
+      },
+      "context": "Customer identity confirmed",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_004",
+      "source_name": "Mandate System Recording",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "records",
+      "description": "Mandate System Recording step records the Direct Debit Mandate in the system",
+      "properties": {
+        "action": "record in system"
+      },
+      "context": "Mandate recorded in system",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_proc_001",
+      "source_name": "Direct Debit Mandate Setup",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "sets_up",
+      "description": "The Direct Debit Mandate Setup process sets up the Direct Debit Mandate",
+      "properties": {
+        "process_outcome": "mandate established"
+      },
+      "context": "Direct Debit Mandate Setup process",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "authorised_by",
+      "description": "The Direct Debit Mandate is authorised by the Individual Customer",
+      "properties": {
+        "note": "customer signs mandate"
+      },
+      "context": "customer signs it and biller sends it to us",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "set_up_on",
+      "description": "The Direct Debit Mandate is set up on the Customer Account",
+      "properties": {
+        "account_verification": "required"
+      },
+      "context": "Account details verified (valid format, exists)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_proc_001",
+      "source_name": "Direct Debit Mandate Setup",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_001",
+      "source_name": "Mandate Receipt",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_002",
+      "source_name": "Account Details Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_003",
+      "source_name": "Customer Identity Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_004",
+      "source_name": "Mandate System Recording",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_005",
+      "source_name": "Biller Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_pstep_006",
+      "source_name": "Customer Confirmation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_001",
+      "source_name": "FirstUK Bank Operations Staff",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_002",
+      "source_name": "Biller",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_ra_003",
+      "source_name": "Customer",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_cust_001",
+      "source_name": "Individual Customer",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

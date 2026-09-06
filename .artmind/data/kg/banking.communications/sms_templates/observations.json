@@ -1,0 +1,3286 @@
+[
+  {
+    "id": "b0caa3fa353d9b91f43fb7f5ae8909eabe0b5816c3fdc37e92168fed401dcf29",
+    "name": "FirstUK Bank SMS Alert Template Suite",
+    "canonical_name": "FirstUK Bank SMS Alert Template Suite",
+    "key": "firstuk bank sms alert template suite|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_001",
+    "_kind": "recurrent",
+    "type": "sms_template",
+    "description": "A suite of SMS alert templates designed for FirstUK Bank customer service and operations staff. The suite is version 1.0, effective from 2026-01-15, and covers alert communications to customers. Owned by the Head of Marketing and maintained by the Marketing and Customer Service departments.",
+    "context": [
+      "# FirstUK Bank — SMS Alert Template Suite",
+      "Document ID | SMS-TEMPLATE-001",
+      "Version | 1.0",
+      "Effective Date | 2026-01-15",
+      "Owner | Head of Marketing",
+      "Department | Marketing, Customer Service"
+    ],
+    "aliases": [
+      "SMS-TEMPLATE-001"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "property",
+    "_doc_valid_from": "2026-01-15",
+    "document_id": "SMS-TEMPLATE-001",
+    "version": "1.0",
+    "effective_date": "2026-01-15",
+    "review_date": "2027-01-15",
+    "owner": "Head of Marketing",
+    "department": [
+      "Marketing",
+      "Customer Service"
+    ],
+    "status": "Active",
+    "channel": "sms",
+    "classification": "Internal",
+    "target_audience": [
+      "Customer Service Staff",
+      "Operations"
+    ],
+    "related_document": [
+      "email_templates",
+      "sop_account_opening"
+    ]
+  },
+  {
+    "id": "cf413bebf5044e2f4ec0efe942cea91441f395e478efff46a5315a6b179fb8a6",
+    "name": "Time-Sensitive Customer Alert SMS Template",
+    "canonical_name": "Time-Sensitive Customer Alert SMS Template",
+    "key": "time-sensitive customer alert sms template|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_002",
+    "_kind": "recurrent",
+    "type": "sms_template",
+    "description": "A concise SMS message template designed for time-sensitive customer alerts and notifications, optimized for character limits of 160 characters per SMS. Used to deliver urgent information to customers while respecting SMS length constraints.",
+    "context": [
+      "Provide concise SMS message templates for time-sensitive customer alerts and notifications",
+      "respecting character limits (160 chars per SMS)"
+    ],
+    "aliases": [
+      "SMS Alert Template",
+      "Customer Notification SMS"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "channel": "sms",
+    "character_limit": 160,
+    "tone": "urgent",
+    "key_content": [
+      "time-sensitive alerts",
+      "customer notifications"
+    ],
+    "compliance_consideration": "concise messaging within SMS character constraints"
+  },
+  {
+    "id": "cb942093f2c2b5931f03468432f5cbcd43f4932d6d5bbd5462158d9e2c562862",
+    "name": "Large Withdrawal Alert",
+    "canonical_name": "Large Withdrawal Alert",
+    "key": "large withdrawal alert|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_003",
+    "_kind": "recurrent",
+    "type": "sms_template",
+    "description": "An SMS alert template triggered when a customer attempts a withdrawal exceeding £1,000 via mobile or ATM channels. The message notifies the customer of the transaction amount and account identifier, and instructs them to contact the fraud hotline immediately if the transaction was unauthorised.",
+    "context": [
+      "Trigger: Withdrawal >£1,000 from mobile/ATM",
+      "FirstUK: Large withdrawal of £[amount] from your account [last 4 digits]. If not you, call 0800-555-2265 immediately. Ref: [code]",
+      "Character count: ~120"
+    ],
+    "aliases": [
+      "Template 1"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "trigger_event": "Withdrawal exceeding £1,000 from mobile or ATM",
+    "channel": "sms",
+    "recipient": "account holder",
+    "key_content": [
+      "withdrawal amount",
+      "account identifier (last 4 digits)",
+      "fraud verification prompt",
+      "emergency contact number",
+      "transaction reference code"
+    ],
+    "variables_used": [
+      "[amount]",
+      "[last 4 digits]",
+      "[code]"
+    ],
+    "tone": "urgent",
+    "character_limit": 120
+  },
+  {
+    "id": "da49ddd9b408b065725c74b15aca1b842dbe3399d6575b36d230624158d952e7",
+    "name": "Withdrawal Amount",
+    "canonical_name": "Withdrawal Amount",
+    "key": "withdrawal amount|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_003",
+    "_kind": "recurrent",
+    "type": "amount_field",
+    "description": "A dynamic placeholder representing the monetary value of the large withdrawal transaction, inserted into the SMS alert message to inform the customer of the transaction size.",
+    "context": [
+      "Large withdrawal of £[amount] from your account"
+    ],
+    "aliases": [
+      "amount"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[amount]",
+    "data_type": "currency",
+    "data_source": "transaction processing system",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Large Withdrawal Alert"
+    ],
+    "example_value": "£1,000"
+  },
+  {
+    "id": "8216deb5f319996d0f10382b23fd7ceeee323c205140d78828bf758fc2a042cd",
+    "name": "Account Last Four Digits",
+    "canonical_name": "Account Last Four Digits",
+    "key": "account last four digits|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_003",
+    "_kind": "recurrent",
+    "type": "account_data",
+    "description": "A dynamic placeholder representing the final four digits of the customer's account number, used to help the customer identify which account the withdrawal was attempted from.",
+    "context": [
+      "from your account [last 4 digits]"
+    ],
+    "aliases": [
+      "last 4 digits"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[last 4 digits]",
+    "data_type": "string",
+    "data_source": "account management system",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Large Withdrawal Alert"
+    ],
+    "character_limit": 4,
+    "example_value": "1234"
+  },
+  {
+    "id": "66d20853ee51f2971d8e56693e730799eaaf2f925c06369f86a1161c93128684",
+    "name": "Transaction Reference Code",
+    "canonical_name": "Transaction Reference Code",
+    "key": "transaction reference code|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_003",
+    "_kind": "recurrent",
+    "type": "reference_field",
+    "description": "A dynamic placeholder for a unique transaction reference code included in the alert message to enable the customer and fraud team to track and reference the specific transaction.",
+    "context": [
+      "Ref: [code]"
+    ],
+    "aliases": [
+      "code"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[code]",
+    "data_type": "string",
+    "data_source": "transaction processing system",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Large Withdrawal Alert"
+    ]
+  },
+  {
+    "id": "d6f708e5cc91b686072e9fb276190553359a540b3e6b9e1b4718b660995498bf",
+    "name": "Large Withdrawal via Mobile or ATM",
+    "canonical_name": "Large Withdrawal via Mobile or ATM",
+    "key": "large withdrawal via mobile or atm|FRAUD_ALERT|banking.communications",
+    "entity_class": "FRAUD_ALERT",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_003",
+    "_kind": "recurrent",
+    "type": "fraud_detection_obligation",
+    "description": "A fraud detection alert triggered automatically when a withdrawal transaction exceeds £1,000 through mobile or ATM channels. The alert prompts immediate customer verification and provides a fraud hotline contact for unauthorised transaction reporting.",
+    "context": [
+      "Trigger: Withdrawal >£1,000 from mobile/ATM",
+      "If not you, call 0800-555-2265 immediately"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "risk_domain": "fraud",
+    "generation_trigger": "withdrawal exceeding £1,000 initiated through mobile banking or ATM channel",
+    "customer_notification": "yes",
+    "notification_method": "SMS alert with fraud verification prompt",
+    "escalation_path": "customer to call 0800-555-2265 if transaction not authorized"
+  },
+  {
+    "id": "7f6cea87d214b6d1d732ab324aa79c82c80b39f5fb98d694b13fa4d90899cd02",
+    "name": "Transfer Sent Confirmation",
+    "canonical_name": "Transfer Sent Confirmation",
+    "key": "transfer sent confirmation|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_004",
+    "_kind": "recurrent",
+    "type": "sms_template",
+    "description": "An SMS confirmation template sent to customers upon successful completion of a transfer. The message confirms the transfer amount, recipient name, and updated account balance, with a customer service contact number for queries.",
+    "context": [
+      "Trigger: Successful transfer completion",
+      "FirstUK: Transfer of £[amount] to [recipient name] completed.",
+      "Your balance: £[new balance]. Call 0800-555-2265 with questions.",
+      "Character count: ~110"
+    ],
+    "aliases": [
+      "Template 2"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "trigger_event": "Successful transfer completion",
+    "channel": "sms",
+    "key_content": [
+      "Transfer amount confirmation",
+      "Recipient name",
+      "Updated account balance",
+      "Customer support contact number"
+    ],
+    "variables_used": [
+      "[amount]",
+      "[recipient name]",
+      "[new balance]"
+    ],
+    "tone": "friendly",
+    "character_limit": 110
+  },
+  {
+    "id": "aa9994b55c0a1d0b82bc2def2b71462180f58dde79d79848420d2e1646af169c",
+    "name": "Transfer Amount",
+    "canonical_name": "Transfer Amount",
+    "key": "transfer amount|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_004",
+    "_kind": "recurrent",
+    "type": "amount_field",
+    "description": "A dynamic placeholder representing the monetary value of the transfer being confirmed to the customer.",
+    "context": [
+      "Transfer of £[amount] to [recipient name] completed"
+    ],
+    "aliases": [
+      "amount"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[amount]",
+    "data_type": "currency",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Transfer Sent Confirmation"
+    ]
+  },
+  {
+    "id": "334af4176aca0adcad438e66b42efd6d8ae98b6b990144c67b29e40fbf4e49ec",
+    "name": "Recipient Name",
+    "canonical_name": "Recipient Name",
+    "key": "recipient name|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_004",
+    "_kind": "recurrent",
+    "type": "contact_field",
+    "description": "A dynamic placeholder representing the name of the person or entity receiving the transfer.",
+    "context": [
+      "Transfer of £[amount] to [recipient name] completed"
+    ],
+    "aliases": [
+      "recipient name"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[recipient name]",
+    "data_type": "string",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Transfer Sent Confirmation"
+    ]
+  },
+  {
+    "id": "d23db55abe79989691fafdeaf344666093ee93a3b723cb0466c281e43118fe52",
+    "name": "New Balance",
+    "canonical_name": "New Balance",
+    "key": "new balance|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_004",
+    "_kind": "recurrent",
+    "type": "account_data",
+    "description": "A dynamic placeholder representing the customer's updated account balance following the successful transfer.",
+    "context": [
+      "Your balance: £[new balance]"
+    ],
+    "aliases": [
+      "new balance"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[new balance]",
+    "data_type": "currency",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Transfer Sent Confirmation"
+    ]
+  },
+  {
+    "id": "735c2b77d5f7a38fff92712fbb31b1ea5df252ccb9e3743713e08536f2d05e89",
+    "name": "Transfer Completion",
+    "canonical_name": "Transfer Completion",
+    "key": "transfer completion|TRANSACTION|banking.communications",
+    "entity_class": "TRANSACTION",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_004",
+    "_kind": "occurrent",
+    "type": "transfer",
+    "description": "A successful transfer transaction that triggers the confirmation SMS template. The transfer moves funds from the customer's account to a named recipient.",
+    "context": [
+      "Trigger: Successful transfer completion",
+      "Transfer of £[amount] to [recipient name] completed"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "transaction_type": "transfer",
+    "monitoring_or_reporting_obligation": "Customer notification via SMS"
+  },
+  {
+    "id": "41292b65b96d81061379c88eac996519813fdb7ac3934e11a5aef65fe3dcbe59",
+    "name": "Failed Direct Debit Alert",
+    "canonical_name": "Failed Direct Debit Alert",
+    "key": "failed direct debit alert|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_005",
+    "_kind": "recurrent",
+    "type": "service_notification",
+    "description": "An SMS or push notification template triggered when a Direct Debit payment fails due to insufficient funds or other reasons. The template notifies the customer of the failed payment, the biller, the amount, the failure reason, and directs them to add funds or contact support.",
+    "context": [
+      "Trigger: Direct Debit rejected (insufficient funds, etc.)",
+      "FirstUK: Direct Debit of £[amount] to [biller] failed on [date].",
+      "Reason: [insufficient funds/other]. Add funds to retry.",
+      "Call 0800-555-2265."
+    ],
+    "aliases": [
+      "Template 3"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "trigger_event": "Direct Debit rejected (insufficient funds, etc.)",
+    "channel": "sms",
+    "recipient": "account holder",
+    "key_content": [
+      "Direct Debit amount",
+      "Biller name",
+      "Failure date",
+      "Failure reason",
+      "Call to action to add funds and retry",
+      "Customer service phone number"
+    ],
+    "variables_used": [
+      "[amount]",
+      "[biller]",
+      "[date]",
+      "[insufficient funds/other]"
+    ],
+    "tone": "urgent",
+    "character_limit": 125,
+    "owner": "Customer Communications"
+  },
+  {
+    "id": "31774502950dbfabcf27680b33f86c0132f79842e1f6f22fdce63b453cd4535b",
+    "name": "Direct Debit Amount",
+    "canonical_name": "Direct Debit Amount",
+    "key": "direct debit amount|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_005",
+    "_kind": "recurrent",
+    "type": "amount_field",
+    "description": "The monetary value of the failed Direct Debit payment, inserted dynamically into the alert message.",
+    "context": [
+      "Direct Debit of £[amount] to [biller] failed on [date]."
+    ],
+    "aliases": [
+      "amount"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[amount]",
+    "data_source": "AMS",
+    "data_type": "currency",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Failed Direct Debit Alert"
+    ]
+  },
+  {
+    "id": "00e06841250408dc38112d77a2bd71966d9756da77b74d0c43134af34daf8f17",
+    "name": "Biller Name",
+    "canonical_name": "Biller Name",
+    "key": "biller name|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_005",
+    "_kind": "recurrent",
+    "type": "reference_field",
+    "description": "The name or identifier of the organisation or payee to whom the Direct Debit payment was intended, inserted dynamically into the alert.",
+    "context": [
+      "Direct Debit of £[amount] to [biller] failed on [date]."
+    ],
+    "aliases": [
+      "biller"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[biller]",
+    "data_source": "AMS",
+    "data_type": "string",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Failed Direct Debit Alert"
+    ]
+  },
+  {
+    "id": "55f8c0098051524a7acfe7b57ad6ff0256020ff93442533247ecfc0ae958c5fb",
+    "name": "Payment Failure Date",
+    "canonical_name": "Payment Failure Date",
+    "key": "payment failure date|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_005",
+    "_kind": "recurrent",
+    "type": "date_field",
+    "description": "The date on which the Direct Debit payment failed, inserted dynamically into the alert message.",
+    "context": [
+      "Direct Debit of £[amount] to [biller] failed on [date]."
+    ],
+    "aliases": [
+      "date"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[date]",
+    "data_source": "AMS",
+    "data_type": "date",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Failed Direct Debit Alert"
+    ]
+  },
+  {
+    "id": "496fa519dd72352dfa6f62b5c24c50d1504ac59bdc26590675216b44358e9ee6",
+    "name": "Failure Reason",
+    "canonical_name": "Failure Reason",
+    "key": "failure reason|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_005",
+    "_kind": "recurrent",
+    "type": "reference_field",
+    "description": "The reason for the Direct Debit rejection, such as insufficient funds or other account issues, inserted dynamically into the alert.",
+    "context": [
+      "Reason: [insufficient funds/other]."
+    ],
+    "aliases": [
+      "insufficient funds/other"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[insufficient funds/other]",
+    "data_source": "AMS",
+    "data_type": "string",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Failed Direct Debit Alert"
+    ]
+  },
+  {
+    "id": "742294b824108afc4e0165b34e8899a1db595ffd3f559e5ff28feb2d716ed212",
+    "name": "Direct Debit Payment Failure",
+    "canonical_name": "Direct Debit Payment Failure",
+    "key": "direct debit payment failure|DIRECT_DEBIT|banking.communications",
+    "entity_class": "DIRECT_DEBIT",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_005",
+    "_kind": "recurrent",
+    "type": "dd_mandate_setup",
+    "description": "A Direct Debit payment instruction that has been rejected at the point of collection, triggering a customer alert. The failure may be due to insufficient funds or other account-related issues.",
+    "context": [
+      "Trigger: Direct Debit rejected (insufficient funds, etc.)",
+      "Direct Debit of £[amount] to [biller] failed on [date].",
+      "Reason: [insufficient funds/other]."
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "mandate_process": "Direct Debit rejected at processing",
+    "cancellation_or_dispute_process": "Customer can add funds and retry; customer service available at 0800-555-2265"
+  },
+  {
+    "id": "1fbbabb295c1cb8d4483772d6bb0b4175ecbe42d25c9e9905ac0a78f8c796489",
+    "name": "Card Payment Alert",
+    "canonical_name": "Card Payment Alert",
+    "key": "card payment alert|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_006",
+    "_kind": "recurrent",
+    "type": "fraud_alert",
+    "description": "An SMS or push notification alert sent to customers when a contactless or online card payment exceeds £500. The template prompts immediate customer verification and provides a fraud line contact number if the transaction is unauthorised.",
+    "context": [
+      "Template 4: Card Payment Alert",
+      "Trigger: Contactless or online payment >£500",
+      "FirstUK: Card payment of £[amount] at [merchant] on [date] [time]. If not you, call 0800-555-2265 fraud line immediately."
+    ],
+    "aliases": [
+      "Template 4"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "document_id": "TEMPLATE-004",
+    "trigger_event": "Contactless or online payment exceeding £500",
+    "channel": "sms",
+    "recipient": "cardholder",
+    "key_content": [
+      "Card payment amount",
+      "Merchant name",
+      "Transaction date and time",
+      "Fraud line contact number"
+    ],
+    "variables_used": [
+      "[amount]",
+      "[merchant]",
+      "[date]",
+      "[time]"
+    ],
+    "tone": "urgent",
+    "compliance_disclosures": [
+      "Fraud line contact: 0800-555-2265"
+    ],
+    "character_limit": 115
+  },
+  {
+    "id": "be5987a69a3efafc123bc684c54cb4d283c225b4906479a01106dfec36c03dcf",
+    "name": "Payment Amount",
+    "canonical_name": "Payment Amount",
+    "key": "payment amount|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_006",
+    "_kind": "recurrent",
+    "type": "amount_field",
+    "description": "The monetary value of the card payment transaction, inserted dynamically into the alert message. Represents the transaction amount that triggered the alert threshold.",
+    "context": [
+      "Card payment of £[amount] at [merchant]"
+    ],
+    "aliases": [
+      "amount"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[amount]",
+    "data_type": "currency",
+    "data_source": "transaction_processing_system",
+    "mandatory": true,
+    "appears_in_templates": [
+      "Card Payment Alert"
+    ]
+  },
+  {
+    "id": "1108d5c6b8a23a004106b3e92660410c8a8c0f0230876513742f7ff751c2240f",
+    "name": "Merchant Name",
+    "canonical_name": "Merchant Name",
+    "key": "merchant name|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_006",
+    "_kind": "recurrent",
+    "type": "transaction_data",
+    "description": "The name or identifier of the merchant or retailer where the card payment was made, inserted dynamically into the alert.",
+    "context": [
+      "Card payment of £[amount] at [merchant] on [date] [time]"
+    ],
+    "aliases": [
+      "merchant"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[merchant]",
+    "data_type": "string",
+    "data_source": "transaction_processing_system",
+    "mandatory": true,
+    "appears_in_templates": [
+      "Card Payment Alert"
+    ]
+  },
+  {
+    "id": "497f7d1f2a2685c4fa3a561c9fd17486c960361277918276f7343c4406cc42a9",
+    "name": "Transaction Date",
+    "canonical_name": "Transaction Date",
+    "key": "transaction date|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_006",
+    "_kind": "recurrent",
+    "type": "date_field",
+    "description": "The calendar date on which the card payment transaction occurred, inserted dynamically into the alert message.",
+    "context": [
+      "Card payment of £[amount] at [merchant] on [date] [time]"
+    ],
+    "aliases": [
+      "date"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[date]",
+    "data_type": "date",
+    "data_source": "transaction_processing_system",
+    "mandatory": true,
+    "appears_in_templates": [
+      "Card Payment Alert"
+    ]
+  },
+  {
+    "id": "d9d3fedbea40f3238fdd863c5a7b6e86f4ccf0d4f6b4735f7d340e1f97e79403",
+    "name": "Transaction Time",
+    "canonical_name": "Transaction Time",
+    "key": "transaction time|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_006",
+    "_kind": "recurrent",
+    "type": "transaction_data",
+    "description": "The time of day at which the card payment transaction was processed, inserted dynamically into the alert.",
+    "context": [
+      "Card payment of £[amount] at [merchant] on [date] [time]"
+    ],
+    "aliases": [
+      "time"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[time]",
+    "data_type": "string",
+    "data_source": "transaction_processing_system",
+    "mandatory": true,
+    "appears_in_templates": [
+      "Card Payment Alert"
+    ]
+  },
+  {
+    "id": "3f72adb704ad9024020a6c50d1740bef009a0c0978c595377df63821c9067990",
+    "name": "Debit Card",
+    "canonical_name": "Debit Card",
+    "key": "debit card|CARD|banking.communications",
+    "entity_class": "CARD",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_006",
+    "_kind": "recurrent",
+    "type": "debit_card",
+    "description": "The payment card used by the customer for contactless or online transactions that trigger fraud alerts when the transaction value exceeds £500.",
+    "context": [
+      "Trigger: Contactless or online payment >£500",
+      "FirstUK: Card payment of £[amount] at [merchant]"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "card_type": "debit",
+    "card_state": "active",
+    "transaction_monitoring": true,
+    "alert_threshold": 500,
+    "alert_threshold_currency": "GBP",
+    "alert_trigger_transaction_type": [
+      "contactless",
+      "online"
+    ]
+  },
+  {
+    "id": "85a7632484e20bc436a03ee09658957cc0dfce2ee0d40b5a08b91a555e61ac9b",
+    "name": "High-Value Card Payment Fraud Alert",
+    "canonical_name": "High-Value Card Payment Fraud Alert",
+    "key": "high-value card payment fraud alert|FRAUD_ALERT|banking.communications",
+    "entity_class": "FRAUD_ALERT",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_006",
+    "_kind": "recurrent",
+    "type": "fraud_detection_obligation",
+    "description": "An automated fraud detection alert triggered when a contactless or online card payment exceeds £500. The alert is sent to the customer with transaction details and instructions to contact the fraud line if the payment is unauthorised.",
+    "context": [
+      "Trigger: Contactless or online payment >£500",
+      "If not you, call 0800-555-2265 fraud line immediately."
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "generation_trigger": "Contactless or online payment exceeding £500",
+    "customer_notification": true,
+    "notification_channel": "sms",
+    "notification_template": "Card Payment Alert",
+    "investigation_or_escalation_path": "Cardholder to contact fraud line at 0800-555-2265",
+    "threshold_value": 500,
+    "threshold_currency": "GBP"
+  },
+  {
+    "id": "ad3deee349d431be9a03bf46497938beb0289dd6706aea8d0d6d8bd05dfc5db2",
+    "name": "Suspicious Activity Alert",
+    "canonical_name": "Suspicious Activity Alert",
+    "key": "suspicious activity alert|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_007",
+    "_kind": "recurrent",
+    "type": "security_alert",
+    "description": "An SMS security alert template triggered when fraud detection rules identify moderate-risk unusual activity on a customer account. The message instructs the customer to call a dedicated number to confirm activity and warns that transactions may be restricted for security purposes.",
+    "context": [
+      "Trigger: Fraud detection rule triggered (moderate risk)",
+      "FirstUK: Unusual activity detected on your account. Call 0800-555-2265 to confirm.",
+      "For security, we may restrict transactions. Reply CONFIRM or call immediately."
+    ],
+    "aliases": [
+      "Template 5"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "document_id": "TEMPLATE-005",
+    "trigger_event": "Fraud detection rule triggered (moderate risk)",
+    "channel": "sms",
+    "recipient": "account holder",
+    "key_content": [
+      "Notification of unusual activity detected",
+      "Request to confirm account access",
+      "Warning of potential transaction restrictions",
+      "Call-to-action with support phone number"
+    ],
+    "variables_used": [
+      "Account Identifier",
+      "Support Phone Number"
+    ],
+    "tone": "urgent",
+    "character_limit": 145
+  },
+  {
+    "id": "116784c67efd653d61069dfc41f5c4562f788ddab6fd57d7f08400ca13dee819",
+    "name": "Account Identifier",
+    "canonical_name": "Account Identifier",
+    "key": "account identifier|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_007",
+    "_kind": "recurrent",
+    "type": "account_data",
+    "description": "A placeholder for the customer's account reference or identifier, implied in the message context 'on your account' but not explicitly named as a variable in the template.",
+    "context": [
+      "Unusual activity detected on your account"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[Account Identifier]",
+    "data_type": "account_number",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Suspicious Activity Alert"
+    ]
+  },
+  {
+    "id": "5a5930814c4055e7379ef923bcb099fb8f640096acd0aa0b522f8c0071b15271",
+    "name": "Support Phone Number",
+    "canonical_name": "Support Phone Number",
+    "key": "support phone number|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_007",
+    "_kind": "recurrent",
+    "type": "contact_field",
+    "description": "The dedicated phone number customers must call to confirm suspicious activity. Embedded in the template as 0800-555-2265.",
+    "context": [
+      "Call 0800-555-2265 to confirm"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[Support Phone Number]",
+    "example_value": "0800-555-2265",
+    "data_type": "string",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Suspicious Activity Alert"
+    ]
+  },
+  {
+    "id": "8231cb987ad9ccdde26bda95f49201ca74c8342f64645e0b8d58e4b0b8d678fd",
+    "name": "Fraud Detection Rule Triggered",
+    "canonical_name": "Fraud Detection Rule Triggered",
+    "key": "fraud detection rule triggered|FRAUD_ALERT|banking.communications",
+    "entity_class": "FRAUD_ALERT",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_007",
+    "_kind": "recurrent",
+    "type": "fraud_detection_obligation",
+    "description": "A fraud alert generated when the bank's fraud detection system identifies moderate-risk unusual activity on a customer account, triggering an immediate security notification to the customer.",
+    "context": [
+      "Trigger: Fraud detection rule triggered (moderate risk)",
+      "Unusual activity detected on your account"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "generation_trigger": "Moderate risk fraud detection rule activation",
+    "customer_notification": "yes",
+    "notification_channel": "sms",
+    "notification_content": "Unusual activity alert with confirmation request",
+    "escalation_or_investigation_path": "Customer contact required; transaction restrictions may be applied pending confirmation"
+  },
+  {
+    "id": "fdf18e42a16ac4d79e40018251e7452785114abf399066341b3c63456a03b0fb",
+    "name": "Card Lost/Blocked Alert",
+    "canonical_name": "Card Lost/Blocked Alert",
+    "key": "card lost/blocked alert|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_008",
+    "_kind": "recurrent",
+    "type": "service_notification",
+    "description": "A customer-facing alert notification triggered when a card is blocked due to fraud or loss. The template directs customers to online banking or branch channels and provides instructions for ordering a replacement card via phone or online.",
+    "context": [
+      "Trigger: Card blocked due to fraud or loss",
+      "Your [product] card has been blocked. Use online banking or visit a branch.",
+      "Order replacement: Call 0800-555-2265 or online at www.firstuk.bank"
+    ],
+    "aliases": [
+      "Card Blocked Alert",
+      "Fraud Block Notification"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "trigger_event": "Card blocked due to fraud or loss",
+    "channel": "sms",
+    "recipient": "card holder",
+    "key_content": [
+      "Card has been blocked",
+      "Instructions to use online banking or visit branch",
+      "Replacement card ordering options"
+    ],
+    "variables_used": [
+      "[product]"
+    ],
+    "tone": "urgent",
+    "character_limit": 135,
+    "owner": "Card Services"
+  },
+  {
+    "id": "bac5455c75ea4798a18329684655a7f989a44d5a34020ce11b80620d630fc5ab",
+    "name": "Product Type",
+    "canonical_name": "Product Type",
+    "key": "product type|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_008",
+    "_kind": "recurrent",
+    "type": "product_data",
+    "description": "A dynamic placeholder representing the specific card product name (e.g., debit card, credit card) that is blocked. Replaced at send time with the actual product name associated with the customer's account.",
+    "context": [
+      "Your [product] card has been blocked."
+    ],
+    "aliases": [
+      "[product]"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[product]",
+    "data_type": "string",
+    "example_value": "debit",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Card Lost/Blocked Alert"
+    ]
+  },
+  {
+    "id": "07f6221a5eb2434eb8793a986b51d147f3944d69d39d5ddac0fd2eb8f91779a5",
+    "name": "Replacement Card",
+    "canonical_name": "Replacement Card",
+    "key": "replacement card|CARD|banking.communications",
+    "entity_class": "CARD",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_008",
+    "_kind": "recurrent",
+    "type": "replacement_card",
+    "description": "A replacement card issued following the blocking of a customer's original card due to fraud or loss. The template provides multiple channels for customers to order the replacement.",
+    "context": [
+      "Order replacement: Call 0800-555-2265 or online at www.firstuk.bank"
+    ],
+    "aliases": [
+      "replacement_card"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "card_state": "replacement",
+    "block_or_replacement_conditions": "Card blocked due to fraud or loss",
+    "replacement_ordering_channel": [
+      "phone",
+      "online"
+    ],
+    "replacement_contact_number": "0800-555-2265",
+    "replacement_online_url": "www.firstuk.bank"
+  },
+  {
+    "id": "905089ced7fb493655c4a835fac50dd652eef08234b147d6f7d5f766d71fa038",
+    "name": "Card Fraud Block Event",
+    "canonical_name": "Card Fraud Block Event",
+    "key": "card fraud block event|FRAUD_ALERT|banking.communications",
+    "entity_class": "FRAUD_ALERT",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_008",
+    "_kind": "recurrent",
+    "type": "card_fraud_event",
+    "description": "A fraud detection event that triggers automatic blocking of a customer's card. This alert initiates the customer notification process and replacement card ordering workflow.",
+    "context": [
+      "Trigger: Card blocked due to fraud or loss",
+      "Your [product] card has been blocked."
+    ],
+    "aliases": [
+      "card_fraud_event"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "generation_trigger": "Card blocked due to fraud detection",
+    "customer_notification": "SMS alert with replacement ordering instructions",
+    "notification_channel": "sms",
+    "escalation_or_investigation_path": "Card Services team via phone or online banking"
+  },
+  {
+    "id": "dc67d9151abd969dc1034c0b65c377615b3cb6ff0380fb53116e5f77be4f807d",
+    "name": "Password Reset Initiated",
+    "canonical_name": "Password Reset Initiated",
+    "key": "password reset initiated|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_009",
+    "_kind": "recurrent",
+    "type": "sms_template",
+    "description": "An SMS notification template sent to customers when a password reset is requested. The message includes a time-limited reset link valid for 24 hours and instructs customers to ignore the message if they did not initiate the request.",
+    "context": [
+      "Template 7: Password Reset Initiated",
+      "Trigger: Password reset requested",
+      "FirstUK: Password reset requested. Click link to create new password: [short URL]. Expires in 24h. Ignore if you didn't request this.",
+      "Character count: ~125"
+    ],
+    "aliases": [
+      "Template 7",
+      "Password Reset Initiated Template"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "trigger_event": "Password reset requested",
+    "channel": "sms",
+    "key_content": [
+      "Password reset confirmation",
+      "Click link to create new password",
+      "Link expiration warning",
+      "Ignore if not requested by user"
+    ],
+    "variables_used": [
+      "[short URL]"
+    ],
+    "tone": "urgent",
+    "character_limit": 125
+  },
+  {
+    "id": "c16161a7823d6a0eda40c6dc4fe2993c289803eebe05eb8b70f07be90d167e41",
+    "name": "Password Reset Link",
+    "canonical_name": "Password Reset Link",
+    "key": "password reset link|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_009",
+    "_kind": "recurrent",
+    "type": "reference_field",
+    "description": "A time-limited URL placeholder that directs the customer to a password reset page. The link expires after 24 hours.",
+    "context": [
+      "Click link to create new password: [short URL]",
+      "Expires in 24h"
+    ],
+    "aliases": [
+      "short URL",
+      "reset_link"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[short URL]",
+    "data_type": "string",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Password Reset Initiated"
+    ]
+  },
+  {
+    "id": "c839ca23af4d671838e8b3a8bef148b1d1154d59a0698a856ee67e48f934370d",
+    "name": "Link Expiration Time",
+    "canonical_name": "Link Expiration Time",
+    "key": "link expiration time|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_009",
+    "_kind": "recurrent",
+    "type": "date_field",
+    "description": "The validity period for the password reset link, set at 24 hours from the time the template is sent.",
+    "context": [
+      "Expires in 24h"
+    ],
+    "aliases": [
+      "expiry_time",
+      "expiration_period"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "24h",
+    "data_type": "string",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Password Reset Initiated"
+    ],
+    "example_value": "24h"
+  },
+  {
+    "id": "ba861c4370022ad1c958282fc73a4c1113f4b6587a0dd3bee0bf4ae0964d6344",
+    "name": "2FA Code (One-Time)",
+    "canonical_name": "2FA Code (One-Time)",
+    "key": "2fa code (one-time)|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_010",
+    "_kind": "recurrent",
+    "type": "sms_template",
+    "description": "An SMS template delivering a one-time 6-digit security code to customers when two-factor authentication is required. The message includes expiration timing (5 minutes), a security warning against code sharing, and a customer support contact number for unauthorized requests.",
+    "context": [
+      "Trigger: Two-Factor Authentication required",
+      "FirstUK: Your security code is [6-digit code]. Never share this.",
+      "Code expires in 5 minutes. If you didn't request this, call 0800-555-2265.",
+      "Character count: ~130"
+    ],
+    "aliases": [
+      "Template 8",
+      "Two-Factor Authentication Code"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "trigger_event": "Two-Factor Authentication required",
+    "channel": "sms",
+    "key_content": [
+      "Security code delivery",
+      "Expiration warning (5 minutes)",
+      "Unauthorized request guidance"
+    ],
+    "variables_used": [
+      "[6-digit code]"
+    ],
+    "tone": "urgent",
+    "compliance_disclosures": [
+      "Never share this code"
+    ],
+    "character_limit": 130
+  },
+  {
+    "id": "1a43e99a4326f6c2e02cb02eb407de975a696135d21e429627a0c6a64c50a05d",
+    "name": "6-Digit Security Code",
+    "canonical_name": "6-Digit Security Code",
+    "key": "6-digit security code|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_010",
+    "_kind": "recurrent",
+    "type": "reference_field",
+    "description": "A dynamic placeholder for the one-time 6-digit authentication code generated and sent to the customer during two-factor authentication verification.",
+    "context": [
+      "Your security code is [6-digit code]."
+    ],
+    "aliases": [
+      "[6-digit code]"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[6-digit code]",
+    "data_type": "string",
+    "character_limit": 6,
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "2FA Code (One-Time)"
+    ],
+    "expiration_period": "5 minutes"
+  },
+  {
+    "id": "0fefd370b9a57d5833d4d6554c485c0deaf2fef4940b9aa598659410203d3247",
+    "name": "Customer Support Phone Number",
+    "canonical_name": "Customer Support Phone Number",
+    "key": "customer support phone number|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_010",
+    "_kind": "recurrent",
+    "type": "contact_field",
+    "description": "A dynamic placeholder for the customer support contact number provided in the 2FA template for customers to report unauthorized authentication requests.",
+    "context": [
+      "If you didn't request this, call 0800-555-2265."
+    ],
+    "aliases": [
+      "[support number]"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "0800-555-2265",
+    "data_type": "string",
+    "example_value": "0800-555-2265",
+    "appears_in_templates": [
+      "2FA Code (One-Time)"
+    ]
+  },
+  {
+    "id": "f65d17398bb986bad6ed155e3e859275c4cee4d8f19db7de936ad68e341a52ba",
+    "name": "Never Share Security Code",
+    "canonical_name": "Never Share Security Code",
+    "key": "never share security code|COMPLIANCE_OBLIGATION|banking.communications",
+    "entity_class": "COMPLIANCE_OBLIGATION",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_010",
+    "_kind": "recurrent",
+    "type": "prohibition",
+    "description": "A mandatory prohibition communicated to customers that they must never share their one-time security code with any party, embedded as a security warning in the 2FA SMS template.",
+    "context": [
+      "Never share this."
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "obligation_type": "prohibition",
+    "applies_to": "all customers",
+    "regulatory_source": "Two-Factor Authentication security protocol",
+    "verification_method": "Customer awareness messaging in 2FA communications"
+  },
+  {
+    "id": "196b900ea888c57771649fcf3f3ddf4dd61ccbf804c1f6c6fbd6cbf3744dc45b",
+    "name": "Unauthorized Two-Factor Authentication Request",
+    "canonical_name": "Unauthorized Two-Factor Authentication Request",
+    "key": "unauthorized two-factor authentication request|WARNING_SIGN|banking.communications",
+    "entity_class": "WARNING_SIGN",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_010",
+    "_kind": "recurrent",
+    "type": "account_takeover_signal",
+    "description": "A red flag indicating that a customer has received a 2FA code they did not request, signalling potential unauthorized access attempts or account takeover activity requiring immediate customer action.",
+    "context": [
+      "If you didn't request this, call 0800-555-2265."
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "risk_domain": "fraud",
+    "required_action": "Contact customer support immediately at provided number",
+    "escalation_path": "Customer Support (0800-555-2265)",
+    "regulatory_obligation": "yes"
+  },
+  {
+    "id": "db2a8329e31b7ea3ea0faf59d41404ae52cf4f92aab3126e7b61f7ba405fc84c",
+    "name": "Account Opened Confirmation",
+    "canonical_name": "Account Opened Confirmation",
+    "key": "account opened confirmation|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_011",
+    "_kind": "recurrent",
+    "type": "confirmation",
+    "description": "SMS or push notification template sent to a customer immediately after successful creation of a new SmartSaver account. The message confirms account opening, provides the account number placeholder, directs the customer to log in via the online banking portal, and includes a customer service phone number for assistance.",
+    "context": [
+      "Trigger: New account successfully created",
+      "FirstUK: Welcome! Your SmartSaver account is open. Account: [ACC-XXXXX]. Log in at www.firstuk.bank/login to activate.",
+      "Call 0800-555-2265 for help."
+    ],
+    "aliases": [
+      "Template 9"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "document_id": "TEMPLATE-9",
+    "trigger_event": "New account successfully created",
+    "channel": "sms",
+    "recipient": "new account holder",
+    "key_content": [
+      "Welcome message",
+      "Account number confirmation",
+      "Login instructions",
+      "Customer support contact"
+    ],
+    "variables_used": [
+      "[ACC-XXXXX]"
+    ],
+    "tone": "friendly",
+    "character_limit": 135
+  },
+  {
+    "id": "c84520d6e7e97b0714fc9c0e8ed0bbf196ff04290a5cfcd339d5f39ec92d0e43",
+    "name": "Account Number",
+    "canonical_name": "Account Number",
+    "key": "account number|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_011",
+    "_kind": "recurrent",
+    "type": "account_data",
+    "description": "Placeholder variable representing the unique account identifier assigned to the newly opened account. Replaced at send time with the actual account number.",
+    "context": [
+      "[ACC-XXXXX]",
+      "Account: [ACC-XXXXX]"
+    ],
+    "aliases": [
+      "ACC-XXXXX"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[ACC-XXXXX]",
+    "data_source": "AMS",
+    "data_type": "account_number",
+    "mandatory": true,
+    "appears_in_templates": [
+      "Account Opened Confirmation"
+    ]
+  },
+  {
+    "id": "20a459e9e82ab1f68c368d3c22f3f3689e25774743f4d214032b8d624098a3b2",
+    "name": "SmartSaver Account",
+    "canonical_name": "SmartSaver Account",
+    "key": "smartsaver account|PRODUCT|banking.communications",
+    "entity_class": "PRODUCT",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_011",
+    "_kind": "recurrent",
+    "type": "savings_product",
+    "description": "A savings account product offered by FirstUK. Referenced in the account opening confirmation template as the product type being activated for new customers.",
+    "context": [
+      "Your SmartSaver account is open.",
+      "FirstUK: Welcome! Your SmartSaver account is open."
+    ],
+    "aliases": [
+      "SmartSaver"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "communication_template": [
+      "Account Opened Confirmation"
+    ],
+    "customer_facing_messaging": "Welcome message emphasizing account activation and easy access to support"
+  },
+  {
+    "id": "40e509588ce2d1dacf87bbf513da71f2828c241263a82b1bc1e01bcdc3c167c1",
+    "name": "New SmartSaver Account",
+    "canonical_name": "SmartSaver Account",
+    "key": "smartsaver account|ACCOUNT|banking.communications",
+    "entity_class": "ACCOUNT",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_011",
+    "_kind": "recurrent",
+    "type": "new_account",
+    "description": "A newly created SmartSaver savings account that triggers the account opening confirmation communication. The account is ready for activation by the customer via online login.",
+    "context": [
+      "New account successfully created",
+      "Your SmartSaver account is open. Account: [ACC-XXXXX].",
+      "Log in at www.firstuk.bank/login to activate."
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "account_type": "savings",
+    "account_state": "new"
+  },
+  {
+    "id": "68c2663b3cb103631cde38936efc17328f73811fc8965d7659e7b655705d3c46",
+    "name": "Interest Payment Notification",
+    "canonical_name": "Interest Payment Notification",
+    "key": "interest payment notification|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_012",
+    "_kind": "recurrent",
+    "type": "service_notification",
+    "description": "SMS or push notification template triggered by monthly interest credit to customer account. Confirms interest amount, new account balance, and provides contact number for queries. Includes AER disclosure.",
+    "context": [
+      "Template 10: Interest Payment Notification",
+      "Trigger: Monthly interest credit",
+      "FirstUK: Interest of £[amount] credited to your account. New balance: £[balance]. At 4.50% AER. Questions? Call 0800-555-2265"
+    ],
+    "aliases": [
+      "Template 10"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "document_id": "TEMPLATE-10",
+    "trigger_event": "Monthly interest credit",
+    "channel": "sms",
+    "key_content": [
+      "Interest amount credited",
+      "New account balance",
+      "Annual Equivalent Rate (AER)",
+      "Customer support contact"
+    ],
+    "variables_used": [
+      "[amount]",
+      "[balance]"
+    ],
+    "tone": "friendly",
+    "character_limit": 115
+  },
+  {
+    "id": "5ecea8bcec98721e33f5eb8ec602828ac1ab02d6efef58753ad7e66e1234b307",
+    "name": "Interest Amount",
+    "canonical_name": "Interest Amount",
+    "key": "interest amount|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_012",
+    "_kind": "recurrent",
+    "type": "amount_field",
+    "description": "Dynamic placeholder representing the sterling amount of interest credited to the customer's account in the current period.",
+    "context": [
+      "Interest of £[amount] credited to your account"
+    ],
+    "aliases": [
+      "amount"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[amount]",
+    "data_source": "Product Catalog",
+    "data_type": "currency",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Interest Payment Notification"
+    ]
+  },
+  {
+    "id": "efbbb2e5d8144ca0f6270cd379cd7e41712038feb34eeeb6295a53085df3794d",
+    "name": "Account Balance",
+    "canonical_name": "Account Balance",
+    "key": "account balance|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_012",
+    "_kind": "recurrent",
+    "type": "account_data",
+    "description": "Dynamic placeholder representing the updated account balance following the interest credit.",
+    "context": [
+      "New balance: £[balance]"
+    ],
+    "aliases": [
+      "balance"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[balance]",
+    "data_source": "AMS",
+    "data_type": "currency",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Interest Payment Notification"
+    ]
+  },
+  {
+    "id": "8a99f39c631d5e4abb2474032a9215ff3e966417731dd805d5571a7de0bd6fd2",
+    "name": "FirstUK Account",
+    "canonical_name": "FirstUK Account",
+    "key": "firstuk account|PRODUCT|banking.communications",
+    "entity_class": "PRODUCT",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_012",
+    "_kind": "recurrent",
+    "type": "savings_product",
+    "description": "Savings product offered by FirstUK that earns interest credited monthly at a stated AER rate.",
+    "context": [
+      "FirstUK: Interest of £[amount] credited to your account",
+      "At 4.50% AER"
+    ],
+    "aliases": [
+      "FirstUK"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "communication_template": [
+      "Interest Payment Notification"
+    ],
+    "aer_rate": "4.50%"
+  },
+  {
+    "id": "3cccabba9e27b61c01f8559073c551ee0136d078363279a4cb5730e48bda713f",
+    "name": "Standing Order Executed",
+    "canonical_name": "Standing Order Executed",
+    "key": "standing order executed|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_013",
+    "_kind": "recurrent",
+    "type": "service_notification",
+    "description": "SMS notification template sent to customer when a recurring standing order payment has been processed. Confirms the payment amount, payee, execution date, and current account balance, with a customer service contact number.",
+    "context": [
+      "Template 11: Standing Order Executed",
+      "Trigger: Recurring standing order payment processed",
+      "FirstUK: Standing order of £[amount] to [payee] processed on [date]. Your balance: £[balance]. Call 0800-555-2265 with questions."
+    ],
+    "aliases": [
+      "Template 11"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "trigger_event": "Recurring standing order payment processed",
+    "channel": "sms",
+    "key_content": [
+      "Standing order amount confirmation",
+      "Payee name",
+      "Payment execution date",
+      "Updated account balance",
+      "Customer support contact number"
+    ],
+    "variables_used": [
+      "[amount]",
+      "[payee]",
+      "[date]",
+      "[balance]"
+    ],
+    "tone": "friendly",
+    "recipient": "account holder",
+    "character_limit": 130
+  },
+  {
+    "id": "ae789c862db3850ee31f237b3dd38f1a8e1aed7f202130fba24233da219d8eef",
+    "name": "Standing Order Amount",
+    "canonical_name": "Standing Order Amount",
+    "key": "standing order amount|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_013",
+    "_kind": "recurrent",
+    "type": "amount_field",
+    "description": "Dynamic placeholder representing the monetary value of the standing order payment being executed, inserted into the notification message.",
+    "context": [
+      "Standing order of £[amount] to [payee]"
+    ],
+    "aliases": [
+      "amount"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[amount]",
+    "data_type": "currency",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Standing Order Executed"
+    ]
+  },
+  {
+    "id": "fa8fff02766a8725e469558a39be0d2909f0338f466514d1b3b32cffcc430c89",
+    "name": "Payee Name",
+    "canonical_name": "Payee Name",
+    "key": "payee name|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_013",
+    "_kind": "recurrent",
+    "type": "contact_field",
+    "description": "Dynamic placeholder for the name or identifier of the recipient organisation or person receiving the standing order payment.",
+    "context": [
+      "Standing order of £[amount] to [payee] processed on"
+    ],
+    "aliases": [
+      "payee"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[payee]",
+    "data_type": "string",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Standing Order Executed"
+    ]
+  },
+  {
+    "id": "2a8c0d3fbcdc82692726fcdfd0c3aac7d183e2628478dfea8069ddb757ab7614",
+    "name": "Payment Execution Date",
+    "canonical_name": "Payment Execution Date",
+    "key": "payment execution date|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_013",
+    "_kind": "recurrent",
+    "type": "date_field",
+    "description": "Dynamic placeholder for the date on which the standing order payment was processed and executed.",
+    "context": [
+      "processed on [date]. Your balance"
+    ],
+    "aliases": [
+      "date"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[date]",
+    "data_type": "date",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Standing Order Executed"
+    ]
+  },
+  {
+    "id": "caf867d1755f9823480b73e04aacae9bd3eddb8eb9d23ffb8f5e49de481559af",
+    "name": "Account Balance",
+    "canonical_name": "Account Balance",
+    "key": "account balance|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_013",
+    "_kind": "recurrent",
+    "type": "account_data",
+    "description": "Dynamic placeholder representing the customer's current account balance following the standing order payment execution.",
+    "context": [
+      "Your balance: £[balance]. Call 0800-555-2265"
+    ],
+    "aliases": [
+      "balance"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[balance]",
+    "data_type": "currency",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Standing Order Executed"
+    ]
+  },
+  {
+    "id": "b5de39f09d6383dd0bfe721d3b06d15aeb756d49ffa04e9beebb0da069679384",
+    "name": "Standing Order",
+    "canonical_name": "Standing Order",
+    "key": "standing order|STANDING_ORDER|banking.communications",
+    "entity_class": "STANDING_ORDER",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_013",
+    "_kind": "recurrent",
+    "type": "standing_order_setup",
+    "description": "Recurring payment instruction set up on a customer account to transfer funds to a named payee at regular intervals. This template notifies the customer when each payment is executed.",
+    "context": [
+      "Recurring standing order payment processed",
+      "Standing order of £[amount] to [payee] processed on [date]"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "transaction_type": "transfer",
+    "setup_or_amendment_process": "recurring payment instruction",
+    "beneficiary_validation": "payee name confirmed in notification"
+  },
+  {
+    "id": "044f25500c910cd6211059d367facf12ffea96e0f8a26f836c4dedb6e474c37d",
+    "name": "Account Verification Needed",
+    "canonical_name": "Account Verification Needed",
+    "key": "account verification needed|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_014",
+    "_kind": "recurrent",
+    "type": "service_notification",
+    "description": "A customer-facing notification template triggered when KYC documents are required to complete account verification. The template directs customers to upload identification documents via a web portal or telephone, specifies a deadline, and warns of account restrictions if verification is not completed.",
+    "context": [
+      "Template 12: Account Verification Needed",
+      "Trigger: KYC documents required",
+      "We need your ID to complete verification. Upload at www.firstuk.bank/kyc or call 0800-555-2265. Deadline: [date].",
+      "Your account will be restricted if not completed."
+    ],
+    "aliases": [
+      "Template 12"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "document_id": "TEMPLATE-12",
+    "trigger_event": "KYC documents required",
+    "channel": "email",
+    "recipient": "account holder",
+    "key_content": [
+      "Request for ID upload",
+      "Verification deadline notification",
+      "Account restriction warning if not completed"
+    ],
+    "variables_used": [
+      "[date]"
+    ],
+    "tone": "urgent",
+    "compliance_disclosures": "Account will be restricted if verification not completed",
+    "character_count": 160
+  },
+  {
+    "id": "d20d8984b3803a2bc1390a2df30b31e0647685190e2edec5a4ce357336dc9e4c",
+    "name": "Verification Deadline",
+    "canonical_name": "Verification Deadline",
+    "key": "verification deadline|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_014",
+    "_kind": "recurrent",
+    "type": "date_field",
+    "description": "A dynamic date placeholder in the Account Verification Needed template that specifies the deadline by which the customer must complete KYC document upload or face account restrictions.",
+    "context": [
+      "Deadline: [date]."
+    ],
+    "aliases": [
+      "date"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[date]",
+    "data_type": "date",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Account Verification Needed"
+    ]
+  },
+  {
+    "id": "e5feec39631c12466a9e3cca550c646754290a5efacdabb86b2d55d56b7cf450",
+    "name": "KYC Document Upload Verification",
+    "canonical_name": "KYC Document Upload Verification",
+    "key": "kyc document upload verification|KYC_VERIFICATION|banking.communications",
+    "entity_class": "KYC_VERIFICATION",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_014",
+    "_kind": "recurrent",
+    "type": "document_collection",
+    "description": "The KYC verification process requiring customers to upload identification documents via the FirstUK web portal or by telephone to complete account verification. Failure to complete within the specified deadline results in account restrictions.",
+    "context": [
+      "KYC documents required",
+      "We need your ID to complete verification. Upload at www.firstuk.bank/kyc or call 0800-555-2265.",
+      "Your account will be restricted if not completed."
+    ],
+    "aliases": [
+      "ID verification",
+      "document upload"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "mandatory": "yes",
+    "verification_method": "document upload via www.firstuk.bank/kyc or phone call to 0800-555-2265",
+    "consequence_of_failure": "account restriction"
+  },
+  {
+    "id": "b725cdfb7aa22acd4c20baffa82f9854a3af5d2b73aa89f88ad93dc7dfdd6480",
+    "name": "KYC Document Submission Obligation",
+    "canonical_name": "KYC Document Submission Obligation",
+    "key": "kyc document submission obligation|COMPLIANCE_OBLIGATION|banking.communications",
+    "entity_class": "COMPLIANCE_OBLIGATION",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_014",
+    "_kind": "recurrent",
+    "type": "documentation_requirement",
+    "description": "A mandatory compliance obligation requiring customers to submit identification documents for KYC verification within a specified deadline. Non-compliance triggers account restrictions as an enforcement mechanism.",
+    "context": [
+      "We need your ID to complete verification.",
+      "Your account will be restricted if not completed."
+    ],
+    "aliases": [
+      "verification requirement"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "obligation_type": "documentation",
+    "applies_to": "all account holders",
+    "timeframe": "by deadline specified in communication",
+    "consequence_of_failure": "account restriction",
+    "regulatory_source": "KYC requirements"
+  },
+  {
+    "id": "0f42d914f321f7abef8549cd9efe17d731ab889895de2b818a0d7143cc2d0b91",
+    "name": "Rate Change Alert",
+    "canonical_name": "Rate Change Alert",
+    "key": "rate change alert|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_015",
+    "_kind": "recurrent",
+    "type": "service_notification",
+    "description": "An SMS or push notification template triggered when a customer's interest rate is updated, typically on a monthly basis. The template informs the customer of the new rate in AER format, the previous rate, the Bank of England base rate movement, and when the new rate takes effect.",
+    "context": [
+      "Trigger: Interest rate updated (usually monthly)",
+      "FirstUK: Your rate changed to [new rate]% AER (was [old rate]%).",
+      "Bank of England base rate moved to [new BoE rate]%. Your new interest starts next month."
+    ],
+    "aliases": [
+      "Template 13"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "document_id": "TEMPLATE-13",
+    "trigger_event": "Interest rate updated (usually monthly)",
+    "channel": "sms",
+    "recipient": "account holder",
+    "key_content": [
+      "New interest rate percentage (AER)",
+      "Previous interest rate percentage",
+      "Bank of England base rate",
+      "Effective date of new rate"
+    ],
+    "variables_used": [
+      "[new rate]",
+      "[old rate]",
+      "[new BoE rate]"
+    ],
+    "tone": "informational",
+    "character_limit": 145
+  },
+  {
+    "id": "6643517390eeb799228d13a02bcec53b1adca6f5170109b432b506c66cc781aa",
+    "name": "New Interest Rate",
+    "canonical_name": "New Interest Rate",
+    "key": "new interest rate|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_015",
+    "_kind": "recurrent",
+    "type": "rate_field",
+    "description": "The updated interest rate expressed as an Annual Equivalent Rate (AER) percentage that replaces the customer's previous rate.",
+    "context": [
+      "Your rate changed to [new rate]% AER"
+    ],
+    "aliases": [
+      "new rate"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[new rate]",
+    "data_type": "percentage",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Rate Change Alert"
+    ]
+  },
+  {
+    "id": "3bab89143593d29ba25aed59657ca37f279b5a2b11411013769b80eecc48af59",
+    "name": "Previous Interest Rate",
+    "canonical_name": "Previous Interest Rate",
+    "key": "previous interest rate|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_015",
+    "_kind": "recurrent",
+    "type": "rate_field",
+    "description": "The customer's former interest rate, shown in AER format for comparison with the new rate.",
+    "context": [
+      "(was [old rate]%)"
+    ],
+    "aliases": [
+      "old rate"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[old rate]",
+    "data_type": "percentage",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Rate Change Alert"
+    ]
+  },
+  {
+    "id": "43cc09146f83b0395b191d8da69288efd3cbf79c82d60fd55a153cc327c98da5",
+    "name": "Bank of England Base Rate",
+    "canonical_name": "Bank of England Base Rate",
+    "key": "bank of england base rate|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_015",
+    "_kind": "recurrent",
+    "type": "rate_field",
+    "description": "The current Bank of England base rate that has moved and is provided as context for the customer's rate change.",
+    "context": [
+      "Bank of England base rate moved to [new BoE rate]%."
+    ],
+    "aliases": [
+      "new BoE rate"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[new BoE rate]",
+    "data_type": "percentage",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Rate Change Alert"
+    ]
+  },
+  {
+    "id": "fafa9b36dd36b53ccaabc1897b03470ef370ca2faec5c441b5bfa13f56b716c7",
+    "name": "Fraud Claim Resolved",
+    "canonical_name": "Fraud Claim Resolved",
+    "key": "fraud claim resolved|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_016",
+    "_kind": "recurrent",
+    "type": "sms_template",
+    "description": "SMS notification template sent to customer when a disputed transaction claim has been investigated and resolved. Includes dispute reference number, refund amount, and customer service contact details. Designed to confirm resolution and direct customer to email for full details.",
+    "context": [
+      "Template 14: Fraud Claim Resolved",
+      "Trigger: Disputed transaction investigated and resolved",
+      "FirstUK: Your dispute claim (Ref: [EXC-XXXXX]) has been resolved. Refund of £[amount] processed. See email for full details.",
+      "Call 0800-555-2265 with questions."
+    ],
+    "aliases": [
+      "Template 14"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "document_id": "TEMPLATE-014",
+    "trigger_event": "Disputed transaction investigated and resolved",
+    "channel": "sms",
+    "recipient": "customer",
+    "key_content": [
+      "Dispute claim resolution confirmation",
+      "Refund amount notification",
+      "Reference number",
+      "Customer support contact"
+    ],
+    "variables_used": [
+      "[EXC-XXXXX]",
+      "[amount]"
+    ],
+    "tone": "friendly",
+    "character_limit": 150
+  },
+  {
+    "id": "a32383202dc9b96c2945188eaea8837ce2aa1dc7f71e00efd2be69ac21df16fc",
+    "name": "Dispute Reference Number",
+    "canonical_name": "Dispute Reference Number",
+    "key": "dispute reference number|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_016",
+    "_kind": "recurrent",
+    "type": "reference_field",
+    "description": "Unique identifier for the disputed transaction claim, formatted as EXC-XXXXX. Used to allow customer to reference their specific dispute in follow-up communications.",
+    "context": [
+      "Your dispute claim (Ref: [EXC-XXXXX]) has been resolved.",
+      "[EXC-XXXXX]"
+    ],
+    "aliases": [
+      "Ref",
+      "EXC-XXXXX"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[EXC-XXXXX]",
+    "data_source": "dispute_management_system",
+    "data_type": "string",
+    "example_value": "EXC-XXXXX",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Fraud Claim Resolved"
+    ]
+  },
+  {
+    "id": "838fca99d580e16ad3eb372f3badf7f91f16cd3a4ba8d223861413e04af5616e",
+    "name": "Refund Amount",
+    "canonical_name": "Refund Amount",
+    "key": "refund amount|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_016",
+    "_kind": "recurrent",
+    "type": "amount_field",
+    "description": "The monetary value of the refund processed to the customer's account as a result of the resolved dispute claim. Expressed in pounds sterling.",
+    "context": [
+      "Refund of £[amount] processed.",
+      "£[amount]"
+    ],
+    "aliases": [
+      "amount"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[amount]",
+    "data_source": "dispute_management_system",
+    "data_type": "currency",
+    "example_value": "£500.00",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Fraud Claim Resolved"
+    ]
+  },
+  {
+    "id": "f32c5afc19a65a658377274eff871fcffb02d25b67fc16220cb8ea2448e8c7ce",
+    "name": "Disputed Transaction Investigation and Resolution",
+    "canonical_name": "Disputed Transaction Investigation and Resolution",
+    "key": "disputed transaction investigation and resolution|FRAUD_ALERT|banking.communications",
+    "entity_class": "FRAUD_ALERT",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_016",
+    "_kind": "recurrent",
+    "type": "fraud_investigation",
+    "description": "The process of investigating a customer's disputed transaction claim and communicating the resolution outcome. Triggers the Fraud Claim Resolved SMS template when investigation is complete and a refund decision has been made.",
+    "context": [
+      "Trigger: Disputed transaction investigated and resolved",
+      "Your dispute claim (Ref: [EXC-XXXXX]) has been resolved.",
+      "Refund of £[amount] processed."
+    ],
+    "aliases": [
+      "fraud claim resolution",
+      "dispute resolution"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "generation_trigger": "Customer dispute claim submitted and investigation completed",
+    "investigation_or_escalation_path": "dispute_management_team",
+    "customer_notification": "yes",
+    "reimbursement_obligation": "yes",
+    "notification_channel": "sms"
+  },
+  {
+    "id": "5e64405c90932c2741d23d566254c3d84cbe56596adf018f591fb3b9b6e24a0f",
+    "name": "Disputed Transaction",
+    "canonical_name": "Disputed Transaction",
+    "key": "disputed transaction|TRANSACTION|banking.communications",
+    "entity_class": "TRANSACTION",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_016",
+    "_kind": "occurrent",
+    "type": "disputed_transaction",
+    "description": "A financial transaction on a customer account that has been challenged by the customer and subsequently investigated. The resolution of this dispute triggers the Fraud Claim Resolved notification.",
+    "context": [
+      "Disputed transaction investigated and resolved",
+      "Your dispute claim (Ref: [EXC-XXXXX]) has been resolved.",
+      "Refund of £[amount] processed."
+    ],
+    "aliases": [
+      "dispute claim"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "transaction_type": "disputed",
+    "monitoring_or_reporting_obligation": "investigation_required",
+    "dispute_or_reversal_rules": "refund_processed_upon_resolution"
+  },
+  {
+    "id": "de0ac8f2b091deb94ebfc5441dff0684bce905dbaf79a60ccb200a8ab37cf568",
+    "name": "Branch Appointment Reminder",
+    "canonical_name": "Branch Appointment Reminder",
+    "key": "branch appointment reminder|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_017",
+    "_kind": "recurrent",
+    "type": "sms_template",
+    "description": "An SMS reminder sent 24 hours before a scheduled branch meeting, notifying the customer of their appointment details and providing a contact number to reschedule if needed.",
+    "context": [
+      "Template 15: Branch Appointment Reminder",
+      "Trigger: Scheduled branch meeting (24h before)",
+      "FirstUK: Reminder: You have an appointment at [branch name] on [date] at [time]. Contact 0800-555-2265 if you need to reschedule.",
+      "Character count: ~140"
+    ],
+    "aliases": [
+      "Template 15"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "document_id": "TEMPLATE-015",
+    "trigger_event": "Scheduled branch meeting 24 hours before appointment",
+    "channel": "sms",
+    "key_content": [
+      "Appointment confirmation",
+      "Branch location",
+      "Appointment date and time",
+      "Rescheduling contact number"
+    ],
+    "variables_used": [
+      "[branch name]",
+      "[date]",
+      "[time]"
+    ],
+    "tone": "friendly",
+    "recipient": "customer with scheduled branch appointment",
+    "character_limit": 140
+  },
+  {
+    "id": "1cdbf32f3b8c77fb06f5460857eae48503270fbaf0e08cd9f2089f597148656b",
+    "name": "Branch Name",
+    "canonical_name": "Branch Name",
+    "key": "branch name|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_017",
+    "_kind": "recurrent",
+    "type": "contact_field",
+    "description": "The name of the FirstUK branch where the customer's appointment is scheduled, inserted dynamically into the reminder message.",
+    "context": [
+      "[branch name]"
+    ],
+    "aliases": [
+      "branch name"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[branch name]",
+    "data_source": "Branch Directory",
+    "data_type": "string",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Branch Appointment Reminder"
+    ]
+  },
+  {
+    "id": "abe108cf0ced6e2e62fca075b43f0be4faaf155e9e87ed62b60714e02f55ae55",
+    "name": "Appointment Date",
+    "canonical_name": "Appointment Date",
+    "key": "appointment date|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_017",
+    "_kind": "recurrent",
+    "type": "date_field",
+    "description": "The date of the scheduled branch appointment, inserted dynamically into the reminder message.",
+    "context": [
+      "[date]"
+    ],
+    "aliases": [
+      "date"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[date]",
+    "data_source": "Appointment Scheduling System",
+    "data_type": "date",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Branch Appointment Reminder"
+    ]
+  },
+  {
+    "id": "8aff06d1a6b8984577f7aebde143a93994ada14ab80c5dbb55a6afcaa3b7b15a",
+    "name": "Appointment Time",
+    "canonical_name": "Appointment Time",
+    "key": "appointment time|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_017",
+    "_kind": "recurrent",
+    "type": "date_field",
+    "description": "The time of the scheduled branch appointment, inserted dynamically into the reminder message.",
+    "context": [
+      "[time]"
+    ],
+    "aliases": [
+      "time"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[time]",
+    "data_source": "Appointment Scheduling System",
+    "data_type": "string",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Branch Appointment Reminder"
+    ]
+  },
+  {
+    "id": "31d86fab5d05e3cf91128dd0018c43d939f4f6b4d8fcb97845eb7735e0427c95",
+    "name": "Account Closure Confirmation",
+    "canonical_name": "Account Closure Confirmation",
+    "key": "account closure confirmation|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_018",
+    "_kind": "recurrent",
+    "type": "sms_template",
+    "description": "An SMS notification template sent to customers when their account closure has been processed. The message confirms closure, provides a reference number, specifies the final balance transfer method and timeline, and includes a customer service contact number.",
+    "context": [
+      "Template 16: Account Closure Confirmation",
+      "Trigger: Account closure processed",
+      "FirstUK: Your account has been closed (Ref: [ACC-XXXXX]). Final balance of £[amount] will be transferred to [method] within 3–5 days. Call 0800-555-2265 with questions."
+    ],
+    "aliases": [
+      "Template 16"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "document_id": "TEMPLATE-016",
+    "trigger_event": "Account closure processed",
+    "channel": "sms",
+    "recipient": "account holder",
+    "key_content": [
+      "Account closure confirmation",
+      "Account reference number",
+      "Final balance amount",
+      "Transfer method and timeline",
+      "Customer support contact"
+    ],
+    "variables_used": [
+      "[ACC-XXXXX]",
+      "[amount]",
+      "[method]"
+    ],
+    "tone": "formal",
+    "character_limit": 150
+  },
+  {
+    "id": "bda749cee91c75be21d885c82965fbb08efe9e151ad25964d599fc14a0b32430",
+    "name": "Account Reference Number",
+    "canonical_name": "Account Reference Number",
+    "key": "account reference number|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_018",
+    "_kind": "recurrent",
+    "type": "reference_field",
+    "description": "A unique account reference identifier inserted into the Account Closure Confirmation template to identify the specific closed account.",
+    "context": [
+      "[ACC-XXXXX]",
+      "Your account has been closed (Ref: [ACC-XXXXX])"
+    ],
+    "aliases": [
+      "ACC-XXXXX",
+      "Ref"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[ACC-XXXXX]",
+    "data_type": "account_number",
+    "appears_in_templates": [
+      "Account Closure Confirmation"
+    ],
+    "mandatory": "yes"
+  },
+  {
+    "id": "cd9617db8c73d4fbcade821414b9df81789062db4f2d14d73bbd65afede4ece9",
+    "name": "Final Balance Amount",
+    "canonical_name": "Final Balance Amount",
+    "key": "final balance amount|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_018",
+    "_kind": "recurrent",
+    "type": "amount_field",
+    "description": "The monetary value of the customer's final account balance to be transferred upon closure, inserted as a dynamic variable in the confirmation message.",
+    "context": [
+      "£[amount]",
+      "Final balance of £[amount] will be transferred to [method]"
+    ],
+    "aliases": [
+      "amount"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[amount]",
+    "data_type": "currency",
+    "appears_in_templates": [
+      "Account Closure Confirmation"
+    ],
+    "mandatory": "yes"
+  },
+  {
+    "id": "52fd13a455b4e9e4fc48ee3236d3c4925432203837c0c7dbcbe78c53b9f773ce",
+    "name": "Transfer Method",
+    "canonical_name": "Transfer Method",
+    "key": "transfer method|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_018",
+    "_kind": "recurrent",
+    "type": "account_data",
+    "description": "The destination or mechanism for transferring the final balance upon account closure, inserted as a dynamic variable in the confirmation message.",
+    "context": [
+      "[method]",
+      "Final balance of £[amount] will be transferred to [method] within 3–5 days"
+    ],
+    "aliases": [
+      "method"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[method]",
+    "data_type": "string",
+    "appears_in_templates": [
+      "Account Closure Confirmation"
+    ],
+    "mandatory": "yes"
+  },
+  {
+    "id": "4292ecee052be086a598bf10066a0e3a2dabb02c8e6bc48a583b7f17e1b58184",
+    "name": "Closed Account",
+    "canonical_name": "Closed Account",
+    "key": "closed account|ACCOUNT|banking.communications",
+    "entity_class": "ACCOUNT",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_018",
+    "_kind": "recurrent",
+    "type": "closed_account",
+    "description": "A customer account that has been closed and for which a final balance transfer is being processed within 3–5 days.",
+    "context": [
+      "Account closure processed",
+      "Your account has been closed (Ref: [ACC-XXXXX])",
+      "Final balance of £[amount] will be transferred to [method] within 3–5 days"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "account_state": "closed",
+    "closure_or_freeze_conditions": "Final balance transferred to designated method within 3–5 days"
+  },
+  {
+    "id": "591e044b76495e559a9ebf4309c1a3e792ae639b3ec8e8faca87acdcce05ca04",
+    "name": "Maintenance Notice",
+    "canonical_name": "Maintenance Notice",
+    "key": "maintenance notice|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_019",
+    "_kind": "recurrent",
+    "type": "service_notification",
+    "description": "A service notification template sent to customers to inform them of scheduled system maintenance affecting online and mobile banking availability. The template specifies the maintenance window, affected services, and reassures customers of service restoration.",
+    "context": [
+      "Template 17: Maintenance Notice",
+      "Trigger: Scheduled system maintenance",
+      "FirstUK: Scheduled maintenance 02:00–03:00 AM on [date].",
+      "Online/mobile banking temporarily unavailable. Sorry for any inconvenience. We'll be back soon!"
+    ],
+    "aliases": [
+      "Template 17"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "document_id": "TEMPLATE-017",
+    "trigger_event": "Scheduled system maintenance",
+    "channel": "sms",
+    "key_content": [
+      "Maintenance window time (02:00–03:00 AM)",
+      "Service unavailability notice",
+      "Apology for inconvenience",
+      "Reassurance of service restoration"
+    ],
+    "variables_used": [
+      "[date]"
+    ],
+    "tone": "friendly",
+    "character_limit": 150
+  },
+  {
+    "id": "ea59b279e394057669fbf766b50394628cf0a9f69988c805e4e18b8eb97f2d5b",
+    "name": "Maintenance Date",
+    "canonical_name": "Maintenance Date",
+    "key": "maintenance date|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_019",
+    "_kind": "recurrent",
+    "type": "date_field",
+    "description": "A dynamic date placeholder in the Maintenance Notice template that is replaced with the specific date of the scheduled system maintenance at send time.",
+    "context": [
+      "Scheduled maintenance 02:00–03:00 AM on [date]."
+    ],
+    "aliases": [
+      "date"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[date]",
+    "data_type": "date",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Maintenance Notice"
+    ],
+    "example_value": "02:00–03:00 AM on [date]"
+  },
+  {
+    "id": "dc572fa38c1f5e0c369273315571df8516961d40c2f681b4b04c2f6c062c8856",
+    "name": "Survey Request Template",
+    "canonical_name": "Survey Request Template",
+    "key": "survey request template|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_020",
+    "_kind": "recurrent",
+    "type": "sms_template",
+    "description": "A brief post-transaction or post-support survey invitation template designed to gather customer feedback on their banking experience. The template includes a direct link to an online survey and emphasizes the minimal time commitment required.",
+    "context": [
+      "Template 18: Survey Request (Optional)",
+      "Trigger: Post-transaction or post-support",
+      "FirstUK: How did we do? Rate your experience: www.firstuk.bank/survey",
+      "Takes 1 minute. Thanks for banking with us!"
+    ],
+    "aliases": [
+      "Template 18"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "document_id": "TEMPLATE-018",
+    "trigger_event": "Post-transaction or post-support",
+    "channel": "sms",
+    "key_content": [
+      "Experience rating request",
+      "Survey duration indicator",
+      "Thank you message"
+    ],
+    "variables_used": [
+      "Survey URL"
+    ],
+    "tone": "friendly",
+    "character_limit": 110
+  },
+  {
+    "id": "11f0c1288c64710262d700c504c3bdfc6a7d256467fab5bdc5472413b1aac8a3",
+    "name": "Survey URL",
+    "canonical_name": "Survey URL",
+    "key": "survey url|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_020",
+    "_kind": "recurrent",
+    "type": "reference_field",
+    "description": "A dynamic placeholder for the survey web address that customers are directed to in order to provide feedback on their banking experience.",
+    "context": [
+      "Rate your experience: www.firstuk.bank/survey"
+    ],
+    "aliases": [
+      "survey_link"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "www.firstuk.bank/survey",
+    "data_type": "url",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Survey Request Template"
+    ]
+  },
+  {
+    "id": "53fece1b4bf3b41f5c3357a9ca21a82aeed626a646e50dabda081167638f9f8d",
+    "name": "Unrecognized Login Alert",
+    "canonical_name": "Unrecognized Login Alert",
+    "key": "unrecognized login alert|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_021",
+    "_kind": "recurrent",
+    "type": "security_alert",
+    "description": "A security alert template triggered when a login attempt is detected from a new device or location. The message notifies the customer of the login attempt with date, time, and location/device details, and instructs them to change their password immediately or contact the fraud line if the login was unauthorized.",
+    "context": [
+      "Template 19: Unrecognized Login Alert",
+      "Trigger: Login from new device or location",
+      "If not you, change password immediately: www.firstuk.bank/reset or call 0800-555-2265 fraud line."
+    ],
+    "aliases": [
+      "Template 19"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "document_id": "TEMPLATE-019",
+    "trigger_event": "Login from new device or location",
+    "channel": "sms",
+    "recipient": "account_holder",
+    "key_content": [
+      "Login attempt notification with date, time, and location/device",
+      "Instruction to change password if unrecognized",
+      "Fraud line contact details"
+    ],
+    "variables_used": [
+      "[date]",
+      "[time]",
+      "[location/device]"
+    ],
+    "tone": "urgent",
+    "character_limit": 160,
+    "compliance_disclosures": [
+      "Fraud line contact number"
+    ],
+    "do_not_alter_sections": [
+      "Fraud line number: 0800-555-2265",
+      "Password reset URL: www.firstuk.bank/reset"
+    ]
+  },
+  {
+    "id": "57ea16d958276d6fe4b1d860e17ee47f08ff7ca311b72d2b78ff35cd3bcbc124",
+    "name": "Login Attempt Date",
+    "canonical_name": "Login Attempt Date",
+    "key": "login attempt date|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_021",
+    "_kind": "recurrent",
+    "type": "date_field",
+    "description": "The date on which the unrecognized login attempt occurred, inserted dynamically into the alert message.",
+    "context": [
+      "Login attempt on [date] [time] from [location/device]."
+    ],
+    "aliases": [
+      "date"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[date]",
+    "data_type": "date",
+    "data_source": "authentication_system",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Unrecognized Login Alert"
+    ]
+  },
+  {
+    "id": "c3d72db93f190a9307acb7650b46ce2f0d7139572db2826f3cae131ce2364d87",
+    "name": "Login Attempt Time",
+    "canonical_name": "Login Attempt Time",
+    "key": "login attempt time|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_021",
+    "_kind": "recurrent",
+    "type": "date_field",
+    "description": "The time at which the unrecognized login attempt occurred, inserted dynamically into the alert message.",
+    "context": [
+      "Login attempt on [date] [time] from [location/device]."
+    ],
+    "aliases": [
+      "time"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[time]",
+    "data_type": "string",
+    "data_source": "authentication_system",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Unrecognized Login Alert"
+    ]
+  },
+  {
+    "id": "7b7da7eb71d2bddfd6a800279a2865f654f16aa0ba773712b3e0fd2ac7d0bb02",
+    "name": "Login Location or Device",
+    "canonical_name": "Login Location or Device",
+    "key": "login location or device|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_021",
+    "_kind": "recurrent",
+    "type": "account_data",
+    "description": "The geographic location or device identifier from which the login attempt was made, inserted dynamically into the alert message to help the customer identify whether the access was authorized.",
+    "context": [
+      "Login attempt on [date] [time] from [location/device]."
+    ],
+    "aliases": [
+      "location/device"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[location/device]",
+    "data_type": "string",
+    "data_source": "authentication_system",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Unrecognized Login Alert"
+    ]
+  },
+  {
+    "id": "8cc559f812769302ff6bf42996e1302bd60ba4be864ae7ff6b1d0752c0ab55df",
+    "name": "Unrecognized Login Attempt Detection",
+    "canonical_name": "Unrecognized Login Attempt Detection",
+    "key": "unrecognized login attempt detection|FRAUD_ALERT|banking.communications",
+    "entity_class": "FRAUD_ALERT",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_021",
+    "_kind": "recurrent",
+    "type": "account_takeover_signal",
+    "description": "A fraud detection alert generated when a login is attempted from a new device or location not previously associated with the customer account. The alert triggers an automated security notification to the customer with instructions to verify the login or reset their password.",
+    "context": [
+      "Trigger: Login from new device or location",
+      "If not you, change password immediately: www.firstuk.bank/reset or call 0800-555-2265 fraud line."
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "generation_trigger": "Login from new device or location",
+    "investigation_or_escalation_path": "Customer self-assessment via alert response; escalation to fraud line if customer confirms unauthorized access",
+    "customer_notification": "yes",
+    "notification_channel": "sms",
+    "notification_content": "Login attempt details with password reset and fraud line contact instructions"
+  },
+  {
+    "id": "829cc61f39312c5fe0bd628cb7d55683ea75814f4acbd2524a3acfd297a10e24",
+    "name": "Password Reset Requirement on Unrecognized Login",
+    "canonical_name": "Password Reset Requirement on Unrecognized Login",
+    "key": "password reset requirement on unrecognized login|COMPLIANCE_OBLIGATION|banking.communications",
+    "entity_class": "COMPLIANCE_OBLIGATION",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_021",
+    "_kind": "recurrent",
+    "type": "mandatory_action",
+    "description": "The customer must change their password immediately if they do not recognize the login attempt from a new device or location. This is a security control obligation communicated through the alert template.",
+    "context": [
+      "If not you, change password immediately: www.firstuk.bank/reset or call 0800-555-2265 fraud line."
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "obligation_type": "mandatory_action",
+    "applies_to": "account_holder",
+    "timeframe": "immediate",
+    "required_action": "Change password immediately if login attempt is not recognized",
+    "verification_method": "Customer-initiated password reset via secure portal or fraud line confirmation",
+    "regulatory_basis": "fraud_prevention_and_account_security"
+  },
+  {
+    "id": "7c1a88d11a996ba5ebcd8a659fbcd414e167c76b51ede92e614b4628f2f8a442",
+    "name": "Fraud Line Contact Obligation on Unauthorized Login",
+    "canonical_name": "Fraud Line Contact Obligation on Unauthorized Login",
+    "key": "fraud line contact obligation on unauthorized login|COMPLIANCE_OBLIGATION|banking.communications",
+    "entity_class": "COMPLIANCE_OBLIGATION",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_021",
+    "_kind": "recurrent",
+    "type": "escalation_duty",
+    "description": "The customer must contact the fraud line at 0800-555-2265 if they do not recognize the login attempt, enabling the bank to investigate and take protective action on the account.",
+    "context": [
+      "If not you, change password immediately: www.firstuk.bank/reset or call 0800-555-2265 fraud line."
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "obligation_type": "reporting_duty",
+    "applies_to": "account_holder",
+    "timeframe": "immediate",
+    "required_action": "Contact fraud line if login attempt is not recognized",
+    "escalation_path": "0800-555-2265 fraud line",
+    "regulatory_basis": "fraud_prevention_and_account_security"
+  },
+  {
+    "id": "f6b166629a58b97d98f46df5f5edb110c2ae766989ea691a2f2415795ef5d7b8",
+    "name": "Payment Reversal Notification",
+    "canonical_name": "Payment Reversal Notification",
+    "key": "payment reversal notification|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_022",
+    "_kind": "recurrent",
+    "type": "sms_template",
+    "description": "An SMS notification template triggered when a customer transaction is reversed or refunded. The template confirms the reversal amount, recipient, and refund credit to the account, and provides a reference number and customer service contact for queries.",
+    "context": [
+      "Template 20: Payment Reversal Notification",
+      "Trigger: Transaction reversed/refunded",
+      "FirstUK: Transaction of £[amount] to [recipient] has been reversed. Refund credited to your account. Ref: [EXC-XXXXX]. Call 0800-555-2265 if you have questions."
+    ],
+    "aliases": [
+      "Template 20"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "document_id": "TEMPLATE-20",
+    "trigger_event": "Transaction reversed/refunded",
+    "channel": "sms",
+    "recipient": "account holder",
+    "key_content": [
+      "Transaction amount reversed",
+      "Recipient name",
+      "Refund credited confirmation",
+      "Reference number",
+      "Customer support contact"
+    ],
+    "variables_used": [
+      "[amount]",
+      "[recipient]",
+      "[EXC-XXXXX]"
+    ],
+    "tone": "friendly",
+    "character_limit": 150
+  },
+  {
+    "id": "71d2e163211e80af397bbc2d692495aecfd9c4c34aeab56663663666130c89fd",
+    "name": "Transaction Amount",
+    "canonical_name": "Transaction Amount",
+    "key": "transaction amount|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_022",
+    "_kind": "recurrent",
+    "type": "amount_field",
+    "description": "A dynamic placeholder representing the monetary value of the transaction that has been reversed, inserted into the Payment Reversal Notification template.",
+    "context": [
+      "Transaction of £[amount] to [recipient] has been reversed"
+    ],
+    "aliases": [
+      "amount"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[amount]",
+    "data_type": "currency",
+    "example_value": "£500",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Payment Reversal Notification"
+    ]
+  },
+  {
+    "id": "eb756d58441457cc4788133802e7e0f2b6177e95c9d03858c28e29ae8d1fd03a",
+    "name": "Recipient Name",
+    "canonical_name": "Recipient Name",
+    "key": "recipient name|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_022",
+    "_kind": "recurrent",
+    "type": "contact_field",
+    "description": "A dynamic placeholder representing the name or identifier of the payee to whom the original transaction was directed, inserted into the Payment Reversal Notification template.",
+    "context": [
+      "Transaction of £[amount] to [recipient] has been reversed"
+    ],
+    "aliases": [
+      "recipient"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[recipient]",
+    "data_type": "string",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Payment Reversal Notification"
+    ]
+  },
+  {
+    "id": "2ab0d221fcd6eb62f1466ad1a44152331d43dc1a8e9b5dfd5a7268ba04cccc7d",
+    "name": "Reversal Reference Number",
+    "canonical_name": "Reversal Reference Number",
+    "key": "reversal reference number|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_022",
+    "_kind": "recurrent",
+    "type": "reference_field",
+    "description": "A dynamic placeholder for the unique reference identifier assigned to the reversed transaction, formatted as EXC-XXXXX, used for customer inquiry and transaction tracking.",
+    "context": [
+      "Ref: [EXC-XXXXX]"
+    ],
+    "aliases": [
+      "EXC-XXXXX",
+      "Ref"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[EXC-XXXXX]",
+    "data_type": "string",
+    "example_value": "EXC-12345",
+    "mandatory": "yes",
+    "appears_in_templates": [
+      "Payment Reversal Notification"
+    ]
+  },
+  {
+    "id": "dc528349ffc3e062854689aa390f7dc39335310106112a6ea2870cb3bc86c32f",
+    "name": "Reversed Transaction",
+    "canonical_name": "Reversed Transaction",
+    "key": "reversed transaction|TRANSACTION|banking.communications",
+    "entity_class": "TRANSACTION",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_022",
+    "_kind": "occurrent",
+    "type": "disputed_transaction",
+    "description": "A financial transaction that has been reversed or refunded back to the customer's account, triggering the Payment Reversal Notification template. The reversal includes a credit to the customer's account and a reference number for tracking.",
+    "context": [
+      "Trigger: Transaction reversed/refunded",
+      "Transaction of £[amount] to [recipient] has been reversed",
+      "Refund credited to your account"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "transaction_type": "reversal",
+    "monitoring_or_reporting_obligation": "customer notification required"
+  },
+  {
+    "id": "587873f76b05d6a8b96497804657c1895a2fddd49a68fa59cccacf9e43de1535",
+    "name": "SMS Communication Guidelines",
+    "canonical_name": "SMS Communication Guidelines",
+    "key": "sms communication guidelines|COMPLIANCE_OBLIGATION|banking.communications",
+    "entity_class": "COMPLIANCE_OBLIGATION",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_023",
+    "_kind": "recurrent",
+    "type": "documentation_requirement",
+    "description": "A set of mandatory guidelines governing SMS communication design, character limits, tone, content restrictions, and security protocols for all SMS-based customer communications. Establishes requirements for support contact inclusion, reference codes, sensitive data handling, and opt-out mechanisms.",
+    "context": [
+      "Standard SMS: 160 characters",
+      "Keep under 160 where possible to avoid multi-part charges",
+      "Always include phone number for support",
+      "Never ask for sensitive info via SMS (PIN, full account number)",
+      "All SMS templates should include note that customers can opt out of non-critical alerts via online banking settings"
+    ],
+    "aliases": [
+      "SMS Guidelines",
+      "SMS Best Practice"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "obligation_type": "mandatory_action",
+    "applies_to": "all staff",
+    "regulatory_source": "banking communications standards",
+    "verification_method": "template review and audit",
+    "key_requirements": [
+      "maintain urgent yet professional tone",
+      "keep messages concise and action-oriented",
+      "include clear action items"
+    ]
+  },
+  {
+    "id": "626fe3e7e706d9629d4918a7a581bd9857d3b3060800ef928470efffef6bdec0",
+    "name": "SMS Character Limit Compliance",
+    "canonical_name": "SMS Character Limit Compliance",
+    "key": "sms character limit compliance|COMPLIANCE_OBLIGATION|banking.communications",
+    "entity_class": "COMPLIANCE_OBLIGATION",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_023",
+    "_kind": "recurrent",
+    "type": "mandatory_action",
+    "description": "Requirement to maintain SMS messages within specified character limits to control costs and ensure delivery as single or multi-part messages. Standard SMS must not exceed 160 characters; multi-part SMS limited to 153 characters per part.",
+    "context": [
+      "Standard SMS: 160 characters",
+      "Multi-part SMS: 153 characters per part (if needed)",
+      "Keep under 160 where possible to avoid multi-part charges"
+    ],
+    "aliases": [
+      "Character Limit Requirement"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "obligation_type": "mandatory_action",
+    "applies_to": "all staff",
+    "timeframe": "at point of message composition",
+    "key_requirement": "keep SMS under 160 characters where possible to avoid multi-part charges",
+    "character_limit_standard": 160,
+    "character_limit_multipart": 153,
+    "verification_method": "template character count validation"
+  },
+  {
+    "id": "aae724dffd917d59081622e83575eca490ba4be3c88315477092a6507f2ff096",
+    "name": "SMS Support Contact Inclusion",
+    "canonical_name": "SMS Support Contact Inclusion",
+    "key": "sms support contact inclusion|COMPLIANCE_OBLIGATION|banking.communications",
+    "entity_class": "COMPLIANCE_OBLIGATION",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_023",
+    "_kind": "recurrent",
+    "type": "mandatory_action",
+    "description": "Requirement that all SMS communications must include a phone number for customer support to enable customers to reach assistance when needed.",
+    "context": [
+      "Always include phone number for support"
+    ],
+    "aliases": [
+      "Support Phone Number Requirement"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "obligation_type": "mandatory_action",
+    "applies_to": "all staff",
+    "requirement": "always include phone number for customer support",
+    "verification_method": "template review"
+  },
+  {
+    "id": "ceb17aa508b20e64f815ab252808664df989af8104a2f838d580cb79873d7637",
+    "name": "SMS Sensitive Data Protection",
+    "canonical_name": "SMS Sensitive Data Protection",
+    "key": "sms sensitive data protection|COMPLIANCE_OBLIGATION|banking.communications",
+    "entity_class": "COMPLIANCE_OBLIGATION",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_023",
+    "_kind": "recurrent",
+    "type": "prohibition",
+    "description": "Prohibition against transmitting sensitive customer information via SMS, including full account numbers, passwords, PINs, detailed personal information, and long URLs. Only last 4 digits of account numbers may be used.",
+    "context": [
+      "Never ask for sensitive info via SMS (PIN, full account number)",
+      "Full account numbers (use last 4 digits only)",
+      "Passwords or PINs",
+      "Detailed personal information",
+      "Long URLs (use shorteners)"
+    ],
+    "aliases": [
+      "Sensitive Information Prohibition"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "obligation_type": "prohibition",
+    "applies_to": "all staff",
+    "regulatory_source": "data protection and banking security standards",
+    "prohibited_content": [
+      "full account numbers",
+      "passwords or PINs",
+      "detailed personal information",
+      "long URLs"
+    ],
+    "consequence_of_failure": "data breach, regulatory violation, customer harm",
+    "verification_method": "template content audit"
+  },
+  {
+    "id": "633df4b5f7d173376d184cc4cbb50577ee5f71bbc374a56380f67c78aeaf433d",
+    "name": "SMS Opt-Out Notification",
+    "canonical_name": "SMS Opt-Out Notification",
+    "key": "sms opt-out notification|COMPLIANCE_OBLIGATION|banking.communications",
+    "entity_class": "COMPLIANCE_OBLIGATION",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_023",
+    "_kind": "recurrent",
+    "type": "mandatory_action",
+    "description": "Requirement that all SMS templates must include a note informing customers of their right to opt out of non-critical alerts through online banking settings.",
+    "context": [
+      "All SMS templates should include note that customers can opt out of non-critical alerts via online banking settings"
+    ],
+    "aliases": [
+      "Opt-Out Requirement"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "obligation_type": "mandatory_action",
+    "applies_to": "all staff",
+    "requirement": "include note that customers can opt out of non-critical alerts via online banking settings",
+    "applies_to_message_type": "non-critical alerts",
+    "verification_method": "template review"
+  },
+  {
+    "id": "89e333ccee9dc62274c1319bf16ab4e0659f3306cfc9a2f537d92b9ad472d78c",
+    "name": "SMS Reference Code",
+    "canonical_name": "SMS Reference Code",
+    "key": "sms reference code|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_023",
+    "_kind": "recurrent",
+    "type": "reference_field",
+    "description": "A dynamic placeholder for transaction or confirmation reference codes to be included in SMS communications where possible to provide customers with trackable identifiers for their transactions or alerts.",
+    "context": [
+      "Include reference/confirmation codes when possible"
+    ],
+    "aliases": [
+      "Confirmation Code",
+      "Reference Number"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[Reference Code]",
+    "data_type": "string",
+    "mandatory": "yes",
+    "usage_guidance": "include reference or confirmation codes when possible",
+    "appears_in_templates": [
+      "SMS templates with transaction confirmations",
+      "SMS templates with action requests"
+    ]
+  },
+  {
+    "id": "14c273656ed970352ad44a96fa95f17dfa5678a6c3d602b1e6ee66c835ee3f67",
+    "name": "Customer Support Phone Number",
+    "canonical_name": "Customer Support Phone Number",
+    "key": "customer support phone number|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_023",
+    "_kind": "recurrent",
+    "type": "contact_field",
+    "description": "A dynamic placeholder for the customer support phone number to be included in all SMS communications to enable customers to contact the bank for assistance.",
+    "context": [
+      "Always include phone number for support"
+    ],
+    "aliases": [
+      "Support Contact",
+      "Help Line"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[Support Phone Number]",
+    "data_type": "string",
+    "mandatory": "yes",
+    "usage_guidance": "always include phone number for support",
+    "appears_in_templates": [
+      "all SMS templates"
+    ]
+  },
+  {
+    "id": "f920613d3529bd440d4accaf814fb8fe415b3ef44af318c0b51db22570d340cb",
+    "name": "Account Number Last Four Digits",
+    "canonical_name": "Account Number Last Four Digits",
+    "key": "account number last four digits|TEMPLATE_VARIABLE|banking.communications",
+    "entity_class": "TEMPLATE_VARIABLE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_023",
+    "_kind": "recurrent",
+    "type": "account_data",
+    "description": "A dynamic placeholder for the last four digits of a customer's account number, used in SMS communications as a secure alternative to transmitting full account numbers.",
+    "context": [
+      "Full account numbers (use last 4 digits only)"
+    ],
+    "aliases": [
+      "Last 4 Digits",
+      "Account Identifier"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "variable_placeholder": "[Account Last 4 Digits]",
+    "data_type": "string",
+    "character_limit": 4,
+    "mandatory": "conditional",
+    "usage_guidance": "use last 4 digits only; never include full account number",
+    "appears_in_templates": [
+      "SMS templates with account references"
+    ]
+  },
+  {
+    "id": "0191b285e3e3914fba4edcdef82914a6c33ebd9e3d4830a4c29a4b730415e919",
+    "name": "Transmission of Sensitive Data via SMS",
+    "canonical_name": "Transmission of Sensitive Data via SMS",
+    "key": "transmission of sensitive data via sms|WARNING_SIGN|banking.communications",
+    "entity_class": "WARNING_SIGN",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_023",
+    "_kind": "recurrent",
+    "type": "data_protection_concern",
+    "description": "A red flag indicating potential security and compliance violations when SMS communications contain full account numbers, passwords, PINs, or other sensitive personal information that should never be transmitted via SMS.",
+    "context": [
+      "Never ask for sensitive info via SMS (PIN, full account number)",
+      "Full account numbers (use last 4 digits only)",
+      "Passwords or PINs"
+    ],
+    "aliases": [
+      "Sensitive Data Exposure Risk"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "risk_domain": "data_protection",
+    "examples": [
+      "transmitting full account numbers",
+      "sending passwords or PINs",
+      "sharing detailed personal information"
+    ],
+    "required_action": "do not include sensitive data in SMS messages; use last 4 digits of account number only",
+    "escalation_path": "compliance team",
+    "regulatory_obligation": "yes",
+    "false_positive_guidance": "reference codes and support phone numbers are acceptable; only full account numbers, passwords, and PINs are prohibited"
+  },
+  {
+    "id": "ef3e4d00e014e2e70c271cb0d02b4ec38db835a90611a0b8b5134b7242d656af",
+    "name": "Initial SMS Templates",
+    "canonical_name": "Initial SMS Templates",
+    "key": "initial sms templates|COMMUNICATION_TEMPLATE|banking.communications",
+    "entity_class": "COMMUNICATION_TEMPLATE",
+    "_domain": "banking.communications",
+    "doc_id": "01a07436-fb91-7602-8e10-d03c1c1b702d",
+    "doc_version": 1,
+    "chunk_id": "01a07436-fb91-7602-8e10-d03c1c1b702d_024",
+    "_kind": "recurrent",
+    "type": "sms_template",
+    "description": "A collection of SMS communication templates established as the initial version of the bank's SMS messaging framework. These templates form the foundational set of customer-facing SMS communications.",
+    "context": [
+      "Initial SMS templates",
+      "Version 1.0 | 2026-01-15 | Initial SMS templates | Head of Marketing"
+    ],
+    "_valid_from": "2026-01-15",
+    "_valid_time_source": "header",
+    "_doc_valid_from": "2026-01-15",
+    "channel": "sms",
+    "document_version": "1.0",
+    "document_date": "2026-01-15",
+    "owner": "Head of Marketing"
+  }
+]

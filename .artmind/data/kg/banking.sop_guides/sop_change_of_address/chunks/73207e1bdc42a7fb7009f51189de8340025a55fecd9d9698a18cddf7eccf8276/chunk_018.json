@@ -1,0 +1,738 @@
+{
+  "chunk_seq": 18,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "### Risk Scoring  \n| Risk Factor | Score | Action |\n|---|---|---|\n| **Low Risk** | <25 | Proceed with standard process |\n| **Medium Risk** | 25–50 | Standard screening + confirm with customer |\n| **High Risk** | 50–75 | Compliance review required |\n| **Very High Risk** | 75+ | Escalate to Compliance Head, may block change |  \n**Example Risk Calculation:**\n```\nBase Risk: 0\n+ UK domestic move: 0\n+ Permanent change: 0\n+ No sanctions history: 0\n= Low Risk (0)\n→ Proceed with standard process\n\n---\n\nBase Risk: 0\n+ Move to high-risk country (Iran): +50\n+ No compliance history: 0\n+ First move abroad: +20\n= High Risk (70)\n→ Escalate to Compliance Head\n→ May require Enhanced Due Diligence\n```  \n---",
+  "name": "Chunk 18/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_017",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+  "raw_entities": [
+    {
+      "id": "dp_001",
+      "name": "Risk Score Gate",
+      "aliases": [
+        "Risk Classification Decision",
+        "Risk Level Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "A branching decision point that evaluates customer risk based on a scoring matrix and determines the appropriate compliance action. Risk scores are calculated from factors such as geographic location, permanence of change, and compliance history, with four distinct outcome paths: Low Risk (proceed standard), Medium Risk (standard + confirmation), High Risk (compliance review), and Very High Risk (escalation to Compliance Head with possible blocking).",
+      "context": [
+        "Risk Factor | Score | Action",
+        "Low Risk | <25 | Proceed with standard process",
+        "High Risk | 50–75 | Compliance review required",
+        "Very High Risk | 75+ | Escalate to Compliance Head, may block change"
+      ]
+    },
+    {
+      "id": "el_001",
+      "name": "Level 1 — Standard Process",
+      "aliases": [
+        "Low Risk Path"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "frontline",
+      "description": "The baseline escalation tier for Low Risk customers with scores below 25. Customers at this level proceed with standard process without additional compliance intervention.",
+      "context": [
+        "Low Risk | <25 | Proceed with standard process"
+      ]
+    },
+    {
+      "id": "el_002",
+      "name": "Level 2 — Standard Screening with Customer Confirmation",
+      "aliases": [
+        "Medium Risk Path"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "supervisor",
+      "description": "The escalation tier for Medium Risk customers with scores between 25–50. Customers at this level undergo standard screening procedures with mandatory customer confirmation step.",
+      "context": [
+        "Medium Risk | 25–50 | Standard screening + confirm with customer"
+      ]
+    },
+    {
+      "id": "el_003",
+      "name": "Level 3 — Compliance Review",
+      "aliases": [
+        "High Risk Path"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "department_head",
+      "description": "The escalation tier for High Risk customers with scores between 50–75. Customers at this level require formal compliance review before proceeding. The example demonstrates a score of 70 triggered by move to high-risk country (Iran) plus first move abroad factors.",
+      "context": [
+        "High Risk | 50–75 | Compliance review required",
+        "Move to high-risk country (Iran): +50",
+        "First move abroad: +20"
+      ]
+    },
+    {
+      "id": "el_004",
+      "name": "Level 4 — Compliance Head Escalation",
+      "aliases": [
+        "Very High Risk Path"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "executive",
+      "description": "The highest escalation tier for Very High Risk customers with scores of 75 or above. Customers at this level are escalated to the Compliance Head with authority to block the change or require Enhanced Due Diligence. This tier has the power to deny or conditionally approve transactions.",
+      "context": [
+        "Very High Risk | 75+ | Escalate to Compliance Head, may block change",
+        "→ Escalate to Compliance Head",
+        "→ May require Enhanced Due Diligence"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Risk-Based Compliance Gate",
+      "aliases": [
+        "Risk Scoring Checkpoint"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A mandatory compliance control point that verifies risk classification before a customer change (such as address change) can proceed. The gate uses a quantitative scoring model incorporating geographic risk, permanence, and compliance history to determine the appropriate level of compliance intervention required.",
+      "context": [
+        "Risk Factor | Score | Action",
+        "Base Risk: 0",
+        "Move to high-risk country (Iran): +50"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Compliance Head",
+      "aliases": [
+        "Compliance Officer",
+        "Escalation Authority"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "The senior compliance authority responsible for reviewing and approving or blocking Very High Risk customer changes (risk score 75+). This role has the discretion to escalate to Enhanced Due Diligence or deny the change entirely.",
+      "context": [
+        "Escalate to Compliance Head, may block change",
+        "→ Escalate to Compliance Head"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Customer Service Representative",
+      "aliases": [
+        "Standard Process Handler"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "branch_staff",
+      "description": "The frontline operational role responsible for processing Low Risk customer changes using standard procedures without escalation.",
+      "context": [
+        "Proceed with standard process"
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Compliance Review Officer",
+      "aliases": [
+        "Compliance Reviewer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "The compliance specialist responsible for conducting formal compliance review of High Risk customer changes (risk score 50–75) before approval or denial.",
+      "context": [
+        "Compliance review required"
+      ]
+    }
+  ],
+  "id_map": {
+    "dp_001": "01a07400-ba86-72f1-8b22-d07b32649491_018_dp_001",
+    "el_001": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_001",
+    "el_002": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_002",
+    "el_003": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_003",
+    "el_004": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_004",
+    "cc_001": "01a07400-ba86-72f1-8b22-d07b32649491_018_cc_001",
+    "ra_001": "01a07400-ba86-72f1-8b22-d07b32649491_018_ra_001",
+    "ra_002": "01a07400-ba86-72f1-8b22-d07b32649491_018_ra_002",
+    "ra_003": "01a07400-ba86-72f1-8b22-d07b32649491_018_ra_003"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_dp_001",
+      "name": "Risk Score Gate",
+      "aliases": [
+        "Risk Classification Decision",
+        "Risk Level Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "A branching decision point that evaluates customer risk based on a scoring matrix and determines the appropriate compliance action. Risk scores are calculated from factors such as geographic location, permanence of change, and compliance history, with four distinct outcome paths: Low Risk (proceed standard), Medium Risk (standard + confirmation), High Risk (compliance review), and Very High Risk (escalation to Compliance Head with possible blocking).",
+      "context": [
+        "Risk Factor | Score | Action",
+        "Low Risk | <25 | Proceed with standard process",
+        "High Risk | 50–75 | Compliance review required",
+        "Very High Risk | 75+ | Escalate to Compliance Head, may block change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_001",
+      "name": "Level 1 — Standard Process",
+      "aliases": [
+        "Low Risk Path"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "frontline",
+      "description": "The baseline escalation tier for Low Risk customers with scores below 25. Customers at this level proceed with standard process without additional compliance intervention.",
+      "context": [
+        "Low Risk | <25 | Proceed with standard process"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_002",
+      "name": "Level 2 — Standard Screening with Customer Confirmation",
+      "aliases": [
+        "Medium Risk Path"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "supervisor",
+      "description": "The escalation tier for Medium Risk customers with scores between 25–50. Customers at this level undergo standard screening procedures with mandatory customer confirmation step.",
+      "context": [
+        "Medium Risk | 25–50 | Standard screening + confirm with customer"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_003",
+      "name": "Level 3 — Compliance Review",
+      "aliases": [
+        "High Risk Path"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "department_head",
+      "description": "The escalation tier for High Risk customers with scores between 50–75. Customers at this level require formal compliance review before proceeding. The example demonstrates a score of 70 triggered by move to high-risk country (Iran) plus first move abroad factors.",
+      "context": [
+        "High Risk | 50–75 | Compliance review required",
+        "Move to high-risk country (Iran): +50",
+        "First move abroad: +20"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_004",
+      "name": "Level 4 — Compliance Head Escalation",
+      "aliases": [
+        "Very High Risk Path"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "executive",
+      "description": "The highest escalation tier for Very High Risk customers with scores of 75 or above. Customers at this level are escalated to the Compliance Head with authority to block the change or require Enhanced Due Diligence. This tier has the power to deny or conditionally approve transactions.",
+      "context": [
+        "Very High Risk | 75+ | Escalate to Compliance Head, may block change",
+        "→ Escalate to Compliance Head",
+        "→ May require Enhanced Due Diligence"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_cc_001",
+      "name": "Risk-Based Compliance Gate",
+      "aliases": [
+        "Risk Scoring Checkpoint"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A mandatory compliance control point that verifies risk classification before a customer change (such as address change) can proceed. The gate uses a quantitative scoring model incorporating geographic risk, permanence, and compliance history to determine the appropriate level of compliance intervention required.",
+      "context": [
+        "Risk Factor | Score | Action",
+        "Base Risk: 0",
+        "Move to high-risk country (Iran): +50"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_ra_001",
+      "name": "Compliance Head",
+      "aliases": [
+        "Compliance Officer",
+        "Escalation Authority"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "The senior compliance authority responsible for reviewing and approving or blocking Very High Risk customer changes (risk score 75+). This role has the discretion to escalate to Enhanced Due Diligence or deny the change entirely.",
+      "context": [
+        "Escalate to Compliance Head, may block change",
+        "→ Escalate to Compliance Head"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_ra_002",
+      "name": "Customer Service Representative",
+      "aliases": [
+        "Standard Process Handler"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "branch_staff",
+      "description": "The frontline operational role responsible for processing Low Risk customer changes using standard procedures without escalation.",
+      "context": [
+        "Proceed with standard process"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_ra_003",
+      "name": "Compliance Review Officer",
+      "aliases": [
+        "Compliance Reviewer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "The compliance specialist responsible for conducting formal compliance review of High Risk customer changes (risk score 50–75) before approval or denial.",
+      "context": [
+        "Compliance review required"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_dp_001",
+      "name": "Risk Score Gate",
+      "properties": {
+        "decision_question": "What is the risk classification based on the calculated risk score, and what action should be taken?",
+        "criteria": [
+          "Low Risk: score < 25",
+          "Medium Risk: score 25–50",
+          "High Risk: score 50–75",
+          "Very High Risk: score 75+"
+        ],
+        "path_yes": "Proceed with appropriate action tier (standard process, standard screening with confirmation, compliance review, or escalation to Compliance Head)",
+        "path_no": "Block change; escalate to Compliance Head for override decision",
+        "override_possible": true
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_001",
+      "name": "Level 1 — Standard Process",
+      "properties": {
+        "level_number": 1,
+        "approval_limit": "Low Risk (score < 25)",
+        "examples": [
+          "UK domestic address change",
+          "Permanent relocation within low-risk jurisdiction",
+          "No sanctions history"
+        ],
+        "escalation_trigger": "Risk score reaches 25 or above",
+        "escalates_to": "Level 2 — Standard Screening with Customer Confirmation"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_002",
+      "name": "Level 2 — Standard Screening with Customer Confirmation",
+      "properties": {
+        "level_number": 2,
+        "approval_limit": "Medium Risk (score 25–50)",
+        "examples": [
+          "Standard screening procedures",
+          "Customer confirmation required"
+        ],
+        "escalation_trigger": "Risk score reaches 50 or above",
+        "escalates_to": "Level 3 — Compliance Review"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_003",
+      "name": "Level 3 — Compliance Review",
+      "properties": {
+        "level_number": 3,
+        "approval_limit": "High Risk (score 50–75)",
+        "examples": [
+          "Move to high-risk country",
+          "First move abroad",
+          "Compliance review required"
+        ],
+        "escalation_trigger": "Risk score reaches 75 or above",
+        "escalates_to": "Level 4 — Compliance Head Escalation"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_004",
+      "name": "Level 4 — Compliance Head Escalation",
+      "properties": {
+        "level_number": 4,
+        "authority": "Compliance Head",
+        "approval_limit": "Very High Risk (score 75+)",
+        "examples": [
+          "Move to high-risk country (e.g., Iran)",
+          "May require Enhanced Due Diligence",
+          "May block change"
+        ],
+        "escalation_trigger": "Risk score 75 or above; final escalation tier"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_cc_001",
+      "name": "Risk-Based Compliance Gate",
+      "properties": {
+        "regulatory_basis": "AML/CFT risk-based approach",
+        "mandatory": true,
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "Risk score calculation",
+          "Customer confirmation (if Medium Risk)",
+          "Compliance review documentation (if High Risk)",
+          "Compliance Head approval (if Very High Risk)"
+        ],
+        "performed_by": [
+          "Customer Service Representative",
+          "Compliance Review Officer",
+          "Compliance Head"
+        ],
+        "timing": "At point of address change request",
+        "failure_consequence": "Change may be blocked; escalation to Compliance Head for override decision"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_ra_001",
+      "name": "Compliance Head",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "Final approval authority for Very High Risk cases",
+        "approval_limit": "Unlimited; can override or block any address change",
+        "channels": [
+          "system",
+          "email"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_ra_002",
+      "name": "Customer Service Representative",
+      "properties": {
+        "role_type": "human",
+        "department": "Customer Service",
+        "authority_level": "Can process Low Risk changes; must confirm with customer for Medium Risk",
+        "channels": [
+          "phone",
+          "branch",
+          "online"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_018_ra_003",
+      "name": "Compliance Review Officer",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "Can approve High Risk cases; escalates Very High Risk to Compliance Head",
+        "channels": [
+          "system",
+          "email"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_dp_001",
+      "source_name": "Risk Score Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_001",
+      "target_name": "Level 1 — Standard Process",
+      "rel_type": "routes_to",
+      "description": "Low risk scores (<25) route to standard process execution",
+      "properties": {
+        "risk_threshold": "<25",
+        "risk_category": "Low Risk",
+        "action": "Proceed with standard process"
+      },
+      "context": "Low Risk | <25 | Proceed with standard process",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_dp_001",
+      "source_name": "Risk Score Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_002",
+      "target_name": "Level 2 — Standard Screening with Customer Confirmation",
+      "rel_type": "routes_to",
+      "description": "Medium risk scores (25–50) route to standard screening with customer confirmation",
+      "properties": {
+        "risk_threshold": "25–50",
+        "risk_category": "Medium Risk",
+        "action": "Standard screening + confirm with customer"
+      },
+      "context": "Medium Risk | 25–50 | Standard screening + confirm with customer",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_dp_001",
+      "source_name": "Risk Score Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_003",
+      "target_name": "Level 3 — Compliance Review",
+      "rel_type": "routes_to",
+      "description": "High risk scores (50–75) route to compliance review escalation",
+      "properties": {
+        "risk_threshold": "50–75",
+        "risk_category": "High Risk",
+        "action": "Compliance review required"
+      },
+      "context": "High Risk | 50–75 | Compliance review required",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_dp_001",
+      "source_name": "Risk Score Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_004",
+      "target_name": "Level 4 — Compliance Head Escalation",
+      "rel_type": "routes_to",
+      "description": "Very high risk scores (75+) route to Compliance Head escalation with potential blocking",
+      "properties": {
+        "risk_threshold": "75+",
+        "risk_category": "Very High Risk",
+        "action": "Escalate to Compliance Head, may block change"
+      },
+      "context": "Very High Risk | 75+ | Escalate to Compliance Head, may block change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_cc_001",
+      "source_name": "Risk-Based Compliance Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_dp_001",
+      "target_name": "Risk Score Gate",
+      "rel_type": "gates",
+      "description": "Risk-based compliance checkpoint gates the risk score decision point",
+      "properties": {
+        "checkpoint_type": "risk_assessment",
+        "gating_mechanism": "risk_score_calculation"
+      },
+      "context": "Risk Scoring table and risk calculation examples determine routing through decision point",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_004",
+      "source_name": "Level 4 — Compliance Head Escalation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_ra_001",
+      "target_name": "Compliance Head",
+      "rel_type": "handled_by",
+      "description": "Very high risk escalations are handled by the Compliance Head",
+      "properties": {
+        "escalation_level": 4,
+        "authority_required": true,
+        "decision_authority": "Compliance Head"
+      },
+      "context": "Very High Risk | 75+ | Escalate to Compliance Head, may block change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_002",
+      "source_name": "Level 2 — Standard Screening with Customer Confirmation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_ra_002",
+      "target_name": "Customer Service Representative",
+      "rel_type": "handled_by",
+      "description": "Medium risk screening with customer confirmation is handled by Customer Service Representative",
+      "properties": {
+        "escalation_level": 2,
+        "action_required": "customer_confirmation",
+        "screening_type": "standard"
+      },
+      "context": "Medium Risk | 25–50 | Standard screening + confirm with customer",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_003",
+      "source_name": "Level 3 — Compliance Review",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_ra_003",
+      "target_name": "Compliance Review Officer",
+      "rel_type": "handled_by",
+      "description": "High risk compliance review is handled by Compliance Review Officer",
+      "properties": {
+        "escalation_level": 3,
+        "review_type": "compliance_review",
+        "authority_level": "officer"
+      },
+      "context": "High Risk | 50–75 | Compliance review required",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_003",
+      "source_name": "Level 3 — Compliance Review",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_004",
+      "target_name": "Level 4 — Compliance Head Escalation",
+      "rel_type": "escalates_to",
+      "description": "Level 3 compliance review can escalate to Level 4 Compliance Head escalation for very high risk cases",
+      "properties": {
+        "escalation_trigger": "high_risk_determination",
+        "example_trigger": "Move to high-risk country with score 70+"
+      },
+      "context": "High Risk (70) → Escalate to Compliance Head; May require Enhanced Due Diligence",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_cc_001",
+      "source_name": "Risk-Based Compliance Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_001",
+      "target_name": "Level 1 — Standard Process",
+      "rel_type": "determines_outcome_of",
+      "description": "Risk-based compliance checkpoint determines routing to standard process for low-risk cases",
+      "properties": {
+        "outcome": "low_risk_clearance",
+        "risk_score_range": "<25"
+      },
+      "context": "Low Risk | <25 | Proceed with standard process",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_dp_001",
+      "source_name": "Risk Score Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_001",
+      "source_name": "Level 1 — Standard Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_002",
+      "source_name": "Level 2 — Standard Screening with Customer Confirmation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_003",
+      "source_name": "Level 3 — Compliance Review",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_el_004",
+      "source_name": "Level 4 — Compliance Head Escalation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_cc_001",
+      "source_name": "Risk-Based Compliance Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_ra_001",
+      "source_name": "Compliance Head",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_ra_002",
+      "source_name": "Customer Service Representative",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_018_ra_003",
+      "source_name": "Compliance Review Officer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

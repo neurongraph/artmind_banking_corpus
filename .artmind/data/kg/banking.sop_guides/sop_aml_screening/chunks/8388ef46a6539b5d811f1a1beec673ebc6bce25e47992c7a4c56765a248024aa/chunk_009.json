@@ -1,0 +1,822 @@
+{
+  "chunk_seq": 9,
+  "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+  "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+  "text": "### Match Found Scenario  \n**Results:**\n- 🔍 Screening shows potential HIT (match found)\n- Match score displayed (% likelihood match)\n- Matched name and list identified  \n**Action:**\n- STOP account opening immediately\n- Escalate to Financial Crime team for manual review\n- Document match details in system\n- Initiate manual review process  \n---",
+  "name": "Chunk 9/23",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_008",
+  "next_chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_010",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Account Opening Process",
+      "aliases": [
+        "account_opening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_opening",
+      "description": "The end-to-end account opening workflow that includes screening checks and compliance gates. The process is halted immediately upon detection of a potential match during screening, triggering escalation to the Financial Crime team for manual review.",
+      "context": [
+        "STOP account opening immediately",
+        "Escalate to Financial Crime team for manual review",
+        "account opening"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Screening Execution",
+      "aliases": [
+        "screening_check",
+        "screening_step"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The automated screening step that checks applicant details against watchlists and sanctions lists. The step produces a match score and identifies the matched name and list source.",
+      "context": [
+        "Screening shows potential HIT (match found)",
+        "Match score displayed (% likelihood match)",
+        "Matched name and list identified"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Account Opening Halt",
+      "aliases": [
+        "halt_action",
+        "stop_opening"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "The immediate action taken upon detection of a screening match. The account opening process is stopped and no further progression occurs until manual review is completed.",
+      "context": [
+        "STOP account opening immediately"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Escalation to Financial Crime Team",
+      "aliases": [
+        "escalate_to_fct",
+        "financial_crime_escalation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation_procedure",
+      "description": "The escalation step triggered by a screening match. The case is escalated to the Financial Crime team for manual investigation and determination of whether the match is a true positive or false positive.",
+      "context": [
+        "Escalate to Financial Crime team for manual review"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Match Details Documentation",
+      "aliases": [
+        "document_match",
+        "system_recording"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "The step where match details including match score, matched name, and list source are formally recorded in the system for audit and compliance purposes.",
+      "context": [
+        "Document match details in system"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Manual Review Process Initiation",
+      "aliases": [
+        "manual_review_start",
+        "initiate_review"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "The formal initiation of manual review by the Financial Crime team following a screening match. This step begins the investigation to determine the validity and risk level of the match.",
+      "context": [
+        "Initiate manual review process"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Financial Crime Team",
+      "aliases": [
+        "FCT",
+        "financial_crime_team"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "financial_crime_team",
+      "description": "The team responsible for receiving escalated screening matches and conducting manual review to determine whether a match represents a genuine compliance risk or a false positive.",
+      "context": [
+        "Escalate to Financial Crime team for manual review"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Screening Match Detection Gate",
+      "aliases": [
+        "match_found_decision",
+        "hit_detection"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "decision_question": "Does screening show a potential match (HIT) against watchlists or sanctions lists?",
+      "path_yes": "STOP account opening, escalate to Financial Crime team, document match details, initiate manual review",
+      "path_no": "Continue account opening process",
+      "description": "The critical compliance gate where screening results are evaluated. A positive match (HIT) triggers immediate halt of account opening and escalation to Financial Crime team.",
+      "context": [
+        "Screening shows potential HIT (match found)",
+        "STOP account opening immediately",
+        "Escalate to Financial Crime team for manual review"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Sanctions and Watchlist Screening Checkpoint",
+      "aliases": [
+        "screening_checkpoint",
+        "sanctions_check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "regulatory_basis": "Anti-Money Laundering and sanctions compliance requirements",
+      "mandatory": true,
+      "evidence_required": "Screening results with match score, matched name, and list source",
+      "description": "The mandatory compliance checkpoint where applicants are screened against sanctions lists and watchlists during account opening. Results must be documented and any matches escalated for manual review.",
+      "context": [
+        "Screening shows potential HIT (match found)",
+        "Match score displayed (% likelihood match)",
+        "Matched name and list identified"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "Sanctions Screening",
+      "aliases": [
+        "sanctions_check",
+        "watchlist_screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "The automated AML screening process that checks applicant details against sanctions lists and watchlists, producing a match score and identifying any potential hits that require manual review.",
+      "context": [
+        "Screening shows potential HIT (match found)",
+        "Match score displayed (% likelihood match)",
+        "Matched name and list identified"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_proc_001",
+    "pstep_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_001",
+    "pstep_002": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_002",
+    "pstep_003": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_003",
+    "pstep_004": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_004",
+    "pstep_005": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_005",
+    "ra_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_ra_001",
+    "dp_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_dp_001",
+    "cc_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_cc_001",
+    "aml_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_aml_001"
+  },
+  "entities": [
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_proc_001",
+      "name": "Account Opening Process",
+      "aliases": [
+        "account_opening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_opening",
+      "description": "The end-to-end account opening workflow that includes screening checks and compliance gates. The process is halted immediately upon detection of a potential match during screening, triggering escalation to the Financial Crime team for manual review.",
+      "context": [
+        "STOP account opening immediately",
+        "Escalate to Financial Crime team for manual review",
+        "account opening"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_001",
+      "name": "Screening Execution",
+      "aliases": [
+        "screening_check",
+        "screening_step"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The automated screening step that checks applicant details against watchlists and sanctions lists. The step produces a match score and identifies the matched name and list source.",
+      "context": [
+        "Screening shows potential HIT (match found)",
+        "Match score displayed (% likelihood match)",
+        "Matched name and list identified"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_002",
+      "name": "Account Opening Halt",
+      "aliases": [
+        "halt_action",
+        "stop_opening"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "The immediate action taken upon detection of a screening match. The account opening process is stopped and no further progression occurs until manual review is completed.",
+      "context": [
+        "STOP account opening immediately"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_003",
+      "name": "Escalation to Financial Crime Team",
+      "aliases": [
+        "escalate_to_fct",
+        "financial_crime_escalation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation_procedure",
+      "description": "The escalation step triggered by a screening match. The case is escalated to the Financial Crime team for manual investigation and determination of whether the match is a true positive or false positive.",
+      "context": [
+        "Escalate to Financial Crime team for manual review"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_004",
+      "name": "Match Details Documentation",
+      "aliases": [
+        "document_match",
+        "system_recording"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "The step where match details including match score, matched name, and list source are formally recorded in the system for audit and compliance purposes.",
+      "context": [
+        "Document match details in system"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_005",
+      "name": "Manual Review Process Initiation",
+      "aliases": [
+        "manual_review_start",
+        "initiate_review"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "The formal initiation of manual review by the Financial Crime team following a screening match. This step begins the investigation to determine the validity and risk level of the match.",
+      "context": [
+        "Initiate manual review process"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_ra_001",
+      "name": "Financial Crime Team",
+      "aliases": [
+        "FCT",
+        "financial_crime_team"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "financial_crime_team",
+      "description": "The team responsible for receiving escalated screening matches and conducting manual review to determine whether a match represents a genuine compliance risk or a false positive.",
+      "context": [
+        "Escalate to Financial Crime team for manual review"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_dp_001",
+      "name": "Screening Match Detection Gate",
+      "aliases": [
+        "match_found_decision",
+        "hit_detection"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "decision_question": "Does screening show a potential match (HIT) against watchlists or sanctions lists?",
+      "path_yes": "STOP account opening, escalate to Financial Crime team, document match details, initiate manual review",
+      "path_no": "Continue account opening process",
+      "description": "The critical compliance gate where screening results are evaluated. A positive match (HIT) triggers immediate halt of account opening and escalation to Financial Crime team.",
+      "context": [
+        "Screening shows potential HIT (match found)",
+        "STOP account opening immediately",
+        "Escalate to Financial Crime team for manual review"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_cc_001",
+      "name": "Sanctions and Watchlist Screening Checkpoint",
+      "aliases": [
+        "screening_checkpoint",
+        "sanctions_check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "regulatory_basis": "Anti-Money Laundering and sanctions compliance requirements",
+      "mandatory": true,
+      "evidence_required": "Screening results with match score, matched name, and list source",
+      "description": "The mandatory compliance checkpoint where applicants are screened against sanctions lists and watchlists during account opening. Results must be documented and any matches escalated for manual review.",
+      "context": [
+        "Screening shows potential HIT (match found)",
+        "Match score displayed (% likelihood match)",
+        "Matched name and list identified"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_aml_001",
+      "name": "Sanctions Screening",
+      "aliases": [
+        "sanctions_check",
+        "watchlist_screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "The automated AML screening process that checks applicant details against sanctions lists and watchlists, producing a match score and identifying any potential hits that require manual review.",
+      "context": [
+        "Screening shows potential HIT (match found)",
+        "Match score displayed (% likelihood match)",
+        "Matched name and list identified"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_proc_001",
+      "name": "Account Opening Process",
+      "properties": {
+        "purpose": "Open new customer accounts with integrated sanctions and watchlist screening",
+        "scope": "All new account applications",
+        "trigger": "Customer account opening request",
+        "outcome_failure": "Account opening halted; escalation to Financial Crime Team for manual review"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_001",
+      "name": "Screening Execution",
+      "properties": {
+        "step_number": 1,
+        "actor": "Screening system",
+        "input": "Customer name and identification details",
+        "output": "Screening result with match score and matched list identification",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Sanctions screening system",
+          "Watchlist database"
+        ]
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_002",
+      "name": "Account Opening Halt",
+      "properties": {
+        "step_number": 2,
+        "actor": "System",
+        "input": "Screening match detection",
+        "output": "Account opening process suspended",
+        "channel": "system",
+        "mandatory": "yes",
+        "trigger": "Screening match found"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_003",
+      "name": "Escalation to Financial Crime Team",
+      "properties": {
+        "step_number": 3,
+        "actor": "Financial Crime Team",
+        "input": "Screening match details and customer information",
+        "output": "Manual review initiated",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_004",
+      "name": "Match Details Documentation",
+      "properties": {
+        "step_number": 4,
+        "actor": "System",
+        "input": "Screening match result",
+        "output": "Match details recorded in system",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account opening system"
+        ]
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_005",
+      "name": "Manual Review Process Initiation",
+      "properties": {
+        "step_number": 5,
+        "actor": "Financial Crime Team",
+        "input": "Documented match details",
+        "output": "Manual review case created",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_ra_001",
+      "name": "Financial Crime Team",
+      "properties": {
+        "role_type": "human",
+        "department": "Financial Crime / Compliance",
+        "authority_level": "Manual review and escalation decision authority",
+        "channels": [
+          "system",
+          "email"
+        ]
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_dp_001",
+      "name": "Screening Match Detection Gate",
+      "properties": {
+        "decision_question": "Does the screening result show a potential match (HIT)?",
+        "criteria": "Match score and matched list identification",
+        "decision_maker": "Screening system",
+        "path_yes": "Halt account opening and escalate to Financial Crime Team",
+        "path_no": "Proceed with account opening"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_cc_001",
+      "name": "Sanctions and Watchlist Screening Checkpoint",
+      "properties": {
+        "regulatory_basis": [
+          "OFAC",
+          "UN sanctions",
+          "FCA sanctions requirements"
+        ],
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "Customer identification details",
+          "Screening result report"
+        ],
+        "performed_by": "Screening system with Financial Crime Team manual review",
+        "timing": "Before account opening completion",
+        "failure_consequence": "Account opening halted; escalation to Financial Crime Team for investigation"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_aml_001",
+      "name": "Sanctions Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": [
+          "OFAC list",
+          "UN sanctions list",
+          "Watchlist database"
+        ],
+        "hit_or_match_response": "Halt account opening; escalate to Financial Crime Team; document match details; initiate manual review",
+        "regulatory_basis": [
+          "OFAC regulations",
+          "UN sanctions regime",
+          "FCA AML requirements"
+        ]
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_001",
+      "target_name": "Screening Execution",
+      "rel_type": "contains",
+      "description": "Account Opening Process includes Screening Execution as a process step",
+      "properties": {
+        "sequence_position": "initial"
+      },
+      "context": "Screening shows potential HIT (match found)",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_001",
+      "source_name": "Screening Execution",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_dp_001",
+      "target_name": "Screening Match Detection Gate",
+      "rel_type": "leads_to",
+      "description": "Screening Execution leads to Screening Match Detection Gate decision point",
+      "properties": {
+        "outcome_type": "match_detection"
+      },
+      "context": "Screening shows potential HIT (match found)",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_dp_001",
+      "source_name": "Screening Match Detection Gate",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_002",
+      "target_name": "Account Opening Halt",
+      "rel_type": "routes_to_on_pass",
+      "description": "Match Detection Gate routes to Account Opening Halt when match is detected",
+      "properties": {
+        "condition": "match_found"
+      },
+      "context": "STOP account opening immediately",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_002",
+      "source_name": "Account Opening Halt",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_003",
+      "target_name": "Escalation to Financial Crime Team",
+      "rel_type": "followed_by",
+      "description": "Account Opening Halt is followed by Escalation to Financial Crime Team",
+      "properties": {
+        "sequence": "immediate"
+      },
+      "context": "STOP account opening immediately. Escalate to Financial Crime team for manual review",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_003",
+      "source_name": "Escalation to Financial Crime Team",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_ra_001",
+      "target_name": "Financial Crime Team",
+      "rel_type": "escalated_to",
+      "description": "Escalation to Financial Crime Team step escalates to Financial Crime Team role",
+      "properties": {
+        "escalation_trigger": "screening_match_detected"
+      },
+      "context": "Escalate to Financial Crime team for manual review",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_003",
+      "source_name": "Escalation to Financial Crime Team",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_004",
+      "target_name": "Match Details Documentation",
+      "rel_type": "followed_by",
+      "description": "Escalation to Financial Crime Team is followed by Match Details Documentation",
+      "properties": {
+        "sequence": "concurrent_or_sequential"
+      },
+      "context": "Document match details in system",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_004",
+      "source_name": "Match Details Documentation",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_005",
+      "target_name": "Manual Review Process Initiation",
+      "rel_type": "followed_by",
+      "description": "Match Details Documentation is followed by Manual Review Process Initiation",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Document match details in system. Initiate manual review process",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_001",
+      "source_name": "Screening Execution",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_aml_001",
+      "target_name": "Sanctions Screening",
+      "rel_type": "executes",
+      "description": "Screening Execution step executes Sanctions Screening",
+      "properties": {
+        "screening_type": "sanctions_and_watchlist"
+      },
+      "context": "Screening shows potential HIT (match found)",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_cc_001",
+      "source_name": "Sanctions and Watchlist Screening Checkpoint",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_dp_001",
+      "target_name": "Screening Match Detection Gate",
+      "rel_type": "gates",
+      "description": "Sanctions and Watchlist Screening Checkpoint gates the Screening Match Detection Gate decision",
+      "properties": {
+        "checkpoint_type": "compliance_gate"
+      },
+      "context": "Screening shows potential HIT (match found)",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_cc_001",
+      "target_name": "Sanctions and Watchlist Screening Checkpoint",
+      "rel_type": "mandated_to_include",
+      "description": "Account Opening Process is mandated to include Sanctions and Watchlist Screening Checkpoint",
+      "properties": {
+        "compliance_requirement": "mandatory"
+      },
+      "context": "Screening shows potential HIT (match found)",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_aml_001",
+      "target_name": "Sanctions Screening",
+      "rel_type": "requires",
+      "description": "Account Opening Process requires Sanctions Screening",
+      "properties": {
+        "requirement_type": "mandatory_screening"
+      },
+      "context": "Screening shows potential HIT (match found)",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_005",
+      "source_name": "Manual Review Process Initiation",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_ra_001",
+      "target_name": "Financial Crime Team",
+      "rel_type": "escalated_to",
+      "description": "Manual Review Process Initiation is escalated to Financial Crime Team for review",
+      "properties": {
+        "review_type": "manual_investigation"
+      },
+      "context": "Initiate manual review process",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_001",
+      "source_name": "Screening Execution",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_002",
+      "source_name": "Account Opening Halt",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_003",
+      "source_name": "Escalation to Financial Crime Team",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_004",
+      "source_name": "Match Details Documentation",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_pstep_005",
+      "source_name": "Manual Review Process Initiation",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_ra_001",
+      "source_name": "Financial Crime Team",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_dp_001",
+      "source_name": "Screening Match Detection Gate",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_cc_001",
+      "source_name": "Sanctions and Watchlist Screening Checkpoint",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009_aml_001",
+      "source_name": "Sanctions Screening",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_009",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

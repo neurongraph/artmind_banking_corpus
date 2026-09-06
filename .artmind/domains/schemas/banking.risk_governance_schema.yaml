@@ -1,0 +1,797 @@
+name: banking.risk_governance
+description: Risk management, internal audit, board governance, and regulatory compliance tracking documents
+  for FirstUK Bank — covering audit reports, risk appetite statements, board committee minutes, governance
+  frameworks, compliance bulletins, and regulatory circulars.
+subject: banking risk and governance document analysis
+persona: a risk manager or board secretary
+temporal:
+  document:
+    valid_from:
+    - Effective Date
+    - Issued Date
+    - Reporting Date
+    - Meeting Date
+    - Last Updated
+    version:
+    - Version
+  relative_anchor: document.valid_from
+  defaults:
+    valid_from: ingestion_date
+    valid_to: null
+    superseded_by: null
+    time_source: default_ingestion
+    valid_from_inferred: true
+entity_types:
+  AUDIT_FINDING:
+    kind: occurrent
+    description: A specific observation, issue, gap, strength, or recommendation identified in an internal
+      audit — a finding with severity, affected process or area, evidence, and resolution status. Each
+      finding is a separate entity. Include both weaknesses (issues requiring remediation) and strengths
+      (confirmed effective controls).
+    type_examples:
+    - critical
+    - high_priority
+    - medium_priority
+    - low_priority
+    - observation
+    - resolved
+    - partial
+    - strength
+    - gap
+    properties:
+      severity:
+        hint: critical | high | medium | low
+      affected_area:
+        hint: process or system audited
+      finding_summary:
+        hint: what was found
+      evidence:
+        hint: what evidence was observed
+      root_cause:
+        hint: stated cause if identified
+      management_response:
+        hint: what management has committed to do
+      remediation_deadline:
+        hint: when it must be resolved
+      resolution_status:
+        hint: open | partial | resolved
+      finding_ref:
+        hint: internal reference code
+      audit_scope:
+        hint: period or sample examined
+      issued_date:
+        temporal: valid_from
+    relates_to:
+      RISK:
+      - identifies_risk_in
+      - associated_with
+      - escalated_due_to
+      - evidence_of
+      - reveals_gap_in
+      ACTION_ITEM:
+      - generates
+      - resolved_by
+      - tracked_by
+      - requires
+      RISK_METRIC:
+      - measured_against
+      - violates
+      - supports
+      - demonstrates
+      AUDIT_FINDING:
+      - related_to
+      - reoccurrence_of
+      - resolved_by
+      - escalated_from
+      CUSTOMER:
+      - identifies_gap_in_customer_controls
+      - affects_customer_population
+      - implicates
+      ACCOUNT:
+      - identifies_gap_in_account_controls
+      - found_in_review_of
+      - affects
+      TRANSACTION:
+      - identifies_monitoring_gap_for
+      - relates_to
+      - evidence_from
+      PRODUCT:
+      - scoped_to
+      - identifies_risk_in
+      - relates_to_product
+      KYC_VERIFICATION:
+      - identifies_weakness_in
+      - found_gap_in
+      AML_SCREENING:
+      - identifies_weakness_in
+      - found_gap_in
+      SAR:
+      - measures_compliance_of
+      - identifies_gap_in
+      FRAUD_ALERT:
+      - identifies_weakness_in
+      - measures_performance_of
+      STANDING_ORDER:
+      - identifies_validation_gap_in
+      - relates_to
+      EMPLOYEE:
+      - identifies_training_gap_for
+      - assigns_accountability_to
+      DEPARTMENT:
+      - implicates
+      - assigns_remediation_to
+      - owned_by
+    guidance: |-
+      Each distinct audit finding captured as a separate AUDIT_FINDING.
+      AUDIT_FINDING names describe the finding, not just the section reference.
+      AUDIT_FINDING entities include severity, affected_area, resolution_status.
+  RISK:
+    kind: recurrent
+    description: A named risk category with a defined appetite, tolerance threshold, or stated management
+      approach. Also extract specific risk scenarios or risk events when described. Each distinct risk
+      type or scenario is a separate entity.
+    type_examples:
+    - credit_risk
+    - operational_risk
+    - compliance_risk
+    - technology_risk
+    - reputational_risk
+    - liquidity_risk
+    - fraud_risk
+    - aml_risk
+    - sanctions_risk
+    - market_risk
+    - concentration_risk
+    - cyber_risk
+    properties:
+      risk_category:
+        hint: credit | operational | compliance | technology | fraud | etc.
+      appetite_level:
+        hint: low | conservative | moderate | elevated | high
+      appetite_rationale:
+        hint: why this appetite level is set
+      tolerance_thresholds:
+        hint: list of specific numeric limits
+      stated_prohibitions:
+        hint: what the bank will not do in this risk domain
+      current_exposure:
+        hint: actual current level if stated
+      controls_in_place:
+        hint: list of mitigating controls
+      trend:
+        hint: improving | stable | deteriorating
+      regulatory_drivers:
+        hint: regulations requiring management of this risk
+    relates_to:
+      RISK_METRIC:
+      - quantified_by
+      - measured_by
+      - has_appetite_threshold
+      ACTION_ITEM:
+      - addressed_by
+      - requires
+      - triggers_review_of
+      RISK:
+      - related_to
+      - escalates_to
+      - co_occurs_with
+      - drives
+      REGULATORY_UPDATE:
+      - regulated_by
+      - addressed_by
+      - introduced_by
+      CUSTOMER:
+      - pertains_to_customers
+      - governs_exposure_of
+      ACCOUNT:
+      - pertains_to_accounts
+      - governs_controls_for
+      TRANSACTION:
+      - pertains_to_transactions
+      - monitors_for
+      - governs
+      KYC_VERIFICATION:
+      - mitigated_by
+      - relies_on_effectiveness_of
+      AML_SCREENING:
+      - mitigated_by
+      - relies_on_effectiveness_of
+      FRAUD_ALERT:
+      - detected_by
+      - mitigated_by
+      DEPARTMENT:
+      - owned_by
+      - managed_by
+    guidance: |-
+      Each risk category with a stated appetite or tolerance captured as RISK.
+      RISK entities include appetite_level, tolerance_thresholds.
+  GOVERNANCE_DECISION:
+    kind: occurrent
+    description: A formal decision, approval, rejection, or resolution made by a board committee, audit
+      committee, or governance body — documented in meeting minutes or governance reports. Each distinct
+      decision or resolution is a separate entity.
+    type_examples:
+    - approval
+    - rejection
+    - deferral
+    - escalation
+    - policy_approval
+    - risk_appetite_approval
+    - budget_decision
+    - charter_amendment
+    - audit_plan_approval
+    - regulatory_response
+    properties:
+      decision_outcome:
+        hint: approved | rejected | deferred | escalated
+      decision_topic:
+        hint: what was decided about
+      deciding_body:
+        hint: committee or board that made the decision
+      decision_date:
+        temporal: valid_from
+      vote_result:
+        hint: unanimous | majority | dissenting_opinions
+      rationale:
+        hint: stated reason for the decision
+      conditions:
+        hint: any conditions attached to the approval
+      related_action_items:
+        hint: list of action items arising
+      next_review_date:
+        hint: when the decision will be revisited
+    relates_to:
+      ACTION_ITEM:
+      - generates
+      - requires
+      - assigns
+      - approves
+      RISK:
+      - approves_appetite_for
+      - elevates_concern_about
+      - accepts
+      - rejects
+      RISK_METRIC:
+      - approves_threshold_for
+      - reviews
+      - sets_target
+      REGULATORY_UPDATE:
+      - responds_to
+      - approves_implementation_of
+      - defers_response_to
+      AUDIT_FINDING:
+      - reviews
+      - accepts_management_response_for
+      - escalates
+      DEPARTMENT:
+      - assigns_ownership_to
+      - holds_accountable
+      EMPLOYEE:
+      - assigns_accountability_to
+    guidance: |-
+      Each formal committee decision or resolution captured as GOVERNANCE_DECISION.
+      GOVERNANCE_DECISION entities include decision_outcome, deciding_body, decision_date.
+      Naming: include the decision outcome and topic. RIGHT:   { "name": "Board Approval of 2026 Risk Appetite Statement" }
+  ACTION_ITEM:
+    kind: recurrent
+    description: A specific task assigned to a named role or team with a defined deadline, arising from
+      a governance meeting, audit report, or regulatory update. Each action item with an owner and deadline
+      is a separate entity.
+    type_examples:
+    - remediation
+    - policy_update
+    - communication
+    - investigation
+    - monitoring
+    - training
+    - reporting
+    - implementation
+    - follow_up
+    - capital_action
+    properties:
+      action_description:
+        hint: what must be done
+      owner:
+        hint: role or name responsible
+      deadline:
+        hint: date by which it must be completed
+        temporal: valid_from
+      priority:
+        hint: critical | high | medium | low
+      triggered_by:
+        hint: what finding, decision, or regulation prompted this action
+      status:
+        hint: open | in_progress | completed | overdue
+      dependencies:
+        hint: what must happen before this action can be taken
+      success_criteria:
+        hint: how completion will be measured
+    relates_to:
+      REGULATORY_UPDATE:
+      - implements
+      - responds_to
+      - triggered_by
+      RISK_METRIC:
+      - aims_to_improve
+      - targets_reduction_in
+      ACTION_ITEM:
+      - depends_on
+      - preceded_by
+      - part_of_program
+      DEPARTMENT:
+      - assigned_to
+      - owned_by
+      EMPLOYEE:
+      - assigned_to
+      KYC_VERIFICATION:
+      - aims_to_improve
+      - targets_remediation_of
+      AML_SCREENING:
+      - aims_to_improve
+      - targets_remediation_of
+      SAR:
+      - aims_to_improve_compliance_of
+    guidance: |-
+      Each assigned action item with owner and deadline captured as ACTION_ITEM.
+      ACTION_ITEM entities include action_description, owner, deadline.
+  RISK_METRIC:
+    kind: recurrent
+    description: A quantitative risk indicator, appetite threshold, tolerance level, KRI value, capital
+      ratio, or performance metric stated in a risk management or governance document. Capture both the
+      threshold/target and the actual value when both are stated.
+    type_examples:
+    - risk_appetite_threshold
+    - kri
+    - capital_ratio
+    - loss_ratio
+    - compliance_rate
+    - detection_rate
+    - delinquency_rate
+    - concentration_limit
+    - response_time
+    - operational_loss
+    properties:
+      metric_name:
+        hint: formal name of the KRI or metric
+      target_threshold:
+        hint: the appetite limit or target, e.g., "<0.5%"
+      actual_value:
+        hint: the current measured value
+      period:
+        hint: time period for the measurement
+      owner:
+        hint: role accountable for this metric
+      reporting_frequency:
+        hint: how often reported
+      breach_threshold:
+        hint: value at which action is triggered
+      trend:
+        hint: improving | stable | deteriorating
+      context:
+        hint: why this metric matters
+    relates_to:
+      RISK:
+      - measures_appetite_of
+      - tracks
+      KYC_VERIFICATION:
+      - measures_performance_of
+      - tracks_compliance_of
+      AML_SCREENING:
+      - measures_performance_of
+      - tracks_compliance_of
+      SAR:
+      - measures_timeliness_of
+      - tracks_volume_of
+      FRAUD_ALERT:
+      - measures_detection_rate_of
+      - tracks_false_positive_rate_of
+    guidance: |-
+      Each quantitative metric or KRI threshold captured as RISK_METRIC.
+      RISK_METRIC entities include target_threshold AND actual_value when both stated.
+      Naming: identify the METRIC, never its current reading. Target and actual values go in
+      properties -- they are what changes between reports, and a name carrying them cannot be
+      matched to the same metric in the next one.
+        RIGHT:   { "name": "Capital Ratio", "target_threshold": ">15%", "actual_value": "18.2%" }
+        WRONG:   { "name": "Capital Ratio -- Target >15%, Actual 18.2%" }
+  REGULATORY_UPDATE:
+    kind: occurrent
+    description: A new regulation, amended regulation, FCA/PRA circular, compliance bulletin, enforcement
+      action, or regulatory deadline that requires the bank to take action. Each distinct regulatory change
+      or circular is a separate entity.
+    type_examples:
+    - new_regulation
+    - amended_regulation
+    - fca_circular
+    - pra_circular
+    - enforcement_action
+    - consultation_paper
+    - implementation_deadline
+    - guidance_update
+    - supervisory_letter
+    properties:
+      issuing_authority:
+        hint: FCA | PRA | EU | HMT | etc.
+      circular_reference:
+        hint: reference number or title
+      effective_date:
+        hint: when the regulation takes effect
+        temporal: valid_from
+      implementation_deadline:
+        hint: when the bank must comply
+      key_requirement:
+        hint: the main obligation imposed
+      impact_assessment:
+        hint: how it affects the bank
+      affected_departments:
+        hint: which teams must act
+      implementation_status:
+        hint: planned | in_progress | completed
+      related_action_items:
+        hint: list of actions required
+    relates_to:
+      RISK:
+      - introduces_new_requirement_for
+      - addresses
+      - regulates
+      - mitigates
+      REGULATORY_UPDATE:
+      - amends
+      - supersedes
+      - related_to
+      - complements
+    guidance: Each regulatory change or FCA/PRA circular captured as REGULATORY_UPDATE.
+  PRODUCT:
+    kind: recurrent
+    description: A banking product referenced in risk assessments, audit scope definitions, or governance
+      decisions. Extract when a product's risk profile or controls are under review.
+    type_examples:
+    - savings_product
+    - current_account_product
+    - mortgage
+    - card_product
+    properties:
+      product_id:
+        hint: e.g., SAV-001
+      product_risk_level:
+        hint: low | medium | high
+      audit_scope_inclusion:
+        hint: whether this product was explicitly in scope
+  EMPLOYEE:
+    kind: recurrent
+    description: A bank employee or staff category referenced in governance findings — training gaps,
+      misconduct, or accountability concerns.
+    type_examples:
+    - frontline_staff
+    - compliance_officer
+    - branch_manager
+    - financial_crime_analyst
+    - all_staff
+    properties:
+      role_type:
+        hint: frontline | manager | specialist | compliance
+      training_gap:
+        hint: what training obligation was not met
+      accountability:
+        hint: what they are responsible for under the finding
+  DEPARTMENT:
+    kind: recurrent
+    description: An organisational department referenced as responsible for, or implicated in, a finding,
+      risk, or governance decision.
+    type_examples:
+    - financial_crime
+    - compliance
+    - retail_banking
+    - technology
+    - risk
+    - operations
+    - internal_audit
+    properties:
+      department_name:
+        hint: Financial Crime, Compliance, Risk, etc.
+      accountability_finding:
+        hint: what the department failed to do or must improve
+      ownership:
+        hint: what risk or process they own
+  ACCOUNT:
+    kind: recurrent
+    description: A customer account opened, held, modified, or closed under a banking product — savings,
+      current, or joint. Extract when the document defines rules, state, or events that apply to the account
+      itself.
+    type_examples:
+    - savings_account
+    - current_account
+    - joint_account
+    - new_account
+    - dormant_account
+    - frozen_account
+    - closed_account
+    properties:
+      account_type:
+        hint: savings | current | joint
+      account_state:
+        hint: new | active | dormant | frozen | closed
+      balance_minimum:
+        hint: numeric, no currency symbol or thousands separators, e.g., 500; the
+          string "none" if the account has no stated minimum
+      balance_maximum:
+        hint: numeric, no currency symbol or thousands separators, e.g., 50000; the
+          string "unlimited" if the account has no stated maximum
+      dormancy_threshold:
+        hint: how long with no activity before the account is classified dormant,
+          e.g., "12 months"
+      closure_or_freeze_conditions: {}
+    relates_to:
+      ACCOUNT_HOLDER:
+      - has_holder
+      - held_by
+      CARD:
+      - linked_to
+      - issues
+      JOINT_ACCOUNT:
+      - classified_as
+      - structured_as
+      TRANSACTION:
+      - records
+      - generates
+      - has_associated
+      KYC_VERIFICATION:
+      - gate_for_opening
+      - required_before_activating
+      AML_SCREENING:
+      - required_before_opening
+      - ongoing_monitoring_of
+      FRAUD_ALERT:
+      - raised_on
+      - results_in_freeze_of
+      STANDING_ORDER:
+      - set_up_on
+      - deducts_from
+      DIRECT_DEBIT:
+      - set_up_on
+      - deducts_from
+  ACCOUNT_HOLDER:
+    kind: recurrent
+    description: A person with legal rights and obligations over an account — primary, joint, or secondary
+      holder — including their liability, authority, and due-diligence obligations.
+    type_examples:
+    - primary_holder
+    - joint_holder
+    - secondary_holder
+    - beneficial_owner
+    - signatory
+    properties:
+      holder_type:
+        hint: primary | joint | secondary
+      liability_scope: {}
+      withdrawal_or_signing_authority: {}
+      due_diligence_requirement: {}
+    relates_to:
+      JOINT_ACCOUNT:
+      - party_to
+      - has_rights_in
+      - liable_under
+  AML_SCREENING:
+    kind: recurrent
+    description: Anti-Money Laundering screening — sanctions/PEP list checks, transaction monitoring,
+      or ongoing screening — as mandated, executed, or reviewed by the document.
+    type_examples:
+    - sanctions_screening
+    - pep_screening
+    - transaction_monitoring
+    - ongoing_monitoring
+    - adverse_media_check
+    properties:
+      mandatory:
+        hint: yes/no
+      screening_lists_or_scope: {}
+      hit_or_match_response: {}
+      regulatory_basis: {}
+    relates_to:
+      TRANSACTION:
+      - monitors
+      - screens_for_patterns_in
+      SAR:
+      - triggers
+      - leads_to_filing_of
+  CARD:
+    kind: recurrent
+    description: A payment card issued to, or referenced in connection with, a customer account — its
+      issuance, use, blocking, or replacement.
+    type_examples:
+    - debit_card
+    - credit_card
+    - prepaid
+    - contactless
+    - replacement_card
+    - card_fraud_scenario
+    properties:
+      card_type:
+        hint: debit | credit | prepaid
+      card_state:
+        hint: issuance | active | blocked | replacement
+      block_or_replacement_conditions: {}
+      daily_or_contactless_limit: {}
+  CUSTOMER:
+    kind: recurrent
+    description: A natural person who holds, applies for, or is otherwise the subject of a banking relationship
+      — an account, product, transaction, or compliance process. Extract as a first-class entity whenever
+      the customer is a defined party in the document, not merely mentioned in passing.
+    type_examples:
+    - individual_customer
+    - joint_account_holder
+    - new_customer
+    - existing_customer
+    - high_risk_customer
+    - pep_customer
+    - applicant
+    - prospective_customer
+    properties:
+      customer_type:
+        hint: individual | joint_applicant | existing | new | high_risk | pep
+      risk_classification:
+        hint: standard | high_risk | pep | sanctioned
+      eligibility_or_verification_status:
+        hint: as stated in this document
+      context_role:
+        hint: how this customer appears in this document
+    relates_to:
+      ACCOUNT:
+      - holds
+      - opens
+      - closes
+      - liable_for
+      ACCOUNT_HOLDER:
+      - designated_as
+      - has_role_as
+      AML_SCREENING:
+      - screened_by
+      - applied_to
+      - required_for
+      KYC_VERIFICATION:
+      - required_to_complete
+      - verified_by
+      - subject_to
+      SAR:
+      - filed_about
+      - concerns
+      JOINT_ACCOUNT:
+      - held_jointly_by
+      - requires_consent_of_both
+      STANDING_ORDER:
+      - initiated_by
+      - belongs_to
+      DIRECT_DEBIT:
+      - authorised_by
+      - belongs_to
+  DIRECT_DEBIT:
+    kind: recurrent
+    description: A direct debit mandate on a customer account — its setup, the Direct Debit Guarantee,
+      amendment, cancellation, or dispute.
+    type_examples:
+    - dd_mandate_setup
+    - dd_guarantee
+    - dd_cancellation
+    - dd_dispute
+    - indemnity_claim
+    properties:
+      mandate_process: {}
+      dd_guarantee_coverage: {}
+      cancellation_or_dispute_process: {}
+  FRAUD_ALERT:
+    kind: recurrent
+    description: A fraud detection alert or fraud response — its generation, investigation, escalation,
+      or the customer-facing action it triggers.
+    type_examples:
+    - fraud_detection_obligation
+    - card_fraud_event
+    - account_takeover
+    - fraud_investigation
+    - customer_reimbursement
+    properties:
+      generation_trigger: {}
+      investigation_or_escalation_path: {}
+      customer_notification: {}
+      reimbursement_obligation: {}
+    relates_to:
+      CARD:
+      - raised_for
+      - protects
+      TRANSACTION:
+      - triggered_by
+      - raised_on
+  JOINT_ACCOUNT:
+    kind: recurrent
+    description: An account arrangement held jointly by two or more customers with shared rights, liabilities,
+      and consent requirements.
+    type_examples:
+    - joint_and_several
+    - tenants_in_common
+    - joint_account_arrangement
+    properties:
+      liability_type:
+        hint: joint_and_several | tenants_in_common
+      consent_requirements: {}
+      dual_kyc_or_aml_requirement: {}
+      closure_consent: {}
+  KYC_VERIFICATION:
+    kind: recurrent
+    description: The Know Your Customer identity/address verification process — as a compliance obligation,
+      an operational procedure, or an audited control. Extract when the document defines, executes, or
+      evaluates KYC requirements.
+    type_examples:
+    - identity_verification
+    - address_verification
+    - enhanced_due_diligence
+    - periodic_refresh
+    - document_collection
+    properties:
+      mandatory:
+        hint: yes/no
+      timing_or_refresh_frequency: {}
+      verification_method: {}
+      consequence_of_failure: {}
+    relates_to:
+      JOINT_ACCOUNT:
+      - required_for_both_holders_of
+      - applied_to
+  SAR:
+    kind: occurrent
+    description: A Suspicious Activity Report — the obligation, preparation, filing, or tracking of a
+      SAR to the relevant authority (e.g. the NCA).
+    type_examples:
+    - sar_obligation
+    - sar_filing_deadline
+    - internal_sar
+    - external_sar
+    - sar_confidentiality
+    properties:
+      filing_obligation: {}
+      filing_deadline: {}
+      confidentiality_rule: {}
+      consequence_of_non_filing: {}
+    relates_to:
+      TRANSACTION:
+      - triggered_by
+      - based_on_evidence_from
+  STANDING_ORDER:
+    kind: recurrent
+    description: A standing order payment instruction on a customer account — its setup, amendment, cancellation,
+      or failure handling.
+    type_examples:
+    - standing_order_setup
+    - standing_order_amendment
+    - standing_order_cancellation
+    - payment_failure_handling
+    properties:
+      setup_or_amendment_process: {}
+      beneficiary_validation: {}
+      cancellation_process: {}
+      failure_handling: {}
+  TRANSACTION:
+    kind: occurrent
+    description: A financial event on a customer account — a deposit, withdrawal, transfer, payment, or
+      fee charge — referenced because it is monitored, disputed, reported, or otherwise governed by the
+      document.
+    type_examples:
+    - deposit
+    - withdrawal
+    - transfer
+    - fee_charge
+    - suspicious_transaction
+    - high_value_transaction
+    - disputed_transaction
+    - monitored_transaction
+    properties:
+      transaction_type:
+        hint: deposit | withdrawal | transfer | fee_charge | suspicious | disputed
+      monitoring_or_reporting_obligation: {}
+      threshold_value:
+        hint: numeric, no currency symbol or thousands separators, e.g., 10000
+      dispute_or_reversal_rules: {}
+guidance:
+  relationships: |-
+    All AUDIT_FINDING → ACTION_ITEM remediation links captured.
+    All RISK → RISK_METRIC appetite quantification links captured.
+    All GOVERNANCE_DECISION → RISK_METRIC approval links captured.
+    All REGULATORY_UPDATE → ACTION_ITEM implementation links captured.
+    All GOVERNANCE_DECISION → AUDIT_FINDING review links captured.

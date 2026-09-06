@@ -1,0 +1,11 @@
+## Related Documents  
+- [[business_ontology]] — Product concepts, account types
+- [[departments]] — Product Management department
+- Interest Rate Schedule (IRS-2026-001)
+- Pricing Guide (PRC-GUIDE-2026)
+- Account Opening SOP (ACCT-OPEN-SOP-001)
+- KYC Verification SOP (KYC-SOP-001)
+- AML Policy (AML-POL-002)
+- Complaint Handling Policy (COM-POL-006)
+- Fraud Policy (FRAUD-POL-007)  
+---

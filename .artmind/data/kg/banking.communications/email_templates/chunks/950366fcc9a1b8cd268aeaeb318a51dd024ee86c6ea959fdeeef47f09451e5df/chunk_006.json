@@ -1,0 +1,1005 @@
+{
+  "chunk_seq": 6,
+  "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+  "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+  "text": "## Template 4: Successful Transfer Confirmation  \n**Subject:** Your Transfer of £[amount] Is Complete ✓  \n```\nDear [Customer Name],\n\nYour transfer has been successfully processed.\n\nTransfer Details:\n- Amount: £[amount]\n- From: Your SmartSaver (ending in [XXXX])\n- To: [Recipient Name] ([Bank] Account)\n- Date Sent: [date and time]\n- Status: COMPLETED\n\nYour New Balance:\n£[new balance] (after this transfer)\n\nQuestions About This Transfer?\nIf you didn't authorize this transfer or have concerns, contact\nus immediately:\n- Phone: 0800-555-2265 (24/7 fraud line)\n- Email: support@firstuk.bank\n\nView Your Account:\nLog in at www.firstuk.bank/login to see all your transactions.\n\nThank you,\nFirstUK Bank Team\n```  \n---",
+  "name": "Chunk 6/15",
+  "_domain": "banking.communications",
+  "prev_chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_005",
+  "next_chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_007",
+  "raw_entities": [
+    {
+      "id": "ct_001",
+      "name": "Successful Transfer Confirmation",
+      "aliases": [
+        "Template 4",
+        "Transfer Confirmation Email"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "email_template",
+      "description": "Customer-facing email confirmation sent upon successful completion of a funds transfer from a SmartSaver account to a recipient account. The template includes transfer details, new account balance, and fraud contact information for customer verification and dispute handling.",
+      "context": [
+        "Subject: Your Transfer of £[amount] Is Complete ✓",
+        "Your transfer has been successfully processed.",
+        "Transfer Details: - Amount: £[amount] - From: Your SmartSaver (ending in [XXXX]) - To: [Recipient Name] ([Bank] Account) - Date Sent: [date and time] - Status: COMPLETED",
+        "If you didn't authorize this transfer or have concerns, contact us immediately"
+      ]
+    },
+    {
+      "id": "tv_001",
+      "name": "Transfer Amount",
+      "aliases": [
+        "amount"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "Dynamic placeholder representing the monetary value of the transfer being confirmed to the customer. Appears in both the email subject line and transfer details section.",
+      "context": [
+        "Subject: Your Transfer of £[amount] Is Complete ✓",
+        "Amount: £[amount]"
+      ]
+    },
+    {
+      "id": "tv_002",
+      "name": "Customer Name",
+      "aliases": [
+        "Customer Name"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "customer_data",
+      "description": "Dynamic placeholder for the recipient customer's full name used in the email salutation.",
+      "context": [
+        "Dear [Customer Name],"
+      ]
+    },
+    {
+      "id": "tv_003",
+      "name": "Source Account Identifier",
+      "aliases": [
+        "XXXX"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "account_data",
+      "description": "Dynamic placeholder representing the last four digits of the SmartSaver account from which the transfer originated, used for customer verification.",
+      "context": [
+        "From: Your SmartSaver (ending in [XXXX])"
+      ]
+    },
+    {
+      "id": "tv_004",
+      "name": "Recipient Name",
+      "aliases": [
+        "Recipient Name"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "customer_data",
+      "description": "Dynamic placeholder for the name of the transfer recipient as provided by the sending customer.",
+      "context": [
+        "To: [Recipient Name] ([Bank] Account)"
+      ]
+    },
+    {
+      "id": "tv_005",
+      "name": "Recipient Bank",
+      "aliases": [
+        "Bank"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "account_data",
+      "description": "Dynamic placeholder for the name of the financial institution holding the recipient's account.",
+      "context": [
+        "To: [Recipient Name] ([Bank] Account)"
+      ]
+    },
+    {
+      "id": "tv_006",
+      "name": "Transfer Date and Time",
+      "aliases": [
+        "date and time"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "Dynamic placeholder for the timestamp when the transfer was sent and processed.",
+      "context": [
+        "Date Sent: [date and time]"
+      ]
+    },
+    {
+      "id": "tv_007",
+      "name": "New Account Balance",
+      "aliases": [
+        "new balance"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "Dynamic placeholder representing the customer's updated SmartSaver account balance following the transfer deduction.",
+      "context": [
+        "Your New Balance: £[new balance] (after this transfer)"
+      ]
+    },
+    {
+      "id": "prd_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SmartSaver"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "savings_product",
+      "description": "A savings account product from which transfers can be initiated. Referenced in the transfer confirmation template as the source account type.",
+      "context": [
+        "From: Your SmartSaver (ending in [XXXX])"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SmartSaver Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "The customer's SmartSaver savings account from which funds are transferred. The account balance is updated and confirmed in the transfer completion notification.",
+      "context": [
+        "From: Your SmartSaver (ending in [XXXX])",
+        "Your New Balance: £[new balance] (after this transfer)"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Transfer Sending Customer",
+      "aliases": [
+        "Customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual customer initiating and authorizing the transfer from their SmartSaver account. The template addresses this customer directly and provides fraud contact options for unauthorized transfer disputes.",
+      "context": [
+        "Dear [Customer Name],",
+        "If you didn't authorize this transfer or have concerns, contact us immediately"
+      ]
+    },
+    {
+      "id": "txn_001",
+      "name": "Completed Transfer Transaction",
+      "aliases": [
+        "Transfer"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "A successfully processed outbound transfer of funds from the customer's SmartSaver account to a named recipient's account at another bank. The transaction status is confirmed as COMPLETED in the notification.",
+      "context": [
+        "Your transfer has been successfully processed.",
+        "Status: COMPLETED",
+        "Transfer Details: - Amount: £[amount] - From: Your SmartSaver (ending in [XXXX]) - To: [Recipient Name] ([Bank] Account)"
+      ]
+    },
+    {
+      "id": "fa_001",
+      "name": "Unauthorized Transfer Dispute Escalation",
+      "aliases": [
+        "Fraud Contact",
+        "24/7 Fraud Line"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "A customer-facing fraud response pathway embedded in the transfer confirmation template. Customers who did not authorize the transfer are instructed to contact the 24/7 fraud line immediately for investigation and dispute handling.",
+      "context": [
+        "If you didn't authorize this transfer or have concerns, contact us immediately: - Phone: 0800-555-2265 (24/7 fraud line) - Email: support@firstuk.bank"
+      ]
+    }
+  ],
+  "id_map": {
+    "ct_001": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+    "tv_001": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_001",
+    "tv_002": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_002",
+    "tv_003": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_003",
+    "tv_004": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_004",
+    "tv_005": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_005",
+    "tv_006": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_006",
+    "tv_007": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_007",
+    "prd_001": "01a0742b-8524-77fa-82d5-14970cde8c21_006_prd_001",
+    "acc_001": "01a0742b-8524-77fa-82d5-14970cde8c21_006_acc_001",
+    "cust_001": "01a0742b-8524-77fa-82d5-14970cde8c21_006_cust_001",
+    "txn_001": "01a0742b-8524-77fa-82d5-14970cde8c21_006_txn_001",
+    "fa_001": "01a0742b-8524-77fa-82d5-14970cde8c21_006_fa_001"
+  },
+  "entities": [
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+      "name": "Successful Transfer Confirmation",
+      "aliases": [
+        "Template 4",
+        "Transfer Confirmation Email"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "email_template",
+      "description": "Customer-facing email confirmation sent upon successful completion of a funds transfer from a SmartSaver account to a recipient account. The template includes transfer details, new account balance, and fraud contact information for customer verification and dispute handling.",
+      "context": [
+        "Subject: Your Transfer of £[amount] Is Complete ✓",
+        "Your transfer has been successfully processed.",
+        "Transfer Details: - Amount: £[amount] - From: Your SmartSaver (ending in [XXXX]) - To: [Recipient Name] ([Bank] Account) - Date Sent: [date and time] - Status: COMPLETED",
+        "If you didn't authorize this transfer or have concerns, contact us immediately"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_001",
+      "name": "Transfer Amount",
+      "aliases": [
+        "amount"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "Dynamic placeholder representing the monetary value of the transfer being confirmed to the customer. Appears in both the email subject line and transfer details section.",
+      "context": [
+        "Subject: Your Transfer of £[amount] Is Complete ✓",
+        "Amount: £[amount]"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_002",
+      "name": "Customer Name",
+      "aliases": [
+        "Customer Name"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "customer_data",
+      "description": "Dynamic placeholder for the recipient customer's full name used in the email salutation.",
+      "context": [
+        "Dear [Customer Name],"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_003",
+      "name": "Source Account Identifier",
+      "aliases": [
+        "XXXX"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "account_data",
+      "description": "Dynamic placeholder representing the last four digits of the SmartSaver account from which the transfer originated, used for customer verification.",
+      "context": [
+        "From: Your SmartSaver (ending in [XXXX])"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_004",
+      "name": "Recipient Name",
+      "aliases": [
+        "Recipient Name"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "customer_data",
+      "description": "Dynamic placeholder for the name of the transfer recipient as provided by the sending customer.",
+      "context": [
+        "To: [Recipient Name] ([Bank] Account)"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_005",
+      "name": "Recipient Bank",
+      "aliases": [
+        "Bank"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "account_data",
+      "description": "Dynamic placeholder for the name of the financial institution holding the recipient's account.",
+      "context": [
+        "To: [Recipient Name] ([Bank] Account)"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_006",
+      "name": "Transfer Date and Time",
+      "aliases": [
+        "date and time"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "Dynamic placeholder for the timestamp when the transfer was sent and processed.",
+      "context": [
+        "Date Sent: [date and time]"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_007",
+      "name": "New Account Balance",
+      "aliases": [
+        "new balance"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "Dynamic placeholder representing the customer's updated SmartSaver account balance following the transfer deduction.",
+      "context": [
+        "Your New Balance: £[new balance] (after this transfer)"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_prd_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SmartSaver"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "savings_product",
+      "description": "A savings account product from which transfers can be initiated. Referenced in the transfer confirmation template as the source account type.",
+      "context": [
+        "From: Your SmartSaver (ending in [XXXX])"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_acc_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SmartSaver Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "The customer's SmartSaver savings account from which funds are transferred. The account balance is updated and confirmed in the transfer completion notification.",
+      "context": [
+        "From: Your SmartSaver (ending in [XXXX])",
+        "Your New Balance: £[new balance] (after this transfer)"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_cust_001",
+      "name": "Transfer Sending Customer",
+      "aliases": [
+        "Customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual customer initiating and authorizing the transfer from their SmartSaver account. The template addresses this customer directly and provides fraud contact options for unauthorized transfer disputes.",
+      "context": [
+        "Dear [Customer Name],",
+        "If you didn't authorize this transfer or have concerns, contact us immediately"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_txn_001",
+      "name": "Completed Transfer Transaction",
+      "aliases": [
+        "Transfer"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "A successfully processed outbound transfer of funds from the customer's SmartSaver account to a named recipient's account at another bank. The transaction status is confirmed as COMPLETED in the notification.",
+      "context": [
+        "Your transfer has been successfully processed.",
+        "Status: COMPLETED",
+        "Transfer Details: - Amount: £[amount] - From: Your SmartSaver (ending in [XXXX]) - To: [Recipient Name] ([Bank] Account)"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_fa_001",
+      "name": "Unauthorized Transfer Dispute Escalation",
+      "aliases": [
+        "Fraud Contact",
+        "24/7 Fraud Line"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "A customer-facing fraud response pathway embedded in the transfer confirmation template. Customers who did not authorize the transfer are instructed to contact the 24/7 fraud line immediately for investigation and dispute handling.",
+      "context": [
+        "If you didn't authorize this transfer or have concerns, contact us immediately: - Phone: 0800-555-2265 (24/7 fraud line) - Email: support@firstuk.bank"
+      ],
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+      "name": "Successful Transfer Confirmation",
+      "properties": {
+        "document_id": "TEMPLATE-004",
+        "trigger_event": "transfer successfully processed",
+        "channel": "email",
+        "subject_line": "Your Transfer of £[amount] Is Complete ✓",
+        "recipient": "transfer sending customer",
+        "key_content": [
+          "transfer amount",
+          "source account identifier",
+          "recipient name and bank",
+          "transfer date and time",
+          "transaction status",
+          "new account balance",
+          "fraud contact information",
+          "account access instructions"
+        ],
+        "variables_used": [
+          "[amount]",
+          "[Customer Name]",
+          "[XXXX]",
+          "[Recipient Name]",
+          "[Bank]",
+          "[date and time]",
+          "[new balance]"
+        ],
+        "tone": "friendly",
+        "compliance_disclosures": [
+          "24/7 fraud line contact details",
+          "unauthorized transfer dispute escalation pathway"
+        ]
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_001",
+      "name": "Transfer Amount",
+      "properties": {
+        "variable_placeholder": "[amount]",
+        "data_source": "transaction processing system",
+        "data_type": "currency",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Successful Transfer Confirmation"
+        ]
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_002",
+      "name": "Customer Name",
+      "properties": {
+        "variable_placeholder": "[Customer Name]",
+        "data_source": "CRM",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Successful Transfer Confirmation"
+        ]
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_003",
+      "name": "Source Account Identifier",
+      "properties": {
+        "variable_placeholder": "[XXXX]",
+        "data_source": "account management system",
+        "data_type": "account_number",
+        "description": "last four digits of source account",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Successful Transfer Confirmation"
+        ]
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_004",
+      "name": "Recipient Name",
+      "properties": {
+        "variable_placeholder": "[Recipient Name]",
+        "data_source": "transaction processing system",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Successful Transfer Confirmation"
+        ]
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_005",
+      "name": "Recipient Bank",
+      "properties": {
+        "variable_placeholder": "[Bank]",
+        "data_source": "transaction processing system",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Successful Transfer Confirmation"
+        ]
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_006",
+      "name": "Transfer Date and Time",
+      "properties": {
+        "variable_placeholder": "[date and time]",
+        "data_source": "transaction processing system",
+        "data_type": "date",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Successful Transfer Confirmation"
+        ]
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_007",
+      "name": "New Account Balance",
+      "properties": {
+        "variable_placeholder": "[new balance]",
+        "data_source": "account management system",
+        "data_type": "currency",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Successful Transfer Confirmation"
+        ]
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_prd_001",
+      "name": "SmartSaver Account",
+      "properties": {
+        "communication_template": [
+          "Successful Transfer Confirmation"
+        ],
+        "customer_facing_messaging": "account identifier displayed as masked last four digits in transfer confirmations"
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_acc_001",
+      "name": "SmartSaver Account",
+      "properties": {
+        "account_type": "savings",
+        "account_state": "active",
+        "identifier_format": "masked as last four digits in customer communications"
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_cust_001",
+      "name": "Transfer Sending Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "account holder initiating transfer",
+        "communication_channel": "email"
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_txn_001",
+      "name": "Completed Transfer Transaction",
+      "properties": {
+        "transaction_type": "transfer",
+        "transaction_status": "COMPLETED",
+        "monitoring_or_reporting_obligation": "confirmation sent to customer with fraud dispute escalation pathway"
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_fa_001",
+      "name": "Unauthorized Transfer Dispute Escalation",
+      "properties": {
+        "generation_trigger": "customer reports unauthorized transfer or has concerns",
+        "investigation_or_escalation_path": [
+          "phone: 0800-555-2265 (24/7 fraud line)",
+          "email: support@firstuk.bank"
+        ],
+        "customer_notification": "yes",
+        "notification_method": "embedded in transfer confirmation email"
+      },
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+      "source_name": "Successful Transfer Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_001",
+      "target_name": "Transfer Amount",
+      "rel_type": "contains",
+      "description": "The template contains the transfer amount variable to be populated in the confirmation message",
+      "properties": {
+        "placeholder": "[amount]",
+        "context_usage": "Subject line and transfer details section"
+      },
+      "context": "Subject: Your Transfer of £[amount] Is Complete ✓ ... Amount: £[amount]",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+      "source_name": "Successful Transfer Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_002",
+      "target_name": "Customer Name",
+      "rel_type": "personalises_via",
+      "description": "The template uses customer name variable to personalize the greeting",
+      "properties": {
+        "placeholder": "[Customer Name]",
+        "usage_location": "salutation"
+      },
+      "context": "Dear [Customer Name],",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+      "source_name": "Successful Transfer Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_003",
+      "target_name": "Source Account Identifier",
+      "rel_type": "contains",
+      "description": "The template contains the source account identifier variable in the transfer details",
+      "properties": {
+        "placeholder": "[XXXX]",
+        "context_usage": "From field showing masked account number"
+      },
+      "context": "From: Your SmartSaver (ending in [XXXX])",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+      "source_name": "Successful Transfer Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_004",
+      "target_name": "Recipient Name",
+      "rel_type": "contains",
+      "description": "The template contains the recipient name variable in transfer details",
+      "properties": {
+        "placeholder": "[Recipient Name]",
+        "context_usage": "To field"
+      },
+      "context": "To: [Recipient Name] ([Bank] Account)",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+      "source_name": "Successful Transfer Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_005",
+      "target_name": "Recipient Bank",
+      "rel_type": "contains",
+      "description": "The template contains the recipient bank variable in transfer details",
+      "properties": {
+        "placeholder": "[Bank]",
+        "context_usage": "To field alongside recipient name"
+      },
+      "context": "To: [Recipient Name] ([Bank] Account)",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+      "source_name": "Successful Transfer Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_006",
+      "target_name": "Transfer Date and Time",
+      "rel_type": "contains",
+      "description": "The template contains the transfer date and time variable in transfer details",
+      "properties": {
+        "placeholder": "[date and time]",
+        "context_usage": "Date Sent field"
+      },
+      "context": "Date Sent: [date and time]",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+      "source_name": "Successful Transfer Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_007",
+      "target_name": "New Account Balance",
+      "rel_type": "contains",
+      "description": "The template contains the new account balance variable after transfer completion",
+      "properties": {
+        "placeholder": "[new balance]",
+        "context_usage": "Your New Balance section"
+      },
+      "context": "Your New Balance: £[new balance] (after this transfer)",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+      "source_name": "Successful Transfer Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_prd_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "provides_information_about",
+      "description": "The template provides information about the SmartSaver Account product in the transfer confirmation",
+      "properties": {
+        "product_reference": "source account type"
+      },
+      "context": "From: Your SmartSaver (ending in [XXXX])",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+      "source_name": "Successful Transfer Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_acc_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "references",
+      "description": "The template references the SmartSaver Account as the source account for the transfer",
+      "properties": {
+        "account_role": "source account",
+        "identifier_format": "masked account number"
+      },
+      "context": "From: Your SmartSaver (ending in [XXXX])",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+      "source_name": "Successful Transfer Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_cust_001",
+      "target_name": "Transfer Sending Customer",
+      "rel_type": "addressed_to",
+      "description": "The confirmation template is addressed to the customer who initiated the transfer",
+      "properties": {
+        "communication_type": "transactional confirmation"
+      },
+      "context": "Dear [Customer Name], Your transfer has been successfully processed.",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+      "source_name": "Successful Transfer Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_txn_001",
+      "target_name": "Completed Transfer Transaction",
+      "rel_type": "confirms",
+      "description": "The template confirms the completion of the transfer transaction",
+      "properties": {
+        "status": "COMPLETED",
+        "confirmation_elements": [
+          "amount",
+          "recipient",
+          "date",
+          "new balance"
+        ]
+      },
+      "context": "Your transfer has been successfully processed. ... Status: COMPLETED",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+      "source_name": "Successful Transfer Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_fa_001",
+      "target_name": "Unauthorized Transfer Dispute Escalation",
+      "rel_type": "notifies_customer_of",
+      "description": "The template includes fraud alert contact information for customers to report unauthorized transfers",
+      "properties": {
+        "escalation_trigger": "customer dispute or unauthorized transfer claim",
+        "contact_channels": [
+          "phone",
+          "email"
+        ]
+      },
+      "context": "If you didn't authorize this transfer or have concerns, contact us immediately: Phone: 0800-555-2265 (24/7 fraud line)",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_txn_001",
+      "source_name": "Completed Transfer Transaction",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_acc_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "generates",
+      "description": "The completed transfer transaction is generated from the SmartSaver Account",
+      "properties": {
+        "transaction_type": "outbound transfer",
+        "account_impact": "debit"
+      },
+      "context": "From: Your SmartSaver (ending in [XXXX]) ... Status: COMPLETED",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_cust_001",
+      "source_name": "Transfer Sending Customer",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_acc_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "holds",
+      "description": "The customer holds the SmartSaver Account from which the transfer was sent",
+      "properties": {
+        "account_type": "SmartSaver"
+      },
+      "context": "From: Your SmartSaver (ending in [XXXX])",
+      "bidirectional": false,
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_ct_001",
+      "source_name": "Successful Transfer Confirmation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_001",
+      "source_name": "Transfer Amount",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_002",
+      "source_name": "Customer Name",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_003",
+      "source_name": "Source Account Identifier",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_004",
+      "source_name": "Recipient Name",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_005",
+      "source_name": "Recipient Bank",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_006",
+      "source_name": "Transfer Date and Time",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_tv_007",
+      "source_name": "New Account Balance",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_prd_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_acc_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_cust_001",
+      "source_name": "Transfer Sending Customer",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_txn_001",
+      "source_name": "Completed Transfer Transaction",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006_fa_001",
+      "source_name": "Unauthorized Transfer Dispute Escalation",
+      "target_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "target_name": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0742b-8524-77fa-82d5-14970cde8c21_006",
+      "doc_id": "01a0742b-8524-77fa-82d5-14970cde8c21",
+      "_domain": "banking.communications"
+    }
+  ]
+}

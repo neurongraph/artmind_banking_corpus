@@ -1,0 +1,887 @@
+{
+  "chunk_seq": 4,
+  "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+  "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+  "text": "## Process Overview  \n```\nCustomer Application Received\n↓\nStep 1: Initiate Screening\n↓\nStep 2: Screen Against Lists\n↓\nStep 3: Assess Match (if found)\n↓\n├─ No Match: Proceed ✅\n└─ Match Found: Manual Review 🔍\n↓\nStep 4: Record Results\n↓\nStep 5: Hit Handling (if applicable)\n↓\n✅ AML Screening Complete\n```  \n**Timeline:** <5 minutes (automated), 1–24 hours (manual review if hit)  \n---",
+  "name": "Chunk 4/23",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_003",
+  "next_chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_005",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "AML Screening Process",
+      "aliases": [
+        "AML Screening",
+        "Anti-Money Laundering Screening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "aml_screening",
+      "description": "End-to-end anti-money laundering screening workflow triggered upon customer application receipt. The process includes automated list screening, match assessment, manual review escalation if hits are found, and results recording. Timeline ranges from under 5 minutes for automated screening to 1–24 hours for manual review of flagged matches.",
+      "context": [
+        "Customer Application Received",
+        "Step 1: Initiate Screening",
+        "Step 2: Screen Against Lists",
+        "Timeline: <5 minutes (automated), 1–24 hours (manual review if hit)"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Initiate Screening",
+      "aliases": [
+        "Step 1"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "First step in the AML screening process where customer application data is prepared and screening is initiated against regulatory lists.",
+      "context": [
+        "Step 1: Initiate Screening"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Screen Against Lists",
+      "aliases": [
+        "Step 2"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "aml_screening",
+      "description": "Automated screening of customer data against sanctions, PEP, and other regulatory watchlists to identify potential matches.",
+      "context": [
+        "Step 2: Screen Against Lists"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Assess Match",
+      "aliases": [
+        "Step 3"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Evaluation of screening results to determine whether a match has been identified against regulatory lists. This step branches the workflow based on match outcome.",
+      "context": [
+        "Step 3: Assess Match (if found)"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Record Results",
+      "aliases": [
+        "Step 4"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Documentation and recording of AML screening results in the system for audit and compliance purposes.",
+      "context": [
+        "Step 4: Record Results"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Hit Handling",
+      "aliases": [
+        "Step 5"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation_procedure",
+      "description": "Execution of defined procedures when a match (hit) is identified during screening, including manual review and escalation protocols.",
+      "context": [
+        "Step 5: Hit Handling (if applicable)"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Match Found Decision",
+      "aliases": [
+        "Match Assessment Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Branching decision point following match assessment. If no match is found, screening proceeds to completion. If a match is found, the workflow escalates to manual review.",
+      "context": [
+        "├─ No Match: Proceed ✅",
+        "└─ Match Found: Manual Review 🔍"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "Sanctions and PEP List Screening",
+      "aliases": [
+        "List Screening",
+        "Regulatory List Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Automated and manual screening of customer application data against sanctions lists and Politically Exposed Person (PEP) registers as part of the AML screening process.",
+      "context": [
+        "Step 2: Screen Against Lists",
+        "Step 3: Assess Match (if found)"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "AML Screening Compliance Gate",
+      "aliases": [
+        "AML Compliance Checkpoint"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory regulatory compliance gate that verifies completion of AML screening before customer application can proceed. Results must be recorded and any hits escalated for manual review.",
+      "context": [
+        "✅ AML Screening Complete",
+        "Step 4: Record Results"
+      ]
+    },
+    {
+      "id": "customer_001",
+      "name": "Applicant Customer",
+      "aliases": [
+        "Customer",
+        "Applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "applicant",
+      "description": "The individual or entity submitting an application that triggers the AML screening process. The customer's data is screened against regulatory lists as part of onboarding compliance.",
+      "context": [
+        "Customer Application Received"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_proc_001",
+    "pstep_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_001",
+    "pstep_002": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_002",
+    "pstep_003": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_003",
+    "pstep_004": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_004",
+    "pstep_005": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_005",
+    "dp_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_dp_001",
+    "aml_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_aml_001",
+    "cc_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_cc_001",
+    "customer_001": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_customer_001"
+  },
+  "entities": [
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_proc_001",
+      "name": "AML Screening Process",
+      "aliases": [
+        "AML Screening",
+        "Anti-Money Laundering Screening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "aml_screening",
+      "description": "End-to-end anti-money laundering screening workflow triggered upon customer application receipt. The process includes automated list screening, match assessment, manual review escalation if hits are found, and results recording. Timeline ranges from under 5 minutes for automated screening to 1–24 hours for manual review of flagged matches.",
+      "context": [
+        "Customer Application Received",
+        "Step 1: Initiate Screening",
+        "Step 2: Screen Against Lists",
+        "Timeline: <5 minutes (automated), 1–24 hours (manual review if hit)"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_001",
+      "name": "Initiate Screening",
+      "aliases": [
+        "Step 1"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "First step in the AML screening process where customer application data is prepared and screening is initiated against regulatory lists.",
+      "context": [
+        "Step 1: Initiate Screening"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_002",
+      "name": "Screen Against Lists",
+      "aliases": [
+        "Step 2"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "aml_screening",
+      "description": "Automated screening of customer data against sanctions, PEP, and other regulatory watchlists to identify potential matches.",
+      "context": [
+        "Step 2: Screen Against Lists"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_003",
+      "name": "Assess Match",
+      "aliases": [
+        "Step 3"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Evaluation of screening results to determine whether a match has been identified against regulatory lists. This step branches the workflow based on match outcome.",
+      "context": [
+        "Step 3: Assess Match (if found)"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_004",
+      "name": "Record Results",
+      "aliases": [
+        "Step 4"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Documentation and recording of AML screening results in the system for audit and compliance purposes.",
+      "context": [
+        "Step 4: Record Results"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_005",
+      "name": "Hit Handling",
+      "aliases": [
+        "Step 5"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation_procedure",
+      "description": "Execution of defined procedures when a match (hit) is identified during screening, including manual review and escalation protocols.",
+      "context": [
+        "Step 5: Hit Handling (if applicable)"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_dp_001",
+      "name": "Match Found Decision",
+      "aliases": [
+        "Match Assessment Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Branching decision point following match assessment. If no match is found, screening proceeds to completion. If a match is found, the workflow escalates to manual review.",
+      "context": [
+        "├─ No Match: Proceed ✅",
+        "└─ Match Found: Manual Review 🔍"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_aml_001",
+      "name": "Sanctions and PEP List Screening",
+      "aliases": [
+        "List Screening",
+        "Regulatory List Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Automated and manual screening of customer application data against sanctions lists and Politically Exposed Person (PEP) registers as part of the AML screening process.",
+      "context": [
+        "Step 2: Screen Against Lists",
+        "Step 3: Assess Match (if found)"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_cc_001",
+      "name": "AML Screening Compliance Gate",
+      "aliases": [
+        "AML Compliance Checkpoint"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory regulatory compliance gate that verifies completion of AML screening before customer application can proceed. Results must be recorded and any hits escalated for manual review.",
+      "context": [
+        "✅ AML Screening Complete",
+        "Step 4: Record Results"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_customer_001",
+      "name": "Applicant Customer",
+      "aliases": [
+        "Customer",
+        "Applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "applicant",
+      "description": "The individual or entity submitting an application that triggers the AML screening process. The customer's data is screened against regulatory lists as part of onboarding compliance.",
+      "context": [
+        "Customer Application Received"
+      ],
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_proc_001",
+      "name": "AML Screening Process",
+      "properties": {
+        "purpose": "Screen customer applications against sanctions and PEP lists to identify and manage AML risks",
+        "scope": "All customer applications",
+        "channels": [
+          "system",
+          "manual"
+        ],
+        "owner": "Compliance",
+        "departments_involved": [
+          "Compliance",
+          "Operations"
+        ],
+        "timeline_sla": "5 minutes automated; 1–24 hours manual review if hit",
+        "regulatory_references": [
+          "MLR 2017",
+          "FCA COBS"
+        ],
+        "trigger": "Customer application received",
+        "outcome_success": "Application screened, results recorded, no match or hit appropriately escalated",
+        "outcome_failure": "Screening incomplete or results not recorded"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_001",
+      "name": "Initiate Screening",
+      "properties": {
+        "step_number": 1,
+        "actor": "System",
+        "input": "Customer application data",
+        "output": "Screening session initiated",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "AML screening system"
+        ]
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_002",
+      "name": "Screen Against Lists",
+      "properties": {
+        "step_number": 2,
+        "actor": "System",
+        "input": "Customer name, date of birth, nationality, address",
+        "output": "Match results (hit or no match)",
+        "estimated_duration": "< 5 minutes",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "AML screening system",
+          "Sanctions lists",
+          "PEP lists"
+        ]
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_003",
+      "name": "Assess Match",
+      "properties": {
+        "step_number": 3,
+        "actor": "System",
+        "input": "Screening results",
+        "output": "Match assessment (confirmed match or false positive)",
+        "channel": "system",
+        "mandatory": true,
+        "failure_path": "Escalate to manual review if match found"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_004",
+      "name": "Record Results",
+      "properties": {
+        "step_number": 4,
+        "actor": "System",
+        "input": "Screening assessment outcome",
+        "output": "Screening results recorded in compliance system",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Compliance system"
+        ]
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_005",
+      "name": "Hit Handling",
+      "properties": {
+        "step_number": 5,
+        "actor": "Compliance Officer",
+        "input": "Confirmed match or hit alert",
+        "output": "Hit investigation report, escalation decision",
+        "estimated_duration": "1–24 hours",
+        "channel": "manual",
+        "mandatory": false,
+        "failure_path": "Escalate to senior compliance management"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_dp_001",
+      "name": "Match Found Decision",
+      "properties": {
+        "decision_question": "Does the screening result indicate a match against sanctions or PEP lists?",
+        "criteria": "System match score and manual review assessment",
+        "decision_maker": "System (automated); Compliance Officer (manual review)",
+        "path_yes": "Proceed to Hit Handling (Step 5)",
+        "path_no": "Proceed to Record Results (Step 4)",
+        "override_possible": true
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_aml_001",
+      "name": "Sanctions and PEP List Screening",
+      "properties": {
+        "mandatory": true,
+        "screening_list_scope": [
+          "Sanctions lists",
+          "PEP lists"
+        ],
+        "hit_or_match_response": "Manual review and escalation",
+        "regulatory_basis": [
+          "MLR 2017",
+          "FCA COBS"
+        ]
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_cc_001",
+      "name": "AML Screening Compliance Gate",
+      "properties": {
+        "checkpoint_name": "AML Screening Compliance Gate",
+        "regulatory_basis": [
+          "MLR 2017",
+          "FCA COBS"
+        ],
+        "mandatory": true,
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "Screening results",
+          "Hit investigation report (if applicable)"
+        ],
+        "performed_by": "Compliance Officer",
+        "timing": "Upon customer application receipt",
+        "failure_consequence": "Application blocked; escalation to senior management"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_customer_001",
+      "name": "Applicant Customer",
+      "properties": {
+        "customer_type": "new",
+        "context_role": "Subject of AML screening during application process"
+      },
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_proc_001",
+      "source_name": "AML Screening Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_001",
+      "target_name": "Initiate Screening",
+      "rel_type": "starts_with",
+      "description": "AML Screening Process begins with the Initiate Screening step",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Step 1: Initiate Screening",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_proc_001",
+      "source_name": "AML Screening Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_002",
+      "target_name": "Screen Against Lists",
+      "rel_type": "contains",
+      "description": "AML Screening Process includes the Screen Against Lists step",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Step 2: Screen Against Lists",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_proc_001",
+      "source_name": "AML Screening Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_003",
+      "target_name": "Assess Match",
+      "rel_type": "contains",
+      "description": "AML Screening Process includes the Assess Match step",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Step 3: Assess Match (if found)",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_proc_001",
+      "source_name": "AML Screening Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_004",
+      "target_name": "Record Results",
+      "rel_type": "contains",
+      "description": "AML Screening Process includes the Record Results step",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "Step 4: Record Results",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_proc_001",
+      "source_name": "AML Screening Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_005",
+      "target_name": "Hit Handling",
+      "rel_type": "includes_optional",
+      "description": "AML Screening Process optionally includes Hit Handling step if applicable",
+      "properties": {
+        "sequence_position": 5,
+        "conditional": true
+      },
+      "context": "Step 5: Hit Handling (if applicable)",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_proc_001",
+      "source_name": "AML Screening Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_dp_001",
+      "target_name": "Match Found Decision",
+      "rel_type": "branches_at",
+      "description": "AML Screening Process branches at the Match Found Decision point",
+      "properties": {
+        "decision_outcomes": [
+          "No Match: Proceed",
+          "Match Found: Manual Review"
+        ]
+      },
+      "context": "├─ No Match: Proceed ✅\n└─ Match Found: Manual Review 🔍",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_proc_001",
+      "source_name": "AML Screening Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_cc_001",
+      "target_name": "AML Screening Compliance Gate",
+      "rel_type": "mandated_to_include",
+      "description": "AML Screening Process is mandated to include AML Screening Compliance Gate",
+      "properties": {},
+      "context": "AML Screening Complete",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_proc_001",
+      "source_name": "AML Screening Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_customer_001",
+      "target_name": "Applicant Customer",
+      "rel_type": "operates_on",
+      "description": "AML Screening Process operates on the Applicant Customer",
+      "properties": {},
+      "context": "Customer Application Received",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_001",
+      "source_name": "Initiate Screening",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_002",
+      "target_name": "Screen Against Lists",
+      "rel_type": "followed_by",
+      "description": "Initiate Screening is followed by Screen Against Lists",
+      "properties": {
+        "sequence": "1→2"
+      },
+      "context": "Step 1: Initiate Screening\n↓\nStep 2: Screen Against Lists",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_002",
+      "source_name": "Screen Against Lists",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_003",
+      "target_name": "Assess Match",
+      "rel_type": "followed_by",
+      "description": "Screen Against Lists is followed by Assess Match",
+      "properties": {
+        "sequence": "2→3"
+      },
+      "context": "Step 2: Screen Against Lists\n↓\nStep 3: Assess Match (if found)",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_003",
+      "source_name": "Assess Match",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_dp_001",
+      "target_name": "Match Found Decision",
+      "rel_type": "leads_to",
+      "description": "Assess Match step leads to Match Found Decision point",
+      "properties": {},
+      "context": "Step 3: Assess Match (if found)\n↓\n├─ No Match: Proceed ✅\n└─ Match Found: Manual Review 🔍",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_dp_001",
+      "source_name": "Match Found Decision",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_004",
+      "target_name": "Record Results",
+      "rel_type": "routes_to_on_pass",
+      "description": "Match Found Decision routes to Record Results on no match outcome",
+      "properties": {
+        "outcome": "No Match: Proceed"
+      },
+      "context": "├─ No Match: Proceed ✅\n↓\nStep 4: Record Results",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_dp_001",
+      "source_name": "Match Found Decision",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_005",
+      "target_name": "Hit Handling",
+      "rel_type": "routes_to_on_fail",
+      "description": "Match Found Decision routes to Hit Handling on match found outcome",
+      "properties": {
+        "outcome": "Match Found: Manual Review"
+      },
+      "context": "└─ Match Found: Manual Review 🔍\n↓\nStep 5: Hit Handling (if applicable)",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_004",
+      "source_name": "Record Results",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_005",
+      "target_name": "Hit Handling",
+      "rel_type": "followed_by",
+      "description": "Record Results is followed by Hit Handling",
+      "properties": {
+        "sequence": "4→5",
+        "conditional": true
+      },
+      "context": "Step 4: Record Results\n↓\nStep 5: Hit Handling (if applicable)",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_004",
+      "source_name": "Record Results",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_aml_001",
+      "target_name": "Sanctions and PEP List Screening",
+      "rel_type": "records_result_of",
+      "description": "Record Results step records the outcome of Sanctions and PEP List Screening",
+      "properties": {},
+      "context": "Step 4: Record Results",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_002",
+      "source_name": "Screen Against Lists",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_aml_001",
+      "target_name": "Sanctions and PEP List Screening",
+      "rel_type": "executes",
+      "description": "Screen Against Lists step executes Sanctions and PEP List Screening",
+      "properties": {},
+      "context": "Step 2: Screen Against Lists",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_cc_001",
+      "source_name": "AML Screening Compliance Gate",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_dp_001",
+      "target_name": "Match Found Decision",
+      "rel_type": "gates",
+      "description": "AML Screening Compliance Gate gates the Match Found Decision",
+      "properties": {},
+      "context": "AML Screening Complete",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_aml_001",
+      "source_name": "Sanctions and PEP List Screening",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_customer_001",
+      "target_name": "Applicant Customer",
+      "rel_type": "applied_to",
+      "description": "Sanctions and PEP List Screening is applied to the Applicant Customer",
+      "properties": {},
+      "context": "Customer Application Received",
+      "bidirectional": false,
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_proc_001",
+      "source_name": "AML Screening Process",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_001",
+      "source_name": "Initiate Screening",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_002",
+      "source_name": "Screen Against Lists",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_003",
+      "source_name": "Assess Match",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_004",
+      "source_name": "Record Results",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_pstep_005",
+      "source_name": "Hit Handling",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_dp_001",
+      "source_name": "Match Found Decision",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_aml_001",
+      "source_name": "Sanctions and PEP List Screening",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_cc_001",
+      "source_name": "AML Screening Compliance Gate",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004_customer_001",
+      "source_name": "Applicant Customer",
+      "target_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "target_name": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b_004",
+      "doc_id": "01a073fa-10a8-74b7-8f60-f259dc35b09b",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

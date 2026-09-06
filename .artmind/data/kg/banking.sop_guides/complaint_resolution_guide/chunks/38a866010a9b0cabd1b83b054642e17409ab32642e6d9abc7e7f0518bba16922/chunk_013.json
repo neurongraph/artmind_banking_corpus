@@ -1,0 +1,953 @@
+{
+  "chunk_seq": 13,
+  "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+  "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+  "text": "## Common Complaint Scenarios & Resolutions  \n### Scenario 1: Failed Transfer (Not Refunded)  \n**Your Issue:** \"I tried to transfer £500 but it failed. Money was taken from my account.\"  \n**What We Investigate:**\n- Did the transfer actually complete or fail?\n- If failed, was the money debited or not?\n- Why did it fail?  \n**Possible Outcomes:**\n- **Authorized:** No fee charged (system error); refund + interest\n- **Insufficient funds:** Explain why it failed; no refund\n- **Invalid recipient:** Explain error; refund if our fault  \n**Typical Resolution Time:** 2–3 business days  \n---",
+  "name": "Chunk 13/27",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_012",
+  "next_chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_014",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Failed Transfer Complaint Resolution",
+      "aliases": [
+        "Transfer Failure Investigation",
+        "Scenario 1"
+      ],
+      "entity_class": "PROCESS",
+      "type": "complaint_resolution",
+      "description": "End-to-end procedure for investigating and resolving customer complaints where a transfer transaction failed but funds were debited from the customer's account. The process determines whether the transfer completed, identifies the failure reason, and determines appropriate remediation including refunds and interest.",
+      "context": [
+        "I tried to transfer £500 but it failed. Money was taken from my account.",
+        "Did the transfer actually complete or fail? If failed, was the money debited or not?",
+        "Typical Resolution Time: 2–3 business days"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Transfer Completion Status Verification",
+      "aliases": [
+        "Verify transfer completion"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Initial investigative step to determine whether the transfer transaction actually completed or genuinely failed in the system.",
+      "context": [
+        "Did the transfer actually complete or fail?"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Fund Debit Status Check",
+      "aliases": [
+        "Verify money debited"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Investigative step to confirm whether funds were actually debited from the customer's account despite the transfer failure.",
+      "context": [
+        "If failed, was the money debited or not?"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Transfer Failure Root Cause Analysis",
+      "aliases": [
+        "Identify failure reason"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Investigative step to determine the underlying reason why the transfer failed, including system errors, insufficient funds, or invalid recipient details.",
+      "context": [
+        "Why did it fail?"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Transfer Failure Outcome Classification",
+      "aliases": [
+        "Failure reason gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Decision gate that branches the resolution path based on the root cause of the transfer failure: system error (authorized), insufficient funds, or invalid recipient.",
+      "context": [
+        "Authorized: No fee charged (system error); refund + interest",
+        "Insufficient funds: Explain why it failed; no refund",
+        "Invalid recipient: Explain error; refund if our fault"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "System Error Determination",
+      "aliases": [
+        "Authorized failure check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision point to determine if the transfer failure was caused by a system error on the bank's side, triggering refund and interest compensation.",
+      "context": [
+        "Authorized: No fee charged (system error); refund + interest"
+      ]
+    },
+    {
+      "id": "dp_003",
+      "name": "Insufficient Funds Verification",
+      "aliases": [
+        "Funds availability check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision point to verify whether the transfer failed due to insufficient available funds in the customer's account, resulting in no refund.",
+      "context": [
+        "Insufficient funds: Explain why it failed; no refund"
+      ]
+    },
+    {
+      "id": "dp_004",
+      "name": "Invalid Recipient Determination",
+      "aliases": [
+        "Recipient validity check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision point to determine if the transfer failed due to invalid recipient details, with refund issued only if the error was the bank's responsibility.",
+      "context": [
+        "Invalid recipient: Explain error; refund if our fault"
+      ]
+    },
+    {
+      "id": "ract_001",
+      "name": "Complaint Investigation Team",
+      "aliases": [
+        "Investigation staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations team responsible for investigating the failed transfer complaint, verifying transaction status, identifying root causes, and determining appropriate resolution.",
+      "context": [
+        "What We Investigate:",
+        "Did the transfer actually complete or fail?"
+      ]
+    },
+    {
+      "id": "txn_001",
+      "name": "Failed Transfer Transaction £500",
+      "aliases": [
+        "Transfer failure event"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "The failed transfer transaction of £500 that was debited from the customer's account despite not completing successfully, forming the basis of the complaint.",
+      "context": [
+        "I tried to transfer £500 but it failed. Money was taken from my account."
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Complaining Customer",
+      "aliases": [
+        "Customer",
+        "Account holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The customer who initiated the failed transfer and filed a complaint regarding the debit of funds without successful transfer completion.",
+      "context": [
+        "I tried to transfer £500 but it failed. Money was taken from my account."
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_proc_001",
+    "pstep_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_001",
+    "pstep_002": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_002",
+    "pstep_003": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_003",
+    "dp_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_001",
+    "dp_002": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_002",
+    "dp_003": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_003",
+    "dp_004": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_004",
+    "ract_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_ract_001",
+    "txn_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_txn_001",
+    "cust_001": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_proc_001",
+      "name": "Failed Transfer Complaint Resolution",
+      "aliases": [
+        "Transfer Failure Investigation",
+        "Scenario 1"
+      ],
+      "entity_class": "PROCESS",
+      "type": "complaint_resolution",
+      "description": "End-to-end procedure for investigating and resolving customer complaints where a transfer transaction failed but funds were debited from the customer's account. The process determines whether the transfer completed, identifies the failure reason, and determines appropriate remediation including refunds and interest.",
+      "context": [
+        "I tried to transfer £500 but it failed. Money was taken from my account.",
+        "Did the transfer actually complete or fail? If failed, was the money debited or not?",
+        "Typical Resolution Time: 2–3 business days"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_001",
+      "name": "Transfer Completion Status Verification",
+      "aliases": [
+        "Verify transfer completion"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Initial investigative step to determine whether the transfer transaction actually completed or genuinely failed in the system.",
+      "context": [
+        "Did the transfer actually complete or fail?"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_002",
+      "name": "Fund Debit Status Check",
+      "aliases": [
+        "Verify money debited"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Investigative step to confirm whether funds were actually debited from the customer's account despite the transfer failure.",
+      "context": [
+        "If failed, was the money debited or not?"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_003",
+      "name": "Transfer Failure Root Cause Analysis",
+      "aliases": [
+        "Identify failure reason"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Investigative step to determine the underlying reason why the transfer failed, including system errors, insufficient funds, or invalid recipient details.",
+      "context": [
+        "Why did it fail?"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_001",
+      "name": "Transfer Failure Outcome Classification",
+      "aliases": [
+        "Failure reason gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Decision gate that branches the resolution path based on the root cause of the transfer failure: system error (authorized), insufficient funds, or invalid recipient.",
+      "context": [
+        "Authorized: No fee charged (system error); refund + interest",
+        "Insufficient funds: Explain why it failed; no refund",
+        "Invalid recipient: Explain error; refund if our fault"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_002",
+      "name": "System Error Determination",
+      "aliases": [
+        "Authorized failure check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision point to determine if the transfer failure was caused by a system error on the bank's side, triggering refund and interest compensation.",
+      "context": [
+        "Authorized: No fee charged (system error); refund + interest"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_003",
+      "name": "Insufficient Funds Verification",
+      "aliases": [
+        "Funds availability check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision point to verify whether the transfer failed due to insufficient available funds in the customer's account, resulting in no refund.",
+      "context": [
+        "Insufficient funds: Explain why it failed; no refund"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_004",
+      "name": "Invalid Recipient Determination",
+      "aliases": [
+        "Recipient validity check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision point to determine if the transfer failed due to invalid recipient details, with refund issued only if the error was the bank's responsibility.",
+      "context": [
+        "Invalid recipient: Explain error; refund if our fault"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_ract_001",
+      "name": "Complaint Investigation Team",
+      "aliases": [
+        "Investigation staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations team responsible for investigating the failed transfer complaint, verifying transaction status, identifying root causes, and determining appropriate resolution.",
+      "context": [
+        "What We Investigate:",
+        "Did the transfer actually complete or fail?"
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_txn_001",
+      "name": "Failed Transfer Transaction £500",
+      "aliases": [
+        "Transfer failure event"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "The failed transfer transaction of £500 that was debited from the customer's account despite not completing successfully, forming the basis of the complaint.",
+      "context": [
+        "I tried to transfer £500 but it failed. Money was taken from my account."
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_cust_001",
+      "name": "Complaining Customer",
+      "aliases": [
+        "Customer",
+        "Account holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The customer who initiated the failed transfer and filed a complaint regarding the debit of funds without successful transfer completion.",
+      "context": [
+        "I tried to transfer £500 but it failed. Money was taken from my account."
+      ],
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_proc_001",
+      "name": "Failed Transfer Complaint Resolution",
+      "properties": {
+        "purpose": "Investigate and resolve complaints where a transfer failed but funds were debited from the customer's account",
+        "scope": "Failed transfer transactions where money was taken from account",
+        "channels": [
+          "branch",
+          "online"
+        ],
+        "departments_involved": [
+          "Complaints",
+          "Operations",
+          "Finance"
+        ],
+        "timeline_sla": "2–3 business days",
+        "trigger": "Customer complaint that transfer failed but funds were debited",
+        "outcome_success": "Root cause identified and appropriate resolution applied (refund with interest, explanation, or refund if bank error)",
+        "outcome_failure": "Complaint unresolved within SLA; escalation required"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_001",
+      "name": "Transfer Completion Status Verification",
+      "properties": {
+        "step_number": 1,
+        "actor": "Complaint Investigation Team",
+        "input": "Transfer reference, transaction date, amount (£500)",
+        "output": "Confirmation of whether transfer completed or failed",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Payment system",
+          "Transaction ledger"
+        ],
+        "failure_path": "If status cannot be determined, escalate to Operations"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_002",
+      "name": "Fund Debit Status Check",
+      "properties": {
+        "step_number": 2,
+        "actor": "Complaint Investigation Team",
+        "input": "Account transaction history, transfer reference",
+        "output": "Confirmation of whether funds were debited from customer account",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account ledger",
+          "Transaction system"
+        ],
+        "failure_path": "If debit status unclear, request manual account audit"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_003",
+      "name": "Transfer Failure Root Cause Analysis",
+      "properties": {
+        "step_number": 3,
+        "actor": "Complaint Investigation Team",
+        "input": "Transfer completion status, debit status, transfer details",
+        "output": "Root cause classification (system error, insufficient funds, invalid recipient, or other)",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Payment system logs",
+          "Error tracking system"
+        ],
+        "failure_path": "If cause cannot be determined, escalate to technical team"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_001",
+      "name": "Transfer Failure Outcome Classification",
+      "properties": {
+        "decision_question": "What is the root cause of the transfer failure?",
+        "criteria": [
+          "System error",
+          "Insufficient funds",
+          "Invalid recipient",
+          "Other"
+        ],
+        "decision_maker": "Complaint Investigation Team",
+        "path_yes": "Proceed to appropriate resolution path based on classification",
+        "path_no": "Escalate for further investigation"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_002",
+      "name": "System Error Determination",
+      "properties": {
+        "decision_question": "Was the transfer failure caused by a system error on the bank's side?",
+        "criteria": "System logs show error; no customer-side issue identified",
+        "decision_maker": "Complaint Investigation Team",
+        "path_yes": "Refund full amount plus interest; no fee charged",
+        "path_no": "Proceed to next decision point"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_003",
+      "name": "Insufficient Funds Verification",
+      "properties": {
+        "decision_question": "Did the transfer fail due to insufficient funds in the customer's account?",
+        "criteria": "Account balance at time of transfer was below transfer amount",
+        "decision_maker": "Complaint Investigation Team",
+        "path_yes": "Explain failure reason to customer; no refund",
+        "path_no": "Proceed to next decision point"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_004",
+      "name": "Invalid Recipient Determination",
+      "properties": {
+        "decision_question": "Was the transfer failure due to an invalid recipient?",
+        "criteria": "Recipient details (account number, sort code, or name) were incorrect or unrecognized",
+        "decision_maker": "Complaint Investigation Team",
+        "path_yes": "Explain error to customer; refund if bank error in validation",
+        "path_no": "Classify as other cause and escalate"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_ract_001",
+      "name": "Complaint Investigation Team",
+      "properties": {
+        "role_type": "human",
+        "department": "Complaints",
+        "authority_level": "Investigation and resolution authority for failed transfer complaints",
+        "channels": [
+          "system",
+          "email",
+          "branch"
+        ],
+        "response_time_sla": "2–3 business days"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_txn_001",
+      "name": "Failed Transfer Transaction £500",
+      "properties": {
+        "transaction_type": "transfer",
+        "threshold_value": 500,
+        "monitoring_or_reporting_obligation": "Complaint investigation required; root cause analysis mandatory"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_cust_001",
+      "name": "Complaining Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Complainant reporting failed transfer with funds debited",
+        "eligibility_or_verification_status": "Complaint received and under investigation"
+      },
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_proc_001",
+      "source_name": "Failed Transfer Complaint Resolution",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_001",
+      "target_name": "Transfer Completion Status Verification",
+      "rel_type": "contains",
+      "description": "The complaint resolution process includes the step of verifying transfer completion status",
+      "properties": {
+        "sequence_position": 1,
+        "mandatory": true
+      },
+      "context": "What We Investigate: Did the transfer actually complete or fail?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_001",
+      "source_name": "Transfer Completion Status Verification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_002",
+      "target_name": "Fund Debit Status Check",
+      "rel_type": "followed_by",
+      "description": "Transfer completion verification is followed by checking fund debit status",
+      "properties": {
+        "sequence": "step 1 to step 2"
+      },
+      "context": "What We Investigate: Did the transfer actually complete or fail? If failed, was the money debited or not?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_002",
+      "source_name": "Fund Debit Status Check",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_003",
+      "target_name": "Transfer Failure Root Cause Analysis",
+      "rel_type": "followed_by",
+      "description": "Fund debit status check is followed by analyzing the root cause of transfer failure",
+      "properties": {
+        "sequence": "step 2 to step 3"
+      },
+      "context": "If failed, was the money debited or not? Why did it fail?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_001",
+      "source_name": "Transfer Completion Status Verification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_001",
+      "target_name": "Transfer Failure Outcome Classification",
+      "rel_type": "leads_to",
+      "description": "Transfer completion verification leads to classifying the failure outcome",
+      "properties": {
+        "decision_trigger": "completion status result"
+      },
+      "context": "What We Investigate: Did the transfer actually complete or fail?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_002",
+      "source_name": "Fund Debit Status Check",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_001",
+      "target_name": "Transfer Failure Outcome Classification",
+      "rel_type": "leads_to",
+      "description": "Fund debit status check leads to classifying the failure outcome",
+      "properties": {
+        "decision_trigger": "debit status result"
+      },
+      "context": "If failed, was the money debited or not?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_003",
+      "source_name": "Transfer Failure Root Cause Analysis",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_002",
+      "target_name": "System Error Determination",
+      "rel_type": "leads_to",
+      "description": "Root cause analysis leads to determining if a system error occurred",
+      "properties": {
+        "decision_trigger": "root cause findings"
+      },
+      "context": "Why did it fail? Possible Outcomes: Authorized: No fee charged (system error)",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_003",
+      "source_name": "Transfer Failure Root Cause Analysis",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_003",
+      "target_name": "Insufficient Funds Verification",
+      "rel_type": "leads_to",
+      "description": "Root cause analysis leads to verifying if insufficient funds caused the failure",
+      "properties": {
+        "decision_trigger": "root cause findings"
+      },
+      "context": "Why did it fail? Possible Outcomes: Insufficient funds: Explain why it failed",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_003",
+      "source_name": "Transfer Failure Root Cause Analysis",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_004",
+      "target_name": "Invalid Recipient Determination",
+      "rel_type": "leads_to",
+      "description": "Root cause analysis leads to determining if invalid recipient caused the failure",
+      "properties": {
+        "decision_trigger": "root cause findings"
+      },
+      "context": "Why did it fail? Possible Outcomes: Invalid recipient: Explain error",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_001",
+      "source_name": "Transfer Failure Outcome Classification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_002",
+      "target_name": "System Error Determination",
+      "rel_type": "routes_to_on_pass",
+      "description": "Transfer failure outcome classification routes to system error determination as one possible path",
+      "properties": {
+        "condition": "failure confirmed"
+      },
+      "context": "Possible Outcomes: Authorized: No fee charged (system error)",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_001",
+      "source_name": "Transfer Failure Outcome Classification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_003",
+      "target_name": "Insufficient Funds Verification",
+      "rel_type": "routes_to_on_pass",
+      "description": "Transfer failure outcome classification routes to insufficient funds verification as one possible path",
+      "properties": {
+        "condition": "failure confirmed"
+      },
+      "context": "Possible Outcomes: Insufficient funds: Explain why it failed",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_001",
+      "source_name": "Transfer Failure Outcome Classification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_004",
+      "target_name": "Invalid Recipient Determination",
+      "rel_type": "routes_to_on_pass",
+      "description": "Transfer failure outcome classification routes to invalid recipient determination as one possible path",
+      "properties": {
+        "condition": "failure confirmed"
+      },
+      "context": "Possible Outcomes: Invalid recipient: Explain error",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_001",
+      "source_name": "Transfer Completion Status Verification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_ract_001",
+      "target_name": "Complaint Investigation Team",
+      "rel_type": "performed_by",
+      "description": "Transfer completion status verification is performed by the complaint investigation team",
+      "properties": {
+        "responsibility": "investigation"
+      },
+      "context": "What We Investigate: Did the transfer actually complete or fail?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_002",
+      "source_name": "Fund Debit Status Check",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_ract_001",
+      "target_name": "Complaint Investigation Team",
+      "rel_type": "performed_by",
+      "description": "Fund debit status check is performed by the complaint investigation team",
+      "properties": {
+        "responsibility": "investigation"
+      },
+      "context": "What We Investigate: If failed, was the money debited or not?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_003",
+      "source_name": "Transfer Failure Root Cause Analysis",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_ract_001",
+      "target_name": "Complaint Investigation Team",
+      "rel_type": "performed_by",
+      "description": "Transfer failure root cause analysis is performed by the complaint investigation team",
+      "properties": {
+        "responsibility": "investigation"
+      },
+      "context": "What We Investigate: Why did it fail?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_proc_001",
+      "source_name": "Failed Transfer Complaint Resolution",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_txn_001",
+      "target_name": "Failed Transfer Transaction £500",
+      "rel_type": "operates_on",
+      "description": "The complaint resolution process operates on the failed transfer transaction",
+      "properties": {
+        "transaction_amount": "£500",
+        "transaction_status": "failed"
+      },
+      "context": "I tried to transfer £500 but it failed. Money was taken from my account.",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_proc_001",
+      "source_name": "Failed Transfer Complaint Resolution",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_cust_001",
+      "target_name": "Complaining Customer",
+      "rel_type": "processes_application_of",
+      "description": "The complaint resolution process processes the complaint application of the customer",
+      "properties": {
+        "complaint_type": "failed transfer"
+      },
+      "context": "Your Issue: I tried to transfer £500 but it failed. Money was taken from my account.",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_txn_001",
+      "source_name": "Failed Transfer Transaction £500",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_cust_001",
+      "target_name": "Complaining Customer",
+      "rel_type": "belongs_to",
+      "description": "The failed transfer transaction belongs to the complaining customer",
+      "properties": {
+        "amount": "£500",
+        "status": "failed"
+      },
+      "context": "I tried to transfer £500 but it failed. Money was taken from my account.",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_proc_001",
+      "source_name": "Failed Transfer Complaint Resolution",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_001",
+      "target_name": "Transfer Failure Outcome Classification",
+      "rel_type": "branches_at",
+      "description": "The complaint resolution process branches at the transfer failure outcome classification decision point",
+      "properties": {
+        "branches_to": [
+          "system error path",
+          "insufficient funds path",
+          "invalid recipient path"
+        ]
+      },
+      "context": "Possible Outcomes: Authorized, Insufficient funds, Invalid recipient",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_proc_001",
+      "source_name": "Failed Transfer Complaint Resolution",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_ract_001",
+      "target_name": "Complaint Investigation Team",
+      "rel_type": "executed_by",
+      "description": "The complaint resolution process is executed by the complaint investigation team",
+      "properties": {
+        "responsibility": "full process execution"
+      },
+      "context": "What We Investigate: Did the transfer actually complete or fail?",
+      "bidirectional": false,
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_proc_001",
+      "source_name": "Failed Transfer Complaint Resolution",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_001",
+      "source_name": "Transfer Completion Status Verification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_002",
+      "source_name": "Fund Debit Status Check",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_pstep_003",
+      "source_name": "Transfer Failure Root Cause Analysis",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_001",
+      "source_name": "Transfer Failure Outcome Classification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_002",
+      "source_name": "System Error Determination",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_003",
+      "source_name": "Insufficient Funds Verification",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_dp_004",
+      "source_name": "Invalid Recipient Determination",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_ract_001",
+      "source_name": "Complaint Investigation Team",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_txn_001",
+      "source_name": "Failed Transfer Transaction £500",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013_cust_001",
+      "source_name": "Complaining Customer",
+      "target_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "target_name": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d_013",
+      "doc_id": "01a072c3-f5d5-70a6-87c4-83feee0f2b0d",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

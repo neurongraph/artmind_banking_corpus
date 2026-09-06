@@ -1,0 +1,385 @@
+{
+  "chunk_seq": 4,
+  "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+  "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+  "text": "### During Business Hours (09:00–17:00)  \n**Hourly Checks (5 minutes each):**  \n- [ ] **API Gateway Health** — Monitor Kong gateway\n- Command: `kong health --yaml | grep status`\n- Expected: All services responding <100ms  \n- [ ] **Database Connection Pool** — Check PostgreSQL connections\n- Command: `psql -U postgres -c \"SELECT datname, count(*) FROM pg_stat_activity GROUP BY datname;\"`\n- Expected: <80% of max connections (200/250)  \n- [ ] **Transaction Processing Rate** — Monitor throughput\n- Command: `tail -f /var/log/pps/transactions.log | grep -c \"SUCCESS\" | head -1`\n- Expected: 2–5 transactions/minute during business hours  \n**Issue Found?** → Go to Step 6 (Incident Response)",
+  "name": "Chunk 4/21",
+  "_domain": "banking.reference",
+  "prev_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_003",
+  "next_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_005",
+  "raw_entities": [
+    {
+      "id": "ra_001",
+      "name": "API Gateway Health Check",
+      "aliases": [
+        "Kong gateway monitoring",
+        "API Gateway Health"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Hourly monitoring procedure during business hours to verify Kong API gateway status and response times. Executed via command-line health check with expected threshold of all services responding under 100ms.",
+      "context": [
+        "API Gateway Health — Monitor Kong gateway",
+        "Command: `kong health --yaml | grep status`",
+        "Expected: All services responding <100ms"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Database Connection Pool Check",
+      "aliases": [
+        "PostgreSQL connection monitoring",
+        "Database Connection Pool"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Hourly monitoring procedure to verify PostgreSQL database connection pool utilization during business hours. Checks that active connections remain below 80% of maximum capacity (200 of 250 connections).",
+      "context": [
+        "Database Connection Pool — Check PostgreSQL connections",
+        "Command: `psql -U postgres -c \"SELECT datname, count(*) FROM pg_stat_activity GROUP BY datname;\"`",
+        "Expected: <80% of max connections (200/250)"
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Transaction Processing Rate Monitoring",
+      "aliases": [
+        "Throughput monitoring",
+        "Transaction Processing Rate"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Hourly monitoring procedure to track transaction processing throughput during business hours. Monitors transaction log for successful completions with expected rate of 2–5 transactions per minute.",
+      "context": [
+        "Transaction Processing Rate — Monitor throughput",
+        "Command: `tail -f /var/log/pps/transactions.log | grep -c \"SUCCESS\" | head -1`",
+        "Expected: 2–5 transactions/minute during business hours"
+      ]
+    },
+    {
+      "id": "ra_004",
+      "name": "Incident Response Escalation",
+      "aliases": [
+        "Step 6",
+        "Incident Response"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "escalation",
+      "description": "Escalation procedure triggered when any of the hourly health checks during business hours (09:00–17:00) detect a threshold breach or service anomaly.",
+      "context": [
+        "Issue Found? → Go to Step 6 (Incident Response)"
+      ]
+    }
+  ],
+  "id_map": {
+    "ra_001": "01a07393-e320-7264-b05f-7163527566c2_004_ra_001",
+    "ra_002": "01a07393-e320-7264-b05f-7163527566c2_004_ra_002",
+    "ra_003": "01a07393-e320-7264-b05f-7163527566c2_004_ra_003",
+    "ra_004": "01a07393-e320-7264-b05f-7163527566c2_004_ra_004"
+  },
+  "entities": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_001",
+      "name": "API Gateway Health Check",
+      "aliases": [
+        "Kong gateway monitoring",
+        "API Gateway Health"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Hourly monitoring procedure during business hours to verify Kong API gateway status and response times. Executed via command-line health check with expected threshold of all services responding under 100ms.",
+      "context": [
+        "API Gateway Health — Monitor Kong gateway",
+        "Command: `kong health --yaml | grep status`",
+        "Expected: All services responding <100ms"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_002",
+      "name": "Database Connection Pool Check",
+      "aliases": [
+        "PostgreSQL connection monitoring",
+        "Database Connection Pool"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Hourly monitoring procedure to verify PostgreSQL database connection pool utilization during business hours. Checks that active connections remain below 80% of maximum capacity (200 of 250 connections).",
+      "context": [
+        "Database Connection Pool — Check PostgreSQL connections",
+        "Command: `psql -U postgres -c \"SELECT datname, count(*) FROM pg_stat_activity GROUP BY datname;\"`",
+        "Expected: <80% of max connections (200/250)"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_003",
+      "name": "Transaction Processing Rate Monitoring",
+      "aliases": [
+        "Throughput monitoring",
+        "Transaction Processing Rate"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Hourly monitoring procedure to track transaction processing throughput during business hours. Monitors transaction log for successful completions with expected rate of 2–5 transactions per minute.",
+      "context": [
+        "Transaction Processing Rate — Monitor throughput",
+        "Command: `tail -f /var/log/pps/transactions.log | grep -c \"SUCCESS\" | head -1`",
+        "Expected: 2–5 transactions/minute during business hours"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_004",
+      "name": "Incident Response Escalation",
+      "aliases": [
+        "Step 6",
+        "Incident Response"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "escalation",
+      "description": "Escalation procedure triggered when any of the hourly health checks during business hours (09:00–17:00) detect a threshold breach or service anomaly.",
+      "context": [
+        "Issue Found? → Go to Step 6 (Incident Response)"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_001",
+      "name": "API Gateway Health Check",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "monitoring_team",
+        "timeline": "hourly, 5 minutes each",
+        "mandatory_for_severities": [
+          "all"
+        ],
+        "tools_or_systems": [
+          "Kong gateway"
+        ],
+        "output_or_artifact": "health status report",
+        "monitoring_command": "kong health --yaml | grep status",
+        "expected_threshold": "all services responding <100ms",
+        "escalation_trigger": "any service not responding or response time >100ms"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_002",
+      "name": "Database Connection Pool Check",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "monitoring_team",
+        "timeline": "hourly, 5 minutes each",
+        "mandatory_for_severities": [
+          "all"
+        ],
+        "tools_or_systems": [
+          "PostgreSQL"
+        ],
+        "output_or_artifact": "connection pool status report",
+        "monitoring_command": "psql -U postgres -c \"SELECT datname, count(*) FROM pg_stat_activity GROUP BY datname;\"",
+        "expected_threshold": "<80% of max connections (200/250)",
+        "escalation_trigger": "connection pool usage ≥80% of maximum"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_003",
+      "name": "Transaction Processing Rate Monitoring",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "monitoring_team",
+        "timeline": "hourly, 5 minutes each",
+        "mandatory_for_severities": [
+          "all"
+        ],
+        "tools_or_systems": [
+          "transaction log"
+        ],
+        "output_or_artifact": "transaction throughput report",
+        "monitoring_command": "tail -f /var/log/pps/transactions.log | grep -c \"SUCCESS\" | head -1",
+        "expected_threshold": "2–5 transactions/minute during business hours",
+        "escalation_trigger": "transaction rate falls below 2 or exceeds 5 transactions/minute"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_004",
+      "name": "Incident Response Escalation",
+      "properties": {
+        "action_phase": "containment",
+        "actor": "monitoring_team",
+        "timeline": "immediate upon issue detection",
+        "mandatory_for_severities": [
+          "all"
+        ],
+        "trigger_condition": "any health check fails or threshold exceeded",
+        "output_or_artifact": "incident escalation notification"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_001",
+      "source_name": "API Gateway Health Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_004",
+      "target_name": "Incident Response Escalation",
+      "rel_type": "triggers",
+      "description": "API Gateway Health Check failure triggers escalation to Incident Response Escalation",
+      "properties": {
+        "condition": "Issue found during health check",
+        "threshold": "Services not responding <100ms",
+        "escalation_step": "Step 6"
+      },
+      "context": "**Issue Found?** → Go to Step 6 (Incident Response)",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_002",
+      "source_name": "Database Connection Pool Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_004",
+      "target_name": "Incident Response Escalation",
+      "rel_type": "triggers",
+      "description": "Database Connection Pool Check failure triggers escalation to Incident Response Escalation",
+      "properties": {
+        "condition": "Issue found during connection pool check",
+        "threshold": ">80% of max connections (>200/250)",
+        "escalation_step": "Step 6"
+      },
+      "context": "**Issue Found?** → Go to Step 6 (Incident Response)",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_003",
+      "source_name": "Transaction Processing Rate Monitoring",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_004",
+      "target_name": "Incident Response Escalation",
+      "rel_type": "triggers",
+      "description": "Transaction Processing Rate Monitoring failure triggers escalation to Incident Response Escalation",
+      "properties": {
+        "condition": "Issue found during rate monitoring",
+        "threshold": "Outside 2–5 transactions/minute during business hours",
+        "escalation_step": "Step 6"
+      },
+      "context": "**Issue Found?** → Go to Step 6 (Incident Response)",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_001",
+      "source_name": "API Gateway Health Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_002",
+      "target_name": "Database Connection Pool Check",
+      "rel_type": "parallel_to",
+      "description": "API Gateway Health Check runs in parallel with Database Connection Pool Check during hourly checks",
+      "properties": {
+        "frequency": "Hourly",
+        "duration": "5 minutes each",
+        "time_window": "09:00–17:00"
+      },
+      "context": "**Hourly Checks (5 minutes each):** - [ ] **API Gateway Health** — Monitor Kong gateway ... - [ ] **Database Connection Pool** — Check PostgreSQL connections",
+      "bidirectional": true,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_002",
+      "source_name": "Database Connection Pool Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_003",
+      "target_name": "Transaction Processing Rate Monitoring",
+      "rel_type": "parallel_to",
+      "description": "Database Connection Pool Check runs in parallel with Transaction Processing Rate Monitoring during hourly checks",
+      "properties": {
+        "frequency": "Hourly",
+        "duration": "5 minutes each",
+        "time_window": "09:00–17:00"
+      },
+      "context": "**Hourly Checks (5 minutes each):** - [ ] **Database Connection Pool** — Check PostgreSQL connections ... - [ ] **Transaction Processing Rate** — Monitor throughput",
+      "bidirectional": true,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_001",
+      "source_name": "API Gateway Health Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_003",
+      "target_name": "Transaction Processing Rate Monitoring",
+      "rel_type": "parallel_to",
+      "description": "API Gateway Health Check runs in parallel with Transaction Processing Rate Monitoring during hourly checks",
+      "properties": {
+        "frequency": "Hourly",
+        "duration": "5 minutes each",
+        "time_window": "09:00–17:00"
+      },
+      "context": "**Hourly Checks (5 minutes each):** - [ ] **API Gateway Health** — Monitor Kong gateway ... - [ ] **Transaction Processing Rate** — Monitor throughput",
+      "bidirectional": true,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_001",
+      "source_name": "API Gateway Health Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_002",
+      "source_name": "Database Connection Pool Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_003",
+      "source_name": "Transaction Processing Rate Monitoring",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_004_ra_004",
+      "source_name": "Incident Response Escalation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_004",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ]
+}

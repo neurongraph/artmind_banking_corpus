@@ -1,0 +1,827 @@
+name: banking.sop_guides
+description: Standard Operating Procedures, step-by-step process guides, and escalation matrices for FirstUK
+  Bank operational workflows — covering account opening, KYC verification, AML screening, account closure,
+  standing orders, direct debits, change of address, and exception handling.
+subject: banking operational procedure analysis
+persona: an operations analyst
+temporal:
+  document:
+    valid_from:
+    - Effective Date
+    - effective_date
+    - Last Updated
+    version:
+    - Version
+  relative_anchor: document.valid_from
+  defaults:
+    valid_from: ingestion_date
+    valid_to: null
+    superseded_by: null
+    time_source: default_ingestion
+    valid_from_inferred: true
+entity_types:
+  PROCESS:
+    kind: recurrent
+    description: A named end-to-end procedure, SOP, or operational workflow — the whole thing as a unit.
+      Extract it once, including its purpose, scope, channel, and timeline. Each distinct named process
+      is a separate entity (e.g., "Account Opening Process" and "KYC Verification Process" are separate).
+    type_examples:
+    - account_opening
+    - kyc_verification
+    - aml_screening
+    - account_closure
+    - standing_order_setup
+    - direct_debit_setup
+    - escalation_procedure
+    - change_of_address
+    - exception_handling
+    - fraud_investigation
+    - complaint_resolution
+    properties:
+      document_id:
+        hint: e.g., ACCT-OPEN-SOP-001
+      purpose:
+        hint: stated goal of the process
+      scope:
+        hint: what it applies to — products, channels, customer types
+      channels:
+        hint: branch | online | postal
+      owner:
+        hint: role responsible for the process
+      departments_involved:
+        hint: list
+      timeline_sla:
+        hint: expected completion time
+      regulatory_references:
+        hint: list of regulations it satisfies
+      trigger:
+        hint: what initiates the process
+      outcome_success:
+        hint: what success looks like
+      outcome_failure:
+        hint: what failure leads to
+      effective_date:
+        hint: when this procedure version takes effect; ISO date if stated
+        temporal: valid_from
+      version:
+        hint: document version, if stated
+    relates_to:
+      PROCESS_STEP:
+      - contains
+      - starts_with
+      - ends_with
+      - triggers
+      - includes_optional
+      ROLE_ACTOR:
+      - owned_by
+      - executed_by
+      - approved_by
+      - notifies
+      DECISION_POINT:
+      - includes
+      - branches_at
+      - concludes_at
+      COMPLIANCE_CHECKPOINT:
+      - requires
+      - mandated_to_include
+      - triggered_by
+      ESCALATION_LEVEL:
+      - routes_to
+      - defined_in
+      CUSTOMER:
+      - processes_application_of
+      - operates_on
+      - serves
+      ACCOUNT:
+      - opens
+      - closes
+      - modifies
+      - freezes
+      - activates
+      PRODUCT:
+      - creates_account_under
+      - governs_setup_of
+      KYC_VERIFICATION:
+      - executes
+      - requires
+      - includes_step_for
+      AML_SCREENING:
+      - executes
+      - requires
+      - includes_step_for
+      SAR:
+      - may_result_in_filing_of
+      - includes_step_for
+      STANDING_ORDER:
+      - sets_up
+      - amends
+      - cancels
+      DIRECT_DEBIT:
+      - sets_up
+      - processes_mandate_for
+      - cancels
+      JOINT_ACCOUNT:
+      - opens
+      - modifies
+      - closes
+    guidance: |-
+      The overall process captured as a PROCESS entity.
+      PROCESS entities include document_id, scope, timeline_sla.
+      Direction is correct (PROCESS contains STEP, not STEP contains PROCESS).
+  PROCESS_STEP:
+    kind: recurrent
+    description: A discrete, named action or stage within a process — something that gets done by a specific
+      actor at a specific point. Each numbered or bulleted step that represents a distinct action or review
+      stage is a separate entity. Do not collapse multiple distinct steps into one.
+    type_examples:
+    - data_collection
+    - document_verification
+    - identity_check
+    - address_verification
+    - system_recording
+    - risk_assessment
+    - approval_decision
+    - notification
+    - quality_check
+    - card_issuance
+    - account_activation
+    - investigation
+    - reporting
+    properties:
+      step_number:
+        hint: ordinal position in the process
+      actor:
+        hint: who performs this step
+      input:
+        hint: what information or artifact is needed
+      output:
+        hint: what is produced
+      estimated_duration:
+        hint: time for this step
+      channel:
+        hint: branch | online | system | manual
+      mandatory:
+        hint: yes/no
+      tools_or_systems:
+        hint: systems used in this step
+      failure_path:
+        hint: what happens if this step fails
+    relates_to:
+      PROCESS_STEP:
+      - followed_by
+      - preceded_by
+      - triggered_by
+      - parallel_to
+      - alternative_to
+      ROLE_ACTOR:
+      - performed_by
+      - reviewed_by
+      - approved_by
+      - notifies
+      - escalated_to
+      DECISION_POINT:
+      - leads_to
+      - precedes
+      - results_in
+      COMPLIANCE_CHECKPOINT:
+      - satisfies
+      - triggers
+      - records_result_of
+      - required_before
+      ESCALATION_LEVEL:
+      - routes_to (on failure)
+      CUSTOMER:
+      - collects_data_from
+      - notifies
+      - verifies_identity_of
+      ACCOUNT:
+      - creates
+      - activates
+      - updates
+      - closes
+      - freezes
+      CARD:
+      - issues
+      - activates
+      - blocks
+      - replaces
+      KYC_VERIFICATION:
+      - executes
+      - records_outcome_of
+      - triggers
+      AML_SCREENING:
+      - executes
+      - reviews_result_of
+      - escalates_based_on
+      SAR:
+      - prepares
+      - submits
+      - records
+      FRAUD_ALERT:
+      - generates
+      - reviews
+      - escalates
+      - closes
+      IDENTIFICATION_DOCUMENT:
+      - collects
+      - verifies
+      - records
+      ADDRESS:
+      - collects
+      - verifies
+      - records
+      - updates
+      ACCOUNT_HOLDER:
+      - adds
+      - verifies
+      - removes
+      - records
+      STANDING_ORDER:
+      - creates
+      - validates
+      - amends
+      - cancels
+      DIRECT_DEBIT:
+      - sets_up_mandate_for
+      - cancels
+      - processes_dispute_for
+    guidance: |-
+      Each distinct named step captured as a PROCESS_STEP.
+      Name each step descriptively, not just by its step number.
+  ROLE_ACTOR:
+    kind: recurrent
+    description: A person, team, or system responsible for executing process steps, making decisions,
+      or receiving notifications. Include both human roles (Branch Staff, Compliance Officer) and automated
+      actors (Fraud Detection Engine, AML System) when they perform process actions. Name the role as
+      stated in the document.
+    type_examples:
+    - branch_staff
+    - compliance_staff
+    - operations_staff
+    - customer_service
+    - branch_manager
+    - department_head
+    - financial_crime_team
+    - executive_committee
+    - automated_system
+    - external_regulator
+    - customer
+    properties:
+      role_type:
+        hint: human | system | external
+      department:
+        hint: which department this role belongs to
+      authority_level:
+        hint: what decisions they can make
+      approval_limit:
+        hint: financial or operational limit
+      response_time_sla:
+        hint: expected response time in this context
+      channels:
+        hint: how they interact — phone | branch | system | email
+    guidance: |-
+      All roles performing or approving steps captured as ROLE_ACTOR.
+      All STEP → ROLE_ACTOR assignments captured.
+      Naming: when the document does not name a specific role -- e.g. "the responsible role
+      actor must approve..." with no person, team, or system named -- do NOT write the class
+      label itself as the name. Derive a name from the surrounding process context instead (the
+      step, decision, or section it appears in); every chunk that fell back to the bare label
+      aggregated onto one identical entity, merging unrelated facts that had nothing in common
+      except the missing name.
+        RIGHT:   { "name": "Address Verification Approver (KYC Step 3)" }
+        WRONG:   { "name": "Role Actor" }
+  DECISION_POINT:
+    kind: recurrent
+    description: A branching condition in a process where different paths are taken depending on the outcome
+      — an approve/reject gate, a risk level split, an escalation trigger, or a pass/fail check. Capture
+      what is being decided and what each outcome path leads to.
+    type_examples:
+    - approve_reject
+    - escalate_or_resolve
+    - pass_fail
+    - risk_level_gate
+    - authority_limit_check
+    - exception_trigger
+    - fraud_flag
+    - compliance_gate
+    - timeout_check
+    properties:
+      decision_question:
+        hint: what is being decided
+      criteria:
+        hint: what determines the outcome
+      decision_maker:
+        hint: who or what makes the decision
+      path_yes:
+        hint: what happens on approval/pass
+      path_no:
+        hint: what happens on rejection/fail
+      override_possible:
+        hint: can a higher authority override the decision
+      time_limit:
+        hint: how long before escalation
+    relates_to:
+      PROCESS_STEP:
+      - routes_to_on_pass
+      - routes_to_on_fail
+      - triggers
+      ROLE_ACTOR:
+      - decided_by
+      - escalated_to
+      - overridden_by
+      ESCALATION_LEVEL:
+      - routes_to
+      - triggers
+      KYC_VERIFICATION:
+      - gated_by
+      - outcome_determined_by
+      AML_SCREENING:
+      - gated_by
+      - outcome_determined_by
+      CUSTOMER:
+      - classifies
+      - routes_based_on_risk_of
+    guidance: |-
+      All branch points and approval gates captured as DECISION_POINT.
+      DECISION_POINT entities include decision_question, path_yes, path_no.
+      All DECISION_POINT → path relationships captured (both pass and fail paths).
+  ESCALATION_LEVEL:
+    kind: recurrent
+    description: A defined tier in an escalation matrix with specific authority, approval limits, response
+      time, and ownership. Each numbered level (Level 1, Level 2, etc.) is a separate entity.
+    type_examples:
+    - frontline
+    - supervisor
+    - department_head
+    - executive
+    - board
+    - regulator
+    - financial_ombudsman
+    - law_enforcement
+    properties:
+      level_number:
+        hint: 1, 2, 3, 4, etc.
+      authority:
+        hint: role with authority at this level
+      approval_limit:
+        hint: financial ceiling, e.g., "£500–£5,000"
+      response_time:
+        hint: SLA for resolution at this level
+      examples:
+        hint: types of issues handled at this level
+      escalation_trigger:
+        hint: condition that causes escalation to NEXT level
+      escalates_to:
+        hint: the next level up
+    relates_to:
+      ROLE_ACTOR:
+      - handled_by
+      - authorized_by
+      - chaired_by
+      ESCALATION_LEVEL:
+      - escalates_to
+      - receives_from
+    guidance: |-
+      Each escalation tier captured as a separate ESCALATION_LEVEL.
+      ESCALATION_LEVEL entities include level_number, approval_limit, response_time, escalation_trigger.
+      All ESCALATION_LEVEL escalates_to chains captured end-to-end.
+      Naming: include the level number and authority in the name. RIGHT:   { "name": "Level 2 — Supervisor/Manager Resolution" }
+  COMPLIANCE_CHECKPOINT:
+    kind: recurrent
+    description: A mandatory regulatory or policy gate that must be formally passed before a process can
+      proceed — the control point in a workflow where compliance is verified and the outcome recorded.
+      Use this entity for the gate itself (was this obligation satisfied? what was the outcome?), not
+      the underlying entity being checked. KYC_VERIFICATION, AML_SCREENING, SAR, and FRAUD_ALERT are first-class
+      entities that capture what is being executed; COMPLIANCE_CHECKPOINT captures the process gate that
+      verifies their completion before the workflow advances.
+    type_examples:
+    - pep_screening
+    - sanctions_check
+    - risk_classification
+    - data_protection_check
+    - regulatory_reporting
+    - document_retention
+    - gdpr_check
+    - beneficial_owner_check
+    - credit_check
+    properties:
+      checkpoint_name:
+        hint: formal name
+      regulatory_basis:
+        hint: FCA COBS, MLR 2017, GDPR, POCA, etc.
+      mandatory:
+        hint: yes — always required, or conditional
+      applies_to_channels:
+        hint: branch | online | all
+      evidence_required:
+        hint: what documents or system records are needed
+      performed_by:
+        hint: role responsible
+      timing:
+        hint: when in the process it must occur
+      refresh_frequency:
+        hint: if periodic — e.g., every 3–5 years for KYC
+      failure_consequence:
+        hint: what happens if checkpoint fails
+      system_used:
+        hint: which system records the checkpoint
+    relates_to:
+      ROLE_ACTOR:
+      - performed_by
+      - reviewed_by
+      - signed_off_by
+      COMPLIANCE_CHECKPOINT:
+      - precedes
+      - required_before
+      - depends_on
+      DECISION_POINT:
+      - determines_outcome_of
+      - gates
+      - triggers
+      KYC_VERIFICATION:
+      - verifies_completion_of
+      - gates_on_result_of
+      AML_SCREENING:
+      - verifies_completion_of
+      - gates_on_result_of
+      IDENTIFICATION_DOCUMENT:
+      - requires_collection_of
+      - validates_sufficiency_of
+    guidance: |-
+      All regulatory checks (KYC, AML, sanctions) captured as COMPLIANCE_CHECKPOINT.
+      COMPLIANCE_CHECKPOINT entities include regulatory_basis, mandatory, evidence_required.
+  PRODUCT:
+    kind: recurrent
+    description: A banking product referenced as the context or outcome of a process — the product type
+      that defines which account is being opened or which rules apply throughout the SOP.
+    type_examples:
+    - smartsaver_account
+    - current_account
+    - joint_account
+    - mortgage
+    - card_product
+    properties:
+      product_id:
+        hint: e.g., SAV-001
+      product_type:
+        hint: savings | current | joint | mortgage | card
+      determines_process_variant:
+        hint: whether the product type changes which steps apply
+  IDENTIFICATION_DOCUMENT:
+    kind: recurrent
+    description: An official identity document collected and verified during a process — the document
+      types accepted, the validation checks required, and the recording obligations. Extract when the
+      SOP specifies document collection or verification steps.
+    type_examples:
+    - passport_verification
+    - driving_licence_check
+    - national_id_check
+    - proof_of_address
+    - document_recording
+    - expiry_check
+    properties:
+      accepted_types:
+        hint: which document types are acceptable in this SOP
+      collection_steps:
+        hint: how documents are obtained from the customer
+      verification_steps:
+        hint: how authenticity is checked
+      recording_obligation:
+        hint: where and how the document is recorded in the system
+      expiry_check:
+        hint: whether expiry date must be validated
+    relates_to:
+      CUSTOMER:
+      - proves_identity_of
+      - belongs_to
+  ADDRESS:
+    kind: recurrent
+    description: A customer address collected, verified, or updated during a process — address verification
+      steps, acceptable proof of address documents, or change of address procedures.
+    type_examples:
+    - address_verification_step
+    - proof_of_address
+    - address_update
+    - address_recording
+    - change_of_address
+    properties:
+      collection_steps:
+        hint: how the address is captured
+      verification_steps:
+        hint: how the address is verified — utility bill, credit bureau
+      acceptable_proof:
+        hint: what documents are accepted as proof of address
+      recording_system:
+        hint: where the address is recorded
+      update_process:
+        hint: steps for processing a change of address
+    relates_to:
+      CUSTOMER:
+      - registered_to
+      - belongs_to
+  ACCOUNT:
+    kind: recurrent
+    description: A customer account opened, held, modified, or closed under a banking product — savings,
+      current, or joint. Extract when the document defines rules, state, or events that apply to the account
+      itself.
+    type_examples:
+    - savings_account
+    - current_account
+    - joint_account
+    - new_account
+    - dormant_account
+    - frozen_account
+    - closed_account
+    properties:
+      account_type:
+        hint: savings | current | joint
+      account_state:
+        hint: new | active | dormant | frozen | closed
+      balance_minimum:
+        hint: numeric, no currency symbol or thousands separators, e.g., 500; the
+          string "none" if the account has no stated minimum
+      balance_maximum:
+        hint: numeric, no currency symbol or thousands separators, e.g., 50000; the
+          string "unlimited" if the account has no stated maximum
+      dormancy_threshold:
+        hint: how long with no activity before the account is classified dormant,
+          e.g., "12 months"
+      closure_or_freeze_conditions: {}
+    relates_to:
+      ACCOUNT_HOLDER:
+      - has_holder
+      - held_by
+      CARD:
+      - linked_to
+      - issues
+      JOINT_ACCOUNT:
+      - classified_as
+      - structured_as
+      TRANSACTION:
+      - records
+      - generates
+      - has_associated
+      KYC_VERIFICATION:
+      - gate_for_opening
+      - required_before_activating
+      AML_SCREENING:
+      - required_before_opening
+      - ongoing_monitoring_of
+      FRAUD_ALERT:
+      - raised_on
+      - results_in_freeze_of
+      STANDING_ORDER:
+      - set_up_on
+      - deducts_from
+      DIRECT_DEBIT:
+      - set_up_on
+      - deducts_from
+  ACCOUNT_HOLDER:
+    kind: recurrent
+    description: A person with legal rights and obligations over an account — primary, joint, or secondary
+      holder — including their liability, authority, and due-diligence obligations.
+    type_examples:
+    - primary_holder
+    - joint_holder
+    - secondary_holder
+    - beneficial_owner
+    - signatory
+    properties:
+      holder_type:
+        hint: primary | joint | secondary
+      liability_scope: {}
+      withdrawal_or_signing_authority: {}
+      due_diligence_requirement: {}
+    relates_to:
+      JOINT_ACCOUNT:
+      - party_to
+      - has_rights_in
+      - liable_under
+  AML_SCREENING:
+    kind: recurrent
+    description: Anti-Money Laundering screening — sanctions/PEP list checks, transaction monitoring,
+      or ongoing screening — as mandated, executed, or reviewed by the document.
+    type_examples:
+    - sanctions_screening
+    - pep_screening
+    - transaction_monitoring
+    - ongoing_monitoring
+    - adverse_media_check
+    properties:
+      mandatory:
+        hint: yes/no
+      screening_lists_or_scope: {}
+      hit_or_match_response: {}
+      regulatory_basis: {}
+    relates_to:
+      TRANSACTION:
+      - monitors
+      - screens_for_patterns_in
+      SAR:
+      - triggers
+      - leads_to_filing_of
+  CARD:
+    kind: recurrent
+    description: A payment card issued to, or referenced in connection with, a customer account — its
+      issuance, use, blocking, or replacement.
+    type_examples:
+    - debit_card
+    - credit_card
+    - prepaid
+    - contactless
+    - replacement_card
+    - card_fraud_scenario
+    properties:
+      card_type:
+        hint: debit | credit | prepaid
+      card_state:
+        hint: issuance | active | blocked | replacement
+      block_or_replacement_conditions: {}
+      daily_or_contactless_limit: {}
+  CUSTOMER:
+    kind: recurrent
+    description: A natural person who holds, applies for, or is otherwise the subject of a banking relationship
+      — an account, product, transaction, or compliance process. Extract as a first-class entity whenever
+      the customer is a defined party in the document, not merely mentioned in passing.
+    type_examples:
+    - individual_customer
+    - joint_account_holder
+    - new_customer
+    - existing_customer
+    - high_risk_customer
+    - pep_customer
+    - applicant
+    - prospective_customer
+    properties:
+      customer_type:
+        hint: individual | joint_applicant | existing | new | high_risk | pep
+      risk_classification:
+        hint: standard | high_risk | pep | sanctioned
+      eligibility_or_verification_status:
+        hint: as stated in this document
+      context_role:
+        hint: how this customer appears in this document
+    relates_to:
+      ACCOUNT:
+      - holds
+      - opens
+      - closes
+      - liable_for
+      ACCOUNT_HOLDER:
+      - designated_as
+      - has_role_as
+      AML_SCREENING:
+      - screened_by
+      - applied_to
+      - required_for
+      KYC_VERIFICATION:
+      - required_to_complete
+      - verified_by
+      - subject_to
+      SAR:
+      - filed_about
+      - concerns
+      JOINT_ACCOUNT:
+      - held_jointly_by
+      - requires_consent_of_both
+      STANDING_ORDER:
+      - initiated_by
+      - belongs_to
+      DIRECT_DEBIT:
+      - authorised_by
+      - belongs_to
+  DIRECT_DEBIT:
+    kind: recurrent
+    description: A direct debit mandate on a customer account — its setup, the Direct Debit Guarantee,
+      amendment, cancellation, or dispute.
+    type_examples:
+    - dd_mandate_setup
+    - dd_guarantee
+    - dd_cancellation
+    - dd_dispute
+    - indemnity_claim
+    properties:
+      mandate_process: {}
+      dd_guarantee_coverage: {}
+      cancellation_or_dispute_process: {}
+  FRAUD_ALERT:
+    kind: recurrent
+    description: A fraud detection alert or fraud response — its generation, investigation, escalation,
+      or the customer-facing action it triggers.
+    type_examples:
+    - fraud_detection_obligation
+    - card_fraud_event
+    - account_takeover
+    - fraud_investigation
+    - customer_reimbursement
+    properties:
+      generation_trigger: {}
+      investigation_or_escalation_path: {}
+      customer_notification: {}
+      reimbursement_obligation: {}
+    relates_to:
+      CARD:
+      - raised_for
+      - protects
+      TRANSACTION:
+      - triggered_by
+      - raised_on
+  JOINT_ACCOUNT:
+    kind: recurrent
+    description: An account arrangement held jointly by two or more customers with shared rights, liabilities,
+      and consent requirements.
+    type_examples:
+    - joint_and_several
+    - tenants_in_common
+    - joint_account_arrangement
+    properties:
+      liability_type:
+        hint: joint_and_several | tenants_in_common
+      consent_requirements: {}
+      dual_kyc_or_aml_requirement: {}
+      closure_consent: {}
+  KYC_VERIFICATION:
+    kind: recurrent
+    description: The Know Your Customer identity/address verification process — as a compliance obligation,
+      an operational procedure, or an audited control. Extract when the document defines, executes, or
+      evaluates KYC requirements.
+    type_examples:
+    - identity_verification
+    - address_verification
+    - enhanced_due_diligence
+    - periodic_refresh
+    - document_collection
+    properties:
+      mandatory:
+        hint: yes/no
+      timing_or_refresh_frequency: {}
+      verification_method: {}
+      consequence_of_failure: {}
+    relates_to:
+      IDENTIFICATION_DOCUMENT:
+      - requires
+      - verified_using
+      ADDRESS:
+      - verifies
+      - requires_proof_from
+      JOINT_ACCOUNT:
+      - required_for_both_holders_of
+      - applied_to
+  SAR:
+    kind: occurrent
+    description: A Suspicious Activity Report — the obligation, preparation, filing, or tracking of a
+      SAR to the relevant authority (e.g. the NCA).
+    type_examples:
+    - sar_obligation
+    - sar_filing_deadline
+    - internal_sar
+    - external_sar
+    - sar_confidentiality
+    properties:
+      filing_obligation: {}
+      filing_deadline: {}
+      confidentiality_rule: {}
+      consequence_of_non_filing: {}
+    relates_to:
+      TRANSACTION:
+      - triggered_by
+      - based_on_evidence_from
+  STANDING_ORDER:
+    kind: recurrent
+    description: A standing order payment instruction on a customer account — its setup, amendment, cancellation,
+      or failure handling.
+    type_examples:
+    - standing_order_setup
+    - standing_order_amendment
+    - standing_order_cancellation
+    - payment_failure_handling
+    properties:
+      setup_or_amendment_process: {}
+      beneficiary_validation: {}
+      cancellation_process: {}
+      failure_handling: {}
+  TRANSACTION:
+    kind: occurrent
+    description: A financial event on a customer account — a deposit, withdrawal, transfer, payment, or
+      fee charge — referenced because it is monitored, disputed, reported, or otherwise governed by the
+      document.
+    type_examples:
+    - deposit
+    - withdrawal
+    - transfer
+    - fee_charge
+    - suspicious_transaction
+    - high_value_transaction
+    - disputed_transaction
+    - monitored_transaction
+    properties:
+      transaction_type:
+        hint: deposit | withdrawal | transfer | fee_charge | suspicious | disputed
+      monitoring_or_reporting_obligation: {}
+      threshold_value:
+        hint: numeric, no currency symbol or thousands separators, e.g., 10000
+      dispute_or_reversal_rules: {}
+guidance:
+  relationships: |-
+    All COMPLIANCE_CHECKPOINT → DECISION_POINT gate relationships captured.
+    The full process step sequence is captured end-to-end (PROCESS_STEP followed_by PROCESS_STEP).

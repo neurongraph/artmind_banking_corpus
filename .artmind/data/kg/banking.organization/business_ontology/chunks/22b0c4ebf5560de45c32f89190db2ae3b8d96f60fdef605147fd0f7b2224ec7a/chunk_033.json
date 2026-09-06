@@ -1,0 +1,932 @@
+{
+  "chunk_seq": 33,
+  "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+  "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+  "text": "## Example: Complete Entity Instance  \n**Customer:** John Smith\n**Opening New Account:** SmartSaver with Joint Holder  \n```\nPARTY:\nparty_id: PARTY-00100\nparty_type: Natural Person\n\nCUSTOMER:\ncustomer_id: CUST-00050\nfirst_name: John\nlast_name: Smith\ndate_of_birth: 1980-05-20\nnationality: UK\nemail: john.smith@email.com\ncustomer_status: Active\n\nADDRESS:\naddress_id: ADDR-00150\nstreet: 42 Acacia Avenue\ncity: Manchester\npostcode: M1 1AA\naddress_type: Registered\n\nIDENTIFICATION_DOCUMENT:\ndoc_id: ID-00200\ndoc_type: UK Driving License\ndoc_number: SMITH802056M99AB\nexpiry_date: 2032-05-20\nverification_status: Verified\n\nKYC_VERIFICATION:\nkyc_id: KYC-00250\ncustomer_id: CUST-00050\nidentity_verified: TRUE\naddress_verified: TRUE\npep_screened: TRUE\nverification_status: Verified\n\nAML_SCREENING:\nscreening_id: AML-00300\ncustomer_id: CUST-00050\nmatches_found: 0\nrisk_level: Low\nscreening_status: Passed\n\nACCOUNT:\naccount_id: ACC-00500\nproduct_id: SAV-001 (SmartSaver Account)\nopening_date: 2026-01-15\naccount_status: Active\naccount_balance: 0 (new account)\n\nACCOUNT_HOLDER (Primary):\nholder_id: AHLD-00600\naccount_id: ACC-00500\ncustomer_id: CUST-00050\nholder_type: Primary\n\nACCOUNT_HOLDER (Joint):\nholder_id: AHLD-00601\naccount_id: ACC-00500\ncustomer_id: CUST-00051 (Jane Smith)\nholder_type: Joint\n\nTRANSACTION (First transaction: opening deposit):\ntransaction_id: TXN-00700\naccount_id: ACC-00500\ntransaction_type: Deposit\namount: 500000 (£5,000.00)\ntransaction_date: 2026-01-15\nstatus: Completed\ndescription: Opening deposit\n\nCARD:\ncard_id: CARD-00800\naccount_id: ACC-00500\ncustomer_id: CUST-00050\ncard_type: Debit\ncard_status: Active\ndaily_limit: 500000 (£5,000)\n```  \n---",
+  "name": "Chunk 33/37",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_032",
+  "next_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_034",
+  "raw_entities": [
+    {
+      "id": "cust_001",
+      "name": "John Smith",
+      "aliases": [],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Natural person opening a new SmartSaver joint account. UK national with verified identity and address documentation.",
+      "context": [
+        "Customer: John Smith",
+        "Opening New Account: SmartSaver with Joint Holder"
+      ]
+    },
+    {
+      "id": "cust_002",
+      "name": "Jane Smith",
+      "aliases": [],
+      "entity_class": "CUSTOMER",
+      "type": "joint_account_holder",
+      "description": "Joint account holder on the SmartSaver account opened by John Smith.",
+      "context": [
+        "customer_id: CUST-00051 (Jane Smith)",
+        "holder_type: Joint"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Registered Address",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "address",
+      "description": "Registered address for customer John Smith located in Manchester, UK. Used for KYC verification and account correspondence.",
+      "context": [
+        "street: 42 Acacia Avenue",
+        "city: Manchester",
+        "postcode: M1 1AA",
+        "address_type: Registered"
+      ]
+    },
+    {
+      "id": "idoc_001",
+      "name": "UK Driving License",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "identification_document",
+      "description": "UK Driving License used for identity verification during KYC process. Document number SMITH802056M99AB with expiry date 2032-05-20.",
+      "context": [
+        "doc_type: UK Driving License",
+        "doc_number: SMITH802056M99AB",
+        "expiry_date: 2032-05-20",
+        "verification_status: Verified"
+      ]
+    },
+    {
+      "id": "kyc_001",
+      "name": "KYC Verification",
+      "aliases": [],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "Know Your Customer verification process for John Smith covering identity verification, address verification, and PEP screening. All checks completed and verified.",
+      "context": [
+        "identity_verified: TRUE",
+        "address_verified: TRUE",
+        "pep_screened: TRUE",
+        "verification_status: Verified"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "AML Screening",
+      "aliases": [],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Anti-Money Laundering screening for John Smith with zero matches found and low risk classification. Screening passed successfully.",
+      "context": [
+        "matches_found: 0",
+        "risk_level: Low",
+        "screening_status: Passed"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SAV-001"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "New SmartSaver savings account opened on 2026-01-15 for John Smith as primary holder with Jane Smith as joint holder. Account is active with zero opening balance.",
+      "context": [
+        "product_id: SAV-001 (SmartSaver Account)",
+        "opening_date: 2026-01-15",
+        "account_status: Active",
+        "account_balance: 0 (new account)"
+      ]
+    },
+    {
+      "id": "ahld_001",
+      "name": "Primary Account Holder",
+      "aliases": [],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "primary_holder",
+      "description": "John Smith as primary account holder on the SmartSaver account with full legal rights and obligations.",
+      "context": [
+        "holder_type: Primary",
+        "account_id: ACC-00500",
+        "customer_id: CUST-00050"
+      ]
+    },
+    {
+      "id": "ahld_002",
+      "name": "Joint Account Holder",
+      "aliases": [],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "joint_holder",
+      "description": "Jane Smith as joint account holder on the SmartSaver account with shared legal rights and obligations.",
+      "context": [
+        "holder_type: Joint",
+        "account_id: ACC-00500",
+        "customer_id: CUST-00051 (Jane Smith)"
+      ]
+    },
+    {
+      "id": "txn_001",
+      "name": "Opening Deposit 2026-01-15",
+      "aliases": [],
+      "entity_class": "TRANSACTION",
+      "type": "deposit",
+      "description": "Initial deposit transaction of £5,000.00 on the SmartSaver account opening date. Transaction completed successfully.",
+      "context": [
+        "transaction_type: Deposit",
+        "amount: 500000 (£5,000.00)",
+        "transaction_date: 2026-01-15",
+        "status: Completed",
+        "description: Opening deposit"
+      ]
+    },
+    {
+      "id": "card_001",
+      "name": "Debit Card",
+      "aliases": [],
+      "entity_class": "CARD",
+      "type": "debit_card",
+      "description": "Debit card issued to John Smith on the SmartSaver account. Card is active with a daily transaction limit of £5,000.",
+      "context": [
+        "card_type: Debit",
+        "card_status: Active",
+        "daily_limit: 500000 (£5,000)",
+        "account_id: ACC-00500"
+      ]
+    }
+  ],
+  "id_map": {
+    "cust_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_001",
+    "cust_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_002",
+    "addr_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_addr_001",
+    "idoc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_idoc_001",
+    "kyc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_kyc_001",
+    "aml_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_aml_001",
+    "acc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_acc_001",
+    "ahld_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_ahld_001",
+    "ahld_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_ahld_002",
+    "txn_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_txn_001",
+    "card_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_card_001"
+  },
+  "entities": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_001",
+      "name": "John Smith",
+      "aliases": [],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Natural person opening a new SmartSaver joint account. UK national with verified identity and address documentation.",
+      "context": [
+        "Customer: John Smith",
+        "Opening New Account: SmartSaver with Joint Holder"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_002",
+      "name": "Jane Smith",
+      "aliases": [],
+      "entity_class": "CUSTOMER",
+      "type": "joint_account_holder",
+      "description": "Joint account holder on the SmartSaver account opened by John Smith.",
+      "context": [
+        "customer_id: CUST-00051 (Jane Smith)",
+        "holder_type: Joint"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_addr_001",
+      "name": "Registered Address",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "address",
+      "description": "Registered address for customer John Smith located in Manchester, UK. Used for KYC verification and account correspondence.",
+      "context": [
+        "street: 42 Acacia Avenue",
+        "city: Manchester",
+        "postcode: M1 1AA",
+        "address_type: Registered"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_idoc_001",
+      "name": "UK Driving License",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "identification_document",
+      "description": "UK Driving License used for identity verification during KYC process. Document number SMITH802056M99AB with expiry date 2032-05-20.",
+      "context": [
+        "doc_type: UK Driving License",
+        "doc_number: SMITH802056M99AB",
+        "expiry_date: 2032-05-20",
+        "verification_status: Verified"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_kyc_001",
+      "name": "KYC Verification",
+      "aliases": [],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "Know Your Customer verification process for John Smith covering identity verification, address verification, and PEP screening. All checks completed and verified.",
+      "context": [
+        "identity_verified: TRUE",
+        "address_verified: TRUE",
+        "pep_screened: TRUE",
+        "verification_status: Verified"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_aml_001",
+      "name": "AML Screening",
+      "aliases": [],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Anti-Money Laundering screening for John Smith with zero matches found and low risk classification. Screening passed successfully.",
+      "context": [
+        "matches_found: 0",
+        "risk_level: Low",
+        "screening_status: Passed"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_acc_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SAV-001"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "New SmartSaver savings account opened on 2026-01-15 for John Smith as primary holder with Jane Smith as joint holder. Account is active with zero opening balance.",
+      "context": [
+        "product_id: SAV-001 (SmartSaver Account)",
+        "opening_date: 2026-01-15",
+        "account_status: Active",
+        "account_balance: 0 (new account)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_ahld_001",
+      "name": "Primary Account Holder",
+      "aliases": [],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "primary_holder",
+      "description": "John Smith as primary account holder on the SmartSaver account with full legal rights and obligations.",
+      "context": [
+        "holder_type: Primary",
+        "account_id: ACC-00500",
+        "customer_id: CUST-00050"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_ahld_002",
+      "name": "Joint Account Holder",
+      "aliases": [],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "joint_holder",
+      "description": "Jane Smith as joint account holder on the SmartSaver account with shared legal rights and obligations.",
+      "context": [
+        "holder_type: Joint",
+        "account_id: ACC-00500",
+        "customer_id: CUST-00051 (Jane Smith)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_txn_001",
+      "name": "Opening Deposit 2026-01-15",
+      "aliases": [],
+      "entity_class": "TRANSACTION",
+      "type": "deposit",
+      "description": "Initial deposit transaction of £5,000.00 on the SmartSaver account opening date. Transaction completed successfully.",
+      "context": [
+        "transaction_type: Deposit",
+        "amount: 500000 (£5,000.00)",
+        "transaction_date: 2026-01-15",
+        "status: Completed",
+        "description: Opening deposit"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_card_001",
+      "name": "Debit Card",
+      "aliases": [],
+      "entity_class": "CARD",
+      "type": "debit_card",
+      "description": "Debit card issued to John Smith on the SmartSaver account. Card is active with a daily transaction limit of £5,000.",
+      "context": [
+        "card_type: Debit",
+        "card_status: Active",
+        "daily_limit: 500000 (£5,000)",
+        "account_id: ACC-00500"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_001",
+      "name": "John Smith",
+      "properties": {
+        "customer_type": "individual",
+        "risk_classification": "standard",
+        "eligibility_or_verification_status": "Verified",
+        "date_of_birth": "1980-05-20",
+        "nationality": "UK",
+        "email": "john.smith@email.com",
+        "customer_status": "Active"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_002",
+      "name": "Jane Smith",
+      "properties": {
+        "customer_type": "joint_applicant",
+        "risk_classification": "standard",
+        "eligibility_or_verification_status": "Verified",
+        "context_role": "Joint account holder"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_addr_001",
+      "name": "Registered Address",
+      "properties": {
+        "definition": "The official residential or business address on file for a customer, used for correspondence and verification purposes",
+        "key_attributes": [
+          "street",
+          "city",
+          "postcode",
+          "address_type"
+        ],
+        "business_rules": [
+          "Must be verified during KYC process",
+          "Used for regulatory correspondence"
+        ],
+        "example": "42 Acacia Avenue, Manchester, M1 1AA"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_idoc_001",
+      "name": "UK Driving License",
+      "properties": {
+        "definition": "A government-issued photographic identification document used to verify customer identity",
+        "key_attributes": [
+          "doc_number",
+          "expiry_date",
+          "verification_status"
+        ],
+        "business_rules": [
+          "Must not be expired at time of verification",
+          "Verification status must be confirmed"
+        ],
+        "example": "SMITH802056M99AB, expires 2032-05-20"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_kyc_001",
+      "name": "KYC Verification",
+      "properties": {
+        "mandatory": "yes",
+        "timing_or_refresh_frequency": "At account opening",
+        "verification_method": [
+          "identity_verified",
+          "address_verified",
+          "pep_screened"
+        ],
+        "consequence_of_failure": "Account cannot be opened",
+        "verification_status": "Verified"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_aml_001",
+      "name": "AML Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": "Sanctions and PEP lists",
+        "hit_or_match_response": "0 matches found",
+        "regulatory_basis": "FCA AML regulations",
+        "risk_level": "Low",
+        "screening_status": "Passed"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_acc_001",
+      "name": "SmartSaver Account",
+      "properties": {
+        "account_type": "savings",
+        "account_state": "active",
+        "opening_date": "2026-01-15",
+        "account_balance": "0",
+        "product_id": "SAV-001"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_ahld_001",
+      "name": "Primary Account Holder",
+      "properties": {
+        "holder_type": "primary",
+        "customer_id": "CUST-00050",
+        "account_id": "ACC-00500",
+        "withdrawal_or_signing_authority": "Full authority"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_ahld_002",
+      "name": "Joint Account Holder",
+      "properties": {
+        "holder_type": "joint",
+        "customer_id": "CUST-00051",
+        "account_id": "ACC-00500",
+        "withdrawal_or_signing_authority": "Joint authority"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_txn_001",
+      "name": "Opening Deposit 2026-01-15",
+      "properties": {
+        "transaction_type": "deposit",
+        "amount": "500000",
+        "transaction_date": "2026-01-15",
+        "status": "Completed",
+        "description": "Opening deposit",
+        "account_id": "ACC-00500"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_card_001",
+      "name": "Debit Card",
+      "properties": {
+        "card_type": "debit",
+        "card_state": "active",
+        "daily_or_contactless_limit": "500000",
+        "account_id": "ACC-00500",
+        "customer_id": "CUST-00050"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_001",
+      "source_name": "John Smith",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_acc_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "opens",
+      "description": "John Smith opens the SmartSaver Account",
+      "properties": {
+        "opening_date": "2026-01-15",
+        "account_status": "Active"
+      },
+      "context": "CUSTOMER: customer_id: CUST-00050, first_name: John, last_name: Smith; ACCOUNT: account_id: ACC-00500, product_id: SAV-001 (SmartSaver Account), opening_date: 2026-01-15",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_001",
+      "source_name": "John Smith",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_ahld_001",
+      "target_name": "Primary Account Holder",
+      "rel_type": "designated_as",
+      "description": "John Smith is designated as the Primary Account Holder",
+      "properties": {
+        "holder_type": "Primary",
+        "holder_id": "AHLD-00600"
+      },
+      "context": "ACCOUNT_HOLDER (Primary): holder_id: AHLD-00600, account_id: ACC-00500, customer_id: CUST-00050, holder_type: Primary",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_001",
+      "source_name": "John Smith",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_kyc_001",
+      "target_name": "KYC Verification",
+      "rel_type": "verified_by",
+      "description": "John Smith has completed KYC Verification with verified status",
+      "properties": {
+        "identity_verified": true,
+        "address_verified": true,
+        "pep_screened": true,
+        "verification_status": "Verified"
+      },
+      "context": "KYC_VERIFICATION: kyc_id: KYC-00250, customer_id: CUST-00050, identity_verified: TRUE, address_verified: TRUE, pep_screened: TRUE, verification_status: Verified",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_001",
+      "source_name": "John Smith",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_aml_001",
+      "target_name": "AML Screening",
+      "rel_type": "screened_by",
+      "description": "John Smith has undergone AML Screening with low risk assessment",
+      "properties": {
+        "matches_found": 0,
+        "risk_level": "Low",
+        "screening_status": "Passed"
+      },
+      "context": "AML_SCREENING: screening_id: AML-00300, customer_id: CUST-00050, matches_found: 0, risk_level: Low, screening_status: Passed",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_002",
+      "source_name": "Jane Smith",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_ahld_002",
+      "target_name": "Joint Account Holder",
+      "rel_type": "designated_as",
+      "description": "Jane Smith is designated as the Joint Account Holder",
+      "properties": {
+        "holder_type": "Joint",
+        "holder_id": "AHLD-00601"
+      },
+      "context": "ACCOUNT_HOLDER (Joint): holder_id: AHLD-00601, account_id: ACC-00500, customer_id: CUST-00051 (Jane Smith), holder_type: Joint",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_002",
+      "source_name": "Jane Smith",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_acc_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "holds",
+      "description": "Jane Smith holds the SmartSaver Account as joint holder",
+      "properties": {
+        "account_status": "Active",
+        "holder_type": "Joint"
+      },
+      "context": "ACCOUNT_HOLDER (Joint): holder_id: AHLD-00601, account_id: ACC-00500, customer_id: CUST-00051 (Jane Smith), holder_type: Joint",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_acc_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_ahld_001",
+      "target_name": "Primary Account Holder",
+      "rel_type": "has_holder",
+      "description": "SmartSaver Account has Primary Account Holder",
+      "properties": {
+        "holder_type": "Primary",
+        "account_id": "ACC-00500"
+      },
+      "context": "ACCOUNT_HOLDER (Primary): holder_id: AHLD-00600, account_id: ACC-00500, customer_id: CUST-00050, holder_type: Primary",
+      "bidirectional": true,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_acc_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_ahld_002",
+      "target_name": "Joint Account Holder",
+      "rel_type": "has_holder",
+      "description": "SmartSaver Account has Joint Account Holder",
+      "properties": {
+        "holder_type": "Joint",
+        "account_id": "ACC-00500"
+      },
+      "context": "ACCOUNT_HOLDER (Joint): holder_id: AHLD-00601, account_id: ACC-00500, customer_id: CUST-00051 (Jane Smith), holder_type: Joint",
+      "bidirectional": true,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_acc_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_txn_001",
+      "target_name": "Opening Deposit 2026-01-15",
+      "rel_type": "generates",
+      "description": "SmartSaver Account generates the opening deposit transaction",
+      "properties": {
+        "transaction_type": "Deposit",
+        "amount": "500000 (£5,000.00)",
+        "transaction_date": "2026-01-15",
+        "status": "Completed"
+      },
+      "context": "TRANSACTION (First transaction: opening deposit): transaction_id: TXN-00700, account_id: ACC-00500, transaction_type: Deposit, amount: 500000 (£5,000.00), transaction_date: 2026-01-15, status: Completed",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_acc_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_card_001",
+      "target_name": "Debit Card",
+      "rel_type": "issues",
+      "description": "SmartSaver Account issues a Debit Card",
+      "properties": {
+        "card_type": "Debit",
+        "card_status": "Active",
+        "daily_limit": "500000 (£5,000)"
+      },
+      "context": "CARD: card_id: CARD-00800, account_id: ACC-00500, customer_id: CUST-00050, card_type: Debit, card_status: Active, daily_limit: 500000 (£5,000)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_acc_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_addr_001",
+      "target_name": "Registered Address",
+      "rel_type": "linked_to",
+      "description": "SmartSaver Account is linked to the Registered Address",
+      "properties": {
+        "address_type": "Registered",
+        "address_id": "ADDR-00150",
+        "street": "42 Acacia Avenue",
+        "city": "Manchester",
+        "postcode": "M1 1AA"
+      },
+      "context": "ADDRESS: address_id: ADDR-00150, street: 42 Acacia Avenue, city: Manchester, postcode: M1 1AA, address_type: Registered; KYC_VERIFICATION: address_verified: TRUE",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_acc_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_idoc_001",
+      "target_name": "UK Driving License",
+      "rel_type": "linked_to",
+      "description": "SmartSaver Account is linked to UK Driving License for identity verification",
+      "properties": {
+        "doc_type": "UK Driving License",
+        "doc_number": "SMITH802056M99AB",
+        "expiry_date": "2032-05-20",
+        "verification_status": "Verified"
+      },
+      "context": "IDENTIFICATION_DOCUMENT: doc_id: ID-00200, doc_type: UK Driving License, doc_number: SMITH802056M99AB, expiry_date: 2032-05-20, verification_status: Verified; KYC_VERIFICATION: identity_verified: TRUE",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_kyc_001",
+      "source_name": "KYC Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_acc_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "gate_for_opening",
+      "description": "KYC Verification is a gate for opening the SmartSaver Account",
+      "properties": {
+        "verification_status": "Verified",
+        "identity_verified": true,
+        "address_verified": true
+      },
+      "context": "KYC_VERIFICATION: kyc_id: KYC-00250, customer_id: CUST-00050, identity_verified: TRUE, address_verified: TRUE, pep_screened: TRUE, verification_status: Verified; ACCOUNT: opening_date: 2026-01-15, account_status: Active",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_aml_001",
+      "source_name": "AML Screening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_acc_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "required_before_opening",
+      "description": "AML Screening is required before opening the SmartSaver Account",
+      "properties": {
+        "screening_status": "Passed",
+        "risk_level": "Low",
+        "matches_found": 0
+      },
+      "context": "AML_SCREENING: screening_id: AML-00300, customer_id: CUST-00050, matches_found: 0, risk_level: Low, screening_status: Passed; ACCOUNT: opening_date: 2026-01-15, account_status: Active",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_ahld_001",
+      "source_name": "Primary Account Holder",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_001",
+      "target_name": "John Smith",
+      "rel_type": "held_by",
+      "description": "Primary Account Holder role is held by John Smith",
+      "properties": {
+        "holder_id": "AHLD-00600",
+        "holder_type": "Primary"
+      },
+      "context": "ACCOUNT_HOLDER (Primary): holder_id: AHLD-00600, account_id: ACC-00500, customer_id: CUST-00050, holder_type: Primary",
+      "bidirectional": true,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_ahld_002",
+      "source_name": "Joint Account Holder",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_002",
+      "target_name": "Jane Smith",
+      "rel_type": "held_by",
+      "description": "Joint Account Holder role is held by Jane Smith",
+      "properties": {
+        "holder_id": "AHLD-00601",
+        "holder_type": "Joint"
+      },
+      "context": "ACCOUNT_HOLDER (Joint): holder_id: AHLD-00601, account_id: ACC-00500, customer_id: CUST-00051 (Jane Smith), holder_type: Joint",
+      "bidirectional": true,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_card_001",
+      "source_name": "Debit Card",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_acc_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "linked_to",
+      "description": "Debit Card is linked to SmartSaver Account",
+      "properties": {
+        "card_type": "Debit",
+        "card_status": "Active",
+        "daily_limit": "500000 (£5,000)"
+      },
+      "context": "CARD: card_id: CARD-00800, account_id: ACC-00500, customer_id: CUST-00050, card_type: Debit, card_status: Active, daily_limit: 500000 (£5,000)",
+      "bidirectional": true,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_001",
+      "source_name": "John Smith",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_cust_002",
+      "source_name": "Jane Smith",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_addr_001",
+      "source_name": "Registered Address",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_idoc_001",
+      "source_name": "UK Driving License",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_kyc_001",
+      "source_name": "KYC Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_aml_001",
+      "source_name": "AML Screening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_acc_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_ahld_001",
+      "source_name": "Primary Account Holder",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_ahld_002",
+      "source_name": "Joint Account Holder",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_txn_001",
+      "source_name": "Opening Deposit 2026-01-15",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033_card_001",
+      "source_name": "Debit Card",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_033",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ]
+}

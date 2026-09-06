@@ -1,0 +1,1152 @@
+{
+  "chunk_seq": 34,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "### Statement & Communication Address Update  \n**Update Delivery Preferences:**  \n| Delivery Type | Update Required | Action |\n|---|---|---|\n| **Physical Statements** | YES | Update mailing address |\n| **Bank Statements** | YES | Statements will go to new address |\n| **Tax Forms (1099, etc.)** | YES | If international move, may need separate tax address |\n| **Correspondence** | YES | All letters to new address |\n| **Notice of Change** | YES | Notification letter sent to old address (GDPR) |  \n**Email/Phone:**\n- [ ] Confirm email address (no change needed unless customer requests)\n- [ ] Confirm phone number (no change needed unless customer requests)\n- [ ] Update contact method preference (email vs. post)",
+  "name": "Chunk 34/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_033",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Statement and Communication Address Update",
+      "aliases": [
+        "Address Update Process",
+        "Delivery Preferences Update"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "End-to-end procedure for updating a customer's mailing address and delivery preferences for statements, tax forms, and correspondence. The process includes updating physical statement delivery, bank statement routing, tax form addresses, and general correspondence, with mandatory GDPR notification to the old address. Email and phone contact preferences are confirmed but only updated upon customer request.",
+      "context": [
+        "Update mailing address",
+        "Statements will go to new address",
+        "All letters to new address",
+        "Notification letter sent to old address (GDPR)"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Update Physical Statements Mailing Address",
+      "aliases": [
+        "Physical Statements Update"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_update",
+      "description": "Mandatory step to update the mailing address for physical bank statements. This ensures future statements are delivered to the customer's new address.",
+      "context": [
+        "Physical Statements | YES | Update mailing address"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Route Bank Statements to New Address",
+      "aliases": [
+        "Bank Statements Routing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_update",
+      "description": "Mandatory step to ensure all bank statements are routed to the customer's new address following the address change.",
+      "context": [
+        "Bank Statements | YES | Statements will go to new address"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Update Tax Form Address",
+      "aliases": [
+        "Tax Forms Update"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_update",
+      "description": "Mandatory step to update the address for tax forms (1099, etc.). For international moves, a separate tax address may be required due to regulatory requirements.",
+      "context": [
+        "Tax Forms (1099, etc.) | YES | If international move, may need separate tax address"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Update Correspondence Address",
+      "aliases": [
+        "Correspondence Routing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_update",
+      "description": "Mandatory step to ensure all letters and general correspondence from the bank are sent to the customer's new address.",
+      "context": [
+        "Correspondence | YES | All letters to new address"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Send Notice of Change to Old Address",
+      "aliases": [
+        "GDPR Notification",
+        "Change Notification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Mandatory GDPR-compliant step to notify the customer at their old address that their address has been changed. This provides transparency and allows the customer to verify the change or report unauthorized modifications.",
+      "context": [
+        "Notice of Change | YES | Notification letter sent to old address (GDPR)"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Confirm Email Address",
+      "aliases": [
+        "Email Confirmation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Optional step to confirm the customer's email address. No change is required unless the customer explicitly requests an email address update.",
+      "context": [
+        "Confirm email address (no change needed unless customer requests)"
+      ]
+    },
+    {
+      "id": "pstep_007",
+      "name": "Confirm Phone Number",
+      "aliases": [
+        "Phone Confirmation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Optional step to confirm the customer's phone number. No change is required unless the customer explicitly requests a phone number update.",
+      "context": [
+        "Confirm phone number (no change needed unless customer requests)"
+      ]
+    },
+    {
+      "id": "pstep_008",
+      "name": "Update Contact Method Preference",
+      "aliases": [
+        "Delivery Method Selection"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Optional step to update the customer's preferred contact method, allowing them to choose between email and postal communication for future correspondence.",
+      "context": [
+        "Update contact method preference (email vs. post)"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "New Mailing Address",
+      "aliases": [
+        "Updated Address",
+        "Customer New Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The customer's new mailing address to which all statements, tax forms, and correspondence will be delivered following the address change process.",
+      "context": [
+        "Update mailing address",
+        "Statements will go to new address",
+        "All letters to new address"
+      ]
+    },
+    {
+      "id": "addr_002",
+      "name": "Old Mailing Address",
+      "aliases": [
+        "Previous Address",
+        "Prior Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_recording",
+      "description": "The customer's previous mailing address to which the GDPR-compliant Notice of Change notification is sent to inform them of the address update.",
+      "context": [
+        "Notification letter sent to old address (GDPR)"
+      ]
+    },
+    {
+      "id": "idoc_001",
+      "name": "Tax Form",
+      "aliases": [
+        "1099",
+        "Tax Documentation"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "document_recording",
+      "description": "Tax forms (such as 1099) that require address updates as part of the statement and communication address change process. For international moves, a separate tax address may be required.",
+      "context": [
+        "Tax Forms (1099, etc.) | YES | If international move, may need separate tax address"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "GDPR Notification Compliance",
+      "aliases": [
+        "GDPR Address Change Notification"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "data_protection_check",
+      "description": "Mandatory GDPR compliance gate requiring notification to the customer's old address when their address is updated. This ensures transparency and allows the customer to verify or dispute the change.",
+      "context": [
+        "Notification letter sent to old address (GDPR)"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_034_proc_001",
+    "pstep_001": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_001",
+    "pstep_002": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_002",
+    "pstep_003": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_003",
+    "pstep_004": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_004",
+    "pstep_005": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_005",
+    "pstep_006": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_006",
+    "pstep_007": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_007",
+    "pstep_008": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_008",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_034_addr_001",
+    "addr_002": "01a07400-ba86-72f1-8b22-d07b32649491_034_addr_002",
+    "idoc_001": "01a07400-ba86-72f1-8b22-d07b32649491_034_idoc_001",
+    "cc_001": "01a07400-ba86-72f1-8b22-d07b32649491_034_cc_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_proc_001",
+      "name": "Statement and Communication Address Update",
+      "aliases": [
+        "Address Update Process",
+        "Delivery Preferences Update"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "End-to-end procedure for updating a customer's mailing address and delivery preferences for statements, tax forms, and correspondence. The process includes updating physical statement delivery, bank statement routing, tax form addresses, and general correspondence, with mandatory GDPR notification to the old address. Email and phone contact preferences are confirmed but only updated upon customer request.",
+      "context": [
+        "Update mailing address",
+        "Statements will go to new address",
+        "All letters to new address",
+        "Notification letter sent to old address (GDPR)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_001",
+      "name": "Update Physical Statements Mailing Address",
+      "aliases": [
+        "Physical Statements Update"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_update",
+      "description": "Mandatory step to update the mailing address for physical bank statements. This ensures future statements are delivered to the customer's new address.",
+      "context": [
+        "Physical Statements | YES | Update mailing address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_002",
+      "name": "Route Bank Statements to New Address",
+      "aliases": [
+        "Bank Statements Routing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_update",
+      "description": "Mandatory step to ensure all bank statements are routed to the customer's new address following the address change.",
+      "context": [
+        "Bank Statements | YES | Statements will go to new address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_003",
+      "name": "Update Tax Form Address",
+      "aliases": [
+        "Tax Forms Update"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_update",
+      "description": "Mandatory step to update the address for tax forms (1099, etc.). For international moves, a separate tax address may be required due to regulatory requirements.",
+      "context": [
+        "Tax Forms (1099, etc.) | YES | If international move, may need separate tax address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_004",
+      "name": "Update Correspondence Address",
+      "aliases": [
+        "Correspondence Routing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_update",
+      "description": "Mandatory step to ensure all letters and general correspondence from the bank are sent to the customer's new address.",
+      "context": [
+        "Correspondence | YES | All letters to new address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_005",
+      "name": "Send Notice of Change to Old Address",
+      "aliases": [
+        "GDPR Notification",
+        "Change Notification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Mandatory GDPR-compliant step to notify the customer at their old address that their address has been changed. This provides transparency and allows the customer to verify the change or report unauthorized modifications.",
+      "context": [
+        "Notice of Change | YES | Notification letter sent to old address (GDPR)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_006",
+      "name": "Confirm Email Address",
+      "aliases": [
+        "Email Confirmation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Optional step to confirm the customer's email address. No change is required unless the customer explicitly requests an email address update.",
+      "context": [
+        "Confirm email address (no change needed unless customer requests)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_007",
+      "name": "Confirm Phone Number",
+      "aliases": [
+        "Phone Confirmation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Optional step to confirm the customer's phone number. No change is required unless the customer explicitly requests a phone number update.",
+      "context": [
+        "Confirm phone number (no change needed unless customer requests)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_008",
+      "name": "Update Contact Method Preference",
+      "aliases": [
+        "Delivery Method Selection"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Optional step to update the customer's preferred contact method, allowing them to choose between email and postal communication for future correspondence.",
+      "context": [
+        "Update contact method preference (email vs. post)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_addr_001",
+      "name": "New Mailing Address",
+      "aliases": [
+        "Updated Address",
+        "Customer New Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The customer's new mailing address to which all statements, tax forms, and correspondence will be delivered following the address change process.",
+      "context": [
+        "Update mailing address",
+        "Statements will go to new address",
+        "All letters to new address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_addr_002",
+      "name": "Old Mailing Address",
+      "aliases": [
+        "Previous Address",
+        "Prior Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_recording",
+      "description": "The customer's previous mailing address to which the GDPR-compliant Notice of Change notification is sent to inform them of the address update.",
+      "context": [
+        "Notification letter sent to old address (GDPR)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_idoc_001",
+      "name": "Tax Form",
+      "aliases": [
+        "1099",
+        "Tax Documentation"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "document_recording",
+      "description": "Tax forms (such as 1099) that require address updates as part of the statement and communication address change process. For international moves, a separate tax address may be required.",
+      "context": [
+        "Tax Forms (1099, etc.) | YES | If international move, may need separate tax address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_cc_001",
+      "name": "GDPR Notification Compliance",
+      "aliases": [
+        "GDPR Address Change Notification"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "data_protection_check",
+      "description": "Mandatory GDPR compliance gate requiring notification to the customer's old address when their address is updated. This ensures transparency and allows the customer to verify or dispute the change.",
+      "context": [
+        "Notification letter sent to old address (GDPR)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_proc_001",
+      "name": "Statement and Communication Address Update",
+      "properties": {
+        "purpose": "Update customer delivery preferences for statements, tax forms, and correspondence across multiple channels",
+        "scope": "All account holders requesting address changes",
+        "channels": [
+          "branch",
+          "online",
+          "postal"
+        ],
+        "departments_involved": [
+          "Customer Service",
+          "Operations",
+          "Compliance"
+        ],
+        "regulatory_references": [
+          "GDPR"
+        ],
+        "trigger": "Customer initiates address change request",
+        "outcome_success": "All statements, tax forms, and correspondence routed to new address; customer notified of change",
+        "outcome_failure": "Mail continues to old address or is lost; customer does not receive critical documents"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_001",
+      "name": "Update Physical Statements Mailing Address",
+      "properties": {
+        "step_number": 1,
+        "actor": "Customer Service Representative",
+        "input": "New mailing address from customer",
+        "output": "Updated address in customer profile system",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Customer Profile System"
+        ],
+        "failure_path": "Statements continue to old address; escalate to supervisor"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_002",
+      "name": "Route Bank Statements to New Address",
+      "properties": {
+        "step_number": 2,
+        "actor": "Operations Team",
+        "input": "Updated mailing address from customer profile",
+        "output": "Statements configured to route to new address",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Statement Routing System"
+        ],
+        "failure_path": "Statements not received by customer; investigate routing configuration"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_003",
+      "name": "Update Tax Form Address",
+      "properties": {
+        "step_number": 3,
+        "actor": "Customer Service Representative",
+        "input": "New address; confirmation of international move status if applicable",
+        "output": "Tax form address updated in system; separate tax address recorded if needed",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Tax Form Management System"
+        ],
+        "failure_path": "Tax forms (1099, etc.) sent to old address; customer may miss filing deadlines"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_004",
+      "name": "Update Correspondence Address",
+      "properties": {
+        "step_number": 4,
+        "actor": "Customer Service Representative",
+        "input": "New address from customer",
+        "output": "All correspondence address fields updated in system",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Customer Profile System"
+        ],
+        "failure_path": "Letters and notices sent to old address"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_005",
+      "name": "Send Notice of Change to Old Address",
+      "properties": {
+        "step_number": 5,
+        "actor": "Operations Team",
+        "input": "Old address; new address; customer name",
+        "output": "Notification letter sent to old address",
+        "channel": "postal",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Mail System"
+        ],
+        "failure_path": "Customer does not receive GDPR-required notification of address change"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_006",
+      "name": "Confirm Email Address",
+      "properties": {
+        "step_number": 6,
+        "actor": "Customer Service Representative",
+        "input": "Current email address on file",
+        "output": "Email address confirmed or updated in system",
+        "channel": "online",
+        "mandatory": "no",
+        "tools_or_systems": [
+          "Customer Profile System"
+        ],
+        "failure_path": "Customer does not receive email notifications if email is incorrect"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_007",
+      "name": "Confirm Phone Number",
+      "properties": {
+        "step_number": 7,
+        "actor": "Customer Service Representative",
+        "input": "Current phone number on file",
+        "output": "Phone number confirmed or updated in system",
+        "channel": "branch",
+        "mandatory": "no",
+        "tools_or_systems": [
+          "Customer Profile System"
+        ],
+        "failure_path": "Bank cannot reach customer for urgent communications"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_008",
+      "name": "Update Contact Method Preference",
+      "properties": {
+        "step_number": 8,
+        "actor": "Customer Service Representative",
+        "input": "Customer preference selection (email vs. post)",
+        "output": "Contact method preference recorded in system",
+        "channel": "system",
+        "mandatory": "no",
+        "tools_or_systems": [
+          "Customer Profile System"
+        ],
+        "failure_path": "Customer receives communications via non-preferred method"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_addr_001",
+      "name": "New Mailing Address",
+      "properties": {
+        "collection_steps": [
+          "Customer provides new address during address change request"
+        ],
+        "verification_steps": [
+          "Validate address format; confirm with customer"
+        ],
+        "recording_system": [
+          "Customer Profile System",
+          "Statement Routing System",
+          "Tax Form Management System"
+        ],
+        "update_process": [
+          "Update physical statements mailing address",
+          "Route bank statements to new address",
+          "Update tax form address",
+          "Update correspondence address"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_addr_002",
+      "name": "Old Mailing Address",
+      "properties": {
+        "collection_steps": [
+          "Retrieved from customer profile system"
+        ],
+        "recording_system": [
+          "Customer Profile System"
+        ],
+        "update_process": [
+          "Send notice of change to old address for GDPR compliance"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_idoc_001",
+      "name": "Tax Form",
+      "properties": {
+        "accepted_types": [
+          "1099",
+          "other tax forms"
+        ],
+        "recording_obligation": "Tax form address must be recorded in Tax Form Management System",
+        "expiry_check": "no"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_034_cc_001",
+      "name": "GDPR Notification Compliance",
+      "properties": {
+        "checkpoint_name": "Notice of Change Notification",
+        "regulatory_basis": "GDPR",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "postal"
+        ],
+        "evidence_required": [
+          "Notification letter sent to old address",
+          "Delivery confirmation"
+        ],
+        "performed_by": "Operations Team",
+        "timing": "Immediately upon address change confirmation",
+        "failure_consequence": "Non-compliance with GDPR notification requirements; potential regulatory penalty"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_proc_001",
+      "source_name": "Statement and Communication Address Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_001",
+      "target_name": "Update Physical Statements Mailing Address",
+      "rel_type": "contains",
+      "description": "Process includes the step to update physical statements mailing address",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Update mailing address for Physical Statements",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_proc_001",
+      "source_name": "Statement and Communication Address Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_002",
+      "target_name": "Route Bank Statements to New Address",
+      "rel_type": "contains",
+      "description": "Process includes the step to route bank statements to new address",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Statements will go to new address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_proc_001",
+      "source_name": "Statement and Communication Address Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_003",
+      "target_name": "Update Tax Form Address",
+      "rel_type": "contains",
+      "description": "Process includes the step to update tax form address",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Tax Forms (1099, etc.) - If international move, may need separate tax address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_proc_001",
+      "source_name": "Statement and Communication Address Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_004",
+      "target_name": "Update Correspondence Address",
+      "rel_type": "contains",
+      "description": "Process includes the step to update correspondence address",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "All letters to new address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_proc_001",
+      "source_name": "Statement and Communication Address Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_005",
+      "target_name": "Send Notice of Change to Old Address",
+      "rel_type": "contains",
+      "description": "Process includes the step to send notice of change to old address",
+      "properties": {
+        "sequence_position": 5
+      },
+      "context": "Notification letter sent to old address (GDPR)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_proc_001",
+      "source_name": "Statement and Communication Address Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_006",
+      "target_name": "Confirm Email Address",
+      "rel_type": "contains",
+      "description": "Process includes the step to confirm email address",
+      "properties": {
+        "sequence_position": 6
+      },
+      "context": "Confirm email address (no change needed unless customer requests)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_proc_001",
+      "source_name": "Statement and Communication Address Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_007",
+      "target_name": "Confirm Phone Number",
+      "rel_type": "contains",
+      "description": "Process includes the step to confirm phone number",
+      "properties": {
+        "sequence_position": 7
+      },
+      "context": "Confirm phone number (no change needed unless customer requests)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_proc_001",
+      "source_name": "Statement and Communication Address Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_008",
+      "target_name": "Update Contact Method Preference",
+      "rel_type": "contains",
+      "description": "Process includes the step to update contact method preference",
+      "properties": {
+        "sequence_position": 8
+      },
+      "context": "Update contact method preference (email vs. post)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_proc_001",
+      "source_name": "Statement and Communication Address Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_cc_001",
+      "target_name": "GDPR Notification Compliance",
+      "rel_type": "mandated_to_include",
+      "description": "Process must include GDPR notification compliance checkpoint",
+      "properties": {
+        "compliance_requirement": "GDPR"
+      },
+      "context": "Notification letter sent to old address (GDPR)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_001",
+      "source_name": "Update Physical Statements Mailing Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_002",
+      "target_name": "Route Bank Statements to New Address",
+      "rel_type": "followed_by",
+      "description": "Update physical statements mailing address is followed by routing bank statements to new address",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Physical Statements update followed by Bank Statements routing",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_002",
+      "source_name": "Route Bank Statements to New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_003",
+      "target_name": "Update Tax Form Address",
+      "rel_type": "followed_by",
+      "description": "Route bank statements to new address is followed by updating tax form address",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Bank Statements routing followed by Tax Forms address update",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_003",
+      "source_name": "Update Tax Form Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_004",
+      "target_name": "Update Correspondence Address",
+      "rel_type": "followed_by",
+      "description": "Update tax form address is followed by updating correspondence address",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Tax Forms update followed by Correspondence address update",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_004",
+      "source_name": "Update Correspondence Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_005",
+      "target_name": "Send Notice of Change to Old Address",
+      "rel_type": "followed_by",
+      "description": "Update correspondence address is followed by sending notice of change to old address",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Correspondence address update followed by Notice of Change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_005",
+      "source_name": "Send Notice of Change to Old Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_006",
+      "target_name": "Confirm Email Address",
+      "rel_type": "followed_by",
+      "description": "Send notice of change to old address is followed by confirming email address",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Notice of Change followed by Email confirmation",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_006",
+      "source_name": "Confirm Email Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_007",
+      "target_name": "Confirm Phone Number",
+      "rel_type": "followed_by",
+      "description": "Confirm email address is followed by confirming phone number",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Email confirmation followed by Phone number confirmation",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_007",
+      "source_name": "Confirm Phone Number",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_008",
+      "target_name": "Update Contact Method Preference",
+      "rel_type": "followed_by",
+      "description": "Confirm phone number is followed by updating contact method preference",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Phone number confirmation followed by Contact method preference update",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_001",
+      "source_name": "Update Physical Statements Mailing Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_addr_001",
+      "target_name": "New Mailing Address",
+      "rel_type": "updates",
+      "description": "Update physical statements mailing address step updates the new mailing address",
+      "properties": {
+        "delivery_type": "Physical Statements"
+      },
+      "context": "Update mailing address for Physical Statements",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_002",
+      "source_name": "Route Bank Statements to New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_addr_001",
+      "target_name": "New Mailing Address",
+      "rel_type": "updates",
+      "description": "Route bank statements to new address step updates the new mailing address",
+      "properties": {
+        "delivery_type": "Bank Statements"
+      },
+      "context": "Statements will go to new address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_003",
+      "source_name": "Update Tax Form Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_idoc_001",
+      "target_name": "Tax Form",
+      "rel_type": "updates",
+      "description": "Update tax form address step updates the address for tax forms",
+      "properties": {
+        "document_type": "Tax Form (1099, etc.)",
+        "conditional": "If international move, may need separate tax address"
+      },
+      "context": "Tax Forms (1099, etc.) - If international move, may need separate tax address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_004",
+      "source_name": "Update Correspondence Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_addr_001",
+      "target_name": "New Mailing Address",
+      "rel_type": "updates",
+      "description": "Update correspondence address step updates the new mailing address for all correspondence",
+      "properties": {
+        "delivery_type": "Correspondence"
+      },
+      "context": "All letters to new address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_005",
+      "source_name": "Send Notice of Change to Old Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_addr_002",
+      "target_name": "Old Mailing Address",
+      "rel_type": "notifies",
+      "description": "Send notice of change to old address step notifies at the old mailing address",
+      "properties": {
+        "notification_type": "Notice of Change",
+        "compliance": "GDPR"
+      },
+      "context": "Notification letter sent to old address (GDPR)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_005",
+      "source_name": "Send Notice of Change to Old Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_cc_001",
+      "target_name": "GDPR Notification Compliance",
+      "rel_type": "satisfies",
+      "description": "Send notice of change to old address step satisfies GDPR notification compliance checkpoint",
+      "properties": {
+        "compliance_requirement": "GDPR"
+      },
+      "context": "Notification letter sent to old address (GDPR)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_proc_001",
+      "source_name": "Statement and Communication Address Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_001",
+      "source_name": "Update Physical Statements Mailing Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_002",
+      "source_name": "Route Bank Statements to New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_003",
+      "source_name": "Update Tax Form Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_004",
+      "source_name": "Update Correspondence Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_005",
+      "source_name": "Send Notice of Change to Old Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_006",
+      "source_name": "Confirm Email Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_007",
+      "source_name": "Confirm Phone Number",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_pstep_008",
+      "source_name": "Update Contact Method Preference",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_addr_001",
+      "source_name": "New Mailing Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_addr_002",
+      "source_name": "Old Mailing Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_idoc_001",
+      "source_name": "Tax Form",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_034_cc_001",
+      "source_name": "GDPR Notification Compliance",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

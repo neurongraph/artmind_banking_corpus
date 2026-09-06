@@ -1,0 +1,935 @@
+{
+  "chunk_seq": 10,
+  "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+  "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+  "text": "## Step 3: Payment Processing  \n### Biller Submission Process  \n**Biller Submits Payment Instruction:**\n1. Biller determines amount due (e.g., £75 for monthly electricity)\n2. Submits instruction via Direct Debit scheme\n3. FirstUK receives instruction\n4. FirstUK validates against mandate (amount within limits, account active)\n5. Payment debited from account\n6. Biller notified of success/failure",
+  "name": "Chunk 10/26",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+  "next_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Payment Processing",
+      "aliases": [
+        "Biller Submission Process"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit_setup",
+      "description": "End-to-end process for submitting and executing direct debit payment instructions from a biller through FirstUK. Encompasses biller submission, mandate validation, account debiting, and notification of payment outcome.",
+      "context": [
+        "Step 3: Payment Processing",
+        "Biller Submits Payment Instruction",
+        "Submits instruction via Direct Debit scheme",
+        "FirstUK receives instruction"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Biller Amount Determination",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Biller calculates and determines the payment amount due from the customer, such as monthly utility charges.",
+      "context": [
+        "Biller determines amount due (e.g., £75 for monthly electricity)"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Payment Instruction Submission",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Biller submits the payment instruction through the Direct Debit scheme to initiate the payment process.",
+      "context": [
+        "Submits instruction via Direct Debit scheme"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Payment Instruction Reception",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "FirstUK receives the payment instruction from the biller via the Direct Debit scheme.",
+      "context": [
+        "FirstUK receives instruction"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Mandate Validation",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "FirstUK validates the payment instruction against the active direct debit mandate, confirming that the amount is within agreed limits and the account is active.",
+      "context": [
+        "FirstUK validates against mandate (amount within limits, account active)"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Account Debit",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "FirstUK debits the validated payment amount from the customer's account.",
+      "context": [
+        "Payment debited from account"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Payment Outcome Notification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Biller is notified of the payment processing outcome, indicating whether the payment succeeded or failed.",
+      "context": [
+        "Biller notified of success/failure"
+      ]
+    },
+    {
+      "id": "ract_001",
+      "name": "Biller",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External party responsible for submitting payment instructions and receiving payment outcome notifications. Determines the amount due and initiates the direct debit submission.",
+      "context": [
+        "Biller determines amount due",
+        "Submits instruction via Direct Debit scheme",
+        "Biller notified of success/failure"
+      ]
+    },
+    {
+      "id": "ract_002",
+      "name": "FirstUK",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "The bank's payment processing system responsible for receiving payment instructions, validating against mandates, debiting customer accounts, and notifying billers of outcomes.",
+      "context": [
+        "FirstUK receives instruction",
+        "FirstUK validates against mandate",
+        "Payment debited from account"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "The active direct debit authorization against which payment instructions are validated. Defines amount limits and account status requirements for payment processing.",
+      "context": [
+        "FirstUK validates against mandate (amount within limits, account active)"
+      ]
+    },
+    {
+      "id": "acct_001",
+      "name": "Customer Account",
+      "aliases": [],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer's account from which direct debit payments are debited. Must be active and have a valid mandate in place for payment processing.",
+      "context": [
+        "account active",
+        "Payment debited from account"
+      ]
+    },
+    {
+      "id": "dec_001",
+      "name": "Mandate Validation Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "Decision point where FirstUK validates the payment instruction against the mandate. Determines whether the amount is within limits and the account is active, leading to either payment debit or failure notification.",
+      "context": [
+        "FirstUK validates against mandate (amount within limits, account active)"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_proc_001",
+    "pstep_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_001",
+    "pstep_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_002",
+    "pstep_003": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_003",
+    "pstep_004": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_004",
+    "pstep_005": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_005",
+    "pstep_006": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_006",
+    "ract_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_ract_001",
+    "ract_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_ract_002",
+    "dd_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_dd_001",
+    "acct_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_acct_001",
+    "dec_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_dec_001"
+  },
+  "entities": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_proc_001",
+      "name": "Payment Processing",
+      "aliases": [
+        "Biller Submission Process"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit_setup",
+      "description": "End-to-end process for submitting and executing direct debit payment instructions from a biller through FirstUK. Encompasses biller submission, mandate validation, account debiting, and notification of payment outcome.",
+      "context": [
+        "Step 3: Payment Processing",
+        "Biller Submits Payment Instruction",
+        "Submits instruction via Direct Debit scheme",
+        "FirstUK receives instruction"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_001",
+      "name": "Biller Amount Determination",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Biller calculates and determines the payment amount due from the customer, such as monthly utility charges.",
+      "context": [
+        "Biller determines amount due (e.g., £75 for monthly electricity)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_002",
+      "name": "Payment Instruction Submission",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Biller submits the payment instruction through the Direct Debit scheme to initiate the payment process.",
+      "context": [
+        "Submits instruction via Direct Debit scheme"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_003",
+      "name": "Payment Instruction Reception",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "FirstUK receives the payment instruction from the biller via the Direct Debit scheme.",
+      "context": [
+        "FirstUK receives instruction"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_004",
+      "name": "Mandate Validation",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "FirstUK validates the payment instruction against the active direct debit mandate, confirming that the amount is within agreed limits and the account is active.",
+      "context": [
+        "FirstUK validates against mandate (amount within limits, account active)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_005",
+      "name": "Account Debit",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "FirstUK debits the validated payment amount from the customer's account.",
+      "context": [
+        "Payment debited from account"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_006",
+      "name": "Payment Outcome Notification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Biller is notified of the payment processing outcome, indicating whether the payment succeeded or failed.",
+      "context": [
+        "Biller notified of success/failure"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_ract_001",
+      "name": "Biller",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External party responsible for submitting payment instructions and receiving payment outcome notifications. Determines the amount due and initiates the direct debit submission.",
+      "context": [
+        "Biller determines amount due",
+        "Submits instruction via Direct Debit scheme",
+        "Biller notified of success/failure"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_ract_002",
+      "name": "FirstUK",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "The bank's payment processing system responsible for receiving payment instructions, validating against mandates, debiting customer accounts, and notifying billers of outcomes.",
+      "context": [
+        "FirstUK receives instruction",
+        "FirstUK validates against mandate",
+        "Payment debited from account"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "The active direct debit authorization against which payment instructions are validated. Defines amount limits and account status requirements for payment processing.",
+      "context": [
+        "FirstUK validates against mandate (amount within limits, account active)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_acct_001",
+      "name": "Customer Account",
+      "aliases": [],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer's account from which direct debit payments are debited. Must be active and have a valid mandate in place for payment processing.",
+      "context": [
+        "account active",
+        "Payment debited from account"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_dec_001",
+      "name": "Mandate Validation Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "Decision point where FirstUK validates the payment instruction against the mandate. Determines whether the amount is within limits and the account is active, leading to either payment debit or failure notification.",
+      "context": [
+        "FirstUK validates against mandate (amount within limits, account active)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_proc_001",
+      "name": "Payment Processing",
+      "properties": {
+        "purpose": "Process Direct Debit payment instructions from billers and debit customer accounts",
+        "scope": "Direct Debit payments via scheme",
+        "channels": [
+          "system"
+        ],
+        "owner": "FirstUK",
+        "departments_involved": [
+          "Payments",
+          "Compliance"
+        ],
+        "trigger": "Biller submits payment instruction via Direct Debit scheme",
+        "outcome_success": "Payment debited from account and biller notified of success",
+        "outcome_failure": "Payment rejected and biller notified of failure"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_001",
+      "name": "Biller Amount Determination",
+      "properties": {
+        "step_number": 1,
+        "actor": "Biller",
+        "output": "Amount due (e.g., £75 for monthly electricity)",
+        "channel": "manual",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_002",
+      "name": "Payment Instruction Submission",
+      "properties": {
+        "step_number": 2,
+        "actor": "Biller",
+        "input": "Amount due",
+        "output": "Payment instruction submitted to Direct Debit scheme",
+        "channel": "system",
+        "tools_or_systems": [
+          "Direct Debit scheme"
+        ],
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_003",
+      "name": "Payment Instruction Reception",
+      "properties": {
+        "step_number": 3,
+        "actor": "FirstUK",
+        "input": "Payment instruction from Direct Debit scheme",
+        "output": "Instruction received and queued for validation",
+        "channel": "system",
+        "tools_or_systems": [
+          "Direct Debit scheme"
+        ],
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_004",
+      "name": "Mandate Validation",
+      "properties": {
+        "step_number": 4,
+        "actor": "FirstUK",
+        "input": "Payment instruction and mandate details",
+        "output": "Validation result (pass/fail)",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Payment rejected and biller notified of failure"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_005",
+      "name": "Account Debit",
+      "properties": {
+        "step_number": 5,
+        "actor": "FirstUK",
+        "input": "Validated payment instruction",
+        "output": "Amount debited from customer account",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Biller notified of failure"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_006",
+      "name": "Payment Outcome Notification",
+      "properties": {
+        "step_number": 6,
+        "actor": "FirstUK",
+        "input": "Payment debit result (success/failure)",
+        "output": "Notification sent to biller",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_ract_001",
+      "name": "Biller",
+      "properties": {
+        "role_type": "external",
+        "authority_level": "submits payment instructions",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_ract_002",
+      "name": "FirstUK",
+      "properties": {
+        "role_type": "system",
+        "department": "Payments",
+        "authority_level": "validates mandates and processes debits",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_dd_001",
+      "name": "Direct Debit Mandate",
+      "properties": {
+        "mandate_process": "Biller submits instruction via Direct Debit scheme; FirstUK validates against mandate",
+        "validation_criteria": [
+          "amount within limits",
+          "account active"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_acct_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_state": "active",
+        "closure_or_freeze_conditions": "Account must be active for Direct Debit payment processing"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_dec_001",
+      "name": "Mandate Validation Gate",
+      "properties": {
+        "decision_question": "Is the payment instruction valid against the mandate?",
+        "criteria": [
+          "amount within limits",
+          "account active"
+        ],
+        "decision_maker": "FirstUK",
+        "path_yes": "Proceed to Account Debit",
+        "path_no": "Reject payment and notify biller of failure"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_proc_001",
+      "source_name": "Payment Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_001",
+      "target_name": "Biller Amount Determination",
+      "rel_type": "starts_with",
+      "description": "Payment Processing begins with the Biller Amount Determination step",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Biller determines amount due (e.g., £75 for monthly electricity)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_001",
+      "source_name": "Biller Amount Determination",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_002",
+      "target_name": "Payment Instruction Submission",
+      "rel_type": "followed_by",
+      "description": "Biller Amount Determination is followed by Payment Instruction Submission",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Biller determines amount due (e.g., £75 for monthly electricity) Submits instruction via Direct Debit scheme",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_002",
+      "source_name": "Payment Instruction Submission",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_003",
+      "target_name": "Payment Instruction Reception",
+      "rel_type": "followed_by",
+      "description": "Payment Instruction Submission is followed by Payment Instruction Reception",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Submits instruction via Direct Debit scheme FirstUK receives instruction",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_003",
+      "source_name": "Payment Instruction Reception",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_004",
+      "target_name": "Mandate Validation",
+      "rel_type": "followed_by",
+      "description": "Payment Instruction Reception is followed by Mandate Validation",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "FirstUK receives instruction FirstUK validates against mandate (amount within limits, account active)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_004",
+      "source_name": "Mandate Validation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_dec_001",
+      "target_name": "Mandate Validation Gate",
+      "rel_type": "leads_to",
+      "description": "Mandate Validation step leads to the Mandate Validation Gate decision point",
+      "properties": {
+        "validation_criteria": [
+          "amount within limits",
+          "account active"
+        ]
+      },
+      "context": "FirstUK validates against mandate (amount within limits, account active)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_dec_001",
+      "source_name": "Mandate Validation Gate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_005",
+      "target_name": "Account Debit",
+      "rel_type": "routes_to_on_pass",
+      "description": "On successful mandate validation, the process routes to Account Debit",
+      "properties": {
+        "condition": "mandate valid"
+      },
+      "context": "FirstUK validates against mandate (amount within limits, account active) Payment debited from account",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_005",
+      "source_name": "Account Debit",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_006",
+      "target_name": "Payment Outcome Notification",
+      "rel_type": "followed_by",
+      "description": "Account Debit is followed by Payment Outcome Notification",
+      "properties": {
+        "sequence_position": 6
+      },
+      "context": "Payment debited from account Biller notified of success/failure",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_proc_001",
+      "source_name": "Payment Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_006",
+      "target_name": "Payment Outcome Notification",
+      "rel_type": "ends_with",
+      "description": "Payment Processing concludes with Payment Outcome Notification",
+      "properties": {
+        "sequence_position": 6
+      },
+      "context": "Biller notified of success/failure",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_001",
+      "source_name": "Biller Amount Determination",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_ract_001",
+      "target_name": "Biller",
+      "rel_type": "performed_by",
+      "description": "Biller Amount Determination is performed by the Biller",
+      "properties": {},
+      "context": "Biller determines amount due (e.g., £75 for monthly electricity)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_002",
+      "source_name": "Payment Instruction Submission",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_ract_001",
+      "target_name": "Biller",
+      "rel_type": "performed_by",
+      "description": "Payment Instruction Submission is performed by the Biller",
+      "properties": {},
+      "context": "Submits instruction via Direct Debit scheme",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_003",
+      "source_name": "Payment Instruction Reception",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_ract_002",
+      "target_name": "FirstUK",
+      "rel_type": "performed_by",
+      "description": "Payment Instruction Reception is performed by FirstUK",
+      "properties": {},
+      "context": "FirstUK receives instruction",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_004",
+      "source_name": "Mandate Validation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_ract_002",
+      "target_name": "FirstUK",
+      "rel_type": "performed_by",
+      "description": "Mandate Validation is performed by FirstUK",
+      "properties": {},
+      "context": "FirstUK validates against mandate (amount within limits, account active)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_005",
+      "source_name": "Account Debit",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_ract_002",
+      "target_name": "FirstUK",
+      "rel_type": "performed_by",
+      "description": "Account Debit is performed by FirstUK",
+      "properties": {},
+      "context": "Payment debited from account",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_006",
+      "source_name": "Payment Outcome Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_ract_002",
+      "target_name": "FirstUK",
+      "rel_type": "performed_by",
+      "description": "Payment Outcome Notification is performed by FirstUK",
+      "properties": {},
+      "context": "Biller notified of success/failure",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_002",
+      "source_name": "Payment Instruction Submission",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "processes_mandate_for",
+      "description": "Payment Instruction Submission processes the Direct Debit Mandate",
+      "properties": {},
+      "context": "Submits instruction via Direct Debit scheme",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_004",
+      "source_name": "Mandate Validation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "records_result_of",
+      "description": "Mandate Validation records the validation result of the Direct Debit Mandate",
+      "properties": {
+        "validation_criteria": [
+          "amount within limits",
+          "account active"
+        ]
+      },
+      "context": "FirstUK validates against mandate (amount within limits, account active)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_005",
+      "source_name": "Account Debit",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_acct_001",
+      "target_name": "Customer Account",
+      "rel_type": "updates",
+      "description": "Account Debit updates the Customer Account by debiting the payment amount",
+      "properties": {
+        "operation": "debit"
+      },
+      "context": "Payment debited from account",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_acct_001",
+      "target_name": "Customer Account",
+      "rel_type": "set_up_on",
+      "description": "Direct Debit Mandate is set up on the Customer Account",
+      "properties": {},
+      "context": "FirstUK validates against mandate (amount within limits, account active) Payment debited from account",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_proc_001",
+      "source_name": "Payment Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "processes_mandate_for",
+      "description": "Payment Processing processes the Direct Debit Mandate",
+      "properties": {},
+      "context": "Submits instruction via Direct Debit scheme",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_proc_001",
+      "source_name": "Payment Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_001",
+      "source_name": "Biller Amount Determination",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_002",
+      "source_name": "Payment Instruction Submission",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_003",
+      "source_name": "Payment Instruction Reception",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_004",
+      "source_name": "Mandate Validation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_005",
+      "source_name": "Account Debit",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_pstep_006",
+      "source_name": "Payment Outcome Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_ract_001",
+      "source_name": "Biller",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_ract_002",
+      "source_name": "FirstUK",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_acct_001",
+      "source_name": "Customer Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010_dec_001",
+      "source_name": "Mandate Validation Gate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

@@ -1,0 +1,659 @@
+{
+  "chunk_seq": 12,
+  "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+  "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+  "text": "## Step 6: Modify Standing Order  \n### Changes Allowed  \nCustomer can modify:\n- ✅ **Amount:** Change payment amount (creates new SO, cancels old)\n- ✅ **Frequency:** Change timing (weekly → monthly, etc.)\n- ✅ **Payee:** Change recipient (creates new SO, cancels old)\n- ✅ **End Date:** Set or change end date",
+  "name": "Chunk 12/24",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_011",
+  "next_chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_013",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Standing Order Modification Process",
+      "aliases": [
+        "SO Modification",
+        "Standing Order Amendment"
+      ],
+      "entity_class": "PROCESS",
+      "type": "standing_order_amendment",
+      "description": "End-to-end procedure enabling customers to modify existing standing orders by changing payment amount, frequency, payee, or end date. Modifications to amount or payee trigger cancellation of the old standing order and creation of a new one.",
+      "context": [
+        "Customer can modify: Amount, Frequency, Payee, End Date",
+        "Change payment amount (creates new SO, cancels old)",
+        "Change recipient (creates new SO, cancels old)"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Amount Modification",
+      "aliases": [
+        "Payment Amount Change"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer initiates a change to the payment amount of an existing standing order. This action triggers cancellation of the old standing order and creation of a new standing order with the updated amount.",
+      "context": [
+        "Change payment amount (creates new SO, cancels old)",
+        "Amount: Change payment amount"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Frequency Modification",
+      "aliases": [
+        "Payment Frequency Change",
+        "Timing Change"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer modifies the payment frequency or timing of the standing order, such as changing from weekly to monthly payments. The existing standing order remains active with updated frequency parameters.",
+      "context": [
+        "Change timing (weekly → monthly, etc.)",
+        "Frequency: Change timing"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Payee Modification",
+      "aliases": [
+        "Recipient Change",
+        "Payee Change"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer changes the recipient or payee of the standing order. This modification triggers cancellation of the old standing order and creation of a new standing order with the updated payee details.",
+      "context": [
+        "Change recipient (creates new SO, cancels old)",
+        "Payee: Change recipient"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "End Date Modification",
+      "aliases": [
+        "End Date Change",
+        "Termination Date Update"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer sets or changes the end date of the standing order, defining when the recurring payment instruction will cease.",
+      "context": [
+        "End Date: Set or change end date",
+        "Customer can modify: End Date"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "SO"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_amendment",
+      "description": "A recurring payment instruction on a customer account that can be modified in terms of amount, frequency, payee, or end date. Modifications to amount or payee result in cancellation of the existing standing order and creation of a replacement.",
+      "context": [
+        "Customer can modify: Amount, Frequency, Payee, End Date",
+        "creates new SO, cancels old"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The account holder who initiates modifications to standing orders, with authority to change payment amounts, frequency, payee, and end dates.",
+      "context": [
+        "Customer can modify: Amount, Frequency, Payee, End Date"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_proc_001",
+    "pstep_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_001",
+    "pstep_002": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_002",
+    "pstep_003": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_003",
+    "pstep_004": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_004",
+    "so_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_so_001",
+    "cust_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_proc_001",
+      "name": "Standing Order Modification Process",
+      "aliases": [
+        "SO Modification",
+        "Standing Order Amendment"
+      ],
+      "entity_class": "PROCESS",
+      "type": "standing_order_amendment",
+      "description": "End-to-end procedure enabling customers to modify existing standing orders by changing payment amount, frequency, payee, or end date. Modifications to amount or payee trigger cancellation of the old standing order and creation of a new one.",
+      "context": [
+        "Customer can modify: Amount, Frequency, Payee, End Date",
+        "Change payment amount (creates new SO, cancels old)",
+        "Change recipient (creates new SO, cancels old)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_001",
+      "name": "Amount Modification",
+      "aliases": [
+        "Payment Amount Change"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer initiates a change to the payment amount of an existing standing order. This action triggers cancellation of the old standing order and creation of a new standing order with the updated amount.",
+      "context": [
+        "Change payment amount (creates new SO, cancels old)",
+        "Amount: Change payment amount"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_002",
+      "name": "Frequency Modification",
+      "aliases": [
+        "Payment Frequency Change",
+        "Timing Change"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer modifies the payment frequency or timing of the standing order, such as changing from weekly to monthly payments. The existing standing order remains active with updated frequency parameters.",
+      "context": [
+        "Change timing (weekly → monthly, etc.)",
+        "Frequency: Change timing"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_003",
+      "name": "Payee Modification",
+      "aliases": [
+        "Recipient Change",
+        "Payee Change"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer changes the recipient or payee of the standing order. This modification triggers cancellation of the old standing order and creation of a new standing order with the updated payee details.",
+      "context": [
+        "Change recipient (creates new SO, cancels old)",
+        "Payee: Change recipient"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_004",
+      "name": "End Date Modification",
+      "aliases": [
+        "End Date Change",
+        "Termination Date Update"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer sets or changes the end date of the standing order, defining when the recurring payment instruction will cease.",
+      "context": [
+        "End Date: Set or change end date",
+        "Customer can modify: End Date"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "SO"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_amendment",
+      "description": "A recurring payment instruction on a customer account that can be modified in terms of amount, frequency, payee, or end date. Modifications to amount or payee result in cancellation of the existing standing order and creation of a replacement.",
+      "context": [
+        "Customer can modify: Amount, Frequency, Payee, End Date",
+        "creates new SO, cancels old"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_cust_001",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The account holder who initiates modifications to standing orders, with authority to change payment amounts, frequency, payee, and end dates.",
+      "context": [
+        "Customer can modify: Amount, Frequency, Payee, End Date"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_proc_001",
+      "name": "Standing Order Modification Process",
+      "properties": {
+        "purpose": "Allow customers to modify existing standing order parameters",
+        "scope": "Standing orders",
+        "channels": [
+          "branch",
+          "online"
+        ],
+        "trigger": "Customer request to change standing order details",
+        "outcome_success": "Standing order modified with new parameters applied to future payments"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_001",
+      "name": "Amount Modification",
+      "properties": {
+        "step_number": 1,
+        "actor": "Customer",
+        "input": "Current standing order details, new payment amount",
+        "output": "New standing order created with updated amount, old standing order cancelled",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": true,
+        "failure_path": "Modification rejected, customer notified of reason"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_002",
+      "name": "Frequency Modification",
+      "properties": {
+        "step_number": 2,
+        "actor": "Customer",
+        "input": "Current standing order, new frequency (e.g., weekly to monthly)",
+        "output": "Standing order updated with new payment frequency",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": true,
+        "failure_path": "Modification rejected, customer notified of reason"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_003",
+      "name": "Payee Modification",
+      "properties": {
+        "step_number": 3,
+        "actor": "Customer",
+        "input": "Current standing order, new payee/recipient details",
+        "output": "New standing order created with updated payee, old standing order cancelled",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": true,
+        "failure_path": "Modification rejected, customer notified of reason"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_004",
+      "name": "End Date Modification",
+      "properties": {
+        "step_number": 4,
+        "actor": "Customer",
+        "input": "Current standing order, new end date or removal of end date",
+        "output": "Standing order updated with new end date",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": false,
+        "failure_path": "Modification rejected, customer notified of reason"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_so_001",
+      "name": "Standing Order",
+      "properties": {
+        "modifiable_parameters": [
+          "amount",
+          "frequency",
+          "payee",
+          "end_date"
+        ],
+        "amount_modification_creates_new_so": true,
+        "payee_modification_creates_new_so": true,
+        "frequency_modification_updates_existing": true,
+        "end_date_modification_updates_existing": true
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Standing order account holder initiating modifications",
+        "modification_authority": "Can modify own standing orders"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_proc_001",
+      "source_name": "Standing Order Modification Process",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_001",
+      "target_name": "Amount Modification",
+      "rel_type": "contains",
+      "description": "Standing Order Modification Process includes Amount Modification as a process step",
+      "properties": {
+        "sequence_position": 1,
+        "modification_type": "amount"
+      },
+      "context": "Customer can modify: Amount: Change payment amount (creates new SO, cancels old)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_proc_001",
+      "source_name": "Standing Order Modification Process",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_002",
+      "target_name": "Frequency Modification",
+      "rel_type": "contains",
+      "description": "Standing Order Modification Process includes Frequency Modification as a process step",
+      "properties": {
+        "sequence_position": 2,
+        "modification_type": "frequency"
+      },
+      "context": "Customer can modify: Frequency: Change timing (weekly → monthly, etc.)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_proc_001",
+      "source_name": "Standing Order Modification Process",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_003",
+      "target_name": "Payee Modification",
+      "rel_type": "contains",
+      "description": "Standing Order Modification Process includes Payee Modification as a process step",
+      "properties": {
+        "sequence_position": 3,
+        "modification_type": "payee"
+      },
+      "context": "Customer can modify: Payee: Change recipient (creates new SO, cancels old)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_proc_001",
+      "source_name": "Standing Order Modification Process",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_004",
+      "target_name": "End Date Modification",
+      "rel_type": "contains",
+      "description": "Standing Order Modification Process includes End Date Modification as a process step",
+      "properties": {
+        "sequence_position": 4,
+        "modification_type": "end_date"
+      },
+      "context": "Customer can modify: End Date: Set or change end date",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_proc_001",
+      "source_name": "Standing Order Modification Process",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "amends",
+      "description": "Standing Order Modification Process amends Standing Orders",
+      "properties": {
+        "action": "modify"
+      },
+      "context": "Step 6: Modify Standing Order - Customer can modify: Amount, Frequency, Payee, End Date",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_proc_001",
+      "source_name": "Standing Order Modification Process",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_cust_001",
+      "target_name": "Customer",
+      "rel_type": "serves",
+      "description": "Standing Order Modification Process serves the Customer",
+      "properties": {
+        "action": "enables_modification"
+      },
+      "context": "Customer can modify: Amount, Frequency, Payee, End Date",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_001",
+      "source_name": "Amount Modification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_002",
+      "target_name": "Frequency Modification",
+      "rel_type": "followed_by",
+      "description": "Amount Modification is followed by Frequency Modification in the process sequence",
+      "properties": {
+        "sequence": "step_1_to_step_2"
+      },
+      "context": "Changes Allowed: Amount, Frequency, Payee, End Date (in listed order)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_002",
+      "source_name": "Frequency Modification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_003",
+      "target_name": "Payee Modification",
+      "rel_type": "followed_by",
+      "description": "Frequency Modification is followed by Payee Modification in the process sequence",
+      "properties": {
+        "sequence": "step_2_to_step_3"
+      },
+      "context": "Changes Allowed: Frequency, Payee, End Date (in listed order)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_003",
+      "source_name": "Payee Modification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_004",
+      "target_name": "End Date Modification",
+      "rel_type": "followed_by",
+      "description": "Payee Modification is followed by End Date Modification in the process sequence",
+      "properties": {
+        "sequence": "step_3_to_step_4"
+      },
+      "context": "Changes Allowed: Payee, End Date (in listed order)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_001",
+      "source_name": "Amount Modification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "amends",
+      "description": "Amount Modification step amends the Standing Order by changing payment amount",
+      "properties": {
+        "modification_detail": "creates new SO, cancels old",
+        "field_modified": "amount"
+      },
+      "context": "Amount: Change payment amount (creates new SO, cancels old)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_002",
+      "source_name": "Frequency Modification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "amends",
+      "description": "Frequency Modification step amends the Standing Order by changing payment timing",
+      "properties": {
+        "modification_detail": "weekly to monthly, etc.",
+        "field_modified": "frequency"
+      },
+      "context": "Frequency: Change timing (weekly → monthly, etc.)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_003",
+      "source_name": "Payee Modification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "amends",
+      "description": "Payee Modification step amends the Standing Order by changing recipient",
+      "properties": {
+        "modification_detail": "creates new SO, cancels old",
+        "field_modified": "payee"
+      },
+      "context": "Payee: Change recipient (creates new SO, cancels old)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_004",
+      "source_name": "End Date Modification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "amends",
+      "description": "End Date Modification step amends the Standing Order by setting or changing end date",
+      "properties": {
+        "field_modified": "end_date"
+      },
+      "context": "End Date: Set or change end date",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "initiated_by",
+      "description": "Customer initiates modifications to the Standing Order",
+      "properties": {
+        "action": "can_modify"
+      },
+      "context": "Customer can modify: Amount, Frequency, Payee, End Date",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_proc_001",
+      "source_name": "Standing Order Modification Process",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_001",
+      "source_name": "Amount Modification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_002",
+      "source_name": "Frequency Modification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_003",
+      "source_name": "Payee Modification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_pstep_004",
+      "source_name": "End Date Modification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_012",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

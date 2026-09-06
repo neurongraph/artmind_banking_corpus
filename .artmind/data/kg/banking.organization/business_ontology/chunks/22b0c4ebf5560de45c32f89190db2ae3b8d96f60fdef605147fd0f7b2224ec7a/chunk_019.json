@@ -1,0 +1,652 @@
+{
+  "chunk_seq": 19,
+  "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+  "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+  "text": "## 5. Risk & Compliance Domain  \n### Entity: KYC Verification  \n**Definition:** Know Your Customer verification confirming customer identity and legitimacy.  \n**Attributes:**\n- `kyc_id` — Unique identifier\n- `customer_id` — Linked customer\n- `verification_date` — Date of verification\n- `verification_method` — Document, Biometric, Database\n- `identity_verified` — Boolean (confirmed identity)\n- `address_verified` — Boolean (confirmed address)\n- `pep_screened` — Boolean (checked for Politically Exposed Persons)\n- `adverse_media_checked` — Boolean (checked for negative news)\n- `verification_status` — Verified, Incomplete, Rejected, Expired\n- `next_review_date` — Date for KYC refresh (typically 3-5 years)\n- `reviewer` — Staff member who performed KYC  \n**Key Business Rules:**\n- KYC mandatory before account opening\n- KYC refreshed periodically (every 3–5 years)\n- High-risk customers require Enhanced Due Diligence (EDD)\n- KYC documents retained for 6 years post-closure  \n**Relationships:**\n- `for_customer` → Customer (1:1)\n- `verified_documents` → IdentificationDocument (1:many)  \n---",
+  "name": "Chunk 19/37",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_018",
+  "next_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_020",
+  "raw_entities": [
+    {
+      "id": "bc_001",
+      "name": "KYC Verification",
+      "aliases": [
+        "Know Your Customer verification",
+        "KYC"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "kyc_verification",
+      "description": "Know Your Customer verification process confirming customer identity and legitimacy. Mandatory before account opening and refreshed periodically every 3–5 years. Includes identity verification, address verification, PEP screening, and adverse media checks with documented status tracking and review scheduling.",
+      "context": [
+        "Know Your Customer verification confirming customer identity and legitimacy.",
+        "KYC mandatory before account opening",
+        "KYC refreshed periodically (every 3–5 years)",
+        "High-risk customers require Enhanced Due Diligence (EDD)"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Identification Document",
+      "aliases": [
+        "verified_documents"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "identification_document",
+      "description": "Documents collected and retained as part of KYC verification to confirm customer identity. Retained for 6 years post-closure as per regulatory requirements.",
+      "context": [
+        "verified_documents → IdentificationDocument (1:many)",
+        "KYC documents retained for 6 years post-closure"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "customer",
+      "description": "A natural person subject to KYC verification and compliance processes. Linked to KYC verification records on a 1:1 basis and classified by risk profile (standard or high-risk requiring Enhanced Due Diligence).",
+      "context": [
+        "for_customer → Customer (1:1)",
+        "High-risk customers require Enhanced Due Diligence (EDD)"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "KYC Mandatory Before Account Opening",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Regulatory obligation requiring KYC verification to be completed and confirmed before any customer account can be opened.",
+      "context": [
+        "KYC mandatory before account opening"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "KYC Periodic Refresh Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Operational rule mandating KYC verification refresh at regular intervals of 3–5 years to maintain current customer due diligence records.",
+      "context": [
+        "KYC refreshed periodically (every 3–5 years)",
+        "next_review_date — Date for KYC refresh (typically 3–5 years)"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "Enhanced Due Diligence for High-Risk Customers",
+      "aliases": [
+        "EDD"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Regulatory obligation requiring high-risk customers to undergo Enhanced Due Diligence as part of KYC verification, beyond standard verification procedures.",
+      "context": [
+        "High-risk customers require Enhanced Due Diligence (EDD)"
+      ]
+    },
+    {
+      "id": "br_004",
+      "name": "KYC Document Retention Period",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Regulatory obligation to retain all KYC documents for a minimum of 6 years following account closure.",
+      "context": [
+        "KYC documents retained for 6 years post-closure"
+      ]
+    },
+    {
+      "id": "mt_001",
+      "name": "KYC Refresh Interval",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "kpi",
+      "description": "Standard operational interval for periodic KYC verification refresh to maintain compliance with due diligence requirements.",
+      "context": [
+        "KYC refreshed periodically (every 3–5 years)",
+        "next_review_date — Date for KYC refresh (typically 3–5 years)"
+      ]
+    },
+    {
+      "id": "mt_002",
+      "name": "KYC Document Retention Period",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "kpi",
+      "description": "Regulatory-mandated retention period for KYC documentation following customer account closure.",
+      "context": [
+        "KYC documents retained for 6 years post-closure"
+      ]
+    }
+  ],
+  "id_map": {
+    "bc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_001",
+    "bc_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_002",
+    "bc_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_003",
+    "br_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_001",
+    "br_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_002",
+    "br_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_003",
+    "br_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_004",
+    "mt_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_mt_001",
+    "mt_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_mt_002"
+  },
+  "entities": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_001",
+      "name": "KYC Verification",
+      "aliases": [
+        "Know Your Customer verification",
+        "KYC"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "kyc_verification",
+      "description": "Know Your Customer verification process confirming customer identity and legitimacy. Mandatory before account opening and refreshed periodically every 3–5 years. Includes identity verification, address verification, PEP screening, and adverse media checks with documented status tracking and review scheduling.",
+      "context": [
+        "Know Your Customer verification confirming customer identity and legitimacy.",
+        "KYC mandatory before account opening",
+        "KYC refreshed periodically (every 3–5 years)",
+        "High-risk customers require Enhanced Due Diligence (EDD)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_002",
+      "name": "Identification Document",
+      "aliases": [
+        "verified_documents"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "identification_document",
+      "description": "Documents collected and retained as part of KYC verification to confirm customer identity. Retained for 6 years post-closure as per regulatory requirements.",
+      "context": [
+        "verified_documents → IdentificationDocument (1:many)",
+        "KYC documents retained for 6 years post-closure"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_003",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "customer",
+      "description": "A natural person subject to KYC verification and compliance processes. Linked to KYC verification records on a 1:1 basis and classified by risk profile (standard or high-risk requiring Enhanced Due Diligence).",
+      "context": [
+        "for_customer → Customer (1:1)",
+        "High-risk customers require Enhanced Due Diligence (EDD)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_001",
+      "name": "KYC Mandatory Before Account Opening",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Regulatory obligation requiring KYC verification to be completed and confirmed before any customer account can be opened.",
+      "context": [
+        "KYC mandatory before account opening"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_002",
+      "name": "KYC Periodic Refresh Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Operational rule mandating KYC verification refresh at regular intervals of 3–5 years to maintain current customer due diligence records.",
+      "context": [
+        "KYC refreshed periodically (every 3–5 years)",
+        "next_review_date — Date for KYC refresh (typically 3–5 years)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_003",
+      "name": "Enhanced Due Diligence for High-Risk Customers",
+      "aliases": [
+        "EDD"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Regulatory obligation requiring high-risk customers to undergo Enhanced Due Diligence as part of KYC verification, beyond standard verification procedures.",
+      "context": [
+        "High-risk customers require Enhanced Due Diligence (EDD)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_004",
+      "name": "KYC Document Retention Period",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Regulatory obligation to retain all KYC documents for a minimum of 6 years following account closure.",
+      "context": [
+        "KYC documents retained for 6 years post-closure"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_mt_001",
+      "name": "KYC Refresh Interval",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "kpi",
+      "description": "Standard operational interval for periodic KYC verification refresh to maintain compliance with due diligence requirements.",
+      "context": [
+        "KYC refreshed periodically (every 3–5 years)",
+        "next_review_date — Date for KYC refresh (typically 3–5 years)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_mt_002",
+      "name": "KYC Document Retention Period",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "kpi",
+      "description": "Regulatory-mandated retention period for KYC documentation following customer account closure.",
+      "context": [
+        "KYC documents retained for 6 years post-closure"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_001",
+      "name": "KYC Verification",
+      "properties": {
+        "definition": "Know Your Customer verification confirming customer identity and legitimacy",
+        "key_attributes": [
+          "kyc_id",
+          "customer_id",
+          "verification_date",
+          "verification_method",
+          "identity_verified",
+          "address_verified",
+          "pep_screened",
+          "adverse_media_checked",
+          "verification_status",
+          "next_review_date",
+          "reviewer"
+        ],
+        "business_rules": [
+          "KYC mandatory before account opening",
+          "KYC refreshed periodically every 3–5 years",
+          "High-risk customers require Enhanced Due Diligence",
+          "KYC documents retained for 6 years post-closure"
+        ],
+        "ontology_domain": "Risk & Compliance Domain",
+        "relationships_to": [
+          "Customer",
+          "IdentificationDocument"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_002",
+      "name": "Identification Document",
+      "properties": {
+        "definition": "Document used to verify customer identity as part of KYC verification process",
+        "ontology_domain": "Risk & Compliance Domain",
+        "relationships_to": [
+          "KYC Verification"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_003",
+      "name": "Customer",
+      "properties": {
+        "definition": "Individual or entity subject to KYC verification and compliance requirements",
+        "ontology_domain": "Risk & Compliance Domain",
+        "relationships_to": [
+          "KYC Verification"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_001",
+      "name": "KYC Mandatory Before Account Opening",
+      "properties": {
+        "rule_statement": "KYC verification must be completed before account opening",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Account Opening",
+          "Customer Onboarding"
+        ],
+        "regulatory_source": "FCA"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_002",
+      "name": "KYC Periodic Refresh Requirement",
+      "properties": {
+        "rule_statement": "KYC verification must be refreshed periodically every 3–5 years",
+        "rule_type": "obligation",
+        "applies_to": [
+          "KYC Verification",
+          "Active Customers"
+        ],
+        "regulatory_source": "FCA"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_003",
+      "name": "Enhanced Due Diligence for High-Risk Customers",
+      "properties": {
+        "rule_statement": "High-risk customers require Enhanced Due Diligence as part of KYC process",
+        "rule_type": "obligation",
+        "applies_to": [
+          "High-Risk Customers",
+          "KYC Verification"
+        ],
+        "regulatory_source": "FCA"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_004",
+      "name": "KYC Document Retention Period",
+      "properties": {
+        "rule_statement": "KYC documents must be retained for 6 years following account closure",
+        "rule_type": "obligation",
+        "applies_to": [
+          "KYC Documentation",
+          "Record Retention"
+        ],
+        "regulatory_source": "FCA"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_mt_001",
+      "name": "KYC Refresh Interval",
+      "properties": {
+        "value": "3-5",
+        "unit": "years",
+        "what_it_measures": "Periodic interval for KYC verification refresh on active customer accounts",
+        "context": "Regulatory requirement to maintain current customer information and risk assessment"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_mt_002",
+      "name": "KYC Document Retention Period",
+      "properties": {
+        "value": "6",
+        "unit": "years",
+        "what_it_measures": "Duration for which KYC documents must be retained after account closure",
+        "context": "Regulatory compliance and audit trail requirement"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_001",
+      "source_name": "KYC Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_003",
+      "target_name": "Customer",
+      "rel_type": "linked_to",
+      "description": "KYC Verification is linked to a specific Customer entity for identity and legitimacy confirmation",
+      "properties": {
+        "relationship_cardinality": "1:1",
+        "attribute_name": "for_customer"
+      },
+      "context": "`for_customer` → Customer (1:1)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_001",
+      "source_name": "KYC Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_002",
+      "target_name": "Identification Document",
+      "rel_type": "linked_to",
+      "description": "KYC Verification is linked to multiple Identification Documents used for verification",
+      "properties": {
+        "relationship_cardinality": "1:many",
+        "attribute_name": "verified_documents"
+      },
+      "context": "`verified_documents` → IdentificationDocument (1:many)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_001",
+      "source_name": "KYC Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_001",
+      "target_name": "KYC Mandatory Before Account Opening",
+      "rel_type": "governed_by",
+      "description": "KYC Verification is governed by the business rule requiring KYC completion before account opening",
+      "properties": {
+        "enforcement_point": "account_opening",
+        "mandatory": true
+      },
+      "context": "KYC mandatory before account opening",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_001",
+      "source_name": "KYC Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_002",
+      "target_name": "KYC Periodic Refresh Requirement",
+      "rel_type": "governed_by",
+      "description": "KYC Verification is governed by the business rule requiring periodic refresh every 3-5 years",
+      "properties": {
+        "refresh_interval_years": "3-5",
+        "attribute_name": "next_review_date"
+      },
+      "context": "KYC refreshed periodically (every 3–5 years)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_001",
+      "source_name": "KYC Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_003",
+      "target_name": "Enhanced Due Diligence for High-Risk Customers",
+      "rel_type": "governed_by",
+      "description": "KYC Verification is governed by the business rule requiring Enhanced Due Diligence for high-risk customers",
+      "properties": {
+        "customer_risk_category": "high-risk",
+        "additional_checks": true
+      },
+      "context": "High-risk customers require Enhanced Due Diligence (EDD)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_001",
+      "source_name": "KYC Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_004",
+      "target_name": "KYC Document Retention Period",
+      "rel_type": "governed_by",
+      "description": "KYC Verification is governed by the business rule requiring document retention for 6 years post-closure",
+      "properties": {
+        "retention_period_years": 6,
+        "retention_trigger": "post-closure"
+      },
+      "context": "KYC documents retained for 6 years post-closure",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_001",
+      "source_name": "KYC Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_mt_001",
+      "target_name": "KYC Refresh Interval",
+      "rel_type": "measured_by",
+      "description": "KYC Verification refresh cycles are measured by the KYC Refresh Interval metric target",
+      "properties": {
+        "metric_attribute": "next_review_date",
+        "standard_interval_years": "3-5"
+      },
+      "context": "KYC refreshed periodically (every 3–5 years); next_review_date — Date for KYC refresh (typically 3-5 years)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_001",
+      "source_name": "KYC Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_mt_002",
+      "target_name": "KYC Document Retention Period",
+      "rel_type": "measured_by",
+      "description": "KYC Verification document retention is measured by the KYC Document Retention Period metric target",
+      "properties": {
+        "retention_period_years": 6,
+        "retention_trigger": "post-closure"
+      },
+      "context": "KYC documents retained for 6 years post-closure",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_001",
+      "source_name": "KYC Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_002",
+      "source_name": "Identification Document",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_bc_003",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_001",
+      "source_name": "KYC Mandatory Before Account Opening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_002",
+      "source_name": "KYC Periodic Refresh Requirement",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_003",
+      "source_name": "Enhanced Due Diligence for High-Risk Customers",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_br_004",
+      "source_name": "KYC Document Retention Period",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_mt_001",
+      "source_name": "KYC Refresh Interval",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019_mt_002",
+      "source_name": "KYC Document Retention Period",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_019",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ]
+}

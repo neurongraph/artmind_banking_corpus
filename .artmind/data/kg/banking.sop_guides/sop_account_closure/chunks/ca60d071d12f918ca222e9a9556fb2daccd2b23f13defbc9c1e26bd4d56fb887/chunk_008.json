@@ -1,0 +1,990 @@
+{
+  "chunk_seq": 8,
+  "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+  "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+  "text": "## Step 3: Final Balance Calculation  \n### Balance Calculation Process  \n**Step 1: Collect All Transactions**\n- Pull all transactions since last statement\n- Include pending transactions (standing orders, direct debits due)\n- Verify no unprocessed deposits/withdrawals  \n**Step 2: Calculate Final Balance**\n- Ledger balance (posted transactions)\n- Add any pending interest (if accrual period not yet completed)\n- Subtract any pending fees (overdraft, if applicable)\n- Verify balance matches account record in AMS  \n**Step 3: Document Balance**\n- Print final statement\n- Include calculation date\n- List all pending transactions\n- Final balance clearly stated  \n**Step 4: Approval**\n- Operations manager verifies calculation\n- Sign-off on final statement\n- File in account closure record",
+  "name": "Chunk 8/25",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_007",
+  "next_chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_009",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Balance Calculation Process",
+      "aliases": [
+        "Final Balance Calculation",
+        "Statement Balance Calculation"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_closure",
+      "description": "End-to-end procedure for calculating and documenting a customer account's final balance prior to closure. The process collects all transactions since the last statement, computes the final balance including pending interest and fees, generates a final statement, and obtains operations manager approval and sign-off.",
+      "context": [
+        "Step 3: Final Balance Calculation",
+        "Pull all transactions since last statement",
+        "Verify balance matches account record in AMS",
+        "Operations manager verifies calculation"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Collect All Transactions",
+      "aliases": [
+        "Transaction Collection"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial step to gather all financial transactions affecting the account since the last statement, including both posted and pending transactions (standing orders, direct debits due), with verification that no deposits or withdrawals remain unprocessed.",
+      "context": [
+        "Pull all transactions since last statement",
+        "Include pending transactions (standing orders, direct debits due)",
+        "Verify no unprocessed deposits/withdrawals"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Calculate Final Balance",
+      "aliases": [
+        "Balance Computation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Computation step that determines the account's final balance by combining the ledger balance of posted transactions, adding any accrued but unpaid interest, subtracting pending fees and overdraft charges, and cross-verifying the result against the Account Management System (AMS) record.",
+      "context": [
+        "Ledger balance (posted transactions)",
+        "Add any pending interest (if accrual period not yet completed)",
+        "Subtract any pending fees (overdraft, if applicable)",
+        "Verify balance matches account record in AMS"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Document Balance",
+      "aliases": [
+        "Statement Generation",
+        "Balance Documentation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step to formally record and communicate the final balance by printing a final statement that includes the calculation date, itemizes all pending transactions, and clearly displays the final balance figure.",
+      "context": [
+        "Print final statement",
+        "Include calculation date",
+        "List all pending transactions",
+        "Final balance clearly stated"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Approval of Final Statement",
+      "aliases": [
+        "Manager Sign-off",
+        "Balance Approval"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Final authorization step in which the operations manager reviews and verifies the balance calculation, provides formal sign-off on the final statement, and ensures the document is filed in the account closure record.",
+      "context": [
+        "Operations manager verifies calculation",
+        "Sign-off on final statement",
+        "File in account closure record"
+      ]
+    },
+    {
+      "id": "ract_001",
+      "name": "Operations Manager",
+      "aliases": [
+        "Ops Manager"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Senior operations staff member responsible for verifying the accuracy of the final balance calculation, authorizing the final statement, and ensuring proper filing of closure documentation.",
+      "context": [
+        "Operations manager verifies calculation",
+        "Sign-off on final statement"
+      ]
+    },
+    {
+      "id": "trans_001",
+      "name": "Posted Transaction",
+      "aliases": [
+        "Ledger Transaction",
+        "Cleared Transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "monitored_transaction",
+      "description": "A financial transaction that has been fully processed and settled on the account ledger, forming the basis of the ledger balance used in final balance calculation.",
+      "context": [
+        "Ledger balance (posted transactions)",
+        "Pull all transactions since last statement"
+      ]
+    },
+    {
+      "id": "trans_002",
+      "name": "Pending Transaction",
+      "aliases": [
+        "Outstanding Transaction",
+        "Uncleared Transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "monitored_transaction",
+      "description": "A financial transaction that has been initiated but not yet fully processed or settled, including standing orders and direct debits due, which must be included in the final balance calculation.",
+      "context": [
+        "Include pending transactions (standing orders, direct debits due)",
+        "List all pending transactions"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "SO"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "A recurring payment instruction on the account that may be pending at the time of balance calculation and must be included as a pending transaction in the final statement.",
+      "context": [
+        "Include pending transactions (standing orders, direct debits due)"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit",
+      "aliases": [
+        "DD"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "A direct debit mandate on the account that may be due at the time of balance calculation and must be included as a pending transaction in the final statement.",
+      "context": [
+        "Include pending transactions (standing orders, direct debits due)"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account",
+        "Customer Account Record"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "new_account",
+      "description": "The customer account undergoing closure, for which a final balance calculation is performed. The account record is maintained in the Account Management System (AMS) and serves as the verification source for the calculated balance.",
+      "context": [
+        "Verify balance matches account record in AMS",
+        "File in account closure record"
+      ]
+    },
+    {
+      "id": "sys_001",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "The automated system that maintains the authoritative account record and serves as the verification source for confirming that the manually calculated final balance matches the system-held account balance.",
+      "context": [
+        "Verify balance matches account record in AMS"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_proc_001",
+    "pstep_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_001",
+    "pstep_002": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_002",
+    "pstep_003": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_003",
+    "pstep_004": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_004",
+    "ract_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_ract_001",
+    "trans_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_trans_001",
+    "trans_002": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_trans_002",
+    "so_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_so_001",
+    "dd_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_dd_001",
+    "acc_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_acc_001",
+    "sys_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_sys_001"
+  },
+  "entities": [
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_proc_001",
+      "name": "Balance Calculation Process",
+      "aliases": [
+        "Final Balance Calculation",
+        "Statement Balance Calculation"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_closure",
+      "description": "End-to-end procedure for calculating and documenting a customer account's final balance prior to closure. The process collects all transactions since the last statement, computes the final balance including pending interest and fees, generates a final statement, and obtains operations manager approval and sign-off.",
+      "context": [
+        "Step 3: Final Balance Calculation",
+        "Pull all transactions since last statement",
+        "Verify balance matches account record in AMS",
+        "Operations manager verifies calculation"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_001",
+      "name": "Collect All Transactions",
+      "aliases": [
+        "Transaction Collection"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial step to gather all financial transactions affecting the account since the last statement, including both posted and pending transactions (standing orders, direct debits due), with verification that no deposits or withdrawals remain unprocessed.",
+      "context": [
+        "Pull all transactions since last statement",
+        "Include pending transactions (standing orders, direct debits due)",
+        "Verify no unprocessed deposits/withdrawals"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_002",
+      "name": "Calculate Final Balance",
+      "aliases": [
+        "Balance Computation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Computation step that determines the account's final balance by combining the ledger balance of posted transactions, adding any accrued but unpaid interest, subtracting pending fees and overdraft charges, and cross-verifying the result against the Account Management System (AMS) record.",
+      "context": [
+        "Ledger balance (posted transactions)",
+        "Add any pending interest (if accrual period not yet completed)",
+        "Subtract any pending fees (overdraft, if applicable)",
+        "Verify balance matches account record in AMS"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_003",
+      "name": "Document Balance",
+      "aliases": [
+        "Statement Generation",
+        "Balance Documentation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step to formally record and communicate the final balance by printing a final statement that includes the calculation date, itemizes all pending transactions, and clearly displays the final balance figure.",
+      "context": [
+        "Print final statement",
+        "Include calculation date",
+        "List all pending transactions",
+        "Final balance clearly stated"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_004",
+      "name": "Approval of Final Statement",
+      "aliases": [
+        "Manager Sign-off",
+        "Balance Approval"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Final authorization step in which the operations manager reviews and verifies the balance calculation, provides formal sign-off on the final statement, and ensures the document is filed in the account closure record.",
+      "context": [
+        "Operations manager verifies calculation",
+        "Sign-off on final statement",
+        "File in account closure record"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_ract_001",
+      "name": "Operations Manager",
+      "aliases": [
+        "Ops Manager"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Senior operations staff member responsible for verifying the accuracy of the final balance calculation, authorizing the final statement, and ensuring proper filing of closure documentation.",
+      "context": [
+        "Operations manager verifies calculation",
+        "Sign-off on final statement"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_trans_001",
+      "name": "Posted Transaction",
+      "aliases": [
+        "Ledger Transaction",
+        "Cleared Transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "monitored_transaction",
+      "description": "A financial transaction that has been fully processed and settled on the account ledger, forming the basis of the ledger balance used in final balance calculation.",
+      "context": [
+        "Ledger balance (posted transactions)",
+        "Pull all transactions since last statement"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_trans_002",
+      "name": "Pending Transaction",
+      "aliases": [
+        "Outstanding Transaction",
+        "Uncleared Transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "monitored_transaction",
+      "description": "A financial transaction that has been initiated but not yet fully processed or settled, including standing orders and direct debits due, which must be included in the final balance calculation.",
+      "context": [
+        "Include pending transactions (standing orders, direct debits due)",
+        "List all pending transactions"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "SO"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "A recurring payment instruction on the account that may be pending at the time of balance calculation and must be included as a pending transaction in the final statement.",
+      "context": [
+        "Include pending transactions (standing orders, direct debits due)"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_dd_001",
+      "name": "Direct Debit",
+      "aliases": [
+        "DD"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "A direct debit mandate on the account that may be due at the time of balance calculation and must be included as a pending transaction in the final statement.",
+      "context": [
+        "Include pending transactions (standing orders, direct debits due)"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account",
+        "Customer Account Record"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "new_account",
+      "description": "The customer account undergoing closure, for which a final balance calculation is performed. The account record is maintained in the Account Management System (AMS) and serves as the verification source for the calculated balance.",
+      "context": [
+        "Verify balance matches account record in AMS",
+        "File in account closure record"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_sys_001",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "The automated system that maintains the authoritative account record and serves as the verification source for confirming that the manually calculated final balance matches the system-held account balance.",
+      "context": [
+        "Verify balance matches account record in AMS"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_proc_001",
+      "name": "Balance Calculation Process",
+      "properties": {
+        "purpose": "Calculate and document final account balance for statement generation",
+        "scope": "All customer accounts requiring statement closure or periodic balance verification",
+        "owner": "Operations Manager",
+        "departments_involved": [
+          "Operations",
+          "Accounting"
+        ],
+        "trigger": "Statement period end or account closure request",
+        "outcome_success": "Final balance calculated, documented, approved, and filed",
+        "outcome_failure": "Balance discrepancy identified; escalation to reconciliation team"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_001",
+      "name": "Collect All Transactions",
+      "properties": {
+        "step_number": 1,
+        "actor": "Account Management System",
+        "input": [
+          "Transaction ledger",
+          "Pending transaction queue"
+        ],
+        "output": "Complete transaction list since last statement",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account Management System (AMS)"
+        ],
+        "failure_path": "Escalate to Operations Manager for manual transaction verification"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_002",
+      "name": "Calculate Final Balance",
+      "properties": {
+        "step_number": 2,
+        "actor": "Account Management System",
+        "input": [
+          "Posted transactions",
+          "Pending transactions",
+          "Pending interest",
+          "Pending fees"
+        ],
+        "output": "Final calculated balance",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account Management System (AMS)"
+        ],
+        "failure_path": "Balance mismatch detected; manual reconciliation required"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_003",
+      "name": "Document Balance",
+      "properties": {
+        "step_number": 3,
+        "actor": "Account Management System",
+        "input": "Final calculated balance",
+        "output": "Printed final statement with balance documentation",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account Management System (AMS)"
+        ],
+        "failure_path": "Statement generation failure; retry or manual document creation"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_004",
+      "name": "Approval of Final Statement",
+      "properties": {
+        "step_number": 4,
+        "actor": "Operations Manager",
+        "input": "Final statement with calculated balance",
+        "output": "Signed-off final statement filed in account closure record",
+        "channel": "manual",
+        "mandatory": "yes",
+        "failure_path": "Rejection triggers recalculation; escalation if repeated discrepancies"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_ract_001",
+      "name": "Operations Manager",
+      "properties": {
+        "role_type": "human",
+        "department": "Operations",
+        "authority_level": "Final approval authority for account balance statements",
+        "channels": [
+          "branch",
+          "system"
+        ]
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_trans_001",
+      "name": "Posted Transaction",
+      "properties": {
+        "transaction_type": "deposit or withdrawal",
+        "monitoring_or_reporting_obligation": "Included in ledger balance calculation"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_trans_002",
+      "name": "Pending Transaction",
+      "properties": {
+        "transaction_type": "pending",
+        "monitoring_or_reporting_obligation": "Included in final statement; listed separately from posted balance"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_so_001",
+      "name": "Standing Order",
+      "properties": {
+        "setup_or_amendment_process": "Included in pending transaction collection during balance calculation"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_dd_001",
+      "name": "Direct Debit",
+      "properties": {
+        "setup_or_amendment_process": "Included in pending transaction collection during balance calculation"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_acc_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_state": "active or closure pending"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_sys_001",
+      "name": "Account Management System",
+      "properties": {
+        "role_type": "system",
+        "department": "Operations",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_proc_001",
+      "source_name": "Balance Calculation Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_001",
+      "target_name": "Collect All Transactions",
+      "rel_type": "starts_with",
+      "description": "Balance Calculation Process begins with collecting all transactions",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Step 1: Collect All Transactions - Pull all transactions since last statement",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_001",
+      "source_name": "Collect All Transactions",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_002",
+      "target_name": "Calculate Final Balance",
+      "rel_type": "followed_by",
+      "description": "Collecting transactions is followed by calculating the final balance",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Step 1: Collect All Transactions followed by Step 2: Calculate Final Balance",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_002",
+      "source_name": "Calculate Final Balance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_003",
+      "target_name": "Document Balance",
+      "rel_type": "followed_by",
+      "description": "Calculating final balance is followed by documenting the balance",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Step 2: Calculate Final Balance followed by Step 3: Document Balance",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_003",
+      "source_name": "Document Balance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_004",
+      "target_name": "Approval of Final Statement",
+      "rel_type": "followed_by",
+      "description": "Documenting balance is followed by approval of final statement",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "Step 3: Document Balance followed by Step 4: Approval",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_001",
+      "source_name": "Collect All Transactions",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_trans_001",
+      "target_name": "Posted Transaction",
+      "rel_type": "collects_data_from",
+      "description": "Transaction collection step gathers posted transactions",
+      "properties": {
+        "transaction_type": "posted"
+      },
+      "context": "Pull all transactions since last statement - Include pending transactions (standing orders, direct debits due)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_001",
+      "source_name": "Collect All Transactions",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_trans_002",
+      "target_name": "Pending Transaction",
+      "rel_type": "collects_data_from",
+      "description": "Transaction collection step gathers pending transactions",
+      "properties": {
+        "transaction_type": "pending"
+      },
+      "context": "Include pending transactions (standing orders, direct debits due)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_001",
+      "source_name": "Collect All Transactions",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "collects_data_from",
+      "description": "Transaction collection includes pending standing orders",
+      "properties": {
+        "status": "pending"
+      },
+      "context": "Include pending transactions (standing orders, direct debits due)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_001",
+      "source_name": "Collect All Transactions",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_dd_001",
+      "target_name": "Direct Debit",
+      "rel_type": "collects_data_from",
+      "description": "Transaction collection includes pending direct debits",
+      "properties": {
+        "status": "pending"
+      },
+      "context": "Include pending transactions (standing orders, direct debits due)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_002",
+      "source_name": "Calculate Final Balance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "updates",
+      "description": "Final balance calculation updates the account record",
+      "properties": {
+        "verification_step": "Verify balance matches account record in AMS"
+      },
+      "context": "Verify balance matches account record in AMS",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_003",
+      "source_name": "Document Balance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "records",
+      "description": "Balance documentation records final balance in account",
+      "properties": {
+        "documentation_items": [
+          "calculation date",
+          "pending transactions",
+          "final balance"
+        ]
+      },
+      "context": "Print final statement - Include calculation date - List all pending transactions - Final balance clearly stated",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_004",
+      "source_name": "Approval of Final Statement",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_ract_001",
+      "target_name": "Operations Manager",
+      "rel_type": "performed_by",
+      "description": "Operations manager performs the approval of final statement",
+      "properties": {
+        "approval_actions": [
+          "verifies calculation",
+          "sign-off on final statement"
+        ]
+      },
+      "context": "Operations manager verifies calculation - Sign-off on final statement",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_proc_001",
+      "source_name": "Balance Calculation Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_ract_001",
+      "target_name": "Operations Manager",
+      "rel_type": "approved_by",
+      "description": "Balance Calculation Process requires approval by Operations Manager",
+      "properties": {
+        "approval_stage": "final"
+      },
+      "context": "Operations manager verifies calculation - Sign-off on final statement",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_proc_001",
+      "source_name": "Balance Calculation Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "modifies",
+      "description": "Balance Calculation Process modifies the customer account with final balance",
+      "properties": {
+        "modification_type": "balance_update"
+      },
+      "context": "Verify balance matches account record in AMS - Final balance clearly stated",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_002",
+      "source_name": "Calculate Final Balance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_trans_001",
+      "target_name": "Posted Transaction",
+      "rel_type": "reviews_result_of",
+      "description": "Final balance calculation reviews posted transactions",
+      "properties": {
+        "calculation_component": "Ledger balance (posted transactions)"
+      },
+      "context": "Ledger balance (posted transactions)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_002",
+      "source_name": "Calculate Final Balance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "reviews_result_of",
+      "description": "Final balance calculation accounts for pending standing orders",
+      "properties": {
+        "calculation_component": "pending fees and transactions"
+      },
+      "context": "Subtract any pending fees (overdraft, if applicable)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_002",
+      "source_name": "Calculate Final Balance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_dd_001",
+      "target_name": "Direct Debit",
+      "rel_type": "reviews_result_of",
+      "description": "Final balance calculation accounts for pending direct debits",
+      "properties": {
+        "calculation_component": "pending fees and transactions"
+      },
+      "context": "Subtract any pending fees (overdraft, if applicable)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_proc_001",
+      "source_name": "Balance Calculation Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_004",
+      "target_name": "Approval of Final Statement",
+      "rel_type": "ends_with",
+      "description": "Balance Calculation Process concludes with approval of final statement",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "Step 4: Approval - Operations manager verifies calculation - Sign-off on final statement",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_proc_001",
+      "source_name": "Balance Calculation Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_001",
+      "source_name": "Collect All Transactions",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_002",
+      "source_name": "Calculate Final Balance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_003",
+      "source_name": "Document Balance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_pstep_004",
+      "source_name": "Approval of Final Statement",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_ract_001",
+      "source_name": "Operations Manager",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_trans_001",
+      "source_name": "Posted Transaction",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_trans_002",
+      "source_name": "Pending Transaction",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_dd_001",
+      "source_name": "Direct Debit",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008_sys_001",
+      "source_name": "Account Management System",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_008",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

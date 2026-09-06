@@ -1,0 +1,415 @@
+{
+  "chunk_seq": 9,
+  "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+  "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+  "text": "### Shutdown Sequence  \n**Phase 1: Notify Customers**  \n```\n1. Post maintenance notice\n- Website banner: \"System maintenance 02:00–03:00 AM\"\n- SMS alert to all customers (optional)\n- Check: Maintenance window during low-traffic time\n```  \n**Phase 2: Graceful Shutdown (20 minutes)**  \n```\n1. Stop accepting new transactions\nkubectl scale deployment ibp --replicas=0\nkubectl scale deployment mba --replicas=0\n\n2. Wait for in-flight transactions to complete\nkubectl logs -f deployment/pps | grep \"COMPLETE\"\n(Monitor for ~10 minutes)\n\n3. Stop payment processing\nkubectl scale deployment pps --replicas=0\n\n4. Stop application servers\nkubectl scale deployment ams --replicas=0\nkubectl scale deployment fde --replicas=0\n\n5. Backup database\n/scripts/backup_database.sh\n\n6. Stop database\nsystemctl stop postgresql@main\n```  \n**Phase 3: Notify Completion**  \n```\nPost to #operations: \"System shutdown complete\"\n```  \n---",
+  "name": "Chunk 9/21",
+  "_domain": "banking.reference",
+  "prev_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_008",
+  "next_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_010",
+  "raw_entities": [
+    {
+      "id": "ra_001",
+      "name": "Customer Notification for Maintenance",
+      "aliases": [
+        "Notify Customers",
+        "Phase 1"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "notification",
+      "description": "Initial phase of shutdown sequence requiring notification to all customers of planned system maintenance. Includes posting website banner and optional SMS alert to inform customers of the maintenance window timing.",
+      "context": [
+        "Phase 1: Notify Customers",
+        "Website banner: \"System maintenance 02:00–03:00 AM\"",
+        "SMS alert to all customers (optional)"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Graceful Shutdown Procedure",
+      "aliases": [
+        "Phase 2",
+        "Graceful Shutdown"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "system_restore",
+      "description": "Multi-step controlled shutdown sequence lasting approximately 20 minutes. Involves stopping transaction acceptance, allowing in-flight transactions to complete, halting payment processing, stopping application servers, backing up the database, and stopping the database service.",
+      "context": [
+        "Phase 2: Graceful Shutdown (20 minutes)",
+        "Stop accepting new transactions",
+        "Wait for in-flight transactions to complete",
+        "Backup database"
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Shutdown Completion Notification",
+      "aliases": [
+        "Phase 3",
+        "Notify Completion"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "notification",
+      "description": "Final phase of shutdown sequence requiring internal operations team notification that system shutdown has been completed successfully.",
+      "context": [
+        "Phase 3: Notify Completion",
+        "Post to #operations: \"System shutdown complete\""
+      ]
+    },
+    {
+      "id": "nc_001",
+      "name": "Operations Team",
+      "aliases": [
+        "#operations"
+      ],
+      "entity_class": "NOTIFICATION_CONTACT",
+      "type": "internal_team",
+      "description": "Internal operations team responsible for receiving shutdown completion notification via the #operations channel.",
+      "context": [
+        "Post to #operations: \"System shutdown complete\""
+      ]
+    },
+    {
+      "id": "cgi_001",
+      "name": "Maintenance Window Notification",
+      "aliases": [
+        "System Maintenance Notice"
+      ],
+      "entity_class": "CUSTOMER_GUIDE_ITEM",
+      "type": "contact_info",
+      "description": "Customer-facing guidance communicating planned system maintenance timing and availability impact. Delivered via website banner and optional SMS alert.",
+      "context": [
+        "Website banner: \"System maintenance 02:00–03:00 AM\"",
+        "SMS alert to all customers (optional)",
+        "Check: Maintenance window during low-traffic time"
+      ]
+    }
+  ],
+  "id_map": {
+    "ra_001": "01a07393-e320-7264-b05f-7163527566c2_009_ra_001",
+    "ra_002": "01a07393-e320-7264-b05f-7163527566c2_009_ra_002",
+    "ra_003": "01a07393-e320-7264-b05f-7163527566c2_009_ra_003",
+    "nc_001": "01a07393-e320-7264-b05f-7163527566c2_009_nc_001",
+    "cgi_001": "01a07393-e320-7264-b05f-7163527566c2_009_cgi_001"
+  },
+  "entities": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_001",
+      "name": "Customer Notification for Maintenance",
+      "aliases": [
+        "Notify Customers",
+        "Phase 1"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "notification",
+      "description": "Initial phase of shutdown sequence requiring notification to all customers of planned system maintenance. Includes posting website banner and optional SMS alert to inform customers of the maintenance window timing.",
+      "context": [
+        "Phase 1: Notify Customers",
+        "Website banner: \"System maintenance 02:00–03:00 AM\"",
+        "SMS alert to all customers (optional)"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_002",
+      "name": "Graceful Shutdown Procedure",
+      "aliases": [
+        "Phase 2",
+        "Graceful Shutdown"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "system_restore",
+      "description": "Multi-step controlled shutdown sequence lasting approximately 20 minutes. Involves stopping transaction acceptance, allowing in-flight transactions to complete, halting payment processing, stopping application servers, backing up the database, and stopping the database service.",
+      "context": [
+        "Phase 2: Graceful Shutdown (20 minutes)",
+        "Stop accepting new transactions",
+        "Wait for in-flight transactions to complete",
+        "Backup database"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_003",
+      "name": "Shutdown Completion Notification",
+      "aliases": [
+        "Phase 3",
+        "Notify Completion"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "notification",
+      "description": "Final phase of shutdown sequence requiring internal operations team notification that system shutdown has been completed successfully.",
+      "context": [
+        "Phase 3: Notify Completion",
+        "Post to #operations: \"System shutdown complete\""
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_009_nc_001",
+      "name": "Operations Team",
+      "aliases": [
+        "#operations"
+      ],
+      "entity_class": "NOTIFICATION_CONTACT",
+      "type": "internal_team",
+      "description": "Internal operations team responsible for receiving shutdown completion notification via the #operations channel.",
+      "context": [
+        "Post to #operations: \"System shutdown complete\""
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_009_cgi_001",
+      "name": "Maintenance Window Notification",
+      "aliases": [
+        "System Maintenance Notice"
+      ],
+      "entity_class": "CUSTOMER_GUIDE_ITEM",
+      "type": "contact_info",
+      "description": "Customer-facing guidance communicating planned system maintenance timing and availability impact. Delivered via website banner and optional SMS alert.",
+      "context": [
+        "Website banner: \"System maintenance 02:00–03:00 AM\"",
+        "SMS alert to all customers (optional)",
+        "Check: Maintenance window during low-traffic time"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_001",
+      "name": "Customer Notification for Maintenance",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "Operations Team",
+        "timeline": "before maintenance window",
+        "tools_or_systems": [
+          "website banner",
+          "SMS alert"
+        ],
+        "output_or_artifact": "maintenance notice posted to website and SMS sent to customers",
+        "required_information": [
+          "maintenance window time (02:00–03:00 AM)",
+          "system unavailability notice"
+        ]
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_002",
+      "name": "Graceful Shutdown Procedure",
+      "properties": {
+        "action_phase": "containment",
+        "actor": "Operations Team",
+        "timeline": "20 minutes",
+        "tools_or_systems": [
+          "kubectl",
+          "deployment orchestration",
+          "database backup script",
+          "systemctl"
+        ],
+        "output_or_artifact": "all services scaled down, in-flight transactions completed, database backed up",
+        "escalation_trigger": "if in-flight transactions do not complete within monitoring period"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_003",
+      "name": "Shutdown Completion Notification",
+      "properties": {
+        "action_phase": "post_incident",
+        "actor": "Operations Team",
+        "timeline": "immediately after shutdown complete",
+        "contact_method": "internal channel",
+        "output_or_artifact": "completion message posted to #operations channel"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_009_nc_001",
+      "name": "Operations Team",
+      "properties": {
+        "contact_method": "internal channel",
+        "trigger_condition": "system shutdown completion",
+        "contact_details": "#operations"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_009_cgi_001",
+      "name": "Maintenance Window Notification",
+      "properties": {
+        "topic": "scheduled system maintenance and service unavailability",
+        "target_customer": "all customers",
+        "key_points": [
+          "maintenance window scheduled 02:00–03:00 AM",
+          "system will be unavailable during this period",
+          "maintenance occurs during low-traffic time"
+        ],
+        "relevant_channels": [
+          "website banner",
+          "SMS alert"
+        ],
+        "action_required": "customers should plan transactions outside maintenance window"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_001",
+      "source_name": "Customer Notification for Maintenance",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_009_cgi_001",
+      "target_name": "Maintenance Window Notification",
+      "rel_type": "responds_to",
+      "description": "Customer notification response action implements the maintenance window guidance provided to customers",
+      "properties": {
+        "notification_method": [
+          "website_banner",
+          "SMS_alert"
+        ],
+        "message_content": "System maintenance 02:00–03:00 AM",
+        "timing": "Phase 1 of shutdown sequence"
+      },
+      "context": "Post maintenance notice - Website banner: 'System maintenance 02:00–03:00 AM' - SMS alert to all customers (optional)",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_001",
+      "source_name": "Customer Notification for Maintenance",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_009_nc_001",
+      "target_name": "Operations Team",
+      "rel_type": "involves",
+      "description": "Customer notification action involves the operations team in executing the maintenance notice posting",
+      "properties": {
+        "phase": "Phase 1",
+        "action_sequence": 1
+      },
+      "context": "Post maintenance notice - Website banner: 'System maintenance 02:00–03:00 AM' - SMS alert to all customers (optional)",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_002",
+      "source_name": "Graceful Shutdown Procedure",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_001",
+      "target_name": "Customer Notification for Maintenance",
+      "rel_type": "preceded_by",
+      "description": "Graceful shutdown procedure is preceded by customer notification action",
+      "properties": {
+        "sequence_order": "Phase 2 follows Phase 1",
+        "duration": "20 minutes"
+      },
+      "context": "Phase 1: Notify Customers ... Phase 2: Graceful Shutdown (20 minutes)",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_003",
+      "source_name": "Shutdown Completion Notification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_002",
+      "target_name": "Graceful Shutdown Procedure",
+      "rel_type": "followed_by",
+      "description": "Graceful shutdown procedure is followed by shutdown completion notification",
+      "properties": {
+        "sequence_order": "Phase 3 follows Phase 2",
+        "notification_channel": "#operations"
+      },
+      "context": "Phase 3: Notify Completion - Post to #operations: 'System shutdown complete'",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_003",
+      "source_name": "Shutdown Completion Notification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_009_nc_001",
+      "target_name": "Operations Team",
+      "rel_type": "notifies",
+      "description": "Shutdown completion notification notifies the operations team of successful system shutdown",
+      "properties": {
+        "notification_method": "Slack channel",
+        "channel": "#operations",
+        "message": "System shutdown complete"
+      },
+      "context": "Post to #operations: 'System shutdown complete'",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_001",
+      "source_name": "Customer Notification for Maintenance",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_002",
+      "source_name": "Graceful Shutdown Procedure",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_009_ra_003",
+      "source_name": "Shutdown Completion Notification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_009_nc_001",
+      "source_name": "Operations Team",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_009_cgi_001",
+      "source_name": "Maintenance Window Notification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_009",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ]
+}

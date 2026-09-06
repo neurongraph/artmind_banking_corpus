@@ -1,0 +1,1422 @@
+{
+  "chunk_seq": 4,
+  "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+  "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+  "text": "## Process Overview  \n```\nClosure Request Received\n↓\nVerify Customer Identity\n↓\nCalculate Final Balance\n↓\nProcess Standing Orders/Direct Debits\n↓\nClosure Type Assessment (Customer vs. Bank-Initiated)\n↓\n├─ Customer-Initiated: Process normally\n└─ Bank-Initiated: Investigate, document reason\n↓\nTransfer/Remit Final Balance\n↓\nIssue Closure Confirmation\n↓\nArchive Records (6 years)\n↓\nAccount Marked \"Closed\" in System\n```  \n**Timeline:** 3–5 business days (customer-initiated), Immediate (bank-initiated with notice)  \n---",
+  "name": "Chunk 4/25",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_003",
+  "next_chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_005",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Account Closure Process",
+      "aliases": [
+        "Account Closure",
+        "Closure Procedure"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_closure",
+      "description": "End-to-end procedure for closing a customer account, encompassing identity verification, final balance calculation, standing order and direct debit processing, closure type assessment, balance remittance, and record archival. Applies to both customer-initiated and bank-initiated closures with different timelines and investigation requirements.",
+      "context": [
+        "Closure Request Received",
+        "Timeline: 3–5 business days (customer-initiated), Immediate (bank-initiated with notice)",
+        "Account Marked \"Closed\" in System"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Closure Request Reception",
+      "aliases": [
+        "Request Received"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial step where a closure request is received from the customer or initiated by the bank. This triggers the account closure workflow.",
+      "context": [
+        "Closure Request Received"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Customer Identity Verification",
+      "aliases": [
+        "Verify Customer Identity"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Verification step to confirm the identity of the customer requesting account closure or the authorized representative initiating a bank-led closure.",
+      "context": [
+        "Verify Customer Identity"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Final Balance Calculation",
+      "aliases": [
+        "Calculate Final Balance"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Computation of the account's final balance, including all accrued interest, fees, and pending transactions as of the closure date.",
+      "context": [
+        "Calculate Final Balance"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Standing Order and Direct Debit Processing",
+      "aliases": [
+        "Process Standing Orders/Direct Debits"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Processing and cancellation of any active standing orders and direct debit mandates on the account prior to closure.",
+      "context": [
+        "Process Standing Orders/Direct Debits"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Closure Type Assessment",
+      "aliases": [
+        "Assess Closure Type"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Determination of whether the closure is customer-initiated or bank-initiated, which determines the subsequent workflow path and investigation requirements.",
+      "context": [
+        "Closure Type Assessment (Customer vs. Bank-Initiated)"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Bank-Initiated Closure Investigation",
+      "aliases": [
+        "Investigate, document reason"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Investigation and formal documentation of the reason for bank-initiated account closure, required before proceeding with closure.",
+      "context": [
+        "Bank-Initiated: Investigate, document reason"
+      ]
+    },
+    {
+      "id": "pstep_007",
+      "name": "Final Balance Transfer and Remittance",
+      "aliases": [
+        "Transfer/Remit Final Balance"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Transfer or remittance of the calculated final balance to the customer via their nominated payment method or account.",
+      "context": [
+        "Transfer/Remit Final Balance"
+      ]
+    },
+    {
+      "id": "pstep_008",
+      "name": "Closure Confirmation Issuance",
+      "aliases": [
+        "Issue Closure Confirmation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Issuance of formal written confirmation to the customer documenting the account closure, final balance, and closure date.",
+      "context": [
+        "Issue Closure Confirmation"
+      ]
+    },
+    {
+      "id": "pstep_009",
+      "name": "Record Archival",
+      "aliases": [
+        "Archive Records"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Archival of all account records and documentation for the mandatory retention period of 6 years in compliance with regulatory requirements.",
+      "context": [
+        "Archive Records (6 years)"
+      ]
+    },
+    {
+      "id": "pstep_010",
+      "name": "Account Status Update to Closed",
+      "aliases": [
+        "Account Marked \"Closed\" in System"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Final system update marking the account status as closed, preventing any further transactions or activity on the account.",
+      "context": [
+        "Account Marked \"Closed\" in System"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Closure Type Determination Gate",
+      "aliases": [
+        "Customer vs. Bank-Initiated Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Branching decision point that determines whether the closure is customer-initiated (standard processing path) or bank-initiated (investigation and documentation required path).",
+      "context": [
+        "Closure Type Assessment (Customer vs. Bank-Initiated)",
+        "├─ Customer-Initiated: Process normally",
+        "└─ Bank-Initiated: Investigate, document reason"
+      ]
+    },
+    {
+      "id": "account_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "closed_account",
+      "description": "The customer account subject to closure, which transitions from active status through the closure process to final closed status in the system.",
+      "context": [
+        "Account Marked \"Closed\" in System",
+        "Calculate Final Balance"
+      ]
+    },
+    {
+      "id": "customer_001",
+      "name": "Account Closure Requestor",
+      "aliases": [
+        "Customer",
+        "Closure Applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The customer or authorized representative initiating or subject to account closure, whose identity must be verified and who receives the final balance and closure confirmation.",
+      "context": [
+        "Verify Customer Identity",
+        "Issue Closure Confirmation"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Standing Orders"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_cancellation",
+      "description": "Active standing order payment instructions on the account that must be processed and cancelled as part of the account closure procedure.",
+      "context": [
+        "Process Standing Orders/Direct Debits"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "Direct Debits"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_cancellation",
+      "description": "Active direct debit mandates on the account that must be processed and cancelled prior to account closure.",
+      "context": [
+        "Process Standing Orders/Direct Debits"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Operations Staff - Account Closure",
+      "aliases": [
+        "Closure Processing Team"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations team responsible for executing the account closure process steps, including identity verification, balance calculation, standing order/direct debit processing, and record archival.",
+      "context": [
+        "Verify Customer Identity",
+        "Calculate Final Balance",
+        "Process Standing Orders/Direct Debits"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Bank-Initiated Closure Investigator",
+      "aliases": [
+        "Investigation Team"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "Compliance or operations staff responsible for investigating and documenting the reason for bank-initiated account closures.",
+      "context": [
+        "Bank-Initiated: Investigate, document reason"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_proc_001",
+    "pstep_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_001",
+    "pstep_002": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_002",
+    "pstep_003": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_003",
+    "pstep_004": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_004",
+    "pstep_005": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_005",
+    "pstep_006": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_006",
+    "pstep_007": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_007",
+    "pstep_008": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_008",
+    "pstep_009": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_009",
+    "pstep_010": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_010",
+    "dp_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_dp_001",
+    "account_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_account_001",
+    "customer_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_customer_001",
+    "so_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_so_001",
+    "dd_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_dd_001",
+    "ra_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_ra_001",
+    "ra_002": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_ra_002"
+  },
+  "entities": [
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_proc_001",
+      "name": "Account Closure Process",
+      "aliases": [
+        "Account Closure",
+        "Closure Procedure"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_closure",
+      "description": "End-to-end procedure for closing a customer account, encompassing identity verification, final balance calculation, standing order and direct debit processing, closure type assessment, balance remittance, and record archival. Applies to both customer-initiated and bank-initiated closures with different timelines and investigation requirements.",
+      "context": [
+        "Closure Request Received",
+        "Timeline: 3–5 business days (customer-initiated), Immediate (bank-initiated with notice)",
+        "Account Marked \"Closed\" in System"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_001",
+      "name": "Closure Request Reception",
+      "aliases": [
+        "Request Received"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial step where a closure request is received from the customer or initiated by the bank. This triggers the account closure workflow.",
+      "context": [
+        "Closure Request Received"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_002",
+      "name": "Customer Identity Verification",
+      "aliases": [
+        "Verify Customer Identity"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Verification step to confirm the identity of the customer requesting account closure or the authorized representative initiating a bank-led closure.",
+      "context": [
+        "Verify Customer Identity"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_003",
+      "name": "Final Balance Calculation",
+      "aliases": [
+        "Calculate Final Balance"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Computation of the account's final balance, including all accrued interest, fees, and pending transactions as of the closure date.",
+      "context": [
+        "Calculate Final Balance"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_004",
+      "name": "Standing Order and Direct Debit Processing",
+      "aliases": [
+        "Process Standing Orders/Direct Debits"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Processing and cancellation of any active standing orders and direct debit mandates on the account prior to closure.",
+      "context": [
+        "Process Standing Orders/Direct Debits"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_005",
+      "name": "Closure Type Assessment",
+      "aliases": [
+        "Assess Closure Type"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Determination of whether the closure is customer-initiated or bank-initiated, which determines the subsequent workflow path and investigation requirements.",
+      "context": [
+        "Closure Type Assessment (Customer vs. Bank-Initiated)"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_006",
+      "name": "Bank-Initiated Closure Investigation",
+      "aliases": [
+        "Investigate, document reason"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Investigation and formal documentation of the reason for bank-initiated account closure, required before proceeding with closure.",
+      "context": [
+        "Bank-Initiated: Investigate, document reason"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_007",
+      "name": "Final Balance Transfer and Remittance",
+      "aliases": [
+        "Transfer/Remit Final Balance"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Transfer or remittance of the calculated final balance to the customer via their nominated payment method or account.",
+      "context": [
+        "Transfer/Remit Final Balance"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_008",
+      "name": "Closure Confirmation Issuance",
+      "aliases": [
+        "Issue Closure Confirmation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Issuance of formal written confirmation to the customer documenting the account closure, final balance, and closure date.",
+      "context": [
+        "Issue Closure Confirmation"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_009",
+      "name": "Record Archival",
+      "aliases": [
+        "Archive Records"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Archival of all account records and documentation for the mandatory retention period of 6 years in compliance with regulatory requirements.",
+      "context": [
+        "Archive Records (6 years)"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_010",
+      "name": "Account Status Update to Closed",
+      "aliases": [
+        "Account Marked \"Closed\" in System"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Final system update marking the account status as closed, preventing any further transactions or activity on the account.",
+      "context": [
+        "Account Marked \"Closed\" in System"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_dp_001",
+      "name": "Closure Type Determination Gate",
+      "aliases": [
+        "Customer vs. Bank-Initiated Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Branching decision point that determines whether the closure is customer-initiated (standard processing path) or bank-initiated (investigation and documentation required path).",
+      "context": [
+        "Closure Type Assessment (Customer vs. Bank-Initiated)",
+        "├─ Customer-Initiated: Process normally",
+        "└─ Bank-Initiated: Investigate, document reason"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_account_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "closed_account",
+      "description": "The customer account subject to closure, which transitions from active status through the closure process to final closed status in the system.",
+      "context": [
+        "Account Marked \"Closed\" in System",
+        "Calculate Final Balance"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_customer_001",
+      "name": "Account Closure Requestor",
+      "aliases": [
+        "Customer",
+        "Closure Applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The customer or authorized representative initiating or subject to account closure, whose identity must be verified and who receives the final balance and closure confirmation.",
+      "context": [
+        "Verify Customer Identity",
+        "Issue Closure Confirmation"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Standing Orders"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_cancellation",
+      "description": "Active standing order payment instructions on the account that must be processed and cancelled as part of the account closure procedure.",
+      "context": [
+        "Process Standing Orders/Direct Debits"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "Direct Debits"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_cancellation",
+      "description": "Active direct debit mandates on the account that must be processed and cancelled prior to account closure.",
+      "context": [
+        "Process Standing Orders/Direct Debits"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_ra_001",
+      "name": "Operations Staff - Account Closure",
+      "aliases": [
+        "Closure Processing Team"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations team responsible for executing the account closure process steps, including identity verification, balance calculation, standing order/direct debit processing, and record archival.",
+      "context": [
+        "Verify Customer Identity",
+        "Calculate Final Balance",
+        "Process Standing Orders/Direct Debits"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_ra_002",
+      "name": "Bank-Initiated Closure Investigator",
+      "aliases": [
+        "Investigation Team"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "Compliance or operations staff responsible for investigating and documenting the reason for bank-initiated account closures.",
+      "context": [
+        "Bank-Initiated: Investigate, document reason"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_proc_001",
+      "name": "Account Closure Process",
+      "properties": {
+        "purpose": "Close customer account and remit final balance",
+        "scope": "All customer account types",
+        "timeline_sla": "3–5 business days (customer-initiated); immediate (bank-initiated with notice)",
+        "channels": [
+          "branch",
+          "online",
+          "postal"
+        ],
+        "departments_involved": [
+          "Operations",
+          "Compliance",
+          "Finance"
+        ],
+        "trigger": "Customer closure request or bank-initiated closure decision",
+        "outcome_success": "Account marked closed in system, final balance remitted, records archived",
+        "outcome_failure": "Unresolved standing orders/direct debits, balance not transferred, account remains active"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_001",
+      "name": "Closure Request Reception",
+      "properties": {
+        "step_number": 1,
+        "actor": "Operations Staff - Account Closure",
+        "input": "Closure request from customer or bank decision notice",
+        "output": "Closure request logged and routed for verification",
+        "channel": [
+          "branch",
+          "online",
+          "postal"
+        ],
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_002",
+      "name": "Customer Identity Verification",
+      "properties": {
+        "step_number": 2,
+        "actor": "Operations Staff - Account Closure",
+        "input": "Customer identity details, account reference",
+        "output": "Identity verified, customer confirmed as account holder",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account Management System"
+        ]
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_003",
+      "name": "Final Balance Calculation",
+      "properties": {
+        "step_number": 3,
+        "actor": "Operations Staff - Account Closure",
+        "input": "Account transaction history, outstanding fees, interest accrual",
+        "output": "Final balance amount calculated and documented",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account Management System",
+          "Finance System"
+        ]
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_004",
+      "name": "Standing Order and Direct Debit Processing",
+      "properties": {
+        "step_number": 4,
+        "actor": "Operations Staff - Account Closure",
+        "input": "List of active standing orders and direct debit mandates",
+        "output": "Standing orders cancelled, direct debits processed or cancelled as appropriate",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Payment Processing System"
+        ]
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_005",
+      "name": "Closure Type Assessment",
+      "properties": {
+        "step_number": 5,
+        "actor": "Operations Staff - Account Closure",
+        "input": "Closure request source and reason",
+        "output": "Closure type determined (customer-initiated or bank-initiated)",
+        "channel": "manual",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_006",
+      "name": "Bank-Initiated Closure Investigation",
+      "properties": {
+        "step_number": 6,
+        "actor": "Bank-Initiated Closure Investigator",
+        "input": "Bank closure decision, account history, compliance flags",
+        "output": "Investigation documented, closure reason recorded",
+        "channel": "system",
+        "mandatory": "conditional",
+        "failure_path": "Escalate to compliance review if investigation inconclusive"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_007",
+      "name": "Final Balance Transfer and Remittance",
+      "properties": {
+        "step_number": 7,
+        "actor": "Operations Staff - Account Closure",
+        "input": "Final balance amount, customer remittance details",
+        "output": "Final balance transferred to customer, remittance confirmation generated",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Payment Processing System",
+          "Finance System"
+        ]
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_008",
+      "name": "Closure Confirmation Issuance",
+      "properties": {
+        "step_number": 8,
+        "actor": "Operations Staff - Account Closure",
+        "input": "Closure details, final balance, remittance confirmation",
+        "output": "Closure confirmation letter issued to customer",
+        "channel": [
+          "postal",
+          "online"
+        ],
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_009",
+      "name": "Record Archival",
+      "properties": {
+        "step_number": 9,
+        "actor": "Operations Staff - Account Closure",
+        "input": "Complete account closure file",
+        "output": "Records archived for 6-year retention period",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Records Management System"
+        ]
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_010",
+      "name": "Account Status Update to Closed",
+      "properties": {
+        "step_number": 10,
+        "actor": "Operations Staff - Account Closure",
+        "input": "Closure completion confirmation",
+        "output": "Account status changed to 'Closed' in system",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account Management System"
+        ]
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_dp_001",
+      "name": "Closure Type Determination Gate",
+      "properties": {
+        "decision_question": "Is the closure customer-initiated or bank-initiated?",
+        "criteria": "Source of closure request and documented reason",
+        "decision_maker": "Operations Staff - Account Closure",
+        "path_yes": "Customer-initiated: proceed with standard closure process (3–5 business days)",
+        "path_no": "Bank-initiated: trigger investigation step, issue immediate notice to customer"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_account_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_state": "active",
+        "closure_or_freeze_conditions": "Customer-initiated closure request or bank-initiated closure decision"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_customer_001",
+      "name": "Account Closure Requestor",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Account holder requesting closure or subject of bank-initiated closure"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_so_001",
+      "name": "Standing Order",
+      "properties": {
+        "cancellation_process": "Cancelled during account closure process step 4"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_dd_001",
+      "name": "Direct Debit Mandate",
+      "properties": {
+        "cancellation_or_dispute_process": "Processed or cancelled during account closure process step 4"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_ra_001",
+      "name": "Operations Staff - Account Closure",
+      "properties": {
+        "role_type": "human",
+        "department": "Operations",
+        "authority_level": "Execute closure process steps, verify customer identity, calculate final balance, process standing orders and direct debits, transfer funds, issue confirmation",
+        "channels": [
+          "system",
+          "branch",
+          "postal",
+          "online"
+        ]
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_ra_002",
+      "name": "Bank-Initiated Closure Investigator",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "Investigate bank-initiated closure reasons, document findings, escalate if necessary",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_001",
+      "target_name": "Closure Request Reception",
+      "rel_type": "starts_with",
+      "description": "Account Closure Process begins with reception of closure request",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Closure Request Received ↓ Verify Customer Identity",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_010",
+      "target_name": "Account Status Update to Closed",
+      "rel_type": "ends_with",
+      "description": "Account Closure Process concludes with account marked closed in system",
+      "properties": {
+        "sequence_position": 10
+      },
+      "context": "Account Marked \"Closed\" in System",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_dp_001",
+      "target_name": "Closure Type Determination Gate",
+      "rel_type": "branches_at",
+      "description": "Process branches at closure type assessment decision point",
+      "properties": {
+        "branches": [
+          "Customer-Initiated",
+          "Bank-Initiated"
+        ]
+      },
+      "context": "Closure Type Assessment (Customer vs. Bank-Initiated) ├─ Customer-Initiated: Process normally └─ Bank-Initiated: Investigate, document reason",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_account_001",
+      "target_name": "Customer Account",
+      "rel_type": "closes",
+      "description": "Account Closure Process closes the customer account",
+      "properties": {},
+      "context": "Account Marked \"Closed\" in System",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_customer_001",
+      "target_name": "Account Closure Requestor",
+      "rel_type": "operates_on",
+      "description": "Account Closure Process operates on the account closure requestor",
+      "properties": {},
+      "context": "Closure Request Received",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "includes_step_for",
+      "description": "Process includes step for processing standing orders",
+      "properties": {
+        "step_id": "pstep_004"
+      },
+      "context": "Process Standing Orders/Direct Debits",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "includes_step_for",
+      "description": "Process includes step for processing direct debit mandates",
+      "properties": {
+        "step_id": "pstep_004"
+      },
+      "context": "Process Standing Orders/Direct Debits",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_001",
+      "source_name": "Closure Request Reception",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_002",
+      "target_name": "Customer Identity Verification",
+      "rel_type": "followed_by",
+      "description": "Closure request reception is followed by customer identity verification",
+      "properties": {
+        "sequence": "1→2"
+      },
+      "context": "Closure Request Received ↓ Verify Customer Identity",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_002",
+      "source_name": "Customer Identity Verification",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_003",
+      "target_name": "Final Balance Calculation",
+      "rel_type": "followed_by",
+      "description": "Customer identity verification is followed by final balance calculation",
+      "properties": {
+        "sequence": "2→3"
+      },
+      "context": "Verify Customer Identity ↓ Calculate Final Balance",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_003",
+      "source_name": "Final Balance Calculation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_004",
+      "target_name": "Standing Order and Direct Debit Processing",
+      "rel_type": "followed_by",
+      "description": "Final balance calculation is followed by standing order and direct debit processing",
+      "properties": {
+        "sequence": "3→4"
+      },
+      "context": "Calculate Final Balance ↓ Process Standing Orders/Direct Debits",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_004",
+      "source_name": "Standing Order and Direct Debit Processing",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_005",
+      "target_name": "Closure Type Assessment",
+      "rel_type": "followed_by",
+      "description": "Standing order and direct debit processing is followed by closure type assessment",
+      "properties": {
+        "sequence": "4→5"
+      },
+      "context": "Process Standing Orders/Direct Debits ↓ Closure Type Assessment (Customer vs. Bank-Initiated)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_005",
+      "source_name": "Closure Type Assessment",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_dp_001",
+      "target_name": "Closure Type Determination Gate",
+      "rel_type": "leads_to",
+      "description": "Closure type assessment leads to closure type determination decision point",
+      "properties": {},
+      "context": "Closure Type Assessment (Customer vs. Bank-Initiated) ├─ Customer-Initiated: Process normally └─ Bank-Initiated: Investigate, document reason",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_dp_001",
+      "source_name": "Closure Type Determination Gate",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_006",
+      "target_name": "Bank-Initiated Closure Investigation",
+      "rel_type": "routes_to_on_pass",
+      "description": "Decision point routes to bank-initiated closure investigation when bank-initiated closure is determined",
+      "properties": {
+        "condition": "Bank-Initiated"
+      },
+      "context": "Closure Type Assessment (Customer vs. Bank-Initiated) ├─ Customer-Initiated: Process normally └─ Bank-Initiated: Investigate, document reason",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_006",
+      "source_name": "Bank-Initiated Closure Investigation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_007",
+      "target_name": "Final Balance Transfer and Remittance",
+      "rel_type": "followed_by",
+      "description": "Bank-initiated closure investigation is followed by final balance transfer and remittance",
+      "properties": {
+        "sequence": "6→7"
+      },
+      "context": "Bank-Initiated: Investigate, document reason ↓ Transfer/Remit Final Balance",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_007",
+      "source_name": "Final Balance Transfer and Remittance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_008",
+      "target_name": "Closure Confirmation Issuance",
+      "rel_type": "followed_by",
+      "description": "Final balance transfer and remittance is followed by closure confirmation issuance",
+      "properties": {
+        "sequence": "7→8"
+      },
+      "context": "Transfer/Remit Final Balance ↓ Issue Closure Confirmation",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_008",
+      "source_name": "Closure Confirmation Issuance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_009",
+      "target_name": "Record Archival",
+      "rel_type": "followed_by",
+      "description": "Closure confirmation issuance is followed by record archival",
+      "properties": {
+        "sequence": "8→9"
+      },
+      "context": "Issue Closure Confirmation ↓ Archive Records (6 years)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_009",
+      "source_name": "Record Archival",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_010",
+      "target_name": "Account Status Update to Closed",
+      "rel_type": "followed_by",
+      "description": "Record archival is followed by account status update to closed",
+      "properties": {
+        "sequence": "9→10",
+        "retention_period": "6 years"
+      },
+      "context": "Archive Records (6 years) ↓ Account Marked \"Closed\" in System",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_002",
+      "source_name": "Customer Identity Verification",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_customer_001",
+      "target_name": "Account Closure Requestor",
+      "rel_type": "verifies_identity_of",
+      "description": "Customer identity verification step verifies identity of account closure requestor",
+      "properties": {},
+      "context": "Verify Customer Identity",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_003",
+      "source_name": "Final Balance Calculation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_account_001",
+      "target_name": "Customer Account",
+      "rel_type": "updates",
+      "description": "Final balance calculation updates the customer account",
+      "properties": {},
+      "context": "Calculate Final Balance",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_004",
+      "source_name": "Standing Order and Direct Debit Processing",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "cancels",
+      "description": "Standing order and direct debit processing step cancels standing orders",
+      "properties": {},
+      "context": "Process Standing Orders/Direct Debits",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_004",
+      "source_name": "Standing Order and Direct Debit Processing",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "cancels",
+      "description": "Standing order and direct debit processing step cancels direct debit mandates",
+      "properties": {},
+      "context": "Process Standing Orders/Direct Debits",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_006",
+      "source_name": "Bank-Initiated Closure Investigation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_ra_002",
+      "target_name": "Bank-Initiated Closure Investigator",
+      "rel_type": "performed_by",
+      "description": "Bank-initiated closure investigation is performed by bank-initiated closure investigator",
+      "properties": {},
+      "context": "Bank-Initiated: Investigate, document reason",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_010",
+      "source_name": "Account Status Update to Closed",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_account_001",
+      "target_name": "Customer Account",
+      "rel_type": "closes",
+      "description": "Account status update step closes the customer account in system",
+      "properties": {},
+      "context": "Account Marked \"Closed\" in System",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_customer_001",
+      "source_name": "Account Closure Requestor",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_account_001",
+      "target_name": "Customer Account",
+      "rel_type": "closes",
+      "description": "Account closure requestor initiates closure of customer account",
+      "properties": {},
+      "context": "Closure Request Received",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_account_001",
+      "target_name": "Customer Account",
+      "rel_type": "set_up_on",
+      "description": "Standing order is set up on the customer account",
+      "properties": {},
+      "context": "Process Standing Orders/Direct Debits",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_account_001",
+      "target_name": "Customer Account",
+      "rel_type": "set_up_on",
+      "description": "Direct debit mandate is set up on the customer account",
+      "properties": {},
+      "context": "Process Standing Orders/Direct Debits",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_001",
+      "source_name": "Closure Request Reception",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_002",
+      "source_name": "Customer Identity Verification",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_003",
+      "source_name": "Final Balance Calculation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_004",
+      "source_name": "Standing Order and Direct Debit Processing",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_005",
+      "source_name": "Closure Type Assessment",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_006",
+      "source_name": "Bank-Initiated Closure Investigation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_007",
+      "source_name": "Final Balance Transfer and Remittance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_008",
+      "source_name": "Closure Confirmation Issuance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_009",
+      "source_name": "Record Archival",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_pstep_010",
+      "source_name": "Account Status Update to Closed",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_dp_001",
+      "source_name": "Closure Type Determination Gate",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_account_001",
+      "source_name": "Customer Account",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_customer_001",
+      "source_name": "Account Closure Requestor",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_ra_001",
+      "source_name": "Operations Staff - Account Closure",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004_ra_002",
+      "source_name": "Bank-Initiated Closure Investigator",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_004",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

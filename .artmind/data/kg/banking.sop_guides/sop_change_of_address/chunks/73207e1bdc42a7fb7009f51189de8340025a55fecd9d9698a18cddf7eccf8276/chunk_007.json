@@ -1,0 +1,1144 @@
+{
+  "chunk_seq": 7,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "### Initial Data Collection  \nWhen customer initiates change, collect:  \n| Field | Required | Notes |\n|---|---|---|\n| **Customer Name** | Yes | Must match account |\n| **Account Number** | Yes | To identify which account(s) |\n| **New Address** | Yes | Full postal address |\n| **Address Type** | Yes | Permanent or temporary? |\n| **Move Date** | Yes | When is customer moving? |\n| **Reason** | Optional | For CRM tracking (relocation, holiday home, etc.) |\n| **Phone Number** | Recommended | To confirm details |\n| **Email** | Recommended | For notifications |",
+  "name": "Chunk 7/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_006",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Change of Address Process",
+      "aliases": [
+        "Address Change",
+        "Address Update Procedure"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "End-to-end procedure for collecting and recording customer-initiated address changes. Captures required customer identification, account details, new address information, move date, and optional contextual data for CRM tracking.",
+      "context": [
+        "When customer initiates change, collect:",
+        "Customer Name | Yes | Must match account",
+        "Account Number | Yes | To identify which account(s)",
+        "New Address | Yes | Full postal address"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Customer Name Collection",
+      "aliases": [
+        "Name Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Mandatory collection of customer name during address change initiation. The collected name must match the name on the account record.",
+      "context": [
+        "Customer Name | Yes | Must match account"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Account Number Identification",
+      "aliases": [
+        "Account Identification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Mandatory collection of account number to identify which account or accounts are subject to the address change.",
+      "context": [
+        "Account Number | Yes | To identify which account(s)"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "New Address Collection",
+      "aliases": [
+        "Address Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Mandatory collection of the full postal address to which the customer is moving.",
+      "context": [
+        "New Address | Yes | Full postal address"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Address Type Classification",
+      "aliases": [
+        "Address Type Determination"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Mandatory classification of the new address as either permanent or temporary to determine the nature and duration of the address change.",
+      "context": [
+        "Address Type | Yes | Permanent or temporary?"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Move Date Recording",
+      "aliases": [
+        "Effective Date Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Mandatory collection of the date when the customer is moving to establish the effective date of the address change.",
+      "context": [
+        "Move Date | Yes | When is customer moving?"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Change Reason Recording",
+      "aliases": [
+        "Reason Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Optional collection of the reason for address change (e.g., relocation, holiday home) for CRM tracking and customer context purposes.",
+      "context": [
+        "Reason | Optional | For CRM tracking (relocation, holiday home, etc.)"
+      ]
+    },
+    {
+      "id": "pstep_007",
+      "name": "Phone Number Collection",
+      "aliases": [
+        "Contact Number Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Recommended collection of customer phone number to enable confirmation of address change details.",
+      "context": [
+        "Phone Number | Recommended | To confirm details"
+      ]
+    },
+    {
+      "id": "pstep_008",
+      "name": "Email Address Collection",
+      "aliases": [
+        "Email Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Recommended collection of customer email address to facilitate notifications regarding the address change.",
+      "context": [
+        "Email | Recommended | For notifications"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "New Address",
+      "aliases": [
+        "Updated Address",
+        "Destination Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The full postal address to which the customer is moving as part of the change of address process. Collected as a mandatory field during initial data collection.",
+      "context": [
+        "New Address | Yes | Full postal address"
+      ]
+    },
+    {
+      "id": "addr_002",
+      "name": "Address Type",
+      "aliases": [
+        "Address Classification"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_recording",
+      "description": "Classification of the new address as either permanent or temporary to determine the nature of the address change and its duration.",
+      "context": [
+        "Address Type | Yes | Permanent or temporary?"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder",
+        "Customer Initiating Change"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The natural person initiating the address change process. Customer name must match the account record and is used to identify which account(s) are affected.",
+      "context": [
+        "When customer initiates change, collect:",
+        "Customer Name | Yes | Must match account"
+      ]
+    },
+    {
+      "id": "acct_001",
+      "name": "Account",
+      "aliases": [
+        "Customer Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "new_account",
+      "description": "The customer account or accounts subject to the address change. Account number is collected as a mandatory field to identify which account(s) require the address update.",
+      "context": [
+        "Account Number | Yes | To identify which account(s)"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_007_proc_001",
+    "pstep_001": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_001",
+    "pstep_002": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_002",
+    "pstep_003": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_003",
+    "pstep_004": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_004",
+    "pstep_005": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_005",
+    "pstep_006": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_006",
+    "pstep_007": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_007",
+    "pstep_008": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_008",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_007_addr_001",
+    "addr_002": "01a07400-ba86-72f1-8b22-d07b32649491_007_addr_002",
+    "cust_001": "01a07400-ba86-72f1-8b22-d07b32649491_007_cust_001",
+    "acct_001": "01a07400-ba86-72f1-8b22-d07b32649491_007_acct_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_proc_001",
+      "name": "Change of Address Process",
+      "aliases": [
+        "Address Change",
+        "Address Update Procedure"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "End-to-end procedure for collecting and recording customer-initiated address changes. Captures required customer identification, account details, new address information, move date, and optional contextual data for CRM tracking.",
+      "context": [
+        "When customer initiates change, collect:",
+        "Customer Name | Yes | Must match account",
+        "Account Number | Yes | To identify which account(s)",
+        "New Address | Yes | Full postal address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_001",
+      "name": "Customer Name Collection",
+      "aliases": [
+        "Name Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Mandatory collection of customer name during address change initiation. The collected name must match the name on the account record.",
+      "context": [
+        "Customer Name | Yes | Must match account"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_002",
+      "name": "Account Number Identification",
+      "aliases": [
+        "Account Identification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Mandatory collection of account number to identify which account or accounts are subject to the address change.",
+      "context": [
+        "Account Number | Yes | To identify which account(s)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_003",
+      "name": "New Address Collection",
+      "aliases": [
+        "Address Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Mandatory collection of the full postal address to which the customer is moving.",
+      "context": [
+        "New Address | Yes | Full postal address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_004",
+      "name": "Address Type Classification",
+      "aliases": [
+        "Address Type Determination"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Mandatory classification of the new address as either permanent or temporary to determine the nature and duration of the address change.",
+      "context": [
+        "Address Type | Yes | Permanent or temporary?"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_005",
+      "name": "Move Date Recording",
+      "aliases": [
+        "Effective Date Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Mandatory collection of the date when the customer is moving to establish the effective date of the address change.",
+      "context": [
+        "Move Date | Yes | When is customer moving?"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_006",
+      "name": "Change Reason Recording",
+      "aliases": [
+        "Reason Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Optional collection of the reason for address change (e.g., relocation, holiday home) for CRM tracking and customer context purposes.",
+      "context": [
+        "Reason | Optional | For CRM tracking (relocation, holiday home, etc.)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_007",
+      "name": "Phone Number Collection",
+      "aliases": [
+        "Contact Number Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Recommended collection of customer phone number to enable confirmation of address change details.",
+      "context": [
+        "Phone Number | Recommended | To confirm details"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_008",
+      "name": "Email Address Collection",
+      "aliases": [
+        "Email Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Recommended collection of customer email address to facilitate notifications regarding the address change.",
+      "context": [
+        "Email | Recommended | For notifications"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_addr_001",
+      "name": "New Address",
+      "aliases": [
+        "Updated Address",
+        "Destination Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The full postal address to which the customer is moving as part of the change of address process. Collected as a mandatory field during initial data collection.",
+      "context": [
+        "New Address | Yes | Full postal address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_addr_002",
+      "name": "Address Type",
+      "aliases": [
+        "Address Classification"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_recording",
+      "description": "Classification of the new address as either permanent or temporary to determine the nature of the address change and its duration.",
+      "context": [
+        "Address Type | Yes | Permanent or temporary?"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder",
+        "Customer Initiating Change"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The natural person initiating the address change process. Customer name must match the account record and is used to identify which account(s) are affected.",
+      "context": [
+        "When customer initiates change, collect:",
+        "Customer Name | Yes | Must match account"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_acct_001",
+      "name": "Account",
+      "aliases": [
+        "Customer Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "new_account",
+      "description": "The customer account or accounts subject to the address change. Account number is collected as a mandatory field to identify which account(s) require the address update.",
+      "context": [
+        "Account Number | Yes | To identify which account(s)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_proc_001",
+      "name": "Change of Address Process",
+      "properties": {
+        "purpose": "Collect and record customer address change information",
+        "scope": "All customer accounts",
+        "trigger": "Customer initiates change of address request",
+        "outcome_success": "New address recorded and confirmed with customer contact details"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_001",
+      "name": "Customer Name Collection",
+      "properties": {
+        "step_number": 1,
+        "actor": "Customer",
+        "input": "Customer identity",
+        "output": "Customer name",
+        "mandatory": "yes",
+        "channel": "manual",
+        "validation_rule": "Must match account records"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_002",
+      "name": "Account Number Identification",
+      "properties": {
+        "step_number": 2,
+        "actor": "Customer",
+        "input": "Account identifier",
+        "output": "Account number",
+        "mandatory": "yes",
+        "channel": "manual",
+        "purpose": "Identify which account(s) the address change applies to"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_003",
+      "name": "New Address Collection",
+      "properties": {
+        "step_number": 3,
+        "actor": "Customer",
+        "input": "Postal address details",
+        "output": "Full postal address",
+        "mandatory": "yes",
+        "channel": "manual"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_004",
+      "name": "Address Type Classification",
+      "properties": {
+        "step_number": 4,
+        "actor": "Customer",
+        "input": "Address classification indicator",
+        "output": "Address type designation",
+        "mandatory": "yes",
+        "channel": "manual",
+        "classification_options": [
+          "Permanent",
+          "Temporary"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_005",
+      "name": "Move Date Recording",
+      "properties": {
+        "step_number": 5,
+        "actor": "Customer",
+        "input": "Move date",
+        "output": "Recorded move date",
+        "mandatory": "yes",
+        "channel": "manual",
+        "purpose": "Capture when customer is moving"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_006",
+      "name": "Change Reason Recording",
+      "properties": {
+        "step_number": 6,
+        "actor": "Customer",
+        "input": "Reason for address change",
+        "output": "Recorded reason",
+        "mandatory": "no",
+        "channel": "manual",
+        "purpose": "CRM tracking and context",
+        "example_reasons": [
+          "Relocation",
+          "Holiday home"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_007",
+      "name": "Phone Number Collection",
+      "properties": {
+        "step_number": 7,
+        "actor": "Customer",
+        "input": "Phone number",
+        "output": "Recorded phone number",
+        "mandatory": "no",
+        "channel": "manual",
+        "purpose": "Confirm address change details"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_008",
+      "name": "Email Address Collection",
+      "properties": {
+        "step_number": 8,
+        "actor": "Customer",
+        "input": "Email address",
+        "output": "Recorded email address",
+        "mandatory": "no",
+        "channel": "manual",
+        "purpose": "Send address change notifications"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_addr_001",
+      "name": "New Address",
+      "properties": {
+        "collection_steps": [
+          "pstep_003"
+        ],
+        "mandatory": "yes",
+        "format": "Full postal address"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_addr_002",
+      "name": "Address Type",
+      "properties": {
+        "collection_steps": [
+          "pstep_004"
+        ],
+        "mandatory": "yes",
+        "acceptable_type": [
+          "Permanent",
+          "Temporary"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_cust_001",
+      "name": "Customer",
+      "properties": {
+        "context_role": "Initiator of address change request",
+        "required_information": [
+          "Name",
+          "Account Number",
+          "New Address",
+          "Address Type",
+          "Move Date"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_007_acct_001",
+      "name": "Account",
+      "properties": {
+        "identification_method": "Account number provided by customer",
+        "scope": "One or more accounts may be affected by address change"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_001",
+      "target_name": "Customer Name Collection",
+      "rel_type": "starts_with",
+      "description": "Change of Address Process begins with collecting customer name",
+      "properties": {
+        "sequence_position": 1,
+        "required": true
+      },
+      "context": "When customer initiates change, collect: Customer Name | Yes | Must match account",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_001",
+      "source_name": "Customer Name Collection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_002",
+      "target_name": "Account Number Identification",
+      "rel_type": "followed_by",
+      "description": "Customer name collection is followed by account number identification",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Initial Data Collection sequence: Customer Name → Account Number",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_002",
+      "source_name": "Account Number Identification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_003",
+      "target_name": "New Address Collection",
+      "rel_type": "followed_by",
+      "description": "Account number identification is followed by new address collection",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Initial Data Collection sequence: Account Number → New Address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_003",
+      "source_name": "New Address Collection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_004",
+      "target_name": "Address Type Classification",
+      "rel_type": "followed_by",
+      "description": "New address collection is followed by address type classification",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "Initial Data Collection sequence: New Address → Address Type",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_004",
+      "source_name": "Address Type Classification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_005",
+      "target_name": "Move Date Recording",
+      "rel_type": "followed_by",
+      "description": "Address type classification is followed by move date recording",
+      "properties": {
+        "sequence_position": 5
+      },
+      "context": "Initial Data Collection sequence: Address Type → Move Date",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_005",
+      "source_name": "Move Date Recording",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_006",
+      "target_name": "Change Reason Recording",
+      "rel_type": "followed_by",
+      "description": "Move date recording is followed by change reason recording",
+      "properties": {
+        "sequence_position": 6,
+        "required": false
+      },
+      "context": "Initial Data Collection sequence: Move Date → Reason (Optional)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_006",
+      "source_name": "Change Reason Recording",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_007",
+      "target_name": "Phone Number Collection",
+      "rel_type": "followed_by",
+      "description": "Change reason recording is followed by phone number collection",
+      "properties": {
+        "sequence_position": 7,
+        "required": false
+      },
+      "context": "Initial Data Collection sequence: Reason → Phone Number (Recommended)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_007",
+      "source_name": "Phone Number Collection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_008",
+      "target_name": "Email Address Collection",
+      "rel_type": "followed_by",
+      "description": "Phone number collection is followed by email address collection",
+      "properties": {
+        "sequence_position": 8,
+        "required": false
+      },
+      "context": "Initial Data Collection sequence: Phone Number → Email (Recommended)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_002",
+      "target_name": "Account Number Identification",
+      "rel_type": "includes",
+      "description": "Change of Address Process includes account number identification step",
+      "properties": {
+        "required": true
+      },
+      "context": "Account Number | Yes | To identify which account(s)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_003",
+      "target_name": "New Address Collection",
+      "rel_type": "includes",
+      "description": "Change of Address Process includes new address collection step",
+      "properties": {
+        "required": true
+      },
+      "context": "New Address | Yes | Full postal address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_004",
+      "target_name": "Address Type Classification",
+      "rel_type": "includes",
+      "description": "Change of Address Process includes address type classification step",
+      "properties": {
+        "required": true
+      },
+      "context": "Address Type | Yes | Permanent or temporary?",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_005",
+      "target_name": "Move Date Recording",
+      "rel_type": "includes",
+      "description": "Change of Address Process includes move date recording step",
+      "properties": {
+        "required": true
+      },
+      "context": "Move Date | Yes | When is customer moving?",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_006",
+      "target_name": "Change Reason Recording",
+      "rel_type": "includes_optional",
+      "description": "Change of Address Process optionally includes change reason recording",
+      "properties": {
+        "required": false,
+        "purpose": "CRM tracking"
+      },
+      "context": "Reason | Optional | For CRM tracking (relocation, holiday home, etc.)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_007",
+      "target_name": "Phone Number Collection",
+      "rel_type": "includes_optional",
+      "description": "Change of Address Process optionally includes phone number collection",
+      "properties": {
+        "required": false,
+        "recommendation": "Recommended"
+      },
+      "context": "Phone Number | Recommended | To confirm details",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_008",
+      "target_name": "Email Address Collection",
+      "rel_type": "includes_optional",
+      "description": "Change of Address Process optionally includes email address collection",
+      "properties": {
+        "required": false,
+        "recommendation": "Recommended"
+      },
+      "context": "Email | Recommended | For notifications",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_001",
+      "source_name": "Customer Name Collection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_cust_001",
+      "target_name": "Customer",
+      "rel_type": "collects_data_from",
+      "description": "Customer name collection step collects data from customer",
+      "properties": {
+        "data_field": "Customer Name",
+        "required": true,
+        "validation": "Must match account"
+      },
+      "context": "Customer Name | Yes | Must match account",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_002",
+      "source_name": "Account Number Identification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_acct_001",
+      "target_name": "Account",
+      "rel_type": "updates",
+      "description": "Account number identification step identifies which account to update",
+      "properties": {
+        "data_field": "Account Number",
+        "required": true,
+        "purpose": "To identify which account(s)"
+      },
+      "context": "Account Number | Yes | To identify which account(s)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_003",
+      "source_name": "New Address Collection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_addr_001",
+      "target_name": "New Address",
+      "rel_type": "collects",
+      "description": "New address collection step collects the new address",
+      "properties": {
+        "data_field": "New Address",
+        "required": true,
+        "format": "Full postal address"
+      },
+      "context": "New Address | Yes | Full postal address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_004",
+      "source_name": "Address Type Classification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_addr_002",
+      "target_name": "Address Type",
+      "rel_type": "collects",
+      "description": "Address type classification step collects address type information",
+      "properties": {
+        "data_field": "Address Type",
+        "required": true,
+        "options": [
+          "Permanent",
+          "Temporary"
+        ]
+      },
+      "context": "Address Type | Yes | Permanent or temporary?",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_007",
+      "source_name": "Phone Number Collection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_cust_001",
+      "target_name": "Customer",
+      "rel_type": "collects_data_from",
+      "description": "Phone number collection step collects phone number from customer",
+      "properties": {
+        "data_field": "Phone Number",
+        "required": false,
+        "recommendation": "Recommended",
+        "purpose": "To confirm details"
+      },
+      "context": "Phone Number | Recommended | To confirm details",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_008",
+      "source_name": "Email Address Collection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_cust_001",
+      "target_name": "Customer",
+      "rel_type": "collects_data_from",
+      "description": "Email address collection step collects email from customer",
+      "properties": {
+        "data_field": "Email",
+        "required": false,
+        "recommendation": "Recommended",
+        "purpose": "For notifications"
+      },
+      "context": "Email | Recommended | For notifications",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_cust_001",
+      "target_name": "Customer",
+      "rel_type": "operates_on",
+      "description": "Change of Address Process operates on customer",
+      "properties": {
+        "trigger": "When customer initiates change"
+      },
+      "context": "When customer initiates change, collect:",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_acct_001",
+      "target_name": "Account",
+      "rel_type": "modifies",
+      "description": "Change of Address Process modifies account address information",
+      "properties": {
+        "modification_type": "address update"
+      },
+      "context": "Change of Address Process updates account address details",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_acct_001",
+      "target_name": "Account",
+      "rel_type": "holds",
+      "description": "Customer holds account",
+      "properties": {
+        "context": "Account must match customer name"
+      },
+      "context": "Customer Name | Yes | Must match account",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_001",
+      "source_name": "Customer Name Collection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_002",
+      "source_name": "Account Number Identification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_003",
+      "source_name": "New Address Collection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_004",
+      "source_name": "Address Type Classification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_005",
+      "source_name": "Move Date Recording",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_006",
+      "source_name": "Change Reason Recording",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_007",
+      "source_name": "Phone Number Collection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_pstep_008",
+      "source_name": "Email Address Collection",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_addr_001",
+      "source_name": "New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_addr_002",
+      "source_name": "Address Type",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_007_acct_001",
+      "source_name": "Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

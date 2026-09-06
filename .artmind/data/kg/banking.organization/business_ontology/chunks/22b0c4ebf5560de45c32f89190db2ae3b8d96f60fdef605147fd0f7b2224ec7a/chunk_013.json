@@ -1,0 +1,947 @@
+{
+  "chunk_seq": 13,
+  "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+  "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+  "text": "### Entity: Account Holder  \n**Definition:** A person with legal rights and responsibilities for an account.  \n**Attributes:**\n- `holder_id` — Unique identifier\n- `account_id` — Linked account\n- `customer_id` — Linked customer\n- `holder_type` — Primary, Joint, Secondary\n- `signatory_required` — Whether signature required for withdrawals\n- `added_date` — Date holder added to account  \n**Key Business Rules:**\n- Account must have at least one primary holder\n- Joint account: Both holders must pass KYC/AML\n- Either joint holder can withdraw full balance\n- Interest calculated on total balance (not per holder)  \n**Example:**\n```\nJoint Account ACC-00002:\n- Primary Holder: John Smith (customer_id: CUST-00002)\n- Joint Holder: Jane Smith (customer_id: CUST-00003)\n- Either can withdraw, both liable for overdraft\n```  \n---",
+  "name": "Chunk 13/37",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+  "next_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+  "raw_entities": [
+    {
+      "id": "bc_001",
+      "name": "Account Holder",
+      "aliases": [
+        "holder",
+        "account_holder"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account_holder",
+      "description": "A person with legal rights and responsibilities for an account, including primary, joint, and secondary holders. Account holders have defined signatory authority, KYC/AML obligations, and liability for account activities such as overdrafts.",
+      "context": [
+        "A person with legal rights and responsibilities for an account.",
+        "Account must have at least one primary holder",
+        "Joint account: Both holders must pass KYC/AML",
+        "Either can withdraw, both liable for overdraft"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "Account Holder Primary Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Every account must have at least one primary holder with full legal rights and responsibilities.",
+      "context": [
+        "Account must have at least one primary holder"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Joint Account KYC/AML Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Both holders on a joint account must pass KYC and AML screening before the account can be activated or used.",
+      "context": [
+        "Joint account: Both holders must pass KYC/AML"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "Joint Account Withdrawal Authority",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "Either joint holder on an account has the authority to withdraw the full balance without requiring consent from the other holder.",
+      "context": [
+        "Either joint holder can withdraw full balance",
+        "Either can withdraw, both liable for overdraft"
+      ]
+    },
+    {
+      "id": "br_004",
+      "name": "Joint Account Interest Calculation",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "Interest on a joint account is calculated on the total balance held in the account, not separately per holder.",
+      "context": [
+        "Interest calculated on total balance (not per holder)"
+      ]
+    },
+    {
+      "id": "br_005",
+      "name": "Joint Account Overdraft Liability",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Both joint holders are jointly and severally liable for any overdraft on the account, regardless of which holder initiated the overdraft.",
+      "context": [
+        "both liable for overdraft"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Joint Account ACC-00002",
+      "aliases": [
+        "ACC-00002"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "joint_account",
+      "description": "A joint account held by John Smith and Jane Smith with shared withdrawal rights and joint liability for overdrafts.",
+      "context": [
+        "Joint Account ACC-00002:",
+        "Primary Holder: John Smith (customer_id: CUST-00002)",
+        "Joint Holder: Jane Smith (customer_id: CUST-00003)"
+      ]
+    },
+    {
+      "id": "ah_001",
+      "name": "John Smith Primary Holder",
+      "aliases": [],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "primary_holder",
+      "description": "Primary holder of joint account ACC-00002 with full legal rights and responsibilities, linked to customer CUST-00002.",
+      "context": [
+        "Primary Holder: John Smith (customer_id: CUST-00002)"
+      ]
+    },
+    {
+      "id": "ah_002",
+      "name": "Jane Smith Joint Holder",
+      "aliases": [],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "joint_holder",
+      "description": "Joint holder of account ACC-00002 with equal withdrawal authority and joint liability, linked to customer CUST-00003.",
+      "context": [
+        "Joint Holder: Jane Smith (customer_id: CUST-00003)"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "John Smith",
+      "aliases": [
+        "CUST-00002"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Individual customer holding primary holder status on joint account ACC-00002.",
+      "context": [
+        "Primary Holder: John Smith (customer_id: CUST-00002)"
+      ]
+    },
+    {
+      "id": "cust_002",
+      "name": "Jane Smith",
+      "aliases": [
+        "CUST-00003"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Individual customer holding joint holder status on joint account ACC-00002.",
+      "context": [
+        "Joint Holder: Jane Smith (customer_id: CUST-00003)"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "KYC Verification",
+      "aliases": [
+        "Know Your Customer"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "identity_verification",
+      "description": "Compliance obligation requiring verification of account holder identity and eligibility before account activation, particularly mandatory for joint account holders.",
+      "context": [
+        "Joint account: Both holders must pass KYC/AML"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "AML Screening",
+      "aliases": [
+        "Anti-Money Laundering"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sanctions_screening",
+      "description": "Compliance obligation requiring screening of account holders against sanctions and PEP lists before account activation, particularly mandatory for joint account holders.",
+      "context": [
+        "Joint account: Both holders must pass KYC/AML"
+      ]
+    }
+  ],
+  "id_map": {
+    "bc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_bc_001",
+    "br_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_001",
+    "br_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_002",
+    "br_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_003",
+    "br_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_004",
+    "br_005": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_005",
+    "acc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_acc_001",
+    "ah_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_ah_001",
+    "ah_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_ah_002",
+    "cust_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_cust_001",
+    "cust_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_cust_002",
+    "bc_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_bc_002",
+    "bc_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_bc_003"
+  },
+  "entities": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_bc_001",
+      "name": "Account Holder",
+      "aliases": [
+        "holder",
+        "account_holder"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account_holder",
+      "description": "A person with legal rights and responsibilities for an account, including primary, joint, and secondary holders. Account holders have defined signatory authority, KYC/AML obligations, and liability for account activities such as overdrafts.",
+      "context": [
+        "A person with legal rights and responsibilities for an account.",
+        "Account must have at least one primary holder",
+        "Joint account: Both holders must pass KYC/AML",
+        "Either can withdraw, both liable for overdraft"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_001",
+      "name": "Account Holder Primary Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Every account must have at least one primary holder with full legal rights and responsibilities.",
+      "context": [
+        "Account must have at least one primary holder"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_002",
+      "name": "Joint Account KYC/AML Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "Both holders on a joint account must pass KYC and AML screening before the account can be activated or used.",
+      "context": [
+        "Joint account: Both holders must pass KYC/AML"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_003",
+      "name": "Joint Account Withdrawal Authority",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "Either joint holder on an account has the authority to withdraw the full balance without requiring consent from the other holder.",
+      "context": [
+        "Either joint holder can withdraw full balance",
+        "Either can withdraw, both liable for overdraft"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_004",
+      "name": "Joint Account Interest Calculation",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "Interest on a joint account is calculated on the total balance held in the account, not separately per holder.",
+      "context": [
+        "Interest calculated on total balance (not per holder)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_005",
+      "name": "Joint Account Overdraft Liability",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Both joint holders are jointly and severally liable for any overdraft on the account, regardless of which holder initiated the overdraft.",
+      "context": [
+        "both liable for overdraft"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_acc_001",
+      "name": "Joint Account ACC-00002",
+      "aliases": [
+        "ACC-00002"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "joint_account",
+      "description": "A joint account held by John Smith and Jane Smith with shared withdrawal rights and joint liability for overdrafts.",
+      "context": [
+        "Joint Account ACC-00002:",
+        "Primary Holder: John Smith (customer_id: CUST-00002)",
+        "Joint Holder: Jane Smith (customer_id: CUST-00003)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_ah_001",
+      "name": "John Smith Primary Holder",
+      "aliases": [],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "primary_holder",
+      "description": "Primary holder of joint account ACC-00002 with full legal rights and responsibilities, linked to customer CUST-00002.",
+      "context": [
+        "Primary Holder: John Smith (customer_id: CUST-00002)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_ah_002",
+      "name": "Jane Smith Joint Holder",
+      "aliases": [],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "joint_holder",
+      "description": "Joint holder of account ACC-00002 with equal withdrawal authority and joint liability, linked to customer CUST-00003.",
+      "context": [
+        "Joint Holder: Jane Smith (customer_id: CUST-00003)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_cust_001",
+      "name": "John Smith",
+      "aliases": [
+        "CUST-00002"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Individual customer holding primary holder status on joint account ACC-00002.",
+      "context": [
+        "Primary Holder: John Smith (customer_id: CUST-00002)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_cust_002",
+      "name": "Jane Smith",
+      "aliases": [
+        "CUST-00003"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Individual customer holding joint holder status on joint account ACC-00002.",
+      "context": [
+        "Joint Holder: Jane Smith (customer_id: CUST-00003)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_bc_002",
+      "name": "KYC Verification",
+      "aliases": [
+        "Know Your Customer"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "identity_verification",
+      "description": "Compliance obligation requiring verification of account holder identity and eligibility before account activation, particularly mandatory for joint account holders.",
+      "context": [
+        "Joint account: Both holders must pass KYC/AML"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_bc_003",
+      "name": "AML Screening",
+      "aliases": [
+        "Anti-Money Laundering"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "sanctions_screening",
+      "description": "Compliance obligation requiring screening of account holders against sanctions and PEP lists before account activation, particularly mandatory for joint account holders.",
+      "context": [
+        "Joint account: Both holders must pass KYC/AML"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_bc_001",
+      "name": "Account Holder",
+      "properties": {
+        "definition": "A person with legal rights and responsibilities for an account",
+        "key_attributes": [
+          "holder_id",
+          "account_id",
+          "customer_id",
+          "holder_type",
+          "signatory_required",
+          "added_date"
+        ],
+        "business_rules": [
+          "Account must have at least one primary holder",
+          "Joint account: Both holders must pass KYC/AML",
+          "Either joint holder can withdraw full balance",
+          "Interest calculated on total balance (not per holder)"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_001",
+      "name": "Account Holder Primary Requirement",
+      "properties": {
+        "rule_statement": "Account must have at least one primary holder",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Account"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_002",
+      "name": "Joint Account KYC/AML Requirement",
+      "properties": {
+        "rule_statement": "Both holders must pass KYC/AML verification",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Joint Account",
+          "Account Holder"
+        ],
+        "regulatory_significance": "Compliance with KYC and AML regulations"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_003",
+      "name": "Joint Account Withdrawal Authority",
+      "properties": {
+        "rule_statement": "Either joint holder can withdraw the full balance",
+        "rule_type": "authority",
+        "applies_to": [
+          "Joint Account",
+          "Account Holder"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_004",
+      "name": "Joint Account Interest Calculation",
+      "properties": {
+        "rule_statement": "Interest calculated on total balance, not per holder",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Joint Account"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_005",
+      "name": "Joint Account Overdraft Liability",
+      "properties": {
+        "rule_statement": "Both holders are liable for overdraft",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Joint Account",
+          "Account Holder"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_acc_001",
+      "name": "Joint Account ACC-00002",
+      "properties": {
+        "account_type": "joint",
+        "account_id": "ACC-00002"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_ah_001",
+      "name": "John Smith Primary Holder",
+      "properties": {
+        "holder_type": "primary",
+        "customer_id": "CUST-00002",
+        "account_id": "ACC-00002",
+        "withdrawal_or_signing_authority": "Can withdraw full balance"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_ah_002",
+      "name": "Jane Smith Joint Holder",
+      "properties": {
+        "holder_type": "joint",
+        "customer_id": "CUST-00003",
+        "account_id": "ACC-00002",
+        "withdrawal_or_signing_authority": "Can withdraw full balance",
+        "liability_scope": "Joint and several liability for overdraft"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_cust_001",
+      "name": "John Smith",
+      "properties": {
+        "customer_type": "individual",
+        "customer_id": "CUST-00002",
+        "context_role": "Primary holder of joint account ACC-00002"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_cust_002",
+      "name": "Jane Smith",
+      "properties": {
+        "customer_type": "individual",
+        "customer_id": "CUST-00003",
+        "context_role": "Joint holder of joint account ACC-00002"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_bc_002",
+      "name": "KYC Verification",
+      "properties": {
+        "definition": "Process to verify the identity and legitimacy of account holders",
+        "mandatory": "yes",
+        "applies_to": [
+          "Account Holder",
+          "Joint Account"
+        ],
+        "regulatory_significance": "Required for both holders in joint accounts as part of compliance obligations"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_bc_003",
+      "name": "AML Screening",
+      "properties": {
+        "definition": "Process to screen account holders against sanctions and adverse lists",
+        "mandatory": "yes",
+        "applies_to": [
+          "Account Holder",
+          "Joint Account"
+        ],
+        "regulatory_significance": "Required for both holders in joint accounts as part of compliance obligations"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_bc_001",
+      "source_name": "Account Holder",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_001",
+      "target_name": "Account Holder Primary Requirement",
+      "rel_type": "governed_by",
+      "description": "Account Holder concept is governed by the requirement that an account must have at least one primary holder",
+      "properties": {
+        "requirement": "at least one primary holder mandatory"
+      },
+      "context": "Account must have at least one primary holder",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_acc_001",
+      "source_name": "Joint Account ACC-00002",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_ah_001",
+      "target_name": "John Smith Primary Holder",
+      "rel_type": "has_holder",
+      "description": "Joint Account ACC-00002 has John Smith as its primary holder",
+      "properties": {
+        "holder_type": "Primary",
+        "customer_id": "CUST-00002"
+      },
+      "context": "Primary Holder: John Smith (customer_id: CUST-00002)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_acc_001",
+      "source_name": "Joint Account ACC-00002",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_ah_002",
+      "target_name": "Jane Smith Joint Holder",
+      "rel_type": "has_holder",
+      "description": "Joint Account ACC-00002 has Jane Smith as its joint holder",
+      "properties": {
+        "holder_type": "Joint",
+        "customer_id": "CUST-00003"
+      },
+      "context": "Joint Holder: Jane Smith (customer_id: CUST-00003)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_ah_001",
+      "source_name": "John Smith Primary Holder",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_cust_001",
+      "target_name": "John Smith",
+      "rel_type": "held_by",
+      "description": "John Smith Primary Holder account holder role is held by customer John Smith",
+      "properties": {
+        "customer_id": "CUST-00002"
+      },
+      "context": "Primary Holder: John Smith (customer_id: CUST-00002)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_ah_002",
+      "source_name": "Jane Smith Joint Holder",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_cust_002",
+      "target_name": "Jane Smith",
+      "rel_type": "held_by",
+      "description": "Jane Smith Joint Holder account holder role is held by customer Jane Smith",
+      "properties": {
+        "customer_id": "CUST-00003"
+      },
+      "context": "Joint Holder: Jane Smith (customer_id: CUST-00003)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_cust_001",
+      "source_name": "John Smith",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_acc_001",
+      "target_name": "Joint Account ACC-00002",
+      "rel_type": "holds",
+      "description": "Customer John Smith holds Joint Account ACC-00002 as primary holder",
+      "properties": {
+        "holder_type": "Primary"
+      },
+      "context": "Primary Holder: John Smith (customer_id: CUST-00002)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_cust_002",
+      "source_name": "Jane Smith",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_acc_001",
+      "target_name": "Joint Account ACC-00002",
+      "rel_type": "holds",
+      "description": "Customer Jane Smith holds Joint Account ACC-00002 as joint holder",
+      "properties": {
+        "holder_type": "Joint"
+      },
+      "context": "Joint Holder: Jane Smith (customer_id: CUST-00003)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_acc_001",
+      "source_name": "Joint Account ACC-00002",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_002",
+      "target_name": "Joint Account KYC/AML Requirement",
+      "rel_type": "subject_to",
+      "description": "Joint Account ACC-00002 is subject to the requirement that both holders must pass KYC/AML",
+      "properties": {
+        "requirement": "Both holders must pass KYC/AML screening"
+      },
+      "context": "Joint account: Both holders must pass KYC/AML",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_acc_001",
+      "source_name": "Joint Account ACC-00002",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_003",
+      "target_name": "Joint Account Withdrawal Authority",
+      "rel_type": "subject_to",
+      "description": "Joint Account ACC-00002 is subject to the rule that either joint holder can withdraw the full balance",
+      "properties": {
+        "rule": "Either joint holder can withdraw full balance"
+      },
+      "context": "Either joint holder can withdraw full balance",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_acc_001",
+      "source_name": "Joint Account ACC-00002",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_004",
+      "target_name": "Joint Account Interest Calculation",
+      "rel_type": "subject_to",
+      "description": "Joint Account ACC-00002 is subject to the rule that interest is calculated on total balance, not per holder",
+      "properties": {
+        "rule": "Interest calculated on total balance (not per holder)"
+      },
+      "context": "Interest calculated on total balance (not per holder)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_acc_001",
+      "source_name": "Joint Account ACC-00002",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_005",
+      "target_name": "Joint Account Overdraft Liability",
+      "rel_type": "subject_to",
+      "description": "Joint Account ACC-00002 is subject to the rule that both holders are liable for overdraft",
+      "properties": {
+        "rule": "Both liable for overdraft"
+      },
+      "context": "Either can withdraw, both liable for overdraft",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_ah_001",
+      "source_name": "John Smith Primary Holder",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_ah_002",
+      "target_name": "Jane Smith Joint Holder",
+      "rel_type": "party_to",
+      "description": "John Smith Primary Holder and Jane Smith Joint Holder are both parties to the same joint account",
+      "properties": {
+        "account": "ACC-00002",
+        "relationship": "co-holders"
+      },
+      "context": "Joint Account ACC-00002: Primary Holder: John Smith, Joint Holder: Jane Smith",
+      "bidirectional": true,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_cust_001",
+      "source_name": "John Smith",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_cust_002",
+      "target_name": "Jane Smith",
+      "rel_type": "held_jointly_by",
+      "description": "Joint Account ACC-00002 is held jointly by customers John Smith and Jane Smith",
+      "properties": {
+        "account": "ACC-00002",
+        "relationship": "joint account holders"
+      },
+      "context": "Joint Account ACC-00002: Primary Holder: John Smith, Joint Holder: Jane Smith",
+      "bidirectional": true,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_bc_002",
+      "source_name": "KYC Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_002",
+      "target_name": "Joint Account KYC/AML Requirement",
+      "rel_type": "enforces",
+      "description": "KYC Verification concept enforces the business rule that both joint account holders must pass KYC/AML",
+      "properties": {
+        "enforcement": "Both holders must complete KYC verification"
+      },
+      "context": "Joint account: Both holders must pass KYC/AML",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_bc_003",
+      "source_name": "AML Screening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_002",
+      "target_name": "Joint Account KYC/AML Requirement",
+      "rel_type": "enforces",
+      "description": "AML Screening concept enforces the business rule that both joint account holders must pass KYC/AML",
+      "properties": {
+        "enforcement": "Both holders must complete AML screening"
+      },
+      "context": "Joint account: Both holders must pass KYC/AML",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_bc_001",
+      "source_name": "Account Holder",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_001",
+      "source_name": "Account Holder Primary Requirement",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_002",
+      "source_name": "Joint Account KYC/AML Requirement",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_003",
+      "source_name": "Joint Account Withdrawal Authority",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_004",
+      "source_name": "Joint Account Interest Calculation",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_br_005",
+      "source_name": "Joint Account Overdraft Liability",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_acc_001",
+      "source_name": "Joint Account ACC-00002",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_ah_001",
+      "source_name": "John Smith Primary Holder",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_ah_002",
+      "source_name": "Jane Smith Joint Holder",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_cust_001",
+      "source_name": "John Smith",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_cust_002",
+      "source_name": "Jane Smith",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_bc_002",
+      "source_name": "KYC Verification",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013_bc_003",
+      "source_name": "AML Screening",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ]
+}

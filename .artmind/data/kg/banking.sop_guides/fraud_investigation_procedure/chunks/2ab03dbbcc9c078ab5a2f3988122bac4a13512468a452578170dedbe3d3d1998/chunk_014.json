@@ -1,0 +1,1246 @@
+{
+  "chunk_seq": 14,
+  "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+  "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+  "text": "### Step 3: Fraud Classification & Reporting  \n**Classify Fraud for Reporting:**  \n```\nFraud Classification:\n- Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]\n- Amount: [£Amount]\n- Confirmed: [Yes / No]\n- Recovered: [£Amount recovered, if any]\n- Status: [Resolved / Under Investigation / Referred to Police]\n```  \n**Reporting Requirements:**  \n**Financial Crime Report (Internal):**\n- Submitted monthly to Head of Financial Crime\n- Summary of fraud cases by type\n- Trends (increasing/decreasing?)\n- Prevention effectiveness  \n**Regulatory Reporting (If Required):**  \n**Suspicious Activity Report (SAR):**\n- File if fraud suspected involving money laundering/sanctions evasion\n- File with FCA within 30 days\n- Example: Customer transfers funds to sanctions country  \n**Data Breach Report (If Applicable):**\n- File if customer data compromised\n- Notify FCA within 72 hours\n- Notify customer immediately  \n---",
+  "name": "Chunk 14/24",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_013",
+  "next_chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_015",
+  "raw_entities": [
+    {
+      "id": "ps_001",
+      "name": "Fraud Classification and Reporting",
+      "aliases": [
+        "Step 3",
+        "Fraud Classification & Reporting"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "fraud_investigation",
+      "description": "A discrete operational step that classifies detected fraud incidents by type, amount, and recovery status, then routes them to appropriate internal and regulatory reporting channels based on money laundering or sanctions evasion indicators.",
+      "context": [
+        "Step 3: Fraud Classification & Reporting",
+        "Classify Fraud for Reporting: Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]",
+        "Status: [Resolved / Under Investigation / Referred to Police]"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Fraud Confirmation Gate",
+      "aliases": [
+        "Confirmed Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A branching decision point that determines whether fraud has been confirmed (Yes/No), which affects the classification record and downstream reporting obligations.",
+      "context": [
+        "Confirmed: [Yes / No]"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "SAR Filing Trigger",
+      "aliases": [
+        "Money Laundering / Sanctions Evasion Check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "A regulatory gate that determines whether a Suspicious Activity Report must be filed based on whether the fraud involves suspected money laundering or sanctions evasion.",
+      "context": [
+        "File if fraud suspected involving money laundering/sanctions evasion",
+        "Example: Customer transfers funds to sanctions country"
+      ]
+    },
+    {
+      "id": "dp_003",
+      "name": "Data Breach Applicability Check",
+      "aliases": [
+        "Data Compromise Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "A decision point that determines whether customer data has been compromised, triggering mandatory data breach reporting to the FCA and customer notification.",
+      "context": [
+        "Data Breach Report (If Applicable): File if customer data compromised"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Head of Financial Crime",
+      "aliases": [
+        "Financial Crime Leadership"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "The senior role responsible for receiving and reviewing the monthly Financial Crime Report summarizing fraud cases, trends, and prevention effectiveness.",
+      "context": [
+        "Submitted monthly to Head of Financial Crime"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Fraud Investigation Team",
+      "aliases": [
+        "Fraud Investigator"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "financial_crime_team",
+      "description": "The operational team responsible for classifying fraud incidents by type, amount, and recovery status, and determining whether regulatory reporting is required.",
+      "context": [
+        "Fraud Classification: Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]",
+        "Status: [Resolved / Under Investigation / Referred to Police]"
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "FCA Reporting Authority",
+      "aliases": [
+        "Financial Conduct Authority",
+        "Regulator"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "The external regulatory authority that receives Suspicious Activity Reports within 30 days and data breach notifications within 72 hours.",
+      "context": [
+        "File with FCA within 30 days",
+        "Notify FCA within 72 hours"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "SAR Filing Obligation",
+      "aliases": [
+        "Suspicious Activity Report Compliance"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "regulatory_reporting",
+      "description": "A mandatory regulatory gate requiring the filing of a Suspicious Activity Report with the FCA within 30 days when fraud involves suspected money laundering or sanctions evasion.",
+      "context": [
+        "Suspicious Activity Report (SAR): File if fraud suspected involving money laundering/sanctions evasion",
+        "File with FCA within 30 days"
+      ]
+    },
+    {
+      "id": "cc_002",
+      "name": "Data Breach Notification Compliance",
+      "aliases": [
+        "Data Protection Reporting"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "data_protection_check",
+      "description": "A mandatory regulatory gate requiring notification to the FCA within 72 hours and immediate customer notification when customer data is compromised.",
+      "context": [
+        "Data Breach Report (If Applicable): File if customer data compromised",
+        "Notify FCA within 72 hours",
+        "Notify customer immediately"
+      ]
+    },
+    {
+      "id": "fa_001",
+      "name": "Account Takeover Fraud",
+      "aliases": [
+        "Account Takeover"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "account_takeover",
+      "description": "A fraud classification category representing unauthorized access and control of a customer account by a third party.",
+      "context": [
+        "Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]"
+      ]
+    },
+    {
+      "id": "fa_002",
+      "name": "Card Fraud Event",
+      "aliases": [
+        "Card Fraud"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "card_fraud_event",
+      "description": "A fraud classification category representing unauthorized use or compromise of a payment card.",
+      "context": [
+        "Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]"
+      ]
+    },
+    {
+      "id": "fa_003",
+      "name": "Check Fraud Event",
+      "aliases": [
+        "Check Fraud"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "A fraud classification category representing fraudulent check issuance or alteration.",
+      "context": [
+        "Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]"
+      ]
+    },
+    {
+      "id": "fa_004",
+      "name": "Impersonation Fraud",
+      "aliases": [
+        "Impersonation"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "A fraud classification category representing fraudulent misrepresentation of identity to gain unauthorized access or funds.",
+      "context": [
+        "Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]"
+      ]
+    },
+    {
+      "id": "sar_001",
+      "name": "SAR Filing Deadline",
+      "aliases": [
+        "30-Day SAR Deadline"
+      ],
+      "entity_class": "SAR",
+      "type": "sar_filing_deadline",
+      "description": "The regulatory deadline requiring Suspicious Activity Reports to be filed with the FCA within 30 days of fraud detection involving suspected money laundering or sanctions evasion.",
+      "context": [
+        "File with FCA within 30 days"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "Sanctions Evasion Screening",
+      "aliases": [
+        "Sanctions Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "An AML screening control that identifies fraud cases involving transfers to sanctioned jurisdictions or entities, triggering SAR filing obligations.",
+      "context": [
+        "File if fraud suspected involving money laundering/sanctions evasion",
+        "Example: Customer transfers funds to sanctions country"
+      ]
+    },
+    {
+      "id": "aml_002",
+      "name": "Money Laundering Detection",
+      "aliases": [
+        "ML Screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "transaction_monitoring",
+      "description": "An AML screening control that identifies fraud cases with suspected money laundering indicators, triggering SAR filing obligations.",
+      "context": [
+        "File if fraud suspected involving money laundering/sanctions evasion"
+      ]
+    }
+  ],
+  "id_map": {
+    "ps_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ps_001",
+    "dp_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_001",
+    "dp_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_002",
+    "dp_003": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_003",
+    "ra_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_001",
+    "ra_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_002",
+    "ra_003": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_003",
+    "cc_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_cc_001",
+    "cc_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_cc_002",
+    "fa_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_001",
+    "fa_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_002",
+    "fa_003": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_003",
+    "fa_004": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_004",
+    "sar_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_sar_001",
+    "aml_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_aml_001",
+    "aml_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_aml_002"
+  },
+  "entities": [
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ps_001",
+      "name": "Fraud Classification and Reporting",
+      "aliases": [
+        "Step 3",
+        "Fraud Classification & Reporting"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "fraud_investigation",
+      "description": "A discrete operational step that classifies detected fraud incidents by type, amount, and recovery status, then routes them to appropriate internal and regulatory reporting channels based on money laundering or sanctions evasion indicators.",
+      "context": [
+        "Step 3: Fraud Classification & Reporting",
+        "Classify Fraud for Reporting: Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]",
+        "Status: [Resolved / Under Investigation / Referred to Police]"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_001",
+      "name": "Fraud Confirmation Gate",
+      "aliases": [
+        "Confirmed Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A branching decision point that determines whether fraud has been confirmed (Yes/No), which affects the classification record and downstream reporting obligations.",
+      "context": [
+        "Confirmed: [Yes / No]"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_002",
+      "name": "SAR Filing Trigger",
+      "aliases": [
+        "Money Laundering / Sanctions Evasion Check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "A regulatory gate that determines whether a Suspicious Activity Report must be filed based on whether the fraud involves suspected money laundering or sanctions evasion.",
+      "context": [
+        "File if fraud suspected involving money laundering/sanctions evasion",
+        "Example: Customer transfers funds to sanctions country"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_003",
+      "name": "Data Breach Applicability Check",
+      "aliases": [
+        "Data Compromise Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "A decision point that determines whether customer data has been compromised, triggering mandatory data breach reporting to the FCA and customer notification.",
+      "context": [
+        "Data Breach Report (If Applicable): File if customer data compromised"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_001",
+      "name": "Head of Financial Crime",
+      "aliases": [
+        "Financial Crime Leadership"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "The senior role responsible for receiving and reviewing the monthly Financial Crime Report summarizing fraud cases, trends, and prevention effectiveness.",
+      "context": [
+        "Submitted monthly to Head of Financial Crime"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_002",
+      "name": "Fraud Investigation Team",
+      "aliases": [
+        "Fraud Investigator"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "financial_crime_team",
+      "description": "The operational team responsible for classifying fraud incidents by type, amount, and recovery status, and determining whether regulatory reporting is required.",
+      "context": [
+        "Fraud Classification: Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]",
+        "Status: [Resolved / Under Investigation / Referred to Police]"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_003",
+      "name": "FCA Reporting Authority",
+      "aliases": [
+        "Financial Conduct Authority",
+        "Regulator"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "The external regulatory authority that receives Suspicious Activity Reports within 30 days and data breach notifications within 72 hours.",
+      "context": [
+        "File with FCA within 30 days",
+        "Notify FCA within 72 hours"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_cc_001",
+      "name": "SAR Filing Obligation",
+      "aliases": [
+        "Suspicious Activity Report Compliance"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "regulatory_reporting",
+      "description": "A mandatory regulatory gate requiring the filing of a Suspicious Activity Report with the FCA within 30 days when fraud involves suspected money laundering or sanctions evasion.",
+      "context": [
+        "Suspicious Activity Report (SAR): File if fraud suspected involving money laundering/sanctions evasion",
+        "File with FCA within 30 days"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_cc_002",
+      "name": "Data Breach Notification Compliance",
+      "aliases": [
+        "Data Protection Reporting"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "data_protection_check",
+      "description": "A mandatory regulatory gate requiring notification to the FCA within 72 hours and immediate customer notification when customer data is compromised.",
+      "context": [
+        "Data Breach Report (If Applicable): File if customer data compromised",
+        "Notify FCA within 72 hours",
+        "Notify customer immediately"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_001",
+      "name": "Account Takeover Fraud",
+      "aliases": [
+        "Account Takeover"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "account_takeover",
+      "description": "A fraud classification category representing unauthorized access and control of a customer account by a third party.",
+      "context": [
+        "Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_002",
+      "name": "Card Fraud Event",
+      "aliases": [
+        "Card Fraud"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "card_fraud_event",
+      "description": "A fraud classification category representing unauthorized use or compromise of a payment card.",
+      "context": [
+        "Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_003",
+      "name": "Check Fraud Event",
+      "aliases": [
+        "Check Fraud"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "A fraud classification category representing fraudulent check issuance or alteration.",
+      "context": [
+        "Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_004",
+      "name": "Impersonation Fraud",
+      "aliases": [
+        "Impersonation"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "A fraud classification category representing fraudulent misrepresentation of identity to gain unauthorized access or funds.",
+      "context": [
+        "Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_sar_001",
+      "name": "SAR Filing Deadline",
+      "aliases": [
+        "30-Day SAR Deadline"
+      ],
+      "entity_class": "SAR",
+      "type": "sar_filing_deadline",
+      "description": "The regulatory deadline requiring Suspicious Activity Reports to be filed with the FCA within 30 days of fraud detection involving suspected money laundering or sanctions evasion.",
+      "context": [
+        "File with FCA within 30 days"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_aml_001",
+      "name": "Sanctions Evasion Screening",
+      "aliases": [
+        "Sanctions Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "An AML screening control that identifies fraud cases involving transfers to sanctioned jurisdictions or entities, triggering SAR filing obligations.",
+      "context": [
+        "File if fraud suspected involving money laundering/sanctions evasion",
+        "Example: Customer transfers funds to sanctions country"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_aml_002",
+      "name": "Money Laundering Detection",
+      "aliases": [
+        "ML Screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "transaction_monitoring",
+      "description": "An AML screening control that identifies fraud cases with suspected money laundering indicators, triggering SAR filing obligations.",
+      "context": [
+        "File if fraud suspected involving money laundering/sanctions evasion"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ps_001",
+      "name": "Fraud Classification and Reporting",
+      "properties": {
+        "step_number": 3,
+        "actor": [
+          "Head of Financial Crime",
+          "Fraud Investigation Team"
+        ],
+        "input": [
+          "fraud_type",
+          "fraud_amount",
+          "confirmation_status",
+          "recovery_amount",
+          "investigation_status"
+        ],
+        "output": [
+          "fraud_classification_record",
+          "internal_financial_crime_report",
+          "regulatory_reports_if_triggered"
+        ],
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_system": [
+          "fraud_classification_system",
+          "regulatory_reporting_system"
+        ],
+        "failure_path": "regulatory_non-compliance, potential FCA enforcement action"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_001",
+      "name": "Fraud Confirmation Gate",
+      "properties": {
+        "decision_question": "Is the fraud confirmed?",
+        "criteria": [
+          "evidence_of_fraudulent_activity",
+          "customer_confirmation",
+          "transaction_verification"
+        ],
+        "decision_maker": "Fraud Investigation Team",
+        "path_yes": "proceed_to_classification_and_reporting",
+        "path_no": "continue_investigation_or_close_case",
+        "override_possible": true
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_002",
+      "name": "SAR Filing Trigger",
+      "properties": {
+        "decision_question": "Does the fraud involve suspected money laundering or sanctions evasion?",
+        "criteria": [
+          "money_laundering_indicators",
+          "sanctions_evasion_indicators",
+          "cross_border_fund_transfers"
+        ],
+        "decision_maker": "Head of Financial Crime",
+        "path_yes": "file_SAR_with_FCA_within_30_days",
+        "path_no": "proceed_with_internal_reporting_only",
+        "time_limit": "30 days from fraud confirmation"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_003",
+      "name": "Data Breach Applicability Check",
+      "properties": {
+        "decision_question": "Has customer data been compromised in this fraud event?",
+        "criteria": [
+          "customer_personal_data_exposure",
+          "payment_card_data_exposure",
+          "account_credentials_compromise"
+        ],
+        "decision_maker": "Head of Financial Crime",
+        "path_yes": "file_data_breach_report_and_notify_customer",
+        "path_no": "proceed_with_fraud_reporting_only",
+        "time_limit": "72 hours for FCA notification if breach confirmed"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_001",
+      "name": "Head of Financial Crime",
+      "properties": {
+        "role_type": "human",
+        "department": "Financial Crime / Compliance",
+        "authority_level": "senior_management",
+        "approval_limit": "all_fraud_cases",
+        "response_time_sla": "monthly_reporting_cycle",
+        "channels": [
+          "system",
+          "email",
+          "internal_reporting"
+        ],
+        "responsibilities": [
+          "fraud_case_review",
+          "SAR_filing_decision",
+          "regulatory_reporting_oversight",
+          "monthly_financial_crime_report_submission"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_002",
+      "name": "Fraud Investigation Team",
+      "properties": {
+        "role_type": "human",
+        "department": "Fraud / Financial Crime",
+        "authority_level": "operational",
+        "response_time_sla": "case_dependent",
+        "channels": [
+          "system",
+          "branch",
+          "phone"
+        ],
+        "responsibilities": [
+          "fraud_classification",
+          "evidence_gathering",
+          "fraud_confirmation_decision",
+          "investigation_status_tracking"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_003",
+      "name": "FCA Reporting Authority",
+      "properties": {
+        "role_type": "external",
+        "authority_level": "regulatory",
+        "channels": [
+          "regulatory_submission_system"
+        ],
+        "responsibilities": [
+          "SAR_receipt_and_processing",
+          "data_breach_notification_receipt"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_cc_001",
+      "name": "SAR Filing Obligation",
+      "properties": {
+        "regulatory_basis": [
+          "POCA 2002",
+          "MLR 2017"
+        ],
+        "mandatory": true,
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "fraud_confirmation",
+          "money_laundering_or_sanctions_indicators",
+          "transaction_details",
+          "customer_information"
+        ],
+        "performed_by": "Head of Financial Crime",
+        "timing": "within_30_days_of_fraud_confirmation",
+        "failure_consequence": "FCA enforcement action, potential criminal liability"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_cc_002",
+      "name": "Data Breach Notification Compliance",
+      "properties": {
+        "regulatory_basis": [
+          "GDPR",
+          "FCA COBS"
+        ],
+        "mandatory": true,
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "data_compromise_confirmation",
+          "customer_personal_data_affected",
+          "breach_scope_assessment"
+        ],
+        "performed_by": "Head of Financial Crime",
+        "timing": "FCA_notification_within_72_hours, customer_notification_immediately",
+        "failure_consequence": "GDPR fines, FCA enforcement action, reputational damage"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_001",
+      "name": "Account Takeover Fraud",
+      "properties": {
+        "generation_trigger": "unauthorized_account_access_detected",
+        "investigation_or_escalation_path": "fraud_investigation_team_review",
+        "customer_notification": "immediate_if_confirmed",
+        "reimbursement_obligation": "yes_if_customer_not_liable"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_002",
+      "name": "Card Fraud Event",
+      "properties": {
+        "generation_trigger": "unauthorized_card_transaction_detected",
+        "investigation_or_escalation_path": "fraud_investigation_team_review",
+        "customer_notification": "immediate_if_confirmed",
+        "reimbursement_obligation": "yes_under_chargeback_rules"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_003",
+      "name": "Check Fraud Event",
+      "properties": {
+        "generation_trigger": "forged_or_fraudulent_check_detected",
+        "investigation_or_escalation_path": "fraud_investigation_team_review",
+        "customer_notification": "immediate_if_confirmed",
+        "reimbursement_obligation": "yes_if_customer_not_liable"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_004",
+      "name": "Impersonation Fraud",
+      "properties": {
+        "generation_trigger": "customer_identity_misrepresentation_detected",
+        "investigation_or_escalation_path": "fraud_investigation_team_review",
+        "customer_notification": "immediate_if_confirmed",
+        "reimbursement_obligation": "yes_if_customer_not_liable"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_sar_001",
+      "name": "SAR Filing Deadline",
+      "properties": {
+        "filing_obligation": true,
+        "filing_deadline": "30_days_from_fraud_confirmation",
+        "confidentiality_rule": "no_customer_notification_of_SAR_filing",
+        "consequence_of_non_filing": "FCA_enforcement_action, potential_criminal_liability"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_aml_001",
+      "name": "Sanctions Evasion Screening",
+      "properties": {
+        "mandatory": true,
+        "screening_lists_or_scope": [
+          "OFAC",
+          "UN_sanctions_lists",
+          "EU_sanctions_lists"
+        ],
+        "hit_or_match_response": "escalate_to_Head_of_Financial_Crime, file_SAR_if_confirmed",
+        "regulatory_basis": "POCA 2002, MLR 2017"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_aml_002",
+      "name": "Money Laundering Detection",
+      "properties": {
+        "mandatory": true,
+        "screening_lists_or_scope": [
+          "suspicious_transaction_patterns",
+          "cross_border_transfers",
+          "structuring_indicators"
+        ],
+        "hit_or_match_response": "escalate_to_Head_of_Financial_Crime, file_SAR_if_confirmed",
+        "regulatory_basis": "POCA 2002, MLR 2017"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ps_001",
+      "source_name": "Fraud Classification and Reporting",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_001",
+      "target_name": "Fraud Confirmation Gate",
+      "rel_type": "leads_to",
+      "description": "Fraud classification process leads to decision point determining if fraud is confirmed",
+      "properties": {
+        "decision_criteria": "Confirmed: [Yes / No]"
+      },
+      "context": "Classify Fraud for Reporting: Confirmed: [Yes / No]",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ps_001",
+      "source_name": "Fraud Classification and Reporting",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_002",
+      "target_name": "SAR Filing Trigger",
+      "rel_type": "leads_to",
+      "description": "Fraud classification process leads to decision on whether SAR filing is required",
+      "properties": {
+        "trigger_condition": "fraud suspected involving money laundering/sanctions evasion"
+      },
+      "context": "File if fraud suspected involving money laundering/sanctions evasion",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ps_001",
+      "source_name": "Fraud Classification and Reporting",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_003",
+      "target_name": "Data Breach Applicability Check",
+      "rel_type": "leads_to",
+      "description": "Fraud classification process leads to decision on data breach notification applicability",
+      "properties": {
+        "trigger_condition": "customer data compromised"
+      },
+      "context": "File if customer data compromised",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ps_001",
+      "source_name": "Fraud Classification and Reporting",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_001",
+      "target_name": "Account Takeover Fraud",
+      "rel_type": "classifies",
+      "description": "Fraud classification process categorizes account takeover fraud events",
+      "properties": {
+        "fraud_type": "Account Takeover"
+      },
+      "context": "Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ps_001",
+      "source_name": "Fraud Classification and Reporting",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_002",
+      "target_name": "Card Fraud Event",
+      "rel_type": "classifies",
+      "description": "Fraud classification process categorizes card fraud events",
+      "properties": {
+        "fraud_type": "Card Fraud"
+      },
+      "context": "Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ps_001",
+      "source_name": "Fraud Classification and Reporting",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_003",
+      "target_name": "Check Fraud Event",
+      "rel_type": "classifies",
+      "description": "Fraud classification process categorizes check fraud events",
+      "properties": {
+        "fraud_type": "Check Fraud"
+      },
+      "context": "Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ps_001",
+      "source_name": "Fraud Classification and Reporting",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_004",
+      "target_name": "Impersonation Fraud",
+      "rel_type": "classifies",
+      "description": "Fraud classification process categorizes impersonation fraud events",
+      "properties": {
+        "fraud_type": "Impersonation"
+      },
+      "context": "Type: [Account Takeover / Card Fraud / Check Fraud / Impersonation / Other]",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_001",
+      "source_name": "Fraud Confirmation Gate",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_001",
+      "target_name": "Head of Financial Crime",
+      "rel_type": "decided_by",
+      "description": "Head of Financial Crime makes decision on fraud confirmation",
+      "properties": {
+        "decision_authority": "confirmation of fraud status"
+      },
+      "context": "Submitted monthly to Head of Financial Crime",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_002",
+      "source_name": "SAR Filing Trigger",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_cc_001",
+      "target_name": "SAR Filing Obligation",
+      "rel_type": "triggers",
+      "description": "Decision on SAR filing requirement triggers SAR filing compliance checkpoint",
+      "properties": {
+        "trigger_condition": "fraud suspected involving money laundering/sanctions evasion"
+      },
+      "context": "File if fraud suspected involving money laundering/sanctions evasion",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_003",
+      "source_name": "Data Breach Applicability Check",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_cc_002",
+      "target_name": "Data Breach Notification Compliance",
+      "rel_type": "triggers",
+      "description": "Decision on data breach applicability triggers data breach notification compliance checkpoint",
+      "properties": {
+        "trigger_condition": "customer data compromised"
+      },
+      "context": "File if customer data compromised",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_cc_001",
+      "source_name": "SAR Filing Obligation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_003",
+      "target_name": "FCA Reporting Authority",
+      "rel_type": "performed_by",
+      "description": "SAR filing compliance checkpoint is performed by submission to FCA",
+      "properties": {
+        "filing_deadline": "30 days",
+        "recipient": "FCA"
+      },
+      "context": "File with FCA within 30 days",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_cc_001",
+      "source_name": "SAR Filing Obligation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_sar_001",
+      "target_name": "SAR Filing Deadline",
+      "rel_type": "gates_on_result_of",
+      "description": "SAR filing compliance checkpoint gates on SAR filing deadline requirement",
+      "properties": {
+        "deadline": "30 days"
+      },
+      "context": "File with FCA within 30 days",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_cc_002",
+      "source_name": "Data Breach Notification Compliance",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_003",
+      "target_name": "FCA Reporting Authority",
+      "rel_type": "performed_by",
+      "description": "Data breach notification compliance checkpoint requires notification to FCA",
+      "properties": {
+        "notification_deadline": "72 hours"
+      },
+      "context": "Notify FCA within 72 hours",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_aml_001",
+      "source_name": "Sanctions Evasion Screening",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_002",
+      "target_name": "SAR Filing Trigger",
+      "rel_type": "outcome_determined_by",
+      "description": "Sanctions evasion screening outcome determines SAR filing trigger decision",
+      "properties": {
+        "screening_type": "sanctions evasion"
+      },
+      "context": "File if fraud suspected involving money laundering/sanctions evasion",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_aml_002",
+      "source_name": "Money Laundering Detection",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_002",
+      "target_name": "SAR Filing Trigger",
+      "rel_type": "outcome_determined_by",
+      "description": "Money laundering detection screening outcome determines SAR filing trigger decision",
+      "properties": {
+        "screening_type": "money laundering"
+      },
+      "context": "File if fraud suspected involving money laundering/sanctions evasion",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_001",
+      "source_name": "Head of Financial Crime",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ps_001",
+      "target_name": "Fraud Classification and Reporting",
+      "rel_type": "notifies",
+      "description": "Head of Financial Crime receives monthly fraud classification and reporting summary",
+      "properties": {
+        "reporting_frequency": "monthly",
+        "report_content": "summary of fraud cases by type, trends, prevention effectiveness"
+      },
+      "context": "Submitted monthly to Head of Financial Crime - Summary of fraud cases by type",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_002",
+      "source_name": "Fraud Investigation Team",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ps_001",
+      "target_name": "Fraud Classification and Reporting",
+      "rel_type": "performed_by",
+      "description": "Fraud Investigation Team performs fraud classification and reporting",
+      "properties": {
+        "classification_elements": "Type, Amount, Confirmed status, Recovered amount, Status"
+      },
+      "context": "Fraud Classification: Type, Amount, Confirmed, Recovered, Status",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ps_001",
+      "source_name": "Fraud Classification and Reporting",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_001",
+      "source_name": "Fraud Confirmation Gate",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_002",
+      "source_name": "SAR Filing Trigger",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_dp_003",
+      "source_name": "Data Breach Applicability Check",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_001",
+      "source_name": "Head of Financial Crime",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_002",
+      "source_name": "Fraud Investigation Team",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_ra_003",
+      "source_name": "FCA Reporting Authority",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_cc_001",
+      "source_name": "SAR Filing Obligation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_cc_002",
+      "source_name": "Data Breach Notification Compliance",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_001",
+      "source_name": "Account Takeover Fraud",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_002",
+      "source_name": "Card Fraud Event",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_003",
+      "source_name": "Check Fraud Event",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_fa_004",
+      "source_name": "Impersonation Fraud",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_sar_001",
+      "source_name": "SAR Filing Deadline",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_aml_001",
+      "source_name": "Sanctions Evasion Screening",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014_aml_002",
+      "source_name": "Money Laundering Detection",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_014",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

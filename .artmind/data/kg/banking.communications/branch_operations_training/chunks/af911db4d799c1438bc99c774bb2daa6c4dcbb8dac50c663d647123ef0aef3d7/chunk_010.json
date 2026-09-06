@@ -1,0 +1,256 @@
+{
+  "chunk_seq": 10,
+  "chunk_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+  "doc_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6",
+  "text": "## PART 4: Common Branch Transactions  \n### Cash Deposit  \n**Process:**\n1. Verify customer account\n2. Count cash in front of customer\n3. Verify count matches their receipt\n4. Update account in system\n5. Provide receipt\n6. Close transaction  \n**Acceptable Cash:** Notes and coins in any condition\n**Suspicious Activity:** >£1,000 in cash (file CTR, see compliance)  \n---",
+  "name": "Chunk 10/25",
+  "_domain": "banking.communications",
+  "prev_chunk_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_009",
+  "next_chunk_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_011",
+  "raw_entities": [
+    {
+      "id": "txn_001",
+      "name": "Cash Deposit Transaction",
+      "aliases": [
+        "cash deposit",
+        "deposit"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "deposit",
+      "description": "A cash deposit transaction processed at a branch where customer cash (notes and coins) is counted, verified, and credited to the customer's account. Deposits exceeding £1,000 trigger suspicious activity reporting obligations.",
+      "context": [
+        "Verify customer account",
+        "Count cash in front of customer",
+        "Verify count matches their receipt",
+        "Acceptable Cash: Notes and coins in any condition",
+        "Suspicious Activity: >£1,000 in cash (file CTR, see compliance)"
+      ]
+    },
+    {
+      "id": "warn_001",
+      "name": "Large Cash Deposit Exceeding Threshold",
+      "aliases": [
+        "large cash deposit",
+        "cash over £1,000"
+      ],
+      "entity_class": "WARNING_SIGN",
+      "type": "aml_red_flag",
+      "description": "A cash deposit exceeding £1,000 is flagged as suspicious activity requiring CTR (Cash Transaction Report) filing and compliance escalation. This threshold-based indicator is a standard AML monitoring control.",
+      "context": [
+        "Suspicious Activity: >£1,000 in cash (file CTR, see compliance)"
+      ]
+    },
+    {
+      "id": "comp_001",
+      "name": "Cash Transaction Report Filing Obligation",
+      "aliases": [
+        "CTR filing",
+        "CTR obligation"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "reporting_obligation",
+      "description": "Staff must file a Cash Transaction Report (CTR) when a cash deposit exceeds £1,000. This is a mandatory AML reporting duty triggered by the suspicious activity threshold.",
+      "context": [
+        "Suspicious Activity: >£1,000 in cash (file CTR, see compliance)"
+      ]
+    }
+  ],
+  "id_map": {
+    "txn_001": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_txn_001",
+    "warn_001": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_warn_001",
+    "comp_001": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_comp_001"
+  },
+  "entities": [
+    {
+      "id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_txn_001",
+      "name": "Cash Deposit Transaction",
+      "aliases": [
+        "cash deposit",
+        "deposit"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "deposit",
+      "description": "A cash deposit transaction processed at a branch where customer cash (notes and coins) is counted, verified, and credited to the customer's account. Deposits exceeding £1,000 trigger suspicious activity reporting obligations.",
+      "context": [
+        "Verify customer account",
+        "Count cash in front of customer",
+        "Verify count matches their receipt",
+        "Acceptable Cash: Notes and coins in any condition",
+        "Suspicious Activity: >£1,000 in cash (file CTR, see compliance)"
+      ],
+      "chunk_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "doc_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_warn_001",
+      "name": "Large Cash Deposit Exceeding Threshold",
+      "aliases": [
+        "large cash deposit",
+        "cash over £1,000"
+      ],
+      "entity_class": "WARNING_SIGN",
+      "type": "aml_red_flag",
+      "description": "A cash deposit exceeding £1,000 is flagged as suspicious activity requiring CTR (Cash Transaction Report) filing and compliance escalation. This threshold-based indicator is a standard AML monitoring control.",
+      "context": [
+        "Suspicious Activity: >£1,000 in cash (file CTR, see compliance)"
+      ],
+      "chunk_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "doc_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_comp_001",
+      "name": "Cash Transaction Report Filing Obligation",
+      "aliases": [
+        "CTR filing",
+        "CTR obligation"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "reporting_obligation",
+      "description": "Staff must file a Cash Transaction Report (CTR) when a cash deposit exceeds £1,000. This is a mandatory AML reporting duty triggered by the suspicious activity threshold.",
+      "context": [
+        "Suspicious Activity: >£1,000 in cash (file CTR, see compliance)"
+      ],
+      "chunk_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "doc_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6",
+      "_domain": "banking.communications"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_txn_001",
+      "name": "Cash Deposit Transaction",
+      "properties": {
+        "transaction_type": "deposit",
+        "monitoring_or_reporting_obligation": "yes",
+        "threshold_value": 1000,
+        "threshold_trigger": "exceeds £1,000",
+        "process_step": [
+          "Verify customer account",
+          "Count cash in front of customer",
+          "Verify count matches their receipt",
+          "Update account in system",
+          "Provide receipt",
+          "Close transaction"
+        ],
+        "acceptable_form": [
+          "Notes",
+          "Coins"
+        ],
+        "acceptable_condition": "any condition"
+      },
+      "chunk_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "doc_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6"
+    },
+    {
+      "id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_warn_001",
+      "name": "Large Cash Deposit Exceeding Threshold",
+      "properties": {
+        "risk_domain": "aml",
+        "description": "Cash deposit exceeding £1,000",
+        "threshold_value": 1000,
+        "required_action": "file CTR",
+        "regulatory_obligation": "yes"
+      },
+      "chunk_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "doc_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6"
+    },
+    {
+      "id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_comp_001",
+      "name": "Cash Transaction Report Filing Obligation",
+      "properties": {
+        "obligation_type": "reporting_duty",
+        "applies_to": "branch staff",
+        "trigger_event": "cash deposit exceeds £1,000",
+        "required_action": "file CTR",
+        "regulatory_obligation": "yes"
+      },
+      "chunk_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "doc_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_txn_001",
+      "source_name": "Cash Deposit Transaction",
+      "target_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_warn_001",
+      "target_name": "Large Cash Deposit Exceeding Threshold",
+      "rel_type": "identified_in",
+      "description": "Large cash deposits exceeding £1,000 threshold are identified within cash deposit transactions",
+      "properties": {
+        "threshold": "£1,000",
+        "trigger_condition": "cash amount exceeds threshold"
+      },
+      "context": "Suspicious Activity: >£1,000 in cash (file CTR, see compliance)",
+      "bidirectional": false,
+      "chunk_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "doc_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6"
+    },
+    {
+      "source_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_warn_001",
+      "source_name": "Large Cash Deposit Exceeding Threshold",
+      "target_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_comp_001",
+      "target_name": "Cash Transaction Report Filing Obligation",
+      "rel_type": "triggers",
+      "description": "Large cash deposits exceeding threshold trigger the obligation to file a Cash Transaction Report",
+      "properties": {
+        "action_required": "file CTR",
+        "threshold": "£1,000"
+      },
+      "context": "Suspicious Activity: >£1,000 in cash (file CTR, see compliance)",
+      "bidirectional": false,
+      "chunk_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "doc_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6"
+    },
+    {
+      "source_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_txn_001",
+      "source_name": "Cash Deposit Transaction",
+      "target_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_comp_001",
+      "target_name": "Cash Transaction Report Filing Obligation",
+      "rel_type": "triggered_by",
+      "description": "Cash Transaction Report filing obligation is triggered when cash deposit transactions exceed the £1,000 threshold",
+      "properties": {
+        "threshold": "£1,000",
+        "transaction_type": "cash deposit"
+      },
+      "context": "Suspicious Activity: >£1,000 in cash (file CTR, see compliance)",
+      "bidirectional": false,
+      "chunk_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "doc_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6"
+    },
+    {
+      "source_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_txn_001",
+      "source_name": "Cash Deposit Transaction",
+      "target_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "target_name": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "doc_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_warn_001",
+      "source_name": "Large Cash Deposit Exceeding Threshold",
+      "target_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "target_name": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "doc_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010_comp_001",
+      "source_name": "Cash Transaction Report Filing Obligation",
+      "target_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "target_name": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6_010",
+      "doc_id": "01a07439-0c4e-737a-9a69-5aa15d816bb6",
+      "_domain": "banking.communications"
+    }
+  ]
+}

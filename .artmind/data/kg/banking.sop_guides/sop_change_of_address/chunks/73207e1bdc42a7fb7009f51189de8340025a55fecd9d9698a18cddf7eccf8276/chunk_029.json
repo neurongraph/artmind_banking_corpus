@@ -1,0 +1,1173 @@
+{
+  "chunk_seq": 29,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "### If Match Found (True Positive)  \n**Immediate Actions:**\n1. DO NOT process address change\n2. DO NOT notify customer (tipping-off is illegal)\n3. Escalate to Head of Compliance immediately\n4. Freeze account (no new transactions)\n5. File Suspicious Activity Report (SAR) to FCA\n6. Await FCA guidance before proceeding  \n**Timeline:** FCA response typically 10–30 days",
+  "name": "Chunk 29/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_030",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Match Found Response Process",
+      "aliases": [
+        "True Positive Response",
+        "Sanctions Match Escalation"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "End-to-end procedure triggered when a sanctions or PEP list match is confirmed during screening. The process mandates immediate account freeze, compliance escalation, SAR filing, and regulatory coordination with the FCA. No customer notification is permitted due to tipping-off restrictions.",
+      "context": [
+        "If Match Found (True Positive)",
+        "Escalate to Head of Compliance immediately",
+        "File Suspicious Activity Report (SAR) to FCA",
+        "Await FCA guidance before proceeding"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Prevent Address Change Processing",
+      "aliases": [
+        "Block Address Update"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Immediate action to halt any pending address change request on the matched account. This step prevents the customer from updating their address details while the match is under investigation.",
+      "context": [
+        "DO NOT process address change"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Suppress Customer Notification",
+      "aliases": [
+        "Tipping-Off Prevention"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Mandatory step to withhold all customer communication regarding the match or investigation. Notification would constitute illegal tipping-off under AML regulations and compromise the investigation.",
+      "context": [
+        "DO NOT notify customer (tipping-off is illegal)"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Escalate to Head of Compliance",
+      "aliases": [
+        "Compliance Escalation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation",
+      "description": "Immediate escalation of the confirmed match to senior compliance leadership for investigation oversight and regulatory coordination. This is the first formal escalation point in the response workflow.",
+      "context": [
+        "Escalate to Head of Compliance immediately"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Freeze Account",
+      "aliases": [
+        "Account Suspension",
+        "Transaction Block"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "account_activation",
+      "description": "Operational action to immediately suspend all transaction activity on the matched account. The freeze remains in place pending FCA guidance and investigation completion.",
+      "context": [
+        "Freeze account (no new transactions)"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "File Suspicious Activity Report to FCA",
+      "aliases": [
+        "SAR Filing",
+        "Regulatory Reporting"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "reporting",
+      "description": "Mandatory filing of a Suspicious Activity Report to the Financial Conduct Authority documenting the sanctions/PEP match and the account freeze. This report triggers formal regulatory engagement and investigation coordination.",
+      "context": [
+        "File Suspicious Activity Report (SAR) to FCA"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Await FCA Guidance",
+      "aliases": [
+        "Regulatory Coordination",
+        "Guidance Pending"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Holding step where the bank awaits formal guidance from the FCA before taking further action on the account or investigation. No account activity or customer contact is permitted during this period.",
+      "context": [
+        "Await FCA guidance before proceeding"
+      ]
+    },
+    {
+      "id": "role_001",
+      "name": "Head of Compliance",
+      "aliases": [
+        "Compliance Leadership",
+        "Compliance Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "Senior compliance officer responsible for receiving immediate escalation of confirmed sanctions/PEP matches, overseeing the investigation, and coordinating with the FCA. This role has authority to approve account freeze and SAR filing.",
+      "context": [
+        "Escalate to Head of Compliance immediately"
+      ]
+    },
+    {
+      "id": "role_002",
+      "name": "FCA",
+      "aliases": [
+        "Financial Conduct Authority",
+        "Regulator"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "The Financial Conduct Authority acts as the external regulatory authority receiving the SAR and providing guidance on investigation and account handling. FCA response typically takes 10–30 days.",
+      "context": [
+        "File Suspicious Activity Report (SAR) to FCA",
+        "Await FCA guidance before proceeding"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Sanctions or PEP List Match Confirmation",
+      "aliases": [
+        "Match Found Gate",
+        "True Positive Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "Binary decision gate triggered when screening results confirm a customer or account holder matches a sanctions or PEP list. A true positive (match found) initiates the immediate response workflow including account freeze, compliance escalation, and SAR filing.",
+      "context": [
+        "If Match Found (True Positive)",
+        "Immediate Actions:"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Sanctions and PEP Screening Compliance Gate",
+      "aliases": [
+        "Match Verification Gate",
+        "Screening Checkpoint"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory regulatory checkpoint verifying that customer and beneficial owner names have been screened against sanctions and PEP lists. Confirmation of a match triggers immediate escalation and account freeze procedures.",
+      "context": [
+        "If Match Found (True Positive)",
+        "Escalate to Head of Compliance immediately"
+      ]
+    },
+    {
+      "id": "sar_001",
+      "name": "Suspicious Activity Report Filing",
+      "aliases": [
+        "SAR",
+        "FCA Report"
+      ],
+      "entity_class": "SAR",
+      "type": "external_sar",
+      "description": "Mandatory filing to the FCA documenting the confirmed sanctions or PEP match and the account freeze action. The SAR initiates formal regulatory investigation and coordination.",
+      "context": [
+        "File Suspicious Activity Report (SAR) to FCA"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "Sanctions and PEP Screening",
+      "aliases": [
+        "Sanctions Screening",
+        "PEP Screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "AML screening process that checks customer and beneficial owner names against official sanctions and PEP lists. A confirmed match triggers the immediate response workflow.",
+      "context": [
+        "If Match Found (True Positive)",
+        "Escalate to Head of Compliance immediately"
+      ]
+    },
+    {
+      "id": "acct_001",
+      "name": "Matched Account",
+      "aliases": [
+        "Sanctioned Account",
+        "Frozen Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "frozen_account",
+      "description": "Customer account that has been confirmed to match a sanctions or PEP list and is immediately frozen pending FCA guidance. No new transactions are permitted on this account.",
+      "context": [
+        "Freeze account (no new transactions)",
+        "DO NOT process address change"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_029_proc_001",
+    "pstep_001": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_001",
+    "pstep_002": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_002",
+    "pstep_003": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_003",
+    "pstep_004": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_004",
+    "pstep_005": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_005",
+    "pstep_006": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_006",
+    "role_001": "01a07400-ba86-72f1-8b22-d07b32649491_029_role_001",
+    "role_002": "01a07400-ba86-72f1-8b22-d07b32649491_029_role_002",
+    "dp_001": "01a07400-ba86-72f1-8b22-d07b32649491_029_dp_001",
+    "cc_001": "01a07400-ba86-72f1-8b22-d07b32649491_029_cc_001",
+    "sar_001": "01a07400-ba86-72f1-8b22-d07b32649491_029_sar_001",
+    "aml_001": "01a07400-ba86-72f1-8b22-d07b32649491_029_aml_001",
+    "acct_001": "01a07400-ba86-72f1-8b22-d07b32649491_029_acct_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_proc_001",
+      "name": "Match Found Response Process",
+      "aliases": [
+        "True Positive Response",
+        "Sanctions Match Escalation"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "End-to-end procedure triggered when a sanctions or PEP list match is confirmed during screening. The process mandates immediate account freeze, compliance escalation, SAR filing, and regulatory coordination with the FCA. No customer notification is permitted due to tipping-off restrictions.",
+      "context": [
+        "If Match Found (True Positive)",
+        "Escalate to Head of Compliance immediately",
+        "File Suspicious Activity Report (SAR) to FCA",
+        "Await FCA guidance before proceeding"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_001",
+      "name": "Prevent Address Change Processing",
+      "aliases": [
+        "Block Address Update"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Immediate action to halt any pending address change request on the matched account. This step prevents the customer from updating their address details while the match is under investigation.",
+      "context": [
+        "DO NOT process address change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_002",
+      "name": "Suppress Customer Notification",
+      "aliases": [
+        "Tipping-Off Prevention"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Mandatory step to withhold all customer communication regarding the match or investigation. Notification would constitute illegal tipping-off under AML regulations and compromise the investigation.",
+      "context": [
+        "DO NOT notify customer (tipping-off is illegal)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_003",
+      "name": "Escalate to Head of Compliance",
+      "aliases": [
+        "Compliance Escalation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation",
+      "description": "Immediate escalation of the confirmed match to senior compliance leadership for investigation oversight and regulatory coordination. This is the first formal escalation point in the response workflow.",
+      "context": [
+        "Escalate to Head of Compliance immediately"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_004",
+      "name": "Freeze Account",
+      "aliases": [
+        "Account Suspension",
+        "Transaction Block"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "account_activation",
+      "description": "Operational action to immediately suspend all transaction activity on the matched account. The freeze remains in place pending FCA guidance and investigation completion.",
+      "context": [
+        "Freeze account (no new transactions)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_005",
+      "name": "File Suspicious Activity Report to FCA",
+      "aliases": [
+        "SAR Filing",
+        "Regulatory Reporting"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "reporting",
+      "description": "Mandatory filing of a Suspicious Activity Report to the Financial Conduct Authority documenting the sanctions/PEP match and the account freeze. This report triggers formal regulatory engagement and investigation coordination.",
+      "context": [
+        "File Suspicious Activity Report (SAR) to FCA"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_006",
+      "name": "Await FCA Guidance",
+      "aliases": [
+        "Regulatory Coordination",
+        "Guidance Pending"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Holding step where the bank awaits formal guidance from the FCA before taking further action on the account or investigation. No account activity or customer contact is permitted during this period.",
+      "context": [
+        "Await FCA guidance before proceeding"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_role_001",
+      "name": "Head of Compliance",
+      "aliases": [
+        "Compliance Leadership",
+        "Compliance Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "Senior compliance officer responsible for receiving immediate escalation of confirmed sanctions/PEP matches, overseeing the investigation, and coordinating with the FCA. This role has authority to approve account freeze and SAR filing.",
+      "context": [
+        "Escalate to Head of Compliance immediately"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_role_002",
+      "name": "FCA",
+      "aliases": [
+        "Financial Conduct Authority",
+        "Regulator"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "The Financial Conduct Authority acts as the external regulatory authority receiving the SAR and providing guidance on investigation and account handling. FCA response typically takes 10–30 days.",
+      "context": [
+        "File Suspicious Activity Report (SAR) to FCA",
+        "Await FCA guidance before proceeding"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_dp_001",
+      "name": "Sanctions or PEP List Match Confirmation",
+      "aliases": [
+        "Match Found Gate",
+        "True Positive Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "Binary decision gate triggered when screening results confirm a customer or account holder matches a sanctions or PEP list. A true positive (match found) initiates the immediate response workflow including account freeze, compliance escalation, and SAR filing.",
+      "context": [
+        "If Match Found (True Positive)",
+        "Immediate Actions:"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_cc_001",
+      "name": "Sanctions and PEP Screening Compliance Gate",
+      "aliases": [
+        "Match Verification Gate",
+        "Screening Checkpoint"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory regulatory checkpoint verifying that customer and beneficial owner names have been screened against sanctions and PEP lists. Confirmation of a match triggers immediate escalation and account freeze procedures.",
+      "context": [
+        "If Match Found (True Positive)",
+        "Escalate to Head of Compliance immediately"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_sar_001",
+      "name": "Suspicious Activity Report Filing",
+      "aliases": [
+        "SAR",
+        "FCA Report"
+      ],
+      "entity_class": "SAR",
+      "type": "external_sar",
+      "description": "Mandatory filing to the FCA documenting the confirmed sanctions or PEP match and the account freeze action. The SAR initiates formal regulatory investigation and coordination.",
+      "context": [
+        "File Suspicious Activity Report (SAR) to FCA"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_aml_001",
+      "name": "Sanctions and PEP Screening",
+      "aliases": [
+        "Sanctions Screening",
+        "PEP Screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "AML screening process that checks customer and beneficial owner names against official sanctions and PEP lists. A confirmed match triggers the immediate response workflow.",
+      "context": [
+        "If Match Found (True Positive)",
+        "Escalate to Head of Compliance immediately"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_acct_001",
+      "name": "Matched Account",
+      "aliases": [
+        "Sanctioned Account",
+        "Frozen Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "frozen_account",
+      "description": "Customer account that has been confirmed to match a sanctions or PEP list and is immediately frozen pending FCA guidance. No new transactions are permitted on this account.",
+      "context": [
+        "Freeze account (no new transactions)",
+        "DO NOT process address change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_proc_001",
+      "name": "Match Found Response Process",
+      "properties": {
+        "purpose": "Respond to confirmed sanctions or PEP list matches by preventing customer notification, freezing account activity, and filing regulatory reports",
+        "scope": "All matched accounts requiring immediate compliance intervention",
+        "owner": "Head of Compliance",
+        "departments_involved": [
+          "Compliance",
+          "Operations",
+          "Regulatory Reporting"
+        ],
+        "timeline_sla": "FCA response typically 10–30 days",
+        "regulatory_references": [
+          "FCA regulations on tipping-off",
+          "Money Laundering Regulations 2017"
+        ],
+        "trigger": "Confirmed match on sanctions or PEP screening list",
+        "outcome_success": "Account frozen, SAR filed to FCA, customer not notified, FCA guidance received and acted upon",
+        "outcome_failure": "Customer notified (tipping-off violation), address change processed, regulatory breach"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_001",
+      "name": "Prevent Address Change Processing",
+      "properties": {
+        "step_number": 1,
+        "actor": "Operations team",
+        "input": "Matched account identifier",
+        "output": "Address change request blocked in system",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Address change processed, customer contact details updated, potential tipping-off risk"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_002",
+      "name": "Suppress Customer Notification",
+      "properties": {
+        "step_number": 2,
+        "actor": "Operations team",
+        "input": "Matched account identifier",
+        "output": "Customer notification suppressed in system",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Customer notified of match, tipping-off violation, regulatory breach"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_003",
+      "name": "Escalate to Head of Compliance",
+      "properties": {
+        "step_number": 3,
+        "actor": "Operations team or screening system",
+        "input": "Match confirmation details, account information",
+        "output": "Escalation ticket created, Head of Compliance notified",
+        "estimated_duration": "Immediate",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_004",
+      "name": "Freeze Account",
+      "properties": {
+        "step_number": 4,
+        "actor": "Head of Compliance or Operations",
+        "input": "Matched account identifier",
+        "output": "Account frozen, no new transactions permitted",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account management system"
+        ],
+        "failure_path": "Customer able to conduct transactions, regulatory breach"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_005",
+      "name": "File Suspicious Activity Report to FCA",
+      "properties": {
+        "step_number": 5,
+        "actor": "Head of Compliance",
+        "input": "Match details, account information, transaction history",
+        "output": "SAR filed to FCA",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "SAR filing system",
+          "FCA portal"
+        ],
+        "failure_path": "SAR not filed, regulatory breach, potential enforcement action"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_006",
+      "name": "Await FCA Guidance",
+      "properties": {
+        "step_number": 6,
+        "actor": "Head of Compliance",
+        "input": "SAR reference number",
+        "output": "FCA guidance received and documented",
+        "estimated_duration": "10–30 days",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Proceeding without FCA guidance, regulatory breach"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_role_001",
+      "name": "Head of Compliance",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "Escalation authority for sanctions and PEP matches",
+        "channels": [
+          "system",
+          "email"
+        ],
+        "response_time_sla": "Immediate escalation required"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_role_002",
+      "name": "FCA",
+      "properties": {
+        "role_type": "external",
+        "authority_level": "Regulatory authority",
+        "response_time_sla": "10–30 days typical response time"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_dp_001",
+      "name": "Sanctions or PEP List Match Confirmation",
+      "properties": {
+        "decision_question": "Is the match a confirmed true positive on sanctions or PEP screening lists?",
+        "criteria": "Match confirmed against official sanctions and PEP lists",
+        "decision_maker": "Compliance screening system or Head of Compliance",
+        "path_yes": "Trigger immediate actions: prevent address change, suppress notification, escalate, freeze account, file SAR",
+        "path_no": "Release account, notify customer, process normally"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_cc_001",
+      "name": "Sanctions and PEP Screening Compliance Gate",
+      "properties": {
+        "regulatory_basis": [
+          "FCA regulations on tipping-off",
+          "Money Laundering Regulations 2017"
+        ],
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "Screening match report",
+          "Account details",
+          "Transaction history"
+        ],
+        "performed_by": "Compliance screening system and Head of Compliance",
+        "timing": "Continuous during account lifecycle; immediate upon match detection",
+        "failure_consequence": "Regulatory breach, potential enforcement action, reputational damage"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_sar_001",
+      "name": "Suspicious Activity Report Filing",
+      "properties": {
+        "filing_obligation": "Mandatory upon confirmed sanctions or PEP match",
+        "filing_deadline": "Immediate, within match response process",
+        "confidentiality_rule": "Tipping-off prohibited; customer must not be notified",
+        "consequence_of_non_filing": "Regulatory breach, potential FCA enforcement action"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_aml_001",
+      "name": "Sanctions and PEP Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": [
+          "Sanctions lists",
+          "PEP lists"
+        ],
+        "hit_or_match_response": "Freeze account, escalate to Head of Compliance, file SAR, await FCA guidance",
+        "regulatory_basis": [
+          "Money Laundering Regulations 2017",
+          "FCA regulations"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_029_acct_001",
+      "name": "Matched Account",
+      "properties": {
+        "account_state": "frozen",
+        "closure_or_freeze_conditions": "Frozen pending FCA guidance following confirmed sanctions or PEP list match"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_proc_001",
+      "source_name": "Match Found Response Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_001",
+      "target_name": "Prevent Address Change Processing",
+      "rel_type": "contains",
+      "description": "The Match Found Response Process includes the step to prevent address change processing as an immediate action.",
+      "properties": {
+        "sequence_position": 1,
+        "action_type": "preventive"
+      },
+      "context": "DO NOT process address change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_proc_001",
+      "source_name": "Match Found Response Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_002",
+      "target_name": "Suppress Customer Notification",
+      "rel_type": "contains",
+      "description": "The Match Found Response Process includes the step to suppress customer notification.",
+      "properties": {
+        "sequence_position": 2,
+        "action_type": "preventive",
+        "compliance_reason": "tipping-off is illegal"
+      },
+      "context": "DO NOT notify customer (tipping-off is illegal)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_proc_001",
+      "source_name": "Match Found Response Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_003",
+      "target_name": "Escalate to Head of Compliance",
+      "rel_type": "contains",
+      "description": "The Match Found Response Process includes escalation to Head of Compliance as an immediate action.",
+      "properties": {
+        "sequence_position": 3,
+        "action_type": "escalation",
+        "timing": "immediately"
+      },
+      "context": "Escalate to Head of Compliance immediately",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_proc_001",
+      "source_name": "Match Found Response Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_004",
+      "target_name": "Freeze Account",
+      "rel_type": "contains",
+      "description": "The Match Found Response Process includes the step to freeze the matched account.",
+      "properties": {
+        "sequence_position": 4,
+        "action_type": "account_control",
+        "restriction": "no new transactions"
+      },
+      "context": "Freeze account (no new transactions)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_proc_001",
+      "source_name": "Match Found Response Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_005",
+      "target_name": "File Suspicious Activity Report to FCA",
+      "rel_type": "contains",
+      "description": "The Match Found Response Process includes filing a Suspicious Activity Report to the FCA.",
+      "properties": {
+        "sequence_position": 5,
+        "action_type": "regulatory_reporting"
+      },
+      "context": "File Suspicious Activity Report (SAR) to FCA",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_proc_001",
+      "source_name": "Match Found Response Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_006",
+      "target_name": "Await FCA Guidance",
+      "rel_type": "contains",
+      "description": "The Match Found Response Process includes awaiting FCA guidance before proceeding.",
+      "properties": {
+        "sequence_position": 6,
+        "action_type": "holding_pattern",
+        "expected_timeline_days": "10-30"
+      },
+      "context": "Await FCA guidance before proceeding",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_proc_001",
+      "source_name": "Match Found Response Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_cc_001",
+      "target_name": "Sanctions and PEP Screening Compliance Gate",
+      "rel_type": "mandated_to_include",
+      "description": "The Match Found Response Process is mandated to include the Sanctions and PEP Screening Compliance Gate.",
+      "properties": {
+        "compliance_requirement": "mandatory"
+      },
+      "context": "If Match Found (True Positive) - immediate actions required per compliance",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_proc_001",
+      "source_name": "Match Found Response Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_aml_001",
+      "target_name": "Sanctions and PEP Screening",
+      "rel_type": "executes",
+      "description": "The Match Found Response Process executes the Sanctions and PEP Screening as part of its workflow.",
+      "properties": {
+        "screening_type": "sanctions_and_pep"
+      },
+      "context": "If Match Found (True Positive) - response to screening results",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_001",
+      "source_name": "Prevent Address Change Processing",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_002",
+      "target_name": "Suppress Customer Notification",
+      "rel_type": "followed_by",
+      "description": "Preventing address change processing is followed by suppressing customer notification.",
+      "properties": {
+        "sequence": "immediate_consecutive"
+      },
+      "context": "DO NOT process address change; DO NOT notify customer",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_002",
+      "source_name": "Suppress Customer Notification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_003",
+      "target_name": "Escalate to Head of Compliance",
+      "rel_type": "followed_by",
+      "description": "Suppressing customer notification is followed by escalation to Head of Compliance.",
+      "properties": {
+        "sequence": "immediate_consecutive"
+      },
+      "context": "DO NOT notify customer; Escalate to Head of Compliance immediately",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_003",
+      "source_name": "Escalate to Head of Compliance",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_004",
+      "target_name": "Freeze Account",
+      "rel_type": "followed_by",
+      "description": "Escalation to Head of Compliance is followed by freezing the account.",
+      "properties": {
+        "sequence": "immediate_consecutive"
+      },
+      "context": "Escalate to Head of Compliance immediately; Freeze account (no new transactions)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_004",
+      "source_name": "Freeze Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_005",
+      "target_name": "File Suspicious Activity Report to FCA",
+      "rel_type": "followed_by",
+      "description": "Freezing the account is followed by filing a Suspicious Activity Report to the FCA.",
+      "properties": {
+        "sequence": "immediate_consecutive"
+      },
+      "context": "Freeze account (no new transactions); File Suspicious Activity Report (SAR) to FCA",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_005",
+      "source_name": "File Suspicious Activity Report to FCA",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_006",
+      "target_name": "Await FCA Guidance",
+      "rel_type": "followed_by",
+      "description": "Filing the Suspicious Activity Report is followed by awaiting FCA guidance.",
+      "properties": {
+        "sequence": "immediate_consecutive"
+      },
+      "context": "File Suspicious Activity Report (SAR) to FCA; Await FCA guidance before proceeding",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_003",
+      "source_name": "Escalate to Head of Compliance",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_role_001",
+      "target_name": "Head of Compliance",
+      "rel_type": "escalated_to",
+      "description": "The escalation step routes the matter to the Head of Compliance.",
+      "properties": {
+        "escalation_trigger": "sanctions_or_pep_match_found",
+        "timing": "immediate"
+      },
+      "context": "Escalate to Head of Compliance immediately",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_005",
+      "source_name": "File Suspicious Activity Report to FCA",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_role_002",
+      "target_name": "FCA",
+      "rel_type": "notifies",
+      "description": "Filing the Suspicious Activity Report notifies the FCA.",
+      "properties": {
+        "notification_type": "regulatory_report",
+        "report_type": "SAR"
+      },
+      "context": "File Suspicious Activity Report (SAR) to FCA",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_005",
+      "source_name": "File Suspicious Activity Report to FCA",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_sar_001",
+      "target_name": "Suspicious Activity Report Filing",
+      "rel_type": "submits",
+      "description": "The process step submits the Suspicious Activity Report.",
+      "properties": {
+        "recipient": "FCA",
+        "report_type": "SAR"
+      },
+      "context": "File Suspicious Activity Report (SAR) to FCA",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_004",
+      "source_name": "Freeze Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_acct_001",
+      "target_name": "Matched Account",
+      "rel_type": "freezes",
+      "description": "The freeze account step freezes the matched account to prevent new transactions.",
+      "properties": {
+        "restriction": "no new transactions",
+        "reason": "sanctions_or_pep_match"
+      },
+      "context": "Freeze account (no new transactions)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_cc_001",
+      "source_name": "Sanctions and PEP Screening Compliance Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_dp_001",
+      "target_name": "Sanctions or PEP List Match Confirmation",
+      "rel_type": "gates",
+      "description": "The Sanctions and PEP Screening Compliance Gate gates the decision point for match confirmation.",
+      "properties": {
+        "gate_type": "screening_result_validation"
+      },
+      "context": "If Match Found (True Positive) - compliance gate for sanctions and PEP screening",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_aml_001",
+      "source_name": "Sanctions and PEP Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_sar_001",
+      "target_name": "Suspicious Activity Report Filing",
+      "rel_type": "triggers",
+      "description": "The Sanctions and PEP Screening triggers the filing of a Suspicious Activity Report when a match is found.",
+      "properties": {
+        "trigger_condition": "true_positive_match_found"
+      },
+      "context": "If Match Found (True Positive) - File Suspicious Activity Report (SAR) to FCA",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_dp_001",
+      "source_name": "Sanctions or PEP List Match Confirmation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_role_001",
+      "target_name": "Head of Compliance",
+      "rel_type": "escalated_to",
+      "description": "The match confirmation decision point is escalated to the Head of Compliance for review.",
+      "properties": {
+        "decision_type": "match_confirmation",
+        "escalation_required": true
+      },
+      "context": "Escalate to Head of Compliance immediately",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_proc_001",
+      "source_name": "Match Found Response Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_001",
+      "source_name": "Prevent Address Change Processing",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_002",
+      "source_name": "Suppress Customer Notification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_003",
+      "source_name": "Escalate to Head of Compliance",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_004",
+      "source_name": "Freeze Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_005",
+      "source_name": "File Suspicious Activity Report to FCA",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_pstep_006",
+      "source_name": "Await FCA Guidance",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_role_001",
+      "source_name": "Head of Compliance",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_role_002",
+      "source_name": "FCA",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_dp_001",
+      "source_name": "Sanctions or PEP List Match Confirmation",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_cc_001",
+      "source_name": "Sanctions and PEP Screening Compliance Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_sar_001",
+      "source_name": "Suspicious Activity Report Filing",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_aml_001",
+      "source_name": "Sanctions and PEP Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_029_acct_001",
+      "source_name": "Matched Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

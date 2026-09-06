@@ -1,0 +1,409 @@
+[
+  {
+    "id": "9de6c4ccd17fe076b04c219948b254d58156d46f5a50096923c14e4f9329f865",
+    "name": "Open Banking API",
+    "canonical_name": "Open Banking API",
+    "key": "open banking api|PRODUCT|banking.reference",
+    "entity_class": "PRODUCT",
+    "_domain": "banking.reference",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae",
+    "doc_version": 1,
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "_kind": "recurrent",
+    "type": "api_service",
+    "description": "OAuth 2.0 compliant API service providing consented access to customer account, transaction, standing-order, and direct-debit mandate data. API-access data is purged after 90 days unless renewed. Delivered to core specification by 2026-06-30.",
+    "context": [
+      "OAuth 2.0 APIs provide consented account, transaction, standing-order, and direct-debit mandate data.",
+      "Consent scope, expiry and revocation are recorded; API-access data is purged after 90 days unless renewed.",
+      "FirstUK met the 2026-06-30 core delivery date."
+    ],
+    "aliases": [
+      "OAuth 2.0 APIs",
+      "Open Banking Delivery"
+    ],
+    "_valid_time_source": "header",
+    "product_type": "API",
+    "regulatory_reference": "FCA-OP-2026-01",
+    "core_delivery_date": "2026-06-30",
+    "core_delivery_status": "complete",
+    "data_scope": [
+      "account",
+      "transaction",
+      "standing_order",
+      "direct_debit_mandate"
+    ],
+    "authentication_method": "OAuth 2.0",
+    "consent_tracking": [
+      "scope",
+      "expiry",
+      "revocation"
+    ],
+    "api_access_data_retention": "90 days",
+    "known_exception": "Legacy Direct Debit Mandate Data Completeness Issue"
+  },
+  {
+    "id": "57bae9bc5f012b1036ee1483ab628ce98aab91afa2839811f56bb20225ba6f69",
+    "name": "Legacy Direct Debit Mandate Data Completeness Issue",
+    "canonical_name": "Legacy Direct Debit Mandate Data Completeness Issue",
+    "key": "legacy direct debit mandate data completeness issue|INCIDENT_TYPE|banking.reference",
+    "entity_class": "INCIDENT_TYPE",
+    "_domain": "banking.reference",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae",
+    "doc_version": 1,
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "_kind": "recurrent",
+    "type": "integration_failure",
+    "description": "37 inactive legacy direct-debit mandates in the Open Banking API return identifier and status but lack historical cancellation timestamp. This data completeness gap is under remediation with manual support provision and system migration scheduled for completion by 2026-08-15.",
+    "context": [
+      "For 37 inactive legacy mandates, the API returns identifier and status but not a historical cancellation timestamp.",
+      "Support provides the timestamp within one business day while migration completes by 2026-08-15.",
+      "Compliance logged the exception on 2026-06-30; the CTO owns closure and reports it to the Board Risk Committee in September."
+    ],
+    "aliases": [
+      "inactive legacy mandates exception",
+      "historical cancellation timestamp gap"
+    ],
+    "_valid_time_source": "header",
+    "category": "Data Completeness",
+    "affected_entity_type": "Direct Debit Mandate",
+    "affected_entity_count": 37,
+    "affected_entity_status": "inactive",
+    "missing_data_field": "historical cancellation timestamp",
+    "data_returned": [
+      "identifier",
+      "status"
+    ],
+    "detection_date": "2026-06-30",
+    "regulatory_reference": "FCA-OP-2026-01",
+    "primary_response_team": "Chief Technology Officer",
+    "escalation_contact": "Board Risk Committee"
+  },
+  {
+    "id": "9e44019802f0401e2f673c93f3649a9e0d56490ec4aba8fb9f790938b99b60f7",
+    "name": "Limited Exception Status",
+    "canonical_name": "Limited Exception Status",
+    "key": "limited exception status|SEVERITY_LEVEL|banking.reference",
+    "entity_class": "SEVERITY_LEVEL",
+    "_domain": "banking.reference",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae",
+    "doc_version": 1,
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "_kind": "recurrent",
+    "type": "medium_p3",
+    "description": "The Open Banking delivery is classified as core complete with a limited exception under active remediation. The exception does not prevent core API functionality but requires closure by 2026-08-15.",
+    "context": [
+      "Status | Core delivery complete; limited exception under remediation",
+      "Compliance logged the exception on 2026-06-30; the CTO owns closure and reports it to the Board Risk Committee in September."
+    ],
+    "aliases": [
+      "exception under remediation"
+    ],
+    "_valid_time_source": "header",
+    "severity_classification": "limited exception",
+    "affected_scope": "37 legacy inactive direct debit mandates",
+    "remediation_status": "under remediation",
+    "regulatory_notification_required": true,
+    "board_escalation_required": true,
+    "reporting_deadline": "September 2026"
+  },
+  {
+    "id": "9cded74a890a1030d80828100af6f7e049f2e8469f8878a1a64d46873c7711c0",
+    "name": "Manual Timestamp Provision for Legacy Mandates",
+    "canonical_name": "Manual Timestamp Provision for Legacy Mandates",
+    "key": "manual timestamp provision for legacy mandates|RESPONSE_ACTION|banking.reference",
+    "entity_class": "RESPONSE_ACTION",
+    "_domain": "banking.reference",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae",
+    "doc_version": 1,
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "_kind": "recurrent",
+    "type": "remediation",
+    "description": "Support team provides historical cancellation timestamp for legacy direct-debit mandates within one business day while system migration is completed. This is a temporary workaround during the remediation period.",
+    "context": [
+      "Support provides the timestamp within one business day while migration completes by 2026-08-15."
+    ],
+    "aliases": [
+      "support timestamp provision"
+    ],
+    "_valid_time_source": "header",
+    "action_phase": "containment",
+    "actor": "Support",
+    "timeline": "within one business day",
+    "mandatory_for_severities": [
+      "Limited Exception Status"
+    ],
+    "output_or_artifact": "historical cancellation timestamp",
+    "affected_entity_count": 37
+  },
+  {
+    "id": "6a523cd735b79da49fe855285f25fd38a39d5fc94882d241c5edc100698ca66c",
+    "name": "Legacy Mandate System Migration",
+    "canonical_name": "Legacy Mandate System Migration",
+    "key": "legacy mandate system migration|RESPONSE_ACTION|banking.reference",
+    "entity_class": "RESPONSE_ACTION",
+    "_domain": "banking.reference",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae",
+    "doc_version": 1,
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "_kind": "recurrent",
+    "type": "system_restore",
+    "description": "System migration to resolve the historical cancellation timestamp gap for 37 inactive legacy direct-debit mandates. Migration is scheduled for completion by 2026-08-15.",
+    "context": [
+      "Support provides the timestamp within one business day while migration completes by 2026-08-15."
+    ],
+    "aliases": [
+      "mandate data migration"
+    ],
+    "_valid_time_source": "header",
+    "action_phase": "recovery",
+    "actor": "Chief Technology Officer",
+    "timeline": "by 2026-08-15",
+    "mandatory_for_severities": [
+      "Limited Exception Status"
+    ],
+    "objective": "complete migration of legacy direct debit mandate system",
+    "affected_entity_count": 37
+  },
+  {
+    "id": "202a9f3ef63b49d7fb010cee6b8e4adb19ca8f6909b8aad11b95edf6e0b9ec2f",
+    "name": "Exception Closure Report to Board Risk Committee",
+    "canonical_name": "Exception Closure Report to Board Risk Committee",
+    "key": "exception closure report to board risk committee|RESPONSE_ACTION|banking.reference",
+    "entity_class": "RESPONSE_ACTION",
+    "_domain": "banking.reference",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae",
+    "doc_version": 1,
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "_kind": "recurrent",
+    "type": "post_incident_review",
+    "description": "The Chief Technology Officer is responsible for reporting closure of the legacy mandate exception to the Board Risk Committee in September 2026. This fulfils governance and escalation requirements for the limited exception.",
+    "context": [
+      "the CTO owns closure and reports it to the Board Risk Committee in September."
+    ],
+    "aliases": [
+      "board reporting",
+      "CTO closure report"
+    ],
+    "_valid_time_source": "header",
+    "action_phase": "post_incident",
+    "actor": "Chief Technology Officer",
+    "timeline": "September 2026",
+    "mandatory_for_severities": [
+      "Limited Exception Status"
+    ],
+    "escalation_trigger": "completion of legacy mandate system migration",
+    "recipient": "Board Risk Committee"
+  },
+  {
+    "id": "30dc9c6a29c93b9fe0140edcdbe1bfa6564c271a9dc4a21c712d1a524f9e24a2",
+    "name": "Board Risk Committee",
+    "canonical_name": "Board Risk Committee",
+    "key": "board risk committee|NOTIFICATION_CONTACT|banking.reference",
+    "entity_class": "NOTIFICATION_CONTACT",
+    "_domain": "banking.reference",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae",
+    "doc_version": 1,
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "_kind": "recurrent",
+    "type": "executive",
+    "description": "Executive governance body that receives exception closure reporting from the Chief Technology Officer regarding the Open Banking delivery remediation status.",
+    "context": [
+      "the CTO owns closure and reports it to the Board Risk Committee in September."
+    ],
+    "aliases": [
+      "BRC"
+    ],
+    "_valid_time_source": "header",
+    "contact_name_or_role": "Board Risk Committee",
+    "trigger_condition": "exception closure report on legacy mandate data completeness issue",
+    "notification_timeframe": "September 2026",
+    "required_information": [
+      "exception status",
+      "remediation completion",
+      "migration outcome"
+    ],
+    "jurisdiction": "UK"
+  },
+  {
+    "id": "d0e7ad64e5c12285058f882c696cfe2ea735f1a77c97057b76e945e2bd4ca79d",
+    "name": "Compliance Function",
+    "canonical_name": "Compliance Function",
+    "key": "compliance function|NOTIFICATION_CONTACT|banking.reference",
+    "entity_class": "NOTIFICATION_CONTACT",
+    "_domain": "banking.reference",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae",
+    "doc_version": 1,
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "_kind": "recurrent",
+    "type": "internal_team",
+    "description": "Internal compliance team that logged the legacy mandate exception on 2026-06-30 and tracks remediation progress.",
+    "context": [
+      "Compliance logged the exception on 2026-06-30; the CTO owns closure and reports it to the Board Risk Committee in September."
+    ],
+    "aliases": [
+      "Compliance"
+    ],
+    "_valid_time_source": "header",
+    "contact_name_or_role": "Compliance Function",
+    "trigger_condition": "exception logging for legacy direct debit mandate data completeness",
+    "notification_date": "2026-06-30",
+    "required_information": [
+      "exception details",
+      "affected mandate count",
+      "remediation plan"
+    ]
+  },
+  {
+    "id": "3b946212a836c40aa124e0a0659909ea089876bfd0a0ea2596cb4f9bd3cd81d7",
+    "name": "Chief Technology Officer",
+    "canonical_name": "Chief Technology Officer",
+    "key": "chief technology officer|NOTIFICATION_CONTACT|banking.reference",
+    "entity_class": "NOTIFICATION_CONTACT",
+    "_domain": "banking.reference",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae",
+    "doc_version": 1,
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "_kind": "recurrent",
+    "type": "executive",
+    "description": "Executive owner of the Open Banking delivery and responsible for closure of the legacy mandate exception, including reporting to the Board Risk Committee.",
+    "context": [
+      "Owner | Chief Technology Officer",
+      "the CTO owns closure and reports it to the Board Risk Committee in September."
+    ],
+    "aliases": [
+      "CTO"
+    ],
+    "_valid_time_source": "header",
+    "contact_name_or_role": "Chief Technology Officer",
+    "trigger_condition": "ownership of exception closure and board reporting",
+    "responsibility": [
+      "exception remediation",
+      "board risk committee reporting"
+    ],
+    "reporting_deadline": "September 2026"
+  },
+  {
+    "id": "28db554ca491591a7b5ba94a3b8356e94638d614e0d69f5ecbb151bd15b5984e",
+    "name": "Direct Debit Mandate",
+    "canonical_name": "Direct Debit Mandate",
+    "key": "direct debit mandate|DIRECT_DEBIT|banking.reference",
+    "entity_class": "DIRECT_DEBIT",
+    "_domain": "banking.reference",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae",
+    "doc_version": 1,
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "_kind": "recurrent",
+    "type": "dd_mandate_setup",
+    "description": "Direct debit mandates exposed via the Open Banking API. 37 inactive legacy mandates currently lack historical cancellation timestamp in the API response, requiring manual support provision and system migration for remediation.",
+    "context": [
+      "OAuth 2.0 APIs provide consented account, transaction, standing-order, and direct-debit mandate data.",
+      "For 37 inactive legacy mandates, the API returns identifier and status but not a historical cancellation timestamp."
+    ],
+    "aliases": [
+      "legacy mandate",
+      "inactive legacy mandate"
+    ],
+    "_valid_time_source": "header",
+    "api_data_provision": true,
+    "api_data_fields": [
+      "identifier",
+      "status"
+    ],
+    "missing_data_field": "historical cancellation timestamp",
+    "legacy_mandate_count": 37,
+    "legacy_mandate_status": "inactive",
+    "consent_tracking": [
+      "scope",
+      "expiry",
+      "revocation"
+    ],
+    "remediation_timeline": "by 2026-08-15"
+  },
+  {
+    "id": "0ece59d35ec103bff951bec42c761df37adfbced1bc4d77d028176629f223195",
+    "name": "Standing Order",
+    "canonical_name": "Standing Order",
+    "key": "standing order|STANDING_ORDER|banking.reference",
+    "entity_class": "STANDING_ORDER",
+    "_domain": "banking.reference",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae",
+    "doc_version": 1,
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "_kind": "recurrent",
+    "type": "standing_order_setup",
+    "description": "Standing order payment instructions exposed via the Open Banking API with consented access. Standing order data is included in the core Open Banking delivery completed by 2026-06-30.",
+    "context": [
+      "OAuth 2.0 APIs provide consented account, transaction, standing-order, and direct-debit mandate data."
+    ],
+    "aliases": [
+      "standing-order"
+    ],
+    "_valid_time_source": "header",
+    "api_data_provision": true,
+    "api_data_scope": "transaction and standing order data",
+    "consent_tracking": [
+      "scope",
+      "expiry",
+      "revocation"
+    ],
+    "api_access_data_retention": "90 days"
+  },
+  {
+    "id": "875e72e641a450919c080a2b112998df378d53326f54ddd5c05318768c063e87",
+    "name": "Customer Account",
+    "canonical_name": "Customer Account",
+    "key": "customer account|ACCOUNT|banking.reference",
+    "entity_class": "ACCOUNT",
+    "_domain": "banking.reference",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae",
+    "doc_version": 1,
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "_kind": "recurrent",
+    "type": "savings_account",
+    "description": "Customer accounts for which consented transaction, standing-order, and direct-debit mandate data is exposed via the Open Banking API.",
+    "context": [
+      "OAuth 2.0 APIs provide consented account, transaction, standing-order, and direct-debit mandate data."
+    ],
+    "aliases": [
+      "account"
+    ],
+    "_valid_time_source": "header",
+    "api_data_provision": true,
+    "api_data_scope": "account data",
+    "consent_tracking": [
+      "scope",
+      "expiry",
+      "revocation"
+    ],
+    "api_access_data_retention": "90 days"
+  },
+  {
+    "id": "bb740ca71252e6e67cd2462e9e402d02087056a3f1f5ab0443bdf168bcba3efc",
+    "name": "Transaction",
+    "canonical_name": "Transaction",
+    "key": "transaction|TRANSACTION|banking.reference",
+    "entity_class": "TRANSACTION",
+    "_domain": "banking.reference",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae",
+    "doc_version": 1,
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "_kind": "occurrent",
+    "type": "monitored_transaction",
+    "description": "Customer transaction data exposed via the Open Banking API with customer consent. Transaction data is included in the core Open Banking delivery completed by 2026-06-30.",
+    "context": [
+      "OAuth 2.0 APIs provide consented account, transaction, standing-order, and direct-debit mandate data."
+    ],
+    "aliases": [
+      "transaction data"
+    ],
+    "_valid_time_source": "header",
+    "api_data_provision": true,
+    "api_data_scope": "transaction data",
+    "consent_tracking": [
+      "scope",
+      "expiry",
+      "revocation"
+    ],
+    "api_access_data_retention": "90 days"
+  }
+]

@@ -1,0 +1,778 @@
+{
+  "chunk_seq": 3,
+  "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+  "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+  "text": "## System Landscape Overview  \n```\n┌─────────────────────────────────────────────────────────────┐\n│                   Customer Channels                          │\n├─────────────────────────────────────────────────────────────┤\n│  Branch  │  Online Banking  │  Mobile App  │  Phone/Chat    │\n└────────────────┬───────────────────────┬────────────────────┘\n│                       │\n┌───────▼───────────────────────▼───────┐\n│      API Gateway (Kong)                │\n│  Authentication, Rate Limiting, Docs  │\n└──────────────┬──────────────────────┘\n│\n┌──────────────┼──────────────┬──────────────┐\n│              │              │              │\n┌────▼──┐   ┌──────▼──┐   ┌──────▼──┐   ┌─────▼──┐\n│  AMS  │   │  IBP    │   │  FDE    │   │  PPS   │\n│ Acct  │   │Internet │   │ Fraud   │   │Payment │\n│ Mgmt  │   │Banking  │   │Detect   │   │Process │\n└──┬────┘   └────┬────┘   └────┬────┘   └────┬───┘\n│             │             │             │\n└─────────────┼─────────────┼─────────────┘\n│\n┌────────▼──────────┐\n│   Data Warehouse  │\n│  Analytics/Reporting\n└───────────────────┘\n```  \n---",
+  "name": "Chunk 3/57",
+  "_domain": "banking.reference",
+  "prev_chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_002",
+  "next_chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_004",
+  "raw_entities": [
+    {
+      "id": "prd_001",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "Core system component responsible for account management operations within the banking infrastructure. Interfaces with the API Gateway and connects to the Data Warehouse for analytics and reporting.",
+      "context": [
+        "AMS Acct Mgmt",
+        "Account Management System"
+      ]
+    },
+    {
+      "id": "prd_002",
+      "name": "Internet Banking Platform",
+      "aliases": [
+        "IBP"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "Online banking service component that provides customers with digital access to banking services. Connects through the API Gateway and feeds data to the Data Warehouse.",
+      "context": [
+        "IBP Internet Banking",
+        "Online Banking"
+      ]
+    },
+    {
+      "id": "prd_003",
+      "name": "Fraud Detection Engine",
+      "aliases": [
+        "FDE"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "System component dedicated to fraud detection and monitoring. Integrated into the core system landscape and reports to the Data Warehouse for analytics.",
+      "context": [
+        "FDE Fraud Detect",
+        "Fraud Detection"
+      ]
+    },
+    {
+      "id": "prd_004",
+      "name": "Payment Processing System",
+      "aliases": [
+        "PPS"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "Payment processing component that handles payment transactions within the banking system. Connects to the API Gateway and Data Warehouse infrastructure.",
+      "context": [
+        "PPS Payment Process",
+        "Payment Processing"
+      ]
+    },
+    {
+      "id": "prd_005",
+      "name": "API Gateway",
+      "aliases": [
+        "Kong"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "Central API management platform providing authentication, rate limiting, and documentation services. Routes requests from all customer channels (Branch, Online Banking, Mobile App, Phone/Chat) to backend systems.",
+      "context": [
+        "API Gateway (Kong)",
+        "Authentication, Rate Limiting, Docs"
+      ]
+    },
+    {
+      "id": "prd_006",
+      "name": "Data Warehouse",
+      "aliases": [],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "Central data repository supporting analytics and reporting functions across the banking system. Receives data from all core system components (AMS, IBP, FDE, PPS).",
+      "context": [
+        "Data Warehouse",
+        "Analytics/Reporting"
+      ]
+    },
+    {
+      "id": "chn_001",
+      "name": "Branch Channel",
+      "aliases": [],
+      "entity_class": "CUSTOMER_GUIDE_ITEM",
+      "type": "channel_guide",
+      "description": "Physical branch banking channel through which customers can access banking services. Part of the multi-channel customer access landscape.",
+      "context": [
+        "Branch"
+      ]
+    },
+    {
+      "id": "chn_002",
+      "name": "Online Banking Channel",
+      "aliases": [],
+      "entity_class": "CUSTOMER_GUIDE_ITEM",
+      "type": "channel_guide",
+      "description": "Digital online banking channel providing customers with web-based access to banking services. Routes through the API Gateway.",
+      "context": [
+        "Online Banking"
+      ]
+    },
+    {
+      "id": "chn_003",
+      "name": "Mobile App Channel",
+      "aliases": [],
+      "entity_class": "CUSTOMER_GUIDE_ITEM",
+      "type": "channel_guide",
+      "description": "Mobile application channel enabling customers to access banking services via smartphone or tablet. Connects through the API Gateway.",
+      "context": [
+        "Mobile App"
+      ]
+    },
+    {
+      "id": "chn_004",
+      "name": "Phone and Chat Channel",
+      "aliases": [],
+      "entity_class": "CUSTOMER_GUIDE_ITEM",
+      "type": "channel_guide",
+      "description": "Customer support channel providing phone and chat-based access to banking services and assistance. Routes through the API Gateway.",
+      "context": [
+        "Phone/Chat"
+      ]
+    }
+  ],
+  "id_map": {
+    "prd_001": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_001",
+    "prd_002": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_002",
+    "prd_003": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_003",
+    "prd_004": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_004",
+    "prd_005": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_005",
+    "prd_006": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_006",
+    "chn_001": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_001",
+    "chn_002": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_002",
+    "chn_003": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_003",
+    "chn_004": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_004"
+  },
+  "entities": [
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_001",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "Core system component responsible for account management operations within the banking infrastructure. Interfaces with the API Gateway and connects to the Data Warehouse for analytics and reporting.",
+      "context": [
+        "AMS Acct Mgmt",
+        "Account Management System"
+      ],
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_002",
+      "name": "Internet Banking Platform",
+      "aliases": [
+        "IBP"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "Online banking service component that provides customers with digital access to banking services. Connects through the API Gateway and feeds data to the Data Warehouse.",
+      "context": [
+        "IBP Internet Banking",
+        "Online Banking"
+      ],
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_003",
+      "name": "Fraud Detection Engine",
+      "aliases": [
+        "FDE"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "System component dedicated to fraud detection and monitoring. Integrated into the core system landscape and reports to the Data Warehouse for analytics.",
+      "context": [
+        "FDE Fraud Detect",
+        "Fraud Detection"
+      ],
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_004",
+      "name": "Payment Processing System",
+      "aliases": [
+        "PPS"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "Payment processing component that handles payment transactions within the banking system. Connects to the API Gateway and Data Warehouse infrastructure.",
+      "context": [
+        "PPS Payment Process",
+        "Payment Processing"
+      ],
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_005",
+      "name": "API Gateway",
+      "aliases": [
+        "Kong"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "Central API management platform providing authentication, rate limiting, and documentation services. Routes requests from all customer channels (Branch, Online Banking, Mobile App, Phone/Chat) to backend systems.",
+      "context": [
+        "API Gateway (Kong)",
+        "Authentication, Rate Limiting, Docs"
+      ],
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_006",
+      "name": "Data Warehouse",
+      "aliases": [],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "Central data repository supporting analytics and reporting functions across the banking system. Receives data from all core system components (AMS, IBP, FDE, PPS).",
+      "context": [
+        "Data Warehouse",
+        "Analytics/Reporting"
+      ],
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_001",
+      "name": "Branch Channel",
+      "aliases": [],
+      "entity_class": "CUSTOMER_GUIDE_ITEM",
+      "type": "channel_guide",
+      "description": "Physical branch banking channel through which customers can access banking services. Part of the multi-channel customer access landscape.",
+      "context": [
+        "Branch"
+      ],
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_002",
+      "name": "Online Banking Channel",
+      "aliases": [],
+      "entity_class": "CUSTOMER_GUIDE_ITEM",
+      "type": "channel_guide",
+      "description": "Digital online banking channel providing customers with web-based access to banking services. Routes through the API Gateway.",
+      "context": [
+        "Online Banking"
+      ],
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_003",
+      "name": "Mobile App Channel",
+      "aliases": [],
+      "entity_class": "CUSTOMER_GUIDE_ITEM",
+      "type": "channel_guide",
+      "description": "Mobile application channel enabling customers to access banking services via smartphone or tablet. Connects through the API Gateway.",
+      "context": [
+        "Mobile App"
+      ],
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_004",
+      "name": "Phone and Chat Channel",
+      "aliases": [],
+      "entity_class": "CUSTOMER_GUIDE_ITEM",
+      "type": "channel_guide",
+      "description": "Customer support channel providing phone and chat-based access to banking services and assistance. Routes through the API Gateway.",
+      "context": [
+        "Phone/Chat"
+      ],
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_001",
+      "name": "Account Management System",
+      "properties": {
+        "system_abbreviation": "AMS",
+        "function": "Account management and customer account operations",
+        "connected_channels": [
+          "Branch",
+          "Online Banking",
+          "Mobile App",
+          "Phone/Chat"
+        ],
+        "upstream_component": "API Gateway (Kong)",
+        "downstream_component": "Data Warehouse"
+      },
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_002",
+      "name": "Internet Banking Platform",
+      "properties": {
+        "system_abbreviation": "IBP",
+        "function": "Online banking services and transactions",
+        "connected_channels": [
+          "Online Banking",
+          "Mobile App"
+        ],
+        "upstream_component": "API Gateway (Kong)",
+        "downstream_component": "Data Warehouse"
+      },
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_003",
+      "name": "Fraud Detection Engine",
+      "properties": {
+        "system_abbreviation": "FDE",
+        "function": "Fraud detection and monitoring",
+        "connected_channels": [
+          "Branch",
+          "Online Banking",
+          "Mobile App",
+          "Phone/Chat"
+        ],
+        "upstream_component": "API Gateway (Kong)",
+        "downstream_component": "Data Warehouse"
+      },
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_004",
+      "name": "Payment Processing System",
+      "properties": {
+        "system_abbreviation": "PPS",
+        "function": "Payment processing and transaction handling",
+        "connected_channels": [
+          "Branch",
+          "Online Banking",
+          "Mobile App",
+          "Phone/Chat"
+        ],
+        "upstream_component": "API Gateway (Kong)",
+        "downstream_component": "Data Warehouse"
+      },
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_005",
+      "name": "API Gateway",
+      "properties": {
+        "implementation": "Kong",
+        "function": "Authentication, rate limiting, API documentation",
+        "role": "Central integration point for all customer channels",
+        "downstream_systems": [
+          "Account Management System",
+          "Internet Banking Platform",
+          "Fraud Detection Engine",
+          "Payment Processing System"
+        ]
+      },
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_006",
+      "name": "Data Warehouse",
+      "properties": {
+        "function": "Analytics and reporting",
+        "upstream_systems": [
+          "Account Management System",
+          "Internet Banking Platform",
+          "Fraud Detection Engine",
+          "Payment Processing System"
+        ]
+      },
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_001",
+      "name": "Branch Channel",
+      "properties": {
+        "channel_type": "Physical branch",
+        "connected_systems": [
+          "Account Management System",
+          "Fraud Detection Engine",
+          "Payment Processing System"
+        ],
+        "integration_point": "API Gateway (Kong)"
+      },
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_002",
+      "name": "Online Banking Channel",
+      "properties": {
+        "channel_type": "Web-based",
+        "connected_systems": [
+          "Account Management System",
+          "Internet Banking Platform",
+          "Fraud Detection Engine",
+          "Payment Processing System"
+        ],
+        "integration_point": "API Gateway (Kong)"
+      },
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_003",
+      "name": "Mobile App Channel",
+      "properties": {
+        "channel_type": "Mobile application",
+        "connected_systems": [
+          "Account Management System",
+          "Internet Banking Platform",
+          "Fraud Detection Engine",
+          "Payment Processing System"
+        ],
+        "integration_point": "API Gateway (Kong)"
+      },
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_004",
+      "name": "Phone and Chat Channel",
+      "properties": {
+        "channel_type": "Voice and messaging",
+        "connected_systems": [
+          "Account Management System",
+          "Fraud Detection Engine",
+          "Payment Processing System"
+        ],
+        "integration_point": "API Gateway (Kong)"
+      },
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_001",
+      "source_name": "Branch Channel",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_005",
+      "target_name": "API Gateway",
+      "rel_type": "guides_use_of",
+      "description": "Branch Channel is a customer access point that routes through the API Gateway",
+      "properties": {
+        "channel_type": "physical",
+        "routing_layer": "API Gateway (Kong)"
+      },
+      "context": "Customer Channels: Branch → API Gateway (Kong) Authentication, Rate Limiting, Docs",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_002",
+      "source_name": "Online Banking Channel",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_005",
+      "target_name": "API Gateway",
+      "rel_type": "guides_use_of",
+      "description": "Online Banking Channel is a customer access point that routes through the API Gateway",
+      "properties": {
+        "channel_type": "digital",
+        "routing_layer": "API Gateway (Kong)"
+      },
+      "context": "Customer Channels: Online Banking → API Gateway (Kong) Authentication, Rate Limiting, Docs",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_003",
+      "source_name": "Mobile App Channel",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_005",
+      "target_name": "API Gateway",
+      "rel_type": "guides_use_of",
+      "description": "Mobile App Channel is a customer access point that routes through the API Gateway",
+      "properties": {
+        "channel_type": "mobile",
+        "routing_layer": "API Gateway (Kong)"
+      },
+      "context": "Customer Channels: Mobile App → API Gateway (Kong) Authentication, Rate Limiting, Docs",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_004",
+      "source_name": "Phone and Chat Channel",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_005",
+      "target_name": "API Gateway",
+      "rel_type": "guides_use_of",
+      "description": "Phone and Chat Channel is a customer access point that routes through the API Gateway",
+      "properties": {
+        "channel_type": "voice_and_messaging",
+        "routing_layer": "API Gateway (Kong)"
+      },
+      "context": "Customer Channels: Phone/Chat → API Gateway (Kong) Authentication, Rate Limiting, Docs",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_005",
+      "source_name": "API Gateway",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_001",
+      "target_name": "Account Management System",
+      "rel_type": "explains_features_of",
+      "description": "API Gateway routes requests to Account Management System",
+      "properties": {
+        "gateway_function": "Authentication, Rate Limiting, Docs",
+        "target_service": "AMS"
+      },
+      "context": "API Gateway (Kong) → AMS (Account Management System)",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_005",
+      "source_name": "API Gateway",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_002",
+      "target_name": "Internet Banking Platform",
+      "rel_type": "explains_features_of",
+      "description": "API Gateway routes requests to Internet Banking Platform",
+      "properties": {
+        "gateway_function": "Authentication, Rate Limiting, Docs",
+        "target_service": "IBP"
+      },
+      "context": "API Gateway (Kong) → IBP (Internet Banking Platform)",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_005",
+      "source_name": "API Gateway",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_003",
+      "target_name": "Fraud Detection Engine",
+      "rel_type": "explains_features_of",
+      "description": "API Gateway routes requests to Fraud Detection Engine",
+      "properties": {
+        "gateway_function": "Authentication, Rate Limiting, Docs",
+        "target_service": "FDE"
+      },
+      "context": "API Gateway (Kong) → FDE (Fraud Detection Engine)",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_005",
+      "source_name": "API Gateway",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_004",
+      "target_name": "Payment Processing System",
+      "rel_type": "explains_features_of",
+      "description": "API Gateway routes requests to Payment Processing System",
+      "properties": {
+        "gateway_function": "Authentication, Rate Limiting, Docs",
+        "target_service": "PPS"
+      },
+      "context": "API Gateway (Kong) → PPS (Payment Processing System)",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_001",
+      "source_name": "Account Management System",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_006",
+      "target_name": "Data Warehouse",
+      "rel_type": "explains_features_of",
+      "description": "Account Management System feeds data to Data Warehouse for analytics and reporting",
+      "properties": {
+        "data_flow": "operational_to_analytical",
+        "purpose": "Analytics/Reporting"
+      },
+      "context": "AMS → Data Warehouse (Analytics/Reporting)",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_002",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_006",
+      "target_name": "Data Warehouse",
+      "rel_type": "explains_features_of",
+      "description": "Internet Banking Platform feeds data to Data Warehouse for analytics and reporting",
+      "properties": {
+        "data_flow": "operational_to_analytical",
+        "purpose": "Analytics/Reporting"
+      },
+      "context": "IBP → Data Warehouse (Analytics/Reporting)",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_003",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_006",
+      "target_name": "Data Warehouse",
+      "rel_type": "explains_features_of",
+      "description": "Fraud Detection Engine feeds data to Data Warehouse for analytics and reporting",
+      "properties": {
+        "data_flow": "operational_to_analytical",
+        "purpose": "Analytics/Reporting"
+      },
+      "context": "FDE → Data Warehouse (Analytics/Reporting)",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_004",
+      "source_name": "Payment Processing System",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_006",
+      "target_name": "Data Warehouse",
+      "rel_type": "explains_features_of",
+      "description": "Payment Processing System feeds data to Data Warehouse for analytics and reporting",
+      "properties": {
+        "data_flow": "operational_to_analytical",
+        "purpose": "Analytics/Reporting"
+      },
+      "context": "PPS → Data Warehouse (Analytics/Reporting)",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_001",
+      "source_name": "Account Management System",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "target_name": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_002",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "target_name": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_003",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "target_name": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_004",
+      "source_name": "Payment Processing System",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "target_name": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_005",
+      "source_name": "API Gateway",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "target_name": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_prd_006",
+      "source_name": "Data Warehouse",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "target_name": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_001",
+      "source_name": "Branch Channel",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "target_name": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_002",
+      "source_name": "Online Banking Channel",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "target_name": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_003",
+      "source_name": "Mobile App Channel",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "target_name": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_003_chn_004",
+      "source_name": "Phone and Chat Channel",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "target_name": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_003",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    }
+  ]
+}

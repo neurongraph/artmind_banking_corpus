@@ -1,0 +1,1008 @@
+{
+  "chunk_seq": 19,
+  "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+  "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+  "text": "## Closure Scenarios  \n### Scenario 1: Standard Customer-Initiated Closure  \n```\nCustomer: Closes SmartSaver Account\n\nDay 1:\n- Customer calls 0800-555-2265\n- Requests closure, all balance to bank transfer\n- Provides receiving bank details\n- System notes closure request\n\nDay 2:\n- Operations processes request\n- Final balance calculated: £4,264.90\n- Payment initiated (FPS transfer)\n- Closure confirmation letter generated\n\nDay 3:\n- Customer receives bank transfer\n- Receives confirmation letter\n- Account status changed to \"Closed\"\n- Records archived\n\nResult: ✅ Closed in 3 days, customer satisfied\n```",
+  "name": "Chunk 19/25",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_018",
+  "next_chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_020",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Account Closure Process",
+      "aliases": [
+        "closure",
+        "account_closure"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_closure",
+      "description": "End-to-end procedure for closing a customer-initiated SmartSaver Account, from initial request through final balance transfer and account status change. Encompasses customer contact, balance calculation, payment processing, and confirmation delivery over a 3-day timeline.",
+      "context": [
+        "Customer: Closes SmartSaver Account",
+        "Requests closure, all balance to bank transfer",
+        "Operations processes request",
+        "Account status changed to \"Closed\""
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Closure Request Reception",
+      "aliases": [
+        "request_intake",
+        "day_1_contact"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer initiates account closure by calling the designated phone line and providing receiving bank details for final balance transfer. System records the closure request.",
+      "context": [
+        "Customer calls 0800-555-2265",
+        "Requests closure, all balance to bank transfer",
+        "Provides receiving bank details",
+        "System notes closure request"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Final Balance Calculation and Payment Processing",
+      "aliases": [
+        "balance_calc",
+        "payment_initiation",
+        "day_2_processing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Operations team calculates the final account balance and initiates an FPS (Faster Payment Service) transfer to the customer's nominated receiving bank account. Closure confirmation letter is generated.",
+      "context": [
+        "Operations processes request",
+        "Final balance calculated: £4,264.90",
+        "Payment initiated (FPS transfer)",
+        "Closure confirmation letter generated"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Account Closure Completion and Archival",
+      "aliases": [
+        "closure_completion",
+        "day_3_finalization"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "account_activation",
+      "description": "Customer receives the bank transfer and confirmation letter. Account status is formally changed to 'Closed' and all records are archived.",
+      "context": [
+        "Customer receives bank transfer",
+        "Receives confirmation letter",
+        "Account status changed to \"Closed\"",
+        "Records archived"
+      ]
+    },
+    {
+      "id": "ract_001",
+      "name": "Customer Service Representative",
+      "aliases": [
+        "customer_service",
+        "call_handler"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer_service",
+      "description": "Front-line staff member who receives the customer's closure request via telephone, documents the request, and captures the receiving bank details.",
+      "context": [
+        "Customer calls 0800-555-2265",
+        "System notes closure request"
+      ]
+    },
+    {
+      "id": "ract_002",
+      "name": "Operations Staff",
+      "aliases": [
+        "operations_team",
+        "back_office"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Back-office team responsible for processing the closure request, calculating the final balance, initiating the payment transfer, and generating the closure confirmation letter.",
+      "context": [
+        "Operations processes request",
+        "Final balance calculated: £4,264.90",
+        "Payment initiated (FPS transfer)",
+        "Closure confirmation letter generated"
+      ]
+    },
+    {
+      "id": "ract_003",
+      "name": "System",
+      "aliases": [
+        "banking_system",
+        "automated_system"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated banking system that records the closure request, calculates final balances, processes FPS transfers, generates confirmation letters, and updates account status.",
+      "context": [
+        "System notes closure request",
+        "Final balance calculated: £4,264.90",
+        "Payment initiated (FPS transfer)",
+        "Account status changed to \"Closed\""
+      ]
+    },
+    {
+      "id": "prd_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SmartSaver",
+        "savings_account"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "smartsaver_account",
+      "description": "Savings product being closed in this scenario. The account holds a final balance of £4,264.90 which is transferred to the customer upon closure.",
+      "context": [
+        "Customer: Closes SmartSaver Account",
+        "Final balance calculated: £4,264.90"
+      ]
+    },
+    {
+      "id": "acct_001",
+      "name": "SmartSaver Account Instance",
+      "aliases": [
+        "customer_account",
+        "closed_account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "closed_account",
+      "description": "The specific customer account being closed, which transitions from active status to 'Closed' following the 3-day closure process. Final balance of £4,264.90 is transferred via FPS.",
+      "context": [
+        "Customer: Closes SmartSaver Account",
+        "Final balance calculated: £4,264.90",
+        "Account status changed to \"Closed\"",
+        "Records archived"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Individual Customer",
+      "aliases": [
+        "account_holder",
+        "applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The natural person who holds the SmartSaver Account and initiates its closure by telephone, providing receiving bank details and receiving the final balance transfer and confirmation letter.",
+      "context": [
+        "Customer: Closes SmartSaver Account",
+        "Customer calls 0800-555-2265",
+        "Provides receiving bank details",
+        "Customer receives bank transfer"
+      ]
+    },
+    {
+      "id": "txn_001",
+      "name": "Final Balance Transfer",
+      "aliases": [
+        "closure_payment",
+        "FPS_transfer"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "FPS (Faster Payment Service) transfer of the final account balance (£4,264.90) from the closed SmartSaver Account to the customer's nominated receiving bank account on Day 3.",
+      "context": [
+        "Final balance calculated: £4,264.90",
+        "Payment initiated (FPS transfer)",
+        "Customer receives bank transfer"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_proc_001",
+    "pstep_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_001",
+    "pstep_002": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_002",
+    "pstep_003": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_003",
+    "ract_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_001",
+    "ract_002": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_002",
+    "ract_003": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_003",
+    "prd_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_prd_001",
+    "acct_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_acct_001",
+    "cust_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_cust_001",
+    "txn_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_txn_001"
+  },
+  "entities": [
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_proc_001",
+      "name": "Account Closure Process",
+      "aliases": [
+        "closure",
+        "account_closure"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_closure",
+      "description": "End-to-end procedure for closing a customer-initiated SmartSaver Account, from initial request through final balance transfer and account status change. Encompasses customer contact, balance calculation, payment processing, and confirmation delivery over a 3-day timeline.",
+      "context": [
+        "Customer: Closes SmartSaver Account",
+        "Requests closure, all balance to bank transfer",
+        "Operations processes request",
+        "Account status changed to \"Closed\""
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_001",
+      "name": "Closure Request Reception",
+      "aliases": [
+        "request_intake",
+        "day_1_contact"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Customer initiates account closure by calling the designated phone line and providing receiving bank details for final balance transfer. System records the closure request.",
+      "context": [
+        "Customer calls 0800-555-2265",
+        "Requests closure, all balance to bank transfer",
+        "Provides receiving bank details",
+        "System notes closure request"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_002",
+      "name": "Final Balance Calculation and Payment Processing",
+      "aliases": [
+        "balance_calc",
+        "payment_initiation",
+        "day_2_processing"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Operations team calculates the final account balance and initiates an FPS (Faster Payment Service) transfer to the customer's nominated receiving bank account. Closure confirmation letter is generated.",
+      "context": [
+        "Operations processes request",
+        "Final balance calculated: £4,264.90",
+        "Payment initiated (FPS transfer)",
+        "Closure confirmation letter generated"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_003",
+      "name": "Account Closure Completion and Archival",
+      "aliases": [
+        "closure_completion",
+        "day_3_finalization"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "account_activation",
+      "description": "Customer receives the bank transfer and confirmation letter. Account status is formally changed to 'Closed' and all records are archived.",
+      "context": [
+        "Customer receives bank transfer",
+        "Receives confirmation letter",
+        "Account status changed to \"Closed\"",
+        "Records archived"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_001",
+      "name": "Customer Service Representative",
+      "aliases": [
+        "customer_service",
+        "call_handler"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer_service",
+      "description": "Front-line staff member who receives the customer's closure request via telephone, documents the request, and captures the receiving bank details.",
+      "context": [
+        "Customer calls 0800-555-2265",
+        "System notes closure request"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_002",
+      "name": "Operations Staff",
+      "aliases": [
+        "operations_team",
+        "back_office"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Back-office team responsible for processing the closure request, calculating the final balance, initiating the payment transfer, and generating the closure confirmation letter.",
+      "context": [
+        "Operations processes request",
+        "Final balance calculated: £4,264.90",
+        "Payment initiated (FPS transfer)",
+        "Closure confirmation letter generated"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_003",
+      "name": "System",
+      "aliases": [
+        "banking_system",
+        "automated_system"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated banking system that records the closure request, calculates final balances, processes FPS transfers, generates confirmation letters, and updates account status.",
+      "context": [
+        "System notes closure request",
+        "Final balance calculated: £4,264.90",
+        "Payment initiated (FPS transfer)",
+        "Account status changed to \"Closed\""
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_prd_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SmartSaver",
+        "savings_account"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "smartsaver_account",
+      "description": "Savings product being closed in this scenario. The account holds a final balance of £4,264.90 which is transferred to the customer upon closure.",
+      "context": [
+        "Customer: Closes SmartSaver Account",
+        "Final balance calculated: £4,264.90"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_acct_001",
+      "name": "SmartSaver Account Instance",
+      "aliases": [
+        "customer_account",
+        "closed_account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "closed_account",
+      "description": "The specific customer account being closed, which transitions from active status to 'Closed' following the 3-day closure process. Final balance of £4,264.90 is transferred via FPS.",
+      "context": [
+        "Customer: Closes SmartSaver Account",
+        "Final balance calculated: £4,264.90",
+        "Account status changed to \"Closed\"",
+        "Records archived"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_cust_001",
+      "name": "Individual Customer",
+      "aliases": [
+        "account_holder",
+        "applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The natural person who holds the SmartSaver Account and initiates its closure by telephone, providing receiving bank details and receiving the final balance transfer and confirmation letter.",
+      "context": [
+        "Customer: Closes SmartSaver Account",
+        "Customer calls 0800-555-2265",
+        "Provides receiving bank details",
+        "Customer receives bank transfer"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_txn_001",
+      "name": "Final Balance Transfer",
+      "aliases": [
+        "closure_payment",
+        "FPS_transfer"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "FPS (Faster Payment Service) transfer of the final account balance (£4,264.90) from the closed SmartSaver Account to the customer's nominated receiving bank account on Day 3.",
+      "context": [
+        "Final balance calculated: £4,264.90",
+        "Payment initiated (FPS transfer)",
+        "Customer receives bank transfer"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_proc_001",
+      "name": "Account Closure Process",
+      "properties": {
+        "purpose": "Enable customers to close their SmartSaver accounts and receive final balance payment",
+        "scope": "Individual customers with SmartSaver accounts",
+        "channels": [
+          "phone"
+        ],
+        "owner": "Customer Service and Operations",
+        "departments_involved": [
+          "Customer Service",
+          "Operations"
+        ],
+        "timeline_sla": "3 days",
+        "trigger": "Customer initiates closure request via phone",
+        "outcome_success": "Account closed, final balance transferred to customer's nominated bank account, confirmation letter sent, records archived",
+        "outcome_failure": "Closure request not processed, customer not notified, account remains active"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_001",
+      "name": "Closure Request Reception",
+      "properties": {
+        "step_number": 1,
+        "actor": "Customer Service Representative",
+        "input": "Customer phone call with closure request and receiving bank details",
+        "output": "Closure request recorded in system with customer bank transfer details",
+        "estimated_duration": "15 minutes",
+        "channel": "phone",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Phone system",
+          "Customer management system"
+        ],
+        "failure_path": "Request not recorded; customer must call again"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_002",
+      "name": "Final Balance Calculation and Payment Processing",
+      "properties": {
+        "step_number": 2,
+        "actor": "Operations Staff",
+        "input": "Closure request details, account balance, customer bank details",
+        "output": "Final balance calculated, FPS transfer initiated, confirmation letter generated",
+        "estimated_duration": "1 day",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Accounting system",
+          "FPS payment system",
+          "Letter generation system"
+        ],
+        "failure_path": "Balance calculation error or payment failure; escalate to supervisor for manual review"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_003",
+      "name": "Account Closure Completion and Archival",
+      "properties": {
+        "step_number": 3,
+        "actor": "System",
+        "input": "Completed payment confirmation, closure letter sent confirmation",
+        "output": "Account status set to Closed, records archived, customer notified",
+        "estimated_duration": "1 day",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account management system",
+          "Records archival system"
+        ],
+        "failure_path": "Account status not updated; manual intervention required to mark account closed"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_001",
+      "name": "Customer Service Representative",
+      "properties": {
+        "role_type": "human",
+        "department": "Customer Service",
+        "authority_level": "Receive and record closure requests",
+        "channels": [
+          "phone"
+        ],
+        "response_time_sla": "Same day"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_002",
+      "name": "Operations Staff",
+      "properties": {
+        "role_type": "human",
+        "department": "Operations",
+        "authority_level": "Process closure requests, calculate final balances, initiate payments",
+        "channels": [
+          "system"
+        ],
+        "response_time_sla": "Next business day"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_003",
+      "name": "System",
+      "properties": {
+        "role_type": "system",
+        "authority_level": "Record requests, calculate balances, update account status, archive records",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_prd_001",
+      "name": "SmartSaver Account",
+      "properties": {
+        "product_type": "savings",
+        "determines_process_variant": "yes"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_acct_001",
+      "name": "SmartSaver Account Instance",
+      "properties": {
+        "account_type": "savings",
+        "account_state": "closed",
+        "closure_or_freeze_conditions": "Customer-initiated closure with final balance transfer"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_cust_001",
+      "name": "Individual Customer",
+      "properties": {
+        "customer_type": "individual",
+        "context_role": "Account holder initiating closure"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_txn_001",
+      "name": "Final Balance Transfer",
+      "properties": {
+        "transaction_type": "transfer",
+        "threshold_value": 4264.9,
+        "monitoring_or_reporting_obligation": "Record in account closure documentation"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_001",
+      "target_name": "Closure Request Reception",
+      "rel_type": "starts_with",
+      "description": "Account Closure Process begins with Closure Request Reception",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Day 1: Customer calls 0800-555-2265, Requests closure, all balance to bank transfer, Provides receiving bank details, System notes closure request",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_001",
+      "source_name": "Closure Request Reception",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_002",
+      "target_name": "Final Balance Calculation and Payment Processing",
+      "rel_type": "followed_by",
+      "description": "Closure Request Reception is followed by Final Balance Calculation and Payment Processing",
+      "properties": {
+        "sequence_position": 2,
+        "time_gap": "1 day"
+      },
+      "context": "Day 1: System notes closure request. Day 2: Operations processes request, Final balance calculated: £4,264.90, Payment initiated (FPS transfer)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_002",
+      "source_name": "Final Balance Calculation and Payment Processing",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_003",
+      "target_name": "Account Closure Completion and Archival",
+      "rel_type": "followed_by",
+      "description": "Final Balance Calculation and Payment Processing is followed by Account Closure Completion and Archival",
+      "properties": {
+        "sequence_position": 3,
+        "time_gap": "1 day"
+      },
+      "context": "Day 2: Closure confirmation letter generated. Day 3: Customer receives bank transfer, Receives confirmation letter, Account status changed to 'Closed', Records archived",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_001",
+      "target_name": "Customer Service Representative",
+      "rel_type": "executed_by",
+      "description": "Account Closure Process is executed by Customer Service Representative during initial request reception",
+      "properties": {
+        "phase": "request_reception"
+      },
+      "context": "Customer calls 0800-555-2265, Requests closure, all balance to bank transfer, Provides receiving bank details",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_002",
+      "target_name": "Operations Staff",
+      "rel_type": "executed_by",
+      "description": "Account Closure Process is executed by Operations Staff during balance calculation and payment processing",
+      "properties": {
+        "phase": "payment_processing"
+      },
+      "context": "Day 2: Operations processes request, Final balance calculated: £4,264.90, Payment initiated (FPS transfer)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_003",
+      "target_name": "System",
+      "rel_type": "executed_by",
+      "description": "Account Closure Process is executed by System for automated tasks including request logging and account status updates",
+      "properties": {
+        "phase": "request_reception_and_completion"
+      },
+      "context": "System notes closure request, Account status changed to 'Closed', Records archived",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_001",
+      "source_name": "Closure Request Reception",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_001",
+      "target_name": "Customer Service Representative",
+      "rel_type": "performed_by",
+      "description": "Closure Request Reception is performed by Customer Service Representative",
+      "properties": {
+        "contact_method": "phone",
+        "contact_number": "0800-555-2265"
+      },
+      "context": "Customer calls 0800-555-2265, Requests closure, all balance to bank transfer, Provides receiving bank details",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_001",
+      "source_name": "Closure Request Reception",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_003",
+      "target_name": "System",
+      "rel_type": "performed_by",
+      "description": "Closure Request Reception includes system logging of closure request",
+      "properties": {
+        "action": "request_logging"
+      },
+      "context": "System notes closure request",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_002",
+      "source_name": "Final Balance Calculation and Payment Processing",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_002",
+      "target_name": "Operations Staff",
+      "rel_type": "performed_by",
+      "description": "Final Balance Calculation and Payment Processing is performed by Operations Staff",
+      "properties": {
+        "actions": [
+          "balance_calculation",
+          "payment_initiation"
+        ]
+      },
+      "context": "Day 2: Operations processes request, Final balance calculated: £4,264.90, Payment initiated (FPS transfer)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_003",
+      "source_name": "Account Closure Completion and Archival",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_003",
+      "target_name": "System",
+      "rel_type": "performed_by",
+      "description": "Account Closure Completion and Archival is performed by System for status updates and record archival",
+      "properties": {
+        "actions": [
+          "status_update",
+          "record_archival"
+        ]
+      },
+      "context": "Account status changed to 'Closed', Records archived",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_acct_001",
+      "target_name": "SmartSaver Account Instance",
+      "rel_type": "closes",
+      "description": "Account Closure Process closes the SmartSaver Account Instance",
+      "properties": {
+        "final_status": "Closed",
+        "duration": "3 days"
+      },
+      "context": "Customer: Closes SmartSaver Account, Account status changed to 'Closed'",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "operates_on",
+      "description": "Account Closure Process operates on Individual Customer's account closure request",
+      "properties": {
+        "scenario": "Standard Customer-Initiated Closure"
+      },
+      "context": "Customer: Closes SmartSaver Account, Customer calls 0800-555-2265, Requests closure",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_acct_001",
+      "source_name": "SmartSaver Account Instance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_prd_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "classified_as",
+      "description": "SmartSaver Account Instance is classified as SmartSaver Account product",
+      "properties": {
+        "product_type": "savings_account"
+      },
+      "context": "Customer: Closes SmartSaver Account",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_cust_001",
+      "source_name": "Individual Customer",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_acct_001",
+      "target_name": "SmartSaver Account Instance",
+      "rel_type": "closes",
+      "description": "Individual Customer closes SmartSaver Account Instance",
+      "properties": {
+        "closure_type": "customer_initiated",
+        "final_balance": "£4,264.90",
+        "transfer_method": "FPS"
+      },
+      "context": "Customer: Closes SmartSaver Account, Requests closure, all balance to bank transfer, Final balance calculated: £4,264.90, Payment initiated (FPS transfer)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_txn_001",
+      "source_name": "Final Balance Transfer",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_acct_001",
+      "target_name": "SmartSaver Account Instance",
+      "rel_type": "generated_by",
+      "description": "Final Balance Transfer transaction is generated by SmartSaver Account Instance closure",
+      "properties": {
+        "amount": "£4,264.90",
+        "transfer_method": "FPS",
+        "day": 2
+      },
+      "context": "Final balance calculated: £4,264.90, Payment initiated (FPS transfer)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_002",
+      "source_name": "Final Balance Calculation and Payment Processing",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_txn_001",
+      "target_name": "Final Balance Transfer",
+      "rel_type": "generates",
+      "description": "Final Balance Calculation and Payment Processing step generates Final Balance Transfer transaction",
+      "properties": {
+        "amount": "£4,264.90",
+        "transfer_type": "FPS"
+      },
+      "context": "Final balance calculated: £4,264.90, Payment initiated (FPS transfer)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_001",
+      "source_name": "Closure Request Reception",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "collects_data_from",
+      "description": "Closure Request Reception collects receiving bank details from Individual Customer",
+      "properties": {
+        "data_collected": [
+          "receiving_bank_details",
+          "closure_request"
+        ]
+      },
+      "context": "Customer calls 0800-555-2265, Requests closure, all balance to bank transfer, Provides receiving bank details",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_003",
+      "source_name": "Account Closure Completion and Archival",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "notifies",
+      "description": "Account Closure Completion and Archival step notifies Individual Customer of closure completion",
+      "properties": {
+        "notification_method": "letter",
+        "notification_content": "confirmation_letter"
+      },
+      "context": "Customer receives bank transfer, Receives confirmation letter",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_001",
+      "source_name": "Closure Request Reception",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_002",
+      "source_name": "Final Balance Calculation and Payment Processing",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_pstep_003",
+      "source_name": "Account Closure Completion and Archival",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_001",
+      "source_name": "Customer Service Representative",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_002",
+      "source_name": "Operations Staff",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_ract_003",
+      "source_name": "System",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_prd_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_acct_001",
+      "source_name": "SmartSaver Account Instance",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_cust_001",
+      "source_name": "Individual Customer",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019_txn_001",
+      "source_name": "Final Balance Transfer",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_019",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

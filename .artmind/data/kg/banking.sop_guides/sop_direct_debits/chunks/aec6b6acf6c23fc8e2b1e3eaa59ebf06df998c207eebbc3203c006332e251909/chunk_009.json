@@ -1,0 +1,958 @@
+{
+  "chunk_seq": 9,
+  "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+  "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+  "text": "### Mandate Validation  \n**Checks Performed:**\n- ✅ Account exists and is active\n- ✅ Account holder matches mandate\n- ✅ Biller DDIC valid (registered biller)\n- ✅ Mandate form properly signed/authorized\n- ✅ No duplicate mandates for same biller  \n**If Validation Fails:**\n- Return mandate to sender\n- Request corrected mandate\n- Do not process until corrected  \n---",
+  "name": "Chunk 9/26",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_008",
+  "next_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Mandate Validation Process",
+      "aliases": [
+        "Mandate Validation"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit_setup",
+      "description": "A validation workflow that verifies direct debit mandate eligibility before processing. The process checks account status, account holder identity, biller registration, mandate authorization, and duplicate mandate prevention. If any validation fails, the mandate is returned to the sender with a request for correction.",
+      "context": [
+        "Mandate Validation",
+        "Account exists and is active",
+        "Account holder matches mandate",
+        "Biller DDIC valid (registered biller)",
+        "Mandate form properly signed/authorized",
+        "No duplicate mandates for same biller",
+        "Return mandate to sender",
+        "Request corrected mandate",
+        "Do not process until corrected"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Account Existence and Status Check",
+      "aliases": [
+        "Account exists and is active"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Verification step that confirms the customer account exists in the system and is in an active state, eligible to receive direct debit mandates.",
+      "context": [
+        "Account exists and is active"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Account Holder Identity Verification",
+      "aliases": [
+        "Account holder matches mandate"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Verification step that confirms the account holder named on the mandate matches the account holder on record in the system.",
+      "context": [
+        "Account holder matches mandate"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Biller Registration Validation",
+      "aliases": [
+        "Biller DDIC valid"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step that confirms the biller's Direct Debit Information Code (DDIC) is valid and the biller is registered in the system.",
+      "context": [
+        "Biller DDIC valid (registered biller)"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Mandate Authorization Verification",
+      "aliases": [
+        "Mandate form properly signed/authorized"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step that confirms the mandate form has been properly signed and authorized by the account holder in accordance with mandate requirements.",
+      "context": [
+        "Mandate form properly signed/authorized"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Duplicate Mandate Check",
+      "aliases": [
+        "No duplicate mandates for same biller"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "quality_check",
+      "description": "Verification step that confirms no existing mandate is already in place for the same biller on this account, preventing duplicate payment instructions.",
+      "context": [
+        "No duplicate mandates for same biller"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Mandate Return and Correction Request",
+      "aliases": [
+        "Return mandate to sender"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Failure handling step that returns the mandate to the sender and requests a corrected version when validation fails.",
+      "context": [
+        "Return mandate to sender",
+        "Request corrected mandate",
+        "Do not process until corrected"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Mandate Validation Pass/Fail Gate",
+      "aliases": [
+        "Validation outcome"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "A branching decision point that determines whether all mandate validation checks have passed. If validation passes, the mandate proceeds to processing. If validation fails, the mandate is returned to the sender for correction.",
+      "context": [
+        "If Validation Fails:",
+        "Return mandate to sender",
+        "Request corrected mandate",
+        "Do not process until corrected"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "Mandate",
+        "DD Mandate"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "A direct debit payment instruction subject to validation checks including account verification, account holder matching, biller registration, authorization confirmation, and duplicate prevention before processing.",
+      "context": [
+        "Mandate Validation",
+        "Mandate form properly signed/authorized",
+        "No duplicate mandates for same biller"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "A customer account that must be active and verified to match the account holder on a direct debit mandate before the mandate can be processed.",
+      "context": [
+        "Account exists and is active",
+        "Account holder matches mandate"
+      ]
+    },
+    {
+      "id": "ah_001",
+      "name": "Account Holder",
+      "aliases": [
+        "Mandate account holder"
+      ],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "primary_holder",
+      "description": "The primary account holder whose identity must match the mandate and whose authorization signature must be verified on the mandate form.",
+      "context": [
+        "Account holder matches mandate",
+        "Mandate form properly signed/authorized"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_proc_001",
+    "pstep_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_001",
+    "pstep_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_002",
+    "pstep_003": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_003",
+    "pstep_004": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_004",
+    "pstep_005": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_005",
+    "pstep_006": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_006",
+    "dp_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_dp_001",
+    "dd_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_dd_001",
+    "acc_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_acc_001",
+    "ah_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_ah_001"
+  },
+  "entities": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_proc_001",
+      "name": "Mandate Validation Process",
+      "aliases": [
+        "Mandate Validation"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit_setup",
+      "description": "A validation workflow that verifies direct debit mandate eligibility before processing. The process checks account status, account holder identity, biller registration, mandate authorization, and duplicate mandate prevention. If any validation fails, the mandate is returned to the sender with a request for correction.",
+      "context": [
+        "Mandate Validation",
+        "Account exists and is active",
+        "Account holder matches mandate",
+        "Biller DDIC valid (registered biller)",
+        "Mandate form properly signed/authorized",
+        "No duplicate mandates for same biller",
+        "Return mandate to sender",
+        "Request corrected mandate",
+        "Do not process until corrected"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_001",
+      "name": "Account Existence and Status Check",
+      "aliases": [
+        "Account exists and is active"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Verification step that confirms the customer account exists in the system and is in an active state, eligible to receive direct debit mandates.",
+      "context": [
+        "Account exists and is active"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_002",
+      "name": "Account Holder Identity Verification",
+      "aliases": [
+        "Account holder matches mandate"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Verification step that confirms the account holder named on the mandate matches the account holder on record in the system.",
+      "context": [
+        "Account holder matches mandate"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_003",
+      "name": "Biller Registration Validation",
+      "aliases": [
+        "Biller DDIC valid"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step that confirms the biller's Direct Debit Information Code (DDIC) is valid and the biller is registered in the system.",
+      "context": [
+        "Biller DDIC valid (registered biller)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_004",
+      "name": "Mandate Authorization Verification",
+      "aliases": [
+        "Mandate form properly signed/authorized"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step that confirms the mandate form has been properly signed and authorized by the account holder in accordance with mandate requirements.",
+      "context": [
+        "Mandate form properly signed/authorized"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_005",
+      "name": "Duplicate Mandate Check",
+      "aliases": [
+        "No duplicate mandates for same biller"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "quality_check",
+      "description": "Verification step that confirms no existing mandate is already in place for the same biller on this account, preventing duplicate payment instructions.",
+      "context": [
+        "No duplicate mandates for same biller"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_006",
+      "name": "Mandate Return and Correction Request",
+      "aliases": [
+        "Return mandate to sender"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Failure handling step that returns the mandate to the sender and requests a corrected version when validation fails.",
+      "context": [
+        "Return mandate to sender",
+        "Request corrected mandate",
+        "Do not process until corrected"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_dp_001",
+      "name": "Mandate Validation Pass/Fail Gate",
+      "aliases": [
+        "Validation outcome"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "A branching decision point that determines whether all mandate validation checks have passed. If validation passes, the mandate proceeds to processing. If validation fails, the mandate is returned to the sender for correction.",
+      "context": [
+        "If Validation Fails:",
+        "Return mandate to sender",
+        "Request corrected mandate",
+        "Do not process until corrected"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "Mandate",
+        "DD Mandate"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "A direct debit payment instruction subject to validation checks including account verification, account holder matching, biller registration, authorization confirmation, and duplicate prevention before processing.",
+      "context": [
+        "Mandate Validation",
+        "Mandate form properly signed/authorized",
+        "No duplicate mandates for same biller"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "A customer account that must be active and verified to match the account holder on a direct debit mandate before the mandate can be processed.",
+      "context": [
+        "Account exists and is active",
+        "Account holder matches mandate"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_ah_001",
+      "name": "Account Holder",
+      "aliases": [
+        "Mandate account holder"
+      ],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "primary_holder",
+      "description": "The primary account holder whose identity must match the mandate and whose authorization signature must be verified on the mandate form.",
+      "context": [
+        "Account holder matches mandate",
+        "Mandate form properly signed/authorized"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_proc_001",
+      "name": "Mandate Validation Process",
+      "properties": {
+        "purpose": "Validate direct debit mandates before processing",
+        "scope": "All direct debit mandates",
+        "owner": "Payments Operations",
+        "trigger": "Receipt of direct debit mandate",
+        "outcome_success": "Mandate validated and approved for processing",
+        "outcome_failure": "Mandate returned to sender with correction request"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_001",
+      "name": "Account Existence and Status Check",
+      "properties": {
+        "step_number": 1,
+        "actor": "Payments Operations Team",
+        "input": "Account number from mandate",
+        "output": "Account status confirmation",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account Management System"
+        ],
+        "failure_path": "Escalate to Mandate Return and Correction Request"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_002",
+      "name": "Account Holder Identity Verification",
+      "properties": {
+        "step_number": 2,
+        "actor": "Payments Operations Team",
+        "input": "Account holder name from mandate",
+        "output": "Identity match confirmation",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Escalate to Mandate Return and Correction Request"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_003",
+      "name": "Biller Registration Validation",
+      "properties": {
+        "step_number": 3,
+        "actor": "Payments Operations Team",
+        "input": "Biller DDIC from mandate",
+        "output": "Biller registration status",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Biller Registry"
+        ],
+        "failure_path": "Escalate to Mandate Return and Correction Request"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_004",
+      "name": "Mandate Authorization Verification",
+      "properties": {
+        "step_number": 4,
+        "actor": "Payments Operations Team",
+        "input": "Signed/authorized mandate form",
+        "output": "Authorization status confirmation",
+        "channel": "manual",
+        "mandatory": "yes",
+        "failure_path": "Escalate to Mandate Return and Correction Request"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_005",
+      "name": "Duplicate Mandate Check",
+      "properties": {
+        "step_number": 5,
+        "actor": "Payments Operations Team",
+        "input": "Account number and biller identifier",
+        "output": "Duplicate mandate status",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Escalate to Mandate Return and Correction Request"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_006",
+      "name": "Mandate Return and Correction Request",
+      "properties": {
+        "step_number": 6,
+        "actor": "Payments Operations Team",
+        "input": "Failed mandate and validation failure reason",
+        "output": "Mandate returned to sender with correction instructions",
+        "channel": "postal",
+        "mandatory": "conditional"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_dp_001",
+      "name": "Mandate Validation Pass/Fail Gate",
+      "properties": {
+        "decision_question": "Do all mandate validation checks pass?",
+        "criteria": [
+          "Account exists and is active",
+          "Account holder matches mandate",
+          "Biller DDIC is valid and registered",
+          "Mandate form is properly signed/authorized",
+          "No duplicate mandate exists for same biller"
+        ],
+        "decision_maker": "Payments Operations Team",
+        "path_yes": "Approve mandate for processing",
+        "path_no": "Return mandate to sender and request correction"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_dd_001",
+      "name": "Direct Debit Mandate",
+      "properties": {
+        "mandate_process": "Mandate Validation Process",
+        "validation_requirement": "All checks must pass before processing"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_acc_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_state": "active",
+        "validation_requirement": "Must exist and be active for mandate processing"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_ah_001",
+      "name": "Account Holder",
+      "properties": {
+        "holder_type": "primary",
+        "verification_requirement": "Identity must match mandate",
+        "due_diligence_requirement": "Verified during mandate validation"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_proc_001",
+      "source_name": "Mandate Validation Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_001",
+      "target_name": "Account Existence and Status Check",
+      "rel_type": "contains",
+      "description": "The Mandate Validation Process includes the Account Existence and Status Check as its first validation step",
+      "properties": {
+        "sequence": 1,
+        "mandatory": true
+      },
+      "context": "Account exists and is active",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_proc_001",
+      "source_name": "Mandate Validation Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_002",
+      "target_name": "Account Holder Identity Verification",
+      "rel_type": "contains",
+      "description": "The Mandate Validation Process includes Account Holder Identity Verification as a validation step",
+      "properties": {
+        "sequence": 2,
+        "mandatory": true
+      },
+      "context": "Account holder matches mandate",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_proc_001",
+      "source_name": "Mandate Validation Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_003",
+      "target_name": "Biller Registration Validation",
+      "rel_type": "contains",
+      "description": "The Mandate Validation Process includes Biller Registration Validation as a validation step",
+      "properties": {
+        "sequence": 3,
+        "mandatory": true
+      },
+      "context": "Biller DDIC valid (registered biller)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_proc_001",
+      "source_name": "Mandate Validation Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_004",
+      "target_name": "Mandate Authorization Verification",
+      "rel_type": "contains",
+      "description": "The Mandate Validation Process includes Mandate Authorization Verification as a validation step",
+      "properties": {
+        "sequence": 4,
+        "mandatory": true
+      },
+      "context": "Mandate form properly signed/authorized",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_proc_001",
+      "source_name": "Mandate Validation Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_005",
+      "target_name": "Duplicate Mandate Check",
+      "rel_type": "contains",
+      "description": "The Mandate Validation Process includes Duplicate Mandate Check as a validation step",
+      "properties": {
+        "sequence": 5,
+        "mandatory": true
+      },
+      "context": "No duplicate mandates for same biller",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_proc_001",
+      "source_name": "Mandate Validation Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_dp_001",
+      "target_name": "Mandate Validation Pass/Fail Gate",
+      "rel_type": "branches_at",
+      "description": "The Mandate Validation Process branches at the Mandate Validation Pass/Fail Gate decision point",
+      "properties": {
+        "decision_type": "validation_outcome"
+      },
+      "context": "If Validation Fails: Return mandate to sender, Request corrected mandate, Do not process until corrected",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_proc_001",
+      "source_name": "Mandate Validation Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_006",
+      "target_name": "Mandate Return and Correction Request",
+      "rel_type": "includes_optional",
+      "description": "The Mandate Validation Process includes the optional Mandate Return and Correction Request step when validation fails",
+      "properties": {
+        "triggered_on": "validation_failure",
+        "mandatory": false
+      },
+      "context": "If Validation Fails: Return mandate to sender, Request corrected mandate",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_proc_001",
+      "source_name": "Mandate Validation Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "processes_mandate_for",
+      "description": "The Mandate Validation Process validates the Direct Debit Mandate",
+      "properties": {
+        "validation_scope": "mandate_authenticity_and_completeness"
+      },
+      "context": "Mandate Validation - Checks Performed: Account exists and is active, Account holder matches mandate, Biller DDIC valid, Mandate form properly signed/authorized, No duplicate mandates for same biller",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_001",
+      "source_name": "Account Existence and Status Check",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_002",
+      "target_name": "Account Holder Identity Verification",
+      "rel_type": "followed_by",
+      "description": "Account Existence and Status Check is followed by Account Holder Identity Verification",
+      "properties": {
+        "sequence": "1_to_2"
+      },
+      "context": "Checks Performed: Account exists and is active, then Account holder matches mandate",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_002",
+      "source_name": "Account Holder Identity Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_003",
+      "target_name": "Biller Registration Validation",
+      "rel_type": "followed_by",
+      "description": "Account Holder Identity Verification is followed by Biller Registration Validation",
+      "properties": {
+        "sequence": "2_to_3"
+      },
+      "context": "Checks Performed: Account holder matches mandate, then Biller DDIC valid",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_003",
+      "source_name": "Biller Registration Validation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_004",
+      "target_name": "Mandate Authorization Verification",
+      "rel_type": "followed_by",
+      "description": "Biller Registration Validation is followed by Mandate Authorization Verification",
+      "properties": {
+        "sequence": "3_to_4"
+      },
+      "context": "Checks Performed: Biller DDIC valid, then Mandate form properly signed/authorized",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_004",
+      "source_name": "Mandate Authorization Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_005",
+      "target_name": "Duplicate Mandate Check",
+      "rel_type": "followed_by",
+      "description": "Mandate Authorization Verification is followed by Duplicate Mandate Check",
+      "properties": {
+        "sequence": "4_to_5"
+      },
+      "context": "Checks Performed: Mandate form properly signed/authorized, then No duplicate mandates for same biller",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_005",
+      "source_name": "Duplicate Mandate Check",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_dp_001",
+      "target_name": "Mandate Validation Pass/Fail Gate",
+      "rel_type": "leads_to",
+      "description": "Duplicate Mandate Check leads to the Mandate Validation Pass/Fail Gate decision point",
+      "properties": {
+        "decision_trigger": "completion_of_all_checks"
+      },
+      "context": "No duplicate mandates for same biller - If Validation Fails",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_dp_001",
+      "source_name": "Mandate Validation Pass/Fail Gate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_006",
+      "target_name": "Mandate Return and Correction Request",
+      "rel_type": "routes_to_on_fail",
+      "description": "On validation failure, the Mandate Validation Pass/Fail Gate routes to Mandate Return and Correction Request",
+      "properties": {
+        "condition": "validation_failure",
+        "action": "return_and_request_correction"
+      },
+      "context": "If Validation Fails: Return mandate to sender, Request corrected mandate, Do not process until corrected",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_001",
+      "source_name": "Account Existence and Status Check",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "verifies",
+      "description": "Account Existence and Status Check verifies the Customer Account exists and is active",
+      "properties": {
+        "verification_type": "existence_and_status"
+      },
+      "context": "Account exists and is active",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_002",
+      "source_name": "Account Holder Identity Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_ah_001",
+      "target_name": "Account Holder",
+      "rel_type": "verifies_identity_of",
+      "description": "Account Holder Identity Verification verifies the identity of the Account Holder matches the mandate",
+      "properties": {
+        "verification_type": "identity_match_to_mandate"
+      },
+      "context": "Account holder matches mandate",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_002",
+      "source_name": "Account Holder Identity Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "verifies",
+      "description": "Account Holder Identity Verification verifies the account holder associated with the Customer Account",
+      "properties": {
+        "verification_type": "holder_identity"
+      },
+      "context": "Account holder matches mandate",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_ah_001",
+      "target_name": "Account Holder",
+      "rel_type": "has_holder",
+      "description": "The Customer Account has the Account Holder",
+      "properties": {
+        "relationship_type": "account_ownership"
+      },
+      "context": "Account holder matches mandate",
+      "bidirectional": true,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "set_up_on",
+      "description": "The Direct Debit Mandate is set up on the Customer Account",
+      "properties": {
+        "setup_requirement": "account_must_exist_and_be_active"
+      },
+      "context": "Account exists and is active - Mandate Validation Process",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_proc_001",
+      "source_name": "Mandate Validation Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_001",
+      "source_name": "Account Existence and Status Check",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_002",
+      "source_name": "Account Holder Identity Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_003",
+      "source_name": "Biller Registration Validation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_004",
+      "source_name": "Mandate Authorization Verification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_005",
+      "source_name": "Duplicate Mandate Check",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_pstep_006",
+      "source_name": "Mandate Return and Correction Request",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_dp_001",
+      "source_name": "Mandate Validation Pass/Fail Gate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009_ah_001",
+      "source_name": "Account Holder",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_009",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

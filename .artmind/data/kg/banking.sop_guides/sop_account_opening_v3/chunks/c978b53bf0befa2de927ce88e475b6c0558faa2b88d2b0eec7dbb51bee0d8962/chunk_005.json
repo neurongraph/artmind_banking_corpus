@@ -1,0 +1,717 @@
+{
+  "chunk_seq": 5,
+  "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+  "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+  "text": "## Step 3: Approval and Activation  \n- No material concern: Head of Compliance approves activation.\n- Policy exception requested: document the rationale and obtain CRO approval.\n- Positive match, suspicious funds, or unclear ownership: refer to Financial\nCrime; do not activate or tip off the customer.  \nAfter approval, set the next review three months from activation and store the\nreview date in the KYC record.",
+  "name": "Chunk 5/6",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_004",
+  "next_chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_006",
+  "raw_entities": [
+    {
+      "id": "ps_001",
+      "name": "Approval and Activation",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Final approval gate for account activation following KYC assessment. Routes to Head of Compliance for standard approval, CRO for policy exceptions, or Financial Crime for high-risk matches. Establishes next review date upon approval.",
+      "context": [
+        "No material concern: Head of Compliance approves activation.",
+        "Policy exception requested: document the rationale and obtain CRO approval.",
+        "Positive match, suspicious funds, or unclear ownership: refer to Financial Crime; do not activate or tip off the customer.",
+        "After approval, set the next review three months from activation and store the review date in the KYC record."
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Material Concern Assessment",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Branching decision determining whether KYC assessment presents material compliance concerns. Routes to standard approval, exception handling, or Financial Crime escalation based on risk outcome.",
+      "context": [
+        "No material concern: Head of Compliance approves activation.",
+        "Policy exception requested: document the rationale and obtain CRO approval.",
+        "Positive match, suspicious funds, or unclear ownership: refer to Financial Crime"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Policy Exception Trigger",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision point identifying when a policy exception is required during approval. Triggers documentation of rationale and escalation to CRO for authority.",
+      "context": [
+        "Policy exception requested: document the rationale and obtain CRO approval."
+      ]
+    },
+    {
+      "id": "dp_003",
+      "name": "High-Risk Match or Suspicious Activity Detection",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "fraud_flag",
+      "description": "Detection gate for positive sanctions/PEP matches, suspicious funds indicators, or unclear beneficial ownership. Triggers mandatory Financial Crime referral and account non-activation.",
+      "context": [
+        "Positive match, suspicious funds, or unclear ownership: refer to Financial Crime; do not activate or tip off the customer."
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Head of Compliance",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "Authority responsible for approving account activation when no material compliance concerns are identified during KYC assessment.",
+      "context": [
+        "No material concern: Head of Compliance approves activation."
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Chief Risk Officer",
+      "aliases": [
+        "CRO"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "Senior authority required to approve policy exceptions during the KYC approval process when standard compliance rules require deviation.",
+      "context": [
+        "Policy exception requested: document the rationale and obtain CRO approval."
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Financial Crime Team",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "financial_crime_team",
+      "description": "Specialist team responsible for investigating and handling high-risk matches, suspicious funds indicators, and unclear ownership scenarios. Determines whether account activation proceeds.",
+      "context": [
+        "Positive match, suspicious funds, or unclear ownership: refer to Financial Crime; do not activate or tip off the customer."
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "KYC Approval Checkpoint",
+      "aliases": [],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "Mandatory compliance gate verifying that KYC assessment is complete and risk classification determined before account activation is permitted. Requires documented approval outcome.",
+      "context": [
+        "No material concern: Head of Compliance approves activation.",
+        "Policy exception requested: document the rationale and obtain CRO approval.",
+        "Positive match, suspicious funds, or unclear ownership: refer to Financial Crime"
+      ]
+    },
+    {
+      "id": "kyc_001",
+      "name": "KYC Record",
+      "aliases": [],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "periodic_refresh",
+      "description": "Customer KYC documentation and verification record maintained throughout the account lifecycle. Stores identity, address, and risk assessment data, with next review date set at activation and updated periodically.",
+      "context": [
+        "After approval, set the next review three months from activation and store the review date in the KYC record."
+      ]
+    }
+  ],
+  "id_map": {
+    "ps_001": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ps_001",
+    "dp_001": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_001",
+    "dp_002": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_002",
+    "dp_003": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_003",
+    "ra_001": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ra_001",
+    "ra_002": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ra_002",
+    "ra_003": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ra_003",
+    "cc_001": "01a073f8-2690-77f0-b4e8-5b444f160394_005_cc_001",
+    "kyc_001": "01a073f8-2690-77f0-b4e8-5b444f160394_005_kyc_001"
+  },
+  "entities": [
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ps_001",
+      "name": "Approval and Activation",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Final approval gate for account activation following KYC assessment. Routes to Head of Compliance for standard approval, CRO for policy exceptions, or Financial Crime for high-risk matches. Establishes next review date upon approval.",
+      "context": [
+        "No material concern: Head of Compliance approves activation.",
+        "Policy exception requested: document the rationale and obtain CRO approval.",
+        "Positive match, suspicious funds, or unclear ownership: refer to Financial Crime; do not activate or tip off the customer.",
+        "After approval, set the next review three months from activation and store the review date in the KYC record."
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_001",
+      "name": "Material Concern Assessment",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Branching decision determining whether KYC assessment presents material compliance concerns. Routes to standard approval, exception handling, or Financial Crime escalation based on risk outcome.",
+      "context": [
+        "No material concern: Head of Compliance approves activation.",
+        "Policy exception requested: document the rationale and obtain CRO approval.",
+        "Positive match, suspicious funds, or unclear ownership: refer to Financial Crime"
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_002",
+      "name": "Policy Exception Trigger",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision point identifying when a policy exception is required during approval. Triggers documentation of rationale and escalation to CRO for authority.",
+      "context": [
+        "Policy exception requested: document the rationale and obtain CRO approval."
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_003",
+      "name": "High-Risk Match or Suspicious Activity Detection",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "fraud_flag",
+      "description": "Detection gate for positive sanctions/PEP matches, suspicious funds indicators, or unclear beneficial ownership. Triggers mandatory Financial Crime referral and account non-activation.",
+      "context": [
+        "Positive match, suspicious funds, or unclear ownership: refer to Financial Crime; do not activate or tip off the customer."
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ra_001",
+      "name": "Head of Compliance",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "Authority responsible for approving account activation when no material compliance concerns are identified during KYC assessment.",
+      "context": [
+        "No material concern: Head of Compliance approves activation."
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ra_002",
+      "name": "Chief Risk Officer",
+      "aliases": [
+        "CRO"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "Senior authority required to approve policy exceptions during the KYC approval process when standard compliance rules require deviation.",
+      "context": [
+        "Policy exception requested: document the rationale and obtain CRO approval."
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ra_003",
+      "name": "Financial Crime Team",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "financial_crime_team",
+      "description": "Specialist team responsible for investigating and handling high-risk matches, suspicious funds indicators, and unclear ownership scenarios. Determines whether account activation proceeds.",
+      "context": [
+        "Positive match, suspicious funds, or unclear ownership: refer to Financial Crime; do not activate or tip off the customer."
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_cc_001",
+      "name": "KYC Approval Checkpoint",
+      "aliases": [],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "Mandatory compliance gate verifying that KYC assessment is complete and risk classification determined before account activation is permitted. Requires documented approval outcome.",
+      "context": [
+        "No material concern: Head of Compliance approves activation.",
+        "Policy exception requested: document the rationale and obtain CRO approval.",
+        "Positive match, suspicious funds, or unclear ownership: refer to Financial Crime"
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_kyc_001",
+      "name": "KYC Record",
+      "aliases": [],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "periodic_refresh",
+      "description": "Customer KYC documentation and verification record maintained throughout the account lifecycle. Stores identity, address, and risk assessment data, with next review date set at activation and updated periodically.",
+      "context": [
+        "After approval, set the next review three months from activation and store the review date in the KYC record."
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ps_001",
+      "name": "Approval and Activation",
+      "properties": {
+        "step_number": 3,
+        "actor": [
+          "Head of Compliance",
+          "Chief Risk Officer",
+          "Financial Crime Team"
+        ],
+        "input": [
+          "KYC assessment result",
+          "policy exception request (if applicable)",
+          "AML screening result"
+        ],
+        "output": [
+          "account activation approval",
+          "KYC record with next review date"
+        ],
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "KYC record system"
+        ],
+        "failure_path": "refer to Financial Crime Team; do not activate account"
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_001",
+      "name": "Material Concern Assessment",
+      "properties": {
+        "decision_question": "Are there any material concerns identified in the KYC assessment?",
+        "criteria": "absence of policy exceptions, positive matches, suspicious funds, or unclear ownership",
+        "decision_maker": "Head of Compliance",
+        "path_yes": "refer to Financial Crime Team; escalate for investigation",
+        "path_no": "proceed to account activation approval",
+        "override_possible": true
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_002",
+      "name": "Policy Exception Trigger",
+      "properties": {
+        "decision_question": "Has a policy exception been requested?",
+        "criteria": "documented rationale for exception to standard KYC policy",
+        "decision_maker": "Chief Risk Officer",
+        "path_yes": "obtain CRO approval; document rationale",
+        "path_no": "proceed with standard approval pathway",
+        "override_possible": false
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_003",
+      "name": "High-Risk Match or Suspicious Activity Detection",
+      "properties": {
+        "decision_question": "Is there a positive AML match, suspicious funds indicator, or unclear ownership?",
+        "criteria": [
+          "positive match on screening lists",
+          "suspicious funds detected",
+          "unclear beneficial ownership"
+        ],
+        "decision_maker": "Financial Crime Team",
+        "path_yes": "refer to Financial Crime Team; do not activate account; do not notify customer",
+        "path_no": "proceed to approval and activation",
+        "override_possible": false
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ra_001",
+      "name": "Head of Compliance",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "approval authority for account activation",
+        "channels": [
+          "system"
+        ],
+        "response_time_sla": "same business day"
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ra_002",
+      "name": "Chief Risk Officer",
+      "properties": {
+        "role_type": "human",
+        "department": "Risk Management",
+        "authority_level": "policy exception approval authority",
+        "channels": [
+          "system",
+          "email"
+        ],
+        "response_time_sla": "within 2 business days"
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ra_003",
+      "name": "Financial Crime Team",
+      "properties": {
+        "role_type": "human",
+        "department": "Financial Crime Compliance",
+        "authority_level": "investigation and escalation authority",
+        "channels": [
+          "system",
+          "email"
+        ],
+        "response_time_sla": "within 1 business day for initial assessment"
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_cc_001",
+      "name": "KYC Approval Checkpoint",
+      "properties": {
+        "regulatory_basis": [
+          "FCA COBS",
+          "MLR 2017"
+        ],
+        "mandatory": true,
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "KYC assessment documentation",
+          "AML screening results",
+          "beneficial ownership verification"
+        ],
+        "performed_by": "Head of Compliance",
+        "timing": "before account activation",
+        "failure_consequence": "account activation blocked; referral to Financial Crime Team"
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_kyc_001",
+      "name": "KYC Record",
+      "properties": {
+        "mandatory": true,
+        "timing_or_refresh_frequency": "initial verification at account opening; next review three months from activation",
+        "verification_method": [
+          "document verification",
+          "beneficial ownership assessment",
+          "AML screening"
+        ],
+        "consequence_of_failure": "account activation denied; escalation to Financial Crime Team",
+        "system_used": "KYC record system",
+        "data_stored": [
+          "next review date",
+          "approval status",
+          "assessment results"
+        ]
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ps_001",
+      "source_name": "Approval and Activation",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_001",
+      "target_name": "Material Concern Assessment",
+      "rel_type": "leads_to",
+      "description": "Approval and Activation step leads to Material Concern Assessment decision point",
+      "properties": {
+        "sequence": "step precedes decision",
+        "context_condition": "determines whether material concern exists"
+      },
+      "context": "No material concern: Head of Compliance approves activation.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ps_001",
+      "source_name": "Approval and Activation",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_002",
+      "target_name": "Policy Exception Trigger",
+      "rel_type": "leads_to",
+      "description": "Approval and Activation step leads to Policy Exception Trigger decision point",
+      "properties": {
+        "sequence": "step precedes decision",
+        "context_condition": "determines whether policy exception is requested"
+      },
+      "context": "Policy exception requested: document the rationale and obtain CRO approval.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ps_001",
+      "source_name": "Approval and Activation",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_003",
+      "target_name": "High-Risk Match or Suspicious Activity Detection",
+      "rel_type": "leads_to",
+      "description": "Approval and Activation step leads to High-Risk Match or Suspicious Activity Detection decision point",
+      "properties": {
+        "sequence": "step precedes decision",
+        "context_condition": "determines whether positive match, suspicious funds, or unclear ownership exists"
+      },
+      "context": "Positive match, suspicious funds, or unclear ownership: refer to Financial Crime; do not activate or tip off the customer.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_001",
+      "source_name": "Material Concern Assessment",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ra_001",
+      "target_name": "Head of Compliance",
+      "rel_type": "decided_by",
+      "description": "Material Concern Assessment decision is made by Head of Compliance",
+      "properties": {
+        "decision_outcome": "no material concern",
+        "action": "approves activation"
+      },
+      "context": "No material concern: Head of Compliance approves activation.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_002",
+      "source_name": "Policy Exception Trigger",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ra_002",
+      "target_name": "Chief Risk Officer",
+      "rel_type": "escalated_to",
+      "description": "Policy Exception Trigger decision is escalated to Chief Risk Officer for approval",
+      "properties": {
+        "decision_outcome": "policy exception requested",
+        "action": "obtain CRO approval",
+        "prerequisite": "document the rationale"
+      },
+      "context": "Policy exception requested: document the rationale and obtain CRO approval.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_003",
+      "source_name": "High-Risk Match or Suspicious Activity Detection",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ra_003",
+      "target_name": "Financial Crime Team",
+      "rel_type": "escalated_to",
+      "description": "High-Risk Match or Suspicious Activity Detection decision is escalated to Financial Crime Team",
+      "properties": {
+        "decision_outcome": "positive match, suspicious funds, or unclear ownership",
+        "action": "refer to Financial Crime; do not activate or tip off the customer"
+      },
+      "context": "Positive match, suspicious funds, or unclear ownership: refer to Financial Crime; do not activate or tip off the customer.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ps_001",
+      "source_name": "Approval and Activation",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_cc_001",
+      "target_name": "KYC Approval Checkpoint",
+      "rel_type": "satisfies",
+      "description": "Approval and Activation step satisfies KYC Approval Checkpoint compliance requirement",
+      "properties": {
+        "checkpoint_stage": "approval phase",
+        "outcome_recorded": "approval decision and activation status"
+      },
+      "context": "After approval, set the next review three months from activation and store the review date in the KYC record.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ps_001",
+      "source_name": "Approval and Activation",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_kyc_001",
+      "target_name": "KYC Record",
+      "rel_type": "records_result_of",
+      "description": "Approval and Activation step records approval decision and review date in KYC Record",
+      "properties": {
+        "data_recorded": "approval decision, next review date",
+        "review_interval": "three months from activation",
+        "storage_location": "KYC record"
+      },
+      "context": "After approval, set the next review three months from activation and store the review date in the KYC record.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_cc_001",
+      "source_name": "KYC Approval Checkpoint",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_001",
+      "target_name": "Material Concern Assessment",
+      "rel_type": "gates",
+      "description": "KYC Approval Checkpoint gates Material Concern Assessment decision point",
+      "properties": {
+        "gate_condition": "checkpoint must be satisfied before decision can proceed",
+        "decision_dependency": "material concern assessment outcome determines approval"
+      },
+      "context": "No material concern: Head of Compliance approves activation.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_cc_001",
+      "source_name": "KYC Approval Checkpoint",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_002",
+      "target_name": "Policy Exception Trigger",
+      "rel_type": "gates",
+      "description": "KYC Approval Checkpoint gates Policy Exception Trigger decision point",
+      "properties": {
+        "gate_condition": "checkpoint must be satisfied before decision can proceed",
+        "decision_dependency": "policy exception assessment outcome determines approval path"
+      },
+      "context": "Policy exception requested: document the rationale and obtain CRO approval.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_cc_001",
+      "source_name": "KYC Approval Checkpoint",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_003",
+      "target_name": "High-Risk Match or Suspicious Activity Detection",
+      "rel_type": "gates",
+      "description": "KYC Approval Checkpoint gates High-Risk Match or Suspicious Activity Detection decision point",
+      "properties": {
+        "gate_condition": "checkpoint must be satisfied before decision can proceed",
+        "decision_dependency": "high-risk assessment outcome determines activation and referral"
+      },
+      "context": "Positive match, suspicious funds, or unclear ownership: refer to Financial Crime; do not activate or tip off the customer.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ps_001",
+      "source_name": "Approval and Activation",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_001",
+      "source_name": "Material Concern Assessment",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_002",
+      "source_name": "Policy Exception Trigger",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_dp_003",
+      "source_name": "High-Risk Match or Suspicious Activity Detection",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ra_001",
+      "source_name": "Head of Compliance",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ra_002",
+      "source_name": "Chief Risk Officer",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_ra_003",
+      "source_name": "Financial Crime Team",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_cc_001",
+      "source_name": "KYC Approval Checkpoint",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005_kyc_001",
+      "source_name": "KYC Record",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_005",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

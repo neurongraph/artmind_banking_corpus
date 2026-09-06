@@ -1,0 +1,919 @@
+{
+  "chunk_seq": 14,
+  "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+  "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+  "text": "## API Catalogue  \n### Account APIs  \n| Endpoint | Method | Purpose | Auth |\n|----------|--------|---------|------|\n| `/accounts` | POST | Create account | API Key + JWT |\n| `/accounts/{id}` | GET | Get account details | JWT |\n| `/accounts/{id}/balance` | GET | Get balance | JWT |\n| `/accounts/{id}/transactions` | GET | List transactions | JWT |\n| `/accounts/{id}/transactions` | POST | Record transaction | API Key (internal) |\n| `/accounts/{id}/standing-orders` | GET/POST | Standing orders | JWT |\n| `/accounts/{id}/direct-debits` | GET/POST | Direct debits | JWT |",
+  "name": "Chunk 14/39",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_013",
+  "next_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_015",
+  "raw_entities": [
+    {
+      "id": "sysapp_001",
+      "name": "Account API",
+      "aliases": [
+        "Account APIs",
+        "/accounts"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "api_gateway",
+      "description": "RESTful API gateway providing account management operations including creation, retrieval, balance inquiry, and transaction listing. Supports both JWT and API Key authentication mechanisms for different operational contexts.",
+      "context": [
+        "| `/accounts` | POST | Create account | API Key + JWT |",
+        "| `/accounts/{id}` | GET | Get account details | JWT |",
+        "| `/accounts/{id}/balance` | GET | Get balance | JWT |",
+        "| `/accounts/{id}/transactions` | GET | List transactions | JWT |"
+      ]
+    },
+    {
+      "id": "sysapp_002",
+      "name": "Transaction Recording System",
+      "aliases": [
+        "Transaction API",
+        "/accounts/{id}/transactions POST"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "payment_processor",
+      "description": "Internal system endpoint for recording financial transactions against customer accounts. Restricted to API Key authentication for internal-only access.",
+      "context": [
+        "| `/accounts/{id}/transactions` | POST | Record transaction | API Key (internal) |"
+      ]
+    },
+    {
+      "id": "sysapp_003",
+      "name": "Standing Order Management System",
+      "aliases": [
+        "Standing Orders API",
+        "/accounts/{id}/standing-orders"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "api_gateway",
+      "description": "API endpoint for managing standing order instructions on customer accounts, supporting both retrieval and creation of standing order arrangements.",
+      "context": [
+        "| `/accounts/{id}/standing-orders` | GET/POST | Standing orders | JWT |"
+      ]
+    },
+    {
+      "id": "sysapp_004",
+      "name": "Direct Debit Management System",
+      "aliases": [
+        "Direct Debits API",
+        "/accounts/{id}/direct-debits"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "api_gateway",
+      "description": "API endpoint for managing direct debit mandates on customer accounts, supporting both retrieval and creation of direct debit arrangements.",
+      "context": [
+        "| `/accounts/{id}/direct-debits` | GET/POST | Direct debits | JWT |"
+      ]
+    },
+    {
+      "id": "banking_001",
+      "name": "Account",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "Core banking entity representing a customer account that can be created, queried for balance and transaction history, and linked to standing orders and direct debit mandates.",
+      "context": [
+        "| `/accounts` | POST | Create account | API Key + JWT |",
+        "| `/accounts/{id}` | GET | Get account details | JWT |",
+        "| `/accounts/{id}/balance` | GET | Get balance | JWT |"
+      ]
+    },
+    {
+      "id": "banking_002",
+      "name": "Transaction",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "Financial event recorded against a customer account, retrievable via API and recordable through internal systems for audit and reporting purposes.",
+      "context": [
+        "| `/accounts/{id}/transactions` | GET | List transactions | JWT |",
+        "| `/accounts/{id}/transactions` | POST | Record transaction | API Key (internal) |"
+      ]
+    },
+    {
+      "id": "banking_003",
+      "name": "Standing Order",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "standing_order",
+      "description": "Recurring payment instruction set up on a customer account, manageable through dedicated API endpoints for creation and retrieval.",
+      "context": [
+        "| `/accounts/{id}/standing-orders` | GET/POST | Standing orders | JWT |"
+      ]
+    },
+    {
+      "id": "banking_004",
+      "name": "Direct Debit",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "direct_debit",
+      "description": "Direct debit mandate established on a customer account, manageable through dedicated API endpoints for creation and retrieval.",
+      "context": [
+        "| `/accounts/{id}/direct-debits` | GET/POST | Direct debits | JWT |"
+      ]
+    },
+    {
+      "id": "rule_001",
+      "name": "Account Creation Authentication Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "approval_threshold",
+      "description": "Account creation endpoint requires dual authentication using both API Key and JWT token, enforcing a two-factor authentication control for account provisioning.",
+      "context": [
+        "| `/accounts` | POST | Create account | API Key + JWT |"
+      ]
+    },
+    {
+      "id": "rule_002",
+      "name": "Internal Transaction Recording Access Control",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Transaction recording endpoint is restricted to internal systems only, authenticated via API Key rather than JWT, enforcing separation between customer-facing and internal operations.",
+      "context": [
+        "| `/accounts/{id}/transactions` | POST | Record transaction | API Key (internal) |"
+      ]
+    },
+    {
+      "id": "rule_003",
+      "name": "Customer-Facing API Authentication Standard",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "All customer-facing API endpoints for account retrieval, balance inquiry, transaction listing, and payment instruction management require JWT authentication.",
+      "context": [
+        "| `/accounts/{id}` | GET | Get account details | JWT |",
+        "| `/accounts/{id}/balance` | GET | Get balance | JWT |",
+        "| `/accounts/{id}/transactions` | GET | List transactions | JWT |",
+        "| `/accounts/{id}/standing-orders` | GET/POST | Standing orders | JWT |"
+      ]
+    }
+  ],
+  "id_map": {
+    "sysapp_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_001",
+    "sysapp_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_002",
+    "sysapp_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_003",
+    "sysapp_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_004",
+    "banking_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_001",
+    "banking_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_002",
+    "banking_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_003",
+    "banking_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_004",
+    "rule_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_001",
+    "rule_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_002",
+    "rule_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_003"
+  },
+  "entities": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_001",
+      "name": "Account API",
+      "aliases": [
+        "Account APIs",
+        "/accounts"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "api_gateway",
+      "description": "RESTful API gateway providing account management operations including creation, retrieval, balance inquiry, and transaction listing. Supports both JWT and API Key authentication mechanisms for different operational contexts.",
+      "context": [
+        "| `/accounts` | POST | Create account | API Key + JWT |",
+        "| `/accounts/{id}` | GET | Get account details | JWT |",
+        "| `/accounts/{id}/balance` | GET | Get balance | JWT |",
+        "| `/accounts/{id}/transactions` | GET | List transactions | JWT |"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_002",
+      "name": "Transaction Recording System",
+      "aliases": [
+        "Transaction API",
+        "/accounts/{id}/transactions POST"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "payment_processor",
+      "description": "Internal system endpoint for recording financial transactions against customer accounts. Restricted to API Key authentication for internal-only access.",
+      "context": [
+        "| `/accounts/{id}/transactions` | POST | Record transaction | API Key (internal) |"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_003",
+      "name": "Standing Order Management System",
+      "aliases": [
+        "Standing Orders API",
+        "/accounts/{id}/standing-orders"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "api_gateway",
+      "description": "API endpoint for managing standing order instructions on customer accounts, supporting both retrieval and creation of standing order arrangements.",
+      "context": [
+        "| `/accounts/{id}/standing-orders` | GET/POST | Standing orders | JWT |"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_004",
+      "name": "Direct Debit Management System",
+      "aliases": [
+        "Direct Debits API",
+        "/accounts/{id}/direct-debits"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "api_gateway",
+      "description": "API endpoint for managing direct debit mandates on customer accounts, supporting both retrieval and creation of direct debit arrangements.",
+      "context": [
+        "| `/accounts/{id}/direct-debits` | GET/POST | Direct debits | JWT |"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_001",
+      "name": "Account",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "Core banking entity representing a customer account that can be created, queried for balance and transaction history, and linked to standing orders and direct debit mandates.",
+      "context": [
+        "| `/accounts` | POST | Create account | API Key + JWT |",
+        "| `/accounts/{id}` | GET | Get account details | JWT |",
+        "| `/accounts/{id}/balance` | GET | Get balance | JWT |"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_002",
+      "name": "Transaction",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "Financial event recorded against a customer account, retrievable via API and recordable through internal systems for audit and reporting purposes.",
+      "context": [
+        "| `/accounts/{id}/transactions` | GET | List transactions | JWT |",
+        "| `/accounts/{id}/transactions` | POST | Record transaction | API Key (internal) |"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_003",
+      "name": "Standing Order",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "standing_order",
+      "description": "Recurring payment instruction set up on a customer account, manageable through dedicated API endpoints for creation and retrieval.",
+      "context": [
+        "| `/accounts/{id}/standing-orders` | GET/POST | Standing orders | JWT |"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_004",
+      "name": "Direct Debit",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "direct_debit",
+      "description": "Direct debit mandate established on a customer account, manageable through dedicated API endpoints for creation and retrieval.",
+      "context": [
+        "| `/accounts/{id}/direct-debits` | GET/POST | Direct debits | JWT |"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_001",
+      "name": "Account Creation Authentication Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "approval_threshold",
+      "description": "Account creation endpoint requires dual authentication using both API Key and JWT token, enforcing a two-factor authentication control for account provisioning.",
+      "context": [
+        "| `/accounts` | POST | Create account | API Key + JWT |"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_002",
+      "name": "Internal Transaction Recording Access Control",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Transaction recording endpoint is restricted to internal systems only, authenticated via API Key rather than JWT, enforcing separation between customer-facing and internal operations.",
+      "context": [
+        "| `/accounts/{id}/transactions` | POST | Record transaction | API Key (internal) |"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_003",
+      "name": "Customer-Facing API Authentication Standard",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "All customer-facing API endpoints for account retrieval, balance inquiry, transaction listing, and payment instruction management require JWT authentication.",
+      "context": [
+        "| `/accounts/{id}` | GET | Get account details | JWT |",
+        "| `/accounts/{id}/balance` | GET | Get balance | JWT |",
+        "| `/accounts/{id}/transactions` | GET | List transactions | JWT |",
+        "| `/accounts/{id}/standing-orders` | GET/POST | Standing orders | JWT |"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_001",
+      "name": "Account API",
+      "properties": {
+        "purpose": "Create and retrieve account details, balances, and manage associated transactions, standing orders, and direct debits",
+        "apis_exposed": [
+          "/accounts",
+          "/accounts/{id}",
+          "/accounts/{id}/balance",
+          "/accounts/{id}/transactions",
+          "/accounts/{id}/standing-orders",
+          "/accounts/{id}/direct-debits"
+        ],
+        "security_controls": [
+          "API Key authentication",
+          "JWT authentication"
+        ],
+        "key_features": [
+          "Account creation",
+          "Account detail retrieval",
+          "Balance inquiry",
+          "Transaction listing",
+          "Transaction recording",
+          "Standing order management",
+          "Direct debit management"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_002",
+      "name": "Transaction Recording System",
+      "properties": {
+        "purpose": "Record and store transaction data for accounts",
+        "apis_exposed": [
+          "/accounts/{id}/transactions"
+        ],
+        "security_controls": [
+          "API Key authentication (internal only)"
+        ],
+        "key_features": [
+          "Transaction recording",
+          "Transaction listing"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_003",
+      "name": "Standing Order Management System",
+      "properties": {
+        "purpose": "Manage standing orders for customer accounts",
+        "apis_exposed": [
+          "/accounts/{id}/standing-orders"
+        ],
+        "security_controls": [
+          "JWT authentication"
+        ],
+        "key_features": [
+          "Standing order creation",
+          "Standing order retrieval"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_004",
+      "name": "Direct Debit Management System",
+      "properties": {
+        "purpose": "Manage direct debit mandates and payments for customer accounts",
+        "apis_exposed": [
+          "/accounts/{id}/direct-debits"
+        ],
+        "security_controls": [
+          "JWT authentication"
+        ],
+        "key_features": [
+          "Direct debit creation",
+          "Direct debit retrieval"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_001",
+      "name": "Account",
+      "properties": {
+        "definition": "A financial account held by a customer that can store funds and facilitate transactions, standing orders, and direct debits",
+        "key_attributes": [
+          "account_id",
+          "balance",
+          "transactions",
+          "standing_orders",
+          "direct_debits"
+        ],
+        "relationships_to": [
+          "Transaction",
+          "Standing Order",
+          "Direct Debit"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_002",
+      "name": "Transaction",
+      "properties": {
+        "definition": "A financial movement of funds into or out of an account",
+        "key_attributes": [
+          "transaction_id",
+          "account_id",
+          "amount",
+          "timestamp"
+        ],
+        "relationships_to": [
+          "Account"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_003",
+      "name": "Standing Order",
+      "properties": {
+        "definition": "A recurring instruction to transfer a fixed amount from an account at regular intervals",
+        "key_attributes": [
+          "standing_order_id",
+          "account_id",
+          "amount",
+          "frequency",
+          "beneficiary"
+        ],
+        "relationships_to": [
+          "Account"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_004",
+      "name": "Direct Debit",
+      "properties": {
+        "definition": "A mandate authorizing a third party to collect variable amounts from an account on agreed dates",
+        "key_attributes": [
+          "direct_debit_id",
+          "account_id",
+          "creditor",
+          "mandate_reference"
+        ],
+        "relationships_to": [
+          "Account"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_001",
+      "name": "Account Creation Authentication Requirement",
+      "properties": {
+        "rule_statement": "Account creation via the Account API requires both API Key and JWT authentication",
+        "rule_type": "constraint",
+        "applies_to": [
+          "POST /accounts endpoint"
+        ],
+        "security_controls": [
+          "API Key",
+          "JWT"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_002",
+      "name": "Internal Transaction Recording Access Control",
+      "properties": {
+        "rule_statement": "Transaction recording is restricted to internal systems and requires API Key authentication only, not JWT",
+        "rule_type": "constraint",
+        "applies_to": [
+          "POST /accounts/{id}/transactions endpoint"
+        ],
+        "security_controls": [
+          "API Key authentication (internal)"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_003",
+      "name": "Customer-Facing API Authentication Standard",
+      "properties": {
+        "rule_statement": "All customer-facing API endpoints require JWT authentication for account retrieval, balance inquiry, and management of standing orders and direct debits",
+        "rule_type": "constraint",
+        "applies_to": [
+          "GET /accounts/{id}",
+          "GET /accounts/{id}/balance",
+          "GET /accounts/{id}/transactions",
+          "GET/POST /accounts/{id}/standing-orders",
+          "GET/POST /accounts/{id}/direct-debits"
+        ],
+        "security_controls": [
+          "JWT authentication"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_001",
+      "source_name": "Account API",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_001",
+      "target_name": "Account",
+      "rel_type": "manages",
+      "description": "Account API manages Account operations including creation, retrieval, and balance inquiries",
+      "properties": {
+        "endpoints": [
+          "/accounts",
+          "/accounts/{id}",
+          "/accounts/{id}/balance"
+        ],
+        "operations": [
+          "create",
+          "get_details",
+          "get_balance"
+        ]
+      },
+      "context": "| `/accounts` | POST | Create account | API Key + JWT |\n| `/accounts/{id}` | GET | Get account details | JWT |\n| `/accounts/{id}/balance` | GET | Get balance | JWT |",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_001",
+      "source_name": "Account API",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_002",
+      "target_name": "Transaction",
+      "rel_type": "exposes_api_for",
+      "description": "Account API exposes endpoints for listing and recording transactions",
+      "properties": {
+        "endpoints": [
+          "/accounts/{id}/transactions"
+        ],
+        "methods": [
+          "GET",
+          "POST"
+        ]
+      },
+      "context": "| `/accounts/{id}/transactions` | GET | List transactions | JWT |\n| `/accounts/{id}/transactions` | POST | Record transaction | API Key (internal) |",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_001",
+      "source_name": "Account API",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_003",
+      "target_name": "Standing Order",
+      "rel_type": "exposes_api_for",
+      "description": "Account API exposes endpoints for managing standing orders",
+      "properties": {
+        "endpoints": [
+          "/accounts/{id}/standing-orders"
+        ],
+        "methods": [
+          "GET",
+          "POST"
+        ]
+      },
+      "context": "| `/accounts/{id}/standing-orders` | GET/POST | Standing orders | JWT |",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_001",
+      "source_name": "Account API",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_004",
+      "target_name": "Direct Debit",
+      "rel_type": "exposes_api_for",
+      "description": "Account API exposes endpoints for managing direct debits",
+      "properties": {
+        "endpoints": [
+          "/accounts/{id}/direct-debits"
+        ],
+        "methods": [
+          "GET",
+          "POST"
+        ]
+      },
+      "context": "| `/accounts/{id}/direct-debits` | GET/POST | Direct debits | JWT |",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_001",
+      "source_name": "Account API",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_001",
+      "target_name": "Account Creation Authentication Requirement",
+      "rel_type": "implements",
+      "description": "Account API implements account creation authentication requirement using API Key and JWT",
+      "properties": {
+        "endpoint": "/accounts",
+        "method": "POST",
+        "auth_mechanism": [
+          "API Key",
+          "JWT"
+        ]
+      },
+      "context": "| `/accounts` | POST | Create account | API Key + JWT |",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_001",
+      "source_name": "Account API",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_003",
+      "target_name": "Customer-Facing API Authentication Standard",
+      "rel_type": "implements",
+      "description": "Account API implements customer-facing API authentication standard using JWT for account retrieval and balance endpoints",
+      "properties": {
+        "endpoints": [
+          "/accounts/{id}",
+          "/accounts/{id}/balance",
+          "/accounts/{id}/transactions",
+          "/accounts/{id}/standing-orders",
+          "/accounts/{id}/direct-debits"
+        ],
+        "auth_mechanism": "JWT"
+      },
+      "context": "| `/accounts/{id}` | GET | Get account details | JWT |\n| `/accounts/{id}/balance` | GET | Get balance | JWT |\n| `/accounts/{id}/transactions` | GET | List transactions | JWT |\n| `/accounts/{id}/standing-orders` | GET/POST | Standing orders | JWT |\n| `/accounts/{id}/direct-debits` | GET/POST | Direct debits | JWT |",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_002",
+      "source_name": "Transaction Recording System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_002",
+      "target_name": "Transaction",
+      "rel_type": "records",
+      "description": "Transaction Recording System records transaction data",
+      "properties": {
+        "operation": "record_transaction"
+      },
+      "context": "| `/accounts/{id}/transactions` | POST | Record transaction | API Key (internal) |",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_002",
+      "source_name": "Transaction Recording System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_002",
+      "target_name": "Internal Transaction Recording Access Control",
+      "rel_type": "implements",
+      "description": "Transaction Recording System implements internal transaction recording access control using API Key authentication",
+      "properties": {
+        "endpoint": "/accounts/{id}/transactions",
+        "method": "POST",
+        "auth_mechanism": "API Key",
+        "access_level": "internal"
+      },
+      "context": "| `/accounts/{id}/transactions` | POST | Record transaction | API Key (internal) |",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_003",
+      "source_name": "Standing Order Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_003",
+      "target_name": "Standing Order",
+      "rel_type": "manages",
+      "description": "Standing Order Management System manages standing order operations",
+      "properties": {
+        "endpoints": [
+          "/accounts/{id}/standing-orders"
+        ],
+        "methods": [
+          "GET",
+          "POST"
+        ]
+      },
+      "context": "| `/accounts/{id}/standing-orders` | GET/POST | Standing orders | JWT |",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_004",
+      "source_name": "Direct Debit Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_004",
+      "target_name": "Direct Debit",
+      "rel_type": "manages",
+      "description": "Direct Debit Management System manages direct debit operations",
+      "properties": {
+        "endpoints": [
+          "/accounts/{id}/direct-debits"
+        ],
+        "methods": [
+          "GET",
+          "POST"
+        ]
+      },
+      "context": "| `/accounts/{id}/direct-debits` | GET/POST | Direct debits | JWT |",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_001",
+      "source_name": "Account",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_001",
+      "target_name": "Account Creation Authentication Requirement",
+      "rel_type": "governed_by",
+      "description": "Account creation is governed by authentication requirement rule",
+      "properties": {
+        "governance_aspect": "creation"
+      },
+      "context": "| `/accounts` | POST | Create account | API Key + JWT |",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_002",
+      "source_name": "Transaction",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_002",
+      "target_name": "Internal Transaction Recording Access Control",
+      "rel_type": "governed_by",
+      "description": "Transaction recording is governed by internal access control rule",
+      "properties": {
+        "governance_aspect": "recording"
+      },
+      "context": "| `/accounts/{id}/transactions` | POST | Record transaction | API Key (internal) |",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_001",
+      "source_name": "Account API",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_002",
+      "source_name": "Transaction Recording System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_003",
+      "source_name": "Standing Order Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_sysapp_004",
+      "source_name": "Direct Debit Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_001",
+      "source_name": "Account",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_002",
+      "source_name": "Transaction",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_003",
+      "source_name": "Standing Order",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_banking_004",
+      "source_name": "Direct Debit",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_001",
+      "source_name": "Account Creation Authentication Requirement",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_002",
+      "source_name": "Internal Transaction Recording Access Control",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014_rule_003",
+      "source_name": "Customer-Facing API Authentication Standard",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_014",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ]
+}

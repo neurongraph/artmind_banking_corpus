@@ -1,0 +1,812 @@
+{
+  "chunk_seq": 12,
+  "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+  "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+  "text": "### Issue: \"High Fraud Alert Rate\"  \n**Symptoms:** Many legitimate transactions flagged as fraud, customer complaints  \n**Steps:**\n```\n1. Check FDE alert rate\nkubectl logs -f deployment/fde | grep \"ALERT\" | wc -l\n(Compare to baseline: <10 alerts/hour)\n\n2. Review recent alerts\ntail -100 /var/log/fde/alerts.log | grep -A5 \"false_positive\"\n\n3. If alert rate >3x normal\nCheck for DDoS/attack: kubectl get events -n production\n\n4. Temporarily loosen rules\nEdit /config/fraud_rules.yaml, restart FDE\nNotify Financial Crime team\n\n5. Review with team\nSchedule urgent meeting to review false positives\n\n6. Restore to normal settings\nOnce resolved, revert rule changes\n```  \n---",
+  "name": "Chunk 12/21",
+  "_domain": "banking.reference",
+  "prev_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_011",
+  "next_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_013",
+  "raw_entities": [
+    {
+      "id": "fra_001",
+      "name": "High Fraud Alert Rate",
+      "aliases": [
+        "FDE alert rate spike",
+        "fraud detection false positive surge"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_detection_obligation",
+      "description": "A fraud detection system alert condition triggered when the Fraud Detection Engine (FDE) generates an abnormally high volume of alerts, with many flagged as false positives affecting legitimate customer transactions. The baseline threshold is <10 alerts per hour; escalation occurs when alert rate exceeds 3x normal levels.",
+      "context": [
+        "Many legitimate transactions flagged as fraud, customer complaints",
+        "Compare to baseline: <10 alerts/hour",
+        "If alert rate >3x normal",
+        "Review false positives"
+      ]
+    },
+    {
+      "id": "res_001",
+      "name": "Fraud Detection Engine Alert Rate Check",
+      "aliases": [
+        "FDE alert rate monitoring",
+        "check FDE alert rate"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Initial detection step to measure the current Fraud Detection Engine alert rate and compare against the established baseline of <10 alerts per hour using kubectl logs.",
+      "context": [
+        "Check FDE alert rate",
+        "kubectl logs -f deployment/fde | grep \"ALERT\" | wc -l",
+        "Compare to baseline: <10 alerts/hour"
+      ]
+    },
+    {
+      "id": "res_002",
+      "name": "Recent Fraud Alert Review",
+      "aliases": [
+        "review recent alerts",
+        "false positive analysis"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Investigation step to examine the most recent 100 fraud alerts from the FDE log, filtering specifically for false positive entries to identify patterns and root causes.",
+      "context": [
+        "Review recent alerts",
+        "tail -100 /var/log/fde/alerts.log | grep -A5 \"false_positive\""
+      ]
+    },
+    {
+      "id": "res_003",
+      "name": "DDoS or Attack Detection Check",
+      "aliases": [
+        "check for DDoS",
+        "attack detection"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Conditional investigation step triggered when alert rate exceeds 3x normal levels, checking for potential DDoS attacks or coordinated malicious activity in the production environment.",
+      "context": [
+        "If alert rate >3x normal",
+        "Check for DDoS/attack: kubectl get events -n production"
+      ]
+    },
+    {
+      "id": "res_004",
+      "name": "Fraud Detection Rules Adjustment",
+      "aliases": [
+        "loosen fraud rules",
+        "temporary rule modification"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "containment",
+      "description": "Containment action to temporarily relax fraud detection rules by editing the fraud_rules.yaml configuration file and restarting the FDE service to reduce false positive rate while investigation continues.",
+      "context": [
+        "Temporarily loosen rules",
+        "Edit /config/fraud_rules.yaml, restart FDE",
+        "Notify Financial Crime team"
+      ]
+    },
+    {
+      "id": "res_005",
+      "name": "Financial Crime Team Notification",
+      "aliases": [
+        "notify Financial Crime",
+        "escalation to Financial Crime"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "notification",
+      "description": "Mandatory notification step to alert the Financial Crime team when fraud detection rules are temporarily adjusted due to high false positive rates.",
+      "context": [
+        "Notify Financial Crime team"
+      ]
+    },
+    {
+      "id": "res_006",
+      "name": "False Positive Review Meeting",
+      "aliases": [
+        "urgent team review",
+        "false positive analysis meeting"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Scheduled urgent meeting with the fraud detection and Financial Crime teams to review false positive patterns and determine root causes before restoring normal detection settings.",
+      "context": [
+        "Review with team",
+        "Schedule urgent meeting to review false positives"
+      ]
+    },
+    {
+      "id": "res_007",
+      "name": "Fraud Detection Rules Restoration",
+      "aliases": [
+        "restore normal settings",
+        "revert rule changes"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "Post-incident recovery step to revert fraud detection rules to their normal configuration once the root cause has been identified and resolved.",
+      "context": [
+        "Restore to normal settings",
+        "Once resolved, revert rule changes"
+      ]
+    },
+    {
+      "id": "not_001",
+      "name": "Financial Crime Team",
+      "aliases": [
+        "Financial Crime",
+        "fraud response team"
+      ],
+      "entity_class": "NOTIFICATION_CONTACT",
+      "type": "internal_team",
+      "description": "Internal team responsible for monitoring and responding to fraud detection system alerts and false positive investigations. Must be notified when fraud detection rules are temporarily modified.",
+      "context": [
+        "Notify Financial Crime team"
+      ]
+    },
+    {
+      "id": "inc_001",
+      "name": "Fraud Detection System Failure",
+      "aliases": [
+        "FDE malfunction",
+        "false positive surge"
+      ],
+      "entity_class": "INCIDENT_TYPE",
+      "type": "performance_degradation",
+      "description": "An operational incident where the Fraud Detection Engine generates an abnormally high volume of false positive alerts, causing legitimate customer transactions to be incorrectly flagged and triggering customer complaints.",
+      "context": [
+        "Many legitimate transactions flagged as fraud, customer complaints",
+        "If alert rate >3x normal"
+      ]
+    }
+  ],
+  "id_map": {
+    "fra_001": "01a07393-e320-7264-b05f-7163527566c2_012_fra_001",
+    "res_001": "01a07393-e320-7264-b05f-7163527566c2_012_res_001",
+    "res_002": "01a07393-e320-7264-b05f-7163527566c2_012_res_002",
+    "res_003": "01a07393-e320-7264-b05f-7163527566c2_012_res_003",
+    "res_004": "01a07393-e320-7264-b05f-7163527566c2_012_res_004",
+    "res_005": "01a07393-e320-7264-b05f-7163527566c2_012_res_005",
+    "res_006": "01a07393-e320-7264-b05f-7163527566c2_012_res_006",
+    "res_007": "01a07393-e320-7264-b05f-7163527566c2_012_res_007",
+    "not_001": "01a07393-e320-7264-b05f-7163527566c2_012_not_001",
+    "inc_001": "01a07393-e320-7264-b05f-7163527566c2_012_inc_001"
+  },
+  "entities": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_fra_001",
+      "name": "High Fraud Alert Rate",
+      "aliases": [
+        "FDE alert rate spike",
+        "fraud detection false positive surge"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_detection_obligation",
+      "description": "A fraud detection system alert condition triggered when the Fraud Detection Engine (FDE) generates an abnormally high volume of alerts, with many flagged as false positives affecting legitimate customer transactions. The baseline threshold is <10 alerts per hour; escalation occurs when alert rate exceeds 3x normal levels.",
+      "context": [
+        "Many legitimate transactions flagged as fraud, customer complaints",
+        "Compare to baseline: <10 alerts/hour",
+        "If alert rate >3x normal",
+        "Review false positives"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_res_001",
+      "name": "Fraud Detection Engine Alert Rate Check",
+      "aliases": [
+        "FDE alert rate monitoring",
+        "check FDE alert rate"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "detection",
+      "description": "Initial detection step to measure the current Fraud Detection Engine alert rate and compare against the established baseline of <10 alerts per hour using kubectl logs.",
+      "context": [
+        "Check FDE alert rate",
+        "kubectl logs -f deployment/fde | grep \"ALERT\" | wc -l",
+        "Compare to baseline: <10 alerts/hour"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_res_002",
+      "name": "Recent Fraud Alert Review",
+      "aliases": [
+        "review recent alerts",
+        "false positive analysis"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Investigation step to examine the most recent 100 fraud alerts from the FDE log, filtering specifically for false positive entries to identify patterns and root causes.",
+      "context": [
+        "Review recent alerts",
+        "tail -100 /var/log/fde/alerts.log | grep -A5 \"false_positive\""
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_res_003",
+      "name": "DDoS or Attack Detection Check",
+      "aliases": [
+        "check for DDoS",
+        "attack detection"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Conditional investigation step triggered when alert rate exceeds 3x normal levels, checking for potential DDoS attacks or coordinated malicious activity in the production environment.",
+      "context": [
+        "If alert rate >3x normal",
+        "Check for DDoS/attack: kubectl get events -n production"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_res_004",
+      "name": "Fraud Detection Rules Adjustment",
+      "aliases": [
+        "loosen fraud rules",
+        "temporary rule modification"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "containment",
+      "description": "Containment action to temporarily relax fraud detection rules by editing the fraud_rules.yaml configuration file and restarting the FDE service to reduce false positive rate while investigation continues.",
+      "context": [
+        "Temporarily loosen rules",
+        "Edit /config/fraud_rules.yaml, restart FDE",
+        "Notify Financial Crime team"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_res_005",
+      "name": "Financial Crime Team Notification",
+      "aliases": [
+        "notify Financial Crime",
+        "escalation to Financial Crime"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "notification",
+      "description": "Mandatory notification step to alert the Financial Crime team when fraud detection rules are temporarily adjusted due to high false positive rates.",
+      "context": [
+        "Notify Financial Crime team"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_res_006",
+      "name": "False Positive Review Meeting",
+      "aliases": [
+        "urgent team review",
+        "false positive analysis meeting"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "investigation",
+      "description": "Scheduled urgent meeting with the fraud detection and Financial Crime teams to review false positive patterns and determine root causes before restoring normal detection settings.",
+      "context": [
+        "Review with team",
+        "Schedule urgent meeting to review false positives"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_res_007",
+      "name": "Fraud Detection Rules Restoration",
+      "aliases": [
+        "restore normal settings",
+        "revert rule changes"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "recovery",
+      "description": "Post-incident recovery step to revert fraud detection rules to their normal configuration once the root cause has been identified and resolved.",
+      "context": [
+        "Restore to normal settings",
+        "Once resolved, revert rule changes"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_not_001",
+      "name": "Financial Crime Team",
+      "aliases": [
+        "Financial Crime",
+        "fraud response team"
+      ],
+      "entity_class": "NOTIFICATION_CONTACT",
+      "type": "internal_team",
+      "description": "Internal team responsible for monitoring and responding to fraud detection system alerts and false positive investigations. Must be notified when fraud detection rules are temporarily modified.",
+      "context": [
+        "Notify Financial Crime team"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_inc_001",
+      "name": "Fraud Detection System Failure",
+      "aliases": [
+        "FDE malfunction",
+        "false positive surge"
+      ],
+      "entity_class": "INCIDENT_TYPE",
+      "type": "performance_degradation",
+      "description": "An operational incident where the Fraud Detection Engine generates an abnormally high volume of false positive alerts, causing legitimate customer transactions to be incorrectly flagged and triggering customer complaints.",
+      "context": [
+        "Many legitimate transactions flagged as fraud, customer complaints",
+        "If alert rate >3x normal"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_fra_001",
+      "name": "High Fraud Alert Rate",
+      "properties": {
+        "generation_trigger": "Many legitimate transactions flagged as fraud; customer complaints",
+        "investigation_or_escalation_path": "Check FDE alert rate; if >3x normal, check for DDoS/attack; review recent false positives; schedule urgent meeting with Financial Crime team",
+        "customer_notification": "Implied through complaint resolution process",
+        "baseline_threshold": "10 alerts per hour"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_res_001",
+      "name": "Fraud Detection Engine Alert Rate Check",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "Operations team",
+        "timeline": "Immediate",
+        "tools_or_systems": [
+          "kubectl",
+          "FDE deployment logs"
+        ],
+        "output_or_artifact": "Alert count compared to baseline (<10 alerts/hour)",
+        "escalation_trigger": "Alert rate exceeds 3x normal threshold"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_res_002",
+      "name": "Recent Fraud Alert Review",
+      "properties": {
+        "action_phase": "investigation",
+        "actor": "Operations team",
+        "timeline": "Immediate",
+        "tools_or_systems": [
+          "/var/log/fde/alerts.log"
+        ],
+        "output_or_artifact": "Last 100 alerts filtered for false_positive indicators",
+        "mandatory_for_severities": [
+          "High"
+        ]
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_res_003",
+      "name": "DDoS or Attack Detection Check",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "Operations team",
+        "timeline": "Immediate",
+        "trigger_condition": "Alert rate exceeds 3x normal",
+        "tools_or_systems": [
+          "kubectl"
+        ],
+        "output_or_artifact": "Production cluster events log"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_res_004",
+      "name": "Fraud Detection Rules Adjustment",
+      "properties": {
+        "action_phase": "containment",
+        "actor": "Operations team",
+        "timeline": "Within incident response window",
+        "tools_or_systems": [
+          "/config/fraud_rules.yaml",
+          "FDE service restart"
+        ],
+        "output_or_artifact": "Temporarily loosened fraud detection rules",
+        "escalation_trigger": "Notification to Financial Crime team required before implementation"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_res_005",
+      "name": "Financial Crime Team Notification",
+      "properties": {
+        "action_phase": "containment",
+        "actor": "Operations team",
+        "timeline": "Before rule adjustment",
+        "mandatory_for_severities": [
+          "High"
+        ],
+        "output_or_artifact": "Notification sent to Financial Crime team"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_res_006",
+      "name": "False Positive Review Meeting",
+      "properties": {
+        "action_phase": "investigation",
+        "actor": "Financial Crime team",
+        "timeline": "Urgent scheduling",
+        "output_or_artifact": "Meeting notes and false positive analysis",
+        "mandatory_for_severities": [
+          "High"
+        ]
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_res_007",
+      "name": "Fraud Detection Rules Restoration",
+      "properties": {
+        "action_phase": "recovery",
+        "actor": "Operations team",
+        "timeline": "After resolution confirmed",
+        "tools_or_systems": [
+          "/config/fraud_rules.yaml"
+        ],
+        "output_or_artifact": "Fraud detection rules reverted to normal settings"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_not_001",
+      "name": "Financial Crime Team",
+      "properties": {
+        "contact_name_or_role": "Financial Crime Team",
+        "trigger_condition": "High fraud alert rate detected; before temporary rule adjustment",
+        "required_information": "Alert rate status, false positive indicators, proposed rule adjustments"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_012_inc_001",
+      "name": "Fraud Detection System Failure",
+      "properties": {
+        "category": "Fraud Detection System Failure",
+        "subtypes": [
+          "High false positive rate",
+          "Alert rate spike",
+          "Potential DDoS/attack impact on FDE"
+        ],
+        "indicators": [
+          "Alert rate >3x baseline (>30 alerts/hour)",
+          "Customer complaints about legitimate transactions flagged",
+          "False positive entries in alert logs"
+        ],
+        "typical_impact": [
+          "Customer experience degradation",
+          "Operational overhead from false positives",
+          "Potential legitimate transaction blocking"
+        ],
+        "primary_response_team": "Operations team with Financial Crime team escalation"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_fra_001",
+      "source_name": "High Fraud Alert Rate",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_001",
+      "target_name": "Fraud Detection Engine Alert Rate Check",
+      "rel_type": "responds_to",
+      "description": "High Fraud Alert Rate triggers the Fraud Detection Engine Alert Rate Check response action",
+      "properties": {
+        "trigger_condition": "alert rate comparison to baseline",
+        "baseline_threshold": "<10 alerts/hour"
+      },
+      "context": "Check FDE alert rate kubectl logs -f deployment/fde | grep \"ALERT\" | wc -l (Compare to baseline: <10 alerts/hour)",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_fra_001",
+      "source_name": "High Fraud Alert Rate",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_002",
+      "target_name": "Recent Fraud Alert Review",
+      "rel_type": "responds_to",
+      "description": "High Fraud Alert Rate triggers review of recent alerts to identify false positives",
+      "properties": {
+        "review_scope": "recent 100 alerts",
+        "filter_criteria": "false_positive"
+      },
+      "context": "Review recent alerts tail -100 /var/log/fde/alerts.log | grep -A5 \"false_positive\"",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_001",
+      "source_name": "Fraud Detection Engine Alert Rate Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_003",
+      "target_name": "DDoS or Attack Detection Check",
+      "rel_type": "followed_by",
+      "description": "If alert rate exceeds 3x normal threshold, Fraud Detection Engine Alert Rate Check is followed by DDoS or Attack Detection Check",
+      "properties": {
+        "trigger_condition": "alert rate >3x normal",
+        "sequence_order": 3
+      },
+      "context": "If alert rate >3x normal Check for DDoS/attack: kubectl get events -n production",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_003",
+      "source_name": "DDoS or Attack Detection Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_004",
+      "target_name": "Fraud Detection Rules Adjustment",
+      "rel_type": "followed_by",
+      "description": "DDoS or Attack Detection Check is followed by temporary adjustment of fraud detection rules",
+      "properties": {
+        "sequence_order": 4,
+        "action_type": "temporary_loosening"
+      },
+      "context": "Temporarily loosen rules Edit /config/fraud_rules.yaml, restart FDE",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_004",
+      "source_name": "Fraud Detection Rules Adjustment",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_005",
+      "target_name": "Financial Crime Team Notification",
+      "rel_type": "followed_by",
+      "description": "Fraud Detection Rules Adjustment is followed by notification of the Financial Crime Team",
+      "properties": {
+        "sequence_order": 5,
+        "notification_trigger": "rule changes applied"
+      },
+      "context": "Temporarily loosen rules Edit /config/fraud_rules.yaml, restart FDE Notify Financial Crime team",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_005",
+      "source_name": "Financial Crime Team Notification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012_not_001",
+      "target_name": "Financial Crime Team",
+      "rel_type": "notifies",
+      "description": "Financial Crime Team Notification response action notifies the Financial Crime Team",
+      "properties": {
+        "notification_type": "alert_of_rule_changes",
+        "urgency": "high"
+      },
+      "context": "Notify Financial Crime team",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_005",
+      "source_name": "Financial Crime Team Notification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_006",
+      "target_name": "False Positive Review Meeting",
+      "rel_type": "followed_by",
+      "description": "Financial Crime Team Notification is followed by scheduling an urgent meeting to review false positives",
+      "properties": {
+        "sequence_order": 6,
+        "meeting_type": "urgent",
+        "focus": "false_positive_review"
+      },
+      "context": "Review with team Schedule urgent meeting to review false positives",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_006",
+      "source_name": "False Positive Review Meeting",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_007",
+      "target_name": "Fraud Detection Rules Restoration",
+      "rel_type": "followed_by",
+      "description": "False Positive Review Meeting is followed by restoration of fraud detection rules to normal settings",
+      "properties": {
+        "sequence_order": 7,
+        "condition": "once_resolved",
+        "action": "revert_rule_changes"
+      },
+      "context": "Once resolved, revert rule changes",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_inc_001",
+      "source_name": "Fraud Detection System Failure",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012_fra_001",
+      "target_name": "High Fraud Alert Rate",
+      "rel_type": "can_lead_to",
+      "description": "Fraud Detection System Failure can lead to High Fraud Alert Rate as a symptom",
+      "properties": {
+        "manifestation": "many_legitimate_transactions_flagged",
+        "impact": "customer_complaints"
+      },
+      "context": "Symptoms: Many legitimate transactions flagged as fraud, customer complaints",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_inc_001",
+      "source_name": "Fraud Detection System Failure",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_001",
+      "target_name": "Fraud Detection Engine Alert Rate Check",
+      "rel_type": "triggers",
+      "description": "Fraud Detection System Failure triggers the Fraud Detection Engine Alert Rate Check response",
+      "properties": {
+        "response_sequence": "first_diagnostic_step"
+      },
+      "context": "Check FDE alert rate kubectl logs -f deployment/fde | grep \"ALERT\" | wc -l",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_inc_001",
+      "source_name": "Fraud Detection System Failure",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012_not_001",
+      "target_name": "Financial Crime Team",
+      "rel_type": "requires_notification_of",
+      "description": "Fraud Detection System Failure requires notification of the Financial Crime Team",
+      "properties": {
+        "notification_stage": "after_rule_adjustment",
+        "urgency": "high"
+      },
+      "context": "Notify Financial Crime team",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_fra_001",
+      "source_name": "High Fraud Alert Rate",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_001",
+      "source_name": "Fraud Detection Engine Alert Rate Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_002",
+      "source_name": "Recent Fraud Alert Review",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_003",
+      "source_name": "DDoS or Attack Detection Check",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_004",
+      "source_name": "Fraud Detection Rules Adjustment",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_005",
+      "source_name": "Financial Crime Team Notification",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_006",
+      "source_name": "False Positive Review Meeting",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_res_007",
+      "source_name": "Fraud Detection Rules Restoration",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_not_001",
+      "source_name": "Financial Crime Team",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_012_inc_001",
+      "source_name": "Fraud Detection System Failure",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_012",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ]
+}

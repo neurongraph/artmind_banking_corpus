@@ -1,0 +1,1844 @@
+{
+  "chunk_seq": 33,
+  "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+  "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+  "text": "## Common Issues & Resolution  \n| Issue | Cause | Resolution |\n|-------|-------|-----------|\n| KYC document expired | Customer used old ID | Request new valid document |\n| Address mismatch | ID/verification address different | Explain requirement, request current address verification |\n| AML screening delay | System delay or hit found | Wait for confirmation, escalate if needed |\n| Form incomplete | Customer missed fields | Contact customer, request missing info |\n| Slow online opening | System processing | Retry, contact support if persistent |  \n---",
+  "name": "Chunk 33/37",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_032",
+  "next_chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_034",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Account Opening Process",
+      "aliases": [
+        "online_opening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_opening",
+      "description": "End-to-end account opening workflow that includes KYC document verification, address verification, and AML screening. The process may encounter delays or exceptions requiring customer contact and escalation.",
+      "context": [
+        "KYC document expired",
+        "Address mismatch",
+        "AML screening delay",
+        "Slow online opening"
+      ]
+    },
+    {
+      "id": "ps_001",
+      "name": "KYC Document Verification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step where customer-provided identity documents are checked for validity and currency. Documents may be expired or invalid, requiring replacement.",
+      "context": [
+        "KYC document expired",
+        "Customer used old ID",
+        "Request new valid document"
+      ]
+    },
+    {
+      "id": "ps_002",
+      "name": "Address Verification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_verification",
+      "description": "Verification step comparing customer-provided address against identity document and verification records. Mismatches trigger customer contact and request for current address proof.",
+      "context": [
+        "Address mismatch",
+        "ID/verification address different",
+        "Explain requirement, request current address verification"
+      ]
+    },
+    {
+      "id": "ps_003",
+      "name": "AML Screening",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Anti-Money Laundering screening step that may experience system delays or generate hits requiring confirmation and potential escalation.",
+      "context": [
+        "AML screening delay",
+        "System delay or hit found",
+        "Wait for confirmation, escalate if needed"
+      ]
+    },
+    {
+      "id": "ps_004",
+      "name": "Form Completion Check",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Validation step ensuring all required form fields are completed by the customer. Incomplete forms trigger customer contact to obtain missing information.",
+      "context": [
+        "Form incomplete",
+        "Customer missed fields",
+        "Contact customer, request missing info"
+      ]
+    },
+    {
+      "id": "ps_005",
+      "name": "System Processing",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Online system processing step for account opening that may experience delays requiring retry or support contact.",
+      "context": [
+        "Slow online opening",
+        "System processing",
+        "Retry, contact support if persistent"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Customer Service Support",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer_service",
+      "description": "Support role responsible for contacting customers regarding incomplete forms, missing information, and persistent system issues.",
+      "context": [
+        "Contact customer, request missing info",
+        "contact support if persistent"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Escalation Handler",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Role responsible for escalating AML screening delays or hits that require confirmation and further investigation.",
+      "context": [
+        "escalate if needed"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "KYC Document Validity Check",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate determining whether the provided KYC document is valid and current. Expired or invalid documents trigger a request for replacement.",
+      "context": [
+        "KYC document expired",
+        "Request new valid document"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Address Match Verification",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate comparing identity document address against verification records. Mismatches require explanation to customer and current address verification.",
+      "context": [
+        "Address mismatch",
+        "ID/verification address different"
+      ]
+    },
+    {
+      "id": "dp_003",
+      "name": "AML Screening Result Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "Decision gate evaluating AML screening outcome. System delays or hits found trigger confirmation wait and potential escalation.",
+      "context": [
+        "AML screening delay",
+        "System delay or hit found",
+        "Wait for confirmation, escalate if needed"
+      ]
+    },
+    {
+      "id": "dp_004",
+      "name": "Form Completeness Check",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate verifying all required form fields are completed. Incomplete forms trigger customer contact for missing information.",
+      "context": [
+        "Form incomplete",
+        "Customer missed fields"
+      ]
+    },
+    {
+      "id": "dp_005",
+      "name": "System Processing Success Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate evaluating online system processing completion. Slow or failed processing triggers retry or support contact.",
+      "context": [
+        "Slow online opening",
+        "Retry, contact support if persistent"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "KYC Document Verification Checkpoint",
+      "aliases": [],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "document_retention",
+      "description": "Mandatory compliance gate ensuring valid KYC identification documents are collected and verified before account opening proceeds.",
+      "context": [
+        "KYC document expired",
+        "Request new valid document"
+      ]
+    },
+    {
+      "id": "cc_002",
+      "name": "Address Verification Checkpoint",
+      "aliases": [],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "data_protection_check",
+      "description": "Mandatory compliance gate ensuring customer address is verified and matches identity documentation before account opening proceeds.",
+      "context": [
+        "Address mismatch",
+        "request current address verification"
+      ]
+    },
+    {
+      "id": "cc_003",
+      "name": "AML Screening Checkpoint",
+      "aliases": [],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory regulatory compliance gate requiring AML screening completion and confirmation before account opening is finalized.",
+      "context": [
+        "AML screening delay",
+        "Wait for confirmation"
+      ]
+    },
+    {
+      "id": "id_001",
+      "name": "Identity Document",
+      "aliases": [
+        "ID"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "document_recording",
+      "description": "Official identity document collected during account opening that must be valid and current. Expired documents require replacement with new valid documentation.",
+      "context": [
+        "KYC document expired",
+        "Customer used old ID",
+        "Request new valid document"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Address Verification",
+      "aliases": [],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "Customer address verification process comparing identity document address against verification records. Mismatches require current address proof from customer.",
+      "context": [
+        "Address mismatch",
+        "ID/verification address different",
+        "request current address verification"
+      ]
+    },
+    {
+      "id": "kyc_001",
+      "name": "Know Your Customer Verification",
+      "aliases": [
+        "KYC"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "KYC compliance process involving document verification and address verification. Expired documents or address mismatches trigger customer contact and document replacement.",
+      "context": [
+        "KYC document expired",
+        "Address mismatch",
+        "Request new valid document"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "AML Screening",
+      "aliases": [],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Anti-Money Laundering screening process that may experience system delays or generate hits requiring confirmation and escalation.",
+      "context": [
+        "AML screening delay",
+        "System delay or hit found",
+        "Wait for confirmation, escalate if needed"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Account Opening Applicant",
+      "aliases": [
+        "customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "prospective_customer",
+      "description": "Individual applying to open an account who must provide valid KYC documentation, current address verification, and complete all required form fields.",
+      "context": [
+        "Customer used old ID",
+        "Customer missed fields",
+        "Contact customer"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_proc_001",
+    "ps_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_001",
+    "ps_002": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_002",
+    "ps_003": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_003",
+    "ps_004": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_004",
+    "ps_005": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_005",
+    "ra_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ra_001",
+    "ra_002": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ra_002",
+    "dp_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_001",
+    "dp_002": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_002",
+    "dp_003": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_003",
+    "dp_004": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_004",
+    "dp_005": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_005",
+    "cc_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_001",
+    "cc_002": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_002",
+    "cc_003": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_003",
+    "id_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_id_001",
+    "addr_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_addr_001",
+    "kyc_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_kyc_001",
+    "aml_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_aml_001",
+    "cust_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_proc_001",
+      "name": "Account Opening Process",
+      "aliases": [
+        "online_opening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_opening",
+      "description": "End-to-end account opening workflow that includes KYC document verification, address verification, and AML screening. The process may encounter delays or exceptions requiring customer contact and escalation.",
+      "context": [
+        "KYC document expired",
+        "Address mismatch",
+        "AML screening delay",
+        "Slow online opening"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_001",
+      "name": "KYC Document Verification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step where customer-provided identity documents are checked for validity and currency. Documents may be expired or invalid, requiring replacement.",
+      "context": [
+        "KYC document expired",
+        "Customer used old ID",
+        "Request new valid document"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_002",
+      "name": "Address Verification",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_verification",
+      "description": "Verification step comparing customer-provided address against identity document and verification records. Mismatches trigger customer contact and request for current address proof.",
+      "context": [
+        "Address mismatch",
+        "ID/verification address different",
+        "Explain requirement, request current address verification"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_003",
+      "name": "AML Screening",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Anti-Money Laundering screening step that may experience system delays or generate hits requiring confirmation and potential escalation.",
+      "context": [
+        "AML screening delay",
+        "System delay or hit found",
+        "Wait for confirmation, escalate if needed"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_004",
+      "name": "Form Completion Check",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Validation step ensuring all required form fields are completed by the customer. Incomplete forms trigger customer contact to obtain missing information.",
+      "context": [
+        "Form incomplete",
+        "Customer missed fields",
+        "Contact customer, request missing info"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_005",
+      "name": "System Processing",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Online system processing step for account opening that may experience delays requiring retry or support contact.",
+      "context": [
+        "Slow online opening",
+        "System processing",
+        "Retry, contact support if persistent"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ra_001",
+      "name": "Customer Service Support",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer_service",
+      "description": "Support role responsible for contacting customers regarding incomplete forms, missing information, and persistent system issues.",
+      "context": [
+        "Contact customer, request missing info",
+        "contact support if persistent"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ra_002",
+      "name": "Escalation Handler",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Role responsible for escalating AML screening delays or hits that require confirmation and further investigation.",
+      "context": [
+        "escalate if needed"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_001",
+      "name": "KYC Document Validity Check",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate determining whether the provided KYC document is valid and current. Expired or invalid documents trigger a request for replacement.",
+      "context": [
+        "KYC document expired",
+        "Request new valid document"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_002",
+      "name": "Address Match Verification",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate comparing identity document address against verification records. Mismatches require explanation to customer and current address verification.",
+      "context": [
+        "Address mismatch",
+        "ID/verification address different"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_003",
+      "name": "AML Screening Result Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "Decision gate evaluating AML screening outcome. System delays or hits found trigger confirmation wait and potential escalation.",
+      "context": [
+        "AML screening delay",
+        "System delay or hit found",
+        "Wait for confirmation, escalate if needed"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_004",
+      "name": "Form Completeness Check",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate verifying all required form fields are completed. Incomplete forms trigger customer contact for missing information.",
+      "context": [
+        "Form incomplete",
+        "Customer missed fields"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_005",
+      "name": "System Processing Success Gate",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate evaluating online system processing completion. Slow or failed processing triggers retry or support contact.",
+      "context": [
+        "Slow online opening",
+        "Retry, contact support if persistent"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_001",
+      "name": "KYC Document Verification Checkpoint",
+      "aliases": [],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "document_retention",
+      "description": "Mandatory compliance gate ensuring valid KYC identification documents are collected and verified before account opening proceeds.",
+      "context": [
+        "KYC document expired",
+        "Request new valid document"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_002",
+      "name": "Address Verification Checkpoint",
+      "aliases": [],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "data_protection_check",
+      "description": "Mandatory compliance gate ensuring customer address is verified and matches identity documentation before account opening proceeds.",
+      "context": [
+        "Address mismatch",
+        "request current address verification"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_003",
+      "name": "AML Screening Checkpoint",
+      "aliases": [],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory regulatory compliance gate requiring AML screening completion and confirmation before account opening is finalized.",
+      "context": [
+        "AML screening delay",
+        "Wait for confirmation"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_id_001",
+      "name": "Identity Document",
+      "aliases": [
+        "ID"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "document_recording",
+      "description": "Official identity document collected during account opening that must be valid and current. Expired documents require replacement with new valid documentation.",
+      "context": [
+        "KYC document expired",
+        "Customer used old ID",
+        "Request new valid document"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_addr_001",
+      "name": "Address Verification",
+      "aliases": [],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "Customer address verification process comparing identity document address against verification records. Mismatches require current address proof from customer.",
+      "context": [
+        "Address mismatch",
+        "ID/verification address different",
+        "request current address verification"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_kyc_001",
+      "name": "Know Your Customer Verification",
+      "aliases": [
+        "KYC"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "KYC compliance process involving document verification and address verification. Expired documents or address mismatches trigger customer contact and document replacement.",
+      "context": [
+        "KYC document expired",
+        "Address mismatch",
+        "Request new valid document"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_aml_001",
+      "name": "AML Screening",
+      "aliases": [],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Anti-Money Laundering screening process that may experience system delays or generate hits requiring confirmation and escalation.",
+      "context": [
+        "AML screening delay",
+        "System delay or hit found",
+        "Wait for confirmation, escalate if needed"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cust_001",
+      "name": "Account Opening Applicant",
+      "aliases": [
+        "customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "prospective_customer",
+      "description": "Individual applying to open an account who must provide valid KYC documentation, current address verification, and complete all required form fields.",
+      "context": [
+        "Customer used old ID",
+        "Customer missed fields",
+        "Contact customer"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_proc_001",
+      "name": "Account Opening Process",
+      "properties": {
+        "scope": "new account applications",
+        "channels": [
+          "branch",
+          "online"
+        ],
+        "departments_involved": [
+          "Customer Service",
+          "Compliance",
+          "Operations"
+        ],
+        "trigger": "customer initiates account opening request",
+        "outcome_success": "account successfully opened and activated",
+        "outcome_failure": "account opening rejected or delayed pending resolution"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_001",
+      "name": "KYC Document Verification",
+      "properties": {
+        "step_number": 1,
+        "actor": "Customer Service Support",
+        "input": "identity document provided by customer",
+        "output": "validated KYC document record",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": true,
+        "tools_or_systems": [
+          "document verification system"
+        ],
+        "failure_path": "request new valid document from customer"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_002",
+      "name": "Address Verification",
+      "properties": {
+        "step_number": 2,
+        "actor": "Customer Service Support",
+        "input": "address from identity document and customer declaration",
+        "output": "verified address record",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": true,
+        "tools_or_systems": [
+          "address verification system"
+        ],
+        "failure_path": "request current address verification documentation"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_003",
+      "name": "AML Screening",
+      "properties": {
+        "step_number": 3,
+        "actor": "Compliance System",
+        "input": "customer personal details",
+        "output": "AML screening result",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "AML screening system"
+        ],
+        "failure_path": "escalate for manual review if hit found or system delay occurs"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_004",
+      "name": "Form Completion Check",
+      "properties": {
+        "step_number": 4,
+        "actor": "Customer Service Support",
+        "input": "account opening form",
+        "output": "form completeness validation",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": true,
+        "failure_path": "contact customer and request missing information"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_005",
+      "name": "System Processing",
+      "properties": {
+        "step_number": 5,
+        "actor": "Operations System",
+        "input": "verified customer data and completed form",
+        "output": "account record created in core system",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "core banking system"
+        ],
+        "failure_path": "retry processing or contact support if persistent"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ra_001",
+      "name": "Customer Service Support",
+      "properties": {
+        "role_type": "human",
+        "department": "Customer Service",
+        "authority_level": "operational",
+        "channels": [
+          "branch",
+          "online",
+          "phone"
+        ],
+        "responsibilities": [
+          "document verification",
+          "address verification",
+          "form completion check",
+          "customer contact"
+        ]
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ra_002",
+      "name": "Escalation Handler",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "supervisory",
+        "channels": [
+          "system",
+          "email",
+          "phone"
+        ],
+        "responsibilities": [
+          "AML screening delay resolution",
+          "manual review of screening hits"
+        ]
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_001",
+      "name": "KYC Document Validity Check",
+      "properties": {
+        "decision_question": "Is the identity document valid and not expired?",
+        "criteria": [
+          "document not expired",
+          "document is recognized type",
+          "document is legible"
+        ],
+        "decision_maker": "Customer Service Support",
+        "path_yes": "proceed to Address Verification",
+        "path_no": "request new valid document from customer"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_002",
+      "name": "Address Match Verification",
+      "properties": {
+        "decision_question": "Does the address on identity document match customer declaration and verification?",
+        "criteria": [
+          "address matches identity document",
+          "address verified by acceptable proof"
+        ],
+        "decision_maker": "Customer Service Support",
+        "path_yes": "proceed to AML Screening",
+        "path_no": "request current address verification documentation"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_003",
+      "name": "AML Screening Result Gate",
+      "properties": {
+        "decision_question": "Does the customer pass AML screening?",
+        "criteria": [
+          "no match on sanctions lists",
+          "no system delays"
+        ],
+        "decision_maker": "Compliance System",
+        "path_yes": "proceed to Form Completion Check",
+        "path_no": "escalate for manual review or wait for confirmation"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_004",
+      "name": "Form Completeness Check",
+      "properties": {
+        "decision_question": "Are all required form fields completed?",
+        "criteria": [
+          "all mandatory fields populated",
+          "no missing information"
+        ],
+        "decision_maker": "Customer Service Support",
+        "path_yes": "proceed to System Processing",
+        "path_no": "contact customer and request missing information"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_005",
+      "name": "System Processing Success Gate",
+      "properties": {
+        "decision_question": "Does the system successfully create the account record?",
+        "criteria": [
+          "account record created without errors",
+          "system processing completes"
+        ],
+        "decision_maker": "Operations System",
+        "path_yes": "account opening complete",
+        "path_no": "retry processing or contact support if persistent"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_001",
+      "name": "KYC Document Verification Checkpoint",
+      "properties": {
+        "regulatory_basis": "FCA COBS",
+        "mandatory": true,
+        "applies_to_channels": [
+          "branch",
+          "online"
+        ],
+        "evidence_required": [
+          "valid identity document",
+          "document not expired"
+        ],
+        "performed_by": "Customer Service Support",
+        "timing": "step 1 of account opening process",
+        "failure_consequence": "account opening cannot proceed"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_002",
+      "name": "Address Verification Checkpoint",
+      "properties": {
+        "regulatory_basis": "FCA COBS",
+        "mandatory": true,
+        "applies_to_channels": [
+          "branch",
+          "online"
+        ],
+        "evidence_required": [
+          "address verification documentation",
+          "address match confirmation"
+        ],
+        "performed_by": "Customer Service Support",
+        "timing": "step 2 of account opening process",
+        "failure_consequence": "account opening cannot proceed"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_003",
+      "name": "AML Screening Checkpoint",
+      "properties": {
+        "regulatory_basis": "MLR 2017",
+        "mandatory": true,
+        "applies_to_channels": [
+          "branch",
+          "online"
+        ],
+        "evidence_required": [
+          "AML screening result",
+          "no match on sanctions lists"
+        ],
+        "performed_by": "Compliance System",
+        "timing": "step 3 of account opening process",
+        "failure_consequence": "account opening rejected or escalated for manual review"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_id_001",
+      "name": "Identity Document",
+      "properties": {
+        "expiry_check": true,
+        "collection_steps": [
+          "customer provides document at branch or uploads online"
+        ],
+        "verification_steps": [
+          "check document validity",
+          "verify document not expired",
+          "confirm document is recognized type"
+        ],
+        "recording_obligation": "document details recorded in KYC system"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_addr_001",
+      "name": "Address Verification",
+      "properties": {
+        "collection_steps": [
+          "capture address from identity document",
+          "obtain customer declaration of current address"
+        ],
+        "verification_steps": [
+          "match address on identity document with customer declaration",
+          "verify address with acceptable proof"
+        ],
+        "acceptable_proof": [
+          "utility bill",
+          "credit bureau verification"
+        ],
+        "recording_system": "customer profile system",
+        "update_process": "request current address verification documentation if mismatch detected"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_kyc_001",
+      "name": "Know Your Customer Verification",
+      "properties": {
+        "mandatory": true,
+        "timing_or_refresh_frequency": "required at account opening",
+        "verification_method": [
+          "identity document verification",
+          "address verification"
+        ],
+        "consequence_of_failure": "account opening cannot proceed"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_aml_001",
+      "name": "AML Screening",
+      "properties": {
+        "mandatory": true,
+        "screening_lists_or_scope": "sanctions lists",
+        "hit_or_match_response": "escalate for manual review if hit found or system delay occurs",
+        "regulatory_basis": "MLR 2017"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cust_001",
+      "name": "Account Opening Applicant",
+      "properties": {
+        "customer_type": "new",
+        "context_role": "initiator of account opening process",
+        "eligibility_or_verification_status": "subject to KYC, address, and AML verification"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_001",
+      "target_name": "KYC Document Verification",
+      "rel_type": "contains",
+      "description": "Account Opening Process includes KYC Document Verification as a process step",
+      "properties": {
+        "sequence_position": 1,
+        "mandatory": true
+      },
+      "context": "KYC document expired | Customer used old ID | Request new valid document",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_002",
+      "target_name": "Address Verification",
+      "rel_type": "contains",
+      "description": "Account Opening Process includes Address Verification as a process step",
+      "properties": {
+        "sequence_position": 2,
+        "mandatory": true
+      },
+      "context": "Address mismatch | ID/verification address different | Explain requirement, request current address verification",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_003",
+      "target_name": "AML Screening",
+      "rel_type": "contains",
+      "description": "Account Opening Process includes AML Screening as a process step",
+      "properties": {
+        "sequence_position": 3,
+        "mandatory": true
+      },
+      "context": "AML screening delay | System delay or hit found | Wait for confirmation, escalate if needed",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_004",
+      "target_name": "Form Completion Check",
+      "rel_type": "contains",
+      "description": "Account Opening Process includes Form Completion Check as a process step",
+      "properties": {
+        "sequence_position": 4,
+        "mandatory": true
+      },
+      "context": "Form incomplete | Customer missed fields | Contact customer, request missing info",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_005",
+      "target_name": "System Processing",
+      "rel_type": "contains",
+      "description": "Account Opening Process includes System Processing as a process step",
+      "properties": {
+        "sequence_position": 5,
+        "mandatory": true
+      },
+      "context": "Slow online opening | System processing | Retry, contact support if persistent",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_kyc_001",
+      "target_name": "Know Your Customer Verification",
+      "rel_type": "requires",
+      "description": "Account Opening Process requires KYC Verification compliance checkpoint",
+      "properties": {
+        "mandatory": true,
+        "stage": "early"
+      },
+      "context": "KYC document expired | Customer used old ID | Request new valid document",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_aml_001",
+      "target_name": "AML Screening",
+      "rel_type": "requires",
+      "description": "Account Opening Process requires AML Screening compliance checkpoint",
+      "properties": {
+        "mandatory": true,
+        "stage": "middle"
+      },
+      "context": "AML screening delay | System delay or hit found | Wait for confirmation, escalate if needed",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cust_001",
+      "target_name": "Account Opening Applicant",
+      "rel_type": "processes_application_of",
+      "description": "Account Opening Process processes application of Account Opening Applicant",
+      "properties": {
+        "application_type": "account_opening"
+      },
+      "context": "Form incomplete | Customer missed fields | Contact customer, request missing info",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_001",
+      "source_name": "KYC Document Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_002",
+      "target_name": "Address Verification",
+      "rel_type": "followed_by",
+      "description": "KYC Document Verification is followed by Address Verification",
+      "properties": {
+        "sequence": "sequential",
+        "conditional": false
+      },
+      "context": "KYC document expired | Customer used old ID | Request new valid document; Address mismatch | ID/verification address different",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_002",
+      "source_name": "Address Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_003",
+      "target_name": "AML Screening",
+      "rel_type": "followed_by",
+      "description": "Address Verification is followed by AML Screening",
+      "properties": {
+        "sequence": "sequential",
+        "conditional": false
+      },
+      "context": "Address mismatch | ID/verification address different; AML screening delay | System delay or hit found",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_003",
+      "source_name": "AML Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_004",
+      "target_name": "Form Completion Check",
+      "rel_type": "followed_by",
+      "description": "AML Screening is followed by Form Completion Check",
+      "properties": {
+        "sequence": "sequential",
+        "conditional": false
+      },
+      "context": "AML screening delay | System delay or hit found; Form incomplete | Customer missed fields",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_004",
+      "source_name": "Form Completion Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_005",
+      "target_name": "System Processing",
+      "rel_type": "followed_by",
+      "description": "Form Completion Check is followed by System Processing",
+      "properties": {
+        "sequence": "sequential",
+        "conditional": false
+      },
+      "context": "Form incomplete | Customer missed fields; Slow online opening | System processing",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_001",
+      "source_name": "KYC Document Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_001",
+      "target_name": "KYC Document Validity Check",
+      "rel_type": "leads_to",
+      "description": "KYC Document Verification leads to KYC Document Validity Check decision point",
+      "properties": {
+        "decision_required": true,
+        "pass_condition": "document_valid_and_current",
+        "fail_condition": "document_expired_or_invalid"
+      },
+      "context": "KYC document expired | Customer used old ID | Request new valid document",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_002",
+      "source_name": "Address Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_002",
+      "target_name": "Address Match Verification",
+      "rel_type": "leads_to",
+      "description": "Address Verification leads to Address Match Verification decision point",
+      "properties": {
+        "decision_required": true,
+        "pass_condition": "address_matches",
+        "fail_condition": "address_mismatch"
+      },
+      "context": "Address mismatch | ID/verification address different | Explain requirement, request current address verification",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_003",
+      "source_name": "AML Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_003",
+      "target_name": "AML Screening Result Gate",
+      "rel_type": "leads_to",
+      "description": "AML Screening leads to AML Screening Result Gate decision point",
+      "properties": {
+        "decision_required": true,
+        "pass_condition": "screening_clear",
+        "fail_condition": "hit_found_or_delay"
+      },
+      "context": "AML screening delay | System delay or hit found | Wait for confirmation, escalate if needed",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_004",
+      "source_name": "Form Completion Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_004",
+      "target_name": "Form Completeness Check",
+      "rel_type": "leads_to",
+      "description": "Form Completion Check leads to Form Completeness Check decision point",
+      "properties": {
+        "decision_required": true,
+        "pass_condition": "all_fields_complete",
+        "fail_condition": "missing_fields"
+      },
+      "context": "Form incomplete | Customer missed fields | Contact customer, request missing info",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_005",
+      "source_name": "System Processing",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_005",
+      "target_name": "System Processing Success Gate",
+      "rel_type": "leads_to",
+      "description": "System Processing leads to System Processing Success Gate decision point",
+      "properties": {
+        "decision_required": true,
+        "pass_condition": "processing_successful",
+        "fail_condition": "processing_failure_or_delay"
+      },
+      "context": "Slow online opening | System processing | Retry, contact support if persistent",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_001",
+      "source_name": "KYC Document Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ra_001",
+      "target_name": "Customer Service Support",
+      "rel_type": "performed_by",
+      "description": "KYC Document Verification is performed by Customer Service Support",
+      "properties": {
+        "role_responsibility": "verify_kyc_documents"
+      },
+      "context": "KYC document expired | Customer used old ID | Request new valid document",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_002",
+      "source_name": "Address Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ra_001",
+      "target_name": "Customer Service Support",
+      "rel_type": "performed_by",
+      "description": "Address Verification is performed by Customer Service Support",
+      "properties": {
+        "role_responsibility": "verify_address"
+      },
+      "context": "Address mismatch | ID/verification address different | Explain requirement, request current address verification",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_003",
+      "source_name": "AML Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ra_001",
+      "target_name": "Customer Service Support",
+      "rel_type": "performed_by",
+      "description": "AML Screening is performed by Customer Service Support",
+      "properties": {
+        "role_responsibility": "execute_aml_screening"
+      },
+      "context": "AML screening delay | System delay or hit found | Wait for confirmation, escalate if needed",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_004",
+      "source_name": "Form Completion Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ra_001",
+      "target_name": "Customer Service Support",
+      "rel_type": "performed_by",
+      "description": "Form Completion Check is performed by Customer Service Support",
+      "properties": {
+        "role_responsibility": "verify_form_completeness"
+      },
+      "context": "Form incomplete | Customer missed fields | Contact customer, request missing info",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_003",
+      "source_name": "AML Screening Result Gate",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ra_002",
+      "target_name": "Escalation Handler",
+      "rel_type": "escalated_to",
+      "description": "AML Screening Result Gate escalates to Escalation Handler on failure or delay",
+      "properties": {
+        "escalation_trigger": "hit_found_or_system_delay",
+        "escalation_condition": "on_failure"
+      },
+      "context": "AML screening delay | System delay or hit found | Wait for confirmation, escalate if needed",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_001",
+      "source_name": "KYC Document Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_001",
+      "target_name": "KYC Document Verification Checkpoint",
+      "rel_type": "satisfies",
+      "description": "KYC Document Verification satisfies KYC Document Verification Checkpoint",
+      "properties": {
+        "compliance_requirement": "kyc_verification"
+      },
+      "context": "KYC document expired | Customer used old ID | Request new valid document",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_002",
+      "source_name": "Address Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_002",
+      "target_name": "Address Verification Checkpoint",
+      "rel_type": "satisfies",
+      "description": "Address Verification satisfies Address Verification Checkpoint",
+      "properties": {
+        "compliance_requirement": "address_verification"
+      },
+      "context": "Address mismatch | ID/verification address different | Explain requirement, request current address verification",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_003",
+      "source_name": "AML Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_003",
+      "target_name": "AML Screening Checkpoint",
+      "rel_type": "satisfies",
+      "description": "AML Screening satisfies AML Screening Checkpoint",
+      "properties": {
+        "compliance_requirement": "aml_screening"
+      },
+      "context": "AML screening delay | System delay or hit found | Wait for confirmation, escalate if needed",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_001",
+      "source_name": "KYC Document Verification Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_001",
+      "target_name": "KYC Document Validity Check",
+      "rel_type": "gates",
+      "description": "KYC Document Verification Checkpoint gates KYC Document Validity Check decision point",
+      "properties": {
+        "gate_type": "compliance_gate",
+        "must_pass": true
+      },
+      "context": "KYC document expired | Customer used old ID | Request new valid document",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_002",
+      "source_name": "Address Verification Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_002",
+      "target_name": "Address Match Verification",
+      "rel_type": "gates",
+      "description": "Address Verification Checkpoint gates Address Match Verification decision point",
+      "properties": {
+        "gate_type": "compliance_gate",
+        "must_pass": true
+      },
+      "context": "Address mismatch | ID/verification address different | Explain requirement, request current address verification",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_003",
+      "source_name": "AML Screening Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_003",
+      "target_name": "AML Screening Result Gate",
+      "rel_type": "gates",
+      "description": "AML Screening Checkpoint gates AML Screening Result Gate decision point",
+      "properties": {
+        "gate_type": "compliance_gate",
+        "must_pass": true
+      },
+      "context": "AML screening delay | System delay or hit found | Wait for confirmation, escalate if needed",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_001",
+      "source_name": "KYC Document Verification Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_002",
+      "target_name": "Address Verification Checkpoint",
+      "rel_type": "precedes",
+      "description": "KYC Document Verification Checkpoint precedes Address Verification Checkpoint",
+      "properties": {
+        "sequence": "sequential",
+        "dependency": true
+      },
+      "context": "KYC document expired | Customer used old ID; Address mismatch | ID/verification address different",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_002",
+      "source_name": "Address Verification Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_003",
+      "target_name": "AML Screening Checkpoint",
+      "rel_type": "precedes",
+      "description": "Address Verification Checkpoint precedes AML Screening Checkpoint",
+      "properties": {
+        "sequence": "sequential",
+        "dependency": true
+      },
+      "context": "Address mismatch | ID/verification address different; AML screening delay | System delay or hit found",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_kyc_001",
+      "source_name": "Know Your Customer Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_id_001",
+      "target_name": "Identity Document",
+      "rel_type": "requires",
+      "description": "KYC Verification requires Identity Document",
+      "properties": {
+        "document_type": "valid_id",
+        "requirement": "mandatory"
+      },
+      "context": "KYC document expired | Customer used old ID | Request new valid document",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_kyc_001",
+      "source_name": "Know Your Customer Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_addr_001",
+      "target_name": "Address Verification",
+      "rel_type": "requires_proof_from",
+      "description": "KYC Verification requires proof from Address Verification",
+      "properties": {
+        "proof_type": "address_proof",
+        "requirement": "mandatory"
+      },
+      "context": "Address mismatch | ID/verification address different | Explain requirement, request current address verification",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_id_001",
+      "source_name": "Identity Document",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cust_001",
+      "target_name": "Account Opening Applicant",
+      "rel_type": "proves_identity_of",
+      "description": "Identity Document proves identity of Account Opening Applicant",
+      "properties": {
+        "document_status": "must_be_valid_and_current"
+      },
+      "context": "KYC document expired | Customer used old ID | Request new valid document",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_addr_001",
+      "source_name": "Address Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cust_001",
+      "target_name": "Account Opening Applicant",
+      "rel_type": "registered_to",
+      "description": "Address Verification is registered to Account Opening Applicant",
+      "properties": {
+        "verification_requirement": "current_address"
+      },
+      "context": "Address mismatch | ID/verification address different | Explain requirement, request current address verification",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_001",
+      "source_name": "KYC Document Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cust_001",
+      "target_name": "Account Opening Applicant",
+      "rel_type": "collects_data_from",
+      "description": "KYC Document Verification collects data from Account Opening Applicant",
+      "properties": {
+        "data_type": "kyc_documents"
+      },
+      "context": "KYC document expired | Customer used old ID | Request new valid document",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_002",
+      "source_name": "Address Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cust_001",
+      "target_name": "Account Opening Applicant",
+      "rel_type": "collects_data_from",
+      "description": "Address Verification collects data from Account Opening Applicant",
+      "properties": {
+        "data_type": "address_information"
+      },
+      "context": "Address mismatch | ID/verification address different | Explain requirement, request current address verification",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_004",
+      "source_name": "Form Completion Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cust_001",
+      "target_name": "Account Opening Applicant",
+      "rel_type": "notifies",
+      "description": "Form Completion Check notifies Account Opening Applicant of missing information",
+      "properties": {
+        "notification_type": "request_for_missing_info"
+      },
+      "context": "Form incomplete | Customer missed fields | Contact customer, request missing info",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_001",
+      "source_name": "KYC Document Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_002",
+      "source_name": "Address Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_003",
+      "source_name": "AML Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_004",
+      "source_name": "Form Completion Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ps_005",
+      "source_name": "System Processing",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ra_001",
+      "source_name": "Customer Service Support",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_ra_002",
+      "source_name": "Escalation Handler",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_001",
+      "source_name": "KYC Document Validity Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_002",
+      "source_name": "Address Match Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_003",
+      "source_name": "AML Screening Result Gate",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_004",
+      "source_name": "Form Completeness Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_dp_005",
+      "source_name": "System Processing Success Gate",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_001",
+      "source_name": "KYC Document Verification Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_002",
+      "source_name": "Address Verification Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cc_003",
+      "source_name": "AML Screening Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_id_001",
+      "source_name": "Identity Document",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_addr_001",
+      "source_name": "Address Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_kyc_001",
+      "source_name": "Know Your Customer Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_aml_001",
+      "source_name": "AML Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033_cust_001",
+      "source_name": "Account Opening Applicant",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_033",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

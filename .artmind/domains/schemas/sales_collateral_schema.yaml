@@ -1,0 +1,499 @@
+name: sales_collateral
+description: Sales and marketing documents such as pitch decks, capability presentations, case studies,
+  white papers, and proposal materials. These documents describe client challenges, technology solutions,
+  delivery approaches, quantified outcomes, and competitive differentiators — typically produced by consulting
+  or technology firms to win or expand client engagements.
+subject: sales and marketing collateral analysis
+persona: a knowledgeable sales or solutions analyst
+temporal:
+  document:
+    valid_from:
+    - Date
+    - date
+  relative_anchor: document.valid_from
+  defaults:
+    valid_from: ingestion_date
+    valid_to: null
+    superseded_by: null
+    time_source: default_ingestion
+    valid_from_inferred: true
+entity_types:
+  CLIENT:
+    kind: recurrent
+    description: Any named customer, reference client, target segment, or prospect organisation described
+      in the document. Includes anonymised clients described by industry or geography.
+    type_examples:
+    - reference_client
+    - named_account
+    - target_segment
+    - industry_vertical
+    - anonymous_client
+    - prospect
+    - partner
+    properties:
+      industry:
+        hint: banking | insurance | retail | telecom | etc.
+      geography:
+        hint: UK | US | global | etc.
+      size:
+        hint: large | mid-market | enterprise | etc.
+      relationship_status:
+        hint: reference_client | active | prospect
+      named_or_anonymous:
+        hint: true | false
+      pain_points:
+        hint: list — as described in document
+      engagement_type:
+        hint: if mentioned
+    relates_to:
+      CHALLENGE:
+      - faces
+      - experiencing
+      - prioritising
+      - impacted_by
+      - seeking_to_solve
+      OFFERING_SOLUTION:
+      - engaged_with
+      - benefiting_from
+      - evaluated
+      - purchased
+      - is_target_for
+      BENEFIT:
+      - achieved
+      - realised
+      - reported
+      - projected_to_gain
+      TECHNOLOGY:
+      - uses
+      - is_replacing
+      - is_migrating_from
+      - operates
+  OFFERING_SOLUTION:
+    kind: recurrent
+    description: A named product, solution, service, programme, or engagement type being sold or described.
+      Offerings are what the selling organisation provides to clients as solutions to solve their challenges
+      or problems.
+    type_examples:
+    - solution
+    - managed_service
+    - transformation_programme
+    - platform
+    - professional_service
+    - product
+    - framework
+    - accelerator
+    - subscription
+    - partnership
+    - delivery_model
+    properties:
+      offering_type:
+        hint: managed_service | programme | product | etc.
+      delivery_model:
+        hint: onshore | offshore | hybrid | global_delivery
+      scope:
+        hint: what is included
+      target_client_profile: {}
+      named_assets_or_accelerators: {}
+      duration_or_contract_type:
+        hint: if mentioned
+      key_phases_or_components:
+        hint: list
+    relates_to:
+      CAPABILITY:
+      - comprises
+      - delivers
+      - enabled_by
+      - includes
+      - built_on
+      USE_CASE:
+      - addresses
+      - proven_in
+      - applicable_to
+      - demonstrated_through
+      BENEFIT:
+      - produces
+      - promises
+      - has_delivered
+      - quantified_by
+      CHALLENGE:
+      - solves
+      - mitigates
+      - designed_for
+      - targets
+      DIFFERENTIATOR:
+      - distinguished_by
+      - characterised_by
+      - supported_by
+      TECHNOLOGY:
+      - built_on
+      - integrates_with
+      - uses
+      - replaces
+      - migrates_from
+      - migrates_to
+  CAPABILITY:
+    kind: recurrent
+    description: A specific technical, functional, or operational capability that the selling organisation
+      or its solution provides. Capabilities are components of an offering — things the solution can do.
+    type_examples:
+    - technical_capability
+    - delivery_capability
+    - ai_capability
+    - analytics_capability
+    - automation_capability
+    - integration_capability
+    - migration_capability
+    - security_capability
+    - platform_capability
+    properties:
+      what_it_does:
+        hint: brief description of the capability
+      technical_components:
+        hint: list
+      delivery_maturity:
+        hint: proven | emerging | new
+      differentiating_aspect:
+        hint: what makes it stand out
+      industry_applicability:
+        hint: list
+    relates_to:
+      TECHNOLOGY:
+      - powered_by
+      - delivered_via
+      - integrates_with
+      - requires
+      - uses
+      USE_CASE:
+      - enables
+      - applied_in
+      - proven_through
+      - supports
+      BENEFIT:
+      - delivers
+      - quantified_as
+      - results_in
+  USE_CASE:
+    kind: recurrent
+    description: A specific application, scenario, or context in which the offering, solution or capability
+      is applied to solve a problem or create value.
+    type_examples:
+    - automation
+    - analytics
+    - migration
+    - modernisation
+    - customer_experience
+    - fraud_detection
+    - compliance
+    - cost_reduction
+    - revenue_generation
+    - operational_efficiency
+    properties:
+      problem_context:
+        hint: the situation being addressed
+      approach:
+        hint: how it is done
+      outcome_achieved:
+        hint: if stated
+      complexity_level:
+        hint: straightforward | complex | highly_complex
+      industry_or_vertical: {}
+    relates_to:
+      CHALLENGE:
+      - solves
+      - addresses
+      - mitigates
+      BENEFIT:
+      - produces
+      - demonstrates
+      - leads_to
+      TECHNOLOGY:
+      - uses
+      - powered_by
+      - integrates_with
+  BENEFIT:
+    kind: recurrent
+    description: A stated outcome, result, or value delivered — quantified or qualified. Benefits are
+      what the client gains or has gained from the offering.
+    type_examples:
+    - cost_saving
+    - efficiency_gain
+    - risk_reduction
+    - revenue_impact
+    - speed_improvement
+    - quality_improvement
+    - compliance_achievement
+    - scale_achievement
+    - customer_satisfaction
+    properties:
+      quantified_value:
+        hint: the metric if stated, e.g., "30% containment rate"
+      beneficiary:
+        hint: who gains from it — client, end-user, etc.
+      time_to_value:
+        hint: if mentioned
+      category:
+        hint: cost | speed | quality | risk | revenue | satisfaction
+      evidence_type:
+        hint: measured | projected | claimed
+    guidance: |-
+      Quantified or qualified benefits captured as BENEFIT entities.
+      Capture the benefit's exact quantified value when the document states one, and link it to the capability or offering that delivers it.
+  CHALLENGE:
+    kind: recurrent
+    description: A named business problem, pain point, constraint, or need that the client faces. Challenges
+      justify why the offering or capability is relevant.
+    type_examples:
+    - technical_debt
+    - cost_pressure
+    - regulatory_burden
+    - skill_gap
+    - scalability_limitation
+    - legacy_constraint
+    - operational_inefficiency
+    - competitive_pressure
+    - security_risk
+    - data_quality_issue
+    properties:
+      root_cause:
+        hint: what causes this problem
+      business_impact:
+        hint: what it costs or risks
+      urgency:
+        hint: critical | high | medium
+      who_faces_it:
+        hint: client segment or named client
+      current_workaround:
+        hint: if mentioned
+    guidance: Client problems captured as CHALLENGE entities.
+  TECHNOLOGY:
+    kind: recurrent
+    description: A named platform, system, tool, framework, protocol, or technical component referenced
+      in the collateral — either part of the solution, the client's existing landscape, or a third-party
+      component.
+    type_examples:
+    - cloud_platform
+    - legacy_system
+    - ai_platform
+    - database
+    - integration_tool
+    - automation_tool
+    - analytics_platform
+    - payment_platform
+    - framework
+    - api
+    - channel
+    - infrastructure
+    properties:
+      technology_category:
+        hint: cloud | ai | data | payments | automation | etc.
+      role_in_solution:
+        hint: core | supporting | replaced | integrated | target
+      maturity:
+        hint: legacy | modern | emerging
+      key_characteristics:
+        hint: what it does in this context
+      vendor_or_provider: {}
+    relates_to:
+      TECHNOLOGY:
+      - replaces
+      - integrates_with
+      - feeds_into
+      - migrates_to
+  DIFFERENTIATOR:
+    kind: recurrent
+    description: A stated competitive advantage, unique quality, proof point, or distinctive characteristic
+      of the offering or the selling organisation. Differentiators explain why the buyer should choose
+      this over alternatives.
+    type_examples:
+    - delivery_model
+    - proprietary_asset
+    - scale_advantage
+    - domain_expertise
+    - partnership
+    - certification
+    - track_record
+    - speed
+    - global_reach
+    - innovation
+    properties:
+      competitive_advantage:
+        hint: what sets this apart
+      uniqueness:
+        hint: proprietary | best-in-class | certified | scale-based
+      target_audience:
+        hint: who this resonates with
+      relates_to_offering:
+        hint: which offering this differentiates
+      evidence_or_proof_point:
+        hint: how it is substantiated
+    relates_to:
+      CAPABILITY:
+      - based_on
+      - demonstrated_through
+      - rooted_in
+      OFFERING_SOLUTION:
+      - distinguishes
+      - applies_to
+      CLIENT:
+      - resonates_with
+      - proven_for
+  PERSON:
+    kind: recurrent
+    description: Any named individual referenced in the sales document — decision-makers, champions, customer
+      contacts, or named representatives.
+    type_examples:
+    - decision_maker
+    - champion
+    - stakeholder
+    - contact
+    - executive
+    - buyer
+    - influencer
+    - sponsor
+    properties:
+      role_title:
+        hint: their job title or function
+      influence_level:
+        hint: decision_maker | influencer | champion | etc.
+      known_pain_points:
+        hint: list, if mentioned
+      relationship_to_deal:
+        hint: sponsor | blocker | neutral | evaluator
+    relates_to:
+      CLIENT:
+      - represents
+      - sponsors
+      - is_champion_at
+      - evaluates_for
+      - signs_off
+      OFFERING_SOLUTION:
+      - evaluates
+      - champions
+      - objected_to
+      - approved
+      ORGANIZATION:
+      - works_at
+      - leads
+      - represents
+      - part_of
+  OBJECT:
+    kind: recurrent
+    description: Any physical product, hardware, or tangible item relevant to the sales context — distinct
+      from a named TECHNOLOGY platform.
+    type_examples:
+    - product
+    - hardware
+    - device
+    - appliance
+    - tool
+    - physical_system
+    properties:
+      product_category: {}
+      key_features:
+        hint: list
+      compatibility:
+        hint: what it works with
+      price_point:
+        hint: if mentioned
+    relates_to:
+      OFFERING_SOLUTION:
+      - part_of
+      - enables
+      - required_for
+      - competes_with
+      - integrates_with
+      TECHNOLOGY:
+      - uses
+      - implements
+      - runs_on
+  ORGANIZATION:
+    kind: recurrent
+    description: Any company, institution, partner, or formal group referenced beyond the CLIENT — vendors,
+      regulators, industry bodies, or competitors.
+    type_examples:
+    - vendor
+    - partner
+    - regulator
+    - competitor
+    - analyst_firm
+    - industry_body
+    - association
+    - reseller
+    properties:
+      org_type:
+        hint: partner | competitor | regulator | etc.
+      relationship_to_offering:
+        hint: complements | competes | distributes | regulates
+      geographic_presence:
+        hint: if mentioned
+    relates_to:
+      OFFERING_SOLUTION:
+      - distributes
+      - competes_with
+      - validates
+      - integrates_with
+      - regulates
+      CLIENT:
+      - partners_with
+      - competes_with
+      - supplies
+      - regulates
+  LOCATION:
+    kind: recurrent
+    description: Any geographic area, market, country, or site mentioned in the sales context.
+    type_examples:
+    - market
+    - country
+    - region
+    - office
+    - site
+    - territory
+    - deployment_location
+    properties:
+      market_type:
+        hint: geographic | industry | segment
+      strategic_importance:
+        hint: core | expansion | emerging
+      regulatory_environment:
+        hint: if relevant
+    relates_to:
+      CLIENT:
+      - is_market_for
+      - operates_in
+      - regulatory_jurisdiction_of
+      OFFERING_SOLUTION:
+      - available_in
+      - deployed_in
+      - targeted_at
+  EVENT:
+    kind: occurrent
+    description: Any named occurrence, launch, announcement, or industry event referenced in the material.
+    type_examples:
+    - product_launch
+    - conference
+    - announcement
+    - demo
+    - pilot
+    - deadline
+    - proof_of_concept
+    - deal_event
+    properties:
+      event_type:
+        hint: launch | conference | pilot | etc.
+      date_or_period:
+        hint: if mentioned
+        temporal: valid_from
+      relevance_to_deal:
+        hint: opportunity | milestone | deadline
+      key_participants:
+        hint: if mentioned
+    relates_to:
+      OFFERING_SOLUTION:
+      - launched_at
+      - demonstrated_at
+      - evaluated_at
+      - piloted_for
+      CLIENT:
+      - involves
+      - triggered
+      - milestone_for

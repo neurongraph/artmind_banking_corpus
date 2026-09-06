@@ -1,0 +1,689 @@
+{
+  "chunk_seq": 9,
+  "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+  "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+  "text": "## SCENARIO 6: Standing Order Setup  \n**Customer:** \"I'd like to set up a standing order.\"  \n**Agent Script:**  \n```\nAgent: \"Perfect! A standing order lets you set up recurring\npayments to anyone. Let me collect the details:\n\n1. Who do you want to pay? (Recipient name)\n2. Their bank details? (Account number and sort code)\n3. How much each time?\n4. How often? (Weekly, monthly, quarterly, annually)\n5. What date should it start?\n\n[Customer provides details]\n\nLet me confirm:\n- Paying [Recipient] £[amount]\n- Every [frequency]\n- Starting [date]\n\nIs that correct?\n\n[Confirm]\n\nGreat! I've set this up. The first payment will go on [date],\nand then every [frequency] after that. You can change or\ncancel anytime by calling us.\n\nAnything else I can help with?\"\n```  \n---",
+  "name": "Chunk 9/17",
+  "_domain": "banking.communications",
+  "prev_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+  "next_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+  "raw_entities": [
+    {
+      "id": "ct_001",
+      "name": "Standing Order Setup Agent Script",
+      "aliases": [
+        "Standing Order Setup Script",
+        "SO Setup Call Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre agent script for collecting standing order details from a customer, confirming the arrangement, and explaining how the recurring payment will be processed. The script guides the agent through five key information-gathering steps and provides confirmation messaging.",
+      "context": [
+        "Perfect! A standing order lets you set up recurring payments to anyone. Let me collect the details:",
+        "Let me confirm: - Paying [Recipient] £[amount] - Every [frequency] - Starting [date]",
+        "Great! I've set this up. The first payment will go on [date], and then every [frequency] after that. You can change or cancel anytime by calling us."
+      ]
+    },
+    {
+      "id": "tv_001",
+      "name": "Recipient Name",
+      "aliases": [
+        "Payee Name"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "contact_field",
+      "description": "The name of the person or organisation to whom the standing order payment will be made.",
+      "context": [
+        "Who do you want to pay? (Recipient name)",
+        "Paying [Recipient] £[amount]"
+      ]
+    },
+    {
+      "id": "tv_002",
+      "name": "Recipient Bank Details",
+      "aliases": [
+        "Account Number and Sort Code"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "account_data",
+      "description": "The bank account number and sort code of the recipient, required to process the standing order payment.",
+      "context": [
+        "Their bank details? (Account number and sort code)"
+      ]
+    },
+    {
+      "id": "tv_003",
+      "name": "Payment Amount",
+      "aliases": [
+        "Amount"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "The monetary amount to be paid with each standing order transaction.",
+      "context": [
+        "How much each time?",
+        "Paying [Recipient] £[amount]"
+      ]
+    },
+    {
+      "id": "tv_004",
+      "name": "Payment Frequency",
+      "aliases": [
+        "Frequency"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "product_data",
+      "description": "The recurrence interval for the standing order payment — weekly, monthly, quarterly, or annually.",
+      "context": [
+        "How often? (Weekly, monthly, quarterly, annually)",
+        "Every [frequency]"
+      ]
+    },
+    {
+      "id": "tv_005",
+      "name": "Start Date",
+      "aliases": [
+        "Payment Start Date"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "The date on which the standing order will commence and the first payment will be processed.",
+      "context": [
+        "What date should it start?",
+        "Starting [date]",
+        "The first payment will go on [date]"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order Setup",
+      "aliases": [
+        "Recurring Payment Setup"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "The process of establishing a new standing order on a customer account, including collection of recipient details, payment amount, frequency, and start date, followed by confirmation and explanation of the recurring payment arrangement.",
+      "context": [
+        "A standing order lets you set up recurring payments to anyone.",
+        "I've set this up. The first payment will go on [date], and then every [frequency] after that.",
+        "You can change or cancel anytime by calling us."
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Standing Order Customer",
+      "aliases": [
+        "Customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The customer initiating the standing order setup, who provides recipient details, payment amount, frequency, and start date to the agent.",
+      "context": [
+        "Customer: \"I'd like to set up a standing order.\"",
+        "[Customer provides details]",
+        "[Confirm]"
+      ]
+    }
+  ],
+  "id_map": {
+    "ct_001": "01a07428-c932-773f-a5f8-da98f9df05b5_009_ct_001",
+    "tv_001": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_001",
+    "tv_002": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_002",
+    "tv_003": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_003",
+    "tv_004": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_004",
+    "tv_005": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_005",
+    "so_001": "01a07428-c932-773f-a5f8-da98f9df05b5_009_so_001",
+    "cust_001": "01a07428-c932-773f-a5f8-da98f9df05b5_009_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_ct_001",
+      "name": "Standing Order Setup Agent Script",
+      "aliases": [
+        "Standing Order Setup Script",
+        "SO Setup Call Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre agent script for collecting standing order details from a customer, confirming the arrangement, and explaining how the recurring payment will be processed. The script guides the agent through five key information-gathering steps and provides confirmation messaging.",
+      "context": [
+        "Perfect! A standing order lets you set up recurring payments to anyone. Let me collect the details:",
+        "Let me confirm: - Paying [Recipient] £[amount] - Every [frequency] - Starting [date]",
+        "Great! I've set this up. The first payment will go on [date], and then every [frequency] after that. You can change or cancel anytime by calling us."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_001",
+      "name": "Recipient Name",
+      "aliases": [
+        "Payee Name"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "contact_field",
+      "description": "The name of the person or organisation to whom the standing order payment will be made.",
+      "context": [
+        "Who do you want to pay? (Recipient name)",
+        "Paying [Recipient] £[amount]"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_002",
+      "name": "Recipient Bank Details",
+      "aliases": [
+        "Account Number and Sort Code"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "account_data",
+      "description": "The bank account number and sort code of the recipient, required to process the standing order payment.",
+      "context": [
+        "Their bank details? (Account number and sort code)"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_003",
+      "name": "Payment Amount",
+      "aliases": [
+        "Amount"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "The monetary amount to be paid with each standing order transaction.",
+      "context": [
+        "How much each time?",
+        "Paying [Recipient] £[amount]"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_004",
+      "name": "Payment Frequency",
+      "aliases": [
+        "Frequency"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "product_data",
+      "description": "The recurrence interval for the standing order payment — weekly, monthly, quarterly, or annually.",
+      "context": [
+        "How often? (Weekly, monthly, quarterly, annually)",
+        "Every [frequency]"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_005",
+      "name": "Start Date",
+      "aliases": [
+        "Payment Start Date"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "The date on which the standing order will commence and the first payment will be processed.",
+      "context": [
+        "What date should it start?",
+        "Starting [date]",
+        "The first payment will go on [date]"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_so_001",
+      "name": "Standing Order Setup",
+      "aliases": [
+        "Recurring Payment Setup"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "The process of establishing a new standing order on a customer account, including collection of recipient details, payment amount, frequency, and start date, followed by confirmation and explanation of the recurring payment arrangement.",
+      "context": [
+        "A standing order lets you set up recurring payments to anyone.",
+        "I've set this up. The first payment will go on [date], and then every [frequency] after that.",
+        "You can change or cancel anytime by calling us."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_cust_001",
+      "name": "Standing Order Customer",
+      "aliases": [
+        "Customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The customer initiating the standing order setup, who provides recipient details, payment amount, frequency, and start date to the agent.",
+      "context": [
+        "Customer: \"I'd like to set up a standing order.\"",
+        "[Customer provides details]",
+        "[Confirm]"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_ct_001",
+      "name": "Standing Order Setup Agent Script",
+      "properties": {
+        "channel": "call",
+        "trigger_event": "customer requests to set up a standing order",
+        "recipient": "customer calling agent",
+        "tone": "friendly",
+        "key_content": [
+          "Collect recipient name",
+          "Collect recipient bank details (account number and sort code)",
+          "Collect payment amount",
+          "Collect payment frequency (weekly, monthly, quarterly, annually)",
+          "Collect start date",
+          "Confirm all details with customer",
+          "Confirm first payment date and ongoing frequency",
+          "Inform customer of cancellation/amendment options"
+        ],
+        "variables_used": [
+          "[Recipient]",
+          "[amount]",
+          "[frequency]",
+          "[date]"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_001",
+      "name": "Recipient Name",
+      "properties": {
+        "variable_placeholder": "[Recipient]",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Standing Order Setup Agent Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_002",
+      "name": "Recipient Bank Details",
+      "properties": {
+        "variable_placeholder": "[bank details]",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Standing Order Setup Agent Script"
+        ],
+        "description": "Account number and sort code"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_003",
+      "name": "Payment Amount",
+      "properties": {
+        "variable_placeholder": "[amount]",
+        "data_type": "currency",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Standing Order Setup Agent Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_004",
+      "name": "Payment Frequency",
+      "properties": {
+        "variable_placeholder": "[frequency]",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Standing Order Setup Agent Script"
+        ],
+        "example_value": [
+          "weekly",
+          "monthly",
+          "quarterly",
+          "annually"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_005",
+      "name": "Start Date",
+      "properties": {
+        "variable_placeholder": "[date]",
+        "data_type": "date",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Standing Order Setup Agent Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_so_001",
+      "name": "Standing Order Setup",
+      "properties": {
+        "setup_or_amendment_process": "Agent collects recipient name, bank details (account number and sort code), payment amount, frequency (weekly, monthly, quarterly, annually), and start date; agent confirms all details with customer before processing",
+        "beneficiary_validation": "Recipient name and bank details collected and confirmed with customer",
+        "cancellation_process": "Customer can change or cancel anytime by calling the bank"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_cust_001",
+      "name": "Standing Order Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "customer initiating standing order setup via agent call"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_ct_001",
+      "source_name": "Standing Order Setup Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_001",
+      "target_name": "Recipient Name",
+      "rel_type": "contains",
+      "description": "The agent script contains and requires the recipient name as a template variable for standing order setup",
+      "properties": {
+        "position": "first detail collected",
+        "prompt": "Who do you want to pay?"
+      },
+      "context": "1. Who do you want to pay? (Recipient name)",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_ct_001",
+      "source_name": "Standing Order Setup Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_002",
+      "target_name": "Recipient Bank Details",
+      "rel_type": "contains",
+      "description": "The agent script contains and requires recipient bank details as a template variable",
+      "properties": {
+        "position": "second detail collected",
+        "prompt": "Their bank details?",
+        "details_required": [
+          "Account number",
+          "sort code"
+        ]
+      },
+      "context": "2. Their bank details? (Account number and sort code)",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_ct_001",
+      "source_name": "Standing Order Setup Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_003",
+      "target_name": "Payment Amount",
+      "rel_type": "contains",
+      "description": "The agent script contains and requires payment amount as a template variable",
+      "properties": {
+        "position": "third detail collected",
+        "prompt": "How much each time?"
+      },
+      "context": "3. How much each time?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_ct_001",
+      "source_name": "Standing Order Setup Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_004",
+      "target_name": "Payment Frequency",
+      "rel_type": "contains",
+      "description": "The agent script contains and requires payment frequency as a template variable",
+      "properties": {
+        "position": "fourth detail collected",
+        "prompt": "How often?",
+        "frequency_options": [
+          "Weekly",
+          "monthly",
+          "quarterly",
+          "annually"
+        ]
+      },
+      "context": "4. How often? (Weekly, monthly, quarterly, annually)",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_ct_001",
+      "source_name": "Standing Order Setup Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_005",
+      "target_name": "Start Date",
+      "rel_type": "contains",
+      "description": "The agent script contains and requires start date as a template variable",
+      "properties": {
+        "position": "fifth detail collected",
+        "prompt": "What date should it start?"
+      },
+      "context": "5. What date should it start?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_ct_001",
+      "source_name": "Standing Order Setup Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_so_001",
+      "target_name": "Standing Order Setup",
+      "rel_type": "confirms",
+      "description": "The agent script confirms the setup of a standing order with collected details",
+      "properties": {
+        "confirmation_elements": [
+          "Recipient",
+          "amount",
+          "frequency",
+          "start date"
+        ]
+      },
+      "context": "Let me confirm: - Paying [Recipient] £[amount] - Every [frequency] - Starting [date]",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_ct_001",
+      "source_name": "Standing Order Setup Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_cust_001",
+      "target_name": "Standing Order Customer",
+      "rel_type": "addressed_to",
+      "description": "The agent script is addressed to and personalised for the standing order customer",
+      "properties": {
+        "interaction_type": "agent-customer dialogue",
+        "personalisation_via": [
+          "Recipient name",
+          "Payment amount",
+          "Payment frequency",
+          "Start date"
+        ]
+      },
+      "context": "Agent: 'Perfect! A standing order lets you set up recurring payments to anyone. Let me collect the details:'",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_cust_001",
+      "source_name": "Standing Order Customer",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_so_001",
+      "target_name": "Standing Order Setup",
+      "rel_type": "initiated_by",
+      "description": "The standing order is initiated by the customer",
+      "properties": {
+        "customer_action": "requests setup"
+      },
+      "context": "Customer: 'I'd like to set up a standing order.'",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_001",
+      "source_name": "Recipient Name",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_002",
+      "target_name": "Recipient Bank Details",
+      "rel_type": "used_together_with",
+      "description": "Recipient name and bank details are used together to identify the payment destination",
+      "properties": {
+        "purpose": "identify recipient for standing order"
+      },
+      "context": "1. Who do you want to pay? (Recipient name) 2. Their bank details? (Account number and sort code)",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_003",
+      "source_name": "Payment Amount",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_004",
+      "target_name": "Payment Frequency",
+      "rel_type": "used_together_with",
+      "description": "Payment amount and frequency are used together to define the recurring payment schedule",
+      "properties": {
+        "purpose": "define payment schedule"
+      },
+      "context": "3. How much each time? 4. How often? (Weekly, monthly, quarterly, annually)",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_004",
+      "source_name": "Payment Frequency",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_005",
+      "target_name": "Start Date",
+      "rel_type": "used_together_with",
+      "description": "Payment frequency and start date are used together to establish the payment schedule timeline",
+      "properties": {
+        "purpose": "establish payment schedule timeline"
+      },
+      "context": "4. How often? (Weekly, monthly, quarterly, annually) 5. What date should it start?",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_ct_001",
+      "source_name": "Standing Order Setup Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_001",
+      "source_name": "Recipient Name",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_002",
+      "source_name": "Recipient Bank Details",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_003",
+      "source_name": "Payment Amount",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_004",
+      "source_name": "Payment Frequency",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_tv_005",
+      "source_name": "Start Date",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_so_001",
+      "source_name": "Standing Order Setup",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009_cust_001",
+      "source_name": "Standing Order Customer",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ]
+}

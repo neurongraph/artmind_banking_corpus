@@ -1,0 +1,1454 @@
+{
+  "chunk_seq": 5,
+  "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+  "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+  "text": "### Intake Process  \n**Upon Fraud Allegation:**  \n**Step 1: Initial Report**  \n```\nFraud Report Form:\n- Fraud ID: FRAUD-[DATE]-[001-999] (e.g., FRAUD-2026-0115-001)\n- Report Date: [Date/Time]\n- Reporter: [Name, Department, Phone]\n- Reporter Category: [Customer / Staff / System / Law Enforcement]\n\nAlleged Fraud Details:\n- Customer Name & Account: [ACC-XXXXX]\n- Transaction(s) in Question: [List with dates, amounts]\n- Alleged Fraudster Identity (if known): [Description]\n- Fraud Type: [Account Takeover / Unauthorized Transaction / Other]\n- Alleged Loss Amount: [£Amount]\n- Report Urgency: [Routine / Urgent / Critical]\n```  \n**Step 2: Initial Triage**  \n```\nIs This Urgent?\n☐ YES → Immediate action required (within 1 hour)\n- Account takeover in progress\n- Large amount in immediate danger\n- Law enforcement/critical incident\n\n☐ NO → Standard investigation (within 24 hours)\n- Disputed transaction already posted\n- Customer noticed but no immediate threat\n- Routine investigation\n```  \n**Step 3: Account Security Actions** (if urgent)  \n```\nIMMEDIATE ACTIONS (First 5 Minutes):\n- [ ] Freeze customer account (block transactions)\n- [ ] Block customer's debit/credit cards (prevent further fraud)\n- [ ] Reset customer's online banking password\n- [ ] Log customer out of all sessions\n- [ ] Document actions taken & time\n- [ ] Notify customer (by phone if possible)\n- [ ] Escalate to Financial Crime Head if >£5,000\n```  \n---",
+  "name": "Chunk 5/24",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_004",
+  "next_chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_006",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Fraud Intake Process",
+      "aliases": [
+        "Fraud Allegation Intake",
+        "Fraud Report Intake"
+      ],
+      "entity_class": "PROCESS",
+      "type": "fraud_investigation",
+      "description": "End-to-end procedure for receiving, triaging, and initiating response to fraud allegations. Begins with formal fraud report submission and includes urgency classification to determine investigation timeline and immediate account security actions.",
+      "context": [
+        "Upon Fraud Allegation:",
+        "Fraud Report Form:",
+        "Step 1: Initial Report",
+        "Step 2: Initial Triage",
+        "Step 3: Account Security Actions"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Fraud Report Submission",
+      "aliases": [
+        "Initial Report",
+        "Step 1"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Formal capture of fraud allegation details using standardized Fraud Report Form. Collects reporter identity and category, customer and account information, transaction details, alleged fraudster description, fraud type classification, loss amount, and urgency level.",
+      "context": [
+        "Step 1: Initial Report",
+        "Fraud Report Form:",
+        "Reporter Category: [Customer / Staff / System / Law Enforcement]",
+        "Alleged Fraud Details:"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Fraud Urgency Triage",
+      "aliases": [
+        "Initial Triage",
+        "Step 2"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Classification of fraud report as Urgent or Routine based on threat indicators. Urgent cases require action within 1 hour and include account takeover in progress, large amounts in immediate danger, or law enforcement involvement. Routine cases proceed within 24 hours.",
+      "context": [
+        "Step 2: Initial Triage",
+        "Is This Urgent?",
+        "Immediate action required (within 1 hour)",
+        "Standard investigation (within 24 hours)"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Account Security Lockdown",
+      "aliases": [
+        "Account Security Actions",
+        "Step 3",
+        "Immediate Actions"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "account_activation",
+      "description": "Immediate protective actions executed within first 5 minutes of urgent fraud cases to prevent further unauthorized activity. Includes account freeze, card blocking, password reset, session termination, action documentation, customer notification, and escalation trigger for high-value cases.",
+      "context": [
+        "Step 3: Account Security Actions (if urgent)",
+        "IMMEDIATE ACTIONS (First 5 Minutes):",
+        "Freeze customer account (block transactions)",
+        "Block customer's debit/credit cards (prevent further fraud)"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Fraud Urgency Gate",
+      "aliases": [
+        "Is This Urgent?"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "escalate_or_resolve",
+      "description": "Binary decision point determining investigation timeline and response intensity. YES path triggers immediate 1-hour response with account security lockdown. NO path routes to standard 24-hour investigation.",
+      "context": [
+        "Is This Urgent?",
+        "YES → Immediate action required (within 1 hour)",
+        "NO → Standard investigation (within 24 hours)"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "High-Value Fraud Escalation Trigger",
+      "aliases": [
+        "Escalation Threshold Check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "authority_limit_check",
+      "description": "Escalation gate triggered when alleged fraud loss exceeds £5,000 threshold. Cases meeting this threshold are escalated to Financial Crime Head for senior oversight.",
+      "context": [
+        "Escalate to Financial Crime Head if >£5,000"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Fraud Report Submitter",
+      "aliases": [
+        "Reporter"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer_service",
+      "description": "Any party initiating a fraud report, including customers, bank staff, automated systems, or law enforcement. Captured with name, department, and contact phone in the Fraud Report Form.",
+      "context": [
+        "Reporter: [Name, Department, Phone]",
+        "Reporter Category: [Customer / Staff / System / Law Enforcement]"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Fraud Triage Analyst",
+      "aliases": [
+        "Triage Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations staff member responsible for executing Initial Triage step, classifying fraud reports as Urgent or Routine based on defined threat indicators.",
+      "context": [
+        "Step 2: Initial Triage",
+        "Is This Urgent?"
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Account Security Response Team",
+      "aliases": [
+        "Security Team",
+        "Lockdown Team"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations team executing immediate account security actions in urgent fraud cases, including account freeze, card blocking, password reset, session termination, and customer notification within the first 5 minutes.",
+      "context": [
+        "IMMEDIATE ACTIONS (First 5 Minutes):",
+        "Freeze customer account (block transactions)",
+        "Block customer's debit/credit cards (prevent further fraud)"
+      ]
+    },
+    {
+      "id": "ra_004",
+      "name": "Financial Crime Head",
+      "aliases": [
+        "Financial Crime Leadership"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "Senior leadership role responsible for escalation and oversight of high-value fraud cases exceeding £5,000 threshold.",
+      "context": [
+        "Escalate to Financial Crime Head if >£5,000"
+      ]
+    },
+    {
+      "id": "fa_001",
+      "name": "Fraud Allegation",
+      "aliases": [
+        "Fraud Report",
+        "Fraud Case"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_detection_obligation",
+      "description": "Formal fraud allegation received through standardized intake process. Assigned unique Fraud ID with date and sequence number. Triggers triage, investigation, and potential account security response based on urgency classification.",
+      "context": [
+        "Upon Fraud Allegation:",
+        "Fraud ID: FRAUD-[DATE]-[001-999] (e.g., FRAUD-2026-0115-001)",
+        "Fraud Type: [Account Takeover / Unauthorized Transaction / Other]"
+      ]
+    },
+    {
+      "id": "fa_002",
+      "name": "Account Takeover Fraud",
+      "aliases": [
+        "Account Takeover"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "account_takeover",
+      "description": "Fraud type classification indicating unauthorized access and control of customer account. Classified as urgent trigger requiring immediate 1-hour response and account security lockdown.",
+      "context": [
+        "Account takeover in progress",
+        "Fraud Type: [Account Takeover / Unauthorized Transaction / Other]"
+      ]
+    },
+    {
+      "id": "fa_003",
+      "name": "Unauthorized Transaction Fraud",
+      "aliases": [
+        "Unauthorized Transaction"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "card_fraud_event",
+      "description": "Fraud type classification indicating unauthorized transaction(s) on customer account. May be classified as Routine if transaction already posted and no immediate threat exists.",
+      "context": [
+        "Fraud Type: [Account Takeover / Unauthorized Transaction / Other]",
+        "Disputed transaction already posted"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account",
+        "Customer Account Number"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "new_account",
+      "description": "Customer account subject to fraud allegation. Identified by account number in format ACC-XXXXX. May be frozen and have associated cards blocked during urgent fraud response.",
+      "context": [
+        "Customer Name & Account: [ACC-XXXXX]",
+        "Freeze customer account (block transactions)"
+      ]
+    },
+    {
+      "id": "card_001",
+      "name": "Customer Debit Card",
+      "aliases": [
+        "Debit Card"
+      ],
+      "entity_class": "CARD",
+      "type": "debit_card",
+      "description": "Debit card associated with customer account. Blocked immediately in urgent fraud cases to prevent further unauthorized transactions.",
+      "context": [
+        "Block customer's debit/credit cards (prevent further fraud)"
+      ]
+    },
+    {
+      "id": "card_002",
+      "name": "Customer Credit Card",
+      "aliases": [
+        "Credit Card"
+      ],
+      "entity_class": "CARD",
+      "type": "credit_card",
+      "description": "Credit card associated with customer account. Blocked immediately in urgent fraud cases to prevent further unauthorized transactions.",
+      "context": [
+        "Block customer's debit/credit cards (prevent further fraud)"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Fraud Allegation Customer",
+      "aliases": [
+        "Affected Customer",
+        "Fraud Victim"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Individual customer whose account is subject to fraud allegation. Receives notification by phone during urgent fraud response and has account security actions taken on their behalf.",
+      "context": [
+        "Customer Name & Account: [ACC-XXXXX]",
+        "Notify customer (by phone if possible)"
+      ]
+    },
+    {
+      "id": "trans_001",
+      "name": "Disputed Transaction",
+      "aliases": [
+        "Transaction in Question",
+        "Fraudulent Transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "Financial transaction(s) alleged to be fraudulent. Captured with transaction date and amount in fraud report. May already be posted to account or represent imminent threat depending on urgency classification.",
+      "context": [
+        "Transaction(s) in Question: [List with dates, amounts]",
+        "Disputed transaction already posted"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_proc_001",
+    "pstep_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_001",
+    "pstep_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_002",
+    "pstep_003": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_003",
+    "dp_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_dp_001",
+    "dp_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_dp_002",
+    "ra_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_001",
+    "ra_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_002",
+    "ra_003": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_003",
+    "ra_004": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_004",
+    "fa_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_001",
+    "fa_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_002",
+    "fa_003": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_003",
+    "acc_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_acc_001",
+    "card_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_card_001",
+    "card_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_card_002",
+    "cust_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_cust_001",
+    "trans_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_trans_001"
+  },
+  "entities": [
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_proc_001",
+      "name": "Fraud Intake Process",
+      "aliases": [
+        "Fraud Allegation Intake",
+        "Fraud Report Intake"
+      ],
+      "entity_class": "PROCESS",
+      "type": "fraud_investigation",
+      "description": "End-to-end procedure for receiving, triaging, and initiating response to fraud allegations. Begins with formal fraud report submission and includes urgency classification to determine investigation timeline and immediate account security actions.",
+      "context": [
+        "Upon Fraud Allegation:",
+        "Fraud Report Form:",
+        "Step 1: Initial Report",
+        "Step 2: Initial Triage",
+        "Step 3: Account Security Actions"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_001",
+      "name": "Fraud Report Submission",
+      "aliases": [
+        "Initial Report",
+        "Step 1"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Formal capture of fraud allegation details using standardized Fraud Report Form. Collects reporter identity and category, customer and account information, transaction details, alleged fraudster description, fraud type classification, loss amount, and urgency level.",
+      "context": [
+        "Step 1: Initial Report",
+        "Fraud Report Form:",
+        "Reporter Category: [Customer / Staff / System / Law Enforcement]",
+        "Alleged Fraud Details:"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_002",
+      "name": "Fraud Urgency Triage",
+      "aliases": [
+        "Initial Triage",
+        "Step 2"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Classification of fraud report as Urgent or Routine based on threat indicators. Urgent cases require action within 1 hour and include account takeover in progress, large amounts in immediate danger, or law enforcement involvement. Routine cases proceed within 24 hours.",
+      "context": [
+        "Step 2: Initial Triage",
+        "Is This Urgent?",
+        "Immediate action required (within 1 hour)",
+        "Standard investigation (within 24 hours)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_003",
+      "name": "Account Security Lockdown",
+      "aliases": [
+        "Account Security Actions",
+        "Step 3",
+        "Immediate Actions"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "account_activation",
+      "description": "Immediate protective actions executed within first 5 minutes of urgent fraud cases to prevent further unauthorized activity. Includes account freeze, card blocking, password reset, session termination, action documentation, customer notification, and escalation trigger for high-value cases.",
+      "context": [
+        "Step 3: Account Security Actions (if urgent)",
+        "IMMEDIATE ACTIONS (First 5 Minutes):",
+        "Freeze customer account (block transactions)",
+        "Block customer's debit/credit cards (prevent further fraud)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_dp_001",
+      "name": "Fraud Urgency Gate",
+      "aliases": [
+        "Is This Urgent?"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "escalate_or_resolve",
+      "description": "Binary decision point determining investigation timeline and response intensity. YES path triggers immediate 1-hour response with account security lockdown. NO path routes to standard 24-hour investigation.",
+      "context": [
+        "Is This Urgent?",
+        "YES → Immediate action required (within 1 hour)",
+        "NO → Standard investigation (within 24 hours)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_dp_002",
+      "name": "High-Value Fraud Escalation Trigger",
+      "aliases": [
+        "Escalation Threshold Check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "authority_limit_check",
+      "description": "Escalation gate triggered when alleged fraud loss exceeds £5,000 threshold. Cases meeting this threshold are escalated to Financial Crime Head for senior oversight.",
+      "context": [
+        "Escalate to Financial Crime Head if >£5,000"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_001",
+      "name": "Fraud Report Submitter",
+      "aliases": [
+        "Reporter"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer_service",
+      "description": "Any party initiating a fraud report, including customers, bank staff, automated systems, or law enforcement. Captured with name, department, and contact phone in the Fraud Report Form.",
+      "context": [
+        "Reporter: [Name, Department, Phone]",
+        "Reporter Category: [Customer / Staff / System / Law Enforcement]"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_002",
+      "name": "Fraud Triage Analyst",
+      "aliases": [
+        "Triage Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations staff member responsible for executing Initial Triage step, classifying fraud reports as Urgent or Routine based on defined threat indicators.",
+      "context": [
+        "Step 2: Initial Triage",
+        "Is This Urgent?"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_003",
+      "name": "Account Security Response Team",
+      "aliases": [
+        "Security Team",
+        "Lockdown Team"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations team executing immediate account security actions in urgent fraud cases, including account freeze, card blocking, password reset, session termination, and customer notification within the first 5 minutes.",
+      "context": [
+        "IMMEDIATE ACTIONS (First 5 Minutes):",
+        "Freeze customer account (block transactions)",
+        "Block customer's debit/credit cards (prevent further fraud)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_004",
+      "name": "Financial Crime Head",
+      "aliases": [
+        "Financial Crime Leadership"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "Senior leadership role responsible for escalation and oversight of high-value fraud cases exceeding £5,000 threshold.",
+      "context": [
+        "Escalate to Financial Crime Head if >£5,000"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_001",
+      "name": "Fraud Allegation",
+      "aliases": [
+        "Fraud Report",
+        "Fraud Case"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_detection_obligation",
+      "description": "Formal fraud allegation received through standardized intake process. Assigned unique Fraud ID with date and sequence number. Triggers triage, investigation, and potential account security response based on urgency classification.",
+      "context": [
+        "Upon Fraud Allegation:",
+        "Fraud ID: FRAUD-[DATE]-[001-999] (e.g., FRAUD-2026-0115-001)",
+        "Fraud Type: [Account Takeover / Unauthorized Transaction / Other]"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_002",
+      "name": "Account Takeover Fraud",
+      "aliases": [
+        "Account Takeover"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "account_takeover",
+      "description": "Fraud type classification indicating unauthorized access and control of customer account. Classified as urgent trigger requiring immediate 1-hour response and account security lockdown.",
+      "context": [
+        "Account takeover in progress",
+        "Fraud Type: [Account Takeover / Unauthorized Transaction / Other]"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_003",
+      "name": "Unauthorized Transaction Fraud",
+      "aliases": [
+        "Unauthorized Transaction"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "card_fraud_event",
+      "description": "Fraud type classification indicating unauthorized transaction(s) on customer account. May be classified as Routine if transaction already posted and no immediate threat exists.",
+      "context": [
+        "Fraud Type: [Account Takeover / Unauthorized Transaction / Other]",
+        "Disputed transaction already posted"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account",
+        "Customer Account Number"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "new_account",
+      "description": "Customer account subject to fraud allegation. Identified by account number in format ACC-XXXXX. May be frozen and have associated cards blocked during urgent fraud response.",
+      "context": [
+        "Customer Name & Account: [ACC-XXXXX]",
+        "Freeze customer account (block transactions)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_card_001",
+      "name": "Customer Debit Card",
+      "aliases": [
+        "Debit Card"
+      ],
+      "entity_class": "CARD",
+      "type": "debit_card",
+      "description": "Debit card associated with customer account. Blocked immediately in urgent fraud cases to prevent further unauthorized transactions.",
+      "context": [
+        "Block customer's debit/credit cards (prevent further fraud)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_card_002",
+      "name": "Customer Credit Card",
+      "aliases": [
+        "Credit Card"
+      ],
+      "entity_class": "CARD",
+      "type": "credit_card",
+      "description": "Credit card associated with customer account. Blocked immediately in urgent fraud cases to prevent further unauthorized transactions.",
+      "context": [
+        "Block customer's debit/credit cards (prevent further fraud)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_cust_001",
+      "name": "Fraud Allegation Customer",
+      "aliases": [
+        "Affected Customer",
+        "Fraud Victim"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Individual customer whose account is subject to fraud allegation. Receives notification by phone during urgent fraud response and has account security actions taken on their behalf.",
+      "context": [
+        "Customer Name & Account: [ACC-XXXXX]",
+        "Notify customer (by phone if possible)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_trans_001",
+      "name": "Disputed Transaction",
+      "aliases": [
+        "Transaction in Question",
+        "Fraudulent Transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "Financial transaction(s) alleged to be fraudulent. Captured with transaction date and amount in fraud report. May already be posted to account or represent imminent threat depending on urgency classification.",
+      "context": [
+        "Transaction(s) in Question: [List with dates, amounts]",
+        "Disputed transaction already posted"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_proc_001",
+      "name": "Fraud Intake Process",
+      "properties": {
+        "purpose": "Receive, triage, and respond to fraud allegations with appropriate urgency and security measures",
+        "scope": "All fraud reports from customers, staff, systems, or law enforcement",
+        "channels": [
+          "branch",
+          "phone",
+          "system"
+        ],
+        "owner": "Financial Crime Head",
+        "departments_involved": [
+          "Financial Crime",
+          "Account Security",
+          "Customer Service"
+        ],
+        "trigger": "Fraud allegation submitted via report form",
+        "outcome_success": "Fraud case logged, triaged by urgency, and appropriate security/investigation actions initiated",
+        "outcome_failure": "Fraud case not escalated; customer account remains at risk; unauthorized transactions continue"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_001",
+      "name": "Fraud Report Submission",
+      "properties": {
+        "step_number": 1,
+        "actor": "Fraud Report Submitter",
+        "input": "Fraud allegation details (customer name, account, transaction list, fraud type, loss amount, urgency level)",
+        "output": "Completed Fraud Report Form with unique Fraud ID (FRAUD-[DATE]-[001-999])",
+        "channel": "manual",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Fraud Report Form"
+        ],
+        "failure_path": "Report rejected; submitter asked to resubmit with complete information"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_002",
+      "name": "Fraud Urgency Triage",
+      "properties": {
+        "step_number": 2,
+        "actor": "Fraud Triage Analyst",
+        "input": "Completed Fraud Report Form",
+        "output": "Urgency classification (Routine or Urgent/Critical) and routing decision",
+        "estimated_duration": "15 minutes",
+        "channel": "system",
+        "mandatory": true,
+        "failure_path": "Case misclassified; escalation delayed or over-escalated"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_003",
+      "name": "Account Security Lockdown",
+      "properties": {
+        "step_number": 3,
+        "actor": "Account Security Response Team",
+        "input": "Urgent fraud case with account details",
+        "output": "Account frozen, cards blocked, password reset, customer notified, actions logged",
+        "estimated_duration": "5 minutes",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Account Management System",
+          "Card Management System",
+          "Online Banking Platform"
+        ],
+        "failure_path": "Account remains vulnerable; fraudster continues unauthorized access"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_dp_001",
+      "name": "Fraud Urgency Gate",
+      "properties": {
+        "decision_question": "Is this fraud case urgent (account takeover in progress, large amount in immediate danger, or law enforcement involvement)?",
+        "criteria": [
+          "Account takeover in progress",
+          "Large amount in immediate danger",
+          "Law enforcement/critical incident"
+        ],
+        "decision_maker": "Fraud Triage Analyst",
+        "path_yes": "Immediate action required within 1 hour; proceed to Account Security Lockdown",
+        "path_no": "Standard investigation within 24 hours; route to routine investigation queue",
+        "time_limit": "15 minutes from report submission"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_dp_002",
+      "name": "High-Value Fraud Escalation Trigger",
+      "properties": {
+        "decision_question": "Is the alleged fraud loss amount greater than £5,000?",
+        "criteria": "Alleged Loss Amount > £5,000",
+        "decision_maker": "Account Security Response Team",
+        "path_yes": "Escalate immediately to Financial Crime Head",
+        "path_no": "Continue standard security lockdown procedures",
+        "override_possible": true
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_001",
+      "name": "Fraud Report Submitter",
+      "properties": {
+        "role_type": "human",
+        "authority_level": "Report submission only",
+        "channels": [
+          "phone",
+          "branch",
+          "system"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_002",
+      "name": "Fraud Triage Analyst",
+      "properties": {
+        "role_type": "human",
+        "department": "Financial Crime",
+        "authority_level": "Urgency classification and routing",
+        "response_time_sla": "15 minutes",
+        "channels": [
+          "system",
+          "phone"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_003",
+      "name": "Account Security Response Team",
+      "properties": {
+        "role_type": "human",
+        "department": "Account Security",
+        "authority_level": "Account freeze, card block, password reset, customer notification",
+        "response_time_sla": "5 minutes for urgent cases",
+        "channels": [
+          "system",
+          "phone"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_004",
+      "name": "Financial Crime Head",
+      "properties": {
+        "role_type": "human",
+        "department": "Financial Crime",
+        "authority_level": "High-value fraud escalation and investigation oversight",
+        "approval_limit": "All cases >£5,000",
+        "channels": [
+          "phone",
+          "email",
+          "system"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_001",
+      "name": "Fraud Allegation",
+      "properties": {
+        "generation_trigger": "Customer, staff, system, or law enforcement reports suspected fraud",
+        "investigation_or_escalation_path": "Triage by urgency; if urgent, immediate account lockdown and escalation if >£5,000",
+        "customer_notification": "By phone if possible; documented in case file"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_002",
+      "name": "Account Takeover Fraud",
+      "properties": {
+        "generation_trigger": "Unauthorized access to customer account detected",
+        "investigation_or_escalation_path": "Classified as Urgent; immediate account freeze, card block, password reset, and escalation to Financial Crime Head",
+        "customer_notification": "By phone immediately"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_003",
+      "name": "Unauthorized Transaction Fraud",
+      "properties": {
+        "generation_trigger": "Customer reports transaction(s) they did not authorize",
+        "investigation_or_escalation_path": "Triage by amount and immediacy; if large amount or in-progress, urgent path; otherwise standard investigation within 24 hours",
+        "customer_notification": "By phone if urgent; documented in case file"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_acc_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_type": "savings | current",
+        "account_state": "active | frozen",
+        "closure_or_freeze_conditions": "Frozen upon urgent fraud allegation; transactions blocked"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_card_001",
+      "name": "Customer Debit Card",
+      "properties": {
+        "card_type": "debit",
+        "card_state": "active | blocked",
+        "block_or_replacement_conditions": "Blocked immediately upon urgent fraud allegation to prevent further unauthorized transactions"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_card_002",
+      "name": "Customer Credit Card",
+      "properties": {
+        "card_type": "credit",
+        "card_state": "active | blocked",
+        "block_or_replacement_conditions": "Blocked immediately upon urgent fraud allegation to prevent further unauthorized transactions"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_cust_001",
+      "name": "Fraud Allegation Customer",
+      "properties": {
+        "customer_type": "existing",
+        "risk_classification": "fraud_victim",
+        "context_role": "Account holder reporting or subject of fraud allegation"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_trans_001",
+      "name": "Disputed Transaction",
+      "properties": {
+        "transaction_type": "disputed",
+        "monitoring_or_reporting_obligation": "Logged in Fraud Report Form with date, amount, and authorization status",
+        "dispute_or_reversal_rules": "Subject to fraud investigation; reversal or reimbursement determined by investigation outcome"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_proc_001",
+      "source_name": "Fraud Intake Process",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_001",
+      "target_name": "Fraud Report Submission",
+      "rel_type": "starts_with",
+      "description": "The Fraud Intake Process begins with the Fraud Report Submission step",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Upon Fraud Allegation: Step 1: Initial Report",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_001",
+      "source_name": "Fraud Report Submission",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_002",
+      "target_name": "Fraud Urgency Triage",
+      "rel_type": "followed_by",
+      "description": "Fraud Report Submission is followed by Fraud Urgency Triage",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Step 1: Initial Report followed by Step 2: Initial Triage",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_002",
+      "source_name": "Fraud Urgency Triage",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_dp_001",
+      "target_name": "Fraud Urgency Gate",
+      "rel_type": "leads_to",
+      "description": "Fraud Urgency Triage leads to the Fraud Urgency Gate decision point",
+      "properties": {
+        "decision_criteria": "Is This Urgent?"
+      },
+      "context": "Step 2: Initial Triage - Is This Urgent? YES/NO decision",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_dp_001",
+      "source_name": "Fraud Urgency Gate",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_003",
+      "target_name": "Account Security Lockdown",
+      "rel_type": "routes_to_on_pass",
+      "description": "If Fraud Urgency Gate passes (urgent case), route to Account Security Lockdown",
+      "properties": {
+        "condition": "YES - Immediate action required (within 1 hour)",
+        "triggers": [
+          "Account takeover in progress",
+          "Large amount in immediate danger",
+          "Law enforcement/critical incident"
+        ]
+      },
+      "context": "YES → Immediate action required (within 1 hour) - Account takeover in progress, Large amount in immediate danger, Law enforcement/critical incident",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_001",
+      "source_name": "Fraud Report Submission",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_001",
+      "target_name": "Fraud Report Submitter",
+      "rel_type": "performed_by",
+      "description": "Fraud Report Submission is performed by the Fraud Report Submitter",
+      "properties": {
+        "reporter_categories": [
+          "Customer",
+          "Staff",
+          "System",
+          "Law Enforcement"
+        ]
+      },
+      "context": "Reporter Category: [Customer / Staff / System / Law Enforcement]",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_002",
+      "source_name": "Fraud Urgency Triage",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_002",
+      "target_name": "Fraud Triage Analyst",
+      "rel_type": "performed_by",
+      "description": "Fraud Urgency Triage is performed by the Fraud Triage Analyst",
+      "properties": {
+        "decision_responsibility": "Determine urgency level"
+      },
+      "context": "Step 2: Initial Triage - Is This Urgent?",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_003",
+      "source_name": "Account Security Lockdown",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_003",
+      "target_name": "Account Security Response Team",
+      "rel_type": "performed_by",
+      "description": "Account Security Lockdown actions are performed by the Account Security Response Team",
+      "properties": {
+        "actions": [
+          "Freeze customer account",
+          "Block customer's debit/credit cards",
+          "Reset customer's online banking password",
+          "Log customer out of all sessions"
+        ]
+      },
+      "context": "Step 3: Account Security Actions (if urgent) - IMMEDIATE ACTIONS (First 5 Minutes)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_003",
+      "source_name": "Account Security Lockdown",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_dp_002",
+      "target_name": "High-Value Fraud Escalation Trigger",
+      "rel_type": "triggers",
+      "description": "Account Security Lockdown triggers the High-Value Fraud Escalation decision point",
+      "properties": {
+        "escalation_threshold": "£5,000"
+      },
+      "context": "Escalate to Financial Crime Head if >£5,000",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_dp_002",
+      "source_name": "High-Value Fraud Escalation Trigger",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_004",
+      "target_name": "Financial Crime Head",
+      "rel_type": "escalated_to",
+      "description": "High-Value Fraud cases are escalated to the Financial Crime Head",
+      "properties": {
+        "escalation_threshold": "£5,000",
+        "condition": "Alleged Loss Amount exceeds threshold"
+      },
+      "context": "Escalate to Financial Crime Head if >£5,000",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_001",
+      "source_name": "Fraud Report Submission",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_001",
+      "target_name": "Fraud Allegation",
+      "rel_type": "generates",
+      "description": "Fraud Report Submission generates a Fraud Allegation record",
+      "properties": {
+        "fraud_id_format": "FRAUD-[DATE]-[001-999]",
+        "data_captured": [
+          "Customer Name & Account",
+          "Transaction(s) in Question",
+          "Alleged Fraudster Identity",
+          "Fraud Type",
+          "Alleged Loss Amount",
+          "Report Urgency"
+        ]
+      },
+      "context": "Fraud Report Form: Fraud ID: FRAUD-[DATE]-[001-999]",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_001",
+      "source_name": "Fraud Allegation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_002",
+      "target_name": "Account Takeover Fraud",
+      "rel_type": "alternative_to",
+      "description": "Fraud Allegation may be classified as Account Takeover Fraud",
+      "properties": {
+        "fraud_type": "Account Takeover"
+      },
+      "context": "Fraud Type: [Account Takeover / Unauthorized Transaction / Other]",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_001",
+      "source_name": "Fraud Allegation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_003",
+      "target_name": "Unauthorized Transaction Fraud",
+      "rel_type": "alternative_to",
+      "description": "Fraud Allegation may be classified as Unauthorized Transaction Fraud",
+      "properties": {
+        "fraud_type": "Unauthorized Transaction"
+      },
+      "context": "Fraud Type: [Account Takeover / Unauthorized Transaction / Other]",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_001",
+      "source_name": "Fraud Allegation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_cust_001",
+      "target_name": "Fraud Allegation Customer",
+      "rel_type": "concerns",
+      "description": "Fraud Allegation concerns the affected customer",
+      "properties": {
+        "data_element": "Customer Name & Account"
+      },
+      "context": "Customer Name & Account: [ACC-XXXXX]",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_002",
+      "source_name": "Account Takeover Fraud",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "raised_on",
+      "description": "Account Takeover Fraud alert is raised on the Customer Account",
+      "properties": {
+        "urgency_level": "Immediate action required (within 1 hour)"
+      },
+      "context": "Account takeover in progress - Immediate action required (within 1 hour)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_003",
+      "source_name": "Unauthorized Transaction Fraud",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_trans_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "triggered_by",
+      "description": "Unauthorized Transaction Fraud alert is triggered by a Disputed Transaction",
+      "properties": {
+        "urgency_level": "Standard investigation (within 24 hours)"
+      },
+      "context": "Disputed transaction already posted - Standard investigation (within 24 hours)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_003",
+      "source_name": "Account Security Lockdown",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "freezes",
+      "description": "Account Security Lockdown freezes the Customer Account",
+      "properties": {
+        "action": "Freeze customer account (block transactions)",
+        "timing": "First 5 Minutes"
+      },
+      "context": "Freeze customer account (block transactions)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_003",
+      "source_name": "Account Security Lockdown",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_card_001",
+      "target_name": "Customer Debit Card",
+      "rel_type": "blocks",
+      "description": "Account Security Lockdown blocks the Customer Debit Card",
+      "properties": {
+        "action": "Block customer's debit/credit cards (prevent further fraud)",
+        "timing": "First 5 Minutes"
+      },
+      "context": "Block customer's debit/credit cards (prevent further fraud)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_003",
+      "source_name": "Account Security Lockdown",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_card_002",
+      "target_name": "Customer Credit Card",
+      "rel_type": "blocks",
+      "description": "Account Security Lockdown blocks the Customer Credit Card",
+      "properties": {
+        "action": "Block customer's debit/credit cards (prevent further fraud)",
+        "timing": "First 5 Minutes"
+      },
+      "context": "Block customer's debit/credit cards (prevent further fraud)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_003",
+      "source_name": "Account Security Lockdown",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_cust_001",
+      "target_name": "Fraud Allegation Customer",
+      "rel_type": "notifies",
+      "description": "Account Security Lockdown notifies the customer of actions taken",
+      "properties": {
+        "action": "Notify customer (by phone if possible)",
+        "timing": "First 5 Minutes"
+      },
+      "context": "Notify customer (by phone if possible)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_proc_001",
+      "source_name": "Fraud Intake Process",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_cust_001",
+      "target_name": "Fraud Allegation Customer",
+      "rel_type": "operates_on",
+      "description": "The Fraud Intake Process operates on the Fraud Allegation Customer",
+      "properties": {
+        "process_scope": "Fraud report intake and response"
+      },
+      "context": "Upon Fraud Allegation - Customer Name & Account",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_proc_001",
+      "source_name": "Fraud Intake Process",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "operates_on",
+      "description": "The Fraud Intake Process operates on the Customer Account",
+      "properties": {
+        "process_scope": "Account security and fraud response"
+      },
+      "context": "Customer Name & Account: [ACC-XXXXX]",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_proc_001",
+      "source_name": "Fraud Intake Process",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_dp_001",
+      "target_name": "Fraud Urgency Gate",
+      "rel_type": "branches_at",
+      "description": "The Fraud Intake Process branches at the Fraud Urgency Gate decision point",
+      "properties": {
+        "branches": [
+          "Urgent path (within 1 hour)",
+          "Standard path (within 24 hours)"
+        ]
+      },
+      "context": "Is This Urgent? YES → Immediate action required (within 1 hour) / NO → Standard investigation (within 24 hours)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_proc_001",
+      "source_name": "Fraud Intake Process",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_001",
+      "source_name": "Fraud Report Submission",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_002",
+      "source_name": "Fraud Urgency Triage",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_pstep_003",
+      "source_name": "Account Security Lockdown",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_dp_001",
+      "source_name": "Fraud Urgency Gate",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_dp_002",
+      "source_name": "High-Value Fraud Escalation Trigger",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_001",
+      "source_name": "Fraud Report Submitter",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_002",
+      "source_name": "Fraud Triage Analyst",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_003",
+      "source_name": "Account Security Response Team",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_ra_004",
+      "source_name": "Financial Crime Head",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_001",
+      "source_name": "Fraud Allegation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_002",
+      "source_name": "Account Takeover Fraud",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_fa_003",
+      "source_name": "Unauthorized Transaction Fraud",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_card_001",
+      "source_name": "Customer Debit Card",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_card_002",
+      "source_name": "Customer Credit Card",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_cust_001",
+      "source_name": "Fraud Allegation Customer",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005_trans_001",
+      "source_name": "Disputed Transaction",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_005",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

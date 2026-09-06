@@ -1,0 +1,577 @@
+{
+  "chunk_seq": 13,
+  "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+  "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+  "text": "## SCENARIO 10: Password Reset  \n**Customer:** \"I can't log into online banking.\"  \n**Agent Script:**  \n```\nAgent: \"No problem, let me help you regain access.\n\nFor security, I'll verify your identity first:\n- Last 4 digits of account number: [verify]\n- Date of birth: [verify]\n- Mother's maiden name: [verify]\n\n[Verify details]\n\nGreat. Now I'm sending a password reset link to your\nregistered email address. Check your email (might take a few\nminutes), click the link, and create a new password.\n\nIf you don't see the email:\n1. Check your spam folder\n2. Wait a few minutes and try again\n3. Call us back if you don't receive it\n\nMake sure your new password is strong (mix of letters,\nnumbers, symbols).\n\nLet me know if that works!\"\n```  \n---",
+  "name": "Chunk 13/17",
+  "_domain": "banking.communications",
+  "prev_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+  "next_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_014",
+  "raw_entities": [
+    {
+      "id": "ct_001",
+      "name": "Password Reset Call Script",
+      "aliases": [
+        "Password Reset Agent Script",
+        "Online Banking Access Recovery Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre script for assisting customers who cannot access online banking. The agent verifies customer identity using security questions before initiating a password reset process and provides troubleshooting guidance for email delivery issues.",
+      "context": [
+        "Agent: \"No problem, let me help you regain access.\"",
+        "For security, I'll verify your identity first: - Last 4 digits of account number: [verify] - Date of birth: [verify] - Mother's maiden name: [verify]",
+        "Now I'm sending a password reset link to your registered email address. Check your email (might take a few minutes), click the link, and create a new password.",
+        "Make sure your new password is strong (mix of letters, numbers, symbols)."
+      ]
+    },
+    {
+      "id": "tv_001",
+      "name": "Account Number Last Four Digits",
+      "aliases": [
+        "Last 4 digits of account number"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "account_data",
+      "description": "A placeholder variable representing the last four digits of the customer's account number, used during identity verification in the password reset call script.",
+      "context": [
+        "Last 4 digits of account number: [verify]"
+      ]
+    },
+    {
+      "id": "tv_002",
+      "name": "Date of Birth",
+      "aliases": [
+        "DOB"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "customer_data",
+      "description": "A placeholder variable representing the customer's date of birth, used as a security verification factor during the password reset process.",
+      "context": [
+        "Date of birth: [verify]"
+      ]
+    },
+    {
+      "id": "tv_003",
+      "name": "Mother's Maiden Name",
+      "aliases": [
+        "Maiden name"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "customer_data",
+      "description": "A placeholder variable representing the customer's mother's maiden name, used as a security verification question during identity confirmation for password reset.",
+      "context": [
+        "Mother's maiden name: [verify]"
+      ]
+    },
+    {
+      "id": "tv_004",
+      "name": "Registered Email Address",
+      "aliases": [
+        "Email address"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "contact_field",
+      "description": "A placeholder variable representing the customer's registered email address on file, to which the password reset link is sent.",
+      "context": [
+        "I'm sending a password reset link to your registered email address."
+      ]
+    },
+    {
+      "id": "co_001",
+      "name": "Identity Verification Before Password Reset",
+      "aliases": [
+        "Security verification requirement"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "mandatory_action",
+      "description": "A mandatory security requirement to verify customer identity using account number, date of birth, and mother's maiden name before processing a password reset request.",
+      "context": [
+        "For security, I'll verify your identity first: - Last 4 digits of account number: [verify] - Date of birth: [verify] - Mother's maiden name: [verify]"
+      ]
+    },
+    {
+      "id": "co_002",
+      "name": "Password Strength Requirement",
+      "aliases": [
+        "Strong password policy"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "mandatory_action",
+      "description": "A security requirement that customers must create a new password containing a mix of letters, numbers, and symbols when resetting their online banking password.",
+      "context": [
+        "Make sure your new password is strong (mix of letters, numbers, symbols)."
+      ]
+    }
+  ],
+  "id_map": {
+    "ct_001": "01a07428-c932-773f-a5f8-da98f9df05b5_013_ct_001",
+    "tv_001": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_001",
+    "tv_002": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_002",
+    "tv_003": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_003",
+    "tv_004": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_004",
+    "co_001": "01a07428-c932-773f-a5f8-da98f9df05b5_013_co_001",
+    "co_002": "01a07428-c932-773f-a5f8-da98f9df05b5_013_co_002"
+  },
+  "entities": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_ct_001",
+      "name": "Password Reset Call Script",
+      "aliases": [
+        "Password Reset Agent Script",
+        "Online Banking Access Recovery Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre script for assisting customers who cannot access online banking. The agent verifies customer identity using security questions before initiating a password reset process and provides troubleshooting guidance for email delivery issues.",
+      "context": [
+        "Agent: \"No problem, let me help you regain access.\"",
+        "For security, I'll verify your identity first: - Last 4 digits of account number: [verify] - Date of birth: [verify] - Mother's maiden name: [verify]",
+        "Now I'm sending a password reset link to your registered email address. Check your email (might take a few minutes), click the link, and create a new password.",
+        "Make sure your new password is strong (mix of letters, numbers, symbols)."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_001",
+      "name": "Account Number Last Four Digits",
+      "aliases": [
+        "Last 4 digits of account number"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "account_data",
+      "description": "A placeholder variable representing the last four digits of the customer's account number, used during identity verification in the password reset call script.",
+      "context": [
+        "Last 4 digits of account number: [verify]"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_002",
+      "name": "Date of Birth",
+      "aliases": [
+        "DOB"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "customer_data",
+      "description": "A placeholder variable representing the customer's date of birth, used as a security verification factor during the password reset process.",
+      "context": [
+        "Date of birth: [verify]"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_003",
+      "name": "Mother's Maiden Name",
+      "aliases": [
+        "Maiden name"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "customer_data",
+      "description": "A placeholder variable representing the customer's mother's maiden name, used as a security verification question during identity confirmation for password reset.",
+      "context": [
+        "Mother's maiden name: [verify]"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_004",
+      "name": "Registered Email Address",
+      "aliases": [
+        "Email address"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "contact_field",
+      "description": "A placeholder variable representing the customer's registered email address on file, to which the password reset link is sent.",
+      "context": [
+        "I'm sending a password reset link to your registered email address."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_co_001",
+      "name": "Identity Verification Before Password Reset",
+      "aliases": [
+        "Security verification requirement"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "mandatory_action",
+      "description": "A mandatory security requirement to verify customer identity using account number, date of birth, and mother's maiden name before processing a password reset request.",
+      "context": [
+        "For security, I'll verify your identity first: - Last 4 digits of account number: [verify] - Date of birth: [verify] - Mother's maiden name: [verify]"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_co_002",
+      "name": "Password Strength Requirement",
+      "aliases": [
+        "Strong password policy"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "mandatory_action",
+      "description": "A security requirement that customers must create a new password containing a mix of letters, numbers, and symbols when resetting their online banking password.",
+      "context": [
+        "Make sure your new password is strong (mix of letters, numbers, symbols)."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_ct_001",
+      "name": "Password Reset Call Script",
+      "properties": {
+        "channel": "call",
+        "trigger_event": "customer unable to log into online banking",
+        "recipient": "customer calling for password reset assistance",
+        "key_content": [
+          "Identity verification using account number last four digits",
+          "Identity verification using date of birth",
+          "Identity verification using mother's maiden name",
+          "Password reset link sent to registered email address",
+          "Instructions for locating reset email",
+          "Password strength requirements communicated"
+        ],
+        "variables_used": [
+          "[verify]",
+          "registered email address"
+        ],
+        "tone": "friendly",
+        "owner": "customer service operations"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_001",
+      "name": "Account Number Last Four Digits",
+      "properties": {
+        "variable_placeholder": "[verify]",
+        "data_type": "string",
+        "data_source": "CRM",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Password Reset Call Script"
+        ],
+        "character_limit": 4,
+        "usage_context": "identity verification during password reset"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_002",
+      "name": "Date of Birth",
+      "properties": {
+        "variable_placeholder": "[verify]",
+        "data_type": "date",
+        "data_source": "CRM",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Password Reset Call Script"
+        ],
+        "usage_context": "identity verification during password reset"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_003",
+      "name": "Mother's Maiden Name",
+      "properties": {
+        "variable_placeholder": "[verify]",
+        "data_type": "string",
+        "data_source": "CRM",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Password Reset Call Script"
+        ],
+        "usage_context": "identity verification during password reset"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_004",
+      "name": "Registered Email Address",
+      "properties": {
+        "variable_placeholder": "registered email address",
+        "data_type": "string",
+        "data_source": "CRM",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Password Reset Call Script"
+        ],
+        "usage_context": "destination for password reset link delivery"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_co_001",
+      "name": "Identity Verification Before Password Reset",
+      "properties": {
+        "obligation_type": "mandatory_action",
+        "applies_to": "all customer service agents handling password reset requests",
+        "timeframe": "before sending password reset link",
+        "verification_method": "three-factor verification: account number last four digits, date of birth, mother's maiden name",
+        "regulatory_source": "customer authentication and fraud prevention standards"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_co_002",
+      "name": "Password Strength Requirement",
+      "properties": {
+        "obligation_type": "mandatory_action",
+        "applies_to": "all customers creating new passwords",
+        "timeframe": "at time of password reset",
+        "requirement_detail": "password must contain mix of letters, numbers, and symbols",
+        "regulatory_source": "information security and data protection standards"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_ct_001",
+      "source_name": "Password Reset Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_001",
+      "target_name": "Account Number Last Four Digits",
+      "rel_type": "contains",
+      "description": "The password reset script contains and requires verification of the last 4 digits of account number as an identity verification variable.",
+      "properties": {
+        "usage_context": "identity_verification",
+        "verification_step": 1
+      },
+      "context": "Last 4 digits of account number: [verify]",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_ct_001",
+      "source_name": "Password Reset Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_002",
+      "target_name": "Date of Birth",
+      "rel_type": "contains",
+      "description": "The password reset script contains and requires verification of date of birth as an identity verification variable.",
+      "properties": {
+        "usage_context": "identity_verification",
+        "verification_step": 2
+      },
+      "context": "Date of birth: [verify]",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_ct_001",
+      "source_name": "Password Reset Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_003",
+      "target_name": "Mother's Maiden Name",
+      "rel_type": "contains",
+      "description": "The password reset script contains and requires verification of mother's maiden name as an identity verification variable.",
+      "properties": {
+        "usage_context": "identity_verification",
+        "verification_step": 3
+      },
+      "context": "Mother's maiden name: [verify]",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_ct_001",
+      "source_name": "Password Reset Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_004",
+      "target_name": "Registered Email Address",
+      "rel_type": "populates_with",
+      "description": "The password reset script uses the registered email address to send the password reset link to the customer.",
+      "properties": {
+        "usage_context": "password_reset_delivery",
+        "delivery_method": "email"
+      },
+      "context": "Now I'm sending a password reset link to your registered email address.",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_ct_001",
+      "source_name": "Password Reset Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_co_001",
+      "target_name": "Identity Verification Before Password Reset",
+      "rel_type": "satisfies",
+      "description": "The password reset call script satisfies the compliance obligation to verify customer identity before allowing password reset.",
+      "properties": {
+        "verification_method": "multi_factor",
+        "factors": [
+          "account_number_last_four",
+          "date_of_birth",
+          "mothers_maiden_name"
+        ]
+      },
+      "context": "For security, I'll verify your identity first: Last 4 digits of account number: [verify] - Date of birth: [verify] - Mother's maiden name: [verify]",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_ct_001",
+      "source_name": "Password Reset Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_co_002",
+      "target_name": "Password Strength Requirement",
+      "rel_type": "includes_disclosure_for",
+      "description": "The password reset script includes guidance on password strength requirements to ensure compliance with password security standards.",
+      "properties": {
+        "requirement_details": "mix of letters, numbers, symbols"
+      },
+      "context": "Make sure your new password is strong (mix of letters, numbers, symbols).",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_001",
+      "source_name": "Account Number Last Four Digits",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_002",
+      "target_name": "Date of Birth",
+      "rel_type": "used_together_with",
+      "description": "Account number last four digits and date of birth are used together as part of the multi-factor identity verification process.",
+      "properties": {
+        "verification_sequence": "sequential",
+        "combined_purpose": "identity_verification"
+      },
+      "context": "Last 4 digits of account number: [verify] - Date of birth: [verify]",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_002",
+      "source_name": "Date of Birth",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_003",
+      "target_name": "Mother's Maiden Name",
+      "rel_type": "used_together_with",
+      "description": "Date of birth and mother's maiden name are used together as part of the multi-factor identity verification process.",
+      "properties": {
+        "verification_sequence": "sequential",
+        "combined_purpose": "identity_verification"
+      },
+      "context": "Date of birth: [verify] - Mother's maiden name: [verify]",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_co_001",
+      "source_name": "Identity Verification Before Password Reset",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_co_002",
+      "target_name": "Password Strength Requirement",
+      "rel_type": "related_to",
+      "description": "Identity verification and password strength requirements are related compliance obligations that together ensure secure password reset procedures.",
+      "properties": {
+        "combined_security_objective": "secure_account_access"
+      },
+      "context": "For security, I'll verify your identity first... Make sure your new password is strong (mix of letters, numbers, symbols).",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_ct_001",
+      "source_name": "Password Reset Call Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_001",
+      "source_name": "Account Number Last Four Digits",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_002",
+      "source_name": "Date of Birth",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_003",
+      "source_name": "Mother's Maiden Name",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_tv_004",
+      "source_name": "Registered Email Address",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_co_001",
+      "source_name": "Identity Verification Before Password Reset",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013_co_002",
+      "source_name": "Password Strength Requirement",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ]
+}

@@ -1,0 +1,944 @@
+{
+  "chunk_seq": 16,
+  "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+  "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+  "text": "## 4. Transaction Domain  \n### Entity: Transaction  \n**Definition:** A financial event representing money movement or activity on an account.  \n**Attributes:**\n- `transaction_id` — Unique identifier\n- `account_id` — Linked account\n- `transaction_type` — Deposit, Withdrawal, Transfer, Interest, Fee, Correction\n- `amount` — Transaction amount (in pence for precision)\n- `currency` — Currency (GBP)\n- `transaction_date` — Date transaction occurred\n- `settlement_date` — Date settlement completed\n- `description` — Transaction description\n- `status` — Pending, Completed, Failed, Reversed\n- `reference` — Customer-visible reference  \n**Transaction Types:**  \n| Type | Direction | Trigger | Example |\n|------|-----------|---------|---------|\n| Deposit | Credit | Customer adds funds | Branch deposit |\n| Withdrawal | Debit | Customer removes funds | ATM withdrawal |\n| Transfer | Debit (sender) | Money moved to another account | FPS transfer out |\n| Inbound Transfer | Credit | Money received | FPS transfer in |\n| Interest | Credit | Interest accrual | Monthly interest |\n| Fee | Debit | Service charge | Card replacement fee |\n| Standing Order | Debit | Recurring transfer | Mortgage payment |\n| Direct Debit | Debit | Bill payment | Utility payment |  \n**Key Business Rules:**\n- Transaction cannot be deleted (audit trail)\n- Account balance = sum of all transactions\n- Each transaction linked to fraud risk score\n- All transactions logged for compliance  \n**Relationships:**\n- `on_account` → Account (1:many)\n- `from_account` → Account (transfer source, optional)\n- `to_account` → Account (transfer destination, optional)\n- `initiated_by` → Customer (1:1, optional)\n- `flagged_by_fraud_detection` → FraudAlert (1:many, optional)  \n**Example:**\n```\nTransaction: TXN-0000542\n- account_id: ACC-00001\n- transaction_type: Inbound Transfer\n- amount: 150000 (£1,500.00 in pence)\n- transaction_date: 2026-01-15\n- settlement_date: 2026-01-15\n- description: \"Salary deposit\"\n- status: Completed\n- reference: \"SAL-JAN-2026\"\n```  \n---",
+  "name": "Chunk 16/37",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+  "next_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_017",
+  "raw_entities": [
+    {
+      "id": "bc_001",
+      "name": "Transaction",
+      "aliases": [
+        "TXN",
+        "financial_event",
+        "money_movement"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "A financial event representing money movement or activity on an account. Transactions are immutable audit trail records that include deposits, withdrawals, transfers, interest accruals, and fees. Each transaction is linked to an account, carries a fraud risk score, and is logged for compliance purposes.",
+      "context": [
+        "A financial event representing money movement or activity on an account.",
+        "Transaction cannot be deleted (audit trail)",
+        "Each transaction linked to fraud risk score",
+        "All transactions logged for compliance"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Deposit",
+      "aliases": [
+        "deposit_transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "deposit",
+      "description": "A credit transaction where a customer adds funds to an account. Represents inbound money movement triggered by customer action such as a branch deposit.",
+      "context": [
+        "Deposit | Credit | Customer adds funds | Branch deposit"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "Withdrawal",
+      "aliases": [
+        "withdrawal_transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "withdrawal",
+      "description": "A debit transaction where a customer removes funds from an account. Represents outbound money movement triggered by customer action such as an ATM withdrawal.",
+      "context": [
+        "Withdrawal | Debit | Customer removes funds | ATM withdrawal"
+      ]
+    },
+    {
+      "id": "bc_004",
+      "name": "Transfer",
+      "aliases": [
+        "transfer_transaction",
+        "outbound_transfer"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "A debit transaction where money is moved from one account to another account. Represents outbound money movement such as an FPS transfer out.",
+      "context": [
+        "Transfer | Debit (sender) | Money moved to another account | FPS transfer out"
+      ]
+    },
+    {
+      "id": "bc_005",
+      "name": "Inbound Transfer",
+      "aliases": [
+        "inbound_transfer_transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "A credit transaction where money is received into an account from another account. Represents inbound money movement such as an FPS transfer in or salary deposit.",
+      "context": [
+        "Inbound Transfer | Credit | Money received | FPS transfer in"
+      ]
+    },
+    {
+      "id": "bc_006",
+      "name": "Interest",
+      "aliases": [
+        "interest_transaction",
+        "interest_accrual"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transaction",
+      "description": "A credit transaction representing interest accrual on an account. Triggered by the bank's interest calculation process and credited to the account on a regular basis such as monthly.",
+      "context": [
+        "Interest | Credit | Interest accrual | Monthly interest"
+      ]
+    },
+    {
+      "id": "bc_007",
+      "name": "Fee",
+      "aliases": [
+        "fee_transaction",
+        "service_charge"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "fee_charge",
+      "description": "A debit transaction representing a service charge applied to an account. Triggered by bank service provision such as card replacement or account maintenance.",
+      "context": [
+        "Fee | Debit | Service charge | Card replacement fee"
+      ]
+    },
+    {
+      "id": "bc_008",
+      "name": "Standing Order Transaction",
+      "aliases": [
+        "standing_order_payment"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transaction",
+      "description": "A debit transaction representing a recurring transfer payment set up as a standing order. Triggered by the standing order schedule such as a mortgage payment.",
+      "context": [
+        "Standing Order | Debit | Recurring transfer | Mortgage payment"
+      ]
+    },
+    {
+      "id": "bc_009",
+      "name": "Direct Debit Transaction",
+      "aliases": [
+        "direct_debit_payment"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transaction",
+      "description": "A debit transaction representing a bill payment collected via direct debit mandate. Triggered by the creditor's collection request such as a utility payment.",
+      "context": [
+        "Direct Debit | Debit | Bill payment | Utility payment"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "Transaction Immutability Rule",
+      "aliases": [
+        "audit_trail_constraint"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A hard constraint that transactions cannot be deleted once created. This rule ensures an immutable audit trail for all account activity and compliance purposes.",
+      "context": [
+        "Transaction cannot be deleted (audit trail)"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Account Balance Calculation Rule",
+      "aliases": [
+        "balance_sum_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "data_rule",
+      "description": "A data integrity rule that defines account balance as the sum of all transactions on that account. This ensures consistency between individual transaction records and the account balance.",
+      "context": [
+        "Account balance = sum of all transactions"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "Transaction Fraud Risk Scoring Rule",
+      "aliases": [
+        "fraud_scoring_requirement"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "A compliance requirement that each transaction must be linked to a fraud risk score. This enables fraud detection and monitoring across all account activity.",
+      "context": [
+        "Each transaction linked to fraud risk score"
+      ]
+    },
+    {
+      "id": "br_004",
+      "name": "Transaction Compliance Logging Rule",
+      "aliases": [
+        "compliance_logging_requirement"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "A regulatory obligation that all transactions must be logged for compliance purposes. This supports audit, regulatory reporting, and investigation requirements.",
+      "context": [
+        "All transactions logged for compliance"
+      ]
+    }
+  ],
+  "id_map": {
+    "bc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+    "bc_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_002",
+    "bc_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_003",
+    "bc_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_004",
+    "bc_005": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_005",
+    "bc_006": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_006",
+    "bc_007": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_007",
+    "bc_008": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_008",
+    "bc_009": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_009",
+    "br_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_001",
+    "br_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_002",
+    "br_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_003",
+    "br_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_004"
+  },
+  "entities": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+      "name": "Transaction",
+      "aliases": [
+        "TXN",
+        "financial_event",
+        "money_movement"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "A financial event representing money movement or activity on an account. Transactions are immutable audit trail records that include deposits, withdrawals, transfers, interest accruals, and fees. Each transaction is linked to an account, carries a fraud risk score, and is logged for compliance purposes.",
+      "context": [
+        "A financial event representing money movement or activity on an account.",
+        "Transaction cannot be deleted (audit trail)",
+        "Each transaction linked to fraud risk score",
+        "All transactions logged for compliance"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_002",
+      "name": "Deposit",
+      "aliases": [
+        "deposit_transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "deposit",
+      "description": "A credit transaction where a customer adds funds to an account. Represents inbound money movement triggered by customer action such as a branch deposit.",
+      "context": [
+        "Deposit | Credit | Customer adds funds | Branch deposit"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_003",
+      "name": "Withdrawal",
+      "aliases": [
+        "withdrawal_transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "withdrawal",
+      "description": "A debit transaction where a customer removes funds from an account. Represents outbound money movement triggered by customer action such as an ATM withdrawal.",
+      "context": [
+        "Withdrawal | Debit | Customer removes funds | ATM withdrawal"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_004",
+      "name": "Transfer",
+      "aliases": [
+        "transfer_transaction",
+        "outbound_transfer"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "A debit transaction where money is moved from one account to another account. Represents outbound money movement such as an FPS transfer out.",
+      "context": [
+        "Transfer | Debit (sender) | Money moved to another account | FPS transfer out"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_005",
+      "name": "Inbound Transfer",
+      "aliases": [
+        "inbound_transfer_transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "A credit transaction where money is received into an account from another account. Represents inbound money movement such as an FPS transfer in or salary deposit.",
+      "context": [
+        "Inbound Transfer | Credit | Money received | FPS transfer in"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_006",
+      "name": "Interest",
+      "aliases": [
+        "interest_transaction",
+        "interest_accrual"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transaction",
+      "description": "A credit transaction representing interest accrual on an account. Triggered by the bank's interest calculation process and credited to the account on a regular basis such as monthly.",
+      "context": [
+        "Interest | Credit | Interest accrual | Monthly interest"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_007",
+      "name": "Fee",
+      "aliases": [
+        "fee_transaction",
+        "service_charge"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "fee_charge",
+      "description": "A debit transaction representing a service charge applied to an account. Triggered by bank service provision such as card replacement or account maintenance.",
+      "context": [
+        "Fee | Debit | Service charge | Card replacement fee"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_008",
+      "name": "Standing Order Transaction",
+      "aliases": [
+        "standing_order_payment"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transaction",
+      "description": "A debit transaction representing a recurring transfer payment set up as a standing order. Triggered by the standing order schedule such as a mortgage payment.",
+      "context": [
+        "Standing Order | Debit | Recurring transfer | Mortgage payment"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_009",
+      "name": "Direct Debit Transaction",
+      "aliases": [
+        "direct_debit_payment"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transaction",
+      "description": "A debit transaction representing a bill payment collected via direct debit mandate. Triggered by the creditor's collection request such as a utility payment.",
+      "context": [
+        "Direct Debit | Debit | Bill payment | Utility payment"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_001",
+      "name": "Transaction Immutability Rule",
+      "aliases": [
+        "audit_trail_constraint"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A hard constraint that transactions cannot be deleted once created. This rule ensures an immutable audit trail for all account activity and compliance purposes.",
+      "context": [
+        "Transaction cannot be deleted (audit trail)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_002",
+      "name": "Account Balance Calculation Rule",
+      "aliases": [
+        "balance_sum_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "data_rule",
+      "description": "A data integrity rule that defines account balance as the sum of all transactions on that account. This ensures consistency between individual transaction records and the account balance.",
+      "context": [
+        "Account balance = sum of all transactions"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_003",
+      "name": "Transaction Fraud Risk Scoring Rule",
+      "aliases": [
+        "fraud_scoring_requirement"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "compliance_requirement",
+      "description": "A compliance requirement that each transaction must be linked to a fraud risk score. This enables fraud detection and monitoring across all account activity.",
+      "context": [
+        "Each transaction linked to fraud risk score"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_004",
+      "name": "Transaction Compliance Logging Rule",
+      "aliases": [
+        "compliance_logging_requirement"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "A regulatory obligation that all transactions must be logged for compliance purposes. This supports audit, regulatory reporting, and investigation requirements.",
+      "context": [
+        "All transactions logged for compliance"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+      "name": "Transaction",
+      "properties": {
+        "definition": "A financial event representing money movement or activity on an account",
+        "key_attributes": [
+          "transaction_id",
+          "account_id",
+          "transaction_type",
+          "amount",
+          "currency",
+          "transaction_date",
+          "settlement_date",
+          "description",
+          "status",
+          "reference"
+        ],
+        "subtypes": [
+          "Deposit",
+          "Withdrawal",
+          "Transfer",
+          "Inbound Transfer",
+          "Interest",
+          "Fee",
+          "Standing Order",
+          "Direct Debit"
+        ],
+        "business_rules": [
+          "Transaction cannot be deleted (audit trail)",
+          "Account balance = sum of all transactions",
+          "Each transaction linked to fraud risk score",
+          "All transactions logged for compliance"
+        ],
+        "ontology_domain": "Transaction Domain"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_002",
+      "name": "Deposit",
+      "properties": {
+        "transaction_type": "Deposit",
+        "direction": "Credit",
+        "trigger": "Customer adds funds",
+        "example": "Branch deposit"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_003",
+      "name": "Withdrawal",
+      "properties": {
+        "transaction_type": "Withdrawal",
+        "direction": "Debit",
+        "trigger": "Customer removes funds",
+        "example": "ATM withdrawal"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_004",
+      "name": "Transfer",
+      "properties": {
+        "transaction_type": "Transfer",
+        "direction": "Debit (sender)",
+        "trigger": "Money moved to another account",
+        "example": "FPS transfer out"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_005",
+      "name": "Inbound Transfer",
+      "properties": {
+        "transaction_type": "Inbound Transfer",
+        "direction": "Credit",
+        "trigger": "Money received",
+        "example": "FPS transfer in"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_006",
+      "name": "Interest",
+      "properties": {
+        "transaction_type": "Interest",
+        "direction": "Credit",
+        "trigger": "Interest accrual",
+        "example": "Monthly interest"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_007",
+      "name": "Fee",
+      "properties": {
+        "transaction_type": "Fee",
+        "direction": "Debit",
+        "trigger": "Service charge",
+        "example": "Card replacement fee"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_008",
+      "name": "Standing Order Transaction",
+      "properties": {
+        "transaction_type": "Standing Order",
+        "direction": "Debit",
+        "trigger": "Recurring transfer",
+        "example": "Mortgage payment"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_009",
+      "name": "Direct Debit Transaction",
+      "properties": {
+        "transaction_type": "Direct Debit",
+        "direction": "Debit",
+        "trigger": "Bill payment",
+        "example": "Utility payment"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_001",
+      "name": "Transaction Immutability Rule",
+      "properties": {
+        "rule_statement": "Transaction cannot be deleted",
+        "rule_type": "constraint",
+        "applies_to": "Transaction",
+        "context": "Audit trail preservation"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_002",
+      "name": "Account Balance Calculation Rule",
+      "properties": {
+        "rule_statement": "Account balance = sum of all transactions",
+        "rule_type": "constraint",
+        "applies_to": "Account"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_003",
+      "name": "Transaction Fraud Risk Scoring Rule",
+      "properties": {
+        "rule_statement": "Each transaction linked to fraud risk score",
+        "rule_type": "obligation",
+        "applies_to": "Transaction"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_004",
+      "name": "Transaction Compliance Logging Rule",
+      "properties": {
+        "rule_statement": "All transactions logged for compliance",
+        "rule_type": "obligation",
+        "applies_to": "Transaction"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+      "source_name": "Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_001",
+      "target_name": "Transaction Immutability Rule",
+      "rel_type": "governed_by",
+      "description": "Transaction concept is governed by the immutability rule that prevents deletion",
+      "properties": {
+        "rule_content": "Transaction cannot be deleted (audit trail)"
+      },
+      "context": "Transaction cannot be deleted (audit trail)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+      "source_name": "Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_002",
+      "target_name": "Account Balance Calculation Rule",
+      "rel_type": "governs",
+      "description": "Transaction concept governs how account balance is calculated",
+      "properties": {
+        "rule_content": "Account balance = sum of all transactions"
+      },
+      "context": "Account balance = sum of all transactions",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+      "source_name": "Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_003",
+      "target_name": "Transaction Fraud Risk Scoring Rule",
+      "rel_type": "governed_by",
+      "description": "Each transaction is governed by fraud risk scoring rule",
+      "properties": {
+        "rule_content": "Each transaction linked to fraud risk score"
+      },
+      "context": "Each transaction linked to fraud risk score",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+      "source_name": "Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_004",
+      "target_name": "Transaction Compliance Logging Rule",
+      "rel_type": "governed_by",
+      "description": "All transactions are governed by compliance logging rule",
+      "properties": {
+        "rule_content": "All transactions logged for compliance"
+      },
+      "context": "All transactions logged for compliance",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_002",
+      "source_name": "Deposit",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+      "target_name": "Transaction",
+      "rel_type": "has_subtype",
+      "description": "Deposit is a subtype of Transaction",
+      "properties": {
+        "direction": "Credit",
+        "trigger": "Customer adds funds",
+        "example": "Branch deposit"
+      },
+      "context": "Deposit | Credit | Customer adds funds | Branch deposit",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_003",
+      "source_name": "Withdrawal",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+      "target_name": "Transaction",
+      "rel_type": "has_subtype",
+      "description": "Withdrawal is a subtype of Transaction",
+      "properties": {
+        "direction": "Debit",
+        "trigger": "Customer removes funds",
+        "example": "ATM withdrawal"
+      },
+      "context": "Withdrawal | Debit | Customer removes funds | ATM withdrawal",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_004",
+      "source_name": "Transfer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+      "target_name": "Transaction",
+      "rel_type": "has_subtype",
+      "description": "Transfer is a subtype of Transaction",
+      "properties": {
+        "direction": "Debit (sender)",
+        "trigger": "Money moved to another account",
+        "example": "FPS transfer out"
+      },
+      "context": "Transfer | Debit (sender) | Money moved to another account | FPS transfer out",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_005",
+      "source_name": "Inbound Transfer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+      "target_name": "Transaction",
+      "rel_type": "has_subtype",
+      "description": "Inbound Transfer is a subtype of Transaction",
+      "properties": {
+        "direction": "Credit",
+        "trigger": "Money received",
+        "example": "FPS transfer in"
+      },
+      "context": "Inbound Transfer | Credit | Money received | FPS transfer in",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_006",
+      "source_name": "Interest",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+      "target_name": "Transaction",
+      "rel_type": "has_subtype",
+      "description": "Interest is a subtype of Transaction",
+      "properties": {
+        "direction": "Credit",
+        "trigger": "Interest accrual",
+        "example": "Monthly interest"
+      },
+      "context": "Interest | Credit | Interest accrual | Monthly interest",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_007",
+      "source_name": "Fee",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+      "target_name": "Transaction",
+      "rel_type": "has_subtype",
+      "description": "Fee is a subtype of Transaction",
+      "properties": {
+        "direction": "Debit",
+        "trigger": "Service charge",
+        "example": "Card replacement fee"
+      },
+      "context": "Fee | Debit | Service charge | Card replacement fee",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_008",
+      "source_name": "Standing Order Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+      "target_name": "Transaction",
+      "rel_type": "has_subtype",
+      "description": "Standing Order Transaction is a subtype of Transaction",
+      "properties": {
+        "direction": "Debit",
+        "trigger": "Recurring transfer",
+        "example": "Mortgage payment"
+      },
+      "context": "Standing Order | Debit | Recurring transfer | Mortgage payment",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_009",
+      "source_name": "Direct Debit Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+      "target_name": "Transaction",
+      "rel_type": "has_subtype",
+      "description": "Direct Debit Transaction is a subtype of Transaction",
+      "properties": {
+        "direction": "Debit",
+        "trigger": "Bill payment",
+        "example": "Utility payment"
+      },
+      "context": "Direct Debit | Debit | Bill payment | Utility payment",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_001",
+      "source_name": "Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_002",
+      "source_name": "Deposit",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_003",
+      "source_name": "Withdrawal",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_004",
+      "source_name": "Transfer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_005",
+      "source_name": "Inbound Transfer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_006",
+      "source_name": "Interest",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_007",
+      "source_name": "Fee",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_008",
+      "source_name": "Standing Order Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_bc_009",
+      "source_name": "Direct Debit Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_001",
+      "source_name": "Transaction Immutability Rule",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_002",
+      "source_name": "Account Balance Calculation Rule",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_003",
+      "source_name": "Transaction Fraud Risk Scoring Rule",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016_br_004",
+      "source_name": "Transaction Compliance Logging Rule",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ]
+}

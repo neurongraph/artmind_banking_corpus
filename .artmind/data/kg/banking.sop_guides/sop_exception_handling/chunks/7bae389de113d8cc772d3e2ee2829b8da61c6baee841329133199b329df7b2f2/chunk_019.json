@@ -1,0 +1,643 @@
+{
+  "chunk_seq": 19,
+  "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+  "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+  "text": "## Common Exceptions & Resolutions  \n### Failed Transfer — Insufficient Funds  \n```\nException: Customer attempted £5,000 transfer, balance only £3,000\nInvestigation: Confirmed balance at transaction time\nResolution: Explain to customer, offer retry once funds available\nSLA: 1 business day (immediate notification)\n```",
+  "name": "Chunk 19/25",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+  "next_chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_020",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Failed Transfer Exception Handling",
+      "aliases": [
+        "Insufficient Funds Transfer Resolution"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "End-to-end procedure for handling customer transfer attempts that fail due to insufficient account funds. Includes investigation of the failed transaction, customer notification, and guidance on retry options. SLA is 1 business day with immediate notification required.",
+      "context": [
+        "Exception: Customer attempted £5,000 transfer, balance only £3,000",
+        "Investigation: Confirmed balance at transaction time",
+        "Resolution: Explain to customer, offer retry once funds available",
+        "SLA: 1 business day (immediate notification)"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Transaction Exception Detection",
+      "aliases": [
+        "Insufficient Funds Detection"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Detection and recording of a customer transfer attempt that exceeds available account balance. The system identifies that the requested transfer amount (£5,000) exceeds the current balance (£3,000).",
+      "context": [
+        "Exception: Customer attempted £5,000 transfer, balance only £3,000"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Balance Verification Investigation",
+      "aliases": [
+        "Transaction Investigation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Formal investigation step to confirm the account balance at the time of the failed transfer attempt. Verifies that insufficient funds was the genuine cause of the transaction failure.",
+      "context": [
+        "Investigation: Confirmed balance at transaction time"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Customer Notification and Resolution Guidance",
+      "aliases": [
+        "Customer Communication"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Communication step to notify the customer of the failed transfer, explain the insufficient funds reason, and offer guidance on retry options once funds become available.",
+      "context": [
+        "Resolution: Explain to customer, offer retry once funds available"
+      ]
+    },
+    {
+      "id": "ract_001",
+      "name": "Operations Staff - Exception Resolution",
+      "aliases": [
+        "Exception Handler"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations team member responsible for investigating the failed transfer, confirming the balance, and communicating the resolution to the customer.",
+      "context": [
+        "Investigation: Confirmed balance at transaction time",
+        "Resolution: Explain to customer, offer retry once funds available"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual customer who initiated the failed transfer attempt and is subject to the exception handling and notification process.",
+      "context": [
+        "Customer attempted £5,000 transfer, balance only £3,000",
+        "Explain to customer, offer retry once funds available"
+      ]
+    },
+    {
+      "id": "txn_001",
+      "name": "Failed Transfer - £5,000 Insufficient Funds",
+      "aliases": [
+        "Transfer Exception"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "A customer-initiated transfer transaction for £5,000 that failed due to insufficient available balance (£3,000). The transaction was rejected at the point of processing.",
+      "context": [
+        "Customer attempted £5,000 transfer, balance only £3,000",
+        "Exception: Customer attempted £5,000 transfer, balance only £3,000"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "The customer's account from which the failed transfer was attempted. The account held a balance of £3,000 at the time of the £5,000 transfer request.",
+      "context": [
+        "Customer attempted £5,000 transfer, balance only £3,000",
+        "Confirmed balance at transaction time"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_proc_001",
+    "pstep_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_001",
+    "pstep_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_002",
+    "pstep_003": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_003",
+    "ract_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_ract_001",
+    "cust_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_cust_001",
+    "txn_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_txn_001",
+    "acc_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_acc_001"
+  },
+  "entities": [
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_proc_001",
+      "name": "Failed Transfer Exception Handling",
+      "aliases": [
+        "Insufficient Funds Transfer Resolution"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "End-to-end procedure for handling customer transfer attempts that fail due to insufficient account funds. Includes investigation of the failed transaction, customer notification, and guidance on retry options. SLA is 1 business day with immediate notification required.",
+      "context": [
+        "Exception: Customer attempted £5,000 transfer, balance only £3,000",
+        "Investigation: Confirmed balance at transaction time",
+        "Resolution: Explain to customer, offer retry once funds available",
+        "SLA: 1 business day (immediate notification)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_001",
+      "name": "Transaction Exception Detection",
+      "aliases": [
+        "Insufficient Funds Detection"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Detection and recording of a customer transfer attempt that exceeds available account balance. The system identifies that the requested transfer amount (£5,000) exceeds the current balance (£3,000).",
+      "context": [
+        "Exception: Customer attempted £5,000 transfer, balance only £3,000"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_002",
+      "name": "Balance Verification Investigation",
+      "aliases": [
+        "Transaction Investigation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Formal investigation step to confirm the account balance at the time of the failed transfer attempt. Verifies that insufficient funds was the genuine cause of the transaction failure.",
+      "context": [
+        "Investigation: Confirmed balance at transaction time"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_003",
+      "name": "Customer Notification and Resolution Guidance",
+      "aliases": [
+        "Customer Communication"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Communication step to notify the customer of the failed transfer, explain the insufficient funds reason, and offer guidance on retry options once funds become available.",
+      "context": [
+        "Resolution: Explain to customer, offer retry once funds available"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_ract_001",
+      "name": "Operations Staff - Exception Resolution",
+      "aliases": [
+        "Exception Handler"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations team member responsible for investigating the failed transfer, confirming the balance, and communicating the resolution to the customer.",
+      "context": [
+        "Investigation: Confirmed balance at transaction time",
+        "Resolution: Explain to customer, offer retry once funds available"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual customer who initiated the failed transfer attempt and is subject to the exception handling and notification process.",
+      "context": [
+        "Customer attempted £5,000 transfer, balance only £3,000",
+        "Explain to customer, offer retry once funds available"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_txn_001",
+      "name": "Failed Transfer - £5,000 Insufficient Funds",
+      "aliases": [
+        "Transfer Exception"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "A customer-initiated transfer transaction for £5,000 that failed due to insufficient available balance (£3,000). The transaction was rejected at the point of processing.",
+      "context": [
+        "Customer attempted £5,000 transfer, balance only £3,000",
+        "Exception: Customer attempted £5,000 transfer, balance only £3,000"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "The customer's account from which the failed transfer was attempted. The account held a balance of £3,000 at the time of the £5,000 transfer request.",
+      "context": [
+        "Customer attempted £5,000 transfer, balance only £3,000",
+        "Confirmed balance at transaction time"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_proc_001",
+      "name": "Failed Transfer Exception Handling",
+      "properties": {
+        "purpose": "Handle and resolve failed transfer transactions due to insufficient funds",
+        "scope": "Failed transfer exceptions",
+        "channels": [
+          "branch",
+          "online",
+          "system"
+        ],
+        "owner": "Operations Staff - Exception Resolution",
+        "departments_involved": [
+          "Operations"
+        ],
+        "timeline_sla": "1 business day",
+        "trigger": "Customer attempted transfer with insufficient account balance",
+        "outcome_success": "Customer notified, resolution guidance provided, retry option offered",
+        "outcome_failure": "Customer not notified within SLA or resolution not offered"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_001",
+      "name": "Transaction Exception Detection",
+      "properties": {
+        "step_number": 1,
+        "actor": "Operations Staff - Exception Resolution",
+        "input": "Failed transfer transaction record",
+        "output": "Exception identified and flagged for investigation",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Transaction monitoring system"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_002",
+      "name": "Balance Verification Investigation",
+      "properties": {
+        "step_number": 2,
+        "actor": "Operations Staff - Exception Resolution",
+        "input": "Customer account balance, transaction amount, transaction timestamp",
+        "output": "Confirmed balance verification and root cause documentation",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account management system"
+        ],
+        "failure_path": "Escalate to supervisor if balance discrepancy found"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_003",
+      "name": "Customer Notification and Resolution Guidance",
+      "properties": {
+        "step_number": 3,
+        "actor": "Operations Staff - Exception Resolution",
+        "input": "Investigation findings, customer contact details",
+        "output": "Customer notification sent, resolution options documented",
+        "estimated_duration": "Immediate",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": "yes",
+        "failure_path": "Escalate if customer cannot be contacted within 1 business day"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_ract_001",
+      "name": "Operations Staff - Exception Resolution",
+      "properties": {
+        "role_type": "human",
+        "department": "Operations",
+        "authority_level": "Investigate and resolve failed transfer exceptions",
+        "response_time_sla": "Immediate notification",
+        "channels": [
+          "system",
+          "branch",
+          "online"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Initiator of failed transfer transaction"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_txn_001",
+      "name": "Failed Transfer - £5,000 Insufficient Funds",
+      "properties": {
+        "transaction_type": "transfer",
+        "threshold_value": 5000,
+        "monitoring_or_reporting_obligation": "Exception investigation and customer notification required"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_acc_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_state": "active",
+        "balance_minimum": "3000"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_proc_001",
+      "source_name": "Failed Transfer Exception Handling",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_001",
+      "target_name": "Transaction Exception Detection",
+      "rel_type": "starts_with",
+      "description": "The Failed Transfer Exception Handling process begins with Transaction Exception Detection",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Exception: Customer attempted £5,000 transfer, balance only £3,000",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_001",
+      "source_name": "Transaction Exception Detection",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_002",
+      "target_name": "Balance Verification Investigation",
+      "rel_type": "followed_by",
+      "description": "Transaction Exception Detection is followed by Balance Verification Investigation",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Investigation: Confirmed balance at transaction time",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_002",
+      "source_name": "Balance Verification Investigation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_003",
+      "target_name": "Customer Notification and Resolution Guidance",
+      "rel_type": "followed_by",
+      "description": "Balance Verification Investigation is followed by Customer Notification and Resolution Guidance",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Resolution: Explain to customer, offer retry once funds available",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_proc_001",
+      "source_name": "Failed Transfer Exception Handling",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_ract_001",
+      "target_name": "Operations Staff - Exception Resolution",
+      "rel_type": "executed_by",
+      "description": "The Failed Transfer Exception Handling process is executed by Operations Staff - Exception Resolution",
+      "properties": {
+        "role_responsibility": "exception resolution"
+      },
+      "context": "Operations Staff - Exception Resolution",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_001",
+      "source_name": "Transaction Exception Detection",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_txn_001",
+      "target_name": "Failed Transfer - £5,000 Insufficient Funds",
+      "rel_type": "triggered_by",
+      "description": "Transaction Exception Detection is triggered by the Failed Transfer transaction",
+      "properties": {
+        "exception_type": "insufficient_funds",
+        "amount": "£5,000"
+      },
+      "context": "Exception: Customer attempted £5,000 transfer, balance only £3,000",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_002",
+      "source_name": "Balance Verification Investigation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "updates",
+      "description": "Balance Verification Investigation verifies and records the balance state of the Customer Account",
+      "properties": {
+        "verification_type": "balance_confirmation",
+        "balance_at_time": "£3,000"
+      },
+      "context": "Investigation: Confirmed balance at transaction time",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_003",
+      "source_name": "Customer Notification and Resolution Guidance",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_cust_001",
+      "target_name": "Customer",
+      "rel_type": "notifies",
+      "description": "Customer Notification and Resolution Guidance notifies the Customer of the failed transfer and resolution options",
+      "properties": {
+        "notification_type": "exception_explanation",
+        "sla_hours": 24,
+        "sla_unit": "business_day"
+      },
+      "context": "Resolution: Explain to customer, offer retry once funds available; SLA: 1 business day (immediate notification)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_txn_001",
+      "source_name": "Failed Transfer - £5,000 Insufficient Funds",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "has_associated",
+      "description": "The Failed Transfer transaction is associated with the Customer Account",
+      "properties": {
+        "transaction_type": "transfer",
+        "status": "failed",
+        "reason": "insufficient_funds",
+        "attempted_amount": "£5,000",
+        "account_balance": "£3,000"
+      },
+      "context": "Exception: Customer attempted £5,000 transfer, balance only £3,000",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "holds",
+      "description": "The Customer holds the Customer Account",
+      "properties": {},
+      "context": "Customer attempted £5,000 transfer",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_proc_001",
+      "source_name": "Failed Transfer Exception Handling",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_txn_001",
+      "target_name": "Failed Transfer - £5,000 Insufficient Funds",
+      "rel_type": "operates_on",
+      "description": "The Failed Transfer Exception Handling process operates on the Failed Transfer transaction",
+      "properties": {
+        "process_objective": "exception_resolution"
+      },
+      "context": "Exception: Customer attempted £5,000 transfer, balance only £3,000",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_proc_001",
+      "source_name": "Failed Transfer Exception Handling",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_001",
+      "source_name": "Transaction Exception Detection",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_002",
+      "source_name": "Balance Verification Investigation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_pstep_003",
+      "source_name": "Customer Notification and Resolution Guidance",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_ract_001",
+      "source_name": "Operations Staff - Exception Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_txn_001",
+      "source_name": "Failed Transfer - £5,000 Insufficient Funds",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

@@ -1,0 +1,645 @@
+{
+  "chunk_seq": 12,
+  "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+  "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+  "text": "## SCENARIO 9: Card Replacement  \n**Customer:** \"My card is lost/damaged.\"  \n**Agent Script:**  \n```\nAgent: \"Don't worry, we can replace that right away.\n\nFirst, I'm going to block your card immediately so no one\nelse can use it.\n\n[Block card in system]\n\nNow, for the replacement:\n\nWe can send a new card in 3-5 business days (free), or an\nexpedited replacement overnight for £25.\n\nWhich would you prefer?\n\nIn the meantime:\n- Your card is blocked and can't be used\n- Existing Direct Debits and standing orders still work\n- You can use online banking and mobile app\n- Visit a branch to withdraw cash if needed\n\nAny other questions?\"\n```  \n---",
+  "name": "Chunk 12/17",
+  "_domain": "banking.communications",
+  "prev_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+  "next_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_013",
+  "raw_entities": [
+    {
+      "id": "ct_001",
+      "name": "Card Replacement Agent Script",
+      "aliases": [
+        "Card Replacement Call Script",
+        "Lost/Damaged Card Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "Agent call script for handling customer requests to replace a lost or damaged card. The script covers immediate card blocking, replacement options (standard 3-5 business days free or expedited overnight for £25), and reassurance about continued access to Direct Debits, standing orders, and alternative banking channels during the replacement period.",
+      "context": [
+        "Agent: \"Don't worry, we can replace that right away. First, I'm going to block your card immediately so no one else can use it.\"",
+        "We can send a new card in 3-5 business days (free), or an expedited replacement overnight for £25.",
+        "Your card is blocked and can't be used. Existing Direct Debits and standing orders still work. You can use online banking and mobile app."
+      ]
+    },
+    {
+      "id": "tv_001",
+      "name": "Card Status",
+      "aliases": [
+        "Card State",
+        "Card Condition"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "account_data",
+      "description": "Variable representing the current status or condition of the customer's card (e.g., lost, damaged, blocked). Used in the card replacement script to contextualise the reason for replacement.",
+      "context": [
+        "Customer: \"My card is lost/damaged.\"",
+        "Your card is blocked and can't be used"
+      ]
+    },
+    {
+      "id": "tv_002",
+      "name": "Replacement Delivery Timeframe",
+      "aliases": [
+        "Delivery Time",
+        "Processing Time"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "Variable representing the time required to deliver a replacement card. The script offers two options: standard delivery in 3-5 business days or expedited overnight delivery.",
+      "context": [
+        "We can send a new card in 3-5 business days (free), or an expedited replacement overnight for £25."
+      ]
+    },
+    {
+      "id": "tv_003",
+      "name": "Replacement Card Cost",
+      "aliases": [
+        "Expedited Fee",
+        "Replacement Fee"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "Variable representing the cost charged for expedited card replacement. Standard replacement is free; expedited overnight replacement costs £25.",
+      "context": [
+        "We can send a new card in 3-5 business days (free), or an expedited replacement overnight for £25."
+      ]
+    },
+    {
+      "id": "card_001",
+      "name": "Replacement Card",
+      "aliases": [
+        "New Card",
+        "Replacement Debit Card"
+      ],
+      "entity_class": "CARD",
+      "type": "replacement_card",
+      "description": "A replacement debit card issued to a customer whose original card is lost or damaged. The script offers standard free delivery (3-5 business days) or expedited overnight delivery for a £25 fee.",
+      "context": [
+        "My card is lost/damaged.",
+        "We can send a new card in 3-5 business days (free), or an expedited replacement overnight for £25."
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer Requesting Card Replacement",
+      "aliases": [
+        "Card Replacement Customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "existing_customer",
+      "description": "A customer who has reported their card as lost or damaged and is requesting a replacement. The customer is an existing account holder with active Direct Debits, standing orders, and access to online and mobile banking.",
+      "context": [
+        "Customer: \"My card is lost/damaged.\"",
+        "Existing Direct Debits and standing orders still work"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Mandate During Card Replacement",
+      "aliases": [
+        "DD Continuity",
+        "Active Direct Debits"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Direct Debit mandates on the customer's account that remain active and functional during the card replacement period, even though the card itself is blocked and cannot be used.",
+      "context": [
+        "Existing Direct Debits and standing orders still work",
+        "Your card is blocked and can't be used"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order During Card Replacement",
+      "aliases": [
+        "Active Standing Orders"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "Standing order payment instructions on the customer's account that continue to operate normally during the card replacement period, independent of the blocked card.",
+      "context": [
+        "Existing Direct Debits and standing orders still work",
+        "Your card is blocked and can't be used"
+      ]
+    }
+  ],
+  "id_map": {
+    "ct_001": "01a07428-c932-773f-a5f8-da98f9df05b5_012_ct_001",
+    "tv_001": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_001",
+    "tv_002": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_002",
+    "tv_003": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_003",
+    "card_001": "01a07428-c932-773f-a5f8-da98f9df05b5_012_card_001",
+    "cust_001": "01a07428-c932-773f-a5f8-da98f9df05b5_012_cust_001",
+    "dd_001": "01a07428-c932-773f-a5f8-da98f9df05b5_012_dd_001",
+    "so_001": "01a07428-c932-773f-a5f8-da98f9df05b5_012_so_001"
+  },
+  "entities": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_ct_001",
+      "name": "Card Replacement Agent Script",
+      "aliases": [
+        "Card Replacement Call Script",
+        "Lost/Damaged Card Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "Agent call script for handling customer requests to replace a lost or damaged card. The script covers immediate card blocking, replacement options (standard 3-5 business days free or expedited overnight for £25), and reassurance about continued access to Direct Debits, standing orders, and alternative banking channels during the replacement period.",
+      "context": [
+        "Agent: \"Don't worry, we can replace that right away. First, I'm going to block your card immediately so no one else can use it.\"",
+        "We can send a new card in 3-5 business days (free), or an expedited replacement overnight for £25.",
+        "Your card is blocked and can't be used. Existing Direct Debits and standing orders still work. You can use online banking and mobile app."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_001",
+      "name": "Card Status",
+      "aliases": [
+        "Card State",
+        "Card Condition"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "account_data",
+      "description": "Variable representing the current status or condition of the customer's card (e.g., lost, damaged, blocked). Used in the card replacement script to contextualise the reason for replacement.",
+      "context": [
+        "Customer: \"My card is lost/damaged.\"",
+        "Your card is blocked and can't be used"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_002",
+      "name": "Replacement Delivery Timeframe",
+      "aliases": [
+        "Delivery Time",
+        "Processing Time"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "Variable representing the time required to deliver a replacement card. The script offers two options: standard delivery in 3-5 business days or expedited overnight delivery.",
+      "context": [
+        "We can send a new card in 3-5 business days (free), or an expedited replacement overnight for £25."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_003",
+      "name": "Replacement Card Cost",
+      "aliases": [
+        "Expedited Fee",
+        "Replacement Fee"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "Variable representing the cost charged for expedited card replacement. Standard replacement is free; expedited overnight replacement costs £25.",
+      "context": [
+        "We can send a new card in 3-5 business days (free), or an expedited replacement overnight for £25."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_card_001",
+      "name": "Replacement Card",
+      "aliases": [
+        "New Card",
+        "Replacement Debit Card"
+      ],
+      "entity_class": "CARD",
+      "type": "replacement_card",
+      "description": "A replacement debit card issued to a customer whose original card is lost or damaged. The script offers standard free delivery (3-5 business days) or expedited overnight delivery for a £25 fee.",
+      "context": [
+        "My card is lost/damaged.",
+        "We can send a new card in 3-5 business days (free), or an expedited replacement overnight for £25."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_cust_001",
+      "name": "Customer Requesting Card Replacement",
+      "aliases": [
+        "Card Replacement Customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "existing_customer",
+      "description": "A customer who has reported their card as lost or damaged and is requesting a replacement. The customer is an existing account holder with active Direct Debits, standing orders, and access to online and mobile banking.",
+      "context": [
+        "Customer: \"My card is lost/damaged.\"",
+        "Existing Direct Debits and standing orders still work"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_dd_001",
+      "name": "Direct Debit Mandate During Card Replacement",
+      "aliases": [
+        "DD Continuity",
+        "Active Direct Debits"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Direct Debit mandates on the customer's account that remain active and functional during the card replacement period, even though the card itself is blocked and cannot be used.",
+      "context": [
+        "Existing Direct Debits and standing orders still work",
+        "Your card is blocked and can't be used"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_so_001",
+      "name": "Standing Order During Card Replacement",
+      "aliases": [
+        "Active Standing Orders"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "Standing order payment instructions on the customer's account that continue to operate normally during the card replacement period, independent of the blocked card.",
+      "context": [
+        "Existing Direct Debits and standing orders still work",
+        "Your card is blocked and can't be used"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_ct_001",
+      "name": "Card Replacement Agent Script",
+      "properties": {
+        "channel": "call",
+        "trigger_event": "customer reports lost or damaged card",
+        "recipient": "customer requesting card replacement",
+        "key_content": [
+          "Immediate card blocking",
+          "Replacement delivery options (standard 3-5 business days free, or overnight expedited for £25)",
+          "Reassurance that Direct Debits and standing orders continue",
+          "Alternative access methods during replacement period"
+        ],
+        "variables_used": [
+          "Card Status",
+          "Replacement Delivery Timeframe",
+          "Replacement Card Cost"
+        ],
+        "tone": "friendly",
+        "owner": "card services team"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_001",
+      "name": "Card Status",
+      "properties": {
+        "variable_placeholder": "[Card Status]",
+        "data_source": "card management system",
+        "data_type": "string",
+        "example_value": "blocked",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Card Replacement Agent Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_002",
+      "name": "Replacement Delivery Timeframe",
+      "properties": {
+        "variable_placeholder": "[Replacement Delivery Timeframe]",
+        "data_source": "card services system",
+        "data_type": "string",
+        "example_value": "3-5 business days",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Card Replacement Agent Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_003",
+      "name": "Replacement Card Cost",
+      "properties": {
+        "variable_placeholder": "[Replacement Card Cost]",
+        "data_source": "product pricing system",
+        "data_type": "currency",
+        "example_value": "£25",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Card Replacement Agent Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_card_001",
+      "name": "Replacement Card",
+      "properties": {
+        "card_state": "replacement",
+        "block_or_replacement_conditions": "issued when original card is lost or damaged",
+        "delivery_option_standard": "3-5 business days at no cost",
+        "delivery_option_expedited": "overnight delivery for £25"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_cust_001",
+      "name": "Customer Requesting Card Replacement",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "cardholder reporting lost or damaged card"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_dd_001",
+      "name": "Direct Debit Mandate During Card Replacement",
+      "properties": {
+        "mandate_process": "continues without interruption during card replacement period",
+        "continuity_assurance": "existing Direct Debits remain active while replacement card is in transit"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_so_001",
+      "name": "Standing Order During Card Replacement",
+      "properties": {
+        "continuity_assurance": "existing standing orders remain active while replacement card is in transit"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_ct_001",
+      "source_name": "Card Replacement Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_001",
+      "target_name": "Card Status",
+      "rel_type": "contains",
+      "description": "The agent script contains information about card status, specifically that the card is blocked and cannot be used",
+      "properties": {
+        "variable_context": "card blocking status",
+        "usage_in_script": "communicates blocked state to customer"
+      },
+      "context": "Your card is blocked and can't be used",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_ct_001",
+      "source_name": "Card Replacement Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_002",
+      "target_name": "Replacement Delivery Timeframe",
+      "rel_type": "contains",
+      "description": "The agent script contains delivery timeframe options for the replacement card",
+      "properties": {
+        "timeframe_options": [
+          "3-5 business days",
+          "overnight"
+        ],
+        "cost_associated": [
+          "free",
+          "£25"
+        ]
+      },
+      "context": "We can send a new card in 3-5 business days (free), or an expedited replacement overnight for £25.",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_ct_001",
+      "source_name": "Card Replacement Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_003",
+      "target_name": "Replacement Card Cost",
+      "rel_type": "contains",
+      "description": "The agent script contains information about replacement card costs for different delivery options",
+      "properties": {
+        "standard_cost": "free",
+        "expedited_cost": "£25",
+        "delivery_options": [
+          "standard",
+          "overnight"
+        ]
+      },
+      "context": "We can send a new card in 3-5 business days (free), or an expedited replacement overnight for £25.",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_ct_001",
+      "source_name": "Card Replacement Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_card_001",
+      "target_name": "Replacement Card",
+      "rel_type": "confirms_issuance_of",
+      "description": "The agent script confirms the issuance of a replacement card to the customer",
+      "properties": {
+        "action": "card replacement",
+        "trigger": "lost or damaged card"
+      },
+      "context": "we can replace that right away",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_ct_001",
+      "source_name": "Card Replacement Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_cust_001",
+      "target_name": "Customer Requesting Card Replacement",
+      "rel_type": "addressed_to",
+      "description": "The agent script is addressed to the customer requesting card replacement",
+      "properties": {
+        "customer_issue": "lost or damaged card",
+        "script_purpose": "guide agent interaction"
+      },
+      "context": "Customer: 'My card is lost/damaged.' Agent Script:",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_ct_001",
+      "source_name": "Card Replacement Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_dd_001",
+      "target_name": "Direct Debit Mandate During Card Replacement",
+      "rel_type": "provides_information_about",
+      "description": "The agent script provides information that existing Direct Debits continue to work during card replacement",
+      "properties": {
+        "status_during_replacement": "still work",
+        "reassurance_point": "service continuity"
+      },
+      "context": "Existing Direct Debits and standing orders still work",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_ct_001",
+      "source_name": "Card Replacement Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_so_001",
+      "target_name": "Standing Order During Card Replacement",
+      "rel_type": "provides_information_about",
+      "description": "The agent script provides information that existing standing orders continue to work during card replacement",
+      "properties": {
+        "status_during_replacement": "still work",
+        "reassurance_point": "service continuity"
+      },
+      "context": "Existing Direct Debits and standing orders still work",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_002",
+      "source_name": "Replacement Delivery Timeframe",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_003",
+      "target_name": "Replacement Card Cost",
+      "rel_type": "used_together_with",
+      "description": "Delivery timeframe and cost are presented together as linked options for customer choice",
+      "properties": {
+        "relationship_type": "option_pairing",
+        "standard_option": "3-5 business days / free",
+        "expedited_option": "overnight / £25"
+      },
+      "context": "We can send a new card in 3-5 business days (free), or an expedited replacement overnight for £25.",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_card_001",
+      "source_name": "Replacement Card",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_cust_001",
+      "target_name": "Customer Requesting Card Replacement",
+      "rel_type": "issued_to",
+      "description": "The replacement card is issued to the customer requesting replacement",
+      "properties": {
+        "reason": "original card lost or damaged",
+        "delivery_options": [
+          "standard",
+          "expedited"
+        ]
+      },
+      "context": "we can replace that right away",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_ct_001",
+      "source_name": "Card Replacement Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_001",
+      "source_name": "Card Status",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_002",
+      "source_name": "Replacement Delivery Timeframe",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_tv_003",
+      "source_name": "Replacement Card Cost",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_card_001",
+      "source_name": "Replacement Card",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_cust_001",
+      "source_name": "Customer Requesting Card Replacement",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_dd_001",
+      "source_name": "Direct Debit Mandate During Card Replacement",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012_so_001",
+      "source_name": "Standing Order During Card Replacement",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_012",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ]
+}

@@ -1,0 +1,1572 @@
+{
+  "chunk_seq": 22,
+  "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+  "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+  "text": "### Rejection Scenarios  \n**Account Rejected If:**\n- ❌ KYC verification failed (cannot verify identity)\n- ❌ AML hit (sanctions match confirmed)\n- ❌ PEP/adverse media (cannot mitigate risk)\n- ❌ Beneficial ownership unclear (entity customers)\n- ❌ Source of funds suspicious (fraud concern)\n- ❌ Regulatory exception denied  \n**Rejection Notification:**\n- Written notice to customer (no AML reason disclosed—tipping off risk)\n- Letter: \"We are unable to open your account at this time. Please contact us for more information.\"\n- No detailed explanation (prevents tipping off)  \n---",
+  "name": "Chunk 22/37",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_021",
+  "next_chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_023",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Account Opening Process",
+      "aliases": [
+        "Account Opening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_opening",
+      "description": "End-to-end account opening workflow that includes KYC verification, AML screening, PEP/adverse media checks, beneficial ownership verification, and source of funds assessment. Accounts are rejected if any compliance checkpoint fails, with rejection notification issued to the customer without disclosure of AML-related reasons to prevent tipping off.",
+      "context": [
+        "Account Rejected If: KYC verification failed (cannot verify identity)",
+        "AML hit (sanctions match confirmed)",
+        "PEP/adverse media (cannot mitigate risk)",
+        "Beneficial ownership unclear (entity customers)"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "KYC Verification Check",
+      "aliases": [
+        "KYC verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Mandatory step to verify customer identity during account opening. Rejection occurs if identity cannot be verified, preventing account opening.",
+      "context": [
+        "KYC verification failed (cannot verify identity)"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "AML Screening Check",
+      "aliases": [
+        "AML hit"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Sanctions and AML list screening step performed during account opening. Account is rejected if a confirmed sanctions match is identified.",
+      "context": [
+        "AML hit (sanctions match confirmed)"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "PEP and Adverse Media Assessment",
+      "aliases": [
+        "PEP/adverse media check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Assessment of Politically Exposed Person status and adverse media findings during account opening. Account is rejected if PEP or adverse media risk cannot be mitigated.",
+      "context": [
+        "PEP/adverse media (cannot mitigate risk)"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Beneficial Ownership Verification",
+      "aliases": [
+        "Beneficial ownership check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step to establish clear beneficial ownership, particularly for entity customers. Account is rejected if beneficial ownership cannot be clearly determined.",
+      "context": [
+        "Beneficial ownership unclear (entity customers)"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Source of Funds Assessment",
+      "aliases": [
+        "Source of funds check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Assessment of the customer's source of funds during account opening. Account is rejected if source of funds is deemed suspicious or presents a fraud concern.",
+      "context": [
+        "Source of funds suspicious (fraud concern)"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Regulatory Exception Review",
+      "aliases": [
+        "Regulatory exception"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Review of any regulatory exceptions or exemptions that may apply to the account opening. Account is rejected if the regulatory exception is denied.",
+      "context": [
+        "Regulatory exception denied"
+      ]
+    },
+    {
+      "id": "pstep_007",
+      "name": "Rejection Notification",
+      "aliases": [
+        "Rejection letter"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Written notification sent to customer when account opening is rejected. The notification does not disclose AML-related reasons to prevent tipping off, using a standard generic message.",
+      "context": [
+        "Written notice to customer (no AML reason disclosed—tipping off risk)",
+        "Letter: \"We are unable to open your account at this time. Please contact us for more information.\"",
+        "No detailed explanation (prevents tipping off)"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Account Approval Decision",
+      "aliases": [
+        "Account approval gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Branching decision point determining whether account opening proceeds or is rejected based on compliance checkpoint outcomes. Multiple rejection criteria exist: KYC failure, AML hit, PEP/adverse media risk, unclear beneficial ownership, suspicious source of funds, or denied regulatory exception.",
+      "context": [
+        "Account Rejected If: KYC verification failed (cannot verify identity)",
+        "AML hit (sanctions match confirmed)",
+        "PEP/adverse media (cannot mitigate risk)",
+        "Beneficial ownership unclear (entity customers)",
+        "Source of funds suspicious (fraud concern)",
+        "Regulatory exception denied"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "KYC Verification Checkpoint",
+      "aliases": [
+        "KYC compliance gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "identity_verification",
+      "description": "Mandatory compliance checkpoint verifying customer identity before account opening can proceed. Failure to verify identity results in account rejection.",
+      "context": [
+        "KYC verification failed (cannot verify identity)"
+      ]
+    },
+    {
+      "id": "cc_002",
+      "name": "AML Screening Checkpoint",
+      "aliases": [
+        "Sanctions screening gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory compliance checkpoint performing AML and sanctions screening. Confirmed sanctions matches trigger account rejection.",
+      "context": [
+        "AML hit (sanctions match confirmed)"
+      ]
+    },
+    {
+      "id": "cc_003",
+      "name": "PEP and Adverse Media Checkpoint",
+      "aliases": [
+        "PEP screening gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "pep_screening",
+      "description": "Mandatory compliance checkpoint assessing PEP status and adverse media. Unmitigable PEP or adverse media risk results in account rejection.",
+      "context": [
+        "PEP/adverse media (cannot mitigate risk)"
+      ]
+    },
+    {
+      "id": "cc_004",
+      "name": "Beneficial Ownership Checkpoint",
+      "aliases": [
+        "Beneficial owner verification gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "beneficial_owner_check",
+      "description": "Mandatory compliance checkpoint establishing clear beneficial ownership, particularly for entity customers. Unclear beneficial ownership results in account rejection.",
+      "context": [
+        "Beneficial ownership unclear (entity customers)"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Account Applicant",
+      "aliases": [
+        "Customer",
+        "Applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "applicant",
+      "description": "Natural person or entity applying for account opening. Subject to KYC verification, AML screening, PEP assessment, beneficial ownership verification, and source of funds assessment. Receives rejection notification if account opening is denied.",
+      "context": [
+        "Written notice to customer (no AML reason disclosed—tipping off risk)",
+        "Please contact us for more information"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "Sanctions Screening",
+      "aliases": [
+        "AML screening",
+        "Sanctions match"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "AML screening process checking customer against sanctions lists. Confirmed sanctions matches result in account rejection.",
+      "context": [
+        "AML hit (sanctions match confirmed)"
+      ]
+    },
+    {
+      "id": "aml_002",
+      "name": "PEP Screening",
+      "aliases": [
+        "PEP check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "pep_screening",
+      "description": "Screening to identify Politically Exposed Person status. PEP designation that cannot be mitigated results in account rejection.",
+      "context": [
+        "PEP/adverse media (cannot mitigate risk)"
+      ]
+    },
+    {
+      "id": "aml_003",
+      "name": "Adverse Media Check",
+      "aliases": [
+        "Adverse media screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "adverse_media_check",
+      "description": "Screening for adverse media findings on customer. Adverse media risk that cannot be mitigated results in account rejection.",
+      "context": [
+        "PEP/adverse media (cannot mitigate risk)"
+      ]
+    },
+    {
+      "id": "kyc_001",
+      "name": "Identity Verification",
+      "aliases": [
+        "KYC verification"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "KYC process to verify customer identity during account opening. Failure to verify identity is a rejection criterion.",
+      "context": [
+        "KYC verification failed (cannot verify identity)"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "New Account",
+      "aliases": [
+        "Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "new_account",
+      "description": "Account being opened subject to compliance verification and rejection criteria. Account opening is rejected if KYC, AML, PEP, beneficial ownership, source of funds, or regulatory exception checks fail.",
+      "context": [
+        "We are unable to open your account at this time",
+        "Account Rejected If"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_proc_001",
+    "pstep_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_001",
+    "pstep_002": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_002",
+    "pstep_003": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_003",
+    "pstep_004": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_004",
+    "pstep_005": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_005",
+    "pstep_006": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_006",
+    "pstep_007": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_007",
+    "dp_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_dp_001",
+    "cc_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_001",
+    "cc_002": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_002",
+    "cc_003": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_003",
+    "cc_004": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_004",
+    "cust_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cust_001",
+    "aml_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_001",
+    "aml_002": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_002",
+    "aml_003": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_003",
+    "kyc_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_kyc_001",
+    "acc_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_acc_001"
+  },
+  "entities": [
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_proc_001",
+      "name": "Account Opening Process",
+      "aliases": [
+        "Account Opening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_opening",
+      "description": "End-to-end account opening workflow that includes KYC verification, AML screening, PEP/adverse media checks, beneficial ownership verification, and source of funds assessment. Accounts are rejected if any compliance checkpoint fails, with rejection notification issued to the customer without disclosure of AML-related reasons to prevent tipping off.",
+      "context": [
+        "Account Rejected If: KYC verification failed (cannot verify identity)",
+        "AML hit (sanctions match confirmed)",
+        "PEP/adverse media (cannot mitigate risk)",
+        "Beneficial ownership unclear (entity customers)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_001",
+      "name": "KYC Verification Check",
+      "aliases": [
+        "KYC verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Mandatory step to verify customer identity during account opening. Rejection occurs if identity cannot be verified, preventing account opening.",
+      "context": [
+        "KYC verification failed (cannot verify identity)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_002",
+      "name": "AML Screening Check",
+      "aliases": [
+        "AML hit"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Sanctions and AML list screening step performed during account opening. Account is rejected if a confirmed sanctions match is identified.",
+      "context": [
+        "AML hit (sanctions match confirmed)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_003",
+      "name": "PEP and Adverse Media Assessment",
+      "aliases": [
+        "PEP/adverse media check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Assessment of Politically Exposed Person status and adverse media findings during account opening. Account is rejected if PEP or adverse media risk cannot be mitigated.",
+      "context": [
+        "PEP/adverse media (cannot mitigate risk)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_004",
+      "name": "Beneficial Ownership Verification",
+      "aliases": [
+        "Beneficial ownership check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step to establish clear beneficial ownership, particularly for entity customers. Account is rejected if beneficial ownership cannot be clearly determined.",
+      "context": [
+        "Beneficial ownership unclear (entity customers)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_005",
+      "name": "Source of Funds Assessment",
+      "aliases": [
+        "Source of funds check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Assessment of the customer's source of funds during account opening. Account is rejected if source of funds is deemed suspicious or presents a fraud concern.",
+      "context": [
+        "Source of funds suspicious (fraud concern)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_006",
+      "name": "Regulatory Exception Review",
+      "aliases": [
+        "Regulatory exception"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Review of any regulatory exceptions or exemptions that may apply to the account opening. Account is rejected if the regulatory exception is denied.",
+      "context": [
+        "Regulatory exception denied"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_007",
+      "name": "Rejection Notification",
+      "aliases": [
+        "Rejection letter"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Written notification sent to customer when account opening is rejected. The notification does not disclose AML-related reasons to prevent tipping off, using a standard generic message.",
+      "context": [
+        "Written notice to customer (no AML reason disclosed—tipping off risk)",
+        "Letter: \"We are unable to open your account at this time. Please contact us for more information.\"",
+        "No detailed explanation (prevents tipping off)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_dp_001",
+      "name": "Account Approval Decision",
+      "aliases": [
+        "Account approval gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Branching decision point determining whether account opening proceeds or is rejected based on compliance checkpoint outcomes. Multiple rejection criteria exist: KYC failure, AML hit, PEP/adverse media risk, unclear beneficial ownership, suspicious source of funds, or denied regulatory exception.",
+      "context": [
+        "Account Rejected If: KYC verification failed (cannot verify identity)",
+        "AML hit (sanctions match confirmed)",
+        "PEP/adverse media (cannot mitigate risk)",
+        "Beneficial ownership unclear (entity customers)",
+        "Source of funds suspicious (fraud concern)",
+        "Regulatory exception denied"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_001",
+      "name": "KYC Verification Checkpoint",
+      "aliases": [
+        "KYC compliance gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "identity_verification",
+      "description": "Mandatory compliance checkpoint verifying customer identity before account opening can proceed. Failure to verify identity results in account rejection.",
+      "context": [
+        "KYC verification failed (cannot verify identity)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_002",
+      "name": "AML Screening Checkpoint",
+      "aliases": [
+        "Sanctions screening gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory compliance checkpoint performing AML and sanctions screening. Confirmed sanctions matches trigger account rejection.",
+      "context": [
+        "AML hit (sanctions match confirmed)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_003",
+      "name": "PEP and Adverse Media Checkpoint",
+      "aliases": [
+        "PEP screening gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "pep_screening",
+      "description": "Mandatory compliance checkpoint assessing PEP status and adverse media. Unmitigable PEP or adverse media risk results in account rejection.",
+      "context": [
+        "PEP/adverse media (cannot mitigate risk)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_004",
+      "name": "Beneficial Ownership Checkpoint",
+      "aliases": [
+        "Beneficial owner verification gate"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "beneficial_owner_check",
+      "description": "Mandatory compliance checkpoint establishing clear beneficial ownership, particularly for entity customers. Unclear beneficial ownership results in account rejection.",
+      "context": [
+        "Beneficial ownership unclear (entity customers)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cust_001",
+      "name": "Account Applicant",
+      "aliases": [
+        "Customer",
+        "Applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "applicant",
+      "description": "Natural person or entity applying for account opening. Subject to KYC verification, AML screening, PEP assessment, beneficial ownership verification, and source of funds assessment. Receives rejection notification if account opening is denied.",
+      "context": [
+        "Written notice to customer (no AML reason disclosed—tipping off risk)",
+        "Please contact us for more information"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_001",
+      "name": "Sanctions Screening",
+      "aliases": [
+        "AML screening",
+        "Sanctions match"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "AML screening process checking customer against sanctions lists. Confirmed sanctions matches result in account rejection.",
+      "context": [
+        "AML hit (sanctions match confirmed)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_002",
+      "name": "PEP Screening",
+      "aliases": [
+        "PEP check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "pep_screening",
+      "description": "Screening to identify Politically Exposed Person status. PEP designation that cannot be mitigated results in account rejection.",
+      "context": [
+        "PEP/adverse media (cannot mitigate risk)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_003",
+      "name": "Adverse Media Check",
+      "aliases": [
+        "Adverse media screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "adverse_media_check",
+      "description": "Screening for adverse media findings on customer. Adverse media risk that cannot be mitigated results in account rejection.",
+      "context": [
+        "PEP/adverse media (cannot mitigate risk)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_kyc_001",
+      "name": "Identity Verification",
+      "aliases": [
+        "KYC verification"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "KYC process to verify customer identity during account opening. Failure to verify identity is a rejection criterion.",
+      "context": [
+        "KYC verification failed (cannot verify identity)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_acc_001",
+      "name": "New Account",
+      "aliases": [
+        "Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "new_account",
+      "description": "Account being opened subject to compliance verification and rejection criteria. Account opening is rejected if KYC, AML, PEP, beneficial ownership, source of funds, or regulatory exception checks fail.",
+      "context": [
+        "We are unable to open your account at this time",
+        "Account Rejected If"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_proc_001",
+      "name": "Account Opening Process",
+      "properties": {
+        "scope": "new account applications",
+        "outcome_failure": "account rejection with written notification to customer",
+        "regulatory_references": [
+          "AML",
+          "KYC",
+          "PEP screening",
+          "adverse media assessment"
+        ]
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_001",
+      "name": "KYC Verification Check",
+      "properties": {
+        "step_number": 1,
+        "mandatory": "yes",
+        "failure_path": "account rejection"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_002",
+      "name": "AML Screening Check",
+      "properties": {
+        "step_number": 2,
+        "mandatory": "yes",
+        "failure_path": "account rejection if sanctions match confirmed"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_003",
+      "name": "PEP and Adverse Media Assessment",
+      "properties": {
+        "step_number": 3,
+        "mandatory": "yes",
+        "failure_path": "account rejection if risk cannot be mitigated"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_004",
+      "name": "Beneficial Ownership Verification",
+      "properties": {
+        "step_number": 4,
+        "mandatory": "yes",
+        "scope": "entity customers",
+        "failure_path": "account rejection if beneficial ownership unclear"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_005",
+      "name": "Source of Funds Assessment",
+      "properties": {
+        "step_number": 5,
+        "mandatory": "yes",
+        "failure_path": "account rejection if source of funds suspicious or fraud concern identified"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_006",
+      "name": "Regulatory Exception Review",
+      "properties": {
+        "step_number": 6,
+        "mandatory": "yes",
+        "failure_path": "account rejection if regulatory exception denied"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_007",
+      "name": "Rejection Notification",
+      "properties": {
+        "step_number": 7,
+        "channel": "postal",
+        "mandatory": "yes",
+        "output": "written rejection letter to customer",
+        "confidentiality_rule": "no detailed explanation provided to prevent tipping off"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_dp_001",
+      "name": "Account Approval Decision",
+      "properties": {
+        "decision_question": "should the account application be approved or rejected",
+        "criteria": [
+          "KYC verification passed",
+          "no AML hit",
+          "PEP/adverse media risk mitigated",
+          "beneficial ownership clear",
+          "source of funds legitimate",
+          "regulatory exception approved"
+        ],
+        "path_yes": "account opening proceeds",
+        "path_no": "rejection notification sent to customer"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_001",
+      "name": "KYC Verification Checkpoint",
+      "properties": {
+        "regulatory_basis": "KYC",
+        "mandatory": "yes",
+        "failure_consequence": "account rejection"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_002",
+      "name": "AML Screening Checkpoint",
+      "properties": {
+        "regulatory_basis": "AML",
+        "mandatory": "yes",
+        "failure_consequence": "account rejection if sanctions match confirmed"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_003",
+      "name": "PEP and Adverse Media Checkpoint",
+      "properties": {
+        "regulatory_basis": "PEP screening, adverse media assessment",
+        "mandatory": "yes",
+        "failure_consequence": "account rejection if risk cannot be mitigated"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_004",
+      "name": "Beneficial Ownership Checkpoint",
+      "properties": {
+        "regulatory_basis": "beneficial ownership verification",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "failure_consequence": "account rejection if beneficial ownership unclear"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cust_001",
+      "name": "Account Applicant",
+      "properties": {
+        "customer_type": "new",
+        "context_role": "applicant for new account opening"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_001",
+      "name": "Sanctions Screening",
+      "properties": {
+        "mandatory": "yes",
+        "hit_or_match_response": "account rejection if sanctions match confirmed"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_002",
+      "name": "PEP Screening",
+      "properties": {
+        "mandatory": "yes",
+        "hit_or_match_response": "account rejection if risk cannot be mitigated"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_003",
+      "name": "Adverse Media Check",
+      "properties": {
+        "mandatory": "yes",
+        "hit_or_match_response": "account rejection if risk cannot be mitigated"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_kyc_001",
+      "name": "Identity Verification",
+      "properties": {
+        "mandatory": "yes",
+        "consequence_of_failure": "account rejection"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_acc_001",
+      "name": "New Account",
+      "properties": {
+        "account_type": "new",
+        "account_state": "pending approval"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_001",
+      "target_name": "KYC Verification Check",
+      "rel_type": "contains",
+      "description": "Account Opening Process includes KYC Verification Check as a mandatory step",
+      "properties": {
+        "sequence_position": 1,
+        "mandatory": true
+      },
+      "context": "KYC verification failed (cannot verify identity)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_002",
+      "target_name": "AML Screening Check",
+      "rel_type": "contains",
+      "description": "Account Opening Process includes AML Screening Check as a mandatory step",
+      "properties": {
+        "sequence_position": 2,
+        "mandatory": true
+      },
+      "context": "AML hit (sanctions match confirmed)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_003",
+      "target_name": "PEP and Adverse Media Assessment",
+      "rel_type": "contains",
+      "description": "Account Opening Process includes PEP and Adverse Media Assessment as a mandatory step",
+      "properties": {
+        "sequence_position": 3,
+        "mandatory": true
+      },
+      "context": "PEP/adverse media (cannot mitigate risk)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_004",
+      "target_name": "Beneficial Ownership Verification",
+      "rel_type": "contains",
+      "description": "Account Opening Process includes Beneficial Ownership Verification as a mandatory step",
+      "properties": {
+        "sequence_position": 4,
+        "mandatory": true
+      },
+      "context": "Beneficial ownership unclear (entity customers)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_005",
+      "target_name": "Source of Funds Assessment",
+      "rel_type": "contains",
+      "description": "Account Opening Process includes Source of Funds Assessment as a mandatory step",
+      "properties": {
+        "sequence_position": 5,
+        "mandatory": true
+      },
+      "context": "Source of funds suspicious (fraud concern)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_006",
+      "target_name": "Regulatory Exception Review",
+      "rel_type": "contains",
+      "description": "Account Opening Process includes Regulatory Exception Review as a mandatory step",
+      "properties": {
+        "sequence_position": 6,
+        "mandatory": true
+      },
+      "context": "Regulatory exception denied",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_007",
+      "target_name": "Rejection Notification",
+      "rel_type": "ends_with",
+      "description": "Account Opening Process concludes with Rejection Notification step when account is rejected",
+      "properties": {
+        "conditional": true,
+        "trigger": "rejection_decision"
+      },
+      "context": "Rejection Notification: Written notice to customer (no AML reason disclosed—tipping off risk)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_dp_001",
+      "target_name": "Account Approval Decision",
+      "rel_type": "branches_at",
+      "description": "Account Opening Process branches at Account Approval Decision point",
+      "properties": {
+        "decision_outcomes": [
+          "approved",
+          "rejected"
+        ]
+      },
+      "context": "Account Rejected If: KYC verification failed, AML hit, PEP/adverse media, Beneficial ownership unclear, Source of funds suspicious, Regulatory exception denied",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cust_001",
+      "target_name": "Account Applicant",
+      "rel_type": "processes_application_of",
+      "description": "Account Opening Process processes the application of the Account Applicant",
+      "properties": {
+        "application_type": "account_opening"
+      },
+      "context": "Written notice to customer",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_acc_001",
+      "target_name": "New Account",
+      "rel_type": "opens",
+      "description": "Account Opening Process opens a New Account upon successful approval",
+      "properties": {
+        "conditional": true,
+        "trigger": "approval_decision"
+      },
+      "context": "Account Opening Process",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_001",
+      "source_name": "KYC Verification Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_002",
+      "target_name": "AML Screening Check",
+      "rel_type": "followed_by",
+      "description": "KYC Verification Check is followed by AML Screening Check",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "KYC verification failed (cannot verify identity) → AML hit (sanctions match confirmed)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_002",
+      "source_name": "AML Screening Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_003",
+      "target_name": "PEP and Adverse Media Assessment",
+      "rel_type": "followed_by",
+      "description": "AML Screening Check is followed by PEP and Adverse Media Assessment",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "AML hit (sanctions match confirmed) → PEP/adverse media (cannot mitigate risk)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_003",
+      "source_name": "PEP and Adverse Media Assessment",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_004",
+      "target_name": "Beneficial Ownership Verification",
+      "rel_type": "followed_by",
+      "description": "PEP and Adverse Media Assessment is followed by Beneficial Ownership Verification",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "PEP/adverse media (cannot mitigate risk) → Beneficial ownership unclear (entity customers)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_004",
+      "source_name": "Beneficial Ownership Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_005",
+      "target_name": "Source of Funds Assessment",
+      "rel_type": "followed_by",
+      "description": "Beneficial Ownership Verification is followed by Source of Funds Assessment",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Beneficial ownership unclear (entity customers) → Source of funds suspicious (fraud concern)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_005",
+      "source_name": "Source of Funds Assessment",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_006",
+      "target_name": "Regulatory Exception Review",
+      "rel_type": "followed_by",
+      "description": "Source of Funds Assessment is followed by Regulatory Exception Review",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Source of funds suspicious (fraud concern) → Regulatory exception denied",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_006",
+      "source_name": "Regulatory Exception Review",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_dp_001",
+      "target_name": "Account Approval Decision",
+      "rel_type": "leads_to",
+      "description": "Regulatory Exception Review leads to Account Approval Decision",
+      "properties": {
+        "decision_trigger": true
+      },
+      "context": "Regulatory exception denied → Account Rejected If",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_dp_001",
+      "source_name": "Account Approval Decision",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_007",
+      "target_name": "Rejection Notification",
+      "rel_type": "routes_to_on_fail",
+      "description": "Account Approval Decision routes to Rejection Notification on rejection",
+      "properties": {
+        "outcome": "rejection"
+      },
+      "context": "Account Rejected If → Rejection Notification: Written notice to customer",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_001",
+      "source_name": "KYC Verification Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_001",
+      "target_name": "KYC Verification Checkpoint",
+      "rel_type": "satisfies",
+      "description": "KYC Verification Check satisfies KYC Verification Checkpoint compliance requirement",
+      "properties": {
+        "compliance_requirement": "kyc_verification"
+      },
+      "context": "KYC verification failed (cannot verify identity)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_002",
+      "source_name": "AML Screening Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_002",
+      "target_name": "AML Screening Checkpoint",
+      "rel_type": "satisfies",
+      "description": "AML Screening Check satisfies AML Screening Checkpoint compliance requirement",
+      "properties": {
+        "compliance_requirement": "aml_screening"
+      },
+      "context": "AML hit (sanctions match confirmed)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_003",
+      "source_name": "PEP and Adverse Media Assessment",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_003",
+      "target_name": "PEP and Adverse Media Checkpoint",
+      "rel_type": "satisfies",
+      "description": "PEP and Adverse Media Assessment satisfies PEP and Adverse Media Checkpoint compliance requirement",
+      "properties": {
+        "compliance_requirement": "pep_adverse_media_check"
+      },
+      "context": "PEP/adverse media (cannot mitigate risk)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_004",
+      "source_name": "Beneficial Ownership Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_004",
+      "target_name": "Beneficial Ownership Checkpoint",
+      "rel_type": "satisfies",
+      "description": "Beneficial Ownership Verification satisfies Beneficial Ownership Checkpoint compliance requirement",
+      "properties": {
+        "compliance_requirement": "beneficial_ownership_verification"
+      },
+      "context": "Beneficial ownership unclear (entity customers)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_001",
+      "source_name": "KYC Verification Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_dp_001",
+      "target_name": "Account Approval Decision",
+      "rel_type": "gates",
+      "description": "KYC Verification Checkpoint gates Account Approval Decision",
+      "properties": {
+        "gate_condition": "kyc_verification_passed"
+      },
+      "context": "KYC verification failed (cannot verify identity) → Account Rejected If",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_002",
+      "source_name": "AML Screening Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_dp_001",
+      "target_name": "Account Approval Decision",
+      "rel_type": "gates",
+      "description": "AML Screening Checkpoint gates Account Approval Decision",
+      "properties": {
+        "gate_condition": "aml_screening_passed"
+      },
+      "context": "AML hit (sanctions match confirmed) → Account Rejected If",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_003",
+      "source_name": "PEP and Adverse Media Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_dp_001",
+      "target_name": "Account Approval Decision",
+      "rel_type": "gates",
+      "description": "PEP and Adverse Media Checkpoint gates Account Approval Decision",
+      "properties": {
+        "gate_condition": "pep_adverse_media_risk_mitigated"
+      },
+      "context": "PEP/adverse media (cannot mitigate risk) → Account Rejected If",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_004",
+      "source_name": "Beneficial Ownership Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_dp_001",
+      "target_name": "Account Approval Decision",
+      "rel_type": "gates",
+      "description": "Beneficial Ownership Checkpoint gates Account Approval Decision",
+      "properties": {
+        "gate_condition": "beneficial_ownership_verified"
+      },
+      "context": "Beneficial ownership unclear (entity customers) → Account Rejected If",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_001",
+      "source_name": "KYC Verification Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_kyc_001",
+      "target_name": "Identity Verification",
+      "rel_type": "executes",
+      "description": "KYC Verification Check executes Identity Verification",
+      "properties": {
+        "verification_type": "identity"
+      },
+      "context": "KYC verification failed (cannot verify identity)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_002",
+      "source_name": "AML Screening Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_001",
+      "target_name": "Sanctions Screening",
+      "rel_type": "executes",
+      "description": "AML Screening Check executes Sanctions Screening",
+      "properties": {
+        "screening_type": "sanctions"
+      },
+      "context": "AML hit (sanctions match confirmed)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_003",
+      "source_name": "PEP and Adverse Media Assessment",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_002",
+      "target_name": "PEP Screening",
+      "rel_type": "executes",
+      "description": "PEP and Adverse Media Assessment executes PEP Screening",
+      "properties": {
+        "screening_type": "pep"
+      },
+      "context": "PEP/adverse media (cannot mitigate risk)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_003",
+      "source_name": "PEP and Adverse Media Assessment",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_003",
+      "target_name": "Adverse Media Check",
+      "rel_type": "executes",
+      "description": "PEP and Adverse Media Assessment executes Adverse Media Check",
+      "properties": {
+        "screening_type": "adverse_media"
+      },
+      "context": "PEP/adverse media (cannot mitigate risk)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_007",
+      "source_name": "Rejection Notification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cust_001",
+      "target_name": "Account Applicant",
+      "rel_type": "notifies",
+      "description": "Rejection Notification notifies Account Applicant of rejection decision",
+      "properties": {
+        "notification_type": "written_notice",
+        "disclosure_level": "minimal",
+        "tipping_off_prevention": true
+      },
+      "context": "Written notice to customer (no AML reason disclosed—tipping off risk). Letter: 'We are unable to open your account at this time. Please contact us for more information.' No detailed explanation (prevents tipping off)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cust_001",
+      "source_name": "Account Applicant",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_kyc_001",
+      "target_name": "Identity Verification",
+      "rel_type": "subject_to",
+      "description": "Account Applicant is subject to Identity Verification",
+      "properties": {
+        "verification_required": true
+      },
+      "context": "KYC verification failed (cannot verify identity)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cust_001",
+      "source_name": "Account Applicant",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_001",
+      "target_name": "Sanctions Screening",
+      "rel_type": "screened_by",
+      "description": "Account Applicant is screened by Sanctions Screening",
+      "properties": {
+        "screening_type": "sanctions"
+      },
+      "context": "AML hit (sanctions match confirmed)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cust_001",
+      "source_name": "Account Applicant",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_002",
+      "target_name": "PEP Screening",
+      "rel_type": "screened_by",
+      "description": "Account Applicant is screened by PEP Screening",
+      "properties": {
+        "screening_type": "pep"
+      },
+      "context": "PEP/adverse media (cannot mitigate risk)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cust_001",
+      "source_name": "Account Applicant",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_003",
+      "target_name": "Adverse Media Check",
+      "rel_type": "screened_by",
+      "description": "Account Applicant is screened by Adverse Media Check",
+      "properties": {
+        "screening_type": "adverse_media"
+      },
+      "context": "PEP/adverse media (cannot mitigate risk)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_proc_001",
+      "source_name": "Account Opening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_001",
+      "source_name": "KYC Verification Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_002",
+      "source_name": "AML Screening Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_003",
+      "source_name": "PEP and Adverse Media Assessment",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_004",
+      "source_name": "Beneficial Ownership Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_005",
+      "source_name": "Source of Funds Assessment",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_006",
+      "source_name": "Regulatory Exception Review",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_pstep_007",
+      "source_name": "Rejection Notification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_dp_001",
+      "source_name": "Account Approval Decision",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_001",
+      "source_name": "KYC Verification Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_002",
+      "source_name": "AML Screening Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_003",
+      "source_name": "PEP and Adverse Media Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cc_004",
+      "source_name": "Beneficial Ownership Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_cust_001",
+      "source_name": "Account Applicant",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_001",
+      "source_name": "Sanctions Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_002",
+      "source_name": "PEP Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_aml_003",
+      "source_name": "Adverse Media Check",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_kyc_001",
+      "source_name": "Identity Verification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022_acc_001",
+      "source_name": "New Account",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_022",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

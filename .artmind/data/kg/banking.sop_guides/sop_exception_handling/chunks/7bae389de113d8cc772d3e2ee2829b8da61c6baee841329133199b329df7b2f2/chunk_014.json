@@ -1,0 +1,1590 @@
+{
+  "chunk_seq": 14,
+  "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+  "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+  "text": "### Disputed Transactions  \n**Resolution Options:**  \n**Option A: Refund**\n- Customer proves unauthorized OR\n- Merchant error confirmed\n- Refund within 10 business days\n- Add interest if delayed\n- Apologize  \n**Option B: Educate & Retain**\n- Customer authorized but regrets\n- Explain terms of service\n- No refund (customer's decision)\n- Offer to set up safeguards (daily limits, alerts)  \n**Option C: Escalate to Merchant**\n- Payment dispute (chargeback claim)\n- Escalate to card scheme\n- Merchant investigation initiated\n- Resolution per scheme rules",
+  "name": "Chunk 14/25",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_013",
+  "next_chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_015",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Disputed Transaction Resolution Process",
+      "aliases": [
+        "Dispute Resolution",
+        "Transaction Dispute Handling"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "End-to-end procedure for resolving customer disputes over transactions, with three distinct resolution paths: refund for unauthorized or merchant error cases, customer education for authorized but regretted transactions, or escalation to merchant via card scheme chargeback claim. The process defines decision criteria, timelines, and customer communication requirements for each path.",
+      "context": [
+        "Disputed Transactions Resolution Options",
+        "Customer proves unauthorized OR Merchant error confirmed",
+        "Customer authorized but regrets",
+        "Payment dispute (chargeback claim)"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Unauthorized Transaction or Merchant Error Assessment",
+      "aliases": [
+        "Refund Eligibility Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Initial evaluation step to determine whether the disputed transaction qualifies for refund under Option A, based on evidence of customer non-authorization or confirmed merchant error.",
+      "context": [
+        "Customer proves unauthorized OR Merchant error confirmed"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Refund Processing",
+      "aliases": [
+        "Issue Refund"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Execution step to issue refund to customer within 10 business days when unauthorized transaction or merchant error is confirmed, with interest added if refund is delayed.",
+      "context": [
+        "Refund within 10 business days",
+        "Add interest if delayed"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Customer Apology and Communication",
+      "aliases": [
+        "Apology Notification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Customer-facing communication step to apologize for the unauthorized transaction or merchant error as part of the refund resolution path.",
+      "context": [
+        "Apologize"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Customer Authorization Verification",
+      "aliases": [
+        "Authorization Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Assessment step to determine whether the customer authorized the disputed transaction, used to route to Option B (education) when authorization is confirmed but customer regrets the purchase.",
+      "context": [
+        "Customer authorized but regrets"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Terms of Service Explanation",
+      "aliases": [
+        "Customer Education"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Educational step to explain relevant terms of service to customer when transaction was authorized but customer regrets the purchase, clarifying why no refund is available.",
+      "context": [
+        "Explain terms of service"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Safeguard Setup Offer",
+      "aliases": [
+        "Preventive Measures"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Proactive step to offer customer protective measures such as daily transaction limits or transaction alerts to prevent future regretted purchases.",
+      "context": [
+        "Offer to set up safeguards (daily limits, alerts)"
+      ]
+    },
+    {
+      "id": "pstep_007",
+      "name": "Merchant Escalation Initiation",
+      "aliases": [
+        "Chargeback Claim Submission"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation_procedure",
+      "description": "Step to escalate payment dispute to card scheme and initiate merchant investigation when dispute cannot be resolved through refund or education paths, triggering formal chargeback claim process.",
+      "context": [
+        "Escalate to card scheme",
+        "Merchant investigation initiated"
+      ]
+    },
+    {
+      "id": "pstep_008",
+      "name": "Scheme-Based Resolution",
+      "aliases": [
+        "Chargeback Resolution"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Final resolution step where dispute is resolved according to card scheme rules following merchant investigation, determining liability and outcome.",
+      "context": [
+        "Resolution per scheme rules"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Transaction Authorization Status Decision",
+      "aliases": [
+        "Authorization Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Branch point determining whether disputed transaction was authorized by customer or unauthorized/erroneous. Authorized transactions route to Option B (education); unauthorized or erroneous transactions route to Option A (refund).",
+      "context": [
+        "Customer proves unauthorized OR Merchant error confirmed",
+        "Customer authorized but regrets"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Refund Eligibility Gate",
+      "aliases": [
+        "Refund Approval Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Decision gate evaluating whether evidence supports refund issuance under Option A criteria (unauthorized transaction or merchant error confirmed).",
+      "context": [
+        "Customer proves unauthorized OR Merchant error confirmed"
+      ]
+    },
+    {
+      "id": "dp_003",
+      "name": "Merchant Escalation Trigger",
+      "aliases": [
+        "Chargeback Escalation Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "escalate_or_resolve",
+      "description": "Decision point determining whether dispute should be escalated to merchant via card scheme chargeback claim (Option C) when refund and education paths are not applicable.",
+      "context": [
+        "Payment dispute (chargeback claim)",
+        "Escalate to card scheme"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Dispute Resolution Officer",
+      "aliases": [
+        "Dispute Handler",
+        "Resolution Specialist"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations role responsible for assessing disputed transactions, determining resolution path, and executing refunds or escalations according to the three-option framework.",
+      "context": [
+        "Customer proves unauthorized OR Merchant error confirmed",
+        "Explain terms of service"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Card Scheme Administrator",
+      "aliases": [
+        "Scheme Processor",
+        "Chargeback Handler"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "External card scheme system responsible for processing chargeback claims, coordinating merchant investigation, and determining final resolution per scheme rules.",
+      "context": [
+        "Escalate to card scheme",
+        "Resolution per scheme rules"
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Merchant",
+      "aliases": [
+        "Payment Recipient"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External party responsible for responding to chargeback claims and providing evidence during merchant investigation phase of Option C escalation.",
+      "context": [
+        "Escalate to Merchant",
+        "Merchant investigation initiated"
+      ]
+    },
+    {
+      "id": "txn_001",
+      "name": "Disputed Transaction",
+      "aliases": [
+        "Contested Transaction",
+        "Disputed Payment"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "A financial transaction on a customer account that is contested by the customer as unauthorized, erroneous, or regretted, triggering the three-option resolution process.",
+      "context": [
+        "Disputed Transactions",
+        "Payment dispute (chargeback claim)"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Disputing Customer",
+      "aliases": [
+        "Customer",
+        "Cardholder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Natural person who initiates a dispute over a transaction, either claiming non-authorization, merchant error, or expressing regret over an authorized purchase.",
+      "context": [
+        "Customer proves unauthorized",
+        "Customer authorized but regrets"
+      ]
+    },
+    {
+      "id": "card_001",
+      "name": "Payment Card",
+      "aliases": [
+        "Debit Card",
+        "Credit Card"
+      ],
+      "entity_class": "CARD",
+      "type": "debit_card",
+      "description": "Payment card associated with the disputed transaction, subject to chargeback claim procedures and card scheme rules when escalated.",
+      "context": [
+        "Payment dispute (chargeback claim)",
+        "Escalate to card scheme"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_proc_001",
+    "pstep_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_001",
+    "pstep_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_002",
+    "pstep_003": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_003",
+    "pstep_004": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_004",
+    "pstep_005": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_005",
+    "pstep_006": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_006",
+    "pstep_007": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_007",
+    "pstep_008": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_008",
+    "dp_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_001",
+    "dp_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_002",
+    "dp_003": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_003",
+    "ra_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_001",
+    "ra_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_002",
+    "ra_003": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_003",
+    "txn_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_txn_001",
+    "cust_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_cust_001",
+    "card_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_card_001"
+  },
+  "entities": [
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_proc_001",
+      "name": "Disputed Transaction Resolution Process",
+      "aliases": [
+        "Dispute Resolution",
+        "Transaction Dispute Handling"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "End-to-end procedure for resolving customer disputes over transactions, with three distinct resolution paths: refund for unauthorized or merchant error cases, customer education for authorized but regretted transactions, or escalation to merchant via card scheme chargeback claim. The process defines decision criteria, timelines, and customer communication requirements for each path.",
+      "context": [
+        "Disputed Transactions Resolution Options",
+        "Customer proves unauthorized OR Merchant error confirmed",
+        "Customer authorized but regrets",
+        "Payment dispute (chargeback claim)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_001",
+      "name": "Unauthorized Transaction or Merchant Error Assessment",
+      "aliases": [
+        "Refund Eligibility Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Initial evaluation step to determine whether the disputed transaction qualifies for refund under Option A, based on evidence of customer non-authorization or confirmed merchant error.",
+      "context": [
+        "Customer proves unauthorized OR Merchant error confirmed"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_002",
+      "name": "Refund Processing",
+      "aliases": [
+        "Issue Refund"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Execution step to issue refund to customer within 10 business days when unauthorized transaction or merchant error is confirmed, with interest added if refund is delayed.",
+      "context": [
+        "Refund within 10 business days",
+        "Add interest if delayed"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_003",
+      "name": "Customer Apology and Communication",
+      "aliases": [
+        "Apology Notification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Customer-facing communication step to apologize for the unauthorized transaction or merchant error as part of the refund resolution path.",
+      "context": [
+        "Apologize"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_004",
+      "name": "Customer Authorization Verification",
+      "aliases": [
+        "Authorization Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Assessment step to determine whether the customer authorized the disputed transaction, used to route to Option B (education) when authorization is confirmed but customer regrets the purchase.",
+      "context": [
+        "Customer authorized but regrets"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_005",
+      "name": "Terms of Service Explanation",
+      "aliases": [
+        "Customer Education"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Educational step to explain relevant terms of service to customer when transaction was authorized but customer regrets the purchase, clarifying why no refund is available.",
+      "context": [
+        "Explain terms of service"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_006",
+      "name": "Safeguard Setup Offer",
+      "aliases": [
+        "Preventive Measures"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Proactive step to offer customer protective measures such as daily transaction limits or transaction alerts to prevent future regretted purchases.",
+      "context": [
+        "Offer to set up safeguards (daily limits, alerts)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_007",
+      "name": "Merchant Escalation Initiation",
+      "aliases": [
+        "Chargeback Claim Submission"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation_procedure",
+      "description": "Step to escalate payment dispute to card scheme and initiate merchant investigation when dispute cannot be resolved through refund or education paths, triggering formal chargeback claim process.",
+      "context": [
+        "Escalate to card scheme",
+        "Merchant investigation initiated"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_008",
+      "name": "Scheme-Based Resolution",
+      "aliases": [
+        "Chargeback Resolution"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Final resolution step where dispute is resolved according to card scheme rules following merchant investigation, determining liability and outcome.",
+      "context": [
+        "Resolution per scheme rules"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_001",
+      "name": "Transaction Authorization Status Decision",
+      "aliases": [
+        "Authorization Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Branch point determining whether disputed transaction was authorized by customer or unauthorized/erroneous. Authorized transactions route to Option B (education); unauthorized or erroneous transactions route to Option A (refund).",
+      "context": [
+        "Customer proves unauthorized OR Merchant error confirmed",
+        "Customer authorized but regrets"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_002",
+      "name": "Refund Eligibility Gate",
+      "aliases": [
+        "Refund Approval Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "Decision gate evaluating whether evidence supports refund issuance under Option A criteria (unauthorized transaction or merchant error confirmed).",
+      "context": [
+        "Customer proves unauthorized OR Merchant error confirmed"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_003",
+      "name": "Merchant Escalation Trigger",
+      "aliases": [
+        "Chargeback Escalation Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "escalate_or_resolve",
+      "description": "Decision point determining whether dispute should be escalated to merchant via card scheme chargeback claim (Option C) when refund and education paths are not applicable.",
+      "context": [
+        "Payment dispute (chargeback claim)",
+        "Escalate to card scheme"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_001",
+      "name": "Dispute Resolution Officer",
+      "aliases": [
+        "Dispute Handler",
+        "Resolution Specialist"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations role responsible for assessing disputed transactions, determining resolution path, and executing refunds or escalations according to the three-option framework.",
+      "context": [
+        "Customer proves unauthorized OR Merchant error confirmed",
+        "Explain terms of service"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_002",
+      "name": "Card Scheme Administrator",
+      "aliases": [
+        "Scheme Processor",
+        "Chargeback Handler"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "External card scheme system responsible for processing chargeback claims, coordinating merchant investigation, and determining final resolution per scheme rules.",
+      "context": [
+        "Escalate to card scheme",
+        "Resolution per scheme rules"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_003",
+      "name": "Merchant",
+      "aliases": [
+        "Payment Recipient"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External party responsible for responding to chargeback claims and providing evidence during merchant investigation phase of Option C escalation.",
+      "context": [
+        "Escalate to Merchant",
+        "Merchant investigation initiated"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_txn_001",
+      "name": "Disputed Transaction",
+      "aliases": [
+        "Contested Transaction",
+        "Disputed Payment"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "A financial transaction on a customer account that is contested by the customer as unauthorized, erroneous, or regretted, triggering the three-option resolution process.",
+      "context": [
+        "Disputed Transactions",
+        "Payment dispute (chargeback claim)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_cust_001",
+      "name": "Disputing Customer",
+      "aliases": [
+        "Customer",
+        "Cardholder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "Natural person who initiates a dispute over a transaction, either claiming non-authorization, merchant error, or expressing regret over an authorized purchase.",
+      "context": [
+        "Customer proves unauthorized",
+        "Customer authorized but regrets"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_card_001",
+      "name": "Payment Card",
+      "aliases": [
+        "Debit Card",
+        "Credit Card"
+      ],
+      "entity_class": "CARD",
+      "type": "debit_card",
+      "description": "Payment card associated with the disputed transaction, subject to chargeback claim procedures and card scheme rules when escalated.",
+      "context": [
+        "Payment dispute (chargeback claim)",
+        "Escalate to card scheme"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_proc_001",
+      "name": "Disputed Transaction Resolution Process",
+      "properties": {
+        "purpose": "Resolve customer disputes over transactions through refund, education, or merchant escalation",
+        "scope": "Payment card transactions",
+        "channels": [
+          "branch",
+          "online"
+        ],
+        "departments_involved": [
+          "Dispute Resolution",
+          "Card Scheme Operations",
+          "Customer Service"
+        ],
+        "outcome_success": "Customer dispute resolved via refund, education, or merchant investigation",
+        "outcome_failure": "Dispute remains unresolved or customer dissatisfaction persists"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_001",
+      "name": "Unauthorized Transaction or Merchant Error Assessment",
+      "properties": {
+        "step_number": 1,
+        "actor": "Dispute Resolution Officer",
+        "input": "Customer dispute claim, transaction details, authorization records",
+        "output": "Assessment of whether transaction was unauthorized or merchant error occurred",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Transaction authorization system",
+          "Merchant records"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_002",
+      "name": "Refund Processing",
+      "properties": {
+        "step_number": 2,
+        "actor": "Dispute Resolution Officer",
+        "input": "Approved refund decision",
+        "output": "Refund issued to customer account",
+        "estimated_duration": "10 business days",
+        "channel": "system",
+        "mandatory": "conditional",
+        "tools_or_systems": [
+          "Payment processing system"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_003",
+      "name": "Customer Apology and Communication",
+      "properties": {
+        "step_number": 3,
+        "actor": "Dispute Resolution Officer",
+        "input": "Refund decision",
+        "output": "Apology message and refund notification sent to customer",
+        "channel": [
+          "email",
+          "branch"
+        ],
+        "mandatory": "conditional"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_004",
+      "name": "Customer Authorization Verification",
+      "properties": {
+        "step_number": 1,
+        "actor": "Dispute Resolution Officer",
+        "input": "Transaction details, customer statement",
+        "output": "Determination of whether customer authorized the transaction",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_005",
+      "name": "Terms of Service Explanation",
+      "properties": {
+        "step_number": 2,
+        "actor": "Dispute Resolution Officer",
+        "input": "Customer dispute claim, terms of service documentation",
+        "output": "Customer educated on terms; no refund issued",
+        "channel": [
+          "branch",
+          "email"
+        ],
+        "mandatory": "conditional"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_006",
+      "name": "Safeguard Setup Offer",
+      "properties": {
+        "step_number": 3,
+        "actor": "Dispute Resolution Officer",
+        "input": "Customer contact information",
+        "output": "Safeguard options offered (daily limits, alerts)",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": "no"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_007",
+      "name": "Merchant Escalation Initiation",
+      "properties": {
+        "step_number": 1,
+        "actor": "Dispute Resolution Officer",
+        "input": "Customer dispute claim, transaction details",
+        "output": "Chargeback claim initiated with card scheme",
+        "channel": "system",
+        "mandatory": "conditional"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_008",
+      "name": "Scheme-Based Resolution",
+      "properties": {
+        "step_number": 2,
+        "actor": "Card Scheme Administrator",
+        "input": "Chargeback claim from bank",
+        "output": "Merchant investigation completed; resolution determined per scheme rules",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_001",
+      "name": "Transaction Authorization Status Decision",
+      "properties": {
+        "decision_question": "Was the transaction authorized by the customer?",
+        "criteria": "Customer authorization records, transaction logs, customer statement",
+        "decision_maker": "Dispute Resolution Officer",
+        "path_yes": "Proceed to Option B (educate and retain)",
+        "path_no": "Proceed to Option A (refund processing)"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_002",
+      "name": "Refund Eligibility Gate",
+      "properties": {
+        "decision_question": "Is the transaction eligible for refund (unauthorized or merchant error)?",
+        "criteria": "Evidence of unauthorized transaction or confirmed merchant error",
+        "decision_maker": "Dispute Resolution Officer",
+        "path_yes": "Process refund within 10 business days; add interest if delayed",
+        "path_no": "Deny refund; proceed to education or escalation"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_003",
+      "name": "Merchant Escalation Trigger",
+      "properties": {
+        "decision_question": "Should the dispute be escalated to the merchant and card scheme?",
+        "criteria": "Payment dispute or chargeback claim initiated by customer",
+        "decision_maker": "Dispute Resolution Officer",
+        "path_yes": "Initiate chargeback claim with card scheme; merchant investigation begins",
+        "path_no": "Resolve via refund or education pathway"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_001",
+      "name": "Dispute Resolution Officer",
+      "properties": {
+        "role_type": "human",
+        "department": "Dispute Resolution",
+        "authority_level": "Assess disputes, approve refunds, initiate escalations",
+        "channels": [
+          "system",
+          "email",
+          "branch"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_002",
+      "name": "Card Scheme Administrator",
+      "properties": {
+        "role_type": "external",
+        "authority_level": "Investigate chargebacks, determine scheme-based resolution",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_003",
+      "name": "Merchant",
+      "properties": {
+        "role_type": "external",
+        "authority_level": "Respond to chargeback investigations, provide evidence"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_txn_001",
+      "name": "Disputed Transaction",
+      "properties": {
+        "transaction_type": "disputed",
+        "monitoring_or_reporting_obligation": "Dispute assessment and resolution tracking"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_cust_001",
+      "name": "Disputing Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Initiator of dispute claim"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_card_001",
+      "name": "Payment Card",
+      "properties": {
+        "card_type": "debit",
+        "card_state": "active"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_proc_001",
+      "source_name": "Disputed Transaction Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_001",
+      "target_name": "Unauthorized Transaction or Merchant Error Assessment",
+      "rel_type": "starts_with",
+      "description": "The disputed transaction resolution process begins with assessing whether the transaction was unauthorized or resulted from merchant error",
+      "properties": {
+        "sequence_position": 1,
+        "mandatory": true
+      },
+      "context": "Customer proves unauthorized OR Merchant error confirmed",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_001",
+      "source_name": "Unauthorized Transaction or Merchant Error Assessment",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_001",
+      "target_name": "Transaction Authorization Status Decision",
+      "rel_type": "leads_to",
+      "description": "Assessment of transaction authorization status leads to a decision point determining whether the transaction was authorized",
+      "properties": {
+        "decision_criteria": [
+          "unauthorized",
+          "merchant_error",
+          "authorized"
+        ]
+      },
+      "context": "Customer proves unauthorized OR Merchant error confirmed",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_001",
+      "source_name": "Transaction Authorization Status Decision",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_002",
+      "target_name": "Refund Eligibility Gate",
+      "rel_type": "triggers",
+      "description": "The authorization status decision triggers evaluation of refund eligibility",
+      "properties": {
+        "condition": "unauthorized_or_merchant_error_confirmed"
+      },
+      "context": "Customer proves unauthorized OR Merchant error confirmed - Refund within 10 business days",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_002",
+      "source_name": "Refund Eligibility Gate",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_002",
+      "target_name": "Refund Processing",
+      "rel_type": "routes_to_on_pass",
+      "description": "If refund eligibility is confirmed, the process routes to refund processing",
+      "properties": {
+        "condition": "eligible_for_refund",
+        "timeline": "10_business_days"
+      },
+      "context": "Refund within 10 business days - Add interest if delayed",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_002",
+      "source_name": "Refund Processing",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_003",
+      "target_name": "Customer Apology and Communication",
+      "rel_type": "followed_by",
+      "description": "Refund processing is followed by customer apology and communication",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Refund within 10 business days - Add interest if delayed - Apologize",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_002",
+      "source_name": "Refund Processing",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_txn_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "processes_dispute_for",
+      "description": "Refund processing handles the disputed transaction",
+      "properties": {
+        "action": "refund",
+        "timeline": "10_business_days",
+        "interest_applicable": true
+      },
+      "context": "Refund within 10 business days - Add interest if delayed",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_003",
+      "source_name": "Customer Apology and Communication",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_cust_001",
+      "target_name": "Disputing Customer",
+      "rel_type": "notifies",
+      "description": "Customer apology and communication step notifies the disputing customer",
+      "properties": {
+        "communication_type": "apology_and_resolution_update"
+      },
+      "context": "Apologize",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_001",
+      "source_name": "Transaction Authorization Status Decision",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_004",
+      "target_name": "Customer Authorization Verification",
+      "rel_type": "routes_to_on_fail",
+      "description": "If transaction is determined to be authorized, the process routes to customer authorization verification",
+      "properties": {
+        "condition": "customer_authorized_transaction"
+      },
+      "context": "Customer authorized but regrets",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_004",
+      "source_name": "Customer Authorization Verification",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_005",
+      "target_name": "Terms of Service Explanation",
+      "rel_type": "followed_by",
+      "description": "Customer authorization verification is followed by terms of service explanation",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Customer authorized but regrets - Explain terms of service",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_005",
+      "source_name": "Terms of Service Explanation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_cust_001",
+      "target_name": "Disputing Customer",
+      "rel_type": "notifies",
+      "description": "Terms of service explanation notifies the customer about their obligations",
+      "properties": {
+        "communication_type": "terms_of_service_education",
+        "refund_offered": false
+      },
+      "context": "Explain terms of service - No refund (customer's decision)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_005",
+      "source_name": "Terms of Service Explanation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_006",
+      "target_name": "Safeguard Setup Offer",
+      "rel_type": "followed_by",
+      "description": "Terms of service explanation is followed by offering safeguard setup",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "Offer to set up safeguards (daily limits, alerts)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_006",
+      "source_name": "Safeguard Setup Offer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_card_001",
+      "target_name": "Payment Card",
+      "rel_type": "activates",
+      "description": "Safeguard setup offer activates protective measures on the payment card",
+      "properties": {
+        "safeguards": [
+          "daily_limits",
+          "alerts"
+        ]
+      },
+      "context": "Offer to set up safeguards (daily limits, alerts)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_001",
+      "source_name": "Transaction Authorization Status Decision",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_003",
+      "target_name": "Merchant Escalation Trigger",
+      "rel_type": "triggers",
+      "description": "Authorization status decision can trigger merchant escalation evaluation",
+      "properties": {
+        "condition": "payment_dispute_or_chargeback_claim"
+      },
+      "context": "Payment dispute (chargeback claim) - Escalate to card scheme",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_003",
+      "source_name": "Merchant Escalation Trigger",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_007",
+      "target_name": "Merchant Escalation Initiation",
+      "rel_type": "routes_to_on_pass",
+      "description": "When merchant escalation is triggered, the process routes to merchant escalation initiation",
+      "properties": {
+        "condition": "escalation_required"
+      },
+      "context": "Escalate to card scheme - Merchant investigation initiated",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_007",
+      "source_name": "Merchant Escalation Initiation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_008",
+      "target_name": "Scheme-Based Resolution",
+      "rel_type": "followed_by",
+      "description": "Merchant escalation initiation is followed by scheme-based resolution",
+      "properties": {
+        "sequence_position": 5
+      },
+      "context": "Escalate to card scheme - Merchant investigation initiated - Resolution per scheme rules",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_007",
+      "source_name": "Merchant Escalation Initiation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_003",
+      "target_name": "Merchant",
+      "rel_type": "notifies",
+      "description": "Merchant escalation initiation notifies the merchant of the dispute",
+      "properties": {
+        "notification_type": "chargeback_claim",
+        "action_required": "investigation"
+      },
+      "context": "Escalate to card scheme - Merchant investigation initiated",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_008",
+      "source_name": "Scheme-Based Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_002",
+      "target_name": "Card Scheme Administrator",
+      "rel_type": "escalated_to",
+      "description": "Scheme-based resolution is escalated to the card scheme administrator",
+      "properties": {
+        "resolution_authority": "card_scheme",
+        "rules_applied": "scheme_rules"
+      },
+      "context": "Escalate to card scheme - Resolution per scheme rules",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_001",
+      "source_name": "Unauthorized Transaction or Merchant Error Assessment",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_001",
+      "target_name": "Dispute Resolution Officer",
+      "rel_type": "performed_by",
+      "description": "Unauthorized transaction assessment is performed by the dispute resolution officer",
+      "properties": {
+        "responsibility": "assess_authorization_status"
+      },
+      "context": "Customer proves unauthorized OR Merchant error confirmed",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_002",
+      "source_name": "Refund Processing",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_001",
+      "target_name": "Dispute Resolution Officer",
+      "rel_type": "performed_by",
+      "description": "Refund processing is performed by the dispute resolution officer",
+      "properties": {
+        "responsibility": "process_refund",
+        "timeline": "10_business_days"
+      },
+      "context": "Refund within 10 business days",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_003",
+      "source_name": "Customer Apology and Communication",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_001",
+      "target_name": "Dispute Resolution Officer",
+      "rel_type": "performed_by",
+      "description": "Customer apology and communication is performed by the dispute resolution officer",
+      "properties": {
+        "responsibility": "communicate_apology_and_resolution"
+      },
+      "context": "Apologize",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_004",
+      "source_name": "Customer Authorization Verification",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_001",
+      "target_name": "Dispute Resolution Officer",
+      "rel_type": "performed_by",
+      "description": "Customer authorization verification is performed by the dispute resolution officer",
+      "properties": {
+        "responsibility": "verify_customer_authorization"
+      },
+      "context": "Customer authorized but regrets",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_005",
+      "source_name": "Terms of Service Explanation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_001",
+      "target_name": "Dispute Resolution Officer",
+      "rel_type": "performed_by",
+      "description": "Terms of service explanation is performed by the dispute resolution officer",
+      "properties": {
+        "responsibility": "educate_customer_on_terms"
+      },
+      "context": "Explain terms of service",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_006",
+      "source_name": "Safeguard Setup Offer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_001",
+      "target_name": "Dispute Resolution Officer",
+      "rel_type": "performed_by",
+      "description": "Safeguard setup offer is performed by the dispute resolution officer",
+      "properties": {
+        "responsibility": "offer_and_setup_safeguards",
+        "safeguards": [
+          "daily_limits",
+          "alerts"
+        ]
+      },
+      "context": "Offer to set up safeguards (daily limits, alerts)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_007",
+      "source_name": "Merchant Escalation Initiation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_001",
+      "target_name": "Dispute Resolution Officer",
+      "rel_type": "performed_by",
+      "description": "Merchant escalation initiation is performed by the dispute resolution officer",
+      "properties": {
+        "responsibility": "initiate_merchant_escalation"
+      },
+      "context": "Escalate to card scheme",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_008",
+      "source_name": "Scheme-Based Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_002",
+      "target_name": "Card Scheme Administrator",
+      "rel_type": "performed_by",
+      "description": "Scheme-based resolution is performed by the card scheme administrator",
+      "properties": {
+        "responsibility": "resolve_per_scheme_rules"
+      },
+      "context": "Resolution per scheme rules",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_txn_001",
+      "source_name": "Disputed Transaction",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_cust_001",
+      "target_name": "Disputing Customer",
+      "rel_type": "belongs_to",
+      "description": "The disputed transaction belongs to the disputing customer",
+      "properties": {
+        "relationship": "transaction_ownership"
+      },
+      "context": "Customer proves unauthorized OR Merchant error confirmed",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_card_001",
+      "source_name": "Payment Card",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_cust_001",
+      "target_name": "Disputing Customer",
+      "rel_type": "belongs_to",
+      "description": "The payment card belongs to the disputing customer",
+      "properties": {
+        "relationship": "card_ownership"
+      },
+      "context": "Offer to set up safeguards (daily limits, alerts)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_proc_001",
+      "source_name": "Disputed Transaction Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_001",
+      "target_name": "Dispute Resolution Officer",
+      "rel_type": "executed_by",
+      "description": "The disputed transaction resolution process is executed by the dispute resolution officer",
+      "properties": {
+        "primary_executor": true
+      },
+      "context": "Disputed Transactions Resolution Options",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_proc_001",
+      "source_name": "Disputed Transaction Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_txn_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "operates_on",
+      "description": "The disputed transaction resolution process operates on the disputed transaction",
+      "properties": {
+        "process_scope": "resolve_transaction_dispute"
+      },
+      "context": "Disputed Transactions Resolution Options",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_proc_001",
+      "source_name": "Disputed Transaction Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_cust_001",
+      "target_name": "Disputing Customer",
+      "rel_type": "serves",
+      "description": "The disputed transaction resolution process serves the disputing customer",
+      "properties": {
+        "service_type": "dispute_resolution"
+      },
+      "context": "Disputed Transactions Resolution Options",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_proc_001",
+      "source_name": "Disputed Transaction Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_001",
+      "target_name": "Transaction Authorization Status Decision",
+      "rel_type": "branches_at",
+      "description": "The disputed transaction resolution process branches at the transaction authorization status decision point",
+      "properties": {
+        "branches": [
+          "refund_path",
+          "educate_and_retain_path",
+          "merchant_escalation_path"
+        ]
+      },
+      "context": "Option A: Refund - Option B: Educate & Retain - Option C: Escalate to Merchant",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_proc_001",
+      "source_name": "Disputed Transaction Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_002",
+      "target_name": "Refund Processing",
+      "rel_type": "includes_optional",
+      "description": "The disputed transaction resolution process optionally includes refund processing",
+      "properties": {
+        "condition": "unauthorized_or_merchant_error",
+        "optional": false
+      },
+      "context": "Option A: Refund - Customer proves unauthorized OR Merchant error confirmed",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_proc_001",
+      "source_name": "Disputed Transaction Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_005",
+      "target_name": "Terms of Service Explanation",
+      "rel_type": "includes_optional",
+      "description": "The disputed transaction resolution process optionally includes terms of service explanation",
+      "properties": {
+        "condition": "customer_authorized_but_regrets",
+        "optional": false
+      },
+      "context": "Option B: Educate & Retain - Customer authorized but regrets",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_proc_001",
+      "source_name": "Disputed Transaction Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_007",
+      "target_name": "Merchant Escalation Initiation",
+      "rel_type": "includes_optional",
+      "description": "The disputed transaction resolution process optionally includes merchant escalation initiation",
+      "properties": {
+        "condition": "payment_dispute_or_chargeback",
+        "optional": false
+      },
+      "context": "Option C: Escalate to Merchant - Payment dispute (chargeback claim)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_proc_001",
+      "source_name": "Disputed Transaction Resolution Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_001",
+      "source_name": "Unauthorized Transaction or Merchant Error Assessment",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_002",
+      "source_name": "Refund Processing",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_003",
+      "source_name": "Customer Apology and Communication",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_004",
+      "source_name": "Customer Authorization Verification",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_005",
+      "source_name": "Terms of Service Explanation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_006",
+      "source_name": "Safeguard Setup Offer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_007",
+      "source_name": "Merchant Escalation Initiation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_pstep_008",
+      "source_name": "Scheme-Based Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_001",
+      "source_name": "Transaction Authorization Status Decision",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_002",
+      "source_name": "Refund Eligibility Gate",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_dp_003",
+      "source_name": "Merchant Escalation Trigger",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_001",
+      "source_name": "Dispute Resolution Officer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_002",
+      "source_name": "Card Scheme Administrator",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_ra_003",
+      "source_name": "Merchant",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_txn_001",
+      "source_name": "Disputed Transaction",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_cust_001",
+      "source_name": "Disputing Customer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014_card_001",
+      "source_name": "Payment Card",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_014",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

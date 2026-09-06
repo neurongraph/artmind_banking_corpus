@@ -1,0 +1,717 @@
+{
+  "chunk_seq": 15,
+  "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+  "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+  "text": "### Entity: Card  \n**Definition:** A payment card (debit, credit, or prepaid) linked to an account.  \n**Attributes:**\n- `card_id` — Unique identifier\n- `account_id` — Linked account\n- `customer_id` — Cardholder\n- `card_type` — Debit, Credit, Prepaid\n- `card_number` — 16-digit card number (masked in logs)\n- `cardholder_name` — Name on card\n- `expiry_date` — Card expiration (MMYY format)\n- `cvv` — Security code (not stored after verification)\n- `card_status` — Active, Inactive, Lost, Stolen, Expired, Blocked\n- `issued_date` — Date card issued\n- `daily_limit` — Daily transaction limit (e.g., £500 for ATM)  \n**Key Business Rules:**\n- Card can be locked/unlocked by cardholder\n- Lost/stolen cards can be replaced (fee £15)\n- Only one card per account (initially)\n- Contactless limit: £100 per transaction  \n**Relationships:**\n- `linked_to_account` → Account (1:many)\n- `has_transactions` → Transaction (1:many)  \n---",
+  "name": "Chunk 15/37",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_014",
+  "next_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_016",
+  "raw_entities": [
+    {
+      "id": "bc_001",
+      "name": "Card",
+      "aliases": [
+        "payment_card",
+        "debit_card",
+        "credit_card",
+        "prepaid_card"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "card",
+      "description": "A payment card (debit, credit, or prepaid) linked to a customer account. Cards are issued with unique identifiers, cardholder names, expiry dates, and security codes. Card status can transition through Active, Inactive, Lost, Stolen, Expired, or Blocked states, with operational rules governing locking, replacement, and transaction limits.",
+      "context": [
+        "A payment card (debit, credit, or prepaid) linked to an account.",
+        "Card can be locked/unlocked by cardholder",
+        "Lost/stolen cards can be replaced (fee £15)",
+        "Contactless limit: £100 per transaction"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Card Identifier",
+      "aliases": [
+        "card_id"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "card",
+      "description": "Unique identifier assigned to each payment card for tracking and operational purposes.",
+      "context": [
+        "`card_id` — Unique identifier"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "Card Number",
+      "aliases": [
+        "card_number"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "card",
+      "description": "16-digit card number masked in logs for security purposes. This is the primary identifier used in payment transactions.",
+      "context": [
+        "`card_number` — 16-digit card number (masked in logs)"
+      ]
+    },
+    {
+      "id": "bc_004",
+      "name": "Card Status",
+      "aliases": [
+        "card_state"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "card",
+      "description": "The operational state of a card, which can be Active, Inactive, Lost, Stolen, Expired, or Blocked. Status transitions are triggered by cardholder actions, fraud events, or expiration.",
+      "context": [
+        "`card_status` — Active, Inactive, Lost, Stolen, Expired, Blocked"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "Card Lock/Unlock Authority",
+      "aliases": [
+        "card_locking_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "Cardholder has the authority to lock and unlock their own card without requiring bank intervention.",
+      "context": [
+        "Card can be locked/unlocked by cardholder"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Card Replacement Fee",
+      "aliases": [
+        "replacement_card_fee"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "A fee of £15 is charged when a lost or stolen card is replaced.",
+      "context": [
+        "Lost/stolen cards can be replaced (fee £15)"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "Single Card Per Account Constraint",
+      "aliases": [
+        "one_card_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Initially, only one card can be issued per account. This constraint may be relaxed for supplementary or replacement cards.",
+      "context": [
+        "Only one card per account (initially)"
+      ]
+    },
+    {
+      "id": "br_004",
+      "name": "Contactless Transaction Limit",
+      "aliases": [
+        "contactless_limit"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "Contactless card transactions are limited to £100 per transaction.",
+      "context": [
+        "Contactless limit: £100 per transaction"
+      ]
+    },
+    {
+      "id": "mt_001",
+      "name": "Daily ATM Transaction Limit",
+      "aliases": [
+        "daily_atm_limit"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "operational_limit",
+      "description": "The maximum amount a cardholder can withdraw from an ATM in a single day.",
+      "context": [
+        "`daily_limit` — Daily transaction limit (e.g., £500 for ATM)"
+      ]
+    }
+  ],
+  "id_map": {
+    "bc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_001",
+    "bc_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_002",
+    "bc_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_003",
+    "bc_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_004",
+    "br_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_001",
+    "br_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_002",
+    "br_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_003",
+    "br_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_004",
+    "mt_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_mt_001"
+  },
+  "entities": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_001",
+      "name": "Card",
+      "aliases": [
+        "payment_card",
+        "debit_card",
+        "credit_card",
+        "prepaid_card"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "card",
+      "description": "A payment card (debit, credit, or prepaid) linked to a customer account. Cards are issued with unique identifiers, cardholder names, expiry dates, and security codes. Card status can transition through Active, Inactive, Lost, Stolen, Expired, or Blocked states, with operational rules governing locking, replacement, and transaction limits.",
+      "context": [
+        "A payment card (debit, credit, or prepaid) linked to an account.",
+        "Card can be locked/unlocked by cardholder",
+        "Lost/stolen cards can be replaced (fee £15)",
+        "Contactless limit: £100 per transaction"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_002",
+      "name": "Card Identifier",
+      "aliases": [
+        "card_id"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "card",
+      "description": "Unique identifier assigned to each payment card for tracking and operational purposes.",
+      "context": [
+        "`card_id` — Unique identifier"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_003",
+      "name": "Card Number",
+      "aliases": [
+        "card_number"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "card",
+      "description": "16-digit card number masked in logs for security purposes. This is the primary identifier used in payment transactions.",
+      "context": [
+        "`card_number` — 16-digit card number (masked in logs)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_004",
+      "name": "Card Status",
+      "aliases": [
+        "card_state"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "card",
+      "description": "The operational state of a card, which can be Active, Inactive, Lost, Stolen, Expired, or Blocked. Status transitions are triggered by cardholder actions, fraud events, or expiration.",
+      "context": [
+        "`card_status` — Active, Inactive, Lost, Stolen, Expired, Blocked"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_001",
+      "name": "Card Lock/Unlock Authority",
+      "aliases": [
+        "card_locking_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "Cardholder has the authority to lock and unlock their own card without requiring bank intervention.",
+      "context": [
+        "Card can be locked/unlocked by cardholder"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_002",
+      "name": "Card Replacement Fee",
+      "aliases": [
+        "replacement_card_fee"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "A fee of £15 is charged when a lost or stolen card is replaced.",
+      "context": [
+        "Lost/stolen cards can be replaced (fee £15)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_003",
+      "name": "Single Card Per Account Constraint",
+      "aliases": [
+        "one_card_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Initially, only one card can be issued per account. This constraint may be relaxed for supplementary or replacement cards.",
+      "context": [
+        "Only one card per account (initially)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_004",
+      "name": "Contactless Transaction Limit",
+      "aliases": [
+        "contactless_limit"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "Contactless card transactions are limited to £100 per transaction.",
+      "context": [
+        "Contactless limit: £100 per transaction"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_mt_001",
+      "name": "Daily ATM Transaction Limit",
+      "aliases": [
+        "daily_atm_limit"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "operational_limit",
+      "description": "The maximum amount a cardholder can withdraw from an ATM in a single day.",
+      "context": [
+        "`daily_limit` — Daily transaction limit (e.g., £500 for ATM)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_001",
+      "name": "Card",
+      "properties": {
+        "definition": "A payment card (debit, credit, or prepaid) linked to an account",
+        "key_attributes": [
+          "card_id",
+          "account_id",
+          "customer_id",
+          "card_type",
+          "card_number",
+          "cardholder_name",
+          "expiry_date",
+          "cvv",
+          "card_status",
+          "issued_date",
+          "daily_limit"
+        ],
+        "subtypes": [
+          "debit",
+          "credit",
+          "prepaid"
+        ],
+        "business_rules": [
+          "Card can be locked/unlocked by cardholder",
+          "Lost/stolen cards can be replaced with £15 fee",
+          "Only one card per account initially",
+          "Contactless limit: £100 per transaction"
+        ],
+        "relationships_to": [
+          "Account",
+          "Transaction"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_002",
+      "name": "Card Identifier",
+      "properties": {
+        "definition": "Unique identifier for a payment card",
+        "key_attributes": [
+          "card_id"
+        ],
+        "business_rules": [
+          "Uniquely identifies a card within the system"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_003",
+      "name": "Card Number",
+      "properties": {
+        "definition": "16-digit card number used for payment transactions",
+        "key_attributes": [
+          "card_number",
+          "format"
+        ],
+        "business_rules": [
+          "16-digit format",
+          "Masked in logs for security"
+        ],
+        "security_controls": [
+          "Masked in logs"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_004",
+      "name": "Card Status",
+      "properties": {
+        "definition": "Current operational state of a payment card",
+        "key_attributes": [
+          "card_status"
+        ],
+        "subtypes": [
+          "Active",
+          "Inactive",
+          "Lost",
+          "Stolen",
+          "Expired",
+          "Blocked"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_001",
+      "name": "Card Lock/Unlock Authority",
+      "properties": {
+        "rule_statement": "Card can be locked/unlocked by cardholder",
+        "rule_type": "authority",
+        "applies_to": [
+          "Card"
+        ],
+        "decision_authority": "cardholder"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_002",
+      "name": "Card Replacement Fee",
+      "properties": {
+        "rule_statement": "Lost or stolen cards can be replaced with a fee of £15",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Card"
+        ],
+        "fee_amount": 15,
+        "fee_currency": "GBP",
+        "applies_when": [
+          "card lost",
+          "card stolen"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_003",
+      "name": "Single Card Per Account Constraint",
+      "properties": {
+        "rule_statement": "Only one card per account initially",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Card",
+          "Account"
+        ],
+        "cardinality": "1:1",
+        "scope": "initial issuance"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_004",
+      "name": "Contactless Transaction Limit",
+      "properties": {
+        "rule_statement": "Contactless transactions are limited to £100 per transaction",
+        "rule_type": "threshold",
+        "applies_to": [
+          "Card",
+          "Transaction"
+        ],
+        "limit_value": 100,
+        "limit_currency": "GBP",
+        "transaction_type": "contactless"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_mt_001",
+      "name": "Daily ATM Transaction Limit",
+      "properties": {
+        "value": 500,
+        "unit": "GBP",
+        "what_it_measures": "Maximum daily transaction limit for ATM withdrawals",
+        "applies_to": [
+          "Card"
+        ],
+        "transaction_type": "ATM"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_001",
+      "source_name": "Card",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_002",
+      "target_name": "Card Identifier",
+      "rel_type": "has_subtype",
+      "description": "Card Identifier is a subtype/component of Card, representing the unique identifier attribute",
+      "properties": {
+        "attribute_name": "card_id",
+        "cardinality": "1:1"
+      },
+      "context": "`card_id` — Unique identifier",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_001",
+      "source_name": "Card",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_003",
+      "target_name": "Card Number",
+      "rel_type": "has_subtype",
+      "description": "Card Number is a subtype/component of Card, representing the 16-digit card number attribute",
+      "properties": {
+        "attribute_name": "card_number",
+        "format": "16-digit",
+        "security_note": "masked in logs"
+      },
+      "context": "`card_number` — 16-digit card number (masked in logs)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_001",
+      "source_name": "Card",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_004",
+      "target_name": "Card Status",
+      "rel_type": "has_subtype",
+      "description": "Card Status is a subtype/component of Card, representing the status attribute with multiple possible states",
+      "properties": {
+        "attribute_name": "card_status",
+        "possible_values": [
+          "Active",
+          "Inactive",
+          "Lost",
+          "Stolen",
+          "Expired",
+          "Blocked"
+        ]
+      },
+      "context": "`card_status` — Active, Inactive, Lost, Stolen, Expired, Blocked",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_001",
+      "source_name": "Card",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_001",
+      "target_name": "Card Lock/Unlock Authority",
+      "rel_type": "governed_by",
+      "description": "Card operations are governed by the business rule defining lock/unlock authority",
+      "properties": {
+        "operation": "lock/unlock",
+        "actor": "cardholder"
+      },
+      "context": "Card can be locked/unlocked by cardholder",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_001",
+      "source_name": "Card",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_002",
+      "target_name": "Card Replacement Fee",
+      "rel_type": "governed_by",
+      "description": "Card replacement operations are governed by the business rule defining replacement fees",
+      "properties": {
+        "operation": "replacement",
+        "fee_amount": "£15",
+        "trigger_conditions": [
+          "Lost",
+          "Stolen"
+        ]
+      },
+      "context": "Lost/stolen cards can be replaced (fee £15)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_001",
+      "source_name": "Card",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_003",
+      "target_name": "Single Card Per Account Constraint",
+      "rel_type": "governed_by",
+      "description": "Card issuance is governed by the business rule constraining one card per account",
+      "properties": {
+        "constraint": "single_card_per_account",
+        "cardinality": "1:1",
+        "note": "initially"
+      },
+      "context": "Only one card per account (initially)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_001",
+      "source_name": "Card",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_004",
+      "target_name": "Contactless Transaction Limit",
+      "rel_type": "governed_by",
+      "description": "Card contactless transactions are governed by the business rule defining transaction limits",
+      "properties": {
+        "transaction_type": "contactless",
+        "limit_amount": "£100",
+        "limit_scope": "per_transaction"
+      },
+      "context": "Contactless limit: £100 per transaction",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_001",
+      "source_name": "Card",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_mt_001",
+      "target_name": "Daily ATM Transaction Limit",
+      "rel_type": "measured_by",
+      "description": "Card daily transaction limits are measured against the Daily ATM Transaction Limit metric",
+      "properties": {
+        "attribute": "daily_limit",
+        "example_value": "£500",
+        "transaction_type": "ATM"
+      },
+      "context": "`daily_limit` — Daily transaction limit (e.g., £500 for ATM)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_001",
+      "source_name": "Card",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_002",
+      "source_name": "Card Identifier",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_003",
+      "source_name": "Card Number",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_bc_004",
+      "source_name": "Card Status",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_001",
+      "source_name": "Card Lock/Unlock Authority",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_002",
+      "source_name": "Card Replacement Fee",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_003",
+      "source_name": "Single Card Per Account Constraint",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_br_004",
+      "source_name": "Contactless Transaction Limit",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015_mt_001",
+      "source_name": "Daily ATM Transaction Limit",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_015",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ]
+}

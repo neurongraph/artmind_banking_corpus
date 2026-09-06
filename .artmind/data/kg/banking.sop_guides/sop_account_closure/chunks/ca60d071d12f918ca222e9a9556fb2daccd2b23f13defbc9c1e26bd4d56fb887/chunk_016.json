@@ -1,0 +1,1418 @@
+{
+  "chunk_seq": 16,
+  "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+  "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+  "text": "## Step 7: Account Status Change  \n### System Updates  \n**Changes Made:**\n- Account status: \"Active\" → \"Closed\"\n- Closure date recorded\n- Closure reason documented\n- Final balance recorded\n- All standing orders/DDs marked \"Cancelled\"  \n**Links Updated:**\n- Customer profile: Account marked as closed\n- Product statistics: Removed from active account count\n- Fraud detection: Account excluded from monitoring\n- Interest calculation: Stops at closure date  \n**Access Restrictions:**\n- No new transactions permitted\n- Online banking access: Disabled\n- Card (if issued): Automatically deactivated\n- Standing orders/DDs: Blocked  \n**Timeline:** Same day as final payment  \n---",
+  "name": "Chunk 16/25",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_015",
+  "next_chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_017",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Account Closure Process",
+      "aliases": [
+        "Account Status Change"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_closure",
+      "description": "End-to-end procedure for closing a customer account, including status transition from Active to Closed, system updates across customer profile and product statistics, recording of closure date and reason, and implementation of access restrictions. The process executes on the same day as the final payment and triggers automatic deactivation of associated payment instruments and cancellation of recurring payment mandates.",
+      "context": [
+        "Account status: \"Active\" → \"Closed\"",
+        "Closure date recorded",
+        "Timeline: Same day as final payment",
+        "No new transactions permitted"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Account Status Transition",
+      "aliases": [
+        "Status Change"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that updates the account status from Active to Closed and records the closure date, closure reason, and final balance in the core banking system.",
+      "context": [
+        "Account status: \"Active\" → \"Closed\"",
+        "Closure date recorded",
+        "Closure reason documented",
+        "Final balance recorded"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Recurring Payment Mandate Cancellation",
+      "aliases": [
+        "Standing Orders/DDs Cancellation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that marks all standing orders and direct debits associated with the closed account as Cancelled and blocks any further execution of these recurring payment instructions.",
+      "context": [
+        "All standing orders/DDs marked \"Cancelled\"",
+        "Standing orders/DDs: Blocked"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Customer Profile Update",
+      "aliases": [
+        "Profile Link Update"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that updates the customer profile to mark the account as closed, ensuring the closure status is reflected in the customer's master record.",
+      "context": [
+        "Customer profile: Account marked as closed"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Product Statistics Update",
+      "aliases": [
+        "Active Account Count Update"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that removes the closed account from the active account count in product statistics, maintaining accurate reporting of active product holdings.",
+      "context": [
+        "Product statistics: Removed from active account count"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Fraud Detection Exclusion",
+      "aliases": [
+        "Monitoring Exclusion"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that excludes the closed account from ongoing fraud detection and transaction monitoring, as the account is no longer active and poses no operational risk.",
+      "context": [
+        "Fraud detection: Account excluded from monitoring"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Interest Calculation Termination",
+      "aliases": [
+        "Interest Stop"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that stops all interest accrual and calculation on the closed account effective from the closure date.",
+      "context": [
+        "Interest calculation: Stops at closure date"
+      ]
+    },
+    {
+      "id": "pstep_007",
+      "name": "Online Banking Access Restriction",
+      "aliases": [
+        "Digital Access Disable"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that disables online banking access for the closed account, preventing the customer from accessing the account through digital channels.",
+      "context": [
+        "Online banking access: Disabled"
+      ]
+    },
+    {
+      "id": "pstep_008",
+      "name": "Card Deactivation",
+      "aliases": [
+        "Card Automatic Deactivation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "card_issuance",
+      "description": "System step that automatically deactivates any card issued against the closed account, preventing further card transactions.",
+      "context": [
+        "Card (if issued): Automatically deactivated"
+      ]
+    },
+    {
+      "id": "pstep_009",
+      "name": "Transaction Block Implementation",
+      "aliases": [
+        "Transaction Restriction"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that implements access restrictions on the closed account to prevent any new transactions from being initiated or processed.",
+      "context": [
+        "No new transactions permitted"
+      ]
+    },
+    {
+      "id": "ract_001",
+      "name": "Banking System",
+      "aliases": [
+        "Core Banking System",
+        "Automated System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system responsible for executing all account closure system updates, including status transitions, link updates, access restrictions, and recurring payment mandate cancellations.",
+      "context": [
+        "System Updates",
+        "Links Updated",
+        "Access Restrictions"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Closed Account",
+      "aliases": [
+        "Inactive Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "closed_account",
+      "description": "A customer account that has transitioned from Active status to Closed status as part of the account closure process. The account is subject to access restrictions, transaction blocks, and exclusion from monitoring and interest calculation.",
+      "context": [
+        "Account status: \"Active\" → \"Closed\"",
+        "No new transactions permitted",
+        "Online banking access: Disabled"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Standing Orders"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_cancellation",
+      "description": "Standing order payment instructions associated with the closed account that are automatically marked as Cancelled and blocked from further execution upon account closure.",
+      "context": [
+        "All standing orders/DDs marked \"Cancelled\"",
+        "Standing orders/DDs: Blocked"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit",
+      "aliases": [
+        "Direct Debits",
+        "DD"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_cancellation",
+      "description": "Direct debit mandates associated with the closed account that are automatically marked as Cancelled and blocked from further execution upon account closure.",
+      "context": [
+        "All standing orders/DDs marked \"Cancelled\"",
+        "Standing orders/DDs: Blocked"
+      ]
+    },
+    {
+      "id": "card_001",
+      "name": "Debit Card",
+      "aliases": [
+        "Card"
+      ],
+      "entity_class": "CARD",
+      "type": "debit_card",
+      "description": "Payment card issued against the closed account that is automatically deactivated upon account closure, preventing further card transactions.",
+      "context": [
+        "Card (if issued): Automatically deactivated"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+    "pstep_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_001",
+    "pstep_002": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_002",
+    "pstep_003": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_003",
+    "pstep_004": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_004",
+    "pstep_005": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_005",
+    "pstep_006": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_006",
+    "pstep_007": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_007",
+    "pstep_008": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_008",
+    "pstep_009": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_009",
+    "ract_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_ract_001",
+    "acc_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_acc_001",
+    "so_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_so_001",
+    "dd_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_dd_001",
+    "card_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_card_001"
+  },
+  "entities": [
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "name": "Account Closure Process",
+      "aliases": [
+        "Account Status Change"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_closure",
+      "description": "End-to-end procedure for closing a customer account, including status transition from Active to Closed, system updates across customer profile and product statistics, recording of closure date and reason, and implementation of access restrictions. The process executes on the same day as the final payment and triggers automatic deactivation of associated payment instruments and cancellation of recurring payment mandates.",
+      "context": [
+        "Account status: \"Active\" → \"Closed\"",
+        "Closure date recorded",
+        "Timeline: Same day as final payment",
+        "No new transactions permitted"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_001",
+      "name": "Account Status Transition",
+      "aliases": [
+        "Status Change"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that updates the account status from Active to Closed and records the closure date, closure reason, and final balance in the core banking system.",
+      "context": [
+        "Account status: \"Active\" → \"Closed\"",
+        "Closure date recorded",
+        "Closure reason documented",
+        "Final balance recorded"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_002",
+      "name": "Recurring Payment Mandate Cancellation",
+      "aliases": [
+        "Standing Orders/DDs Cancellation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that marks all standing orders and direct debits associated with the closed account as Cancelled and blocks any further execution of these recurring payment instructions.",
+      "context": [
+        "All standing orders/DDs marked \"Cancelled\"",
+        "Standing orders/DDs: Blocked"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_003",
+      "name": "Customer Profile Update",
+      "aliases": [
+        "Profile Link Update"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that updates the customer profile to mark the account as closed, ensuring the closure status is reflected in the customer's master record.",
+      "context": [
+        "Customer profile: Account marked as closed"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_004",
+      "name": "Product Statistics Update",
+      "aliases": [
+        "Active Account Count Update"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that removes the closed account from the active account count in product statistics, maintaining accurate reporting of active product holdings.",
+      "context": [
+        "Product statistics: Removed from active account count"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_005",
+      "name": "Fraud Detection Exclusion",
+      "aliases": [
+        "Monitoring Exclusion"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that excludes the closed account from ongoing fraud detection and transaction monitoring, as the account is no longer active and poses no operational risk.",
+      "context": [
+        "Fraud detection: Account excluded from monitoring"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_006",
+      "name": "Interest Calculation Termination",
+      "aliases": [
+        "Interest Stop"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that stops all interest accrual and calculation on the closed account effective from the closure date.",
+      "context": [
+        "Interest calculation: Stops at closure date"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_007",
+      "name": "Online Banking Access Restriction",
+      "aliases": [
+        "Digital Access Disable"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that disables online banking access for the closed account, preventing the customer from accessing the account through digital channels.",
+      "context": [
+        "Online banking access: Disabled"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_008",
+      "name": "Card Deactivation",
+      "aliases": [
+        "Card Automatic Deactivation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "card_issuance",
+      "description": "System step that automatically deactivates any card issued against the closed account, preventing further card transactions.",
+      "context": [
+        "Card (if issued): Automatically deactivated"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_009",
+      "name": "Transaction Block Implementation",
+      "aliases": [
+        "Transaction Restriction"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "System step that implements access restrictions on the closed account to prevent any new transactions from being initiated or processed.",
+      "context": [
+        "No new transactions permitted"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_ract_001",
+      "name": "Banking System",
+      "aliases": [
+        "Core Banking System",
+        "Automated System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system responsible for executing all account closure system updates, including status transitions, link updates, access restrictions, and recurring payment mandate cancellations.",
+      "context": [
+        "System Updates",
+        "Links Updated",
+        "Access Restrictions"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_acc_001",
+      "name": "Closed Account",
+      "aliases": [
+        "Inactive Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "closed_account",
+      "description": "A customer account that has transitioned from Active status to Closed status as part of the account closure process. The account is subject to access restrictions, transaction blocks, and exclusion from monitoring and interest calculation.",
+      "context": [
+        "Account status: \"Active\" → \"Closed\"",
+        "No new transactions permitted",
+        "Online banking access: Disabled"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Standing Orders"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_cancellation",
+      "description": "Standing order payment instructions associated with the closed account that are automatically marked as Cancelled and blocked from further execution upon account closure.",
+      "context": [
+        "All standing orders/DDs marked \"Cancelled\"",
+        "Standing orders/DDs: Blocked"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_dd_001",
+      "name": "Direct Debit",
+      "aliases": [
+        "Direct Debits",
+        "DD"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_cancellation",
+      "description": "Direct debit mandates associated with the closed account that are automatically marked as Cancelled and blocked from further execution upon account closure.",
+      "context": [
+        "All standing orders/DDs marked \"Cancelled\"",
+        "Standing orders/DDs: Blocked"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_card_001",
+      "name": "Debit Card",
+      "aliases": [
+        "Card"
+      ],
+      "entity_class": "CARD",
+      "type": "debit_card",
+      "description": "Payment card issued against the closed account that is automatically deactivated upon account closure, preventing further card transactions.",
+      "context": [
+        "Card (if issued): Automatically deactivated"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "name": "Account Closure Process",
+      "properties": {
+        "purpose": "Close a customer account and perform all associated system updates and restrictions",
+        "scope": "All account types with standing orders, direct debits, and issued cards",
+        "channels": [
+          "system"
+        ],
+        "owner": "Banking System",
+        "departments_involved": [
+          "Operations",
+          "Fraud",
+          "Finance"
+        ],
+        "timeline_sla": "Same day as final payment",
+        "trigger": "Customer request or account closure decision",
+        "outcome_success": "Account marked closed, all mandates cancelled, access disabled, monitoring excluded",
+        "outcome_failure": "Incomplete system updates, residual access, or unblocked transactions"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_001",
+      "name": "Account Status Transition",
+      "properties": {
+        "step_number": 1,
+        "actor": "Banking System",
+        "input": [
+          "Account identifier",
+          "Closure decision"
+        ],
+        "output": [
+          "Account status changed to Closed",
+          "Closure date recorded",
+          "Closure reason documented",
+          "Final balance recorded"
+        ],
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Core Banking System"
+        ],
+        "estimated_duration": "Immediate"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_002",
+      "name": "Recurring Payment Mandate Cancellation",
+      "properties": {
+        "step_number": 2,
+        "actor": "Banking System",
+        "input": [
+          "Standing orders linked to account",
+          "Direct debits linked to account"
+        ],
+        "output": [
+          "All standing orders marked Cancelled",
+          "All direct debits marked Cancelled"
+        ],
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Core Banking System",
+          "Payment Mandate System"
+        ],
+        "estimated_duration": "Immediate"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_003",
+      "name": "Customer Profile Update",
+      "properties": {
+        "step_number": 3,
+        "actor": "Banking System",
+        "input": [
+          "Account closure confirmation"
+        ],
+        "output": [
+          "Customer profile updated",
+          "Account marked as closed in profile"
+        ],
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Customer Relationship Management System"
+        ],
+        "estimated_duration": "Immediate"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_004",
+      "name": "Product Statistics Update",
+      "properties": {
+        "step_number": 4,
+        "actor": "Banking System",
+        "input": [
+          "Closed account record"
+        ],
+        "output": [
+          "Account removed from active account count",
+          "Product statistics updated"
+        ],
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Analytics System",
+          "Reporting System"
+        ],
+        "estimated_duration": "Immediate"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_005",
+      "name": "Fraud Detection Exclusion",
+      "properties": {
+        "step_number": 5,
+        "actor": "Banking System",
+        "input": [
+          "Closed account identifier"
+        ],
+        "output": [
+          "Account excluded from fraud monitoring"
+        ],
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Fraud Detection System"
+        ],
+        "estimated_duration": "Immediate"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_006",
+      "name": "Interest Calculation Termination",
+      "properties": {
+        "step_number": 6,
+        "actor": "Banking System",
+        "input": [
+          "Account closure date"
+        ],
+        "output": [
+          "Interest calculation stopped at closure date"
+        ],
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Interest Calculation Engine"
+        ],
+        "estimated_duration": "Immediate"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_007",
+      "name": "Online Banking Access Restriction",
+      "properties": {
+        "step_number": 7,
+        "actor": "Banking System",
+        "input": [
+          "Account closure confirmation"
+        ],
+        "output": [
+          "Online banking access disabled for account"
+        ],
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Online Banking Platform"
+        ],
+        "estimated_duration": "Immediate"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_008",
+      "name": "Card Deactivation",
+      "properties": {
+        "step_number": 8,
+        "actor": "Banking System",
+        "input": [
+          "Issued card linked to account"
+        ],
+        "output": [
+          "Card automatically deactivated"
+        ],
+        "channel": "system",
+        "mandatory": "conditional",
+        "tools_or_systems": [
+          "Card Management System"
+        ],
+        "estimated_duration": "Immediate"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_009",
+      "name": "Transaction Block Implementation",
+      "properties": {
+        "step_number": 9,
+        "actor": "Banking System",
+        "input": [
+          "Closed account identifier"
+        ],
+        "output": [
+          "No new transactions permitted",
+          "Standing orders blocked",
+          "Direct debits blocked"
+        ],
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Transaction Processing System"
+        ],
+        "estimated_duration": "Immediate"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_ract_001",
+      "name": "Banking System",
+      "properties": {
+        "role_type": "system",
+        "department": "Operations",
+        "authority_level": "Automated execution of closure procedures",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_acc_001",
+      "name": "Closed Account",
+      "properties": {
+        "account_type": "all types",
+        "account_state": "closed",
+        "closure_or_freeze_conditions": "Account marked closed with closure date and reason documented; final balance recorded; all standing orders and direct debits cancelled; no new transactions permitted; online banking access disabled; card deactivated; excluded from fraud monitoring"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_so_001",
+      "name": "Standing Order",
+      "properties": {
+        "cancellation_process": "Automatically marked Cancelled upon account closure"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_dd_001",
+      "name": "Direct Debit",
+      "properties": {
+        "cancellation_process": "Automatically marked Cancelled upon account closure"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_card_001",
+      "name": "Debit Card",
+      "properties": {
+        "card_type": "debit",
+        "card_state": "deactivated",
+        "block_or_replacement_conditions": "Automatically deactivated upon account closure"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_001",
+      "target_name": "Account Status Transition",
+      "rel_type": "contains",
+      "description": "Account Closure Process includes the Account Status Transition step as part of system updates",
+      "properties": {
+        "sequence_position": 1,
+        "phase": "System Updates"
+      },
+      "context": "Account status: 'Active' → 'Closed'; Closure date recorded; Closure reason documented; Final balance recorded",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_002",
+      "target_name": "Recurring Payment Mandate Cancellation",
+      "rel_type": "contains",
+      "description": "Account Closure Process includes cancellation of standing orders and direct debits",
+      "properties": {
+        "sequence_position": 2,
+        "phase": "System Updates"
+      },
+      "context": "All standing orders/DDs marked 'Cancelled'; Standing orders/DDs: Blocked",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_003",
+      "target_name": "Customer Profile Update",
+      "rel_type": "contains",
+      "description": "Account Closure Process includes updating customer profile to mark account as closed",
+      "properties": {
+        "sequence_position": 3,
+        "phase": "Links Updated"
+      },
+      "context": "Customer profile: Account marked as closed",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_004",
+      "target_name": "Product Statistics Update",
+      "rel_type": "contains",
+      "description": "Account Closure Process includes removal of account from active account count in product statistics",
+      "properties": {
+        "sequence_position": 4,
+        "phase": "Links Updated"
+      },
+      "context": "Product statistics: Removed from active account count",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_005",
+      "target_name": "Fraud Detection Exclusion",
+      "rel_type": "contains",
+      "description": "Account Closure Process includes excluding account from fraud detection monitoring",
+      "properties": {
+        "sequence_position": 5,
+        "phase": "Links Updated"
+      },
+      "context": "Fraud detection: Account excluded from monitoring",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_006",
+      "target_name": "Interest Calculation Termination",
+      "rel_type": "contains",
+      "description": "Account Closure Process includes terminating interest calculation at closure date",
+      "properties": {
+        "sequence_position": 6,
+        "phase": "Links Updated"
+      },
+      "context": "Interest calculation: Stops at closure date",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_007",
+      "target_name": "Online Banking Access Restriction",
+      "rel_type": "contains",
+      "description": "Account Closure Process includes disabling online banking access",
+      "properties": {
+        "sequence_position": 7,
+        "phase": "Access Restrictions"
+      },
+      "context": "Online banking access: Disabled",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_008",
+      "target_name": "Card Deactivation",
+      "rel_type": "contains",
+      "description": "Account Closure Process includes automatic deactivation of issued card",
+      "properties": {
+        "sequence_position": 8,
+        "phase": "Access Restrictions"
+      },
+      "context": "Card (if issued): Automatically deactivated",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_009",
+      "target_name": "Transaction Block Implementation",
+      "rel_type": "contains",
+      "description": "Account Closure Process includes blocking new transactions on the account",
+      "properties": {
+        "sequence_position": 9,
+        "phase": "Access Restrictions"
+      },
+      "context": "No new transactions permitted",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_ract_001",
+      "target_name": "Banking System",
+      "rel_type": "executed_by",
+      "description": "Account Closure Process is executed by the Banking System",
+      "properties": {
+        "execution_scope": "automated system updates"
+      },
+      "context": "System Updates; Changes Made; Links Updated; Access Restrictions",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_acc_001",
+      "target_name": "Closed Account",
+      "rel_type": "closes",
+      "description": "Account Closure Process closes the account",
+      "properties": {
+        "status_change": "Active to Closed",
+        "documentation": "Closure date recorded, Closure reason documented, Final balance recorded"
+      },
+      "context": "Account status: 'Active' → 'Closed'; Closure date recorded; Closure reason documented; Final balance recorded",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "cancels",
+      "description": "Account Closure Process cancels standing orders associated with the account",
+      "properties": {
+        "action": "marked Cancelled and Blocked"
+      },
+      "context": "All standing orders/DDs marked 'Cancelled'; Standing orders/DDs: Blocked",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_dd_001",
+      "target_name": "Direct Debit",
+      "rel_type": "cancels",
+      "description": "Account Closure Process cancels direct debits associated with the account",
+      "properties": {
+        "action": "marked Cancelled and Blocked"
+      },
+      "context": "All standing orders/DDs marked 'Cancelled'; Standing orders/DDs: Blocked",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_001",
+      "source_name": "Account Status Transition",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_002",
+      "target_name": "Recurring Payment Mandate Cancellation",
+      "rel_type": "followed_by",
+      "description": "Account Status Transition is followed by Recurring Payment Mandate Cancellation",
+      "properties": {
+        "sequence": "step 1 to step 2"
+      },
+      "context": "Step 7: Account Status Change; System Updates; Links Updated",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_002",
+      "source_name": "Recurring Payment Mandate Cancellation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_003",
+      "target_name": "Customer Profile Update",
+      "rel_type": "followed_by",
+      "description": "Recurring Payment Mandate Cancellation is followed by Customer Profile Update",
+      "properties": {
+        "sequence": "step 2 to step 3"
+      },
+      "context": "Links Updated phase",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_003",
+      "source_name": "Customer Profile Update",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_004",
+      "target_name": "Product Statistics Update",
+      "rel_type": "followed_by",
+      "description": "Customer Profile Update is followed by Product Statistics Update",
+      "properties": {
+        "sequence": "step 3 to step 4"
+      },
+      "context": "Links Updated phase",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_004",
+      "source_name": "Product Statistics Update",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_005",
+      "target_name": "Fraud Detection Exclusion",
+      "rel_type": "followed_by",
+      "description": "Product Statistics Update is followed by Fraud Detection Exclusion",
+      "properties": {
+        "sequence": "step 4 to step 5"
+      },
+      "context": "Links Updated phase",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_005",
+      "source_name": "Fraud Detection Exclusion",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_006",
+      "target_name": "Interest Calculation Termination",
+      "rel_type": "followed_by",
+      "description": "Fraud Detection Exclusion is followed by Interest Calculation Termination",
+      "properties": {
+        "sequence": "step 5 to step 6"
+      },
+      "context": "Links Updated phase",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_006",
+      "source_name": "Interest Calculation Termination",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_007",
+      "target_name": "Online Banking Access Restriction",
+      "rel_type": "followed_by",
+      "description": "Interest Calculation Termination is followed by Online Banking Access Restriction",
+      "properties": {
+        "sequence": "step 6 to step 7"
+      },
+      "context": "Transition from Links Updated to Access Restrictions phase",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_007",
+      "source_name": "Online Banking Access Restriction",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_008",
+      "target_name": "Card Deactivation",
+      "rel_type": "followed_by",
+      "description": "Online Banking Access Restriction is followed by Card Deactivation",
+      "properties": {
+        "sequence": "step 7 to step 8"
+      },
+      "context": "Access Restrictions phase",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_008",
+      "source_name": "Card Deactivation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_009",
+      "target_name": "Transaction Block Implementation",
+      "rel_type": "followed_by",
+      "description": "Card Deactivation is followed by Transaction Block Implementation",
+      "properties": {
+        "sequence": "step 8 to step 9"
+      },
+      "context": "Access Restrictions phase",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_001",
+      "source_name": "Account Status Transition",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_acc_001",
+      "target_name": "Closed Account",
+      "rel_type": "closes",
+      "description": "Account Status Transition step closes the account by changing status from Active to Closed",
+      "properties": {
+        "status_change": "Active to Closed",
+        "documentation_recorded": [
+          "closure_date",
+          "closure_reason",
+          "final_balance"
+        ]
+      },
+      "context": "Account status: 'Active' → 'Closed'; Closure date recorded; Closure reason documented; Final balance recorded",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_002",
+      "source_name": "Recurring Payment Mandate Cancellation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "cancels",
+      "description": "Recurring Payment Mandate Cancellation step cancels standing orders",
+      "properties": {
+        "action": "marked Cancelled and Blocked"
+      },
+      "context": "All standing orders/DDs marked 'Cancelled'; Standing orders/DDs: Blocked",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_002",
+      "source_name": "Recurring Payment Mandate Cancellation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_dd_001",
+      "target_name": "Direct Debit",
+      "rel_type": "cancels",
+      "description": "Recurring Payment Mandate Cancellation step cancels direct debits",
+      "properties": {
+        "action": "marked Cancelled and Blocked"
+      },
+      "context": "All standing orders/DDs marked 'Cancelled'; Standing orders/DDs: Blocked",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_007",
+      "source_name": "Online Banking Access Restriction",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_acc_001",
+      "target_name": "Closed Account",
+      "rel_type": "freezes",
+      "description": "Online Banking Access Restriction step disables online banking access to the closed account",
+      "properties": {
+        "restriction_type": "access_disabled"
+      },
+      "context": "Online banking access: Disabled",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_008",
+      "source_name": "Card Deactivation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_card_001",
+      "target_name": "Debit Card",
+      "rel_type": "deactivates",
+      "description": "Card Deactivation step automatically deactivates the debit card linked to the account",
+      "properties": {
+        "condition": "if issued",
+        "timing": "automatic"
+      },
+      "context": "Card (if issued): Automatically deactivated",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_009",
+      "source_name": "Transaction Block Implementation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_acc_001",
+      "target_name": "Closed Account",
+      "rel_type": "freezes",
+      "description": "Transaction Block Implementation step blocks new transactions on the closed account",
+      "properties": {
+        "restriction_type": "no_new_transactions"
+      },
+      "context": "No new transactions permitted",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_card_001",
+      "source_name": "Debit Card",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_acc_001",
+      "target_name": "Closed Account",
+      "rel_type": "linked_to",
+      "description": "Debit Card is linked to the Closed Account",
+      "properties": {
+        "relationship_type": "issued_for_account"
+      },
+      "context": "Card (if issued): Automatically deactivated",
+      "bidirectional": true,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_acc_001",
+      "target_name": "Closed Account",
+      "rel_type": "set_up_on",
+      "description": "Standing Order is set up on the Closed Account",
+      "properties": {
+        "status_on_closure": "Cancelled and Blocked"
+      },
+      "context": "All standing orders/DDs marked 'Cancelled'",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_dd_001",
+      "source_name": "Direct Debit",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_acc_001",
+      "target_name": "Closed Account",
+      "rel_type": "set_up_on",
+      "description": "Direct Debit is set up on the Closed Account",
+      "properties": {
+        "status_on_closure": "Cancelled and Blocked"
+      },
+      "context": "All standing orders/DDs marked 'Cancelled'",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_001",
+      "source_name": "Account Status Transition",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_002",
+      "source_name": "Recurring Payment Mandate Cancellation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_003",
+      "source_name": "Customer Profile Update",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_004",
+      "source_name": "Product Statistics Update",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_005",
+      "source_name": "Fraud Detection Exclusion",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_006",
+      "source_name": "Interest Calculation Termination",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_007",
+      "source_name": "Online Banking Access Restriction",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_008",
+      "source_name": "Card Deactivation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_pstep_009",
+      "source_name": "Transaction Block Implementation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_ract_001",
+      "source_name": "Banking System",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_acc_001",
+      "source_name": "Closed Account",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_dd_001",
+      "source_name": "Direct Debit",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016_card_001",
+      "source_name": "Debit Card",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_016",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

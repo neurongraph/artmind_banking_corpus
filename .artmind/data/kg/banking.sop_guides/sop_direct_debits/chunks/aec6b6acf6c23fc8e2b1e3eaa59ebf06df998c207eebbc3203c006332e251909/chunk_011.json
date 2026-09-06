@@ -1,0 +1,1162 @@
+{
+  "chunk_seq": 11,
+  "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+  "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+  "text": "### Processing Rules  \n**Validation Before Debit:**\n- ✅ Mandate active (not canceled)\n- ✅ Amount doesn't exceed maximum (if set)\n- ✅ Account has sufficient funds\n- ✅ Instruction received in time window  \n**If Any Check Fails:**\n- ❌ Debit rejected\n- ❌ Biller notified (with reason)\n- ❌ Customer may be charged (varies by biller)",
+  "name": "Chunk 11/26",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_010",
+  "next_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_012",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Direct Debit Processing",
+      "aliases": [
+        "DD Processing",
+        "Debit Processing"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit_setup",
+      "description": "End-to-end process for validating and executing direct debit transactions against customer accounts. Includes pre-debit validation checks (mandate status, amount limits, fund availability, timing) and failure handling with biller notification and potential customer charges.",
+      "context": [
+        "Validation Before Debit: Mandate active (not canceled), Amount doesn't exceed maximum (if set), Account has sufficient funds, Instruction received in time window",
+        "If Any Check Fails: Debit rejected, Biller notified (with reason), Customer may be charged (varies by biller)"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Mandate Active Validation",
+      "aliases": [
+        "Mandate Status Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step that confirms the direct debit mandate is active and has not been canceled before processing the debit instruction.",
+      "context": [
+        "Mandate active (not canceled)"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Amount Limit Validation",
+      "aliases": [
+        "Maximum Amount Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Verification step that confirms the debit amount does not exceed any maximum limit set on the mandate.",
+      "context": [
+        "Amount doesn't exceed maximum (if set)"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Funds Availability Check",
+      "aliases": [
+        "Sufficient Funds Verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Verification step that confirms the customer account has sufficient funds available to cover the debit amount.",
+      "context": [
+        "Account has sufficient funds"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Instruction Timing Validation",
+      "aliases": [
+        "Time Window Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Verification step that confirms the debit instruction was received within the required time window for processing.",
+      "context": [
+        "Instruction received in time window"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Debit Rejection",
+      "aliases": [
+        "Debit Decline"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Action taken when any validation check fails, resulting in the debit being rejected and not processed against the customer account.",
+      "context": [
+        "Debit rejected"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Biller Notification",
+      "aliases": [
+        "Rejection Notification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Notification step where the biller is informed of the debit rejection and provided with the reason for the failure.",
+      "context": [
+        "Biller notified (with reason)"
+      ]
+    },
+    {
+      "id": "pstep_007",
+      "name": "Customer Charge Assessment",
+      "aliases": [
+        "Fee Determination"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Step where it is determined whether the customer will be charged a fee for the failed debit attempt, with the outcome varying by biller policy.",
+      "context": [
+        "Customer may be charged (varies by biller)"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "All Validation Checks Pass",
+      "aliases": [
+        "Validation Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate that determines whether all four pre-debit validation checks (mandate active, amount limit, funds availability, timing) have passed. If any check fails, the debit is rejected.",
+      "context": [
+        "Validation Before Debit: Mandate active (not canceled), Amount doesn't exceed maximum (if set), Account has sufficient funds, Instruction received in time window",
+        "If Any Check Fails: Debit rejected"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "DD Mandate"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "The direct debit authorization that must be active and valid for debit processing. The mandate can be canceled, which triggers rejection of subsequent debit attempts.",
+      "context": [
+        "Mandate active (not canceled)",
+        "Validation Before Debit"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Biller",
+      "aliases": [
+        "Payee",
+        "Creditor"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "The external party receiving the direct debit payment who is notified when a debit is rejected, including the reason for failure.",
+      "context": [
+        "Biller notified (with reason)",
+        "Customer may be charged (varies by biller)"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Debit Processing System",
+      "aliases": [
+        "Processing Engine"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "The automated system responsible for executing the validation checks and determining whether to process or reject the debit instruction.",
+      "context": [
+        "Validation Before Debit",
+        "If Any Check Fails: Debit rejected"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder",
+        "Payer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The account holder whose account is subject to direct debit validation and who may incur charges if a debit attempt fails.",
+      "context": [
+        "Account has sufficient funds",
+        "Customer may be charged (varies by biller)"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Debit Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer account against which direct debit validation is performed, including checks for mandate status, fund availability, and amount limits.",
+      "context": [
+        "Account has sufficient funds",
+        "Validation Before Debit"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_proc_001",
+    "pstep_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_001",
+    "pstep_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_002",
+    "pstep_003": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_003",
+    "pstep_004": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_004",
+    "pstep_005": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_005",
+    "pstep_006": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_006",
+    "pstep_007": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_007",
+    "dp_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dp_001",
+    "dd_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dd_001",
+    "ra_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_ra_001",
+    "ra_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_ra_002",
+    "cust_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_cust_001",
+    "acc_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_acc_001"
+  },
+  "entities": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_proc_001",
+      "name": "Direct Debit Processing",
+      "aliases": [
+        "DD Processing",
+        "Debit Processing"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit_setup",
+      "description": "End-to-end process for validating and executing direct debit transactions against customer accounts. Includes pre-debit validation checks (mandate status, amount limits, fund availability, timing) and failure handling with biller notification and potential customer charges.",
+      "context": [
+        "Validation Before Debit: Mandate active (not canceled), Amount doesn't exceed maximum (if set), Account has sufficient funds, Instruction received in time window",
+        "If Any Check Fails: Debit rejected, Biller notified (with reason), Customer may be charged (varies by biller)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_001",
+      "name": "Mandate Active Validation",
+      "aliases": [
+        "Mandate Status Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step that confirms the direct debit mandate is active and has not been canceled before processing the debit instruction.",
+      "context": [
+        "Mandate active (not canceled)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_002",
+      "name": "Amount Limit Validation",
+      "aliases": [
+        "Maximum Amount Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Verification step that confirms the debit amount does not exceed any maximum limit set on the mandate.",
+      "context": [
+        "Amount doesn't exceed maximum (if set)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_003",
+      "name": "Funds Availability Check",
+      "aliases": [
+        "Sufficient Funds Verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Verification step that confirms the customer account has sufficient funds available to cover the debit amount.",
+      "context": [
+        "Account has sufficient funds"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_004",
+      "name": "Instruction Timing Validation",
+      "aliases": [
+        "Time Window Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Verification step that confirms the debit instruction was received within the required time window for processing.",
+      "context": [
+        "Instruction received in time window"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_005",
+      "name": "Debit Rejection",
+      "aliases": [
+        "Debit Decline"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Action taken when any validation check fails, resulting in the debit being rejected and not processed against the customer account.",
+      "context": [
+        "Debit rejected"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_006",
+      "name": "Biller Notification",
+      "aliases": [
+        "Rejection Notification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "Notification step where the biller is informed of the debit rejection and provided with the reason for the failure.",
+      "context": [
+        "Biller notified (with reason)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_007",
+      "name": "Customer Charge Assessment",
+      "aliases": [
+        "Fee Determination"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Step where it is determined whether the customer will be charged a fee for the failed debit attempt, with the outcome varying by biller policy.",
+      "context": [
+        "Customer may be charged (varies by biller)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dp_001",
+      "name": "All Validation Checks Pass",
+      "aliases": [
+        "Validation Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Decision gate that determines whether all four pre-debit validation checks (mandate active, amount limit, funds availability, timing) have passed. If any check fails, the debit is rejected.",
+      "context": [
+        "Validation Before Debit: Mandate active (not canceled), Amount doesn't exceed maximum (if set), Account has sufficient funds, Instruction received in time window",
+        "If Any Check Fails: Debit rejected"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "DD Mandate"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "The direct debit authorization that must be active and valid for debit processing. The mandate can be canceled, which triggers rejection of subsequent debit attempts.",
+      "context": [
+        "Mandate active (not canceled)",
+        "Validation Before Debit"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_ra_001",
+      "name": "Biller",
+      "aliases": [
+        "Payee",
+        "Creditor"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "The external party receiving the direct debit payment who is notified when a debit is rejected, including the reason for failure.",
+      "context": [
+        "Biller notified (with reason)",
+        "Customer may be charged (varies by biller)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_ra_002",
+      "name": "Debit Processing System",
+      "aliases": [
+        "Processing Engine"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "The automated system responsible for executing the validation checks and determining whether to process or reject the debit instruction.",
+      "context": [
+        "Validation Before Debit",
+        "If Any Check Fails: Debit rejected"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder",
+        "Payer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The account holder whose account is subject to direct debit validation and who may incur charges if a debit attempt fails.",
+      "context": [
+        "Account has sufficient funds",
+        "Customer may be charged (varies by biller)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Debit Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer account against which direct debit validation is performed, including checks for mandate status, fund availability, and amount limits.",
+      "context": [
+        "Account has sufficient funds",
+        "Validation Before Debit"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_proc_001",
+      "name": "Direct Debit Processing",
+      "properties": {
+        "purpose": "Process direct debit instructions from billers against customer accounts",
+        "scope": "Direct debit mandates on customer accounts",
+        "owner": "Debit Processing System",
+        "departments_involved": [
+          "Payments",
+          "Customer Service"
+        ],
+        "trigger": "Direct debit instruction received within time window",
+        "outcome_success": "Debit applied to account and biller notified of successful collection",
+        "outcome_failure": "Debit rejected, biller notified with reason, customer may be charged"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_001",
+      "name": "Mandate Active Validation",
+      "properties": {
+        "step_number": 1,
+        "actor": "Debit Processing System",
+        "input": "Direct debit mandate record",
+        "output": "Mandate status confirmation (active or canceled)",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Debit Processing System"
+        ],
+        "failure_path": "Proceed to Debit Rejection"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_002",
+      "name": "Amount Limit Validation",
+      "properties": {
+        "step_number": 2,
+        "actor": "Debit Processing System",
+        "input": "Debit amount, mandate maximum limit",
+        "output": "Amount validation result (within or exceeds limit)",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Debit Processing System"
+        ],
+        "failure_path": "Proceed to Debit Rejection"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_003",
+      "name": "Funds Availability Check",
+      "properties": {
+        "step_number": 3,
+        "actor": "Debit Processing System",
+        "input": "Account balance, debit amount",
+        "output": "Funds availability confirmation (sufficient or insufficient)",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Debit Processing System"
+        ],
+        "failure_path": "Proceed to Debit Rejection"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_004",
+      "name": "Instruction Timing Validation",
+      "properties": {
+        "step_number": 4,
+        "actor": "Debit Processing System",
+        "input": "Instruction receipt timestamp, processing time window",
+        "output": "Timing validation result (in time or out of time window)",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Debit Processing System"
+        ],
+        "failure_path": "Proceed to Debit Rejection"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_005",
+      "name": "Debit Rejection",
+      "properties": {
+        "step_number": 5,
+        "actor": "Debit Processing System",
+        "input": "Failed validation check result and reason code",
+        "output": "Debit rejection record with reason",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Debit Processing System"
+        ],
+        "failure_path": "Escalate to customer service for investigation"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_006",
+      "name": "Biller Notification",
+      "properties": {
+        "step_number": 6,
+        "actor": "Debit Processing System",
+        "input": "Debit rejection record with reason",
+        "output": "Notification sent to biller",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Debit Processing System"
+        ],
+        "failure_path": "Log notification failure for manual follow-up"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_007",
+      "name": "Customer Charge Assessment",
+      "properties": {
+        "step_number": 7,
+        "actor": "Biller",
+        "input": "Debit rejection notification",
+        "output": "Customer charge decision (varies by biller)",
+        "channel": "external",
+        "mandatory": "no"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dp_001",
+      "name": "All Validation Checks Pass",
+      "properties": {
+        "decision_question": "Do mandate active status, amount limit, funds availability, and instruction timing all validate successfully?",
+        "criteria": "Mandate active AND amount within limit AND sufficient funds AND instruction in time window",
+        "decision_maker": "Debit Processing System",
+        "path_yes": "Apply debit to account and notify biller of successful collection",
+        "path_no": "Reject debit and proceed to Biller Notification with reason"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dd_001",
+      "name": "Direct Debit Mandate",
+      "properties": {
+        "mandate_process": "Validation checks: active status, amount limit, funds availability, instruction timing",
+        "dd_guarantee_coverage": "Not specified in document"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_ra_001",
+      "name": "Biller",
+      "properties": {
+        "role_type": "external",
+        "authority_level": "Determines whether to charge customer for rejected debit",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_ra_002",
+      "name": "Debit Processing System",
+      "properties": {
+        "role_type": "system",
+        "department": "Payments",
+        "authority_level": "Executes validation rules and processes debit instructions",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Account holder subject to direct debit collection and potential charges"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_acc_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_type": "current",
+        "account_state": "active"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_proc_001",
+      "source_name": "Direct Debit Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_001",
+      "target_name": "Mandate Active Validation",
+      "rel_type": "contains",
+      "description": "Direct Debit Processing includes Mandate Active Validation as a required step",
+      "properties": {
+        "sequence_position": 1,
+        "mandatory": true
+      },
+      "context": "Validation Before Debit: Mandate active (not canceled)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_proc_001",
+      "source_name": "Direct Debit Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_002",
+      "target_name": "Amount Limit Validation",
+      "rel_type": "contains",
+      "description": "Direct Debit Processing includes Amount Limit Validation as a required step",
+      "properties": {
+        "sequence_position": 2,
+        "mandatory": true
+      },
+      "context": "Validation Before Debit: Amount doesn't exceed maximum (if set)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_proc_001",
+      "source_name": "Direct Debit Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_003",
+      "target_name": "Funds Availability Check",
+      "rel_type": "contains",
+      "description": "Direct Debit Processing includes Funds Availability Check as a required step",
+      "properties": {
+        "sequence_position": 3,
+        "mandatory": true
+      },
+      "context": "Validation Before Debit: Account has sufficient funds",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_proc_001",
+      "source_name": "Direct Debit Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_004",
+      "target_name": "Instruction Timing Validation",
+      "rel_type": "contains",
+      "description": "Direct Debit Processing includes Instruction Timing Validation as a required step",
+      "properties": {
+        "sequence_position": 4,
+        "mandatory": true
+      },
+      "context": "Validation Before Debit: Instruction received in time window",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_proc_001",
+      "source_name": "Direct Debit Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dp_001",
+      "target_name": "All Validation Checks Pass",
+      "rel_type": "branches_at",
+      "description": "Direct Debit Processing branches at decision point for all validation checks",
+      "properties": {
+        "decision_type": "validation_gate"
+      },
+      "context": "If Any Check Fails: Debit rejected; otherwise processing continues",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_proc_001",
+      "source_name": "Direct Debit Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "processes_mandate_for",
+      "description": "Direct Debit Processing processes the Direct Debit Mandate",
+      "properties": {
+        "operation": "validation_and_execution"
+      },
+      "context": "Processing Rules for Direct Debit Mandate validation and execution",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_001",
+      "source_name": "Mandate Active Validation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_002",
+      "target_name": "Amount Limit Validation",
+      "rel_type": "followed_by",
+      "description": "Mandate Active Validation is followed by Amount Limit Validation",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Validation Before Debit sequence: Mandate active check precedes amount check",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_002",
+      "source_name": "Amount Limit Validation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_003",
+      "target_name": "Funds Availability Check",
+      "rel_type": "followed_by",
+      "description": "Amount Limit Validation is followed by Funds Availability Check",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Validation Before Debit sequence: amount check precedes funds check",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_003",
+      "source_name": "Funds Availability Check",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_004",
+      "target_name": "Instruction Timing Validation",
+      "rel_type": "followed_by",
+      "description": "Funds Availability Check is followed by Instruction Timing Validation",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "Validation Before Debit sequence: funds check precedes timing check",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_004",
+      "source_name": "Instruction Timing Validation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dp_001",
+      "target_name": "All Validation Checks Pass",
+      "rel_type": "leads_to",
+      "description": "Instruction Timing Validation leads to decision point for all checks passing",
+      "properties": {
+        "decision_gate": true
+      },
+      "context": "After all validation checks, decision point determines if debit proceeds or is rejected",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dp_001",
+      "source_name": "All Validation Checks Pass",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_006",
+      "target_name": "Biller Notification",
+      "rel_type": "routes_to_on_fail",
+      "description": "If validation checks fail, decision routes to Biller Notification",
+      "properties": {
+        "condition": "any_check_fails",
+        "notification_type": "rejection_with_reason"
+      },
+      "context": "If Any Check Fails: Biller notified (with reason)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dp_001",
+      "source_name": "All Validation Checks Pass",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_005",
+      "target_name": "Debit Rejection",
+      "rel_type": "routes_to_on_fail",
+      "description": "If validation checks fail, decision routes to Debit Rejection",
+      "properties": {
+        "condition": "any_check_fails"
+      },
+      "context": "If Any Check Fails: Debit rejected",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_005",
+      "source_name": "Debit Rejection",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_006",
+      "target_name": "Biller Notification",
+      "rel_type": "followed_by",
+      "description": "Debit Rejection is followed by Biller Notification",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "If Any Check Fails: Debit rejected, then Biller notified (with reason)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_006",
+      "source_name": "Biller Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_007",
+      "target_name": "Customer Charge Assessment",
+      "rel_type": "followed_by",
+      "description": "Biller Notification is followed by Customer Charge Assessment",
+      "properties": {
+        "sequence": "sequential"
+      },
+      "context": "If Any Check Fails: Biller notified, then Customer may be charged (varies by biller)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_006",
+      "source_name": "Biller Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_ra_001",
+      "target_name": "Biller",
+      "rel_type": "notifies",
+      "description": "Biller Notification step notifies the Biller",
+      "properties": {
+        "notification_content": "rejection_reason"
+      },
+      "context": "Biller notified (with reason)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_001",
+      "source_name": "Mandate Active Validation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "validates",
+      "description": "Mandate Active Validation validates the Direct Debit Mandate status",
+      "properties": {
+        "validation_type": "active_status",
+        "checks_for": "not_canceled"
+      },
+      "context": "Mandate active (not canceled)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_002",
+      "source_name": "Amount Limit Validation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "validates",
+      "description": "Amount Limit Validation validates the Direct Debit Mandate amount limits",
+      "properties": {
+        "validation_type": "amount_limit",
+        "checks_for": "maximum_not_exceeded"
+      },
+      "context": "Amount doesn't exceed maximum (if set)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_003",
+      "source_name": "Funds Availability Check",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "verifies",
+      "description": "Funds Availability Check verifies sufficient funds in Customer Account",
+      "properties": {
+        "check_type": "balance_verification"
+      },
+      "context": "Account has sufficient funds",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_007",
+      "source_name": "Customer Charge Assessment",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_cust_001",
+      "target_name": "Customer",
+      "rel_type": "notifies",
+      "description": "Customer Charge Assessment notifies Customer of potential charges",
+      "properties": {
+        "notification_type": "charge_assessment",
+        "variability": "varies_by_biller"
+      },
+      "context": "Customer may be charged (varies by biller)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_ra_002",
+      "source_name": "Debit Processing System",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_proc_001",
+      "target_name": "Direct Debit Processing",
+      "rel_type": "executed_by",
+      "description": "Direct Debit Processing is executed by the Debit Processing System",
+      "properties": {
+        "system_role": "automated_validation_and_execution"
+      },
+      "context": "Processing Rules validation and execution performed by system",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "set_up_on",
+      "description": "Direct Debit Mandate is set up on Customer Account",
+      "properties": {
+        "relationship_type": "mandate_account_binding"
+      },
+      "context": "Direct Debit Processing operates on Direct Debit Mandate for Customer Account",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "authorised_by",
+      "description": "Direct Debit Mandate is authorised by Customer",
+      "properties": {
+        "authorization_type": "customer_initiated"
+      },
+      "context": "Customer authorizes Direct Debit Mandate for processing",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_proc_001",
+      "source_name": "Direct Debit Processing",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_001",
+      "source_name": "Mandate Active Validation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_002",
+      "source_name": "Amount Limit Validation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_003",
+      "source_name": "Funds Availability Check",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_004",
+      "source_name": "Instruction Timing Validation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_005",
+      "source_name": "Debit Rejection",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_006",
+      "source_name": "Biller Notification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_pstep_007",
+      "source_name": "Customer Charge Assessment",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dp_001",
+      "source_name": "All Validation Checks Pass",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_ra_001",
+      "source_name": "Biller",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_ra_002",
+      "source_name": "Debit Processing System",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_011",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

@@ -1,0 +1,876 @@
+{
+  "chunk_seq": 18,
+  "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+  "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+  "text": "## Escalation Rules  \n### When to Escalate  \n**Escalate Immediately If:**\n- Financial amount >£5,000\n- Regulatory implication\n- Customer escalates to complaint\n- Merchant/third-party involved\n- Media/public concern  \n**Escalation Path:**\n- Amount <£1,000: Operations Manager approval\n- Amount £1,000–£5,000: Director approval\n- Amount >£5,000: Executive approval\n- Regulatory: Compliance Head approval  \nSee [[escalation_matrix]] for detailed escalation rules  \n---",
+  "name": "Chunk 18/25",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_017",
+  "next_chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_019",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Escalation Procedure",
+      "aliases": [
+        "Escalation Rules",
+        "Escalation Path"
+      ],
+      "entity_class": "PROCESS",
+      "type": "escalation_procedure",
+      "description": "A defined operational procedure that determines when and how issues must be escalated based on financial thresholds, regulatory implications, customer complaints, third-party involvement, or media concerns. The procedure routes escalations through a tiered approval structure with specific authority limits at each level.",
+      "context": [
+        "Escalate Immediately If: Financial amount >£5,000, Regulatory implication, Customer escalates to complaint, Merchant/third-party involved, Media/public concern",
+        "Escalation Path: Amount <£1,000: Operations Manager approval, Amount £1,000–£5,000: Director approval, Amount >£5,000: Executive approval, Regulatory: Compliance Head approval"
+      ]
+    },
+    {
+      "id": "esc_001",
+      "name": "Level 1 — Operations Manager Resolution",
+      "aliases": [
+        "Amount <£1,000"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "frontline",
+      "description": "First escalation tier for issues with financial amounts below £1,000. The Operations Manager holds approval authority at this level and is responsible for resolving escalated matters within this threshold.",
+      "context": [
+        "Amount <£1,000: Operations Manager approval"
+      ]
+    },
+    {
+      "id": "esc_002",
+      "name": "Level 2 — Director Resolution",
+      "aliases": [
+        "Amount £1,000–£5,000"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "supervisor",
+      "description": "Second escalation tier for issues with financial amounts between £1,000 and £5,000. The Director holds approval authority at this level and is responsible for resolving escalated matters within this threshold range.",
+      "context": [
+        "Amount £1,000–£5,000: Director approval"
+      ]
+    },
+    {
+      "id": "esc_003",
+      "name": "Level 3 — Executive Resolution",
+      "aliases": [
+        "Amount >£5,000"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "executive",
+      "description": "Third escalation tier for issues with financial amounts exceeding £5,000. Executive-level approval authority is required for resolution of escalated matters at this threshold.",
+      "context": [
+        "Amount >£5,000: Executive approval"
+      ]
+    },
+    {
+      "id": "esc_004",
+      "name": "Level 4 — Compliance Head Resolution",
+      "aliases": [
+        "Regulatory escalation"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "department_head",
+      "description": "Escalation tier for issues with regulatory implications. The Compliance Head holds approval authority and is responsible for resolving escalated matters that involve regulatory concerns, regardless of financial amount.",
+      "context": [
+        "Regulatory: Compliance Head approval"
+      ]
+    },
+    {
+      "id": "dec_001",
+      "name": "Financial Amount Threshold Gate",
+      "aliases": [
+        "Amount-based escalation trigger"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "authority_limit_check",
+      "description": "A branching decision point that routes escalations based on the financial amount involved. The decision determines which approval level (Operations Manager, Director, or Executive) is required.",
+      "context": [
+        "Amount <£1,000: Operations Manager approval",
+        "Amount £1,000–£5,000: Director approval",
+        "Amount >£5,000: Executive approval"
+      ]
+    },
+    {
+      "id": "dec_002",
+      "name": "Escalation Trigger Assessment",
+      "aliases": [
+        "Immediate escalation criteria"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "A decision point that determines whether an issue must be escalated immediately based on defined criteria: financial amount exceeding £5,000, regulatory implications, customer complaint escalation, merchant/third-party involvement, or media/public concern.",
+      "context": [
+        "Escalate Immediately If: Financial amount >£5,000, Regulatory implication, Customer escalates to complaint, Merchant/third-party involved, Media/public concern"
+      ]
+    },
+    {
+      "id": "role_001",
+      "name": "Operations Manager",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The role responsible for approving escalations involving financial amounts below £1,000 as part of the first-tier escalation process.",
+      "context": [
+        "Amount <£1,000: Operations Manager approval"
+      ]
+    },
+    {
+      "id": "role_002",
+      "name": "Director",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "The role responsible for approving escalations involving financial amounts between £1,000 and £5,000 as part of the second-tier escalation process.",
+      "context": [
+        "Amount £1,000–£5,000: Director approval"
+      ]
+    },
+    {
+      "id": "role_003",
+      "name": "Executive",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "executive_committee",
+      "description": "The role responsible for approving escalations involving financial amounts exceeding £5,000 as part of the third-tier escalation process.",
+      "context": [
+        "Amount >£5,000: Executive approval"
+      ]
+    },
+    {
+      "id": "role_004",
+      "name": "Compliance Head",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "The role responsible for approving escalations that involve regulatory implications, regardless of financial amount, as part of the regulatory escalation pathway.",
+      "context": [
+        "Regulatory: Compliance Head approval"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_proc_001",
+    "esc_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_001",
+    "esc_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_002",
+    "esc_003": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_003",
+    "esc_004": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_004",
+    "dec_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_dec_001",
+    "dec_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_dec_002",
+    "role_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_001",
+    "role_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_002",
+    "role_003": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_003",
+    "role_004": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_004"
+  },
+  "entities": [
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_proc_001",
+      "name": "Escalation Procedure",
+      "aliases": [
+        "Escalation Rules",
+        "Escalation Path"
+      ],
+      "entity_class": "PROCESS",
+      "type": "escalation_procedure",
+      "description": "A defined operational procedure that determines when and how issues must be escalated based on financial thresholds, regulatory implications, customer complaints, third-party involvement, or media concerns. The procedure routes escalations through a tiered approval structure with specific authority limits at each level.",
+      "context": [
+        "Escalate Immediately If: Financial amount >£5,000, Regulatory implication, Customer escalates to complaint, Merchant/third-party involved, Media/public concern",
+        "Escalation Path: Amount <£1,000: Operations Manager approval, Amount £1,000–£5,000: Director approval, Amount >£5,000: Executive approval, Regulatory: Compliance Head approval"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_001",
+      "name": "Level 1 — Operations Manager Resolution",
+      "aliases": [
+        "Amount <£1,000"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "frontline",
+      "description": "First escalation tier for issues with financial amounts below £1,000. The Operations Manager holds approval authority at this level and is responsible for resolving escalated matters within this threshold.",
+      "context": [
+        "Amount <£1,000: Operations Manager approval"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_002",
+      "name": "Level 2 — Director Resolution",
+      "aliases": [
+        "Amount £1,000–£5,000"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "supervisor",
+      "description": "Second escalation tier for issues with financial amounts between £1,000 and £5,000. The Director holds approval authority at this level and is responsible for resolving escalated matters within this threshold range.",
+      "context": [
+        "Amount £1,000–£5,000: Director approval"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_003",
+      "name": "Level 3 — Executive Resolution",
+      "aliases": [
+        "Amount >£5,000"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "executive",
+      "description": "Third escalation tier for issues with financial amounts exceeding £5,000. Executive-level approval authority is required for resolution of escalated matters at this threshold.",
+      "context": [
+        "Amount >£5,000: Executive approval"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_004",
+      "name": "Level 4 — Compliance Head Resolution",
+      "aliases": [
+        "Regulatory escalation"
+      ],
+      "entity_class": "ESCALATION_LEVEL",
+      "type": "department_head",
+      "description": "Escalation tier for issues with regulatory implications. The Compliance Head holds approval authority and is responsible for resolving escalated matters that involve regulatory concerns, regardless of financial amount.",
+      "context": [
+        "Regulatory: Compliance Head approval"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_dec_001",
+      "name": "Financial Amount Threshold Gate",
+      "aliases": [
+        "Amount-based escalation trigger"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "authority_limit_check",
+      "description": "A branching decision point that routes escalations based on the financial amount involved. The decision determines which approval level (Operations Manager, Director, or Executive) is required.",
+      "context": [
+        "Amount <£1,000: Operations Manager approval",
+        "Amount £1,000–£5,000: Director approval",
+        "Amount >£5,000: Executive approval"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_dec_002",
+      "name": "Escalation Trigger Assessment",
+      "aliases": [
+        "Immediate escalation criteria"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "A decision point that determines whether an issue must be escalated immediately based on defined criteria: financial amount exceeding £5,000, regulatory implications, customer complaint escalation, merchant/third-party involvement, or media/public concern.",
+      "context": [
+        "Escalate Immediately If: Financial amount >£5,000, Regulatory implication, Customer escalates to complaint, Merchant/third-party involved, Media/public concern"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_001",
+      "name": "Operations Manager",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The role responsible for approving escalations involving financial amounts below £1,000 as part of the first-tier escalation process.",
+      "context": [
+        "Amount <£1,000: Operations Manager approval"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_002",
+      "name": "Director",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "department_head",
+      "description": "The role responsible for approving escalations involving financial amounts between £1,000 and £5,000 as part of the second-tier escalation process.",
+      "context": [
+        "Amount £1,000–£5,000: Director approval"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_003",
+      "name": "Executive",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "executive_committee",
+      "description": "The role responsible for approving escalations involving financial amounts exceeding £5,000 as part of the third-tier escalation process.",
+      "context": [
+        "Amount >£5,000: Executive approval"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_004",
+      "name": "Compliance Head",
+      "aliases": [],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "The role responsible for approving escalations that involve regulatory implications, regardless of financial amount, as part of the regulatory escalation pathway.",
+      "context": [
+        "Regulatory: Compliance Head approval"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_proc_001",
+      "name": "Escalation Procedure",
+      "properties": {
+        "purpose": "Define escalation triggers and approval authority levels based on financial amount and regulatory implications",
+        "scope": "All operational issues requiring escalation",
+        "trigger": [
+          "Financial amount exceeds £5,000",
+          "Regulatory implication identified",
+          "Customer escalates to complaint",
+          "Merchant or third-party involvement",
+          "Media or public concern"
+        ],
+        "departments_involved": [
+          "Operations",
+          "Compliance",
+          "Executive Management"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_001",
+      "name": "Level 1 — Operations Manager Resolution",
+      "properties": {
+        "level_number": 1,
+        "authority": "Operations Manager",
+        "approval_limit": "£1,000",
+        "escalation_trigger": "Financial amount reaches or exceeds £1,000",
+        "escalates_to": "Level 2 — Director Resolution"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_002",
+      "name": "Level 2 — Director Resolution",
+      "properties": {
+        "level_number": 2,
+        "authority": "Director",
+        "approval_limit": "£1,000–£5,000",
+        "escalation_trigger": "Financial amount exceeds £5,000",
+        "escalates_to": "Level 3 — Executive Resolution"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_003",
+      "name": "Level 3 — Executive Resolution",
+      "properties": {
+        "level_number": 3,
+        "authority": "Executive",
+        "approval_limit": ">£5,000",
+        "escalation_trigger": "Regulatory implication identified or media/public concern",
+        "escalates_to": "Level 4 — Compliance Head Resolution"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_004",
+      "name": "Level 4 — Compliance Head Resolution",
+      "properties": {
+        "level_number": 4,
+        "authority": "Compliance Head",
+        "approval_limit": "Regulatory matters",
+        "escalation_trigger": "Regulatory implication or compliance concern"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_dec_001",
+      "name": "Financial Amount Threshold Gate",
+      "properties": {
+        "decision_question": "What is the financial amount involved in this issue?",
+        "criteria": [
+          "Amount <£1,000",
+          "Amount £1,000–£5,000",
+          "Amount >£5,000"
+        ],
+        "decision_maker": "Operations Manager (initial assessment)",
+        "path_yes": "Route to appropriate escalation level based on amount threshold",
+        "path_no": "Resolve at current level"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_dec_002",
+      "name": "Escalation Trigger Assessment",
+      "properties": {
+        "decision_question": "Does this issue meet any escalation trigger criteria?",
+        "criteria": [
+          "Financial amount >£5,000",
+          "Regulatory implication present",
+          "Customer escalates to complaint",
+          "Merchant or third-party involved",
+          "Media or public concern identified"
+        ],
+        "decision_maker": "Operations Manager or receiving role",
+        "path_yes": "Escalate immediately to appropriate level",
+        "path_no": "Handle at current operational level"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_001",
+      "name": "Operations Manager",
+      "properties": {
+        "role_type": "human",
+        "department": "Operations",
+        "authority_level": "Operational approval",
+        "approval_limit": "£1,000",
+        "channels": [
+          "branch",
+          "system",
+          "email"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_002",
+      "name": "Director",
+      "properties": {
+        "role_type": "human",
+        "department": "Management",
+        "authority_level": "Senior management approval",
+        "approval_limit": "£1,000–£5,000",
+        "channels": [
+          "branch",
+          "system",
+          "email"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_003",
+      "name": "Executive",
+      "properties": {
+        "role_type": "human",
+        "department": "Executive Management",
+        "authority_level": "Executive approval",
+        "approval_limit": ">£5,000",
+        "channels": [
+          "branch",
+          "system",
+          "email"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_004",
+      "name": "Compliance Head",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "Regulatory and compliance approval",
+        "channels": [
+          "system",
+          "email"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_proc_001",
+      "source_name": "Escalation Procedure",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_dec_001",
+      "target_name": "Financial Amount Threshold Gate",
+      "rel_type": "branches_at",
+      "description": "The escalation procedure branches at the financial amount threshold decision point to determine the appropriate escalation level",
+      "properties": {
+        "threshold_amounts": [
+          "<£1,000",
+          "£1,000–£5,000",
+          ">£5,000"
+        ]
+      },
+      "context": "Amount <£1,000: Operations Manager approval; Amount £1,000–£5,000: Director approval; Amount >£5,000: Executive approval",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_proc_001",
+      "source_name": "Escalation Procedure",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_dec_002",
+      "target_name": "Escalation Trigger Assessment",
+      "rel_type": "branches_at",
+      "description": "The escalation procedure branches at the escalation trigger assessment decision point to evaluate whether immediate escalation is required",
+      "properties": {
+        "triggers": [
+          "Financial amount >£5,000",
+          "Regulatory implication",
+          "Customer escalates to complaint",
+          "Merchant/third-party involved",
+          "Media/public concern"
+        ]
+      },
+      "context": "Escalate Immediately If: Financial amount >£5,000; Regulatory implication; Customer escalates to complaint; Merchant/third-party involved; Media/public concern",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_proc_001",
+      "source_name": "Escalation Procedure",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_001",
+      "target_name": "Level 1 — Operations Manager Resolution",
+      "rel_type": "routes_to",
+      "description": "The escalation procedure routes to Level 1 escalation for financial amounts below £1,000",
+      "properties": {
+        "condition": "Amount <£1,000"
+      },
+      "context": "Amount <£1,000: Operations Manager approval",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_proc_001",
+      "source_name": "Escalation Procedure",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_002",
+      "target_name": "Level 2 — Director Resolution",
+      "rel_type": "routes_to",
+      "description": "The escalation procedure routes to Level 2 escalation for financial amounts between £1,000 and £5,000",
+      "properties": {
+        "condition": "Amount £1,000–£5,000"
+      },
+      "context": "Amount £1,000–£5,000: Director approval",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_proc_001",
+      "source_name": "Escalation Procedure",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_003",
+      "target_name": "Level 3 — Executive Resolution",
+      "rel_type": "routes_to",
+      "description": "The escalation procedure routes to Level 3 escalation for financial amounts exceeding £5,000",
+      "properties": {
+        "condition": "Amount >£5,000"
+      },
+      "context": "Amount >£5,000: Executive approval",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_proc_001",
+      "source_name": "Escalation Procedure",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_004",
+      "target_name": "Level 4 — Compliance Head Resolution",
+      "rel_type": "routes_to",
+      "description": "The escalation procedure routes to Level 4 escalation for matters with regulatory implications",
+      "properties": {
+        "condition": "Regulatory implication"
+      },
+      "context": "Regulatory: Compliance Head approval",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_dec_001",
+      "source_name": "Financial Amount Threshold Gate",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_001",
+      "target_name": "Level 1 — Operations Manager Resolution",
+      "rel_type": "routes_to",
+      "description": "The financial amount threshold decision routes to Level 1 escalation when amount is below £1,000",
+      "properties": {
+        "threshold": "<£1,000"
+      },
+      "context": "Amount <£1,000: Operations Manager approval",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_dec_001",
+      "source_name": "Financial Amount Threshold Gate",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_002",
+      "target_name": "Level 2 — Director Resolution",
+      "rel_type": "routes_to",
+      "description": "The financial amount threshold decision routes to Level 2 escalation when amount is between £1,000 and £5,000",
+      "properties": {
+        "threshold": "£1,000–£5,000"
+      },
+      "context": "Amount £1,000–£5,000: Director approval",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_dec_001",
+      "source_name": "Financial Amount Threshold Gate",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_003",
+      "target_name": "Level 3 — Executive Resolution",
+      "rel_type": "routes_to",
+      "description": "The financial amount threshold decision routes to Level 3 escalation when amount exceeds £5,000",
+      "properties": {
+        "threshold": ">£5,000"
+      },
+      "context": "Amount >£5,000: Executive approval",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_dec_002",
+      "source_name": "Escalation Trigger Assessment",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_004",
+      "target_name": "Level 4 — Compliance Head Resolution",
+      "rel_type": "routes_to",
+      "description": "The escalation trigger assessment decision routes to Level 4 escalation when regulatory implications are identified",
+      "properties": {
+        "trigger": "Regulatory implication"
+      },
+      "context": "Regulatory: Compliance Head approval",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_001",
+      "source_name": "Level 1 — Operations Manager Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_001",
+      "target_name": "Operations Manager",
+      "rel_type": "handled_by",
+      "description": "Level 1 escalation is handled by the Operations Manager",
+      "properties": {},
+      "context": "Amount <£1,000: Operations Manager approval",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_002",
+      "source_name": "Level 2 — Director Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_002",
+      "target_name": "Director",
+      "rel_type": "handled_by",
+      "description": "Level 2 escalation is handled by the Director",
+      "properties": {},
+      "context": "Amount £1,000–£5,000: Director approval",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_003",
+      "source_name": "Level 3 — Executive Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_003",
+      "target_name": "Executive",
+      "rel_type": "handled_by",
+      "description": "Level 3 escalation is handled by the Executive",
+      "properties": {},
+      "context": "Amount >£5,000: Executive approval",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_004",
+      "source_name": "Level 4 — Compliance Head Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_004",
+      "target_name": "Compliance Head",
+      "rel_type": "handled_by",
+      "description": "Level 4 escalation is handled by the Compliance Head",
+      "properties": {},
+      "context": "Regulatory: Compliance Head approval",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_001",
+      "source_name": "Level 1 — Operations Manager Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_002",
+      "target_name": "Level 2 — Director Resolution",
+      "rel_type": "escalates_to",
+      "description": "Level 1 escalation can escalate to Level 2 for higher-value cases",
+      "properties": {},
+      "context": "Escalation Path: Amount <£1,000: Operations Manager approval; Amount £1,000–£5,000: Director approval",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_002",
+      "source_name": "Level 2 — Director Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_003",
+      "target_name": "Level 3 — Executive Resolution",
+      "rel_type": "escalates_to",
+      "description": "Level 2 escalation can escalate to Level 3 for cases exceeding £5,000",
+      "properties": {},
+      "context": "Escalation Path: Amount £1,000–£5,000: Director approval; Amount >£5,000: Executive approval",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_proc_001",
+      "source_name": "Escalation Procedure",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_001",
+      "source_name": "Level 1 — Operations Manager Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_002",
+      "source_name": "Level 2 — Director Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_003",
+      "source_name": "Level 3 — Executive Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_esc_004",
+      "source_name": "Level 4 — Compliance Head Resolution",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_dec_001",
+      "source_name": "Financial Amount Threshold Gate",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_dec_002",
+      "source_name": "Escalation Trigger Assessment",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_001",
+      "source_name": "Operations Manager",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_002",
+      "source_name": "Director",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_003",
+      "source_name": "Executive",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018_role_004",
+      "source_name": "Compliance Head",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_018",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

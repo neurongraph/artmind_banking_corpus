@@ -1,0 +1,664 @@
+{
+  "chunk_seq": 35,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "### Data Warehouse Update  \n**Nightly Batch Process:**\n- [ ] Address change pushed to Data Warehouse\n- [ ] Historical address kept (audit trail)\n- [ ] New address reflects in analytics and reporting\n- [ ] Customer segmentation updated (e.g., if international, flag for international monitoring)  \n**Timeline:** Synchronized with nightly ETL (typically 23:00–03:00 UTC)  \n---",
+  "name": "Chunk 35/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_034",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_036",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Data Warehouse Update",
+      "aliases": [
+        "Nightly Batch Process",
+        "ETL Synchronization"
+      ],
+      "entity_class": "PROCESS",
+      "type": "system_recording",
+      "description": "Nightly batch process that synchronizes address changes and customer data to the Data Warehouse. The process maintains historical address records for audit trail purposes, updates analytics and reporting systems, and triggers customer segmentation flags based on address attributes such as international status.",
+      "context": [
+        "Nightly Batch Process",
+        "Address change pushed to Data Warehouse",
+        "Historical address kept (audit trail)",
+        "Customer segmentation updated (e.g., if international, flag for international monitoring)",
+        "Synchronized with nightly ETL (typically 23:00–03:00 UTC)"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Address Change Push to Data Warehouse",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Discrete step within the nightly batch process where address changes are pushed from the operational system to the Data Warehouse for centralized storage and downstream processing.",
+      "context": [
+        "Address change pushed to Data Warehouse"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Historical Address Retention",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step that preserves the historical record of previous addresses in the Data Warehouse to maintain an audit trail of all address changes associated with a customer account.",
+      "context": [
+        "Historical address kept (audit trail)"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Analytics and Reporting Update",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step that ensures the new address is reflected in analytics and reporting systems, enabling accurate customer location analysis and reporting.",
+      "context": [
+        "New address reflects in analytics and reporting"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Customer Segmentation Update",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step that updates customer segmentation attributes based on address characteristics, including flagging customers for international monitoring when their address indicates international status.",
+      "context": [
+        "Customer segmentation updated (e.g., if international, flag for international monitoring)"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Address Change",
+      "aliases": [],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "Customer address update that is processed through the nightly batch ETL and synchronized to the Data Warehouse, with historical retention for audit purposes.",
+      "context": [
+        "Address change pushed to Data Warehouse",
+        "Historical address kept (audit trail)",
+        "New address reflects in analytics and reporting"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The subject of address updates and customer segmentation within the Data Warehouse nightly batch process. Customers are flagged for international monitoring based on address attributes.",
+      "context": [
+        "Customer segmentation updated (e.g., if international, flag for international monitoring)"
+      ]
+    },
+    {
+      "id": "role_001",
+      "name": "ETL System",
+      "aliases": [
+        "Nightly ETL",
+        "Data Warehouse ETL"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system responsible for executing the nightly batch process that synchronizes address changes and customer data to the Data Warehouse. Operates on a scheduled window typically between 23:00–03:00 UTC.",
+      "context": [
+        "Synchronized with nightly ETL (typically 23:00–03:00 UTC)"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_035_proc_001",
+    "pstep_001": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_001",
+    "pstep_002": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_002",
+    "pstep_003": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_003",
+    "pstep_004": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_004",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_035_addr_001",
+    "cust_001": "01a07400-ba86-72f1-8b22-d07b32649491_035_cust_001",
+    "role_001": "01a07400-ba86-72f1-8b22-d07b32649491_035_role_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_proc_001",
+      "name": "Data Warehouse Update",
+      "aliases": [
+        "Nightly Batch Process",
+        "ETL Synchronization"
+      ],
+      "entity_class": "PROCESS",
+      "type": "system_recording",
+      "description": "Nightly batch process that synchronizes address changes and customer data to the Data Warehouse. The process maintains historical address records for audit trail purposes, updates analytics and reporting systems, and triggers customer segmentation flags based on address attributes such as international status.",
+      "context": [
+        "Nightly Batch Process",
+        "Address change pushed to Data Warehouse",
+        "Historical address kept (audit trail)",
+        "Customer segmentation updated (e.g., if international, flag for international monitoring)",
+        "Synchronized with nightly ETL (typically 23:00–03:00 UTC)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_001",
+      "name": "Address Change Push to Data Warehouse",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Discrete step within the nightly batch process where address changes are pushed from the operational system to the Data Warehouse for centralized storage and downstream processing.",
+      "context": [
+        "Address change pushed to Data Warehouse"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_002",
+      "name": "Historical Address Retention",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step that preserves the historical record of previous addresses in the Data Warehouse to maintain an audit trail of all address changes associated with a customer account.",
+      "context": [
+        "Historical address kept (audit trail)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_003",
+      "name": "Analytics and Reporting Update",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step that ensures the new address is reflected in analytics and reporting systems, enabling accurate customer location analysis and reporting.",
+      "context": [
+        "New address reflects in analytics and reporting"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_004",
+      "name": "Customer Segmentation Update",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step that updates customer segmentation attributes based on address characteristics, including flagging customers for international monitoring when their address indicates international status.",
+      "context": [
+        "Customer segmentation updated (e.g., if international, flag for international monitoring)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_addr_001",
+      "name": "Address Change",
+      "aliases": [],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "Customer address update that is processed through the nightly batch ETL and synchronized to the Data Warehouse, with historical retention for audit purposes.",
+      "context": [
+        "Address change pushed to Data Warehouse",
+        "Historical address kept (audit trail)",
+        "New address reflects in analytics and reporting"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_cust_001",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The subject of address updates and customer segmentation within the Data Warehouse nightly batch process. Customers are flagged for international monitoring based on address attributes.",
+      "context": [
+        "Customer segmentation updated (e.g., if international, flag for international monitoring)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_role_001",
+      "name": "ETL System",
+      "aliases": [
+        "Nightly ETL",
+        "Data Warehouse ETL"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system responsible for executing the nightly batch process that synchronizes address changes and customer data to the Data Warehouse. Operates on a scheduled window typically between 23:00–03:00 UTC.",
+      "context": [
+        "Synchronized with nightly ETL (typically 23:00–03:00 UTC)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_proc_001",
+      "name": "Data Warehouse Update",
+      "properties": {
+        "purpose": "Synchronize address changes and customer data to data warehouse for analytics, reporting, and compliance monitoring",
+        "scope": "All customers with address changes; applies to data warehouse and analytics systems",
+        "channels": [
+          "system"
+        ],
+        "owner": "ETL System",
+        "departments_involved": [
+          "Data Management",
+          "Analytics",
+          "Compliance"
+        ],
+        "timeline_sla": "Nightly batch; 23:00–03:00 UTC",
+        "trigger": "Address change recorded in core banking system",
+        "outcome_success": "Address change propagated to data warehouse, historical audit trail maintained, analytics and customer segmentation updated",
+        "outcome_failure": "Data inconsistency between core system and warehouse; missed compliance flags for international customers"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_001",
+      "name": "Address Change Push to Data Warehouse",
+      "properties": {
+        "step_number": 1,
+        "actor": "ETL System",
+        "input": "Address change record from core banking system",
+        "output": "Updated address record in data warehouse",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Data Warehouse",
+          "ETL Pipeline"
+        ],
+        "timing": "Nightly batch (23:00–03:00 UTC)"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_002",
+      "name": "Historical Address Retention",
+      "properties": {
+        "step_number": 2,
+        "actor": "ETL System",
+        "input": "Previous address record",
+        "output": "Historical address record with timestamp in audit trail",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Data Warehouse",
+          "Audit Trail System"
+        ],
+        "purpose": "Maintain audit trail for compliance and customer history tracking",
+        "timing": "Concurrent with address change push"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_003",
+      "name": "Analytics and Reporting Update",
+      "properties": {
+        "step_number": 3,
+        "actor": "ETL System",
+        "input": "Updated address data from data warehouse",
+        "output": "Refreshed analytics and reporting datasets reflecting new address",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Analytics Platform",
+          "Reporting System"
+        ],
+        "timing": "Nightly batch (23:00–03:00 UTC)"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_004",
+      "name": "Customer Segmentation Update",
+      "properties": {
+        "step_number": 4,
+        "actor": "ETL System",
+        "input": "Updated address; customer profile data",
+        "output": "Updated customer segmentation flags (e.g., international status)",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Customer Segmentation Engine",
+          "Compliance Monitoring System"
+        ],
+        "purpose": "Flag customers for enhanced monitoring based on geographic risk (e.g., international customers)",
+        "timing": "Nightly batch (23:00–03:00 UTC)"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_addr_001",
+      "name": "Address Change",
+      "properties": {
+        "collection_steps": "Address change initiated in core banking system",
+        "recording_system": "Data Warehouse; Audit Trail System",
+        "update_process": "Nightly ETL batch push to data warehouse with historical retention"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Subject of address change and segmentation update",
+        "risk_classification_trigger": "Geographic location (flagged for international monitoring if applicable)"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_035_role_001",
+      "name": "ETL System",
+      "properties": {
+        "role_type": "system",
+        "department": "Data Management",
+        "authority_level": "Automated data synchronization and transformation",
+        "channels": [
+          "system"
+        ],
+        "response_time_sla": "Nightly execution window 23:00–03:00 UTC"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_proc_001",
+      "source_name": "Data Warehouse Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_001",
+      "target_name": "Address Change Push to Data Warehouse",
+      "rel_type": "contains",
+      "description": "The Data Warehouse Update process includes the step of pushing address changes to the data warehouse",
+      "properties": {
+        "sequence_position": 1,
+        "batch_type": "nightly"
+      },
+      "context": "Address change pushed to Data Warehouse",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_proc_001",
+      "source_name": "Data Warehouse Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_002",
+      "target_name": "Historical Address Retention",
+      "rel_type": "contains",
+      "description": "The Data Warehouse Update process includes the step of retaining historical address records",
+      "properties": {
+        "sequence_position": 2,
+        "batch_type": "nightly"
+      },
+      "context": "Historical address kept (audit trail)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_proc_001",
+      "source_name": "Data Warehouse Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_003",
+      "target_name": "Analytics and Reporting Update",
+      "rel_type": "contains",
+      "description": "The Data Warehouse Update process includes the step of updating analytics and reporting systems",
+      "properties": {
+        "sequence_position": 3,
+        "batch_type": "nightly"
+      },
+      "context": "New address reflects in analytics and reporting",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_proc_001",
+      "source_name": "Data Warehouse Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_004",
+      "target_name": "Customer Segmentation Update",
+      "rel_type": "contains",
+      "description": "The Data Warehouse Update process includes the step of updating customer segmentation",
+      "properties": {
+        "sequence_position": 4,
+        "batch_type": "nightly"
+      },
+      "context": "Customer segmentation updated (e.g., if international, flag for international monitoring)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_proc_001",
+      "source_name": "Data Warehouse Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_role_001",
+      "target_name": "ETL System",
+      "rel_type": "executed_by",
+      "description": "The Data Warehouse Update process is executed by the ETL System",
+      "properties": {
+        "execution_schedule": "nightly",
+        "time_window": "23:00–03:00 UTC"
+      },
+      "context": "Synchronized with nightly ETL (typically 23:00–03:00 UTC)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_001",
+      "source_name": "Address Change Push to Data Warehouse",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_002",
+      "target_name": "Historical Address Retention",
+      "rel_type": "followed_by",
+      "description": "Address change push to data warehouse is followed by historical address retention",
+      "properties": {
+        "sequence": "step 1 to step 2"
+      },
+      "context": "Address change pushed to Data Warehouse; Historical address kept (audit trail)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_002",
+      "source_name": "Historical Address Retention",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_003",
+      "target_name": "Analytics and Reporting Update",
+      "rel_type": "followed_by",
+      "description": "Historical address retention is followed by analytics and reporting update",
+      "properties": {
+        "sequence": "step 2 to step 3"
+      },
+      "context": "Historical address kept (audit trail); New address reflects in analytics and reporting",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_003",
+      "source_name": "Analytics and Reporting Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_004",
+      "target_name": "Customer Segmentation Update",
+      "rel_type": "followed_by",
+      "description": "Analytics and reporting update is followed by customer segmentation update",
+      "properties": {
+        "sequence": "step 3 to step 4"
+      },
+      "context": "New address reflects in analytics and reporting; Customer segmentation updated",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_001",
+      "source_name": "Address Change Push to Data Warehouse",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_addr_001",
+      "target_name": "Address Change",
+      "rel_type": "updates",
+      "description": "The address change push step updates the address change record in the data warehouse",
+      "properties": {
+        "action": "push_to_warehouse"
+      },
+      "context": "Address change pushed to Data Warehouse",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_001",
+      "source_name": "Address Change Push to Data Warehouse",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_role_001",
+      "target_name": "ETL System",
+      "rel_type": "performed_by",
+      "description": "The address change push step is performed by the ETL System",
+      "properties": {
+        "execution_schedule": "nightly"
+      },
+      "context": "Synchronized with nightly ETL (typically 23:00–03:00 UTC)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_004",
+      "source_name": "Customer Segmentation Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_cust_001",
+      "target_name": "Customer",
+      "rel_type": "updates",
+      "description": "Customer segmentation update modifies customer classification based on address changes",
+      "properties": {
+        "segmentation_criteria": "international_flag",
+        "example": "if international, flag for international monitoring"
+      },
+      "context": "Customer segmentation updated (e.g., if international, flag for international monitoring)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_addr_001",
+      "source_name": "Address Change",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_cust_001",
+      "target_name": "Customer",
+      "rel_type": "registered_to",
+      "description": "The address change is registered to the customer",
+      "properties": {
+        "change_type": "address_update"
+      },
+      "context": "Address change pushed to Data Warehouse; Customer segmentation updated",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_proc_001",
+      "source_name": "Data Warehouse Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_001",
+      "source_name": "Address Change Push to Data Warehouse",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_002",
+      "source_name": "Historical Address Retention",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_003",
+      "source_name": "Analytics and Reporting Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_pstep_004",
+      "source_name": "Customer Segmentation Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_addr_001",
+      "source_name": "Address Change",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_035_role_001",
+      "source_name": "ETL System",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_035",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

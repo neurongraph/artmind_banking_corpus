@@ -1,0 +1,1022 @@
+{
+  "chunk_seq": 8,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "### Request Documentation  \n**Create Change Request:**\n- [ ] Assign Change Request ID (e.g., ADDR-REQ-00001)\n- [ ] Record timestamp (date/time received)\n- [ ] Identify requesting channel\n- [ ] Document all provided information\n- [ ] Flag: Temporary vs. permanent  \n**Initial Validation:**\n- [ ] Account exists in system\n- [ ] Account status allows changes (not frozen/closed)\n- [ ] Customer information matches (cross-check against KYC file)\n- [ ] If joint account: Note both holders' addresses  \n---",
+  "name": "Chunk 8/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_007",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Change of Address Process",
+      "aliases": [
+        "Address Change Request",
+        "ADDR-REQ"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "End-to-end procedure for processing customer requests to change their registered address. The process includes request documentation, change request creation with unique ID assignment, timestamp recording, channel identification, and initial validation checks against account status and KYC records. For joint accounts, both holders' addresses must be noted.",
+      "context": [
+        "Create Change Request: Assign Change Request ID (e.g., ADDR-REQ-00001)",
+        "Record timestamp (date/time received)",
+        "Initial Validation: Account exists in system",
+        "If joint account: Note both holders' addresses"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Create Change Request",
+      "aliases": [
+        "Request Documentation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial step to formally document the address change request by assigning a unique Change Request ID, recording the timestamp of receipt, identifying the requesting channel, and capturing all provided information.",
+      "context": [
+        "Assign Change Request ID (e.g., ADDR-REQ-00001)",
+        "Record timestamp (date/time received)",
+        "Identify requesting channel",
+        "Document all provided information"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Flag Temporary vs. Permanent Address Change",
+      "aliases": [
+        "Address Change Type Classification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Step to classify and flag whether the requested address change is temporary or permanent, ensuring the correct handling and duration of the address update.",
+      "context": [
+        "Flag: Temporary vs. permanent"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Validate Account Existence",
+      "aliases": [
+        "Account Verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step to confirm that the account referenced in the change request exists in the system before proceeding with address modifications.",
+      "context": [
+        "Account exists in system"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Verify Account Status Eligibility",
+      "aliases": [
+        "Account Status Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Validation step to ensure the account status permits address changes, excluding frozen or closed accounts from proceeding with the change request.",
+      "context": [
+        "Account status allows changes (not frozen/closed)"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Cross-Check Customer Information Against KYC File",
+      "aliases": [
+        "KYC Reconciliation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Validation step to verify that the customer information provided in the change request matches the records held in the KYC file, ensuring data consistency and preventing unauthorized changes.",
+      "context": [
+        "Customer information matches (cross-check against KYC file)"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Record Joint Account Holders' Addresses",
+      "aliases": [
+        "Joint Account Address Documentation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Conditional step applicable to joint accounts, requiring documentation and notation of the addresses for both account holders during the address change process.",
+      "context": [
+        "If joint account: Note both holders' addresses"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Address Update",
+      "aliases": [
+        "Address Change",
+        "New Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The customer's registered address being updated through the change of address process. The update is subject to validation against account status and KYC records.",
+      "context": [
+        "Create Change Request",
+        "Initial Validation",
+        "If joint account: Note both holders' addresses"
+      ]
+    },
+    {
+      "id": "kyc_001",
+      "name": "KYC File Cross-Check",
+      "aliases": [
+        "KYC Verification",
+        "KYC Record Validation"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "Compliance control requiring validation of customer information against the KYC file during address change requests to ensure data integrity and prevent unauthorized modifications.",
+      "context": [
+        "Customer information matches (cross-check against KYC file)"
+      ]
+    },
+    {
+      "id": "acct_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account",
+        "Customer Account Record"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer account subject to the address change request. The account must exist in the system and maintain an eligible status (not frozen or closed) for the change to proceed.",
+      "context": [
+        "Account exists in system",
+        "Account status allows changes (not frozen/closed)"
+      ]
+    },
+    {
+      "id": "jacct_001",
+      "name": "Joint Account",
+      "aliases": [
+        "Joint Account Arrangement"
+      ],
+      "entity_class": "JOINT_ACCOUNT",
+      "type": "joint_and_several",
+      "description": "A joint account arrangement where both account holders' addresses must be noted and validated during an address change request.",
+      "context": [
+        "If joint account: Note both holders' addresses"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder",
+        "Requesting Customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual customer initiating the address change request. Customer information must be validated against KYC records before the address change is processed.",
+      "context": [
+        "Customer information matches (cross-check against KYC file)",
+        "Identify requesting channel"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_008_proc_001",
+    "pstep_001": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_001",
+    "pstep_002": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_002",
+    "pstep_003": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_003",
+    "pstep_004": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_004",
+    "pstep_005": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_005",
+    "pstep_006": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_006",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_008_addr_001",
+    "kyc_001": "01a07400-ba86-72f1-8b22-d07b32649491_008_kyc_001",
+    "acct_001": "01a07400-ba86-72f1-8b22-d07b32649491_008_acct_001",
+    "jacct_001": "01a07400-ba86-72f1-8b22-d07b32649491_008_jacct_001",
+    "cust_001": "01a07400-ba86-72f1-8b22-d07b32649491_008_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_proc_001",
+      "name": "Change of Address Process",
+      "aliases": [
+        "Address Change Request",
+        "ADDR-REQ"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "End-to-end procedure for processing customer requests to change their registered address. The process includes request documentation, change request creation with unique ID assignment, timestamp recording, channel identification, and initial validation checks against account status and KYC records. For joint accounts, both holders' addresses must be noted.",
+      "context": [
+        "Create Change Request: Assign Change Request ID (e.g., ADDR-REQ-00001)",
+        "Record timestamp (date/time received)",
+        "Initial Validation: Account exists in system",
+        "If joint account: Note both holders' addresses"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_001",
+      "name": "Create Change Request",
+      "aliases": [
+        "Request Documentation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial step to formally document the address change request by assigning a unique Change Request ID, recording the timestamp of receipt, identifying the requesting channel, and capturing all provided information.",
+      "context": [
+        "Assign Change Request ID (e.g., ADDR-REQ-00001)",
+        "Record timestamp (date/time received)",
+        "Identify requesting channel",
+        "Document all provided information"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_002",
+      "name": "Flag Temporary vs. Permanent Address Change",
+      "aliases": [
+        "Address Change Type Classification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Step to classify and flag whether the requested address change is temporary or permanent, ensuring the correct handling and duration of the address update.",
+      "context": [
+        "Flag: Temporary vs. permanent"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_003",
+      "name": "Validate Account Existence",
+      "aliases": [
+        "Account Verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Verification step to confirm that the account referenced in the change request exists in the system before proceeding with address modifications.",
+      "context": [
+        "Account exists in system"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_004",
+      "name": "Verify Account Status Eligibility",
+      "aliases": [
+        "Account Status Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Validation step to ensure the account status permits address changes, excluding frozen or closed accounts from proceeding with the change request.",
+      "context": [
+        "Account status allows changes (not frozen/closed)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_005",
+      "name": "Cross-Check Customer Information Against KYC File",
+      "aliases": [
+        "KYC Reconciliation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "Validation step to verify that the customer information provided in the change request matches the records held in the KYC file, ensuring data consistency and preventing unauthorized changes.",
+      "context": [
+        "Customer information matches (cross-check against KYC file)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_006",
+      "name": "Record Joint Account Holders' Addresses",
+      "aliases": [
+        "Joint Account Address Documentation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Conditional step applicable to joint accounts, requiring documentation and notation of the addresses for both account holders during the address change process.",
+      "context": [
+        "If joint account: Note both holders' addresses"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_addr_001",
+      "name": "Address Update",
+      "aliases": [
+        "Address Change",
+        "New Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The customer's registered address being updated through the change of address process. The update is subject to validation against account status and KYC records.",
+      "context": [
+        "Create Change Request",
+        "Initial Validation",
+        "If joint account: Note both holders' addresses"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_kyc_001",
+      "name": "KYC File Cross-Check",
+      "aliases": [
+        "KYC Verification",
+        "KYC Record Validation"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "Compliance control requiring validation of customer information against the KYC file during address change requests to ensure data integrity and prevent unauthorized modifications.",
+      "context": [
+        "Customer information matches (cross-check against KYC file)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_acct_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account",
+        "Customer Account Record"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer account subject to the address change request. The account must exist in the system and maintain an eligible status (not frozen or closed) for the change to proceed.",
+      "context": [
+        "Account exists in system",
+        "Account status allows changes (not frozen/closed)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_jacct_001",
+      "name": "Joint Account",
+      "aliases": [
+        "Joint Account Arrangement"
+      ],
+      "entity_class": "JOINT_ACCOUNT",
+      "type": "joint_and_several",
+      "description": "A joint account arrangement where both account holders' addresses must be noted and validated during an address change request.",
+      "context": [
+        "If joint account: Note both holders' addresses"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder",
+        "Requesting Customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual customer initiating the address change request. Customer information must be validated against KYC records before the address change is processed.",
+      "context": [
+        "Customer information matches (cross-check against KYC file)",
+        "Identify requesting channel"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_proc_001",
+      "name": "Change of Address Process",
+      "properties": {
+        "scope": "address updates for customer accounts",
+        "channels": [
+          "branch",
+          "online",
+          "postal"
+        ],
+        "departments_involved": [
+          "Customer Service",
+          "Compliance",
+          "KYC"
+        ],
+        "trigger": "customer request to change address",
+        "outcome_success": "address updated in system with both holders' details recorded for joint accounts",
+        "outcome_failure": "change request rejected due to account status or information mismatch"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_001",
+      "name": "Create Change Request",
+      "properties": {
+        "step_number": 1,
+        "actor": "Customer Service Representative",
+        "input": "customer address change request",
+        "output": "Change Request ID, timestamp, channel identification, documented information",
+        "channel": "branch | online | postal",
+        "mandatory": true,
+        "tools_or_systems": [
+          "request management system"
+        ],
+        "failure_path": "request cannot proceed without valid Change Request ID and timestamp"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_002",
+      "name": "Flag Temporary vs. Permanent Address Change",
+      "properties": {
+        "step_number": 2,
+        "actor": "Customer Service Representative",
+        "input": "Change Request ID, customer-provided address change type",
+        "output": "flagged change request indicating temporary or permanent status",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "request management system"
+        ],
+        "failure_path": "change request cannot be validated without classification"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_003",
+      "name": "Validate Account Existence",
+      "properties": {
+        "step_number": 3,
+        "actor": "System | Compliance Officer",
+        "input": "account identifier from change request",
+        "output": "account existence confirmation",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "account management system"
+        ],
+        "failure_path": "change request rejected; account not found"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_004",
+      "name": "Verify Account Status Eligibility",
+      "properties": {
+        "step_number": 4,
+        "actor": "Compliance Officer",
+        "input": "account status from system",
+        "output": "eligibility determination",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "account management system"
+        ],
+        "failure_path": "change request rejected if account is frozen or closed"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_005",
+      "name": "Cross-Check Customer Information Against KYC File",
+      "properties": {
+        "step_number": 5,
+        "actor": "Compliance Officer",
+        "input": "customer information from change request, KYC file data",
+        "output": "verification result confirming information match",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "KYC system",
+          "account management system"
+        ],
+        "failure_path": "change request rejected if customer information does not match KYC file"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_006",
+      "name": "Record Joint Account Holders' Addresses",
+      "properties": {
+        "step_number": 6,
+        "actor": "Compliance Officer",
+        "input": "addresses for all joint account holders",
+        "output": "both holders' addresses recorded in system",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "account management system"
+        ],
+        "failure_path": "change request incomplete if joint account holder addresses not captured"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_addr_001",
+      "name": "Address Update",
+      "properties": {
+        "collection_steps": [
+          "customer submits change request via branch, online, or postal channel",
+          "Change Request ID assigned"
+        ],
+        "verification_steps": [
+          "cross-check against KYC file",
+          "validate account status allows changes"
+        ],
+        "recording_system": "account management system",
+        "update_process": [
+          "flag temporary vs. permanent",
+          "validate account existence",
+          "verify account status eligibility",
+          "cross-check customer information",
+          "record all holders' addresses for joint accounts"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_kyc_001",
+      "name": "KYC File Cross-Check",
+      "properties": {
+        "mandatory": true,
+        "timing_or_refresh_frequency": "at point of address change request",
+        "verification_method": "cross-check customer information from change request against KYC file data",
+        "consequence_of_failure": "change request rejected; address update cannot proceed"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_acct_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_state": [
+          "active",
+          "not frozen",
+          "not closed"
+        ],
+        "closure_or_freeze_conditions": "address changes not permitted on frozen or closed accounts"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_jacct_001",
+      "name": "Joint Account",
+      "properties": {
+        "consent_requirements": "both holders' addresses must be recorded during address change",
+        "dual_kyc_or_aml_requirement": "customer information for all holders cross-checked against KYC file"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_008_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "individual | joint_applicant",
+        "context_role": "requestor of address change",
+        "eligibility_or_verification_status": "information must match KYC file; account must be active and not frozen or closed"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_001",
+      "target_name": "Create Change Request",
+      "rel_type": "starts_with",
+      "description": "The Change of Address Process begins with creating a change request",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Create Change Request: Assign Change Request ID, Record timestamp, Identify requesting channel, Document all provided information",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_001",
+      "source_name": "Create Change Request",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_002",
+      "target_name": "Flag Temporary vs. Permanent Address Change",
+      "rel_type": "followed_by",
+      "description": "Creating a change request is followed by flagging whether the address change is temporary or permanent",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Flag: Temporary vs. permanent",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_002",
+      "source_name": "Flag Temporary vs. Permanent Address Change",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_003",
+      "target_name": "Validate Account Existence",
+      "rel_type": "followed_by",
+      "description": "Flagging temporary vs. permanent address change is followed by validating account existence",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Initial Validation: Account exists in system",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_003",
+      "source_name": "Validate Account Existence",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_004",
+      "target_name": "Verify Account Status Eligibility",
+      "rel_type": "followed_by",
+      "description": "Validating account existence is followed by verifying account status eligibility",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "Account status allows changes (not frozen/closed)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_004",
+      "source_name": "Verify Account Status Eligibility",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_005",
+      "target_name": "Cross-Check Customer Information Against KYC File",
+      "rel_type": "followed_by",
+      "description": "Verifying account status eligibility is followed by cross-checking customer information against KYC file",
+      "properties": {
+        "sequence_position": 5
+      },
+      "context": "Customer information matches (cross-check against KYC file)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_005",
+      "source_name": "Cross-Check Customer Information Against KYC File",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_006",
+      "target_name": "Record Joint Account Holders' Addresses",
+      "rel_type": "followed_by",
+      "description": "Cross-checking customer information is followed by recording joint account holders' addresses",
+      "properties": {
+        "sequence_position": 6
+      },
+      "context": "If joint account: Note both holders' addresses",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_addr_001",
+      "target_name": "Address Update",
+      "rel_type": "modifies",
+      "description": "The Change of Address Process modifies customer address information",
+      "properties": {
+        "change_type": "address_update"
+      },
+      "context": "Change of Address Process - entire process is dedicated to updating address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_acct_001",
+      "target_name": "Customer Account",
+      "rel_type": "operates_on",
+      "description": "The Change of Address Process operates on customer accounts",
+      "properties": {
+        "operation": "address_change"
+      },
+      "context": "Account exists in system, Account status allows changes",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_kyc_001",
+      "target_name": "KYC File Cross-Check",
+      "rel_type": "requires",
+      "description": "The Change of Address Process requires KYC file cross-check verification",
+      "properties": {
+        "mandatory": true,
+        "step": "Customer information verification"
+      },
+      "context": "Customer information matches (cross-check against KYC file)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_003",
+      "source_name": "Validate Account Existence",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_acct_001",
+      "target_name": "Customer Account",
+      "rel_type": "verifies_identity_of",
+      "description": "Validating account existence verifies that the customer account exists in the system",
+      "properties": {
+        "validation_type": "existence_check"
+      },
+      "context": "Account exists in system",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_004",
+      "source_name": "Verify Account Status Eligibility",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_acct_001",
+      "target_name": "Customer Account",
+      "rel_type": "updates",
+      "description": "Verifying account status eligibility checks if the account status permits address changes",
+      "properties": {
+        "eligible_statuses": [
+          "active"
+        ],
+        "ineligible_statuses": [
+          "frozen",
+          "closed"
+        ]
+      },
+      "context": "Account status allows changes (not frozen/closed)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_005",
+      "source_name": "Cross-Check Customer Information Against KYC File",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_kyc_001",
+      "target_name": "KYC File Cross-Check",
+      "rel_type": "executes",
+      "description": "Cross-checking customer information executes the KYC file verification",
+      "properties": {
+        "verification_scope": "customer_information_match"
+      },
+      "context": "Customer information matches (cross-check against KYC file)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_005",
+      "source_name": "Cross-Check Customer Information Against KYC File",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_cust_001",
+      "target_name": "Customer",
+      "rel_type": "verifies_identity_of",
+      "description": "Cross-checking verifies customer identity against KYC file records",
+      "properties": {
+        "verification_method": "kyc_file_comparison"
+      },
+      "context": "Customer information matches (cross-check against KYC file)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_006",
+      "source_name": "Record Joint Account Holders' Addresses",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_jacct_001",
+      "target_name": "Joint Account",
+      "rel_type": "records",
+      "description": "Recording joint account holders' addresses captures address information for joint accounts",
+      "properties": {
+        "scope": "both_holders"
+      },
+      "context": "If joint account: Note both holders' addresses",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_006",
+      "source_name": "Record Joint Account Holders' Addresses",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_addr_001",
+      "target_name": "Address Update",
+      "rel_type": "records",
+      "description": "Recording joint account holders' addresses updates address information",
+      "properties": {
+        "account_type": "joint"
+      },
+      "context": "If joint account: Note both holders' addresses",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_acct_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_cust_001",
+      "target_name": "Customer",
+      "rel_type": "held_by",
+      "description": "The customer account is held by the customer",
+      "properties": {
+        "relationship_type": "ownership"
+      },
+      "context": "Customer Account and Customer relationship in address change context",
+      "bidirectional": true,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_acct_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_jacct_001",
+      "target_name": "Joint Account",
+      "rel_type": "classified_as",
+      "description": "A customer account may be classified as a joint account",
+      "properties": {
+        "conditional": true,
+        "condition": "if_joint_account"
+      },
+      "context": "If joint account: Note both holders' addresses",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_kyc_001",
+      "source_name": "KYC File Cross-Check",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_cust_001",
+      "target_name": "Customer",
+      "rel_type": "verified_by",
+      "description": "KYC file cross-check verifies customer information",
+      "properties": {
+        "verification_scope": "customer_information"
+      },
+      "context": "Customer information matches (cross-check against KYC file)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_proc_001",
+      "source_name": "Change of Address Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_001",
+      "source_name": "Create Change Request",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_002",
+      "source_name": "Flag Temporary vs. Permanent Address Change",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_003",
+      "source_name": "Validate Account Existence",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_004",
+      "source_name": "Verify Account Status Eligibility",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_005",
+      "source_name": "Cross-Check Customer Information Against KYC File",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_pstep_006",
+      "source_name": "Record Joint Account Holders' Addresses",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_addr_001",
+      "source_name": "Address Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_kyc_001",
+      "source_name": "KYC File Cross-Check",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_acct_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_jacct_001",
+      "source_name": "Joint Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_008_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

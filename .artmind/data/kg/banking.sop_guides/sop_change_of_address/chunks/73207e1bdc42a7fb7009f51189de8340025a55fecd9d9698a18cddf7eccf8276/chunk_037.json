@@ -1,0 +1,789 @@
+{
+  "chunk_seq": 37,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "### Scenario 2: Temporary Address Change (Holiday Home)  \n**Situation:** Customer moving to holiday home for 3 months, wants to update address temporarily  \n**Approach:**  \n**Option A: Update as Permanent (Simpler)**\n- Update to new address\n- When customer returns, submit another address change\n- Simpler but creates extra work  \n**Option B: Mark as Temporary (Better)**\n- Note in system: \"Temporary address change until [date]\"\n- Set reminder to contact customer on return date\n- Ask: \"When you return, shall we change back?\"\n- Reduces address change requests  \n**Implementation:**\n```\nAddress Change Type: TEMPORARY\nOld Address: 123 Oak Lane, Manchester, M1 1AA\nTemporary Address: 789 Beach Road, Marbella, Spain\nEffective Date: 2026-06-01\nReturn Date: 2026-09-01\nRevert To: Manchester address\nContact Before: 2026-08-25 (reminder for customer)\n```  \n---",
+  "name": "Chunk 37/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_036",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_038",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Temporary Address Change Process",
+      "aliases": [
+        "Holiday Home Address Update",
+        "Temporary Address Update"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "A procedure for managing temporary address changes when a customer relocates for a defined period (e.g., holiday home stay). The process allows the customer to update their address with a scheduled return date and automatic reversion, reducing duplicate address change requests upon return.",
+      "context": [
+        "Customer moving to holiday home for 3 months, wants to update address temporarily",
+        "Mark as Temporary (Better) - Note in system: 'Temporary address change until [date]'",
+        "Set reminder to contact customer on return date",
+        "Reduces address change requests"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Address Update to Temporary Location",
+      "aliases": [
+        "Update to New Address"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_update",
+      "description": "The step in which the customer's address is updated in the system to the temporary address (holiday home location) with an effective date.",
+      "context": [
+        "Update to new address",
+        "Temporary Address: 789 Beach Road, Marbella, Spain",
+        "Effective Date: 2026-06-01"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Mark Address as Temporary in System",
+      "aliases": [
+        "Temporary Flag Recording"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "The step in which the address change is flagged in the system as temporary with a scheduled return date, enabling automatic tracking and reversion.",
+      "context": [
+        "Note in system: 'Temporary address change until [date]'",
+        "Address Change Type: TEMPORARY",
+        "Return Date: 2026-09-01"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Set Reminder for Customer Contact",
+      "aliases": [
+        "Schedule Return Date Reminder"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "The step in which a reminder is configured to contact the customer before their return date to confirm address reversion or obtain updated preferences.",
+      "context": [
+        "Set reminder to contact customer on return date",
+        "Contact Before: 2026-08-25 (reminder for customer)"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Confirm Address Reversion with Customer",
+      "aliases": [
+        "Return Address Confirmation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The step in which the customer is contacted before the return date to confirm whether their address should revert to the original location or be updated to a different address.",
+      "context": [
+        "Ask: 'When you return, shall we change back?'",
+        "Revert To: Manchester address"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Original Address",
+      "aliases": [
+        "Permanent Address",
+        "Manchester Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_recording",
+      "description": "The customer's permanent address prior to the temporary change, to which the address will revert upon return from the holiday home.",
+      "context": [
+        "Old Address: 123 Oak Lane, Manchester, M1 1AA",
+        "Revert To: Manchester address"
+      ]
+    },
+    {
+      "id": "addr_002",
+      "name": "Temporary Holiday Address",
+      "aliases": [
+        "Holiday Home Address",
+        "Marbella Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The temporary address to which the customer is relocating for a defined period (3 months), to be recorded in the system with a scheduled return date.",
+      "context": [
+        "Temporary Address: 789 Beach Road, Marbella, Spain",
+        "Customer moving to holiday home for 3 months"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Individual Customer",
+      "aliases": [
+        "Account Holder",
+        "Customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The customer initiating the temporary address change for a holiday home stay, who will be contacted before the return date to confirm address reversion.",
+      "context": [
+        "Customer moving to holiday home for 3 months, wants to update address temporarily",
+        "When you return, shall we change back?"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_037_proc_001",
+    "pstep_001": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_001",
+    "pstep_002": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_002",
+    "pstep_003": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_003",
+    "pstep_004": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_004",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_037_addr_001",
+    "addr_002": "01a07400-ba86-72f1-8b22-d07b32649491_037_addr_002",
+    "cust_001": "01a07400-ba86-72f1-8b22-d07b32649491_037_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_proc_001",
+      "name": "Temporary Address Change Process",
+      "aliases": [
+        "Holiday Home Address Update",
+        "Temporary Address Update"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "A procedure for managing temporary address changes when a customer relocates for a defined period (e.g., holiday home stay). The process allows the customer to update their address with a scheduled return date and automatic reversion, reducing duplicate address change requests upon return.",
+      "context": [
+        "Customer moving to holiday home for 3 months, wants to update address temporarily",
+        "Mark as Temporary (Better) - Note in system: 'Temporary address change until [date]'",
+        "Set reminder to contact customer on return date",
+        "Reduces address change requests"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_001",
+      "name": "Address Update to Temporary Location",
+      "aliases": [
+        "Update to New Address"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_update",
+      "description": "The step in which the customer's address is updated in the system to the temporary address (holiday home location) with an effective date.",
+      "context": [
+        "Update to new address",
+        "Temporary Address: 789 Beach Road, Marbella, Spain",
+        "Effective Date: 2026-06-01"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_002",
+      "name": "Mark Address as Temporary in System",
+      "aliases": [
+        "Temporary Flag Recording"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "The step in which the address change is flagged in the system as temporary with a scheduled return date, enabling automatic tracking and reversion.",
+      "context": [
+        "Note in system: 'Temporary address change until [date]'",
+        "Address Change Type: TEMPORARY",
+        "Return Date: 2026-09-01"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_003",
+      "name": "Set Reminder for Customer Contact",
+      "aliases": [
+        "Schedule Return Date Reminder"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "The step in which a reminder is configured to contact the customer before their return date to confirm address reversion or obtain updated preferences.",
+      "context": [
+        "Set reminder to contact customer on return date",
+        "Contact Before: 2026-08-25 (reminder for customer)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_004",
+      "name": "Confirm Address Reversion with Customer",
+      "aliases": [
+        "Return Address Confirmation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The step in which the customer is contacted before the return date to confirm whether their address should revert to the original location or be updated to a different address.",
+      "context": [
+        "Ask: 'When you return, shall we change back?'",
+        "Revert To: Manchester address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_addr_001",
+      "name": "Original Address",
+      "aliases": [
+        "Permanent Address",
+        "Manchester Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_recording",
+      "description": "The customer's permanent address prior to the temporary change, to which the address will revert upon return from the holiday home.",
+      "context": [
+        "Old Address: 123 Oak Lane, Manchester, M1 1AA",
+        "Revert To: Manchester address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_addr_002",
+      "name": "Temporary Holiday Address",
+      "aliases": [
+        "Holiday Home Address",
+        "Marbella Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The temporary address to which the customer is relocating for a defined period (3 months), to be recorded in the system with a scheduled return date.",
+      "context": [
+        "Temporary Address: 789 Beach Road, Marbella, Spain",
+        "Customer moving to holiday home for 3 months"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_cust_001",
+      "name": "Individual Customer",
+      "aliases": [
+        "Account Holder",
+        "Customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The customer initiating the temporary address change for a holiday home stay, who will be contacted before the return date to confirm address reversion.",
+      "context": [
+        "Customer moving to holiday home for 3 months, wants to update address temporarily",
+        "When you return, shall we change back?"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_proc_001",
+      "name": "Temporary Address Change Process",
+      "properties": {
+        "purpose": "Allow customers to temporarily update their address for short-term relocations (e.g., holiday homes) without creating duplicate permanent address change requests",
+        "scope": "Individual customers requiring temporary address changes",
+        "channels": [
+          "branch",
+          "online"
+        ],
+        "owner": "Customer Service / Address Management",
+        "departments_involved": [
+          "Customer Service",
+          "Operations",
+          "Systems"
+        ],
+        "trigger": "Customer requests address change with specified return date",
+        "outcome_success": "Temporary address recorded in system with automated reminder set; customer contacted before return date to confirm reversion",
+        "outcome_failure": "Address not marked as temporary; customer forced to submit second change request upon return, creating duplicate work"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_001",
+      "name": "Address Update to Temporary Location",
+      "properties": {
+        "step_number": 1,
+        "actor": "Customer Service Representative",
+        "input": [
+          "Customer request",
+          "Original address",
+          "Temporary address",
+          "Effective date",
+          "Return date"
+        ],
+        "output": "Address change record with temporary flag",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Address Management System"
+        ],
+        "failure_path": "Address change rejected; customer must resubmit with complete information"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_002",
+      "name": "Mark Address as Temporary in System",
+      "properties": {
+        "step_number": 2,
+        "actor": "System Administrator or Customer Service Representative",
+        "input": "Address change record",
+        "output": "Address record flagged as temporary with return date metadata",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Address Management System"
+        ],
+        "failure_path": "Address treated as permanent; no automated reversion process triggered"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_003",
+      "name": "Set Reminder for Customer Contact",
+      "properties": {
+        "step_number": 3,
+        "actor": "System (automated) or Customer Service Team",
+        "input": [
+          "Return date",
+          "Customer contact details"
+        ],
+        "output": "Reminder scheduled in system for contact before return date",
+        "estimated_duration": "Automated",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Address Management System",
+          "Reminder/Notification Engine"
+        ],
+        "failure_path": "No reminder generated; customer not contacted; address not reverted automatically"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_004",
+      "name": "Confirm Address Reversion with Customer",
+      "properties": {
+        "step_number": 4,
+        "actor": "Customer Service Representative",
+        "input": [
+          "Reminder trigger",
+          "Customer contact details",
+          "Original address"
+        ],
+        "output": "Customer confirmation of address reversion or new address preference",
+        "estimated_duration": "Contact attempt before return date",
+        "channel": [
+          "phone",
+          "email",
+          "branch"
+        ],
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Address Management System",
+          "CRM"
+        ],
+        "failure_path": "Customer not reached; address remains temporary; follow-up contact required"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_addr_001",
+      "name": "Original Address",
+      "properties": {
+        "collection_steps": "Captured during account opening or previous address change",
+        "verification_steps": "Verified against utility bill or credit bureau at account opening",
+        "acceptable_proof": [
+          "Utility bill",
+          "Council tax bill",
+          "Mortgage statement"
+        ],
+        "recording_system": "Address Management System",
+        "update_process": "Revert to original address upon customer confirmation or automatic reversion on return date",
+        "address_value": "123 Oak Lane, Manchester, M1 1AA"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_addr_002",
+      "name": "Temporary Holiday Address",
+      "properties": {
+        "collection_steps": "Captured during temporary address change request",
+        "verification_steps": "Verified against customer-provided proof or booking confirmation",
+        "acceptable_proof": [
+          "Holiday booking confirmation",
+          "Rental agreement",
+          "Utility bill at temporary location"
+        ],
+        "recording_system": "Address Management System",
+        "update_process": "Marked as temporary with return date; reverted to original address on return date or upon customer confirmation",
+        "address_value": "789 Beach Road, Marbella, Spain",
+        "effective_date": "2026-06-01",
+        "return_date": "2026-09-01",
+        "contact_before_date": "2026-08-25"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_037_cust_001",
+      "name": "Individual Customer",
+      "properties": {
+        "customer_type": "individual",
+        "context_role": "Primary account holder requesting temporary address change",
+        "eligibility_or_verification_status": "Existing customer with established account"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_proc_001",
+      "source_name": "Temporary Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_001",
+      "target_name": "Address Update to Temporary Location",
+      "rel_type": "contains",
+      "description": "The Temporary Address Change Process includes the step of updating the address to a temporary location",
+      "properties": {
+        "sequence_position": 1,
+        "is_mandatory": true
+      },
+      "context": "Implementation: Address Change Type: TEMPORARY, Old Address: 123 Oak Lane, Manchester, M1 1AA, Temporary Address: 789 Beach Road, Marbella, Spain",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_proc_001",
+      "source_name": "Temporary Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_002",
+      "target_name": "Mark Address as Temporary in System",
+      "rel_type": "contains",
+      "description": "The Temporary Address Change Process includes the step of marking the address as temporary in the system",
+      "properties": {
+        "sequence_position": 2,
+        "is_mandatory": true
+      },
+      "context": "Option B: Mark as Temporary (Better) - Note in system: 'Temporary address change until [date]'",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_proc_001",
+      "source_name": "Temporary Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_003",
+      "target_name": "Set Reminder for Customer Contact",
+      "rel_type": "contains",
+      "description": "The Temporary Address Change Process includes the step of setting a reminder to contact the customer",
+      "properties": {
+        "sequence_position": 3,
+        "is_mandatory": true
+      },
+      "context": "Set reminder to contact customer on return date",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_proc_001",
+      "source_name": "Temporary Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_004",
+      "target_name": "Confirm Address Reversion with Customer",
+      "rel_type": "contains",
+      "description": "The Temporary Address Change Process includes the step of confirming address reversion with the customer",
+      "properties": {
+        "sequence_position": 4,
+        "is_mandatory": true
+      },
+      "context": "Ask: 'When you return, shall we change back?'",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_proc_001",
+      "source_name": "Temporary Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "operates_on",
+      "description": "The Temporary Address Change Process operates on the individual customer",
+      "properties": {
+        "scenario": "Customer moving to holiday home for 3 months"
+      },
+      "context": "Customer moving to holiday home for 3 months, wants to update address temporarily",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_001",
+      "source_name": "Address Update to Temporary Location",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_002",
+      "target_name": "Mark Address as Temporary in System",
+      "rel_type": "followed_by",
+      "description": "Address Update to Temporary Location is followed by marking the address as temporary in the system",
+      "properties": {
+        "sequence": "step 1 to step 2"
+      },
+      "context": "Implementation: Address Change Type: TEMPORARY followed by Note in system: 'Temporary address change until [date]'",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_002",
+      "source_name": "Mark Address as Temporary in System",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_003",
+      "target_name": "Set Reminder for Customer Contact",
+      "rel_type": "followed_by",
+      "description": "Marking address as temporary in the system is followed by setting a reminder for customer contact",
+      "properties": {
+        "sequence": "step 2 to step 3"
+      },
+      "context": "Note in system: 'Temporary address change until [date]' followed by Set reminder to contact customer on return date",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_003",
+      "source_name": "Set Reminder for Customer Contact",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_004",
+      "target_name": "Confirm Address Reversion with Customer",
+      "rel_type": "followed_by",
+      "description": "Setting a reminder for customer contact is followed by confirming address reversion with the customer",
+      "properties": {
+        "sequence": "step 3 to step 4"
+      },
+      "context": "Set reminder to contact customer on return date followed by Ask: 'When you return, shall we change back?'",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_001",
+      "source_name": "Address Update to Temporary Location",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_addr_001",
+      "target_name": "Original Address",
+      "rel_type": "updates",
+      "description": "The address update step records the original address being changed from",
+      "properties": {
+        "address_value": "123 Oak Lane, Manchester, M1 1AA",
+        "change_type": "from"
+      },
+      "context": "Old Address: 123 Oak Lane, Manchester, M1 1AA",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_001",
+      "source_name": "Address Update to Temporary Location",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_addr_002",
+      "target_name": "Temporary Holiday Address",
+      "rel_type": "updates",
+      "description": "The address update step records the temporary address being changed to",
+      "properties": {
+        "address_value": "789 Beach Road, Marbella, Spain",
+        "change_type": "to",
+        "effective_date": "2026-06-01",
+        "return_date": "2026-09-01"
+      },
+      "context": "Temporary Address: 789 Beach Road, Marbella, Spain, Effective Date: 2026-06-01, Return Date: 2026-09-01",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_002",
+      "source_name": "Mark Address as Temporary in System",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_addr_002",
+      "target_name": "Temporary Holiday Address",
+      "rel_type": "records",
+      "description": "Marking address as temporary in the system records the temporary address with its designation",
+      "properties": {
+        "designation": "temporary",
+        "revert_to": "Manchester address",
+        "contact_before": "2026-08-25"
+      },
+      "context": "Note in system: 'Temporary address change until [date]', Revert To: Manchester address, Contact Before: 2026-08-25",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_003",
+      "source_name": "Set Reminder for Customer Contact",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "notifies",
+      "description": "Setting a reminder ensures the customer will be contacted on the return date",
+      "properties": {
+        "reminder_date": "2026-08-25",
+        "purpose": "confirm address reversion"
+      },
+      "context": "Set reminder to contact customer on return date, Contact Before: 2026-08-25",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_004",
+      "source_name": "Confirm Address Reversion with Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "verifies_identity_of",
+      "description": "Confirming address reversion involves verifying the customer's intent and preferences",
+      "properties": {
+        "action": "Ask customer confirmation",
+        "question": "When you return, shall we change back?"
+      },
+      "context": "Ask: 'When you return, shall we change back?'",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_cust_001",
+      "source_name": "Individual Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_addr_001",
+      "target_name": "Original Address",
+      "rel_type": "registered_to",
+      "description": "The individual customer is registered to the original address",
+      "properties": {
+        "address_value": "123 Oak Lane, Manchester, M1 1AA"
+      },
+      "context": "Old Address: 123 Oak Lane, Manchester, M1 1AA",
+      "bidirectional": true,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_cust_001",
+      "source_name": "Individual Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_addr_002",
+      "target_name": "Temporary Holiday Address",
+      "rel_type": "registered_to",
+      "description": "The individual customer is temporarily registered to the holiday address",
+      "properties": {
+        "address_value": "789 Beach Road, Marbella, Spain",
+        "duration": "3 months",
+        "effective_date": "2026-06-01",
+        "return_date": "2026-09-01"
+      },
+      "context": "Temporary Address: 789 Beach Road, Marbella, Spain, Effective Date: 2026-06-01, Return Date: 2026-09-01",
+      "bidirectional": true,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_proc_001",
+      "source_name": "Temporary Address Change Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_001",
+      "source_name": "Address Update to Temporary Location",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_002",
+      "source_name": "Mark Address as Temporary in System",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_003",
+      "source_name": "Set Reminder for Customer Contact",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_pstep_004",
+      "source_name": "Confirm Address Reversion with Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_addr_001",
+      "source_name": "Original Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_addr_002",
+      "source_name": "Temporary Holiday Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_037_cust_001",
+      "source_name": "Individual Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_037",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

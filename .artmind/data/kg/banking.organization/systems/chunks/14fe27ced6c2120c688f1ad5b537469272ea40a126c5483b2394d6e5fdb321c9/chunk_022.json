@@ -1,0 +1,1415 @@
+{
+  "chunk_seq": 22,
+  "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+  "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+  "text": "## Database Architecture  \n### Primary Database (PostgreSQL)  \n**Database:** `firstuk_prod`  \n**Schemas:**\n- `public.accounts` — Account records (800 records)\n- `public.customers` — Customer records (500 records)\n- `public.transactions` — Transaction log (2,000+ records/month)\n- `public.account_holders` — Joint account holders\n- `public.standing_orders` — Recurring transfers\n- `public.direct_debits` — Recurring bill payments\n- `public.cards` — Debit card records (800 cards)\n- `public.compliance_kyc` — KYC verification records\n- `public.compliance_aml` — AML screening records\n- `public.products` — Product definitions (5 products)  \n**Indexes:**\n- Customer ID (for lookups)\n- Account ID (for queries)\n- Transaction date (for history)\n- Account status (for reporting)  \n**Backup Strategy:**\n- Continuous replication to standby database\n- Daily encrypted backup to AWS S3\n- RPO: 15 minutes\n- RTO: 2 hours",
+  "name": "Chunk 22/39",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_021",
+  "next_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_023",
+  "raw_entities": [
+    {
+      "id": "sys_001",
+      "name": "FirstUK Production Database",
+      "aliases": [
+        "firstuk_prod",
+        "Primary Database"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL production database hosting core banking data including accounts, customers, transactions, and compliance records. Supports 800+ account records, 500+ customer records, and 2,000+ monthly transactions with continuous replication and daily encrypted backup to AWS S3.",
+      "context": [
+        "Database: `firstuk_prod`",
+        "Continuous replication to standby database",
+        "Daily encrypted backup to AWS S3",
+        "RPO: 15 minutes, RTO: 2 hours"
+      ]
+    },
+    {
+      "id": "sys_002",
+      "name": "Account Records Schema",
+      "aliases": [
+        "public.accounts"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing account records within the FirstUK production database. Contains 800 account records indexed by Account ID for efficient query performance.",
+      "context": [
+        "`public.accounts` — Account records (800 records)",
+        "Account ID (for queries)"
+      ]
+    },
+    {
+      "id": "sys_003",
+      "name": "Customer Records Schema",
+      "aliases": [
+        "public.customers"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing customer records within the FirstUK production database. Contains 500 customer records indexed by Customer ID for efficient lookups.",
+      "context": [
+        "`public.customers` — Customer records (500 records)",
+        "Customer ID (for lookups)"
+      ]
+    },
+    {
+      "id": "sys_004",
+      "name": "Transaction Log Schema",
+      "aliases": [
+        "public.transactions"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing transaction records within the FirstUK production database. Maintains 2,000+ transaction records per month indexed by transaction date for historical analysis and reporting.",
+      "context": [
+        "`public.transactions` — Transaction log (2,000+ records/month)",
+        "Transaction date (for history)"
+      ]
+    },
+    {
+      "id": "sys_005",
+      "name": "Account Holders Schema",
+      "aliases": [
+        "public.account_holders"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing joint account holder records within the FirstUK production database, capturing relationships between multiple account holders and their accounts.",
+      "context": [
+        "`public.account_holders` — Joint account holders"
+      ]
+    },
+    {
+      "id": "sys_006",
+      "name": "Standing Orders Schema",
+      "aliases": [
+        "public.standing_orders"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing standing order payment instructions within the FirstUK production database, capturing recurring transfer configurations.",
+      "context": [
+        "`public.standing_orders` — Recurring transfers"
+      ]
+    },
+    {
+      "id": "sys_007",
+      "name": "Direct Debits Schema",
+      "aliases": [
+        "public.direct_debits"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing direct debit mandate records within the FirstUK production database, capturing recurring bill payment configurations.",
+      "context": [
+        "`public.direct_debits` — Recurring bill payments"
+      ]
+    },
+    {
+      "id": "sys_008",
+      "name": "Cards Schema",
+      "aliases": [
+        "public.cards"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing debit card records within the FirstUK production database. Contains 800 card records linked to customer accounts.",
+      "context": [
+        "`public.cards` — Debit card records (800 cards)"
+      ]
+    },
+    {
+      "id": "sys_009",
+      "name": "Compliance KYC Schema",
+      "aliases": [
+        "public.compliance_kyc"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing Know Your Customer verification records within the FirstUK production database, capturing identity and address verification data.",
+      "context": [
+        "`public.compliance_kyc` — KYC verification records"
+      ]
+    },
+    {
+      "id": "sys_010",
+      "name": "Compliance AML Schema",
+      "aliases": [
+        "public.compliance_aml"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing Anti-Money Laundering screening records within the FirstUK production database, capturing sanctions and PEP list check results.",
+      "context": [
+        "`public.compliance_aml` — AML screening records"
+      ]
+    },
+    {
+      "id": "sys_011",
+      "name": "Products Schema",
+      "aliases": [
+        "public.products"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing product definitions within the FirstUK production database. Contains 5 product definitions available to customers.",
+      "context": [
+        "`public.products` — Product definitions (5 products)"
+      ]
+    },
+    {
+      "id": "sys_012",
+      "name": "AWS S3 Backup Storage",
+      "aliases": [
+        "AWS S3"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "Cloud storage service used for encrypted daily backups of the FirstUK production database, providing off-site disaster recovery capability.",
+      "context": [
+        "Daily encrypted backup to AWS S3"
+      ]
+    },
+    {
+      "id": "sys_013",
+      "name": "Standby Database",
+      "aliases": [
+        "Standby"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL standby database receiving continuous replication from the primary FirstUK production database, supporting high availability and disaster recovery objectives.",
+      "context": [
+        "Continuous replication to standby database"
+      ]
+    },
+    {
+      "id": "met_001",
+      "name": "Recovery Point Objective",
+      "aliases": [
+        "RPO"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "sla",
+      "description": "Service level agreement defining the maximum acceptable data loss in the event of a database failure. Set to 15 minutes for the FirstUK production environment.",
+      "context": [
+        "RPO: 15 minutes"
+      ]
+    },
+    {
+      "id": "met_002",
+      "name": "Recovery Time Objective",
+      "aliases": [
+        "RTO"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "sla",
+      "description": "Service level agreement defining the maximum acceptable downtime for database recovery. Set to 2 hours for the FirstUK production environment.",
+      "context": [
+        "RTO: 2 hours"
+      ]
+    },
+    {
+      "id": "met_003",
+      "name": "Account Records Capacity",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Current capacity metric for the accounts schema within the FirstUK production database.",
+      "context": [
+        "Account records (800 records)"
+      ]
+    },
+    {
+      "id": "met_004",
+      "name": "Customer Records Capacity",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Current capacity metric for the customers schema within the FirstUK production database.",
+      "context": [
+        "Customer records (500 records)"
+      ]
+    },
+    {
+      "id": "met_005",
+      "name": "Transaction Processing Rate",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "processing_rate",
+      "description": "Monthly transaction volume processed through the FirstUK production database transaction log.",
+      "context": [
+        "Transaction log (2,000+ records/month)"
+      ]
+    },
+    {
+      "id": "met_006",
+      "name": "Debit Card Issuance Capacity",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Current capacity metric for debit cards issued and tracked within the FirstUK production database.",
+      "context": [
+        "Debit card records (800 cards)"
+      ]
+    },
+    {
+      "id": "met_007",
+      "name": "Product Portfolio Size",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Number of distinct banking products defined and available within the FirstUK product catalog.",
+      "context": [
+        "Product definitions (5 products)"
+      ]
+    }
+  ],
+  "id_map": {
+    "sys_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+    "sys_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_002",
+    "sys_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_003",
+    "sys_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_004",
+    "sys_005": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_005",
+    "sys_006": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_006",
+    "sys_007": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_007",
+    "sys_008": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_008",
+    "sys_009": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_009",
+    "sys_010": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_010",
+    "sys_011": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_011",
+    "sys_012": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_012",
+    "sys_013": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_013",
+    "met_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_001",
+    "met_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_002",
+    "met_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_003",
+    "met_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_004",
+    "met_005": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_005",
+    "met_006": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_006",
+    "met_007": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_007"
+  },
+  "entities": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "name": "FirstUK Production Database",
+      "aliases": [
+        "firstuk_prod",
+        "Primary Database"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL production database hosting core banking data including accounts, customers, transactions, and compliance records. Supports 800+ account records, 500+ customer records, and 2,000+ monthly transactions with continuous replication and daily encrypted backup to AWS S3.",
+      "context": [
+        "Database: `firstuk_prod`",
+        "Continuous replication to standby database",
+        "Daily encrypted backup to AWS S3",
+        "RPO: 15 minutes, RTO: 2 hours"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_002",
+      "name": "Account Records Schema",
+      "aliases": [
+        "public.accounts"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing account records within the FirstUK production database. Contains 800 account records indexed by Account ID for efficient query performance.",
+      "context": [
+        "`public.accounts` — Account records (800 records)",
+        "Account ID (for queries)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_003",
+      "name": "Customer Records Schema",
+      "aliases": [
+        "public.customers"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing customer records within the FirstUK production database. Contains 500 customer records indexed by Customer ID for efficient lookups.",
+      "context": [
+        "`public.customers` — Customer records (500 records)",
+        "Customer ID (for lookups)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_004",
+      "name": "Transaction Log Schema",
+      "aliases": [
+        "public.transactions"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing transaction records within the FirstUK production database. Maintains 2,000+ transaction records per month indexed by transaction date for historical analysis and reporting.",
+      "context": [
+        "`public.transactions` — Transaction log (2,000+ records/month)",
+        "Transaction date (for history)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_005",
+      "name": "Account Holders Schema",
+      "aliases": [
+        "public.account_holders"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing joint account holder records within the FirstUK production database, capturing relationships between multiple account holders and their accounts.",
+      "context": [
+        "`public.account_holders` — Joint account holders"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_006",
+      "name": "Standing Orders Schema",
+      "aliases": [
+        "public.standing_orders"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing standing order payment instructions within the FirstUK production database, capturing recurring transfer configurations.",
+      "context": [
+        "`public.standing_orders` — Recurring transfers"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_007",
+      "name": "Direct Debits Schema",
+      "aliases": [
+        "public.direct_debits"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing direct debit mandate records within the FirstUK production database, capturing recurring bill payment configurations.",
+      "context": [
+        "`public.direct_debits` — Recurring bill payments"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_008",
+      "name": "Cards Schema",
+      "aliases": [
+        "public.cards"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing debit card records within the FirstUK production database. Contains 800 card records linked to customer accounts.",
+      "context": [
+        "`public.cards` — Debit card records (800 cards)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_009",
+      "name": "Compliance KYC Schema",
+      "aliases": [
+        "public.compliance_kyc"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing Know Your Customer verification records within the FirstUK production database, capturing identity and address verification data.",
+      "context": [
+        "`public.compliance_kyc` — KYC verification records"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_010",
+      "name": "Compliance AML Schema",
+      "aliases": [
+        "public.compliance_aml"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing Anti-Money Laundering screening records within the FirstUK production database, capturing sanctions and PEP list check results.",
+      "context": [
+        "`public.compliance_aml` — AML screening records"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_011",
+      "name": "Products Schema",
+      "aliases": [
+        "public.products"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL schema storing product definitions within the FirstUK production database. Contains 5 product definitions available to customers.",
+      "context": [
+        "`public.products` — Product definitions (5 products)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_012",
+      "name": "AWS S3 Backup Storage",
+      "aliases": [
+        "AWS S3"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "Cloud storage service used for encrypted daily backups of the FirstUK production database, providing off-site disaster recovery capability.",
+      "context": [
+        "Daily encrypted backup to AWS S3"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_013",
+      "name": "Standby Database",
+      "aliases": [
+        "Standby"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "database",
+      "description": "PostgreSQL standby database receiving continuous replication from the primary FirstUK production database, supporting high availability and disaster recovery objectives.",
+      "context": [
+        "Continuous replication to standby database"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_001",
+      "name": "Recovery Point Objective",
+      "aliases": [
+        "RPO"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "sla",
+      "description": "Service level agreement defining the maximum acceptable data loss in the event of a database failure. Set to 15 minutes for the FirstUK production environment.",
+      "context": [
+        "RPO: 15 minutes"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_002",
+      "name": "Recovery Time Objective",
+      "aliases": [
+        "RTO"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "sla",
+      "description": "Service level agreement defining the maximum acceptable downtime for database recovery. Set to 2 hours for the FirstUK production environment.",
+      "context": [
+        "RTO: 2 hours"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_003",
+      "name": "Account Records Capacity",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Current capacity metric for the accounts schema within the FirstUK production database.",
+      "context": [
+        "Account records (800 records)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_004",
+      "name": "Customer Records Capacity",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Current capacity metric for the customers schema within the FirstUK production database.",
+      "context": [
+        "Customer records (500 records)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_005",
+      "name": "Transaction Processing Rate",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "processing_rate",
+      "description": "Monthly transaction volume processed through the FirstUK production database transaction log.",
+      "context": [
+        "Transaction log (2,000+ records/month)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_006",
+      "name": "Debit Card Issuance Capacity",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Current capacity metric for debit cards issued and tracked within the FirstUK production database.",
+      "context": [
+        "Debit card records (800 cards)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_007",
+      "name": "Product Portfolio Size",
+      "aliases": [],
+      "entity_class": "METRIC_TARGET",
+      "type": "capacity",
+      "description": "Number of distinct banking products defined and available within the FirstUK product catalog.",
+      "context": [
+        "Product definitions (5 products)"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "name": "FirstUK Production Database",
+      "properties": {
+        "system_id": "firstuk_prod",
+        "purpose": "Primary operational database for FirstUK banking services",
+        "technology_stack": [
+          "PostgreSQL"
+        ],
+        "deployment": "on-premises",
+        "key_features": [
+          "Account records management",
+          "Customer records management",
+          "Transaction logging",
+          "Joint account holder tracking",
+          "Standing orders processing",
+          "Direct debits processing",
+          "Debit card records",
+          "KYC compliance verification",
+          "AML screening records",
+          "Product definitions"
+        ],
+        "data_stored": [
+          "accounts",
+          "customers",
+          "transactions",
+          "account_holders",
+          "standing_orders",
+          "direct_debits",
+          "cards",
+          "compliance_kyc",
+          "compliance_aml",
+          "products"
+        ],
+        "indexes": [
+          "Customer ID",
+          "Account ID",
+          "Transaction date",
+          "Account status"
+        ],
+        "integrations": [
+          "Standby Database",
+          "AWS S3 Backup Storage"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_002",
+      "name": "Account Records Schema",
+      "properties": {
+        "purpose": "Stores account records for FirstUK customers",
+        "schema_name": "public.accounts",
+        "parent_system": "FirstUK Production Database",
+        "data_capacity": 800
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_003",
+      "name": "Customer Records Schema",
+      "properties": {
+        "purpose": "Stores customer records and customer information",
+        "schema_name": "public.customers",
+        "parent_system": "FirstUK Production Database",
+        "data_capacity": 500
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_004",
+      "name": "Transaction Log Schema",
+      "properties": {
+        "purpose": "Logs all transactions processed",
+        "schema_name": "public.transactions",
+        "parent_system": "FirstUK Production Database",
+        "transaction_volume": "2000+ records/month"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_005",
+      "name": "Account Holders Schema",
+      "properties": {
+        "purpose": "Tracks joint account holders and account holder relationships",
+        "schema_name": "public.account_holders",
+        "parent_system": "FirstUK Production Database"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_006",
+      "name": "Standing Orders Schema",
+      "properties": {
+        "purpose": "Manages recurring transfer instructions",
+        "schema_name": "public.standing_orders",
+        "parent_system": "FirstUK Production Database"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_007",
+      "name": "Direct Debits Schema",
+      "properties": {
+        "purpose": "Manages recurring bill payment mandates",
+        "schema_name": "public.direct_debits",
+        "parent_system": "FirstUK Production Database"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_008",
+      "name": "Cards Schema",
+      "properties": {
+        "purpose": "Stores debit card records and card lifecycle data",
+        "schema_name": "public.cards",
+        "parent_system": "FirstUK Production Database",
+        "data_capacity": 800
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_009",
+      "name": "Compliance KYC Schema",
+      "properties": {
+        "purpose": "Stores Know Your Customer verification records",
+        "schema_name": "public.compliance_kyc",
+        "parent_system": "FirstUK Production Database"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_010",
+      "name": "Compliance AML Schema",
+      "properties": {
+        "purpose": "Stores Anti-Money Laundering screening records",
+        "schema_name": "public.compliance_aml",
+        "parent_system": "FirstUK Production Database"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_011",
+      "name": "Products Schema",
+      "properties": {
+        "purpose": "Stores product definitions and product portfolio",
+        "schema_name": "public.products",
+        "parent_system": "FirstUK Production Database",
+        "data_capacity": 5
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_012",
+      "name": "AWS S3 Backup Storage",
+      "properties": {
+        "purpose": "Encrypted daily backup storage for FirstUK Production Database",
+        "deployment": "cloud",
+        "backup_frequency": "daily",
+        "security_controls": [
+          "encryption"
+        ],
+        "integrations": [
+          "FirstUK Production Database"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_013",
+      "name": "Standby Database",
+      "properties": {
+        "purpose": "Continuous replication target for disaster recovery",
+        "technology_stack": [
+          "PostgreSQL"
+        ],
+        "deployment": "on-premises",
+        "replication_type": "continuous",
+        "integrations": [
+          "FirstUK Production Database"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_001",
+      "name": "Recovery Point Objective",
+      "properties": {
+        "value": 15,
+        "unit": "minutes",
+        "what_it_measures": "Maximum acceptable data loss in case of system failure",
+        "context": "Backup strategy for FirstUK Production Database"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_002",
+      "name": "Recovery Time Objective",
+      "properties": {
+        "value": 2,
+        "unit": "hours",
+        "what_it_measures": "Maximum acceptable downtime to restore system to operational state",
+        "context": "Disaster recovery target for FirstUK Production Database"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_003",
+      "name": "Account Records Capacity",
+      "properties": {
+        "value": 800,
+        "unit": "count",
+        "what_it_measures": "Current number of account records stored",
+        "context": "public.accounts schema capacity"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_004",
+      "name": "Customer Records Capacity",
+      "properties": {
+        "value": 500,
+        "unit": "count",
+        "what_it_measures": "Current number of customer records stored",
+        "context": "public.customers schema capacity"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_005",
+      "name": "Transaction Processing Rate",
+      "properties": {
+        "value": 2000,
+        "unit": "count",
+        "what_it_measures": "Transaction volume processed per month",
+        "context": "public.transactions schema throughput"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_006",
+      "name": "Debit Card Issuance Capacity",
+      "properties": {
+        "value": 800,
+        "unit": "count",
+        "what_it_measures": "Current number of debit card records",
+        "context": "public.cards schema capacity"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_007",
+      "name": "Product Portfolio Size",
+      "properties": {
+        "value": 5,
+        "unit": "count",
+        "what_it_measures": "Number of products in the product portfolio",
+        "context": "public.products schema capacity"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "source_name": "FirstUK Production Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_002",
+      "target_name": "Account Records Schema",
+      "rel_type": "contains",
+      "description": "FirstUK Production Database contains the Account Records Schema",
+      "properties": {
+        "schema_name": "public.accounts",
+        "record_count": 800
+      },
+      "context": "`public.accounts` — Account records (800 records)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "source_name": "FirstUK Production Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_003",
+      "target_name": "Customer Records Schema",
+      "rel_type": "contains",
+      "description": "FirstUK Production Database contains the Customer Records Schema",
+      "properties": {
+        "schema_name": "public.customers",
+        "record_count": 500
+      },
+      "context": "`public.customers` — Customer records (500 records)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "source_name": "FirstUK Production Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_004",
+      "target_name": "Transaction Log Schema",
+      "rel_type": "contains",
+      "description": "FirstUK Production Database contains the Transaction Log Schema",
+      "properties": {
+        "schema_name": "public.transactions",
+        "record_volume": "2,000+ records/month"
+      },
+      "context": "`public.transactions` — Transaction log (2,000+ records/month)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "source_name": "FirstUK Production Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_005",
+      "target_name": "Account Holders Schema",
+      "rel_type": "contains",
+      "description": "FirstUK Production Database contains the Account Holders Schema",
+      "properties": {
+        "schema_name": "public.account_holders",
+        "purpose": "Joint account holders"
+      },
+      "context": "`public.account_holders` — Joint account holders",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "source_name": "FirstUK Production Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_006",
+      "target_name": "Standing Orders Schema",
+      "rel_type": "contains",
+      "description": "FirstUK Production Database contains the Standing Orders Schema",
+      "properties": {
+        "schema_name": "public.standing_orders",
+        "purpose": "Recurring transfers"
+      },
+      "context": "`public.standing_orders` — Recurring transfers",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "source_name": "FirstUK Production Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_007",
+      "target_name": "Direct Debits Schema",
+      "rel_type": "contains",
+      "description": "FirstUK Production Database contains the Direct Debits Schema",
+      "properties": {
+        "schema_name": "public.direct_debits",
+        "purpose": "Recurring bill payments"
+      },
+      "context": "`public.direct_debits` — Recurring bill payments",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "source_name": "FirstUK Production Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_008",
+      "target_name": "Cards Schema",
+      "rel_type": "contains",
+      "description": "FirstUK Production Database contains the Cards Schema",
+      "properties": {
+        "schema_name": "public.cards",
+        "record_count": 800,
+        "card_type": "Debit card records"
+      },
+      "context": "`public.cards` — Debit card records (800 cards)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "source_name": "FirstUK Production Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_009",
+      "target_name": "Compliance KYC Schema",
+      "rel_type": "contains",
+      "description": "FirstUK Production Database contains the Compliance KYC Schema",
+      "properties": {
+        "schema_name": "public.compliance_kyc",
+        "purpose": "KYC verification records"
+      },
+      "context": "`public.compliance_kyc` — KYC verification records",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "source_name": "FirstUK Production Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_010",
+      "target_name": "Compliance AML Schema",
+      "rel_type": "contains",
+      "description": "FirstUK Production Database contains the Compliance AML Schema",
+      "properties": {
+        "schema_name": "public.compliance_aml",
+        "purpose": "AML screening records"
+      },
+      "context": "`public.compliance_aml` — AML screening records",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "source_name": "FirstUK Production Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_011",
+      "target_name": "Products Schema",
+      "rel_type": "contains",
+      "description": "FirstUK Production Database contains the Products Schema",
+      "properties": {
+        "schema_name": "public.products",
+        "record_count": 5,
+        "purpose": "Product definitions"
+      },
+      "context": "`public.products` — Product definitions (5 products)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "source_name": "FirstUK Production Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_012",
+      "target_name": "AWS S3 Backup Storage",
+      "rel_type": "feeds_data_to",
+      "description": "FirstUK Production Database sends daily encrypted backups to AWS S3",
+      "properties": {
+        "backup_frequency": "Daily",
+        "encryption": "encrypted",
+        "strategy": "Backup Strategy"
+      },
+      "context": "Daily encrypted backup to AWS S3",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "source_name": "FirstUK Production Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_013",
+      "target_name": "Standby Database",
+      "rel_type": "feeds_data_to",
+      "description": "FirstUK Production Database continuously replicates to standby database",
+      "properties": {
+        "replication_type": "Continuous",
+        "rpo_minutes": 15
+      },
+      "context": "Continuous replication to standby database",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "source_name": "FirstUK Production Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_001",
+      "target_name": "Recovery Point Objective",
+      "rel_type": "owns_sla",
+      "description": "FirstUK Production Database is accountable for Recovery Point Objective SLA of 15 minutes",
+      "properties": {
+        "rpo_value": "15 minutes"
+      },
+      "context": "RPO: 15 minutes",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "source_name": "FirstUK Production Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_002",
+      "target_name": "Recovery Time Objective",
+      "rel_type": "owns_sla",
+      "description": "FirstUK Production Database is accountable for Recovery Time Objective SLA of 2 hours",
+      "properties": {
+        "rto_value": "2 hours"
+      },
+      "context": "RTO: 2 hours",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_002",
+      "source_name": "Account Records Schema",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_003",
+      "target_name": "Account Records Capacity",
+      "rel_type": "measured_by",
+      "description": "Account Records Schema is measured by Account Records Capacity metric",
+      "properties": {
+        "current_records": 800
+      },
+      "context": "`public.accounts` — Account records (800 records)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_003",
+      "source_name": "Customer Records Schema",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_004",
+      "target_name": "Customer Records Capacity",
+      "rel_type": "measured_by",
+      "description": "Customer Records Schema is measured by Customer Records Capacity metric",
+      "properties": {
+        "current_records": 500
+      },
+      "context": "`public.customers` — Customer records (500 records)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_004",
+      "source_name": "Transaction Log Schema",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_005",
+      "target_name": "Transaction Processing Rate",
+      "rel_type": "measured_by",
+      "description": "Transaction Log Schema is measured by Transaction Processing Rate metric",
+      "properties": {
+        "volume": "2,000+ records/month"
+      },
+      "context": "`public.transactions` — Transaction log (2,000+ records/month)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_008",
+      "source_name": "Cards Schema",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_006",
+      "target_name": "Debit Card Issuance Capacity",
+      "rel_type": "measured_by",
+      "description": "Cards Schema is measured by Debit Card Issuance Capacity metric",
+      "properties": {
+        "current_cards": 800
+      },
+      "context": "`public.cards` — Debit card records (800 cards)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_011",
+      "source_name": "Products Schema",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_007",
+      "target_name": "Product Portfolio Size",
+      "rel_type": "measured_by",
+      "description": "Products Schema is measured by Product Portfolio Size metric",
+      "properties": {
+        "current_products": 5
+      },
+      "context": "`public.products` — Product definitions (5 products)",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_001",
+      "source_name": "FirstUK Production Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_002",
+      "source_name": "Account Records Schema",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_003",
+      "source_name": "Customer Records Schema",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_004",
+      "source_name": "Transaction Log Schema",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_005",
+      "source_name": "Account Holders Schema",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_006",
+      "source_name": "Standing Orders Schema",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_007",
+      "source_name": "Direct Debits Schema",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_008",
+      "source_name": "Cards Schema",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_009",
+      "source_name": "Compliance KYC Schema",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_010",
+      "source_name": "Compliance AML Schema",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_011",
+      "source_name": "Products Schema",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_012",
+      "source_name": "AWS S3 Backup Storage",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_sys_013",
+      "source_name": "Standby Database",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_001",
+      "source_name": "Recovery Point Objective",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_002",
+      "source_name": "Recovery Time Objective",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_003",
+      "source_name": "Account Records Capacity",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_004",
+      "source_name": "Customer Records Capacity",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_005",
+      "source_name": "Transaction Processing Rate",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_006",
+      "source_name": "Debit Card Issuance Capacity",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022_met_007",
+      "source_name": "Product Portfolio Size",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_022",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ]
+}

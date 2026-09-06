@@ -1,0 +1,170 @@
+{
+  "chunk_seq": 9,
+  "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_009",
+  "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+  "text": "### APIs Exposed\n- `POST /accounts` — Create account\n- `GET /accounts/{id}` — Retrieve account\n- `POST /accounts/{id}/transactions` — Record transaction\n- `GET /accounts/{id}/balance` — Get current balance",
+  "name": "Chunk 9/57",
+  "_domain": "banking.reference",
+  "prev_chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+  "next_chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_010",
+  "raw_entities": [
+    {
+      "id": "prd_001",
+      "name": "Account",
+      "aliases": [
+        "accounts"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "savings_account",
+      "description": "A banking product that can be created, retrieved, and used to record transactions and check balance via API endpoints. Accounts are the primary entity managed through the exposed API interface.",
+      "context": [
+        "POST /accounts — Create account",
+        "GET /accounts/{id} — Retrieve account",
+        "POST /accounts/{id}/transactions — Record transaction",
+        "GET /accounts/{id}/balance — Get current balance"
+      ]
+    },
+    {
+      "id": "txn_001",
+      "name": "Transaction",
+      "aliases": [
+        "transactions"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "monitored_transaction",
+      "description": "A financial event recorded on a customer account through the API. Transactions can be posted to an account and are tracked as part of account operations.",
+      "context": [
+        "POST /accounts/{id}/transactions — Record transaction"
+      ]
+    }
+  ],
+  "id_map": {
+    "prd_001": "01a0738b-0d86-7461-97e7-87d468c067db_009_prd_001",
+    "txn_001": "01a0738b-0d86-7461-97e7-87d468c067db_009_txn_001"
+  },
+  "entities": [
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_009_prd_001",
+      "name": "Account",
+      "aliases": [
+        "accounts"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "savings_account",
+      "description": "A banking product that can be created, retrieved, and used to record transactions and check balance via API endpoints. Accounts are the primary entity managed through the exposed API interface.",
+      "context": [
+        "POST /accounts — Create account",
+        "GET /accounts/{id} — Retrieve account",
+        "POST /accounts/{id}/transactions — Record transaction",
+        "GET /accounts/{id}/balance — Get current balance"
+      ],
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_009",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_009_txn_001",
+      "name": "Transaction",
+      "aliases": [
+        "transactions"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "monitored_transaction",
+      "description": "A financial event recorded on a customer account through the API. Transactions can be posted to an account and are tracked as part of account operations.",
+      "context": [
+        "POST /accounts/{id}/transactions — Record transaction"
+      ],
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_009",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_009_prd_001",
+      "name": "Account",
+      "properties": {
+        "api_endpoints": [
+          "POST /accounts",
+          "GET /accounts/{id}",
+          "POST /accounts/{id}/transactions",
+          "GET /accounts/{id}/balance"
+        ],
+        "api_operations": [
+          "create",
+          "retrieve",
+          "record_transaction",
+          "get_balance"
+        ]
+      },
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_009",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_009_txn_001",
+      "name": "Transaction",
+      "properties": {
+        "api_endpoint": "POST /accounts/{id}/transactions",
+        "operation": "record"
+      },
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_009",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_009_txn_001",
+      "source_name": "Transaction",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_009_prd_001",
+      "target_name": "Account",
+      "rel_type": "applies_to",
+      "description": "Transactions are recorded against and associated with an Account product",
+      "properties": {
+        "api_endpoint": "POST /accounts/{id}/transactions",
+        "operation": "Record transaction"
+      },
+      "context": "POST /accounts/{id}/transactions — Record transaction",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_009",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_009_prd_001",
+      "source_name": "Account",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_009_txn_001",
+      "target_name": "Transaction",
+      "rel_type": "has_associated",
+      "description": "An Account has associated Transactions recorded against it",
+      "properties": {
+        "api_endpoint": "POST /accounts/{id}/transactions",
+        "operation": "Record transaction"
+      },
+      "context": "POST /accounts/{id}/transactions — Record transaction",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_009",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_009_prd_001",
+      "source_name": "Account",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_009",
+      "target_name": "01a0738b-0d86-7461-97e7-87d468c067db_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_009",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_009_txn_001",
+      "source_name": "Transaction",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_009",
+      "target_name": "01a0738b-0d86-7461-97e7-87d468c067db_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_009",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    }
+  ]
+}

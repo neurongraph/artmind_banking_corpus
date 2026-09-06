@@ -1,0 +1,1546 @@
+{
+  "chunk_seq": 28,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "### Screening Process  \n**Steps:**  \n1. **Extract Screening Data**\n- Customer name (from KYC)\n- New address (country, city, postcode)\n- DOB and nationality\n- Customer ID  \n2. **Screen Against Lists**\n- OFAC (US sanctions)\n- EU Consolidated List (EU sanctions)\n- HMT Sanctions (UK Home Treasury)\n- UN Sanctions\n- PEP Database (Politically Exposed Persons)\n- Adverse Media (news-based screening)  \n3. **Review Results**\n- No match found: **CLEAR** — proceed with address change\n- Partial match: Review name, DOB, address to confirm false positive\n- Exact match: **ESCALATE IMMEDIATELY** to Compliance — block address change  \n4. **Document Screening**  \n```\nScreening Result:\nDate Screened: 2026-01-15\nScreening Lists: OFAC, EU, HMT, UN, PEP\nResult: CLEAR (no matches)\nScreened By: Compliance System (automated)\nReviewed By: Sarah Johnson (Compliance Officer)\nStatus: APPROVED\n```",
+  "name": "Chunk 28/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_029",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Screening Process",
+      "aliases": [
+        "Address Change Screening",
+        "Sanctions and PEP Screening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "aml_screening",
+      "description": "An end-to-end AML screening procedure executed before permitting a customer address change. The process extracts customer data from KYC records, screens against multiple sanctions lists (OFAC, EU, HMT, UN) and PEP databases, reviews results for matches, and escalates exact matches to Compliance for blocking. Screening is performed by an automated system and reviewed by a Compliance Officer.",
+      "context": [
+        "Screen Against Lists: OFAC (US sanctions), EU Consolidated List (EU sanctions), HMT Sanctions (UK Home Treasury), UN Sanctions, PEP Database (Politically Exposed Persons), Adverse Media (news-based screening)",
+        "No match found: CLEAR — proceed with address change",
+        "Exact match: ESCALATE IMMEDIATELY to Compliance — block address change",
+        "Screened By: Compliance System (automated), Reviewed By: Sarah Johnson (Compliance Officer)"
+      ]
+    },
+    {
+      "id": "pst_001",
+      "name": "Extract Screening Data",
+      "aliases": [
+        "Data Collection",
+        "KYC Data Extraction"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The initial step of the screening process where customer identification and demographic data are extracted from KYC records. Data collected includes customer name, new address (country, city, postcode), date of birth, nationality, and customer ID.",
+      "context": [
+        "Customer name (from KYC)",
+        "New address (country, city, postcode)",
+        "DOB and nationality",
+        "Customer ID"
+      ]
+    },
+    {
+      "id": "pst_002",
+      "name": "Screen Against Lists",
+      "aliases": [
+        "Sanctions Screening",
+        "PEP Screening",
+        "Adverse Media Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The screening step where extracted customer data is checked against multiple regulatory and financial crime lists. Screening covers OFAC sanctions, EU Consolidated List, HMT Sanctions, UN Sanctions, PEP Database, and adverse media sources.",
+      "context": [
+        "OFAC (US sanctions)",
+        "EU Consolidated List (EU sanctions)",
+        "HMT Sanctions (UK Home Treasury)",
+        "UN Sanctions",
+        "PEP Database (Politically Exposed Persons)",
+        "Adverse Media (news-based screening)"
+      ]
+    },
+    {
+      "id": "pst_003",
+      "name": "Review Results",
+      "aliases": [
+        "Match Review",
+        "Result Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "quality_check",
+      "description": "The review step where screening results are assessed to determine the appropriate action. Results are categorized as CLEAR (no match, proceed), Partial match (manual review for false positive confirmation), or Exact match (escalate to Compliance).",
+      "context": [
+        "No match found: CLEAR — proceed with address change",
+        "Partial match: Review name, DOB, address to confirm false positive",
+        "Exact match: ESCALATE IMMEDIATELY to Compliance — block address change"
+      ]
+    },
+    {
+      "id": "pst_004",
+      "name": "Document Screening",
+      "aliases": [
+        "Screening Documentation",
+        "Result Recording"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "The final step where screening results are formally documented with date, lists screened, outcome, executing system, reviewing officer, and approval status. This creates an audit trail of the screening decision.",
+      "context": [
+        "Screening Result: Date Screened: 2026-01-15",
+        "Screening Lists: OFAC, EU, HMT, UN, PEP",
+        "Result: CLEAR (no matches)",
+        "Screened By: Compliance System (automated), Reviewed By: Sarah Johnson (Compliance Officer), Status: APPROVED"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Screening Result Match Decision",
+      "aliases": [
+        "Match Outcome Gate",
+        "Sanctions Match Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "A branching decision point that determines the outcome based on screening results. Three paths are possible: CLEAR (no match) leads to address change approval, Partial match leads to manual false positive review, and Exact match leads to immediate escalation to Compliance and address change blocking.",
+      "context": [
+        "No match found: CLEAR — proceed with address change",
+        "Partial match: Review name, DOB, address to confirm false positive",
+        "Exact match: ESCALATE IMMEDIATELY to Compliance — block address change"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Compliance System",
+      "aliases": [
+        "Automated Screening System",
+        "AML System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "An automated system responsible for executing the screening process against multiple sanctions and PEP lists. The system extracts customer data, performs the screening checks, and generates results for human review.",
+      "context": [
+        "Screened By: Compliance System (automated)",
+        "Screen Against Lists: OFAC (US sanctions), EU Consolidated List (EU sanctions), HMT Sanctions (UK Home Treasury), UN Sanctions, PEP Database (Politically Exposed Persons), Adverse Media (news-based screening)"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Sarah Johnson",
+      "aliases": [
+        "Compliance Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "A named Compliance Officer responsible for reviewing screening results generated by the automated system and approving the screening outcome. Acts as the human control point for screening decisions.",
+      "context": [
+        "Reviewed By: Sarah Johnson (Compliance Officer)",
+        "Status: APPROVED"
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Compliance Team",
+      "aliases": [
+        "Compliance",
+        "Escalation Recipient"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "The Compliance team responsible for receiving and handling escalations when exact matches are found during screening. They have authority to block address changes when sanctions or PEP matches are confirmed.",
+      "context": [
+        "Exact match: ESCALATE IMMEDIATELY to Compliance — block address change"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Sanctions and PEP Screening Compliance Gate",
+      "aliases": [
+        "AML Screening Checkpoint",
+        "Sanctions Compliance Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "A mandatory regulatory compliance gate that verifies screening against sanctions lists (OFAC, EU, HMT, UN) and PEP databases before permitting an address change. The checkpoint must be formally passed with documented results before the address change can proceed.",
+      "context": [
+        "Screen Against Lists: OFAC (US sanctions), EU Consolidated List (EU sanctions), HMT Sanctions (UK Home Treasury), UN Sanctions, PEP Database (Politically Exposed Persons), Adverse Media (news-based screening)",
+        "Screening Result: Date Screened: 2026-01-15, Screening Lists: OFAC, EU, HMT, UN, PEP, Result: CLEAR (no matches), Status: APPROVED"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "OFAC Sanctions Screening",
+      "aliases": [
+        "US Sanctions Check",
+        "OFAC List Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Screening against the US Office of Foreign Assets Control (OFAC) sanctions list as part of the broader screening process. This is one of multiple regulatory lists checked during customer screening.",
+      "context": [
+        "OFAC (US sanctions)"
+      ]
+    },
+    {
+      "id": "aml_002",
+      "name": "EU Consolidated List Screening",
+      "aliases": [
+        "EU Sanctions Check",
+        "EU List Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Screening against the EU Consolidated List of sanctions targets as part of the broader screening process. This is one of multiple regulatory lists checked during customer screening.",
+      "context": [
+        "EU Consolidated List (EU sanctions)"
+      ]
+    },
+    {
+      "id": "aml_003",
+      "name": "HMT Sanctions Screening",
+      "aliases": [
+        "UK Sanctions Check",
+        "HMT List Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Screening against the UK Home Treasury (HMT) sanctions list as part of the broader screening process. This is one of multiple regulatory lists checked during customer screening.",
+      "context": [
+        "HMT Sanctions (UK Home Treasury)"
+      ]
+    },
+    {
+      "id": "aml_004",
+      "name": "UN Sanctions Screening",
+      "aliases": [
+        "United Nations Sanctions Check",
+        "UN List Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Screening against United Nations sanctions lists as part of the broader screening process. This is one of multiple regulatory lists checked during customer screening.",
+      "context": [
+        "UN Sanctions"
+      ]
+    },
+    {
+      "id": "aml_005",
+      "name": "PEP Database Screening",
+      "aliases": [
+        "Politically Exposed Persons Check",
+        "PEP Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "pep_screening",
+      "description": "Screening against the Politically Exposed Persons (PEP) database to identify customers with elevated political risk. This is one of multiple regulatory lists checked during customer screening.",
+      "context": [
+        "PEP Database (Politically Exposed Persons)"
+      ]
+    },
+    {
+      "id": "aml_006",
+      "name": "Adverse Media Screening",
+      "aliases": [
+        "News-Based Screening",
+        "Media Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "adverse_media_check",
+      "description": "Screening against adverse media sources (news-based screening) to identify customers with negative media coverage or reputational risk. This is one of multiple regulatory lists checked during customer screening.",
+      "context": [
+        "Adverse Media (news-based screening)"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "New Address Verification",
+      "aliases": [
+        "Address Change Screening",
+        "Address Verification"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "The address verification component of the screening process where a customer's new address (country, city, postcode) is extracted and screened against sanctions and PEP lists. The address is a key data element used in the screening decision.",
+      "context": [
+        "New address (country, city, postcode)",
+        "Partial match: Review name, DOB, address to confirm false positive"
+      ]
+    },
+    {
+      "id": "kyc_001",
+      "name": "KYC Data for Screening",
+      "aliases": [
+        "KYC Records",
+        "Customer KYC Information"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "document_collection",
+      "description": "The KYC records from which customer screening data is extracted. The KYC data provides the source information (customer name, DOB, nationality, customer ID) used in the screening process.",
+      "context": [
+        "Customer name (from KYC)",
+        "DOB and nationality",
+        "Customer ID"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_028_proc_001",
+    "pst_001": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_001",
+    "pst_002": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_002",
+    "pst_003": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_003",
+    "pst_004": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_004",
+    "dp_001": "01a07400-ba86-72f1-8b22-d07b32649491_028_dp_001",
+    "ra_001": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_001",
+    "ra_002": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_002",
+    "ra_003": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_003",
+    "cc_001": "01a07400-ba86-72f1-8b22-d07b32649491_028_cc_001",
+    "aml_001": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_001",
+    "aml_002": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_002",
+    "aml_003": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_003",
+    "aml_004": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_004",
+    "aml_005": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_005",
+    "aml_006": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_006",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_028_addr_001",
+    "kyc_001": "01a07400-ba86-72f1-8b22-d07b32649491_028_kyc_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_proc_001",
+      "name": "Screening Process",
+      "aliases": [
+        "Address Change Screening",
+        "Sanctions and PEP Screening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "aml_screening",
+      "description": "An end-to-end AML screening procedure executed before permitting a customer address change. The process extracts customer data from KYC records, screens against multiple sanctions lists (OFAC, EU, HMT, UN) and PEP databases, reviews results for matches, and escalates exact matches to Compliance for blocking. Screening is performed by an automated system and reviewed by a Compliance Officer.",
+      "context": [
+        "Screen Against Lists: OFAC (US sanctions), EU Consolidated List (EU sanctions), HMT Sanctions (UK Home Treasury), UN Sanctions, PEP Database (Politically Exposed Persons), Adverse Media (news-based screening)",
+        "No match found: CLEAR — proceed with address change",
+        "Exact match: ESCALATE IMMEDIATELY to Compliance — block address change",
+        "Screened By: Compliance System (automated), Reviewed By: Sarah Johnson (Compliance Officer)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_001",
+      "name": "Extract Screening Data",
+      "aliases": [
+        "Data Collection",
+        "KYC Data Extraction"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The initial step of the screening process where customer identification and demographic data are extracted from KYC records. Data collected includes customer name, new address (country, city, postcode), date of birth, nationality, and customer ID.",
+      "context": [
+        "Customer name (from KYC)",
+        "New address (country, city, postcode)",
+        "DOB and nationality",
+        "Customer ID"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_002",
+      "name": "Screen Against Lists",
+      "aliases": [
+        "Sanctions Screening",
+        "PEP Screening",
+        "Adverse Media Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The screening step where extracted customer data is checked against multiple regulatory and financial crime lists. Screening covers OFAC sanctions, EU Consolidated List, HMT Sanctions, UN Sanctions, PEP Database, and adverse media sources.",
+      "context": [
+        "OFAC (US sanctions)",
+        "EU Consolidated List (EU sanctions)",
+        "HMT Sanctions (UK Home Treasury)",
+        "UN Sanctions",
+        "PEP Database (Politically Exposed Persons)",
+        "Adverse Media (news-based screening)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_003",
+      "name": "Review Results",
+      "aliases": [
+        "Match Review",
+        "Result Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "quality_check",
+      "description": "The review step where screening results are assessed to determine the appropriate action. Results are categorized as CLEAR (no match, proceed), Partial match (manual review for false positive confirmation), or Exact match (escalate to Compliance).",
+      "context": [
+        "No match found: CLEAR — proceed with address change",
+        "Partial match: Review name, DOB, address to confirm false positive",
+        "Exact match: ESCALATE IMMEDIATELY to Compliance — block address change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_004",
+      "name": "Document Screening",
+      "aliases": [
+        "Screening Documentation",
+        "Result Recording"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "The final step where screening results are formally documented with date, lists screened, outcome, executing system, reviewing officer, and approval status. This creates an audit trail of the screening decision.",
+      "context": [
+        "Screening Result: Date Screened: 2026-01-15",
+        "Screening Lists: OFAC, EU, HMT, UN, PEP",
+        "Result: CLEAR (no matches)",
+        "Screened By: Compliance System (automated), Reviewed By: Sarah Johnson (Compliance Officer), Status: APPROVED"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_dp_001",
+      "name": "Screening Result Match Decision",
+      "aliases": [
+        "Match Outcome Gate",
+        "Sanctions Match Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "A branching decision point that determines the outcome based on screening results. Three paths are possible: CLEAR (no match) leads to address change approval, Partial match leads to manual false positive review, and Exact match leads to immediate escalation to Compliance and address change blocking.",
+      "context": [
+        "No match found: CLEAR — proceed with address change",
+        "Partial match: Review name, DOB, address to confirm false positive",
+        "Exact match: ESCALATE IMMEDIATELY to Compliance — block address change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_001",
+      "name": "Compliance System",
+      "aliases": [
+        "Automated Screening System",
+        "AML System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "An automated system responsible for executing the screening process against multiple sanctions and PEP lists. The system extracts customer data, performs the screening checks, and generates results for human review.",
+      "context": [
+        "Screened By: Compliance System (automated)",
+        "Screen Against Lists: OFAC (US sanctions), EU Consolidated List (EU sanctions), HMT Sanctions (UK Home Treasury), UN Sanctions, PEP Database (Politically Exposed Persons), Adverse Media (news-based screening)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_002",
+      "name": "Sarah Johnson",
+      "aliases": [
+        "Compliance Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "A named Compliance Officer responsible for reviewing screening results generated by the automated system and approving the screening outcome. Acts as the human control point for screening decisions.",
+      "context": [
+        "Reviewed By: Sarah Johnson (Compliance Officer)",
+        "Status: APPROVED"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_003",
+      "name": "Compliance Team",
+      "aliases": [
+        "Compliance",
+        "Escalation Recipient"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "The Compliance team responsible for receiving and handling escalations when exact matches are found during screening. They have authority to block address changes when sanctions or PEP matches are confirmed.",
+      "context": [
+        "Exact match: ESCALATE IMMEDIATELY to Compliance — block address change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_cc_001",
+      "name": "Sanctions and PEP Screening Compliance Gate",
+      "aliases": [
+        "AML Screening Checkpoint",
+        "Sanctions Compliance Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "A mandatory regulatory compliance gate that verifies screening against sanctions lists (OFAC, EU, HMT, UN) and PEP databases before permitting an address change. The checkpoint must be formally passed with documented results before the address change can proceed.",
+      "context": [
+        "Screen Against Lists: OFAC (US sanctions), EU Consolidated List (EU sanctions), HMT Sanctions (UK Home Treasury), UN Sanctions, PEP Database (Politically Exposed Persons), Adverse Media (news-based screening)",
+        "Screening Result: Date Screened: 2026-01-15, Screening Lists: OFAC, EU, HMT, UN, PEP, Result: CLEAR (no matches), Status: APPROVED"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_001",
+      "name": "OFAC Sanctions Screening",
+      "aliases": [
+        "US Sanctions Check",
+        "OFAC List Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Screening against the US Office of Foreign Assets Control (OFAC) sanctions list as part of the broader screening process. This is one of multiple regulatory lists checked during customer screening.",
+      "context": [
+        "OFAC (US sanctions)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_002",
+      "name": "EU Consolidated List Screening",
+      "aliases": [
+        "EU Sanctions Check",
+        "EU List Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Screening against the EU Consolidated List of sanctions targets as part of the broader screening process. This is one of multiple regulatory lists checked during customer screening.",
+      "context": [
+        "EU Consolidated List (EU sanctions)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_003",
+      "name": "HMT Sanctions Screening",
+      "aliases": [
+        "UK Sanctions Check",
+        "HMT List Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Screening against the UK Home Treasury (HMT) sanctions list as part of the broader screening process. This is one of multiple regulatory lists checked during customer screening.",
+      "context": [
+        "HMT Sanctions (UK Home Treasury)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_004",
+      "name": "UN Sanctions Screening",
+      "aliases": [
+        "United Nations Sanctions Check",
+        "UN List Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Screening against United Nations sanctions lists as part of the broader screening process. This is one of multiple regulatory lists checked during customer screening.",
+      "context": [
+        "UN Sanctions"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_005",
+      "name": "PEP Database Screening",
+      "aliases": [
+        "Politically Exposed Persons Check",
+        "PEP Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "pep_screening",
+      "description": "Screening against the Politically Exposed Persons (PEP) database to identify customers with elevated political risk. This is one of multiple regulatory lists checked during customer screening.",
+      "context": [
+        "PEP Database (Politically Exposed Persons)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_006",
+      "name": "Adverse Media Screening",
+      "aliases": [
+        "News-Based Screening",
+        "Media Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "adverse_media_check",
+      "description": "Screening against adverse media sources (news-based screening) to identify customers with negative media coverage or reputational risk. This is one of multiple regulatory lists checked during customer screening.",
+      "context": [
+        "Adverse Media (news-based screening)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_addr_001",
+      "name": "New Address Verification",
+      "aliases": [
+        "Address Change Screening",
+        "Address Verification"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "The address verification component of the screening process where a customer's new address (country, city, postcode) is extracted and screened against sanctions and PEP lists. The address is a key data element used in the screening decision.",
+      "context": [
+        "New address (country, city, postcode)",
+        "Partial match: Review name, DOB, address to confirm false positive"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_kyc_001",
+      "name": "KYC Data for Screening",
+      "aliases": [
+        "KYC Records",
+        "Customer KYC Information"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "document_collection",
+      "description": "The KYC records from which customer screening data is extracted. The KYC data provides the source information (customer name, DOB, nationality, customer ID) used in the screening process.",
+      "context": [
+        "Customer name (from KYC)",
+        "DOB and nationality",
+        "Customer ID"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_proc_001",
+      "name": "Screening Process",
+      "properties": {
+        "purpose": "Screen customers against sanctions, PEP, and adverse media lists before processing address changes",
+        "scope": "All customers undergoing address verification",
+        "channels": [
+          "system",
+          "manual"
+        ],
+        "owner": "Compliance Team",
+        "departments_involved": [
+          "Compliance"
+        ],
+        "trigger": "Customer initiates address change",
+        "outcome_success": "Customer cleared against all screening lists; address change proceeds",
+        "outcome_failure": "Exact match found; address change blocked and escalated to Compliance"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_001",
+      "name": "Extract Screening Data",
+      "properties": {
+        "step_number": 1,
+        "actor": "Compliance System",
+        "input": [
+          "Customer name from KYC",
+          "New address (country, city, postcode)",
+          "Date of birth",
+          "Nationality",
+          "Customer ID"
+        ],
+        "output": "Consolidated screening data record",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "KYC database",
+          "Compliance System"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_002",
+      "name": "Screen Against Lists",
+      "properties": {
+        "step_number": 2,
+        "actor": "Compliance System",
+        "input": "Consolidated screening data record",
+        "output": "Screening match results (CLEAR, PARTIAL, or EXACT)",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "OFAC database",
+          "EU Consolidated List",
+          "HMT Sanctions List",
+          "UN Sanctions List",
+          "PEP Database",
+          "Adverse Media screening tool"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_003",
+      "name": "Review Results",
+      "properties": {
+        "step_number": 3,
+        "actor": "Compliance Officer",
+        "input": "Screening match results",
+        "output": "Screening decision (CLEAR, ESCALATE, or BLOCK)",
+        "channel": "manual",
+        "mandatory": "yes",
+        "failure_path": "Exact match triggers immediate escalation to Compliance; partial match requires manual review to confirm false positive"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_004",
+      "name": "Document Screening",
+      "properties": {
+        "step_number": 4,
+        "actor": "Compliance System",
+        "input": "Screening decision and results",
+        "output": "Documented screening record with date, lists screened, result, screened-by actor, reviewed-by actor, and approval status",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Compliance System"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_dp_001",
+      "name": "Screening Result Match Decision",
+      "properties": {
+        "decision_question": "Does the customer match any entry on the screening lists?",
+        "criteria": [
+          "No match = CLEAR",
+          "Partial match = manual review required",
+          "Exact match = ESCALATE"
+        ],
+        "decision_maker": "Compliance System (automated) with Compliance Officer review",
+        "path_yes": "Exact match: block address change and escalate immediately to Compliance",
+        "path_no": "No match: proceed with address change",
+        "override_possible": "yes"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_001",
+      "name": "Compliance System",
+      "properties": {
+        "role_type": "system",
+        "department": "Compliance",
+        "authority_level": "Automated screening and data extraction",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_002",
+      "name": "Sarah Johnson",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "Compliance Officer — review and approve screening results",
+        "channels": [
+          "system",
+          "manual"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_003",
+      "name": "Compliance Team",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "Escalation and investigation of exact matches",
+        "channels": [
+          "system",
+          "manual",
+          "email"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_cc_001",
+      "name": "Sanctions and PEP Screening Compliance Gate",
+      "properties": {
+        "regulatory_basis": [
+          "OFAC regulations",
+          "EU sanctions regime",
+          "HMT sanctions regime",
+          "UN sanctions regime",
+          "PEP identification requirements"
+        ],
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": [
+          "Screening result record",
+          "Match determination",
+          "Reviewer approval"
+        ],
+        "performed_by": "Compliance System and Compliance Officer",
+        "timing": "Before address change is processed",
+        "failure_consequence": "Exact match blocks address change; escalation to Compliance Team for investigation"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_001",
+      "name": "OFAC Sanctions Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": "OFAC Specially Designated Nationals (SDN) list",
+        "regulatory_basis": "US Office of Foreign Assets Control regulations",
+        "hit_or_match_response": "Exact match triggers immediate escalation; partial match requires manual review"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_002",
+      "name": "EU Consolidated List Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": "EU consolidated sanctions list",
+        "regulatory_basis": "EU sanctions regime",
+        "hit_or_match_response": "Exact match triggers immediate escalation; partial match requires manual review"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_003",
+      "name": "HMT Sanctions Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": "UK Home Treasury sanctions list",
+        "regulatory_basis": "UK sanctions regime",
+        "hit_or_match_response": "Exact match triggers immediate escalation; partial match requires manual review"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_004",
+      "name": "UN Sanctions Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": "UN consolidated sanctions list",
+        "regulatory_basis": "UN sanctions regime",
+        "hit_or_match_response": "Exact match triggers immediate escalation; partial match requires manual review"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_005",
+      "name": "PEP Database Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": "Politically Exposed Persons database",
+        "regulatory_basis": "AML/CFT PEP identification requirements",
+        "hit_or_match_response": "Exact match triggers immediate escalation; partial match requires manual review"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_006",
+      "name": "Adverse Media Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": "News-based adverse media screening",
+        "regulatory_basis": "Enhanced due diligence and reputational risk management",
+        "hit_or_match_response": "Exact match triggers immediate escalation; partial match requires manual review"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_addr_001",
+      "name": "New Address Verification",
+      "properties": {
+        "collection_steps": "Customer provides new address (country, city, postcode) as part of address change request",
+        "verification_steps": "Address is extracted and screened against sanctions and PEP lists as part of Screening Process",
+        "recording_system": "Compliance System"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_028_kyc_001",
+      "name": "KYC Data for Screening",
+      "properties": {
+        "mandatory": "yes",
+        "timing_or_refresh_frequency": "Used at point of address change screening",
+        "verification_method": "Customer name, date of birth, and nationality extracted from existing KYC records",
+        "consequence_of_failure": "Screening cannot proceed without complete KYC data"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_001",
+      "target_name": "Extract Screening Data",
+      "rel_type": "starts_with",
+      "description": "Screening Process begins with extracting screening data from customer records",
+      "properties": {
+        "sequence": 1,
+        "mandatory": true
+      },
+      "context": "Steps: 1. Extract Screening Data - Customer name (from KYC), New address (country, city, postcode), DOB and nationality, Customer ID",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_001",
+      "source_name": "Extract Screening Data",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_002",
+      "target_name": "Screen Against Lists",
+      "rel_type": "followed_by",
+      "description": "Extract Screening Data step is followed by screening against sanctions and PEP lists",
+      "properties": {
+        "sequence": 2
+      },
+      "context": "Steps: 1. Extract Screening Data... 2. Screen Against Lists",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_002",
+      "source_name": "Screen Against Lists",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_003",
+      "target_name": "Review Results",
+      "rel_type": "followed_by",
+      "description": "Screen Against Lists step is followed by reviewing screening results",
+      "properties": {
+        "sequence": 3
+      },
+      "context": "Steps: 2. Screen Against Lists... 3. Review Results",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_003",
+      "source_name": "Review Results",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_004",
+      "target_name": "Document Screening",
+      "rel_type": "followed_by",
+      "description": "Review Results step is followed by documenting the screening outcome",
+      "properties": {
+        "sequence": 4
+      },
+      "context": "Steps: 3. Review Results... 4. Document Screening",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_001",
+      "source_name": "Extract Screening Data",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_kyc_001",
+      "target_name": "KYC Data for Screening",
+      "rel_type": "collects_data_from",
+      "description": "Extract Screening Data step collects customer name and KYC information",
+      "properties": {
+        "data_elements": [
+          "customer_name",
+          "DOB",
+          "nationality",
+          "customer_id"
+        ]
+      },
+      "context": "Customer name (from KYC), DOB and nationality, Customer ID",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_001",
+      "source_name": "Extract Screening Data",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_addr_001",
+      "target_name": "New Address Verification",
+      "rel_type": "collects_data_from",
+      "description": "Extract Screening Data step collects new address information for screening",
+      "properties": {
+        "address_components": [
+          "country",
+          "city",
+          "postcode"
+        ]
+      },
+      "context": "New address (country, city, postcode)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_002",
+      "source_name": "Screen Against Lists",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_001",
+      "target_name": "OFAC Sanctions Screening",
+      "rel_type": "executes",
+      "description": "Screen Against Lists step executes OFAC sanctions screening",
+      "properties": {
+        "screening_type": "US sanctions"
+      },
+      "context": "OFAC (US sanctions)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_002",
+      "source_name": "Screen Against Lists",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_002",
+      "target_name": "EU Consolidated List Screening",
+      "rel_type": "executes",
+      "description": "Screen Against Lists step executes EU Consolidated List screening",
+      "properties": {
+        "screening_type": "EU sanctions"
+      },
+      "context": "EU Consolidated List (EU sanctions)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_002",
+      "source_name": "Screen Against Lists",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_003",
+      "target_name": "HMT Sanctions Screening",
+      "rel_type": "executes",
+      "description": "Screen Against Lists step executes HMT Sanctions screening",
+      "properties": {
+        "screening_type": "UK Home Treasury sanctions"
+      },
+      "context": "HMT Sanctions (UK Home Treasury)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_002",
+      "source_name": "Screen Against Lists",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_004",
+      "target_name": "UN Sanctions Screening",
+      "rel_type": "executes",
+      "description": "Screen Against Lists step executes UN Sanctions screening",
+      "properties": {
+        "screening_type": "UN sanctions"
+      },
+      "context": "UN Sanctions",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_002",
+      "source_name": "Screen Against Lists",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_005",
+      "target_name": "PEP Database Screening",
+      "rel_type": "executes",
+      "description": "Screen Against Lists step executes PEP Database screening",
+      "properties": {
+        "screening_type": "Politically Exposed Persons"
+      },
+      "context": "PEP Database (Politically Exposed Persons)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_002",
+      "source_name": "Screen Against Lists",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_006",
+      "target_name": "Adverse Media Screening",
+      "rel_type": "executes",
+      "description": "Screen Against Lists step executes Adverse Media screening",
+      "properties": {
+        "screening_type": "news-based screening"
+      },
+      "context": "Adverse Media (news-based screening)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_003",
+      "source_name": "Review Results",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_dp_001",
+      "target_name": "Screening Result Match Decision",
+      "rel_type": "leads_to",
+      "description": "Review Results step leads to decision on screening result match",
+      "properties": {
+        "decision_outcomes": [
+          "CLEAR",
+          "Partial match",
+          "Exact match"
+        ]
+      },
+      "context": "No match found: CLEAR — proceed with address change, Partial match: Review name, DOB, address to confirm false positive, Exact match: ESCALATE IMMEDIATELY to Compliance — block address change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_dp_001",
+      "source_name": "Screening Result Match Decision",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_003",
+      "target_name": "Compliance Team",
+      "rel_type": "escalated_to",
+      "description": "Exact match screening results are escalated to Compliance Team",
+      "properties": {
+        "trigger_condition": "Exact match found",
+        "action": "ESCALATE IMMEDIATELY"
+      },
+      "context": "Exact match: ESCALATE IMMEDIATELY to Compliance — block address change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_004",
+      "source_name": "Document Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_001",
+      "target_name": "Compliance System",
+      "rel_type": "performed_by",
+      "description": "Document Screening step is performed by Compliance System (automated)",
+      "properties": {
+        "execution_type": "automated"
+      },
+      "context": "Screened By: Compliance System (automated)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_004",
+      "source_name": "Document Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_002",
+      "target_name": "Sarah Johnson",
+      "rel_type": "reviewed_by",
+      "description": "Document Screening step is reviewed by Sarah Johnson, Compliance Officer",
+      "properties": {
+        "role": "Compliance Officer"
+      },
+      "context": "Reviewed By: Sarah Johnson (Compliance Officer)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_cc_001",
+      "target_name": "Sanctions and PEP Screening Compliance Gate",
+      "rel_type": "mandated_to_include",
+      "description": "Screening Process is mandated to include Sanctions and PEP Screening Compliance Gate",
+      "properties": {
+        "compliance_requirement": "mandatory"
+      },
+      "context": "Screening Process includes OFAC, EU, HMT, UN, PEP screening as part of compliance requirements",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_cc_001",
+      "source_name": "Sanctions and PEP Screening Compliance Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_dp_001",
+      "target_name": "Screening Result Match Decision",
+      "rel_type": "gates",
+      "description": "Sanctions and PEP Screening Compliance Gate gates the Screening Result Match Decision",
+      "properties": {
+        "gate_condition": "screening results must be reviewed"
+      },
+      "context": "Review Results step determines whether to proceed, escalate, or block based on screening outcome",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_001",
+      "target_name": "OFAC Sanctions Screening",
+      "rel_type": "requires",
+      "description": "Screening Process requires OFAC Sanctions Screening",
+      "properties": {
+        "mandatory": true
+      },
+      "context": "Screening Lists: OFAC, EU, HMT, UN, PEP",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_002",
+      "target_name": "EU Consolidated List Screening",
+      "rel_type": "requires",
+      "description": "Screening Process requires EU Consolidated List Screening",
+      "properties": {
+        "mandatory": true
+      },
+      "context": "Screening Lists: OFAC, EU, HMT, UN, PEP",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_003",
+      "target_name": "HMT Sanctions Screening",
+      "rel_type": "requires",
+      "description": "Screening Process requires HMT Sanctions Screening",
+      "properties": {
+        "mandatory": true
+      },
+      "context": "Screening Lists: OFAC, EU, HMT, UN, PEP",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_004",
+      "target_name": "UN Sanctions Screening",
+      "rel_type": "requires",
+      "description": "Screening Process requires UN Sanctions Screening",
+      "properties": {
+        "mandatory": true
+      },
+      "context": "Screening Lists: OFAC, EU, HMT, UN, PEP",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_005",
+      "target_name": "PEP Database Screening",
+      "rel_type": "requires",
+      "description": "Screening Process requires PEP Database Screening",
+      "properties": {
+        "mandatory": true
+      },
+      "context": "Screening Lists: OFAC, EU, HMT, UN, PEP",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_006",
+      "target_name": "Adverse Media Screening",
+      "rel_type": "requires",
+      "description": "Screening Process requires Adverse Media Screening",
+      "properties": {
+        "mandatory": true
+      },
+      "context": "Screening Lists: OFAC, EU, HMT, UN, PEP",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_001",
+      "source_name": "Extract Screening Data",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_001",
+      "target_name": "Compliance System",
+      "rel_type": "performed_by",
+      "description": "Extract Screening Data step is performed by Compliance System",
+      "properties": {
+        "execution_type": "automated"
+      },
+      "context": "Extract Screening Data from customer records and KYC information",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_002",
+      "source_name": "Screen Against Lists",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_001",
+      "target_name": "Compliance System",
+      "rel_type": "performed_by",
+      "description": "Screen Against Lists step is performed by Compliance System",
+      "properties": {
+        "execution_type": "automated"
+      },
+      "context": "Screening is executed against multiple sanctions and PEP lists",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_003",
+      "source_name": "Review Results",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_003",
+      "target_name": "Compliance Team",
+      "rel_type": "performed_by",
+      "description": "Review Results step is performed by Compliance Team",
+      "properties": {
+        "execution_type": "manual review"
+      },
+      "context": "Review name, DOB, address to confirm false positive or escalate exact matches",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_001",
+      "source_name": "Extract Screening Data",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_002",
+      "source_name": "Screen Against Lists",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_003",
+      "source_name": "Review Results",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_pst_004",
+      "source_name": "Document Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_dp_001",
+      "source_name": "Screening Result Match Decision",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_001",
+      "source_name": "Compliance System",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_002",
+      "source_name": "Sarah Johnson",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_ra_003",
+      "source_name": "Compliance Team",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_cc_001",
+      "source_name": "Sanctions and PEP Screening Compliance Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_001",
+      "source_name": "OFAC Sanctions Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_002",
+      "source_name": "EU Consolidated List Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_003",
+      "source_name": "HMT Sanctions Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_004",
+      "source_name": "UN Sanctions Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_005",
+      "source_name": "PEP Database Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_aml_006",
+      "source_name": "Adverse Media Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_addr_001",
+      "source_name": "New Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_028_kyc_001",
+      "source_name": "KYC Data for Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

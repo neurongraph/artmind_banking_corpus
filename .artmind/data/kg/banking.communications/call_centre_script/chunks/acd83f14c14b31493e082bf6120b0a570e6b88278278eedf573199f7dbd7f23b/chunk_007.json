@@ -1,0 +1,1021 @@
+{
+  "chunk_seq": 7,
+  "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+  "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+  "text": "## SCENARIO 4: Fraud/Unauthorized Transaction  \n**Customer:** \"I see a transaction I didn't authorize.\"  \n**Agent Script:**  \n```\nAgent: \"I'm very sorry to hear that. We take fraud seriously\nand will investigate immediately.\n\nCan you tell me:\n- Which transaction is unauthorized?\n- When did it occur?\n- How much was it for?\n\n[Customer provides details]\n\nI'm going to:\n1. Block any suspicious transactions right away\n2. Investigate what happened\n3. Refund you within 10 days if the transaction is confirmed\nas unauthorized\n\nIn the meantime, we recommend:\n- Monitor your account for any other unusual activity\n- Change your online banking password\n- Don't share your PIN with anyone\n\nWe'll follow up with you within 5 business days with our\nfindings. Is there a phone number where we can reach you?\"\n```  \n---",
+  "name": "Chunk 7/17",
+  "_domain": "banking.communications",
+  "prev_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+  "next_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_008",
+  "raw_entities": [
+    {
+      "id": "ct_001",
+      "name": "Fraud/Unauthorized Transaction Response Script",
+      "aliases": [
+        "Unauthorized Transaction Agent Script",
+        "Fraud Investigation Call Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre agent script for handling customer reports of unauthorized transactions. The script guides agents through immediate fraud investigation procedures, including transaction blocking, refund timelines, and customer protective actions. It establishes a 10-day refund commitment and 5-business-day follow-up contact.",
+      "context": [
+        "I'm very sorry to hear that. We take fraud seriously and will investigate immediately.",
+        "I'm going to: 1. Block any suspicious transactions right away 2. Investigate what happened 3. Refund you within 10 days if the transaction is confirmed as unauthorized",
+        "We'll follow up with you within 5 business days with our findings."
+      ]
+    },
+    {
+      "id": "tv_001",
+      "name": "Transaction Identifier",
+      "aliases": [
+        "transaction_id",
+        "which_transaction"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "transaction_data",
+      "description": "A placeholder variable capturing which specific transaction the customer identifies as unauthorized. Used in the fraud investigation script to isolate the disputed transaction.",
+      "context": [
+        "Which transaction is unauthorized?"
+      ]
+    },
+    {
+      "id": "tv_002",
+      "name": "Transaction Occurrence Date",
+      "aliases": [
+        "transaction_date",
+        "when_occurred"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "A placeholder variable capturing the date or timeframe when the unauthorized transaction occurred. Used to establish the timeline for fraud investigation.",
+      "context": [
+        "When did it occur?"
+      ]
+    },
+    {
+      "id": "tv_003",
+      "name": "Transaction Amount",
+      "aliases": [
+        "transaction_value",
+        "how_much"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "A placeholder variable capturing the monetary value of the unauthorized transaction. Used to assess the scale of the fraud and inform investigation priority.",
+      "context": [
+        "How much was it for?"
+      ]
+    },
+    {
+      "id": "tv_004",
+      "name": "Customer Contact Phone Number",
+      "aliases": [
+        "callback_number",
+        "follow_up_phone"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "contact_field",
+      "description": "A placeholder variable capturing the customer's phone number for follow-up contact regarding fraud investigation findings. Used to establish the communication channel for the 5-business-day update.",
+      "context": [
+        "Is there a phone number where we can reach you?"
+      ]
+    },
+    {
+      "id": "fa_001",
+      "name": "Unauthorized Transaction Report",
+      "aliases": [
+        "fraud_claim",
+        "unauthorized_transaction_event"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "card_fraud_event",
+      "description": "A customer-reported unauthorized transaction triggering immediate fraud investigation, transaction blocking, and a refund commitment within 10 days if confirmed. The alert initiates a structured response including account monitoring recommendations and 5-business-day follow-up.",
+      "context": [
+        "I see a transaction I didn't authorize.",
+        "We take fraud seriously and will investigate immediately.",
+        "Block any suspicious transactions right away"
+      ]
+    },
+    {
+      "id": "co_001",
+      "name": "Unauthorized Transaction Refund Obligation",
+      "aliases": [
+        "fraud_refund_duty",
+        "10_day_refund_commitment"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "mandatory_action",
+      "description": "A mandatory obligation to refund the customer within 10 days if an unauthorized transaction is confirmed. This is a time-bound commitment triggered by fraud investigation completion.",
+      "context": [
+        "Refund you within 10 days if the transaction is confirmed as unauthorized"
+      ]
+    },
+    {
+      "id": "co_002",
+      "name": "Fraud Investigation Follow-up Obligation",
+      "aliases": [
+        "5_day_follow_up",
+        "investigation_findings_contact"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "mandatory_action",
+      "description": "A mandatory obligation to contact the customer within 5 business days with findings from the fraud investigation. This ensures timely communication of investigation outcomes and next steps.",
+      "context": [
+        "We'll follow up with you within 5 business days with our findings."
+      ]
+    },
+    {
+      "id": "co_003",
+      "name": "Suspicious Transaction Blocking Obligation",
+      "aliases": [
+        "immediate_transaction_block",
+        "fraud_prevention_action"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "mandatory_action",
+      "description": "An immediate operational obligation to block any suspicious transactions identified during fraud investigation. This is a preventive measure executed without delay upon fraud report.",
+      "context": [
+        "Block any suspicious transactions right away"
+      ]
+    },
+    {
+      "id": "ws_001",
+      "name": "Unauthorized Transaction Activity",
+      "aliases": [
+        "fraud_indicator",
+        "unauthorized_charge"
+      ],
+      "entity_class": "WARNING_SIGN",
+      "type": "fraud_indicator",
+      "description": "A customer-reported transaction that the account holder does not recognize or authorize. This is a primary fraud indicator requiring immediate investigation, transaction blocking, and protective account measures.",
+      "context": [
+        "I see a transaction I didn't authorize."
+      ]
+    },
+    {
+      "id": "customer_001",
+      "name": "Fraud Report Customer",
+      "aliases": [
+        "reporting_customer",
+        "account_holder_reporting_fraud"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A customer who reports an unauthorized transaction on their account. The customer is the primary party in the fraud investigation process and receives refund and protective action commitments.",
+      "context": [
+        "Customer: \"I see a transaction I didn't authorize.\"",
+        "Can you tell me: - Which transaction is unauthorized? - When did it occur? - How much was it for?"
+      ]
+    },
+    {
+      "id": "tx_001",
+      "name": "Unauthorized Transaction",
+      "aliases": [
+        "disputed_transaction",
+        "fraudulent_charge"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "A financial transaction on a customer account that the account holder reports as unauthorized. The transaction is subject to immediate investigation, potential blocking, and refund within 10 days if confirmed as fraudulent.",
+      "context": [
+        "Which transaction is unauthorized?",
+        "Block any suspicious transactions right away",
+        "Refund you within 10 days if the transaction is confirmed as unauthorized"
+      ]
+    }
+  ],
+  "id_map": {
+    "ct_001": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ct_001",
+    "tv_001": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_001",
+    "tv_002": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_002",
+    "tv_003": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_003",
+    "tv_004": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_004",
+    "fa_001": "01a07428-c932-773f-a5f8-da98f9df05b5_007_fa_001",
+    "co_001": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_001",
+    "co_002": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_002",
+    "co_003": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_003",
+    "ws_001": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ws_001",
+    "customer_001": "01a07428-c932-773f-a5f8-da98f9df05b5_007_customer_001",
+    "tx_001": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tx_001"
+  },
+  "entities": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ct_001",
+      "name": "Fraud/Unauthorized Transaction Response Script",
+      "aliases": [
+        "Unauthorized Transaction Agent Script",
+        "Fraud Investigation Call Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre agent script for handling customer reports of unauthorized transactions. The script guides agents through immediate fraud investigation procedures, including transaction blocking, refund timelines, and customer protective actions. It establishes a 10-day refund commitment and 5-business-day follow-up contact.",
+      "context": [
+        "I'm very sorry to hear that. We take fraud seriously and will investigate immediately.",
+        "I'm going to: 1. Block any suspicious transactions right away 2. Investigate what happened 3. Refund you within 10 days if the transaction is confirmed as unauthorized",
+        "We'll follow up with you within 5 business days with our findings."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_001",
+      "name": "Transaction Identifier",
+      "aliases": [
+        "transaction_id",
+        "which_transaction"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "transaction_data",
+      "description": "A placeholder variable capturing which specific transaction the customer identifies as unauthorized. Used in the fraud investigation script to isolate the disputed transaction.",
+      "context": [
+        "Which transaction is unauthorized?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_002",
+      "name": "Transaction Occurrence Date",
+      "aliases": [
+        "transaction_date",
+        "when_occurred"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "A placeholder variable capturing the date or timeframe when the unauthorized transaction occurred. Used to establish the timeline for fraud investigation.",
+      "context": [
+        "When did it occur?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_003",
+      "name": "Transaction Amount",
+      "aliases": [
+        "transaction_value",
+        "how_much"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "A placeholder variable capturing the monetary value of the unauthorized transaction. Used to assess the scale of the fraud and inform investigation priority.",
+      "context": [
+        "How much was it for?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_004",
+      "name": "Customer Contact Phone Number",
+      "aliases": [
+        "callback_number",
+        "follow_up_phone"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "contact_field",
+      "description": "A placeholder variable capturing the customer's phone number for follow-up contact regarding fraud investigation findings. Used to establish the communication channel for the 5-business-day update.",
+      "context": [
+        "Is there a phone number where we can reach you?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_fa_001",
+      "name": "Unauthorized Transaction Report",
+      "aliases": [
+        "fraud_claim",
+        "unauthorized_transaction_event"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "card_fraud_event",
+      "description": "A customer-reported unauthorized transaction triggering immediate fraud investigation, transaction blocking, and a refund commitment within 10 days if confirmed. The alert initiates a structured response including account monitoring recommendations and 5-business-day follow-up.",
+      "context": [
+        "I see a transaction I didn't authorize.",
+        "We take fraud seriously and will investigate immediately.",
+        "Block any suspicious transactions right away"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_001",
+      "name": "Unauthorized Transaction Refund Obligation",
+      "aliases": [
+        "fraud_refund_duty",
+        "10_day_refund_commitment"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "mandatory_action",
+      "description": "A mandatory obligation to refund the customer within 10 days if an unauthorized transaction is confirmed. This is a time-bound commitment triggered by fraud investigation completion.",
+      "context": [
+        "Refund you within 10 days if the transaction is confirmed as unauthorized"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_002",
+      "name": "Fraud Investigation Follow-up Obligation",
+      "aliases": [
+        "5_day_follow_up",
+        "investigation_findings_contact"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "mandatory_action",
+      "description": "A mandatory obligation to contact the customer within 5 business days with findings from the fraud investigation. This ensures timely communication of investigation outcomes and next steps.",
+      "context": [
+        "We'll follow up with you within 5 business days with our findings."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_003",
+      "name": "Suspicious Transaction Blocking Obligation",
+      "aliases": [
+        "immediate_transaction_block",
+        "fraud_prevention_action"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "mandatory_action",
+      "description": "An immediate operational obligation to block any suspicious transactions identified during fraud investigation. This is a preventive measure executed without delay upon fraud report.",
+      "context": [
+        "Block any suspicious transactions right away"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ws_001",
+      "name": "Unauthorized Transaction Activity",
+      "aliases": [
+        "fraud_indicator",
+        "unauthorized_charge"
+      ],
+      "entity_class": "WARNING_SIGN",
+      "type": "fraud_indicator",
+      "description": "A customer-reported transaction that the account holder does not recognize or authorize. This is a primary fraud indicator requiring immediate investigation, transaction blocking, and protective account measures.",
+      "context": [
+        "I see a transaction I didn't authorize."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_customer_001",
+      "name": "Fraud Report Customer",
+      "aliases": [
+        "reporting_customer",
+        "account_holder_reporting_fraud"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A customer who reports an unauthorized transaction on their account. The customer is the primary party in the fraud investigation process and receives refund and protective action commitments.",
+      "context": [
+        "Customer: \"I see a transaction I didn't authorize.\"",
+        "Can you tell me: - Which transaction is unauthorized? - When did it occur? - How much was it for?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tx_001",
+      "name": "Unauthorized Transaction",
+      "aliases": [
+        "disputed_transaction",
+        "fraudulent_charge"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "A financial transaction on a customer account that the account holder reports as unauthorized. The transaction is subject to immediate investigation, potential blocking, and refund within 10 days if confirmed as fraudulent.",
+      "context": [
+        "Which transaction is unauthorized?",
+        "Block any suspicious transactions right away",
+        "Refund you within 10 days if the transaction is confirmed as unauthorized"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ct_001",
+      "name": "Fraud/Unauthorized Transaction Response Script",
+      "properties": {
+        "trigger_event": "Customer reports unauthorized transaction",
+        "channel": "call",
+        "recipient": "customer_reporting_fraud",
+        "key_content": [
+          "Acknowledge fraud concern and apologize",
+          "Request transaction details (identifier, date, amount)",
+          "Explain immediate blocking of suspicious transactions",
+          "Explain investigation process",
+          "Communicate refund timeline (10 days if confirmed unauthorized)",
+          "Provide account monitoring recommendations",
+          "Request customer contact phone number for follow-up",
+          "Commit to follow-up within 5 business days"
+        ],
+        "variables_used": [
+          "[Transaction Identifier]",
+          "[Transaction Occurrence Date]",
+          "[Transaction Amount]",
+          "[Customer Contact Phone Number]"
+        ],
+        "tone": "urgent",
+        "owner": "fraud_response_team"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_001",
+      "name": "Transaction Identifier",
+      "properties": {
+        "variable_placeholder": "[Transaction Identifier]",
+        "data_source": "transaction_system",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Fraud/Unauthorized Transaction Response Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_002",
+      "name": "Transaction Occurrence Date",
+      "properties": {
+        "variable_placeholder": "[Transaction Occurrence Date]",
+        "data_source": "transaction_system",
+        "data_type": "date",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Fraud/Unauthorized Transaction Response Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_003",
+      "name": "Transaction Amount",
+      "properties": {
+        "variable_placeholder": "[Transaction Amount]",
+        "data_source": "transaction_system",
+        "data_type": "currency",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Fraud/Unauthorized Transaction Response Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_004",
+      "name": "Customer Contact Phone Number",
+      "properties": {
+        "variable_placeholder": "[Customer Contact Phone Number]",
+        "data_source": "CRM",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Fraud/Unauthorized Transaction Response Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_fa_001",
+      "name": "Unauthorized Transaction Report",
+      "properties": {
+        "generation_trigger": "Customer reports unauthorized transaction",
+        "investigation_or_escalation_path": "fraud_response_team",
+        "customer_notification": "follow_up_within_5_business_days",
+        "reimbursement_obligation": "refund_within_10_days_if_confirmed_unauthorized"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_001",
+      "name": "Unauthorized Transaction Refund Obligation",
+      "properties": {
+        "obligation_type": "mandatory_action",
+        "applies_to": "all_staff_handling_fraud_reports",
+        "timeframe": "within_10_days_if_confirmed_unauthorized",
+        "consequence_of_failure": "regulatory_violation_and_customer_compensation_liability",
+        "regulatory_source": "payment_services_regulations"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_002",
+      "name": "Fraud Investigation Follow-up Obligation",
+      "properties": {
+        "obligation_type": "mandatory_action",
+        "applies_to": "fraud_response_team",
+        "timeframe": "within_5_business_days",
+        "consequence_of_failure": "regulatory_violation_and_customer_service_failure"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_003",
+      "name": "Suspicious Transaction Blocking Obligation",
+      "properties": {
+        "obligation_type": "mandatory_action",
+        "applies_to": "all_staff_handling_fraud_reports",
+        "timeframe": "immediately",
+        "consequence_of_failure": "further_unauthorized_transactions_and_customer_loss"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ws_001",
+      "name": "Unauthorized Transaction Activity",
+      "properties": {
+        "risk_domain": "fraud",
+        "description": "Customer reports a transaction they did not authorize",
+        "required_action": [
+          "Block suspicious transactions immediately",
+          "Initiate fraud investigation",
+          "Collect transaction details from customer",
+          "Schedule follow-up within 5 business days",
+          "Process refund within 10 days if confirmed unauthorized"
+        ],
+        "escalation_path": "fraud_response_team",
+        "regulatory_obligation": "yes"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_customer_001",
+      "name": "Fraud Report Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "fraud_reporter",
+        "risk_classification": "victim_of_fraud"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tx_001",
+      "name": "Unauthorized Transaction",
+      "properties": {
+        "transaction_type": "suspicious",
+        "monitoring_or_reporting_obligation": "yes",
+        "dispute_or_reversal_rules": "refund_within_10_days_if_confirmed_unauthorized"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ct_001",
+      "source_name": "Fraud/Unauthorized Transaction Response Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_001",
+      "target_name": "Transaction Identifier",
+      "rel_type": "requires",
+      "description": "The script requires collection of the transaction identifier from the customer",
+      "properties": {
+        "collection_point": "Agent inquiry",
+        "mandatory": true
+      },
+      "context": "Can you tell me: - Which transaction is unauthorized?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ct_001",
+      "source_name": "Fraud/Unauthorized Transaction Response Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_002",
+      "target_name": "Transaction Occurrence Date",
+      "rel_type": "requires",
+      "description": "The script requires collection of the transaction date from the customer",
+      "properties": {
+        "collection_point": "Agent inquiry",
+        "mandatory": true
+      },
+      "context": "Can you tell me: - When did it occur?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ct_001",
+      "source_name": "Fraud/Unauthorized Transaction Response Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_003",
+      "target_name": "Transaction Amount",
+      "rel_type": "requires",
+      "description": "The script requires collection of the transaction amount from the customer",
+      "properties": {
+        "collection_point": "Agent inquiry",
+        "mandatory": true
+      },
+      "context": "Can you tell me: - How much was it for?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ct_001",
+      "source_name": "Fraud/Unauthorized Transaction Response Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_004",
+      "target_name": "Customer Contact Phone Number",
+      "rel_type": "requires",
+      "description": "The script requires collection of customer contact phone number for follow-up",
+      "properties": {
+        "collection_point": "End of script",
+        "purpose": "follow_up_communication"
+      },
+      "context": "Is there a phone number where we can reach you?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ct_001",
+      "source_name": "Fraud/Unauthorized Transaction Response Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_fa_001",
+      "target_name": "Unauthorized Transaction Report",
+      "rel_type": "triggered_by",
+      "description": "The script is triggered by and responds to an unauthorized transaction fraud alert",
+      "properties": {
+        "trigger_event": "customer_reports_unauthorized_transaction"
+      },
+      "context": "Customer: 'I see a transaction I didn't authorize.'",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ct_001",
+      "source_name": "Fraud/Unauthorized Transaction Response Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_001",
+      "target_name": "Unauthorized Transaction Refund Obligation",
+      "rel_type": "satisfies",
+      "description": "The script satisfies the refund obligation by committing to refund within 10 days if unauthorized",
+      "properties": {
+        "refund_timeline": "10 days",
+        "condition": "if_confirmed_unauthorized"
+      },
+      "context": "Refund you within 10 days if the transaction is confirmed as unauthorized",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ct_001",
+      "source_name": "Fraud/Unauthorized Transaction Response Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_002",
+      "target_name": "Fraud Investigation Follow-up Obligation",
+      "rel_type": "satisfies",
+      "description": "The script satisfies the follow-up obligation by committing to contact customer within 5 business days",
+      "properties": {
+        "follow_up_timeline": "5 business days",
+        "contact_method": "phone"
+      },
+      "context": "We'll follow up with you within 5 business days with our findings.",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ct_001",
+      "source_name": "Fraud/Unauthorized Transaction Response Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_003",
+      "target_name": "Suspicious Transaction Blocking Obligation",
+      "rel_type": "satisfies",
+      "description": "The script satisfies the blocking obligation by committing to block suspicious transactions immediately",
+      "properties": {
+        "action_timing": "immediately",
+        "scope": "suspicious_transactions"
+      },
+      "context": "Block any suspicious transactions right away",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ct_001",
+      "source_name": "Fraud/Unauthorized Transaction Response Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_customer_001",
+      "target_name": "Fraud Report Customer",
+      "rel_type": "addressed_to",
+      "description": "The script is addressed to and designed to respond to the customer reporting fraud",
+      "properties": {
+        "interaction_type": "customer_service_response"
+      },
+      "context": "Customer: 'I see a transaction I didn't authorize.' Agent: 'I'm very sorry to hear that.'",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ct_001",
+      "source_name": "Fraud/Unauthorized Transaction Response Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tx_001",
+      "target_name": "Unauthorized Transaction",
+      "rel_type": "notifies_about",
+      "description": "The script notifies the customer about the unauthorized transaction and investigation process",
+      "properties": {
+        "notification_content": "investigation_commitment_and_refund_promise"
+      },
+      "context": "We take fraud seriously and will investigate immediately.",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_fa_001",
+      "source_name": "Unauthorized Transaction Report",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tx_001",
+      "target_name": "Unauthorized Transaction",
+      "rel_type": "triggered_by",
+      "description": "The fraud alert is triggered by the unauthorized transaction",
+      "properties": {
+        "alert_type": "unauthorized_transaction"
+      },
+      "context": "Customer: 'I see a transaction I didn't authorize.'",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_fa_001",
+      "source_name": "Unauthorized Transaction Report",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_customer_001",
+      "target_name": "Fraud Report Customer",
+      "rel_type": "notifies_customer_of",
+      "description": "The fraud alert notifies the customer of the unauthorized transaction report",
+      "properties": {
+        "notification_trigger": "customer_initiated"
+      },
+      "context": "Customer: 'I see a transaction I didn't authorize.'",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ws_001",
+      "source_name": "Unauthorized Transaction Activity",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tx_001",
+      "target_name": "Unauthorized Transaction",
+      "rel_type": "identified_in",
+      "description": "The warning sign of unauthorized transaction activity is identified in the specific unauthorized transaction",
+      "properties": {
+        "detection_method": "customer_report"
+      },
+      "context": "Customer: 'I see a transaction I didn't authorize.'",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ws_001",
+      "source_name": "Unauthorized Transaction Activity",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_001",
+      "target_name": "Unauthorized Transaction Refund Obligation",
+      "rel_type": "triggers",
+      "description": "The warning sign of unauthorized transaction activity triggers the refund obligation",
+      "properties": {
+        "obligation_type": "financial_remediation"
+      },
+      "context": "Refund you within 10 days if the transaction is confirmed as unauthorized",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ws_001",
+      "source_name": "Unauthorized Transaction Activity",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_002",
+      "target_name": "Fraud Investigation Follow-up Obligation",
+      "rel_type": "triggers",
+      "description": "The warning sign of unauthorized transaction activity triggers the investigation follow-up obligation",
+      "properties": {
+        "obligation_type": "investigation_and_communication"
+      },
+      "context": "We will investigate immediately. We'll follow up with you within 5 business days with our findings.",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ws_001",
+      "source_name": "Unauthorized Transaction Activity",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_003",
+      "target_name": "Suspicious Transaction Blocking Obligation",
+      "rel_type": "triggers",
+      "description": "The warning sign of unauthorized transaction activity triggers the transaction blocking obligation",
+      "properties": {
+        "obligation_type": "preventive_action"
+      },
+      "context": "Block any suspicious transactions right away",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ws_001",
+      "source_name": "Unauthorized Transaction Activity",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_customer_001",
+      "target_name": "Fraud Report Customer",
+      "rel_type": "exhibited_by",
+      "description": "The warning sign of unauthorized transaction activity is exhibited by the customer's behavior of reporting unauthorized transactions",
+      "properties": {
+        "behavior_type": "fraud_report_initiation"
+      },
+      "context": "Customer: 'I see a transaction I didn't authorize.'",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_customer_001",
+      "source_name": "Fraud Report Customer",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tx_001",
+      "target_name": "Unauthorized Transaction",
+      "rel_type": "liable_for",
+      "description": "The customer is the party affected by and reporting the unauthorized transaction",
+      "properties": {
+        "relationship_type": "transaction_subject"
+      },
+      "context": "Customer: 'I see a transaction I didn't authorize.'",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_001",
+      "source_name": "Unauthorized Transaction Refund Obligation",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_002",
+      "target_name": "Fraud Investigation Follow-up Obligation",
+      "rel_type": "related_to",
+      "description": "The refund obligation is related to and dependent on the investigation follow-up obligation",
+      "properties": {
+        "dependency": "refund_conditional_on_investigation_confirmation"
+      },
+      "context": "Refund you within 10 days if the transaction is confirmed as unauthorized. We'll follow up with you within 5 business days with our findings.",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ct_001",
+      "source_name": "Fraud/Unauthorized Transaction Response Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_001",
+      "source_name": "Transaction Identifier",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_002",
+      "source_name": "Transaction Occurrence Date",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_003",
+      "source_name": "Transaction Amount",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tv_004",
+      "source_name": "Customer Contact Phone Number",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_fa_001",
+      "source_name": "Unauthorized Transaction Report",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_001",
+      "source_name": "Unauthorized Transaction Refund Obligation",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_002",
+      "source_name": "Fraud Investigation Follow-up Obligation",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_co_003",
+      "source_name": "Suspicious Transaction Blocking Obligation",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_ws_001",
+      "source_name": "Unauthorized Transaction Activity",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_customer_001",
+      "source_name": "Fraud Report Customer",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007_tx_001",
+      "source_name": "Unauthorized Transaction",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ]
+}

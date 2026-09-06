@@ -1,0 +1,1398 @@
+{
+  "chunk_seq": 22,
+  "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+  "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+  "text": "## Common Issues & Resolution  \n| Issue | Cause | Resolution |\n|-------|-------|-----------|\n| Customer requests re-opening | Changed mind | New account opening required (full KYC) |\n| Pending standing order on closure date | Timing issue | Execute final SO, then close |\n| Dispute received after closure | Customer claim | Reopen investigation, may reverse closure if warranted |\n| Customer doesn't collect check | Payment delay | Hold 6 months, escalate to unclaimed money procedures |  \n---",
+  "name": "Chunk 22/25",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_021",
+  "next_chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_023",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Account Closure Process",
+      "aliases": [
+        "closure",
+        "account_closure"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_closure",
+      "description": "End-to-end procedure for closing a customer account, including handling of pending standing orders, disputes received post-closure, and unclaimed payments. The process addresses common issues such as timing conflicts between standing order execution and closure date, and post-closure dispute investigations.",
+      "context": [
+        "Pending standing order on closure date",
+        "Execute final SO, then close",
+        "Dispute received after closure",
+        "Reopen investigation, may reverse closure if warranted"
+      ]
+    },
+    {
+      "id": "proc_002",
+      "name": "Account Re-opening Process",
+      "aliases": [
+        "reopen",
+        "account_reopening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_opening",
+      "description": "Procedure triggered when a customer requests to re-open a previously closed account after changing their mind. Requires full KYC verification as if opening a new account.",
+      "context": [
+        "Customer requests re-opening",
+        "Changed mind",
+        "New account opening required (full KYC)"
+      ]
+    },
+    {
+      "id": "proc_003",
+      "name": "Unclaimed Money Procedure",
+      "aliases": [
+        "unclaimed_funds",
+        "unclaimed_payment_handling"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "Procedure for managing payments (such as checks) that customers do not collect within a specified holding period. Involves a 6-month hold followed by escalation to formal unclaimed money procedures.",
+      "context": [
+        "Customer doesn't collect check",
+        "Payment delay",
+        "Hold 6 months, escalate to unclaimed money procedures"
+      ]
+    },
+    {
+      "id": "proc_004",
+      "name": "Post-Closure Dispute Investigation",
+      "aliases": [
+        "dispute_investigation",
+        "post_closure_dispute"
+      ],
+      "entity_class": "PROCESS",
+      "type": "complaint_resolution",
+      "description": "Procedure for investigating disputes or claims received after an account has been closed. May result in reversal of the closure if investigation warrants account re-opening.",
+      "context": [
+        "Dispute received after closure",
+        "Customer claim",
+        "Reopen investigation, may reverse closure if warranted"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Execute Final Standing Order",
+      "aliases": [
+        "final_SO_execution"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Discrete step within account closure where any pending standing order scheduled for the closure date is executed before the account is formally closed.",
+      "context": [
+        "Pending standing order on closure date",
+        "Execute final SO, then close"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Close Account",
+      "aliases": [
+        "account_closure_step"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "account_activation",
+      "description": "Final step in the account closure process where the account is formally closed, typically after all pending transactions and standing orders have been resolved.",
+      "context": [
+        "Execute final SO, then close"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Reopen Investigation",
+      "aliases": [
+        "dispute_investigation_step"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Step triggered when a dispute or claim is received after account closure, requiring investigation to determine whether the closure should be reversed.",
+      "context": [
+        "Reopen investigation, may reverse closure if warranted"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Hold Unclaimed Payment",
+      "aliases": [
+        "payment_hold"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step where unclaimed payments (such as checks) are held for a 6-month period before escalation to formal unclaimed money procedures.",
+      "context": [
+        "Hold 6 months, escalate to unclaimed money procedures"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Escalate to Unclaimed Money Procedures",
+      "aliases": [
+        "unclaimed_escalation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation_procedure",
+      "description": "Step where unclaimed payments are escalated to formal unclaimed money procedures after the 6-month holding period expires.",
+      "context": [
+        "Hold 6 months, escalate to unclaimed money procedures"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Perform Full KYC Verification",
+      "aliases": [
+        "full_KYC"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Step required when a customer requests account re-opening after closure, treating the re-opening as a new account opening with complete Know Your Customer verification.",
+      "context": [
+        "New account opening required (full KYC)"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Standing Order Pending on Closure Date",
+      "aliases": [
+        "SO_timing_conflict"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision point triggered when a standing order is scheduled to execute on the same date as the requested account closure. The resolution is to execute the standing order first, then proceed with closure.",
+      "context": [
+        "Pending standing order on closure date",
+        "Timing issue",
+        "Execute final SO, then close"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Dispute Received After Closure",
+      "aliases": [
+        "post_closure_dispute_gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision point triggered when a customer dispute or claim is received after the account has been closed. Investigation may lead to reversal of the closure if warranted.",
+      "context": [
+        "Dispute received after closure",
+        "Customer claim",
+        "Reopen investigation, may reverse closure if warranted"
+      ]
+    },
+    {
+      "id": "dp_003",
+      "name": "Customer Re-opening Request",
+      "aliases": [
+        "reopen_request_gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision point triggered when a customer requests to re-open a previously closed account. The resolution requires full KYC verification as if opening a new account.",
+      "context": [
+        "Customer requests re-opening",
+        "Changed mind",
+        "New account opening required (full KYC)"
+      ]
+    },
+    {
+      "id": "kyc_001",
+      "name": "KYC Verification",
+      "aliases": [
+        "Know_Your_Customer"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "Compliance obligation for full Know Your Customer verification required when a customer requests account re-opening, treating it as a new account opening.",
+      "context": [
+        "New account opening required (full KYC)"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "SO",
+        "standing_payment"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "Recurring payment instruction that may be pending on an account closure date, requiring execution before the account is formally closed.",
+      "context": [
+        "Pending standing order on closure date",
+        "Execute final SO, then close"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "The account subject to closure, re-opening, or dispute investigation procedures outlined in the common issues and resolution table.",
+      "context": [
+        "Customer requests re-opening",
+        "Dispute received after closure",
+        "Execute final SO, then close"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [
+        "account_holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The natural person who holds the account and may request re-opening, fail to collect payments, or submit disputes after closure.",
+      "context": [
+        "Customer requests re-opening",
+        "Customer doesn't collect check",
+        "Customer claim"
+      ]
+    },
+    {
+      "id": "txn_001",
+      "name": "Unclaimed Check Payment",
+      "aliases": [
+        "unclaimed_check",
+        "uncollected_payment"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "monitored_transaction",
+      "description": "A check payment issued to the customer that remains uncollected, triggering a 6-month hold period followed by escalation to unclaimed money procedures.",
+      "context": [
+        "Customer doesn't collect check",
+        "Payment delay",
+        "Hold 6 months, escalate to unclaimed money procedures"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_001",
+    "proc_002": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_002",
+    "proc_003": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_003",
+    "proc_004": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_004",
+    "pstep_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_001",
+    "pstep_002": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_002",
+    "pstep_003": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_003",
+    "pstep_004": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_004",
+    "pstep_005": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_005",
+    "pstep_006": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_006",
+    "dp_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_001",
+    "dp_002": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_002",
+    "dp_003": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_003",
+    "kyc_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_kyc_001",
+    "so_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_so_001",
+    "acc_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_acc_001",
+    "cust_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_cust_001",
+    "txn_001": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_txn_001"
+  },
+  "entities": [
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_001",
+      "name": "Account Closure Process",
+      "aliases": [
+        "closure",
+        "account_closure"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_closure",
+      "description": "End-to-end procedure for closing a customer account, including handling of pending standing orders, disputes received post-closure, and unclaimed payments. The process addresses common issues such as timing conflicts between standing order execution and closure date, and post-closure dispute investigations.",
+      "context": [
+        "Pending standing order on closure date",
+        "Execute final SO, then close",
+        "Dispute received after closure",
+        "Reopen investigation, may reverse closure if warranted"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_002",
+      "name": "Account Re-opening Process",
+      "aliases": [
+        "reopen",
+        "account_reopening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "account_opening",
+      "description": "Procedure triggered when a customer requests to re-open a previously closed account after changing their mind. Requires full KYC verification as if opening a new account.",
+      "context": [
+        "Customer requests re-opening",
+        "Changed mind",
+        "New account opening required (full KYC)"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_003",
+      "name": "Unclaimed Money Procedure",
+      "aliases": [
+        "unclaimed_funds",
+        "unclaimed_payment_handling"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "Procedure for managing payments (such as checks) that customers do not collect within a specified holding period. Involves a 6-month hold followed by escalation to formal unclaimed money procedures.",
+      "context": [
+        "Customer doesn't collect check",
+        "Payment delay",
+        "Hold 6 months, escalate to unclaimed money procedures"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_004",
+      "name": "Post-Closure Dispute Investigation",
+      "aliases": [
+        "dispute_investigation",
+        "post_closure_dispute"
+      ],
+      "entity_class": "PROCESS",
+      "type": "complaint_resolution",
+      "description": "Procedure for investigating disputes or claims received after an account has been closed. May result in reversal of the closure if investigation warrants account re-opening.",
+      "context": [
+        "Dispute received after closure",
+        "Customer claim",
+        "Reopen investigation, may reverse closure if warranted"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_001",
+      "name": "Execute Final Standing Order",
+      "aliases": [
+        "final_SO_execution"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Discrete step within account closure where any pending standing order scheduled for the closure date is executed before the account is formally closed.",
+      "context": [
+        "Pending standing order on closure date",
+        "Execute final SO, then close"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_002",
+      "name": "Close Account",
+      "aliases": [
+        "account_closure_step"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "account_activation",
+      "description": "Final step in the account closure process where the account is formally closed, typically after all pending transactions and standing orders have been resolved.",
+      "context": [
+        "Execute final SO, then close"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_003",
+      "name": "Reopen Investigation",
+      "aliases": [
+        "dispute_investigation_step"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "Step triggered when a dispute or claim is received after account closure, requiring investigation to determine whether the closure should be reversed.",
+      "context": [
+        "Reopen investigation, may reverse closure if warranted"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_004",
+      "name": "Hold Unclaimed Payment",
+      "aliases": [
+        "payment_hold"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step where unclaimed payments (such as checks) are held for a 6-month period before escalation to formal unclaimed money procedures.",
+      "context": [
+        "Hold 6 months, escalate to unclaimed money procedures"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_005",
+      "name": "Escalate to Unclaimed Money Procedures",
+      "aliases": [
+        "unclaimed_escalation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation_procedure",
+      "description": "Step where unclaimed payments are escalated to formal unclaimed money procedures after the 6-month holding period expires.",
+      "context": [
+        "Hold 6 months, escalate to unclaimed money procedures"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_006",
+      "name": "Perform Full KYC Verification",
+      "aliases": [
+        "full_KYC"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Step required when a customer requests account re-opening after closure, treating the re-opening as a new account opening with complete Know Your Customer verification.",
+      "context": [
+        "New account opening required (full KYC)"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_001",
+      "name": "Standing Order Pending on Closure Date",
+      "aliases": [
+        "SO_timing_conflict"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision point triggered when a standing order is scheduled to execute on the same date as the requested account closure. The resolution is to execute the standing order first, then proceed with closure.",
+      "context": [
+        "Pending standing order on closure date",
+        "Timing issue",
+        "Execute final SO, then close"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_002",
+      "name": "Dispute Received After Closure",
+      "aliases": [
+        "post_closure_dispute_gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision point triggered when a customer dispute or claim is received after the account has been closed. Investigation may lead to reversal of the closure if warranted.",
+      "context": [
+        "Dispute received after closure",
+        "Customer claim",
+        "Reopen investigation, may reverse closure if warranted"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_003",
+      "name": "Customer Re-opening Request",
+      "aliases": [
+        "reopen_request_gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision point triggered when a customer requests to re-open a previously closed account. The resolution requires full KYC verification as if opening a new account.",
+      "context": [
+        "Customer requests re-opening",
+        "Changed mind",
+        "New account opening required (full KYC)"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_kyc_001",
+      "name": "KYC Verification",
+      "aliases": [
+        "Know_Your_Customer"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "identity_verification",
+      "description": "Compliance obligation for full Know Your Customer verification required when a customer requests account re-opening, treating it as a new account opening.",
+      "context": [
+        "New account opening required (full KYC)"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "SO",
+        "standing_payment"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "Recurring payment instruction that may be pending on an account closure date, requiring execution before the account is formally closed.",
+      "context": [
+        "Pending standing order on closure date",
+        "Execute final SO, then close"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "The account subject to closure, re-opening, or dispute investigation procedures outlined in the common issues and resolution table.",
+      "context": [
+        "Customer requests re-opening",
+        "Dispute received after closure",
+        "Execute final SO, then close"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_cust_001",
+      "name": "Customer",
+      "aliases": [
+        "account_holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The natural person who holds the account and may request re-opening, fail to collect payments, or submit disputes after closure.",
+      "context": [
+        "Customer requests re-opening",
+        "Customer doesn't collect check",
+        "Customer claim"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_txn_001",
+      "name": "Unclaimed Check Payment",
+      "aliases": [
+        "unclaimed_check",
+        "uncollected_payment"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "monitored_transaction",
+      "description": "A check payment issued to the customer that remains uncollected, triggering a 6-month hold period followed by escalation to unclaimed money procedures.",
+      "context": [
+        "Customer doesn't collect check",
+        "Payment delay",
+        "Hold 6 months, escalate to unclaimed money procedures"
+      ],
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_001",
+      "name": "Account Closure Process",
+      "properties": {
+        "purpose": "Close customer account and handle final transactions",
+        "scope": "All customer accounts",
+        "trigger": "Customer closure request",
+        "outcome_success": "Account closed with all standing orders executed and funds settled",
+        "outcome_failure": "Account remains open; dispute or pending transaction unresolved"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_002",
+      "name": "Account Re-opening Process",
+      "properties": {
+        "purpose": "Reopen a closed account or create new account for returning customer",
+        "scope": "Closed accounts with customer re-opening request",
+        "trigger": "Customer requests account re-opening after closure",
+        "outcome_success": "New account opened with full KYC verification completed",
+        "outcome_failure": "Re-opening request denied; customer unable to proceed"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_003",
+      "name": "Unclaimed Money Procedure",
+      "properties": {
+        "purpose": "Handle unclaimed payments and escalate to unclaimed money regulatory procedures",
+        "scope": "Payments not collected by customer within holding period",
+        "trigger": "Payment remains uncollected after 6 months",
+        "outcome_success": "Payment escalated to unclaimed money procedures; regulatory compliance met",
+        "outcome_failure": "Payment not escalated; regulatory breach"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_004",
+      "name": "Post-Closure Dispute Investigation",
+      "properties": {
+        "purpose": "Investigate and resolve disputes raised after account closure",
+        "scope": "Disputes received post-closure",
+        "trigger": "Customer dispute claim received after account closure",
+        "outcome_success": "Dispute investigated; closure reversed if warranted or dispute resolved",
+        "outcome_failure": "Dispute unresolved; customer escalation or regulatory complaint"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_001",
+      "name": "Execute Final Standing Order",
+      "properties": {
+        "step_number": 1,
+        "actor": "Account Operations Team",
+        "input": "Standing order details; account balance",
+        "output": "Final standing order executed; transaction recorded",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Standing order execution fails; account closure delayed pending resolution"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_002",
+      "name": "Close Account",
+      "properties": {
+        "step_number": 2,
+        "actor": "Account Operations Team",
+        "input": "Account details; confirmation of final standing order execution",
+        "output": "Account closed; account state changed to closed",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Account remains open; closure process incomplete"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_003",
+      "name": "Reopen Investigation",
+      "properties": {
+        "step_number": 1,
+        "actor": "Dispute Investigation Team",
+        "input": "Dispute claim; account closure records",
+        "output": "Investigation findings; decision to reverse closure or uphold closure",
+        "channel": "manual",
+        "mandatory": "yes",
+        "failure_path": "Investigation incomplete; dispute unresolved"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_004",
+      "name": "Hold Unclaimed Payment",
+      "properties": {
+        "step_number": 1,
+        "actor": "Payment Processing Team",
+        "input": "Unclaimed check payment details",
+        "output": "Payment held in suspense account for 6 months",
+        "estimated_duration": "6 months",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Payment not held; regulatory non-compliance"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_005",
+      "name": "Escalate to Unclaimed Money Procedures",
+      "properties": {
+        "step_number": 2,
+        "actor": "Compliance Team",
+        "input": "Unclaimed payment details; 6-month holding period confirmation",
+        "output": "Payment escalated to unclaimed money regulatory procedures",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Payment not escalated; regulatory breach"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_006",
+      "name": "Perform Full KYC Verification",
+      "properties": {
+        "step_number": 1,
+        "actor": "KYC Verification Team",
+        "input": "Customer identification documents; address proof",
+        "output": "KYC verification completed; customer approved for new account",
+        "channel": "manual",
+        "mandatory": "yes",
+        "failure_path": "KYC verification fails; account opening denied"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_001",
+      "name": "Standing Order Pending on Closure Date",
+      "properties": {
+        "decision_question": "Is a standing order pending execution on the account closure date?",
+        "criteria": "Standing order scheduled date matches or precedes account closure date",
+        "decision_maker": "Account Operations System",
+        "path_yes": "Execute final standing order before closing account",
+        "path_no": "Proceed directly to account closure"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_002",
+      "name": "Dispute Received After Closure",
+      "properties": {
+        "decision_question": "Is the dispute claim valid and warrants account closure reversal?",
+        "criteria": "Dispute investigation findings; evidence of customer claim merit",
+        "decision_maker": "Dispute Investigation Team",
+        "path_yes": "Reverse account closure; reopen account or investigate further",
+        "path_no": "Uphold account closure; deny dispute claim"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_003",
+      "name": "Customer Re-opening Request",
+      "properties": {
+        "decision_question": "Should the account be reopened or a new account created?",
+        "criteria": "Customer eligibility; KYC verification status; regulatory requirements",
+        "decision_maker": "Account Management Team",
+        "path_yes": "Proceed with new account opening; perform full KYC verification",
+        "path_no": "Deny re-opening request; advise customer of reasons"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_kyc_001",
+      "name": "KYC Verification",
+      "properties": {
+        "mandatory": "yes",
+        "timing_or_refresh_frequency": "Required for new account opening; required for account re-opening after closure",
+        "verification_method": "Document collection and verification; identity and address confirmation",
+        "consequence_of_failure": "Account opening denied; customer ineligible to proceed"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_so_001",
+      "name": "Standing Order",
+      "properties": {
+        "setup_or_amendment_process": "Standing order scheduled and recorded in system",
+        "cancellation_process": "Final standing order executed before account closure",
+        "failure_handling": "If standing order fails to execute on closure date, account closure is delayed pending resolution"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_acc_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_type": "savings | current",
+        "account_state": "active | closed",
+        "closure_or_freeze_conditions": "Account closed on customer request; may be reopened if dispute investigation warrants reversal"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "individual | existing",
+        "context_role": "Account holder requesting closure, re-opening, or disputing post-closure"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_txn_001",
+      "name": "Unclaimed Check Payment",
+      "properties": {
+        "transaction_type": "payment | unclaimed",
+        "monitoring_or_reporting_obligation": "Hold for 6 months; escalate to unclaimed money procedures if not collected",
+        "threshold_value": "none"
+      },
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_001",
+      "target_name": "Execute Final Standing Order",
+      "rel_type": "contains",
+      "description": "Account Closure Process includes the step to execute final standing orders before closure",
+      "properties": {
+        "sequence_position": 1,
+        "conditional": true
+      },
+      "context": "Pending standing order on closure date | Timing issue | Execute final SO, then close",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_002",
+      "target_name": "Close Account",
+      "rel_type": "contains",
+      "description": "Account Closure Process includes the step to close the account",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Execute final SO, then close",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_001",
+      "target_name": "Standing Order Pending on Closure Date",
+      "rel_type": "branches_at",
+      "description": "Account Closure Process branches at decision point regarding pending standing orders",
+      "properties": {
+        "decision_type": "conditional_execution"
+      },
+      "context": "Pending standing order on closure date | Timing issue | Execute final SO, then close",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_002",
+      "source_name": "Account Re-opening Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_006",
+      "target_name": "Perform Full KYC Verification",
+      "rel_type": "requires",
+      "description": "Account Re-opening Process requires full KYC verification",
+      "properties": {
+        "mandatory": true
+      },
+      "context": "Customer requests re-opening | Changed mind | New account opening required (full KYC)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_002",
+      "source_name": "Account Re-opening Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_003",
+      "target_name": "Customer Re-opening Request",
+      "rel_type": "branches_at",
+      "description": "Account Re-opening Process branches at decision point for customer re-opening requests",
+      "properties": {
+        "decision_type": "customer_initiated"
+      },
+      "context": "Customer requests re-opening | Changed mind | New account opening required (full KYC)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_003",
+      "source_name": "Unclaimed Money Procedure",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_004",
+      "target_name": "Hold Unclaimed Payment",
+      "rel_type": "contains",
+      "description": "Unclaimed Money Procedure includes the step to hold unclaimed payments",
+      "properties": {
+        "hold_duration_months": 6,
+        "sequence_position": 1
+      },
+      "context": "Customer doesn't collect check | Payment delay | Hold 6 months, escalate to unclaimed money procedures",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_003",
+      "source_name": "Unclaimed Money Procedure",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_005",
+      "target_name": "Escalate to Unclaimed Money Procedures",
+      "rel_type": "contains",
+      "description": "Unclaimed Money Procedure includes escalation step after hold period",
+      "properties": {
+        "sequence_position": 2,
+        "trigger": "after_6_month_hold"
+      },
+      "context": "Hold 6 months, escalate to unclaimed money procedures",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_004",
+      "source_name": "Post-Closure Dispute Investigation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_003",
+      "target_name": "Reopen Investigation",
+      "rel_type": "contains",
+      "description": "Post-Closure Dispute Investigation includes reopening investigation step",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Dispute received after closure | Customer claim | Reopen investigation, may reverse closure if warranted",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_004",
+      "source_name": "Post-Closure Dispute Investigation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_002",
+      "target_name": "Dispute Received After Closure",
+      "rel_type": "branches_at",
+      "description": "Post-Closure Dispute Investigation branches at decision point for disputes after closure",
+      "properties": {
+        "decision_type": "dispute_evaluation"
+      },
+      "context": "Dispute received after closure | Customer claim | Reopen investigation, may reverse closure if warranted",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_001",
+      "source_name": "Execute Final Standing Order",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_002",
+      "target_name": "Close Account",
+      "rel_type": "followed_by",
+      "description": "Execute Final Standing Order is followed by Close Account step",
+      "properties": {
+        "sequence": "immediate_succession"
+      },
+      "context": "Execute final SO, then close",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_001",
+      "source_name": "Execute Final Standing Order",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "processes_mandate_for",
+      "description": "Execute Final Standing Order step processes the standing order mandate",
+      "properties": {
+        "timing": "on_closure_date"
+      },
+      "context": "Pending standing order on closure date | Timing issue | Execute final SO, then close",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_002",
+      "source_name": "Close Account",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "closes",
+      "description": "Close Account step closes the customer account",
+      "properties": {},
+      "context": "Execute final SO, then close",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_003",
+      "source_name": "Reopen Investigation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "updates",
+      "description": "Reopen Investigation step may reverse closure and update account status",
+      "properties": {
+        "potential_outcome": "closure_reversal"
+      },
+      "context": "Reopen investigation, may reverse closure if warranted",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_004",
+      "source_name": "Hold Unclaimed Payment",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_txn_001",
+      "target_name": "Unclaimed Check Payment",
+      "rel_type": "records",
+      "description": "Hold Unclaimed Payment step records the unclaimed check payment",
+      "properties": {
+        "hold_duration_months": 6
+      },
+      "context": "Customer doesn't collect check | Payment delay | Hold 6 months, escalate to unclaimed money procedures",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_005",
+      "source_name": "Escalate to Unclaimed Money Procedures",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_003",
+      "target_name": "Unclaimed Money Procedure",
+      "rel_type": "triggers",
+      "description": "Escalate to Unclaimed Money Procedures step triggers the full unclaimed money procedure",
+      "properties": {
+        "trigger_condition": "after_6_month_hold"
+      },
+      "context": "Hold 6 months, escalate to unclaimed money procedures",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_006",
+      "source_name": "Perform Full KYC Verification",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_kyc_001",
+      "target_name": "KYC Verification",
+      "rel_type": "executes",
+      "description": "Perform Full KYC Verification step executes KYC verification",
+      "properties": {
+        "scope": "full",
+        "context": "account_reopening"
+      },
+      "context": "New account opening required (full KYC)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_001",
+      "source_name": "Standing Order Pending on Closure Date",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_001",
+      "target_name": "Execute Final Standing Order",
+      "rel_type": "routes_to_on_pass",
+      "description": "If standing order is pending, decision routes to execute final standing order",
+      "properties": {
+        "condition": "standing_order_exists"
+      },
+      "context": "Pending standing order on closure date | Timing issue | Execute final SO, then close",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_002",
+      "source_name": "Dispute Received After Closure",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_003",
+      "target_name": "Reopen Investigation",
+      "rel_type": "routes_to_on_pass",
+      "description": "If dispute is received after closure, decision routes to reopen investigation",
+      "properties": {
+        "condition": "dispute_valid"
+      },
+      "context": "Dispute received after closure | Customer claim | Reopen investigation, may reverse closure if warranted",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_003",
+      "source_name": "Customer Re-opening Request",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_006",
+      "target_name": "Perform Full KYC Verification",
+      "rel_type": "routes_to_on_pass",
+      "description": "If customer requests re-opening, decision routes to perform full KYC verification",
+      "properties": {
+        "condition": "reopening_approved"
+      },
+      "context": "Customer requests re-opening | Changed mind | New account opening required (full KYC)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_kyc_001",
+      "source_name": "KYC Verification",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_cust_001",
+      "target_name": "Customer",
+      "rel_type": "verified_by",
+      "description": "KYC Verification is performed on the customer",
+      "properties": {
+        "scope": "full",
+        "context": "account_reopening"
+      },
+      "context": "New account opening required (full KYC)",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "set_up_on",
+      "description": "Standing Order is set up on the customer account",
+      "properties": {},
+      "context": "Pending standing order on closure date",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_cust_001",
+      "target_name": "Customer",
+      "rel_type": "held_by",
+      "description": "Customer Account is held by the customer",
+      "properties": {},
+      "context": "Customer requests re-opening, Dispute received after closure, Customer doesn't collect check",
+      "bidirectional": true,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_txn_001",
+      "source_name": "Unclaimed Check Payment",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "has_associated",
+      "description": "Unclaimed Check Payment is associated with the customer account",
+      "properties": {
+        "status": "unclaimed",
+        "hold_duration_months": 6
+      },
+      "context": "Customer doesn't collect check | Payment delay | Hold 6 months",
+      "bidirectional": false,
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_001",
+      "source_name": "Account Closure Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_002",
+      "source_name": "Account Re-opening Process",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_003",
+      "source_name": "Unclaimed Money Procedure",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_proc_004",
+      "source_name": "Post-Closure Dispute Investigation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_001",
+      "source_name": "Execute Final Standing Order",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_002",
+      "source_name": "Close Account",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_003",
+      "source_name": "Reopen Investigation",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_004",
+      "source_name": "Hold Unclaimed Payment",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_005",
+      "source_name": "Escalate to Unclaimed Money Procedures",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_pstep_006",
+      "source_name": "Perform Full KYC Verification",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_001",
+      "source_name": "Standing Order Pending on Closure Date",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_002",
+      "source_name": "Dispute Received After Closure",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_dp_003",
+      "source_name": "Customer Re-opening Request",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_kyc_001",
+      "source_name": "KYC Verification",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022_txn_001",
+      "source_name": "Unclaimed Check Payment",
+      "target_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "target_name": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1_022",
+      "doc_id": "01a073ea-26af-75e9-80a5-913d05ab2ce1",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

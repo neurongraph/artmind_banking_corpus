@@ -1,0 +1,1010 @@
+{
+  "chunk_seq": 9,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "## Step 2: Verify Customer Identity  \n### Authentication Requirements  \n**For Online Self-Service:**\n- 2FA code sent to registered phone\n- Customer enters code\n- Biometric login (if enabled)\n- **Risk Level:** Low (already authenticated in system)  \n**For Branch Visit:**\n- Check government-issued ID (Passport/Driving License)\n- Compare photo to customer\n- Compare ID address to existing records\n- Verify account holder relationship\n- **Risk Level:** Low (in-person verification)  \n**For Phone/Email Request:**\n- Verify using security questions\n- Confirm date of birth\n- Last 4 digits of account number\n- Mother's maiden name (if on file)\n- Confirm contact details on record\n- **Risk Level:** Medium (remote verification)",
+  "name": "Chunk 9/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_008",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_010",
+  "raw_entities": [
+    {
+      "id": "ps_001",
+      "name": "Customer Identity Verification",
+      "aliases": [
+        "Step 2: Verify Customer Identity",
+        "Identity Verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "A multi-channel identity verification step that authenticates customers through online self-service, branch visit, or remote phone/email request. The step employs risk-differentiated authentication methods ranging from 2FA and biometric login for online channels to government-issued ID checks for in-person visits and security question verification for remote requests.",
+      "context": [
+        "Step 2: Verify Customer Identity",
+        "For Online Self-Service: 2FA code sent to registered phone, Customer enters code, Biometric login (if enabled)",
+        "For Branch Visit: Check government-issued ID (Passport/Driving License), Compare photo to customer, Compare ID address to existing records",
+        "For Phone/Email Request: Verify using security questions, Confirm date of birth, Last 4 digits of account number, Mother's maiden name (if on file)"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Online Self-Service Authentication Actor",
+      "aliases": [
+        "Online System",
+        "Self-Service Channel"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "The automated system responsible for executing online self-service identity verification through 2FA code delivery, code validation, and optional biometric authentication.",
+      "context": [
+        "For Online Self-Service: 2FA code sent to registered phone",
+        "Customer enters code",
+        "Biometric login (if enabled)"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Branch Staff Identity Verifier",
+      "aliases": [
+        "Branch Staff",
+        "In-Person Verifier"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "branch_staff",
+      "description": "Branch staff member responsible for conducting in-person identity verification by examining government-issued identification documents, comparing photographic identity to the customer, and validating address and account holder relationship.",
+      "context": [
+        "For Branch Visit: Check government-issued ID (Passport/Driving License)",
+        "Compare photo to customer",
+        "Compare ID address to existing records",
+        "Verify account holder relationship"
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Phone/Email Verification Agent",
+      "aliases": [
+        "Remote Verification Agent",
+        "Customer Service Agent"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer_service",
+      "description": "Customer service agent or automated system responsible for remote identity verification via phone or email using security questions, date of birth confirmation, account number validation, and contact detail verification.",
+      "context": [
+        "For Phone/Email Request: Verify using security questions",
+        "Confirm date of birth",
+        "Last 4 digits of account number",
+        "Confirm contact details on record"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Channel Selection Gate",
+      "aliases": [
+        "Authentication Channel Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "A branching point that routes customer identity verification through one of three channels: online self-service, branch visit, or phone/email request. Each channel applies different authentication methods and carries a distinct risk classification.",
+      "context": [
+        "For Online Self-Service:",
+        "For Branch Visit:",
+        "For Phone/Email Request:"
+      ]
+    },
+    {
+      "id": "id_001",
+      "name": "Passport Verification",
+      "aliases": [
+        "Passport Check"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "passport_verification",
+      "description": "Government-issued passport document accepted as valid identification during in-person branch verification. The document is checked for authenticity and compared against the customer's appearance.",
+      "context": [
+        "Check government-issued ID (Passport/Driving License)"
+      ]
+    },
+    {
+      "id": "id_002",
+      "name": "Driving License Verification",
+      "aliases": [
+        "Driving License Check"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "driving_licence_check",
+      "description": "Government-issued driving license document accepted as valid identification during in-person branch verification. The document is checked for authenticity and compared against the customer's appearance.",
+      "context": [
+        "Check government-issued ID (Passport/Driving License)"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Address Verification Against Records",
+      "aliases": [
+        "Address Comparison",
+        "Address Validation"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "A verification step during in-person branch visits where the address recorded on the customer's government-issued identification document is compared against the address held in the bank's existing records to confirm consistency.",
+      "context": [
+        "Compare ID address to existing records"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Online Self-Service Risk Classification",
+      "aliases": [
+        "Online Risk Level"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A compliance gate that classifies online self-service identity verification as low risk due to the customer already being authenticated in the system through 2FA and biometric methods.",
+      "context": [
+        "Risk Level: Low (already authenticated in system)"
+      ]
+    },
+    {
+      "id": "cc_002",
+      "name": "Branch Visit Risk Classification",
+      "aliases": [
+        "In-Person Risk Level"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A compliance gate that classifies in-person branch identity verification as low risk due to the physical presence of the customer and direct document examination by staff.",
+      "context": [
+        "Risk Level: Low (in-person verification)"
+      ]
+    },
+    {
+      "id": "cc_003",
+      "name": "Remote Verification Risk Classification",
+      "aliases": [
+        "Phone/Email Risk Level"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A compliance gate that classifies remote phone or email identity verification as medium risk due to the absence of in-person confirmation and reliance on knowledge-based authentication factors.",
+      "context": [
+        "Risk Level: Medium (remote verification)"
+      ]
+    }
+  ],
+  "id_map": {
+    "ps_001": "01a07400-ba86-72f1-8b22-d07b32649491_009_ps_001",
+    "ra_001": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_001",
+    "ra_002": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_002",
+    "ra_003": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_003",
+    "dp_001": "01a07400-ba86-72f1-8b22-d07b32649491_009_dp_001",
+    "id_001": "01a07400-ba86-72f1-8b22-d07b32649491_009_id_001",
+    "id_002": "01a07400-ba86-72f1-8b22-d07b32649491_009_id_002",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_009_addr_001",
+    "cc_001": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_001",
+    "cc_002": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_002",
+    "cc_003": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_003"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ps_001",
+      "name": "Customer Identity Verification",
+      "aliases": [
+        "Step 2: Verify Customer Identity",
+        "Identity Verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "A multi-channel identity verification step that authenticates customers through online self-service, branch visit, or remote phone/email request. The step employs risk-differentiated authentication methods ranging from 2FA and biometric login for online channels to government-issued ID checks for in-person visits and security question verification for remote requests.",
+      "context": [
+        "Step 2: Verify Customer Identity",
+        "For Online Self-Service: 2FA code sent to registered phone, Customer enters code, Biometric login (if enabled)",
+        "For Branch Visit: Check government-issued ID (Passport/Driving License), Compare photo to customer, Compare ID address to existing records",
+        "For Phone/Email Request: Verify using security questions, Confirm date of birth, Last 4 digits of account number, Mother's maiden name (if on file)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_001",
+      "name": "Online Self-Service Authentication Actor",
+      "aliases": [
+        "Online System",
+        "Self-Service Channel"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "The automated system responsible for executing online self-service identity verification through 2FA code delivery, code validation, and optional biometric authentication.",
+      "context": [
+        "For Online Self-Service: 2FA code sent to registered phone",
+        "Customer enters code",
+        "Biometric login (if enabled)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_002",
+      "name": "Branch Staff Identity Verifier",
+      "aliases": [
+        "Branch Staff",
+        "In-Person Verifier"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "branch_staff",
+      "description": "Branch staff member responsible for conducting in-person identity verification by examining government-issued identification documents, comparing photographic identity to the customer, and validating address and account holder relationship.",
+      "context": [
+        "For Branch Visit: Check government-issued ID (Passport/Driving License)",
+        "Compare photo to customer",
+        "Compare ID address to existing records",
+        "Verify account holder relationship"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_003",
+      "name": "Phone/Email Verification Agent",
+      "aliases": [
+        "Remote Verification Agent",
+        "Customer Service Agent"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "customer_service",
+      "description": "Customer service agent or automated system responsible for remote identity verification via phone or email using security questions, date of birth confirmation, account number validation, and contact detail verification.",
+      "context": [
+        "For Phone/Email Request: Verify using security questions",
+        "Confirm date of birth",
+        "Last 4 digits of account number",
+        "Confirm contact details on record"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_dp_001",
+      "name": "Channel Selection Gate",
+      "aliases": [
+        "Authentication Channel Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "A branching point that routes customer identity verification through one of three channels: online self-service, branch visit, or phone/email request. Each channel applies different authentication methods and carries a distinct risk classification.",
+      "context": [
+        "For Online Self-Service:",
+        "For Branch Visit:",
+        "For Phone/Email Request:"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_id_001",
+      "name": "Passport Verification",
+      "aliases": [
+        "Passport Check"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "passport_verification",
+      "description": "Government-issued passport document accepted as valid identification during in-person branch verification. The document is checked for authenticity and compared against the customer's appearance.",
+      "context": [
+        "Check government-issued ID (Passport/Driving License)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_id_002",
+      "name": "Driving License Verification",
+      "aliases": [
+        "Driving License Check"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "driving_licence_check",
+      "description": "Government-issued driving license document accepted as valid identification during in-person branch verification. The document is checked for authenticity and compared against the customer's appearance.",
+      "context": [
+        "Check government-issued ID (Passport/Driving License)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_addr_001",
+      "name": "Address Verification Against Records",
+      "aliases": [
+        "Address Comparison",
+        "Address Validation"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "A verification step during in-person branch visits where the address recorded on the customer's government-issued identification document is compared against the address held in the bank's existing records to confirm consistency.",
+      "context": [
+        "Compare ID address to existing records"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_001",
+      "name": "Online Self-Service Risk Classification",
+      "aliases": [
+        "Online Risk Level"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A compliance gate that classifies online self-service identity verification as low risk due to the customer already being authenticated in the system through 2FA and biometric methods.",
+      "context": [
+        "Risk Level: Low (already authenticated in system)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_002",
+      "name": "Branch Visit Risk Classification",
+      "aliases": [
+        "In-Person Risk Level"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A compliance gate that classifies in-person branch identity verification as low risk due to the physical presence of the customer and direct document examination by staff.",
+      "context": [
+        "Risk Level: Low (in-person verification)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_003",
+      "name": "Remote Verification Risk Classification",
+      "aliases": [
+        "Phone/Email Risk Level"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A compliance gate that classifies remote phone or email identity verification as medium risk due to the absence of in-person confirmation and reliance on knowledge-based authentication factors.",
+      "context": [
+        "Risk Level: Medium (remote verification)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ps_001",
+      "name": "Customer Identity Verification",
+      "properties": {
+        "step_number": 2,
+        "channel": [
+          "online",
+          "branch",
+          "phone",
+          "email"
+        ],
+        "mandatory": "yes",
+        "actor": [
+          "ra_001",
+          "ra_002",
+          "ra_003"
+        ],
+        "input": [
+          "registered_phone_number",
+          "government_issued_id",
+          "security_questions",
+          "account_number",
+          "date_of_birth",
+          "contact_details_on_record"
+        ],
+        "output": [
+          "identity_verified_status",
+          "risk_classification"
+        ],
+        "tools_or_systems": [
+          "2FA_system",
+          "biometric_authentication",
+          "account_records_system"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_001",
+      "name": "Online Self-Service Authentication Actor",
+      "properties": {
+        "role_type": "system",
+        "channel": [
+          "online"
+        ],
+        "authority_level": "automated_verification",
+        "response_time_sla": "immediate"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_002",
+      "name": "Branch Staff Identity Verifier",
+      "properties": {
+        "role_type": "human",
+        "department": "branch_operations",
+        "channel": [
+          "branch"
+        ],
+        "authority_level": "verification_and_comparison",
+        "response_time_sla": "during_branch_visit"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_003",
+      "name": "Phone/Email Verification Agent",
+      "properties": {
+        "role_type": "human",
+        "channel": [
+          "phone",
+          "email"
+        ],
+        "authority_level": "remote_verification",
+        "response_time_sla": "during_contact"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_dp_001",
+      "name": "Channel Selection Gate",
+      "properties": {
+        "decision_question": "Which verification channel will the customer use?",
+        "criteria": [
+          "customer_preference",
+          "account_status",
+          "authentication_capability"
+        ],
+        "path_yes": [
+          "proceed_with_selected_channel"
+        ],
+        "path_no": [
+          "escalate_to_alternative_channel"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_id_001",
+      "name": "Passport Verification",
+      "properties": {
+        "accepted_types": [
+          "passport"
+        ],
+        "collection_steps": [
+          "customer_presents_passport_at_branch"
+        ],
+        "verification_steps": [
+          "photo_comparison_to_customer",
+          "address_comparison_to_records"
+        ],
+        "expiry_check": "yes"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_id_002",
+      "name": "Driving License Verification",
+      "properties": {
+        "accepted_types": [
+          "driving_license"
+        ],
+        "collection_steps": [
+          "customer_presents_license_at_branch"
+        ],
+        "verification_steps": [
+          "photo_comparison_to_customer",
+          "address_comparison_to_records"
+        ],
+        "expiry_check": "yes"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_addr_001",
+      "name": "Address Verification Against Records",
+      "properties": {
+        "collection_steps": [
+          "address_on_government_id",
+          "address_on_account_records"
+        ],
+        "verification_steps": [
+          "compare_id_address_to_existing_records"
+        ],
+        "channel": [
+          "branch"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_001",
+      "name": "Online Self-Service Risk Classification",
+      "properties": {
+        "regulatory_basis": "customer_risk_assessment",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "online"
+        ],
+        "evidence_required": [
+          "2FA_authentication_log",
+          "biometric_verification_log"
+        ],
+        "performed_by": "ra_001",
+        "timing": "during_online_authentication",
+        "risk_level": "low"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_002",
+      "name": "Branch Visit Risk Classification",
+      "properties": {
+        "regulatory_basis": "customer_risk_assessment",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "branch"
+        ],
+        "evidence_required": [
+          "government_issued_id",
+          "photo_comparison_record",
+          "address_verification_record"
+        ],
+        "performed_by": "ra_002",
+        "timing": "during_branch_visit",
+        "risk_level": "low"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_003",
+      "name": "Remote Verification Risk Classification",
+      "properties": {
+        "regulatory_basis": "customer_risk_assessment",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "phone",
+          "email"
+        ],
+        "evidence_required": [
+          "security_question_responses",
+          "date_of_birth_confirmation",
+          "account_number_last_4_digits",
+          "mothers_maiden_name",
+          "contact_details_confirmation"
+        ],
+        "performed_by": "ra_003",
+        "timing": "during_phone_or_email_contact",
+        "risk_level": "medium"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ps_001",
+      "source_name": "Customer Identity Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_dp_001",
+      "target_name": "Channel Selection Gate",
+      "rel_type": "leads_to",
+      "description": "Customer Identity Verification process step leads to a decision point where the verification channel is selected",
+      "properties": {
+        "channels": [
+          "Online Self-Service",
+          "Branch Visit",
+          "Phone/Email Request"
+        ]
+      },
+      "context": "Step 2: Verify Customer Identity with multiple authentication requirements for different channels",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_dp_001",
+      "source_name": "Channel Selection Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_001",
+      "target_name": "Online Self-Service Authentication Actor",
+      "rel_type": "routes_to_on_pass",
+      "description": "Channel Selection Gate routes to Online Self-Service Authentication Actor when online channel is selected",
+      "properties": {
+        "channel": "Online Self-Service",
+        "risk_level": "Low"
+      },
+      "context": "For Online Self-Service: 2FA code sent to registered phone, Customer enters code, Biometric login (if enabled), Risk Level: Low",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_dp_001",
+      "source_name": "Channel Selection Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_002",
+      "target_name": "Branch Staff Identity Verifier",
+      "rel_type": "routes_to_on_pass",
+      "description": "Channel Selection Gate routes to Branch Staff Identity Verifier when branch visit channel is selected",
+      "properties": {
+        "channel": "Branch Visit",
+        "risk_level": "Low"
+      },
+      "context": "For Branch Visit: Check government-issued ID (Passport/Driving License), Compare photo to customer, Compare ID address to existing records, Risk Level: Low",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_dp_001",
+      "source_name": "Channel Selection Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_003",
+      "target_name": "Phone/Email Verification Agent",
+      "rel_type": "routes_to_on_pass",
+      "description": "Channel Selection Gate routes to Phone/Email Verification Agent when remote verification channel is selected",
+      "properties": {
+        "channel": "Phone/Email Request",
+        "risk_level": "Medium"
+      },
+      "context": "For Phone/Email Request: Verify using security questions, Confirm date of birth, Last 4 digits of account number, Risk Level: Medium",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_001",
+      "source_name": "Online Self-Service Authentication Actor",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_001",
+      "target_name": "Online Self-Service Risk Classification",
+      "rel_type": "triggers",
+      "description": "Online Self-Service Authentication Actor triggers the Online Self-Service Risk Classification checkpoint",
+      "properties": {
+        "risk_level": "Low",
+        "authentication_methods": [
+          "2FA code",
+          "Biometric login"
+        ]
+      },
+      "context": "For Online Self-Service: 2FA code sent to registered phone, Customer enters code, Biometric login (if enabled), Risk Level: Low (already authenticated in system)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_002",
+      "source_name": "Branch Staff Identity Verifier",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_id_001",
+      "target_name": "Passport Verification",
+      "rel_type": "verifies_identity_of",
+      "description": "Branch Staff Identity Verifier checks and verifies Passport as government-issued identification",
+      "properties": {
+        "verification_type": "government-issued ID",
+        "checks": [
+          "photo comparison",
+          "address comparison"
+        ]
+      },
+      "context": "For Branch Visit: Check government-issued ID (Passport/Driving License), Compare photo to customer, Compare ID address to existing records",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_002",
+      "source_name": "Branch Staff Identity Verifier",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_id_002",
+      "target_name": "Driving License Verification",
+      "rel_type": "verifies_identity_of",
+      "description": "Branch Staff Identity Verifier checks and verifies Driving License as government-issued identification",
+      "properties": {
+        "verification_type": "government-issued ID",
+        "checks": [
+          "photo comparison",
+          "address comparison"
+        ]
+      },
+      "context": "For Branch Visit: Check government-issued ID (Passport/Driving License), Compare photo to customer, Compare ID address to existing records",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_002",
+      "source_name": "Branch Staff Identity Verifier",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_addr_001",
+      "target_name": "Address Verification Against Records",
+      "rel_type": "verifies_identity_of",
+      "description": "Branch Staff Identity Verifier compares ID address to existing customer records",
+      "properties": {
+        "verification_type": "address comparison",
+        "source": "ID document"
+      },
+      "context": "For Branch Visit: Compare ID address to existing records",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_002",
+      "source_name": "Branch Staff Identity Verifier",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_002",
+      "target_name": "Branch Visit Risk Classification",
+      "rel_type": "triggers",
+      "description": "Branch Staff Identity Verifier triggers the Branch Visit Risk Classification checkpoint",
+      "properties": {
+        "risk_level": "Low",
+        "verification_method": "in-person"
+      },
+      "context": "For Branch Visit: Verify account holder relationship, Risk Level: Low (in-person verification)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_003",
+      "source_name": "Phone/Email Verification Agent",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_003",
+      "target_name": "Remote Verification Risk Classification",
+      "rel_type": "triggers",
+      "description": "Phone/Email Verification Agent triggers the Remote Verification Risk Classification checkpoint",
+      "properties": {
+        "risk_level": "Medium",
+        "verification_methods": [
+          "security questions",
+          "date of birth",
+          "account number last 4 digits",
+          "mother's maiden name",
+          "contact details confirmation"
+        ]
+      },
+      "context": "For Phone/Email Request: Verify using security questions, Confirm date of birth, Last 4 digits of account number, Mother's maiden name (if on file), Confirm contact details on record, Risk Level: Medium (remote verification)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_001",
+      "source_name": "Online Self-Service Risk Classification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_dp_001",
+      "target_name": "Channel Selection Gate",
+      "rel_type": "gates",
+      "description": "Online Self-Service Risk Classification checkpoint gates the Channel Selection decision point outcome",
+      "properties": {
+        "risk_level": "Low",
+        "classification_basis": "already authenticated in system"
+      },
+      "context": "For Online Self-Service: Risk Level: Low (already authenticated in system)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_002",
+      "source_name": "Branch Visit Risk Classification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_dp_001",
+      "target_name": "Channel Selection Gate",
+      "rel_type": "gates",
+      "description": "Branch Visit Risk Classification checkpoint gates the Channel Selection decision point outcome",
+      "properties": {
+        "risk_level": "Low",
+        "classification_basis": "in-person verification"
+      },
+      "context": "For Branch Visit: Risk Level: Low (in-person verification)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_003",
+      "source_name": "Remote Verification Risk Classification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_dp_001",
+      "target_name": "Channel Selection Gate",
+      "rel_type": "gates",
+      "description": "Remote Verification Risk Classification checkpoint gates the Channel Selection decision point outcome",
+      "properties": {
+        "risk_level": "Medium",
+        "classification_basis": "remote verification"
+      },
+      "context": "For Phone/Email Request: Risk Level: Medium (remote verification)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_id_001",
+      "source_name": "Passport Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_002",
+      "target_name": "Branch Staff Identity Verifier",
+      "rel_type": "belongs_to",
+      "description": "Passport Verification document is checked by Branch Staff Identity Verifier",
+      "properties": {
+        "document_type": "government-issued ID",
+        "verification_checks": [
+          "photo comparison",
+          "address comparison"
+        ]
+      },
+      "context": "For Branch Visit: Check government-issued ID (Passport/Driving License), Compare photo to customer",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_id_002",
+      "source_name": "Driving License Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_002",
+      "target_name": "Branch Staff Identity Verifier",
+      "rel_type": "belongs_to",
+      "description": "Driving License Verification document is checked by Branch Staff Identity Verifier",
+      "properties": {
+        "document_type": "government-issued ID",
+        "verification_checks": [
+          "photo comparison",
+          "address comparison"
+        ]
+      },
+      "context": "For Branch Visit: Check government-issued ID (Passport/Driving License), Compare photo to customer",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_addr_001",
+      "source_name": "Address Verification Against Records",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_002",
+      "target_name": "Branch Staff Identity Verifier",
+      "rel_type": "belongs_to",
+      "description": "Address Verification Against Records is performed by Branch Staff Identity Verifier",
+      "properties": {
+        "verification_type": "address comparison",
+        "comparison_source": "existing records"
+      },
+      "context": "For Branch Visit: Compare ID address to existing records",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ps_001",
+      "source_name": "Customer Identity Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_001",
+      "source_name": "Online Self-Service Authentication Actor",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_002",
+      "source_name": "Branch Staff Identity Verifier",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_ra_003",
+      "source_name": "Phone/Email Verification Agent",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_dp_001",
+      "source_name": "Channel Selection Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_id_001",
+      "source_name": "Passport Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_id_002",
+      "source_name": "Driving License Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_addr_001",
+      "source_name": "Address Verification Against Records",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_001",
+      "source_name": "Online Self-Service Risk Classification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_002",
+      "source_name": "Branch Visit Risk Classification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_009_cc_003",
+      "source_name": "Remote Verification Risk Classification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_009",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

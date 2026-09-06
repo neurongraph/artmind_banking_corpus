@@ -1,0 +1,1403 @@
+{
+  "chunk_seq": 18,
+  "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+  "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+  "text": "### Screening Process  \n**Step 1: Name Screening**\n- Customer name screened against all lists\n- System automatically performs checks\n- Results available in <1 minute  \n**Step 2: Match Assessment**\n- If no match: Proceed to next step\n- If match found: Manual review by Compliance\n- False positive assessment (name similarity vs. true match)  \n**Step 3: Hit Handling**\n- If sanctions match: Escalate immediately, account blocked, Compliance notified\n- If PEP match: Enhanced due diligence required\n- If adverse media: Risk assessment, possible rejection  \n**Step 4: Record**\n- Document screening result in system\n- Record any matches and resolution\n- Link to account record  \n**Processing Time:** 5–10 minutes (automated with manual review if needed)  \n---",
+  "name": "Chunk 18/37",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_017",
+  "next_chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_019",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Screening Process",
+      "aliases": [
+        "Name Screening",
+        "Customer Screening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "aml_screening",
+      "description": "An end-to-end AML screening workflow that performs automated name-based checks against sanctions, PEP, and adverse media lists, with manual review and escalation gates for matches. The process includes match assessment, hit handling with risk-based branching, and system recording of results.",
+      "context": [
+        "### Screening Process",
+        "Customer name screened against all lists",
+        "Processing Time: 5–10 minutes (automated with manual review if needed)"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Name Screening",
+      "aliases": [
+        "Step 1"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Automated system check of customer name against all screening lists. Results are generated within 1 minute.",
+      "context": [
+        "Step 1: Name Screening",
+        "Customer name screened against all lists",
+        "System automatically performs checks",
+        "Results available in <1 minute"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Match Assessment",
+      "aliases": [
+        "Step 2"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Manual review by Compliance staff to assess whether a name match is a true positive or false positive based on name similarity. If no match is found, the process proceeds to the next step.",
+      "context": [
+        "Step 2: Match Assessment",
+        "If no match: Proceed to next step",
+        "If match found: Manual review by Compliance",
+        "False positive assessment (name similarity vs. true match)"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Hit Handling",
+      "aliases": [
+        "Step 3"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Risk-based handling of screening matches with three distinct paths: sanctions matches trigger immediate escalation and account blocking; PEP matches require enhanced due diligence; adverse media matches trigger risk assessment and possible rejection.",
+      "context": [
+        "Step 3: Hit Handling",
+        "If sanctions match: Escalate immediately, account blocked, Compliance notified",
+        "If PEP match: Enhanced due diligence required",
+        "If adverse media: Risk assessment, possible rejection"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Record",
+      "aliases": [
+        "Step 4"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Documentation of screening results in the system, including any matches found and their resolution, with linkage to the customer account record.",
+      "context": [
+        "Step 4: Record",
+        "Document screening result in system",
+        "Record any matches and resolution",
+        "Link to account record"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Compliance Officer",
+      "aliases": [
+        "Compliance",
+        "Compliance Staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "Manual reviewer responsible for assessing name matches for false positives and handling escalations. Notified of sanctions matches and responsible for enhanced due diligence decisions on PEP matches.",
+      "context": [
+        "If match found: Manual review by Compliance",
+        "If sanctions match: Escalate immediately, account blocked, Compliance notified",
+        "If PEP match: Enhanced due diligence required"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Screening System",
+      "aliases": [
+        "Automated System",
+        "System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system that performs name-based screening checks against all lists and records screening results in the system with linkage to account records.",
+      "context": [
+        "System automatically performs checks",
+        "Results available in <1 minute",
+        "Document screening result in system"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Name Match Found",
+      "aliases": [
+        "Match Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Branch point determining whether the name screening returned a match. No match leads to process continuation; a match triggers manual review by Compliance.",
+      "context": [
+        "If no match: Proceed to next step",
+        "If match found: Manual review by Compliance"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Match Type Classification",
+      "aliases": [
+        "Hit Type Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "Risk-based branching that classifies the type of match found and routes to appropriate handling: sanctions matches escalate immediately with account blocking, PEP matches require enhanced due diligence, and adverse media matches trigger risk assessment.",
+      "context": [
+        "If sanctions match: Escalate immediately, account blocked, Compliance notified",
+        "If PEP match: Enhanced due diligence required",
+        "If adverse media: Risk assessment, possible rejection"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Sanctions Screening Checkpoint",
+      "aliases": [
+        "Sanctions Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory compliance gate that verifies screening against sanctions lists. A positive match triggers immediate escalation, account blocking, and Compliance notification.",
+      "context": [
+        "Customer name screened against all lists",
+        "If sanctions match: Escalate immediately, account blocked, Compliance notified"
+      ]
+    },
+    {
+      "id": "cc_002",
+      "name": "PEP Screening Checkpoint",
+      "aliases": [
+        "PEP Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "pep_screening",
+      "description": "Mandatory compliance gate that verifies screening against PEP (Politically Exposed Person) lists. A positive match requires enhanced due diligence before proceeding.",
+      "context": [
+        "Customer name screened against all lists",
+        "If PEP match: Enhanced due diligence required"
+      ]
+    },
+    {
+      "id": "cc_003",
+      "name": "Adverse Media Screening Checkpoint",
+      "aliases": [
+        "Adverse Media Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "Mandatory compliance gate that verifies screening against adverse media sources. A positive match triggers risk assessment and may result in account rejection.",
+      "context": [
+        "Customer name screened against all lists",
+        "If adverse media: Risk assessment, possible rejection"
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "Sanctions Screening",
+      "aliases": [
+        "Sanctions List Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Automated screening of customer name against sanctions lists as part of the overall screening process. Positive matches result in immediate escalation and account blocking.",
+      "context": [
+        "Customer name screened against all lists",
+        "If sanctions match: Escalate immediately, account blocked, Compliance notified"
+      ]
+    },
+    {
+      "id": "aml_002",
+      "name": "PEP Screening",
+      "aliases": [
+        "PEP List Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "pep_screening",
+      "description": "Automated screening of customer name against PEP (Politically Exposed Person) lists. Positive matches require enhanced due diligence assessment.",
+      "context": [
+        "Customer name screened against all lists",
+        "If PEP match: Enhanced due diligence required"
+      ]
+    },
+    {
+      "id": "aml_003",
+      "name": "Adverse Media Screening",
+      "aliases": [
+        "Adverse Media Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "adverse_media_check",
+      "description": "Automated screening of customer name against adverse media sources. Positive matches trigger risk assessment and possible account rejection.",
+      "context": [
+        "Customer name screened against all lists",
+        "If adverse media: Risk assessment, possible rejection"
+      ]
+    },
+    {
+      "id": "kyc_001",
+      "name": "Enhanced Due Diligence",
+      "aliases": [
+        "EDD"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "enhanced_due_diligence",
+      "description": "Enhanced verification procedure required when a customer matches a PEP screening result. This additional due diligence is mandatory before the account can proceed.",
+      "context": [
+        "If PEP match: Enhanced due diligence required"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Applicant",
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual subject of the screening process whose name is checked against sanctions, PEP, and adverse media lists.",
+      "context": [
+        "Customer name screened against all lists",
+        "Link to account record"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_proc_001",
+    "pstep_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_001",
+    "pstep_002": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_002",
+    "pstep_003": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_003",
+    "pstep_004": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_004",
+    "ra_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_ra_001",
+    "ra_002": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_ra_002",
+    "dp_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_dp_001",
+    "dp_002": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_dp_002",
+    "cc_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_001",
+    "cc_002": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_002",
+    "cc_003": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_003",
+    "aml_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_001",
+    "aml_002": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_002",
+    "aml_003": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_003",
+    "kyc_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_kyc_001",
+    "cust_001": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_proc_001",
+      "name": "Screening Process",
+      "aliases": [
+        "Name Screening",
+        "Customer Screening"
+      ],
+      "entity_class": "PROCESS",
+      "type": "aml_screening",
+      "description": "An end-to-end AML screening workflow that performs automated name-based checks against sanctions, PEP, and adverse media lists, with manual review and escalation gates for matches. The process includes match assessment, hit handling with risk-based branching, and system recording of results.",
+      "context": [
+        "### Screening Process",
+        "Customer name screened against all lists",
+        "Processing Time: 5–10 minutes (automated with manual review if needed)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_001",
+      "name": "Name Screening",
+      "aliases": [
+        "Step 1"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Automated system check of customer name against all screening lists. Results are generated within 1 minute.",
+      "context": [
+        "Step 1: Name Screening",
+        "Customer name screened against all lists",
+        "System automatically performs checks",
+        "Results available in <1 minute"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_002",
+      "name": "Match Assessment",
+      "aliases": [
+        "Step 2"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Manual review by Compliance staff to assess whether a name match is a true positive or false positive based on name similarity. If no match is found, the process proceeds to the next step.",
+      "context": [
+        "Step 2: Match Assessment",
+        "If no match: Proceed to next step",
+        "If match found: Manual review by Compliance",
+        "False positive assessment (name similarity vs. true match)"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_003",
+      "name": "Hit Handling",
+      "aliases": [
+        "Step 3"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Risk-based handling of screening matches with three distinct paths: sanctions matches trigger immediate escalation and account blocking; PEP matches require enhanced due diligence; adverse media matches trigger risk assessment and possible rejection.",
+      "context": [
+        "Step 3: Hit Handling",
+        "If sanctions match: Escalate immediately, account blocked, Compliance notified",
+        "If PEP match: Enhanced due diligence required",
+        "If adverse media: Risk assessment, possible rejection"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_004",
+      "name": "Record",
+      "aliases": [
+        "Step 4"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Documentation of screening results in the system, including any matches found and their resolution, with linkage to the customer account record.",
+      "context": [
+        "Step 4: Record",
+        "Document screening result in system",
+        "Record any matches and resolution",
+        "Link to account record"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_ra_001",
+      "name": "Compliance Officer",
+      "aliases": [
+        "Compliance",
+        "Compliance Staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "Manual reviewer responsible for assessing name matches for false positives and handling escalations. Notified of sanctions matches and responsible for enhanced due diligence decisions on PEP matches.",
+      "context": [
+        "If match found: Manual review by Compliance",
+        "If sanctions match: Escalate immediately, account blocked, Compliance notified",
+        "If PEP match: Enhanced due diligence required"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_ra_002",
+      "name": "Screening System",
+      "aliases": [
+        "Automated System",
+        "System"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "automated_system",
+      "description": "Automated system that performs name-based screening checks against all lists and records screening results in the system with linkage to account records.",
+      "context": [
+        "System automatically performs checks",
+        "Results available in <1 minute",
+        "Document screening result in system"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_dp_001",
+      "name": "Name Match Found",
+      "aliases": [
+        "Match Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Branch point determining whether the name screening returned a match. No match leads to process continuation; a match triggers manual review by Compliance.",
+      "context": [
+        "If no match: Proceed to next step",
+        "If match found: Manual review by Compliance"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_dp_002",
+      "name": "Match Type Classification",
+      "aliases": [
+        "Hit Type Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "Risk-based branching that classifies the type of match found and routes to appropriate handling: sanctions matches escalate immediately with account blocking, PEP matches require enhanced due diligence, and adverse media matches trigger risk assessment.",
+      "context": [
+        "If sanctions match: Escalate immediately, account blocked, Compliance notified",
+        "If PEP match: Enhanced due diligence required",
+        "If adverse media: Risk assessment, possible rejection"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_001",
+      "name": "Sanctions Screening Checkpoint",
+      "aliases": [
+        "Sanctions Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory compliance gate that verifies screening against sanctions lists. A positive match triggers immediate escalation, account blocking, and Compliance notification.",
+      "context": [
+        "Customer name screened against all lists",
+        "If sanctions match: Escalate immediately, account blocked, Compliance notified"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_002",
+      "name": "PEP Screening Checkpoint",
+      "aliases": [
+        "PEP Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "pep_screening",
+      "description": "Mandatory compliance gate that verifies screening against PEP (Politically Exposed Person) lists. A positive match requires enhanced due diligence before proceeding.",
+      "context": [
+        "Customer name screened against all lists",
+        "If PEP match: Enhanced due diligence required"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_003",
+      "name": "Adverse Media Screening Checkpoint",
+      "aliases": [
+        "Adverse Media Check"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "Mandatory compliance gate that verifies screening against adverse media sources. A positive match triggers risk assessment and may result in account rejection.",
+      "context": [
+        "Customer name screened against all lists",
+        "If adverse media: Risk assessment, possible rejection"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_001",
+      "name": "Sanctions Screening",
+      "aliases": [
+        "Sanctions List Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Automated screening of customer name against sanctions lists as part of the overall screening process. Positive matches result in immediate escalation and account blocking.",
+      "context": [
+        "Customer name screened against all lists",
+        "If sanctions match: Escalate immediately, account blocked, Compliance notified"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_002",
+      "name": "PEP Screening",
+      "aliases": [
+        "PEP List Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "pep_screening",
+      "description": "Automated screening of customer name against PEP (Politically Exposed Person) lists. Positive matches require enhanced due diligence assessment.",
+      "context": [
+        "Customer name screened against all lists",
+        "If PEP match: Enhanced due diligence required"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_003",
+      "name": "Adverse Media Screening",
+      "aliases": [
+        "Adverse Media Check"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "adverse_media_check",
+      "description": "Automated screening of customer name against adverse media sources. Positive matches trigger risk assessment and possible account rejection.",
+      "context": [
+        "Customer name screened against all lists",
+        "If adverse media: Risk assessment, possible rejection"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_kyc_001",
+      "name": "Enhanced Due Diligence",
+      "aliases": [
+        "EDD"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "enhanced_due_diligence",
+      "description": "Enhanced verification procedure required when a customer matches a PEP screening result. This additional due diligence is mandatory before the account can proceed.",
+      "context": [
+        "If PEP match: Enhanced due diligence required"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Applicant",
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual subject of the screening process whose name is checked against sanctions, PEP, and adverse media lists.",
+      "context": [
+        "Customer name screened against all lists",
+        "Link to account record"
+      ],
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_proc_001",
+      "name": "Screening Process",
+      "properties": {
+        "purpose": "Screen customer names against sanctions, PEP, and adverse media lists",
+        "scope": "All customers undergoing account opening or verification",
+        "channels": [
+          "system",
+          "manual"
+        ],
+        "owner": "Compliance Officer",
+        "departments_involved": [
+          "Compliance"
+        ],
+        "timeline_sla": "5–10 minutes",
+        "regulatory_references": [
+          "Sanctions Regulations",
+          "PEP Requirements",
+          "Adverse Media Monitoring"
+        ],
+        "trigger": "Customer account opening or verification initiation",
+        "outcome_success": "Customer cleared or appropriately escalated with documented resolution",
+        "outcome_failure": "Account blocked or rejected due to sanctions/PEP match without proper escalation"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_001",
+      "name": "Name Screening",
+      "properties": {
+        "step_number": 1,
+        "actor": "Screening System",
+        "input": "Customer name",
+        "output": "Screening results (match or no match)",
+        "estimated_duration": "<1 minute",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Screening System"
+        ],
+        "failure_path": "Escalate to Compliance Officer for manual investigation"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_002",
+      "name": "Match Assessment",
+      "properties": {
+        "step_number": 2,
+        "actor": "Compliance Officer",
+        "input": "Screening results with potential matches",
+        "output": "Match classification (false positive or true match)",
+        "channel": "manual",
+        "mandatory": "conditional",
+        "tools_or_systems": [
+          "Screening System"
+        ],
+        "failure_path": "Escalate to senior compliance authority for override decision"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_003",
+      "name": "Hit Handling",
+      "properties": {
+        "step_number": 3,
+        "actor": "Compliance Officer",
+        "input": "Match classification and match type",
+        "output": "Escalation action, account status change, or enhanced due diligence requirement",
+        "channel": "manual",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Screening System"
+        ],
+        "failure_path": "Regulatory breach if sanctions match not escalated immediately"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_004",
+      "name": "Record",
+      "properties": {
+        "step_number": 4,
+        "actor": "Compliance Officer",
+        "input": "Screening result and resolution action",
+        "output": "Documented screening record linked to account",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Screening System"
+        ],
+        "failure_path": "Audit trail incomplete; regulatory non-compliance"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_ra_001",
+      "name": "Compliance Officer",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "Operational decision-making on match assessment and escalation",
+        "channels": [
+          "system",
+          "manual"
+        ],
+        "response_time_sla": "Immediate for sanctions matches"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_ra_002",
+      "name": "Screening System",
+      "properties": {
+        "role_type": "system",
+        "department": "Compliance",
+        "authority_level": "Automated screening and flagging",
+        "channels": [
+          "system"
+        ],
+        "response_time_sla": "<1 minute"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_dp_001",
+      "name": "Name Match Found",
+      "properties": {
+        "decision_question": "Does the customer name match any entry on screening lists?",
+        "criteria": "Exact or high-similarity name match against sanctions, PEP, or adverse media lists",
+        "decision_maker": "Screening System (automated); Compliance Officer (manual review if triggered)",
+        "path_yes": "Proceed to Match Type Classification (Step 2)",
+        "path_no": "Proceed to next step in process"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_dp_002",
+      "name": "Match Type Classification",
+      "properties": {
+        "decision_question": "What type of match has been identified and is it a true match or false positive?",
+        "criteria": "Name similarity assessment; sanctions list vs. PEP list vs. adverse media; false positive likelihood",
+        "decision_maker": "Compliance Officer",
+        "path_yes": "Escalate according to match type (sanctions: immediate block; PEP: enhanced due diligence; adverse media: risk assessment)",
+        "path_no": "Clear customer and proceed to record step",
+        "override_possible": "yes"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_001",
+      "name": "Sanctions Screening Checkpoint",
+      "properties": {
+        "regulatory_basis": "Sanctions Regulations",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": "Screening result report; match assessment documentation",
+        "performed_by": "Screening System; Compliance Officer",
+        "timing": "Step 1–2 of Screening Process",
+        "failure_consequence": "Account blocked; regulatory breach; potential financial penalties"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_002",
+      "name": "PEP Screening Checkpoint",
+      "properties": {
+        "regulatory_basis": "PEP Requirements",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": "Screening result report; PEP match documentation",
+        "performed_by": "Screening System; Compliance Officer",
+        "timing": "Step 1–3 of Screening Process",
+        "failure_consequence": "Enhanced due diligence not triggered; regulatory non-compliance"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_003",
+      "name": "Adverse Media Screening Checkpoint",
+      "properties": {
+        "regulatory_basis": "Adverse Media Monitoring",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "evidence_required": "Screening result report; adverse media match documentation",
+        "performed_by": "Screening System; Compliance Officer",
+        "timing": "Step 1–3 of Screening Process",
+        "failure_consequence": "Risk assessment not performed; account opened to high-risk customer"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_001",
+      "name": "Sanctions Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": "All applicable sanctions lists",
+        "hit_or_match_response": "Immediate escalation; account blocked; Compliance notified",
+        "regulatory_basis": "Sanctions Regulations"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_002",
+      "name": "PEP Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": "Politically Exposed Persons lists",
+        "hit_or_match_response": "Enhanced due diligence required",
+        "regulatory_basis": "PEP Requirements"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_003",
+      "name": "Adverse Media Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": "Adverse media sources and reputational databases",
+        "hit_or_match_response": "Risk assessment conducted; possible account rejection",
+        "regulatory_basis": "Adverse Media Monitoring"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_kyc_001",
+      "name": "Enhanced Due Diligence",
+      "properties": {
+        "mandatory": "conditional",
+        "timing_or_refresh_frequency": "Triggered on PEP match during screening",
+        "verification_method": "Enhanced customer verification and source of funds assessment",
+        "consequence_of_failure": "Account not opened or account restrictions applied"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "new",
+        "context_role": "Subject of screening process during account opening or verification"
+      },
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_001",
+      "target_name": "Name Screening",
+      "rel_type": "starts_with",
+      "description": "Screening Process begins with Name Screening step",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Step 1: Name Screening - Customer name screened against all lists",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_001",
+      "source_name": "Name Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_002",
+      "target_name": "Match Assessment",
+      "rel_type": "followed_by",
+      "description": "Name Screening is followed by Match Assessment",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Step 1: Name Screening... Step 2: Match Assessment",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_002",
+      "source_name": "Match Assessment",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_003",
+      "target_name": "Hit Handling",
+      "rel_type": "followed_by",
+      "description": "Match Assessment is followed by Hit Handling",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Step 2: Match Assessment... Step 3: Hit Handling",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_003",
+      "source_name": "Hit Handling",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_004",
+      "target_name": "Record",
+      "rel_type": "followed_by",
+      "description": "Hit Handling is followed by Record step",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "Step 3: Hit Handling... Step 4: Record",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_001",
+      "source_name": "Name Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_ra_002",
+      "target_name": "Screening System",
+      "rel_type": "performed_by",
+      "description": "Name Screening is automatically performed by Screening System",
+      "properties": {
+        "automation_level": "automatic",
+        "processing_time_minutes": "<1"
+      },
+      "context": "System automatically performs checks. Results available in <1 minute",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_002",
+      "source_name": "Match Assessment",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_ra_001",
+      "target_name": "Compliance Officer",
+      "rel_type": "performed_by",
+      "description": "Match Assessment manual review is performed by Compliance Officer",
+      "properties": {
+        "trigger_condition": "if match found"
+      },
+      "context": "If match found: Manual review by Compliance",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_002",
+      "source_name": "Match Assessment",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_dp_001",
+      "target_name": "Name Match Found",
+      "rel_type": "leads_to",
+      "description": "Match Assessment leads to decision point on whether Name Match is Found",
+      "properties": {
+        "decision_criteria": "name similarity vs. true match"
+      },
+      "context": "If no match: Proceed to next step. If match found: Manual review by Compliance. False positive assessment (name similarity vs. true match)",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_dp_001",
+      "source_name": "Name Match Found",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_dp_002",
+      "target_name": "Match Type Classification",
+      "rel_type": "triggers",
+      "description": "Name Match Found decision triggers Match Type Classification decision",
+      "properties": {
+        "match_types": [
+          "sanctions",
+          "PEP",
+          "adverse media"
+        ]
+      },
+      "context": "If sanctions match: Escalate immediately... If PEP match: Enhanced due diligence required... If adverse media: Risk assessment",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_003",
+      "source_name": "Hit Handling",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_dp_002",
+      "target_name": "Match Type Classification",
+      "rel_type": "routes_to_on_pass",
+      "description": "Hit Handling routes to Match Type Classification decision based on match type",
+      "properties": {
+        "classification_types": [
+          "sanctions",
+          "PEP",
+          "adverse media"
+        ]
+      },
+      "context": "If sanctions match: Escalate immediately... If PEP match: Enhanced due diligence required... If adverse media: Risk assessment",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_001",
+      "target_name": "Sanctions Screening",
+      "rel_type": "executes",
+      "description": "Screening Process executes Sanctions Screening",
+      "properties": {
+        "screening_type": "sanctions"
+      },
+      "context": "If sanctions match: Escalate immediately, account blocked",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_002",
+      "target_name": "PEP Screening",
+      "rel_type": "executes",
+      "description": "Screening Process executes PEP Screening",
+      "properties": {
+        "screening_type": "PEP"
+      },
+      "context": "If PEP match: Enhanced due diligence required",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_003",
+      "target_name": "Adverse Media Screening",
+      "rel_type": "executes",
+      "description": "Screening Process executes Adverse Media Screening",
+      "properties": {
+        "screening_type": "adverse media"
+      },
+      "context": "If adverse media: Risk assessment, possible rejection",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_001",
+      "target_name": "Sanctions Screening Checkpoint",
+      "rel_type": "mandated_to_include",
+      "description": "Screening Process mandated to include Sanctions Screening Checkpoint",
+      "properties": {
+        "checkpoint_type": "sanctions"
+      },
+      "context": "If sanctions match: Escalate immediately, account blocked, Compliance notified",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_002",
+      "target_name": "PEP Screening Checkpoint",
+      "rel_type": "mandated_to_include",
+      "description": "Screening Process mandated to include PEP Screening Checkpoint",
+      "properties": {
+        "checkpoint_type": "PEP"
+      },
+      "context": "If PEP match: Enhanced due diligence required",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_003",
+      "target_name": "Adverse Media Screening Checkpoint",
+      "rel_type": "mandated_to_include",
+      "description": "Screening Process mandated to include Adverse Media Screening Checkpoint",
+      "properties": {
+        "checkpoint_type": "adverse media"
+      },
+      "context": "If adverse media: Risk assessment, possible rejection",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_001",
+      "source_name": "Sanctions Screening Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_001",
+      "target_name": "Sanctions Screening",
+      "rel_type": "verifies_completion_of",
+      "description": "Sanctions Screening Checkpoint verifies completion of Sanctions Screening",
+      "properties": {
+        "verification_type": "sanctions match detection"
+      },
+      "context": "If sanctions match: Escalate immediately, account blocked, Compliance notified",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_002",
+      "source_name": "PEP Screening Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_002",
+      "target_name": "PEP Screening",
+      "rel_type": "verifies_completion_of",
+      "description": "PEP Screening Checkpoint verifies completion of PEP Screening",
+      "properties": {
+        "verification_type": "PEP match detection"
+      },
+      "context": "If PEP match: Enhanced due diligence required",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_003",
+      "source_name": "Adverse Media Screening Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_003",
+      "target_name": "Adverse Media Screening",
+      "rel_type": "verifies_completion_of",
+      "description": "Adverse Media Screening Checkpoint verifies completion of Adverse Media Screening",
+      "properties": {
+        "verification_type": "adverse media match detection"
+      },
+      "context": "If adverse media: Risk assessment, possible rejection",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_003",
+      "source_name": "Hit Handling",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_ra_001",
+      "target_name": "Compliance Officer",
+      "rel_type": "notifies",
+      "description": "Hit Handling notifies Compliance Officer of sanctions matches",
+      "properties": {
+        "notification_trigger": "sanctions match",
+        "action_required": "escalation"
+      },
+      "context": "If sanctions match: Escalate immediately, account blocked, Compliance notified",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_002",
+      "source_name": "PEP Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_kyc_001",
+      "target_name": "Enhanced Due Diligence",
+      "rel_type": "triggers",
+      "description": "PEP Screening triggers Enhanced Due Diligence requirement",
+      "properties": {
+        "trigger_condition": "PEP match found"
+      },
+      "context": "If PEP match: Enhanced due diligence required",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cust_001",
+      "target_name": "Customer",
+      "rel_type": "operates_on",
+      "description": "Screening Process operates on Customer",
+      "properties": {
+        "operation_type": "name screening and risk assessment"
+      },
+      "context": "Customer name screened against all lists",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_001",
+      "source_name": "Name Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cust_001",
+      "target_name": "Customer",
+      "rel_type": "collects_data_from",
+      "description": "Name Screening collects customer name data",
+      "properties": {
+        "data_type": "customer name"
+      },
+      "context": "Customer name screened against all lists",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_004",
+      "source_name": "Record",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_ra_001",
+      "target_name": "Compliance Officer",
+      "rel_type": "performed_by",
+      "description": "Record step is performed by Compliance Officer",
+      "properties": {
+        "documentation_requirement": "screening results and matches"
+      },
+      "context": "Document screening result in system. Record any matches and resolution",
+      "bidirectional": false,
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_proc_001",
+      "source_name": "Screening Process",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_001",
+      "source_name": "Name Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_002",
+      "source_name": "Match Assessment",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_003",
+      "source_name": "Hit Handling",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_pstep_004",
+      "source_name": "Record",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_ra_001",
+      "source_name": "Compliance Officer",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_ra_002",
+      "source_name": "Screening System",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_dp_001",
+      "source_name": "Name Match Found",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_dp_002",
+      "source_name": "Match Type Classification",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_001",
+      "source_name": "Sanctions Screening Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_002",
+      "source_name": "PEP Screening Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cc_003",
+      "source_name": "Adverse Media Screening Checkpoint",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_001",
+      "source_name": "Sanctions Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_002",
+      "source_name": "PEP Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_aml_003",
+      "source_name": "Adverse Media Screening",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_kyc_001",
+      "source_name": "Enhanced Due Diligence",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "target_name": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9_018",
+      "doc_id": "01a073f0-cbe4-75a0-beeb-4fb83e50f8b9",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

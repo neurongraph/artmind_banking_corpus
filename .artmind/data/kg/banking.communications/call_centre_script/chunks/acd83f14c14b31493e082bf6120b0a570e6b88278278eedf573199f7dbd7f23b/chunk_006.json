@@ -1,0 +1,640 @@
+{
+  "chunk_seq": 6,
+  "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+  "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+  "text": "## SCENARIO 3: Failed Transaction  \n**Customer:** \"My transfer didn't go through.\"  \n**Agent Script:**  \n```\nAgent: \"I'm sorry to hear that. Let me look into this for you.\n\nCould you tell me:\n- When did you attempt the transfer?\n- How much was it for?\n- To which account?\n\n[Customer provides details]\n\nLet me check your account... [Pull transaction record]\n\nI can see what happened. The transfer failed because [reason:\ninsufficient funds/invalid recipient/account closed/other].\n\nHere's what we can do:\n[Offer resolution based on scenario]\n\nWould this work for you?\"\n\n[If insufficient funds:]\n\"Once you have enough balance, we can resubmit the transfer\nimmediately.\"\n\n[If invalid recipient:]\n\"Can you double-check the account number? If you'd like, I\ncan help you get it right and resubmit.\"\n\n[If account closed:]\n\"It looks like the recipient's account is closed. Do you have\nan alternative account for them?\"\n```  \n---",
+  "name": "Chunk 6/17",
+  "_domain": "banking.communications",
+  "prev_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_005",
+  "next_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_007",
+  "raw_entities": [
+    {
+      "id": "ct_001",
+      "name": "Failed Transaction Agent Script",
+      "aliases": [
+        "Failed Transfer Script",
+        "Transaction Failure Resolution Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre script for agents handling customer inquiries about failed transfers or transactions. The script guides agents through investigation of the failure reason (insufficient funds, invalid recipient, closed account, or other), retrieval of transaction records, and offer of appropriate resolution based on the specific failure scenario.",
+      "context": [
+        "Agent: \"I'm sorry to hear that. Let me look into this for you.\"",
+        "I can see what happened. The transfer failed because [reason: insufficient funds/invalid recipient/account closed/other].",
+        "Here's what we can do: [Offer resolution based on scenario]",
+        "[If insufficient funds:] \"Once you have enough balance, we can resubmit the transfer immediately.\""
+      ]
+    },
+    {
+      "id": "tv_001",
+      "name": "Transfer Attempt Timestamp",
+      "aliases": [
+        "transfer_date",
+        "attempt_time"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "A dynamic placeholder capturing the date and time when the customer attempted the transfer. Used in the Failed Transaction Agent Script to establish the timeline of the failed transaction.",
+      "context": [
+        "When did you attempt the transfer?"
+      ]
+    },
+    {
+      "id": "tv_002",
+      "name": "Transfer Amount",
+      "aliases": [
+        "transfer_value",
+        "amount"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "A dynamic placeholder for the monetary value of the transfer that failed. Captured from the customer during the call to identify the specific transaction.",
+      "context": [
+        "How much was it for?"
+      ]
+    },
+    {
+      "id": "tv_003",
+      "name": "Recipient Account Details",
+      "aliases": [
+        "recipient_account",
+        "destination_account",
+        "account_number"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "account_data",
+      "description": "A dynamic placeholder for the recipient account information (account number or identifier) to which the customer attempted to transfer funds. Used to verify the validity of the recipient and diagnose transfer failures.",
+      "context": [
+        "To which account?",
+        "Can you double-check the account number?"
+      ]
+    },
+    {
+      "id": "tv_004",
+      "name": "Transfer Failure Reason",
+      "aliases": [
+        "failure_reason",
+        "rejection_code"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "reference_field",
+      "description": "A dynamic placeholder capturing the specific reason why the transfer failed — insufficient funds, invalid recipient, account closed, or other. Retrieved from the transaction record and communicated to the customer.",
+      "context": [
+        "The transfer failed because [reason: insufficient funds/invalid recipient/account closed/other]."
+      ]
+    },
+    {
+      "id": "tx_001",
+      "name": "Failed Transfer Transaction",
+      "aliases": [
+        "failed_transfer",
+        "rejected_transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "A transfer transaction initiated by a customer that did not complete successfully. The agent retrieves the transaction record to diagnose the failure and offer appropriate resolution.",
+      "context": [
+        "My transfer didn't go through.",
+        "[Pull transaction record]",
+        "I can see what happened. The transfer failed because [reason]."
+      ]
+    },
+    {
+      "id": "co_001",
+      "name": "Transaction Investigation and Resolution Obligation",
+      "aliases": [
+        "failed_transaction_investigation"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "mandatory_action",
+      "description": "The agent must investigate failed transactions by retrieving transaction records, identifying the failure reason, and offering appropriate resolution to the customer based on the specific scenario (insufficient funds, invalid recipient, closed account, or other).",
+      "context": [
+        "Let me check your account... [Pull transaction record]",
+        "I can see what happened. The transfer failed because [reason].",
+        "Here's what we can do: [Offer resolution based on scenario]"
+      ]
+    }
+  ],
+  "id_map": {
+    "ct_001": "01a07428-c932-773f-a5f8-da98f9df05b5_006_ct_001",
+    "tv_001": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_001",
+    "tv_002": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_002",
+    "tv_003": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_003",
+    "tv_004": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_004",
+    "tx_001": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tx_001",
+    "co_001": "01a07428-c932-773f-a5f8-da98f9df05b5_006_co_001"
+  },
+  "entities": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_ct_001",
+      "name": "Failed Transaction Agent Script",
+      "aliases": [
+        "Failed Transfer Script",
+        "Transaction Failure Resolution Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre script for agents handling customer inquiries about failed transfers or transactions. The script guides agents through investigation of the failure reason (insufficient funds, invalid recipient, closed account, or other), retrieval of transaction records, and offer of appropriate resolution based on the specific failure scenario.",
+      "context": [
+        "Agent: \"I'm sorry to hear that. Let me look into this for you.\"",
+        "I can see what happened. The transfer failed because [reason: insufficient funds/invalid recipient/account closed/other].",
+        "Here's what we can do: [Offer resolution based on scenario]",
+        "[If insufficient funds:] \"Once you have enough balance, we can resubmit the transfer immediately.\""
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_001",
+      "name": "Transfer Attempt Timestamp",
+      "aliases": [
+        "transfer_date",
+        "attempt_time"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "A dynamic placeholder capturing the date and time when the customer attempted the transfer. Used in the Failed Transaction Agent Script to establish the timeline of the failed transaction.",
+      "context": [
+        "When did you attempt the transfer?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_002",
+      "name": "Transfer Amount",
+      "aliases": [
+        "transfer_value",
+        "amount"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "A dynamic placeholder for the monetary value of the transfer that failed. Captured from the customer during the call to identify the specific transaction.",
+      "context": [
+        "How much was it for?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_003",
+      "name": "Recipient Account Details",
+      "aliases": [
+        "recipient_account",
+        "destination_account",
+        "account_number"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "account_data",
+      "description": "A dynamic placeholder for the recipient account information (account number or identifier) to which the customer attempted to transfer funds. Used to verify the validity of the recipient and diagnose transfer failures.",
+      "context": [
+        "To which account?",
+        "Can you double-check the account number?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_004",
+      "name": "Transfer Failure Reason",
+      "aliases": [
+        "failure_reason",
+        "rejection_code"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "reference_field",
+      "description": "A dynamic placeholder capturing the specific reason why the transfer failed — insufficient funds, invalid recipient, account closed, or other. Retrieved from the transaction record and communicated to the customer.",
+      "context": [
+        "The transfer failed because [reason: insufficient funds/invalid recipient/account closed/other]."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tx_001",
+      "name": "Failed Transfer Transaction",
+      "aliases": [
+        "failed_transfer",
+        "rejected_transaction"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "transfer",
+      "description": "A transfer transaction initiated by a customer that did not complete successfully. The agent retrieves the transaction record to diagnose the failure and offer appropriate resolution.",
+      "context": [
+        "My transfer didn't go through.",
+        "[Pull transaction record]",
+        "I can see what happened. The transfer failed because [reason]."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_co_001",
+      "name": "Transaction Investigation and Resolution Obligation",
+      "aliases": [
+        "failed_transaction_investigation"
+      ],
+      "entity_class": "COMPLIANCE_OBLIGATION",
+      "type": "mandatory_action",
+      "description": "The agent must investigate failed transactions by retrieving transaction records, identifying the failure reason, and offering appropriate resolution to the customer based on the specific scenario (insufficient funds, invalid recipient, closed account, or other).",
+      "context": [
+        "Let me check your account... [Pull transaction record]",
+        "I can see what happened. The transfer failed because [reason].",
+        "Here's what we can do: [Offer resolution based on scenario]"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_ct_001",
+      "name": "Failed Transaction Agent Script",
+      "properties": {
+        "channel": "call",
+        "trigger_event": "customer reports failed transfer",
+        "recipient": "customer",
+        "tone": "empathetic",
+        "key_content": [
+          "Acknowledge customer concern",
+          "Gather transfer details (timestamp, amount, recipient account)",
+          "Pull transaction record",
+          "Explain failure reason",
+          "Offer resolution based on failure type"
+        ],
+        "variables_used": [
+          "[Transfer Attempt Timestamp]",
+          "[Transfer Amount]",
+          "[Recipient Account Details]",
+          "[Transfer Failure Reason]"
+        ],
+        "resolution_scenarios": [
+          "insufficient funds — resubmit once balance available",
+          "invalid recipient — verify and correct account number",
+          "account closed — identify alternative recipient account"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_001",
+      "name": "Transfer Attempt Timestamp",
+      "properties": {
+        "variable_placeholder": "[Transfer Attempt Timestamp]",
+        "data_type": "date",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Failed Transaction Agent Script"
+        ],
+        "context": "when customer attempted the transfer"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_002",
+      "name": "Transfer Amount",
+      "properties": {
+        "variable_placeholder": "[Transfer Amount]",
+        "data_type": "currency",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Failed Transaction Agent Script"
+        ],
+        "context": "value of the failed transfer"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_003",
+      "name": "Recipient Account Details",
+      "properties": {
+        "variable_placeholder": "[Recipient Account Details]",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Failed Transaction Agent Script"
+        ],
+        "context": "account number or identifier of intended transfer recipient"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_004",
+      "name": "Transfer Failure Reason",
+      "properties": {
+        "variable_placeholder": "[Transfer Failure Reason]",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Failed Transaction Agent Script"
+        ],
+        "possible_values": [
+          "insufficient funds",
+          "invalid recipient",
+          "account closed",
+          "other"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tx_001",
+      "name": "Failed Transfer Transaction",
+      "properties": {
+        "transaction_type": "transfer",
+        "transaction_state": "failed",
+        "monitoring_or_reporting_obligation": "agent must investigate and offer resolution",
+        "failure_reason_categories": [
+          "insufficient funds",
+          "invalid recipient",
+          "account closed",
+          "other"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_co_001",
+      "name": "Transaction Investigation and Resolution Obligation",
+      "properties": {
+        "obligation_type": "mandatory_action",
+        "applies_to": "customer service agents",
+        "timeframe": "upon customer report",
+        "required_action": [
+          "gather transfer details from customer",
+          "pull transaction record",
+          "identify failure reason",
+          "offer appropriate resolution"
+        ],
+        "resolution_path": [
+          "if insufficient funds: resubmit once balance available",
+          "if invalid recipient: verify and correct account details",
+          "if account closed: identify alternative recipient account"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_ct_001",
+      "source_name": "Failed Transaction Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_001",
+      "target_name": "Transfer Attempt Timestamp",
+      "rel_type": "requires",
+      "description": "The agent script requires collection of the transfer attempt timestamp from the customer",
+      "properties": {
+        "collection_point": "Initial information gathering",
+        "mandatory": true
+      },
+      "context": "Could you tell me: - When did you attempt the transfer?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_ct_001",
+      "source_name": "Failed Transaction Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_002",
+      "target_name": "Transfer Amount",
+      "rel_type": "requires",
+      "description": "The agent script requires collection of the transfer amount from the customer",
+      "properties": {
+        "collection_point": "Initial information gathering",
+        "mandatory": true
+      },
+      "context": "Could you tell me: - How much was it for?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_ct_001",
+      "source_name": "Failed Transaction Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_003",
+      "target_name": "Recipient Account Details",
+      "rel_type": "requires",
+      "description": "The agent script requires collection of recipient account details from the customer",
+      "properties": {
+        "collection_point": "Initial information gathering",
+        "mandatory": true
+      },
+      "context": "Could you tell me: - To which account?",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_ct_001",
+      "source_name": "Failed Transaction Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_004",
+      "target_name": "Transfer Failure Reason",
+      "rel_type": "populates_with",
+      "description": "The agent script populates the transfer failure reason variable based on system investigation",
+      "properties": {
+        "source": "transaction record review",
+        "possible_values": [
+          "insufficient funds",
+          "invalid recipient",
+          "account closed",
+          "other"
+        ]
+      },
+      "context": "The transfer failed because [reason: insufficient funds/invalid recipient/account closed/other].",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_ct_001",
+      "source_name": "Failed Transaction Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tx_001",
+      "target_name": "Failed Transfer Transaction",
+      "rel_type": "notifies_about",
+      "description": "The agent script notifies the customer about the failed transfer transaction",
+      "properties": {
+        "notification_type": "failure explanation and resolution options",
+        "trigger": "customer inquiry about transfer failure"
+      },
+      "context": "I can see what happened. The transfer failed because [reason].",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_ct_001",
+      "source_name": "Failed Transaction Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_co_001",
+      "target_name": "Transaction Investigation and Resolution Obligation",
+      "rel_type": "satisfies",
+      "description": "The agent script satisfies the compliance obligation to investigate and resolve failed transactions",
+      "properties": {
+        "investigation_steps": [
+          "pull transaction record",
+          "identify failure reason",
+          "offer resolution"
+        ],
+        "resolution_types": [
+          "resubmit on sufficient funds",
+          "correct recipient details",
+          "provide alternative account"
+        ]
+      },
+      "context": "Let me check your account... [Pull transaction record] I can see what happened. The transfer failed because [reason]. Here's what we can do: [Offer resolution based on scenario]",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_001",
+      "source_name": "Transfer Attempt Timestamp",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_002",
+      "target_name": "Transfer Amount",
+      "rel_type": "used_together_with",
+      "description": "Transfer attempt timestamp is collected together with transfer amount as part of transaction details",
+      "properties": {
+        "collection_context": "customer-provided transaction details"
+      },
+      "context": "Could you tell me: - When did you attempt the transfer? - How much was it for?",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_001",
+      "source_name": "Transfer Attempt Timestamp",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_003",
+      "target_name": "Recipient Account Details",
+      "rel_type": "used_together_with",
+      "description": "Transfer attempt timestamp is collected together with recipient account details",
+      "properties": {
+        "collection_context": "customer-provided transaction details"
+      },
+      "context": "Could you tell me: - When did you attempt the transfer? - To which account?",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_002",
+      "source_name": "Transfer Amount",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_003",
+      "target_name": "Recipient Account Details",
+      "rel_type": "used_together_with",
+      "description": "Transfer amount is collected together with recipient account details",
+      "properties": {
+        "collection_context": "customer-provided transaction details"
+      },
+      "context": "Could you tell me: - How much was it for? - To which account?",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_004",
+      "source_name": "Transfer Failure Reason",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tx_001",
+      "target_name": "Failed Transfer Transaction",
+      "rel_type": "part_of_group",
+      "description": "Transfer failure reason is a key attribute of the failed transfer transaction",
+      "properties": {
+        "attribute_type": "transaction failure classification"
+      },
+      "context": "The transfer failed because [reason: insufficient funds/invalid recipient/account closed/other].",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_ct_001",
+      "source_name": "Failed Transaction Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_001",
+      "source_name": "Transfer Attempt Timestamp",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_002",
+      "source_name": "Transfer Amount",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_003",
+      "source_name": "Recipient Account Details",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tv_004",
+      "source_name": "Transfer Failure Reason",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_tx_001",
+      "source_name": "Failed Transfer Transaction",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006_co_001",
+      "source_name": "Transaction Investigation and Resolution Obligation",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_006",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ]
+}

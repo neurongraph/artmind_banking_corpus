@@ -1,0 +1,864 @@
+{
+  "chunk_seq": 27,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "## Step 8: AML Re-Screening (If Required)  \n### When to Perform Full AML Screening  \n**Mandatory Screening If:**\n- Customer moving to new country (not just new city)\n- New country is on OFAC/EU/HMT/UN sanctions list\n- Customer flagged as medium/high risk\n- Compliance Head requires it\n- Address is in jurisdictions: Iran, Syria, North Korea, Cuba, etc.  \n**Optional Screening If:**\n- Customer moving within UK\n- Low-risk customer\n- Existing banking history >5 years with no issues",
+  "name": "Chunk 27/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_026",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_028",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "AML Re-Screening Process",
+      "aliases": [
+        "AML Re-Screening",
+        "Step 8"
+      ],
+      "entity_class": "PROCESS",
+      "type": "aml_screening",
+      "description": "A conditional anti-money laundering re-screening procedure triggered when customers move to new countries, are flagged as medium/high risk, or relocate to sanctioned jurisdictions. The process determines whether full AML screening is mandatory or optional based on customer risk profile, destination country status, and compliance requirements.",
+      "context": [
+        "Step 8: AML Re-Screening (If Required)",
+        "Mandatory Screening If: Customer moving to new country (not just new city)",
+        "New country is on OFAC/EU/HMT/UN sanctions list",
+        "Optional Screening If: Customer moving within UK"
+      ]
+    },
+    {
+      "id": "ps_001",
+      "name": "Mandatory AML Screening Trigger Assessment",
+      "aliases": [
+        "Mandatory Screening Decision"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Evaluation step to determine if full AML screening is mandatory based on customer relocation to a new country, risk classification, sanctions list status, or compliance head directive.",
+      "context": [
+        "Mandatory Screening If: Customer moving to new country (not just new city)",
+        "New country is on OFAC/EU/HMT/UN sanctions list",
+        "Customer flagged as medium/high risk",
+        "Compliance Head requires it"
+      ]
+    },
+    {
+      "id": "ps_002",
+      "name": "Optional AML Screening Eligibility Check",
+      "aliases": [
+        "Optional Screening Decision"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Evaluation step to determine if AML screening can be waived or deferred based on customer moving within UK, low-risk classification, or established banking history exceeding 5 years without compliance issues.",
+      "context": [
+        "Optional Screening If: Customer moving within UK",
+        "Low-risk customer",
+        "Existing banking history >5 years with no issues"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Mandatory vs Optional AML Screening Gate",
+      "aliases": [
+        "AML Screening Requirement Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "A branching decision point that determines whether full AML re-screening must be performed (mandatory path) or can be deferred/waived (optional path) based on customer risk profile, destination jurisdiction, and compliance requirements.",
+      "context": [
+        "Mandatory Screening If: Customer moving to new country (not just new city)",
+        "Optional Screening If: Customer moving within UK"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Sanctions List Compliance Check",
+      "aliases": [
+        "OFAC/EU/HMT/UN Sanctions Screening"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory regulatory gate verifying whether a customer's destination country appears on OFAC, EU, HMT, or UN sanctions lists. Failure to pass this checkpoint triggers mandatory full AML screening.",
+      "context": [
+        "New country is on OFAC/EU/HMT/UN sanctions list",
+        "Address is in jurisdictions: Iran, Syria, North Korea, Cuba, etc."
+      ]
+    },
+    {
+      "id": "aml_001",
+      "name": "Full AML Screening",
+      "aliases": [
+        "Complete AML Re-Screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Comprehensive anti-money laundering screening procedure executed when mandatory triggers are met, including sanctions list verification and customer risk re-assessment.",
+      "context": [
+        "Mandatory Screening If: Customer moving to new country (not just new city)",
+        "New country is on OFAC/EU/HMT/UN sanctions list"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Compliance Head",
+      "aliases": [
+        "Compliance Officer",
+        "Head of Compliance"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "Senior compliance authority with discretionary power to require full AML screening regardless of other risk factors or customer profile.",
+      "context": [
+        "Compliance Head requires it"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual subject to AML re-screening when relocating internationally or domestically, with risk classification and banking history factored into screening requirements.",
+      "context": [
+        "Customer moving to new country (not just new city)",
+        "Customer flagged as medium/high risk",
+        "Low-risk customer"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Destination Address Verification",
+      "aliases": [
+        "New Address Screening"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "Verification of customer's new address location to determine if it falls within sanctioned jurisdictions or triggers mandatory AML re-screening requirements.",
+      "context": [
+        "Customer moving to new country (not just new city)",
+        "Address is in jurisdictions: Iran, Syria, North Korea, Cuba, etc."
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_027_proc_001",
+    "ps_001": "01a07400-ba86-72f1-8b22-d07b32649491_027_ps_001",
+    "ps_002": "01a07400-ba86-72f1-8b22-d07b32649491_027_ps_002",
+    "dp_001": "01a07400-ba86-72f1-8b22-d07b32649491_027_dp_001",
+    "cc_001": "01a07400-ba86-72f1-8b22-d07b32649491_027_cc_001",
+    "aml_001": "01a07400-ba86-72f1-8b22-d07b32649491_027_aml_001",
+    "ra_001": "01a07400-ba86-72f1-8b22-d07b32649491_027_ra_001",
+    "cust_001": "01a07400-ba86-72f1-8b22-d07b32649491_027_cust_001",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_027_addr_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_proc_001",
+      "name": "AML Re-Screening Process",
+      "aliases": [
+        "AML Re-Screening",
+        "Step 8"
+      ],
+      "entity_class": "PROCESS",
+      "type": "aml_screening",
+      "description": "A conditional anti-money laundering re-screening procedure triggered when customers move to new countries, are flagged as medium/high risk, or relocate to sanctioned jurisdictions. The process determines whether full AML screening is mandatory or optional based on customer risk profile, destination country status, and compliance requirements.",
+      "context": [
+        "Step 8: AML Re-Screening (If Required)",
+        "Mandatory Screening If: Customer moving to new country (not just new city)",
+        "New country is on OFAC/EU/HMT/UN sanctions list",
+        "Optional Screening If: Customer moving within UK"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ps_001",
+      "name": "Mandatory AML Screening Trigger Assessment",
+      "aliases": [
+        "Mandatory Screening Decision"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Evaluation step to determine if full AML screening is mandatory based on customer relocation to a new country, risk classification, sanctions list status, or compliance head directive.",
+      "context": [
+        "Mandatory Screening If: Customer moving to new country (not just new city)",
+        "New country is on OFAC/EU/HMT/UN sanctions list",
+        "Customer flagged as medium/high risk",
+        "Compliance Head requires it"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ps_002",
+      "name": "Optional AML Screening Eligibility Check",
+      "aliases": [
+        "Optional Screening Decision"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Evaluation step to determine if AML screening can be waived or deferred based on customer moving within UK, low-risk classification, or established banking history exceeding 5 years without compliance issues.",
+      "context": [
+        "Optional Screening If: Customer moving within UK",
+        "Low-risk customer",
+        "Existing banking history >5 years with no issues"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_dp_001",
+      "name": "Mandatory vs Optional AML Screening Gate",
+      "aliases": [
+        "AML Screening Requirement Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "A branching decision point that determines whether full AML re-screening must be performed (mandatory path) or can be deferred/waived (optional path) based on customer risk profile, destination jurisdiction, and compliance requirements.",
+      "context": [
+        "Mandatory Screening If: Customer moving to new country (not just new city)",
+        "Optional Screening If: Customer moving within UK"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_cc_001",
+      "name": "Sanctions List Compliance Check",
+      "aliases": [
+        "OFAC/EU/HMT/UN Sanctions Screening"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "Mandatory regulatory gate verifying whether a customer's destination country appears on OFAC, EU, HMT, or UN sanctions lists. Failure to pass this checkpoint triggers mandatory full AML screening.",
+      "context": [
+        "New country is on OFAC/EU/HMT/UN sanctions list",
+        "Address is in jurisdictions: Iran, Syria, North Korea, Cuba, etc."
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_aml_001",
+      "name": "Full AML Screening",
+      "aliases": [
+        "Complete AML Re-Screening"
+      ],
+      "entity_class": "AML_SCREENING",
+      "type": "sanctions_screening",
+      "description": "Comprehensive anti-money laundering screening procedure executed when mandatory triggers are met, including sanctions list verification and customer risk re-assessment.",
+      "context": [
+        "Mandatory Screening If: Customer moving to new country (not just new city)",
+        "New country is on OFAC/EU/HMT/UN sanctions list"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ra_001",
+      "name": "Compliance Head",
+      "aliases": [
+        "Compliance Officer",
+        "Head of Compliance"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "Senior compliance authority with discretionary power to require full AML screening regardless of other risk factors or customer profile.",
+      "context": [
+        "Compliance Head requires it"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual subject to AML re-screening when relocating internationally or domestically, with risk classification and banking history factored into screening requirements.",
+      "context": [
+        "Customer moving to new country (not just new city)",
+        "Customer flagged as medium/high risk",
+        "Low-risk customer"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_addr_001",
+      "name": "Destination Address Verification",
+      "aliases": [
+        "New Address Screening"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "Verification of customer's new address location to determine if it falls within sanctioned jurisdictions or triggers mandatory AML re-screening requirements.",
+      "context": [
+        "Customer moving to new country (not just new city)",
+        "Address is in jurisdictions: Iran, Syria, North Korea, Cuba, etc."
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_proc_001",
+      "name": "AML Re-Screening Process",
+      "properties": {
+        "purpose": "Determine whether full AML screening is required when a customer changes address or risk profile",
+        "scope": "All customers undergoing address changes or risk reassessment",
+        "trigger": "Customer address change notification or compliance review",
+        "departments_involved": [
+          "Compliance"
+        ],
+        "outcome_success": "Appropriate AML screening tier applied based on risk and jurisdiction",
+        "outcome_failure": "Inadequate screening of high-risk jurisdictions or customers"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ps_001",
+      "name": "Mandatory AML Screening Trigger Assessment",
+      "properties": {
+        "step_number": 1,
+        "actor": "Compliance Head",
+        "purpose": "Evaluate whether mandatory AML screening criteria are met",
+        "input": "Customer profile, destination address, risk classification, banking history",
+        "output": "Determination of mandatory screening requirement",
+        "channel": "system",
+        "mandatory": "yes",
+        "criteria": [
+          "Customer moving to new country (not just new city)",
+          "New country is on OFAC/EU/HMT/UN sanctions list",
+          "Customer flagged as medium/high risk",
+          "Compliance Head requires it",
+          "Address is in jurisdictions: Iran, Syria, North Korea, Cuba, etc."
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ps_002",
+      "name": "Optional AML Screening Eligibility Check",
+      "properties": {
+        "step_number": 2,
+        "actor": "Compliance Head",
+        "purpose": "Assess whether optional AML screening applies",
+        "input": "Customer profile, destination address, risk classification, banking history",
+        "output": "Determination of optional screening applicability",
+        "channel": "system",
+        "mandatory": "no",
+        "criteria": [
+          "Customer moving within UK",
+          "Low-risk customer",
+          "Existing banking history >5 years with no issues"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_dp_001",
+      "name": "Mandatory vs Optional AML Screening Gate",
+      "properties": {
+        "decision_question": "Should full AML screening be performed?",
+        "criteria": [
+          "International relocation to sanctioned jurisdiction",
+          "Customer risk classification",
+          "Existing banking history and compliance record",
+          "Compliance Head discretion"
+        ],
+        "decision_maker": "Compliance Head",
+        "path_yes": "Proceed to Full AML Screening (aml_001)",
+        "path_no": "Complete address change without full AML screening; proceed to standard verification",
+        "override_possible": "yes"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_cc_001",
+      "name": "Sanctions List Compliance Check",
+      "properties": {
+        "regulatory_basis": "OFAC, EU sanctions, HMT sanctions, UN sanctions",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "screening_scope": [
+          "OFAC list",
+          "EU sanctions list",
+          "HMT sanctions list",
+          "UN sanctions list"
+        ],
+        "high_risk_jurisdictions": [
+          "Iran",
+          "Syria",
+          "North Korea",
+          "Cuba"
+        ],
+        "performed_by": "Compliance Head",
+        "timing": "Before address change is finalised",
+        "failure_consequence": "Transaction block, account freeze, regulatory breach reporting"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_aml_001",
+      "name": "Full AML Screening",
+      "properties": {
+        "mandatory": "yes",
+        "screening_lists_or_scope": [
+          "OFAC",
+          "EU sanctions",
+          "HMT sanctions",
+          "UN sanctions"
+        ],
+        "trigger_condition": "Customer moving to new country on sanctions list OR medium/high risk classification OR Compliance Head requirement",
+        "regulatory_basis": "OFAC, EU sanctions, HMT sanctions, UN sanctions",
+        "hit_or_match_response": "Account freeze, transaction block, regulatory reporting"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ra_001",
+      "name": "Compliance Head",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "Decision authority on AML screening requirements",
+        "approval_limit": "All AML screening determinations",
+        "channels": [
+          "system"
+        ],
+        "responsibilities": [
+          "Assess mandatory screening triggers",
+          "Evaluate optional screening eligibility",
+          "Make final determination on screening requirement",
+          "Override screening decisions if warranted"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Subject of AML re-screening due to address change or risk profile update",
+        "risk_classification_factors": [
+          "Current risk classification (low/medium/high)",
+          "Banking history duration",
+          "Compliance record",
+          "Destination jurisdiction"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_027_addr_001",
+      "name": "Destination Address Verification",
+      "properties": {
+        "collection_steps": "Customer provides new address during address change request",
+        "verification_steps": [
+          "Assess whether address is in new country or within UK",
+          "Check if destination country is on sanctions list",
+          "Verify jurisdiction against OFAC/EU/HMT/UN lists"
+        ],
+        "high_risk_jurisdictions": [
+          "Iran",
+          "Syria",
+          "North Korea",
+          "Cuba"
+        ],
+        "triggers_mandatory_screening": "Address in new country on sanctions list",
+        "triggers_optional_screening": "Address within UK for low-risk customer with >5 years banking history"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_proc_001",
+      "source_name": "AML Re-Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ps_001",
+      "target_name": "Mandatory AML Screening Trigger Assessment",
+      "rel_type": "contains",
+      "description": "The AML Re-Screening Process includes the Mandatory AML Screening Trigger Assessment as a component step",
+      "properties": {
+        "sequence_position": "first",
+        "conditional": false
+      },
+      "context": "Step 8: AML Re-Screening (If Required) - Mandatory Screening If: Customer moving to new country",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_proc_001",
+      "source_name": "AML Re-Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ps_002",
+      "target_name": "Optional AML Screening Eligibility Check",
+      "rel_type": "includes_optional",
+      "description": "The AML Re-Screening Process optionally includes the Optional AML Screening Eligibility Check",
+      "properties": {
+        "conditional": true,
+        "optional": true
+      },
+      "context": "Optional Screening If: Customer moving within UK, Low-risk customer, Existing banking history >5 years",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_proc_001",
+      "source_name": "AML Re-Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_dp_001",
+      "target_name": "Mandatory vs Optional AML Screening Gate",
+      "rel_type": "branches_at",
+      "description": "The AML Re-Screening Process branches at the decision point determining mandatory versus optional screening",
+      "properties": {
+        "decision_criteria": "customer risk profile and relocation jurisdiction"
+      },
+      "context": "Mandatory Screening If vs Optional Screening If - two distinct pathways",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_proc_001",
+      "source_name": "AML Re-Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_cc_001",
+      "target_name": "Sanctions List Compliance Check",
+      "rel_type": "mandated_to_include",
+      "description": "The AML Re-Screening Process mandates inclusion of Sanctions List Compliance Check",
+      "properties": {
+        "regulatory_requirement": true,
+        "sanctions_lists": [
+          "OFAC",
+          "EU",
+          "HMT",
+          "UN"
+        ]
+      },
+      "context": "New country is on OFAC/EU/HMT/UN sanctions list",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_proc_001",
+      "source_name": "AML Re-Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_aml_001",
+      "target_name": "Full AML Screening",
+      "rel_type": "executes",
+      "description": "The AML Re-Screening Process executes Full AML Screening when mandatory conditions are met",
+      "properties": {
+        "conditional": true,
+        "trigger_conditions": "mandatory screening criteria"
+      },
+      "context": "Mandatory Screening If: Customer moving to new country, flagged as medium/high risk, Compliance Head requires it",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_proc_001",
+      "source_name": "AML Re-Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ra_001",
+      "target_name": "Compliance Head",
+      "rel_type": "approved_by",
+      "description": "The AML Re-Screening Process is approved by or requires authorization from the Compliance Head",
+      "properties": {
+        "authority_level": "compliance",
+        "decision_maker": true
+      },
+      "context": "Compliance Head requires it - listed as mandatory screening trigger",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ps_001",
+      "source_name": "Mandatory AML Screening Trigger Assessment",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ps_002",
+      "target_name": "Optional AML Screening Eligibility Check",
+      "rel_type": "alternative_to",
+      "description": "Mandatory AML Screening Trigger Assessment is an alternative pathway to Optional AML Screening Eligibility Check",
+      "properties": {
+        "mutually_exclusive": true,
+        "based_on": "customer risk profile and jurisdiction"
+      },
+      "context": "Mandatory Screening If vs Optional Screening If - two distinct criteria sets",
+      "bidirectional": true,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ps_001",
+      "source_name": "Mandatory AML Screening Trigger Assessment",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_dp_001",
+      "target_name": "Mandatory vs Optional AML Screening Gate",
+      "rel_type": "leads_to",
+      "description": "Mandatory AML Screening Trigger Assessment leads to the decision gate for mandatory versus optional screening",
+      "properties": {
+        "outcome_determines": "screening pathway selection"
+      },
+      "context": "Mandatory Screening If: Customer moving to new country, on sanctions list, flagged as medium/high risk",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ps_002",
+      "source_name": "Optional AML Screening Eligibility Check",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_dp_001",
+      "target_name": "Mandatory vs Optional AML Screening Gate",
+      "rel_type": "leads_to",
+      "description": "Optional AML Screening Eligibility Check leads to the decision gate for mandatory versus optional screening",
+      "properties": {
+        "outcome_determines": "screening pathway selection"
+      },
+      "context": "Optional Screening If: Customer moving within UK, Low-risk customer, Existing banking history >5 years",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_dp_001",
+      "source_name": "Mandatory vs Optional AML Screening Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_aml_001",
+      "target_name": "Full AML Screening",
+      "rel_type": "routes_to_on_pass",
+      "description": "When mandatory screening criteria are met, the decision gate routes to Full AML Screening",
+      "properties": {
+        "condition": "mandatory screening criteria satisfied",
+        "triggers_full_screening": true
+      },
+      "context": "Mandatory Screening If: Customer moving to new country, on sanctions list, flagged as medium/high risk, Compliance Head requires it",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_cc_001",
+      "source_name": "Sanctions List Compliance Check",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_dp_001",
+      "target_name": "Mandatory vs Optional AML Screening Gate",
+      "rel_type": "gates",
+      "description": "Sanctions List Compliance Check gates the decision point for mandatory versus optional screening",
+      "properties": {
+        "sanctions_lists": [
+          "OFAC",
+          "EU",
+          "HMT",
+          "UN"
+        ],
+        "jurisdictions_flagged": [
+          "Iran",
+          "Syria",
+          "North Korea",
+          "Cuba"
+        ]
+      },
+      "context": "New country is on OFAC/EU/HMT/UN sanctions list, Address is in jurisdictions: Iran, Syria, North Korea, Cuba",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_aml_001",
+      "source_name": "Full AML Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_cust_001",
+      "target_name": "Customer",
+      "rel_type": "applied_to",
+      "description": "Full AML Screening is applied to the Customer",
+      "properties": {
+        "trigger_events": [
+          "country relocation",
+          "sanctions list match",
+          "risk profile change"
+        ],
+        "mandatory_conditions": true
+      },
+      "context": "Customer moving to new country, flagged as medium/high risk, Compliance Head requires it",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_addr_001",
+      "source_name": "Destination Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_cc_001",
+      "target_name": "Sanctions List Compliance Check",
+      "rel_type": "triggers",
+      "description": "Destination Address Verification triggers the Sanctions List Compliance Check",
+      "properties": {
+        "verification_type": "jurisdiction assessment",
+        "high_risk_jurisdictions": [
+          "Iran",
+          "Syria",
+          "North Korea",
+          "Cuba"
+        ]
+      },
+      "context": "Address is in jurisdictions: Iran, Syria, North Korea, Cuba, etc. - triggers mandatory screening",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ra_001",
+      "source_name": "Compliance Head",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_dp_001",
+      "target_name": "Mandatory vs Optional AML Screening Gate",
+      "rel_type": "decided_by",
+      "description": "The Compliance Head can decide the outcome of the mandatory versus optional screening gate",
+      "properties": {
+        "authority_level": "compliance",
+        "override_capability": true
+      },
+      "context": "Compliance Head requires it - listed as mandatory screening trigger",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_addr_001",
+      "target_name": "Destination Address Verification",
+      "rel_type": "registered_to",
+      "description": "Customer is registered to the Destination Address being verified",
+      "properties": {
+        "verification_context": "relocation assessment",
+        "risk_assessment": "jurisdiction-based"
+      },
+      "context": "Customer moving to new country, Address is in jurisdictions: Iran, Syria, North Korea, Cuba",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_proc_001",
+      "source_name": "AML Re-Screening Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ps_001",
+      "source_name": "Mandatory AML Screening Trigger Assessment",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ps_002",
+      "source_name": "Optional AML Screening Eligibility Check",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_dp_001",
+      "source_name": "Mandatory vs Optional AML Screening Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_cc_001",
+      "source_name": "Sanctions List Compliance Check",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_aml_001",
+      "source_name": "Full AML Screening",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_ra_001",
+      "source_name": "Compliance Head",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_027_addr_001",
+      "source_name": "Destination Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_027",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

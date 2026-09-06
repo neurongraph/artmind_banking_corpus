@@ -1,0 +1,970 @@
+{
+  "chunk_seq": 20,
+  "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+  "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+  "text": "## Integration Architecture  \n### Event-Driven Integration (Asynchronous)  \n**Message Queue:** Apache Kafka  \n**Key Topics:**\n- `account.created` — New account opened\n- `transaction.recorded` — Transaction completed\n- `account.closed` — Account closed\n- `fraud.alert` — Fraud detection alert\n- `kyc.completed` — KYC verification done\n- `standing-order.processed` — Standing order executed  \n**Example Flow:**\n```\n1. Customer initiates transfer via IBP\n2. PPS validates transfer → `transfer.initiated` event\n3. FDE checks fraud → `fraud.scored` event\n4. If approved: PPS processes → `transfer.completed` event\n5. AMS updates balance → `balance.updated` event\n6. DW updates data → analytics available in 5 min\n```",
+  "name": "Chunk 20/39",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_019",
+  "next_chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_021",
+  "raw_entities": [
+    {
+      "id": "sys_001",
+      "name": "Apache Kafka",
+      "aliases": [
+        "Kafka",
+        "Message Queue"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "message_queue",
+      "description": "Event-driven asynchronous messaging platform used to publish and consume banking events across FirstUK Bank systems. Kafka handles critical event topics including account lifecycle, transactions, fraud detection, KYC completion, and standing order processing.",
+      "context": [
+        "Message Queue: Apache Kafka",
+        "Key Topics: `account.created` — New account opened, `transaction.recorded` — Transaction completed, `account.closed` — Account closed, `fraud.alert` — Fraud detection alert, `kyc.completed` — KYC verification done, `standing-order.processed` — Standing order executed"
+      ]
+    },
+    {
+      "id": "sys_002",
+      "name": "Internet Banking Platform",
+      "aliases": [
+        "IBP"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "internet_banking",
+      "description": "Customer-facing digital channel through which customers initiate financial transactions such as transfers. The IBP is the entry point for transaction requests that flow through downstream validation and fraud detection systems.",
+      "context": [
+        "Customer initiates transfer via IBP",
+        "1. Customer initiates transfer via IBP"
+      ]
+    },
+    {
+      "id": "sys_003",
+      "name": "Payment Processing System",
+      "aliases": [
+        "PPS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "payment_processor",
+      "description": "Core system responsible for validating and processing payment transfers. PPS validates transfer requests and publishes transfer initiation events, then processes approved transfers and publishes completion events.",
+      "context": [
+        "PPS validates transfer → `transfer.initiated` event",
+        "If approved: PPS processes → `transfer.completed` event"
+      ]
+    },
+    {
+      "id": "sys_004",
+      "name": "Fraud Detection Engine",
+      "aliases": [
+        "FDE"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "fraud_detection",
+      "description": "System that evaluates transactions for fraud risk and publishes fraud scoring events. FDE checks fraud status as part of the transfer processing workflow and determines whether transactions are approved or blocked.",
+      "context": [
+        "FDE checks fraud → `fraud.scored` event",
+        "`fraud.alert` — Fraud detection alert"
+      ]
+    },
+    {
+      "id": "sys_005",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "core_banking",
+      "description": "Core banking system responsible for maintaining account state and balances. AMS updates account balances following transaction completion and publishes balance update events.",
+      "context": [
+        "AMS updates balance → `balance.updated` event"
+      ]
+    },
+    {
+      "id": "sys_006",
+      "name": "Data Warehouse",
+      "aliases": [
+        "DW"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "analytics",
+      "description": "Analytics and reporting system that consumes events from Kafka and makes transaction and account data available for reporting and analysis. Data is available in the warehouse approximately 5 minutes after transaction completion.",
+      "context": [
+        "DW updates data → analytics available in 5 min"
+      ]
+    },
+    {
+      "id": "bc_001",
+      "name": "Account",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "A customer account that can be opened, closed, and have its balance updated through transactions. Accounts are tracked through their lifecycle via Kafka events including account.created and account.closed.",
+      "context": [
+        "`account.created` — New account opened",
+        "`account.closed` — Account closed",
+        "`balance.updated` event"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Transaction",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "A financial event representing the completion of a transfer or payment. Transactions are recorded, validated for fraud, and tracked through the event-driven architecture.",
+      "context": [
+        "`transaction.recorded` — Transaction completed",
+        "Customer initiates transfer via IBP",
+        "If approved: PPS processes → `transfer.completed` event"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "Fraud Alert",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "fraud_alert",
+      "description": "A fraud detection alert generated when the Fraud Detection Engine scores a transaction. Fraud alerts are published as events and influence transaction approval decisions.",
+      "context": [
+        "`fraud.alert` — Fraud detection alert",
+        "FDE checks fraud → `fraud.scored` event"
+      ]
+    },
+    {
+      "id": "bc_004",
+      "name": "KYC Verification",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "kyc_verification",
+      "description": "Know Your Customer verification process that is completed and tracked through the event-driven system. KYC completion events are published to Kafka for downstream consumption.",
+      "context": [
+        "`kyc.completed` — KYC verification done"
+      ]
+    },
+    {
+      "id": "bc_005",
+      "name": "Standing Order",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "standing_order",
+      "description": "A recurring payment instruction that is processed and tracked through the event-driven architecture. Standing order execution events are published to Kafka.",
+      "context": [
+        "`standing-order.processed` — Standing order executed"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "Transfer Validation Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Operational rule requiring that all transfer requests initiated via the Internet Banking Platform must be validated by the Payment Processing System before proceeding to fraud detection.",
+      "context": [
+        "PPS validates transfer → `transfer.initiated` event"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Fraud Check Approval Gate",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "Control requiring that all transfers must pass fraud detection scoring by the Fraud Detection Engine before the Payment Processing System can process and complete the transfer.",
+      "context": [
+        "FDE checks fraud → `fraud.scored` event",
+        "If approved: PPS processes → `transfer.completed` event"
+      ]
+    }
+  ],
+  "id_map": {
+    "sys_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_001",
+    "sys_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_002",
+    "sys_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_003",
+    "sys_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_004",
+    "sys_005": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_005",
+    "sys_006": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_006",
+    "bc_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_001",
+    "bc_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_002",
+    "bc_003": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_003",
+    "bc_004": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_004",
+    "bc_005": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_005",
+    "br_001": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_br_001",
+    "br_002": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_br_002"
+  },
+  "entities": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_001",
+      "name": "Apache Kafka",
+      "aliases": [
+        "Kafka",
+        "Message Queue"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "message_queue",
+      "description": "Event-driven asynchronous messaging platform used to publish and consume banking events across FirstUK Bank systems. Kafka handles critical event topics including account lifecycle, transactions, fraud detection, KYC completion, and standing order processing.",
+      "context": [
+        "Message Queue: Apache Kafka",
+        "Key Topics: `account.created` — New account opened, `transaction.recorded` — Transaction completed, `account.closed` — Account closed, `fraud.alert` — Fraud detection alert, `kyc.completed` — KYC verification done, `standing-order.processed` — Standing order executed"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_002",
+      "name": "Internet Banking Platform",
+      "aliases": [
+        "IBP"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "internet_banking",
+      "description": "Customer-facing digital channel through which customers initiate financial transactions such as transfers. The IBP is the entry point for transaction requests that flow through downstream validation and fraud detection systems.",
+      "context": [
+        "Customer initiates transfer via IBP",
+        "1. Customer initiates transfer via IBP"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_003",
+      "name": "Payment Processing System",
+      "aliases": [
+        "PPS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "payment_processor",
+      "description": "Core system responsible for validating and processing payment transfers. PPS validates transfer requests and publishes transfer initiation events, then processes approved transfers and publishes completion events.",
+      "context": [
+        "PPS validates transfer → `transfer.initiated` event",
+        "If approved: PPS processes → `transfer.completed` event"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_004",
+      "name": "Fraud Detection Engine",
+      "aliases": [
+        "FDE"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "fraud_detection",
+      "description": "System that evaluates transactions for fraud risk and publishes fraud scoring events. FDE checks fraud status as part of the transfer processing workflow and determines whether transactions are approved or blocked.",
+      "context": [
+        "FDE checks fraud → `fraud.scored` event",
+        "`fraud.alert` — Fraud detection alert"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_005",
+      "name": "Account Management System",
+      "aliases": [
+        "AMS"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "core_banking",
+      "description": "Core banking system responsible for maintaining account state and balances. AMS updates account balances following transaction completion and publishes balance update events.",
+      "context": [
+        "AMS updates balance → `balance.updated` event"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_006",
+      "name": "Data Warehouse",
+      "aliases": [
+        "DW"
+      ],
+      "entity_class": "SYSTEM_APPLICATION",
+      "type": "analytics",
+      "description": "Analytics and reporting system that consumes events from Kafka and makes transaction and account data available for reporting and analysis. Data is available in the warehouse approximately 5 minutes after transaction completion.",
+      "context": [
+        "DW updates data → analytics available in 5 min"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_001",
+      "name": "Account",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "A customer account that can be opened, closed, and have its balance updated through transactions. Accounts are tracked through their lifecycle via Kafka events including account.created and account.closed.",
+      "context": [
+        "`account.created` — New account opened",
+        "`account.closed` — Account closed",
+        "`balance.updated` event"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_002",
+      "name": "Transaction",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "A financial event representing the completion of a transfer or payment. Transactions are recorded, validated for fraud, and tracked through the event-driven architecture.",
+      "context": [
+        "`transaction.recorded` — Transaction completed",
+        "Customer initiates transfer via IBP",
+        "If approved: PPS processes → `transfer.completed` event"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_003",
+      "name": "Fraud Alert",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "fraud_alert",
+      "description": "A fraud detection alert generated when the Fraud Detection Engine scores a transaction. Fraud alerts are published as events and influence transaction approval decisions.",
+      "context": [
+        "`fraud.alert` — Fraud detection alert",
+        "FDE checks fraud → `fraud.scored` event"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_004",
+      "name": "KYC Verification",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "kyc_verification",
+      "description": "Know Your Customer verification process that is completed and tracked through the event-driven system. KYC completion events are published to Kafka for downstream consumption.",
+      "context": [
+        "`kyc.completed` — KYC verification done"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_005",
+      "name": "Standing Order",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "standing_order",
+      "description": "A recurring payment instruction that is processed and tracked through the event-driven architecture. Standing order execution events are published to Kafka.",
+      "context": [
+        "`standing-order.processed` — Standing order executed"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_br_001",
+      "name": "Transfer Validation Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "Operational rule requiring that all transfer requests initiated via the Internet Banking Platform must be validated by the Payment Processing System before proceeding to fraud detection.",
+      "context": [
+        "PPS validates transfer → `transfer.initiated` event"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_br_002",
+      "name": "Fraud Check Approval Gate",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "decision_authority",
+      "description": "Control requiring that all transfers must pass fraud detection scoring by the Fraud Detection Engine before the Payment Processing System can process and complete the transfer.",
+      "context": [
+        "FDE checks fraud → `fraud.scored` event",
+        "If approved: PPS processes → `transfer.completed` event"
+      ],
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_001",
+      "name": "Apache Kafka",
+      "properties": {
+        "purpose": "Event-driven message queue for asynchronous integration",
+        "key_topics": [
+          "account.created",
+          "transaction.recorded",
+          "account.closed",
+          "fraud.alert",
+          "kyc.completed",
+          "standing-order.processed"
+        ],
+        "deployment": "asynchronous",
+        "integrations": [
+          "Internet Banking Platform",
+          "Payment Processing System",
+          "Fraud Detection Engine",
+          "Account Management System",
+          "Data Warehouse"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_002",
+      "name": "Internet Banking Platform",
+      "properties": {
+        "purpose": "Customer-facing interface for initiating transfers and account operations",
+        "key_features": [
+          "transfer initiation"
+        ],
+        "integrations": [
+          "Apache Kafka",
+          "Payment Processing System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_003",
+      "name": "Payment Processing System",
+      "properties": {
+        "purpose": "Validates and processes transfer transactions",
+        "key_features": [
+          "transfer validation",
+          "transfer processing"
+        ],
+        "integrations": [
+          "Apache Kafka",
+          "Fraud Detection Engine",
+          "Account Management System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_004",
+      "name": "Fraud Detection Engine",
+      "properties": {
+        "purpose": "Scores and detects fraudulent transactions",
+        "key_features": [
+          "fraud scoring",
+          "fraud alert generation"
+        ],
+        "integrations": [
+          "Apache Kafka",
+          "Payment Processing System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_005",
+      "name": "Account Management System",
+      "properties": {
+        "purpose": "Manages account balances and account lifecycle events",
+        "key_features": [
+          "balance updates",
+          "account state management"
+        ],
+        "integrations": [
+          "Apache Kafka",
+          "Data Warehouse"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_006",
+      "name": "Data Warehouse",
+      "properties": {
+        "purpose": "Stores and aggregates data for analytics",
+        "performance": "analytics available in 5 minutes",
+        "integrations": [
+          "Apache Kafka",
+          "Account Management System"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_001",
+      "name": "Account",
+      "properties": {
+        "definition": "A financial account that can be opened, closed, and have its balance updated",
+        "key_attributes": [
+          "account_id",
+          "account_state",
+          "balance"
+        ],
+        "business_rules": [
+          "Account creation triggers account.created event",
+          "Account closure triggers account.closed event",
+          "Balance updates trigger balance.updated event"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_002",
+      "name": "Transaction",
+      "properties": {
+        "definition": "A financial transaction such as a transfer that is recorded and monitored",
+        "key_attributes": [
+          "transaction_type",
+          "transaction_status",
+          "fraud_score"
+        ],
+        "business_rules": [
+          "Transaction completion triggers transaction.recorded event",
+          "All transfers must pass fraud detection before processing"
+        ],
+        "subtypes": [
+          "transfer"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_003",
+      "name": "Fraud Alert",
+      "properties": {
+        "definition": "An alert generated when fraud detection identifies a suspicious transaction",
+        "key_attributes": [
+          "alert_id",
+          "fraud_score",
+          "transaction_id"
+        ],
+        "business_rules": [
+          "Fraud alerts trigger fraud.alert event",
+          "Fraud scoring must complete before transfer approval"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_004",
+      "name": "KYC Verification",
+      "properties": {
+        "definition": "Know Your Customer verification process that must be completed for customers",
+        "key_attributes": [
+          "verification_status",
+          "customer_id"
+        ],
+        "business_rules": [
+          "KYC completion triggers kyc.completed event"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_005",
+      "name": "Standing Order",
+      "properties": {
+        "definition": "A recurring payment instruction that is processed and recorded",
+        "key_attributes": [
+          "standing_order_id",
+          "execution_status"
+        ],
+        "business_rules": [
+          "Standing order execution triggers standing-order.processed event"
+        ]
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_br_001",
+      "name": "Transfer Validation Rule",
+      "properties": {
+        "rule_statement": "All transfers must be validated by the Payment Processing System before fraud detection",
+        "rule_type": "constraint",
+        "applies_to": [
+          "transfer transactions"
+        ],
+        "enforcement": "Payment Processing System",
+        "context": "Ensures transfer integrity before downstream fraud scoring"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_br_002",
+      "name": "Fraud Check Approval Gate",
+      "properties": {
+        "rule_statement": "Transfers must pass fraud detection scoring before being approved for processing",
+        "rule_type": "authority",
+        "applies_to": [
+          "transfer transactions"
+        ],
+        "enforcement": "Fraud Detection Engine",
+        "context": "Prevents fraudulent transfers from being processed"
+      },
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_002",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_003",
+      "target_name": "Payment Processing System",
+      "rel_type": "calls_api",
+      "description": "Customer initiates transfer via Internet Banking Platform which triggers Payment Processing System validation",
+      "properties": {
+        "trigger": "transfer initiation",
+        "event": "transfer.initiated"
+      },
+      "context": "Customer initiates transfer via IBP → PPS validates transfer → `transfer.initiated` event",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_003",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_004",
+      "target_name": "Fraud Detection Engine",
+      "rel_type": "calls_api",
+      "description": "Payment Processing System sends transfer for fraud checking to Fraud Detection Engine",
+      "properties": {
+        "trigger": "transfer validation",
+        "event": "fraud.scored"
+      },
+      "context": "PPS validates transfer → `transfer.initiated` event → FDE checks fraud → `fraud.scored` event",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_004",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_003",
+      "target_name": "Payment Processing System",
+      "rel_type": "publishes_to",
+      "description": "Fraud Detection Engine publishes fraud scoring results back to Payment Processing System",
+      "properties": {
+        "event": "fraud.scored",
+        "trigger": "fraud check completion"
+      },
+      "context": "FDE checks fraud → `fraud.scored` event → If approved: PPS processes → `transfer.completed` event",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_003",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_005",
+      "target_name": "Account Management System",
+      "rel_type": "calls_api",
+      "description": "Payment Processing System triggers Account Management System to update balance after transfer completion",
+      "properties": {
+        "trigger": "transfer completion",
+        "event": "balance.updated"
+      },
+      "context": "If approved: PPS processes → `transfer.completed` event → AMS updates balance → `balance.updated` event",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_005",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_006",
+      "target_name": "Data Warehouse",
+      "rel_type": "feeds_data_to",
+      "description": "Account Management System feeds balance update data to Data Warehouse for analytics",
+      "properties": {
+        "event": "balance.updated",
+        "latency": "5 minutes"
+      },
+      "context": "AMS updates balance → `balance.updated` event → DW updates data → analytics available in 5 min",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_001",
+      "source_name": "Apache Kafka",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_001",
+      "target_name": "Account",
+      "rel_type": "tracks",
+      "description": "Apache Kafka tracks account lifecycle events including account creation and closure",
+      "properties": {
+        "topics": [
+          "account.created",
+          "account.closed"
+        ]
+      },
+      "context": "Key Topics: `account.created` — New account opened, `account.closed` — Account closed",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_001",
+      "source_name": "Apache Kafka",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_002",
+      "target_name": "Transaction",
+      "rel_type": "tracks",
+      "description": "Apache Kafka tracks transaction completion events",
+      "properties": {
+        "topics": [
+          "transaction.recorded"
+        ]
+      },
+      "context": "Key Topics: `transaction.recorded` — Transaction completed",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_001",
+      "source_name": "Apache Kafka",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_003",
+      "target_name": "Fraud Alert",
+      "rel_type": "tracks",
+      "description": "Apache Kafka tracks fraud detection alerts",
+      "properties": {
+        "topics": [
+          "fraud.alert"
+        ]
+      },
+      "context": "Key Topics: `fraud.alert` — Fraud detection alert",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_001",
+      "source_name": "Apache Kafka",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_004",
+      "target_name": "KYC Verification",
+      "rel_type": "tracks",
+      "description": "Apache Kafka tracks KYC verification completion events",
+      "properties": {
+        "topics": [
+          "kyc.completed"
+        ]
+      },
+      "context": "Key Topics: `kyc.completed` — KYC verification done",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_001",
+      "source_name": "Apache Kafka",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_005",
+      "target_name": "Standing Order",
+      "rel_type": "tracks",
+      "description": "Apache Kafka tracks standing order execution events",
+      "properties": {
+        "topics": [
+          "standing-order.processed"
+        ]
+      },
+      "context": "Key Topics: `standing-order.processed` — Standing order executed",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_003",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_br_001",
+      "target_name": "Transfer Validation Rule",
+      "rel_type": "implements",
+      "description": "Payment Processing System implements transfer validation business rule",
+      "properties": {
+        "action": "validates transfer"
+      },
+      "context": "PPS validates transfer → `transfer.initiated` event",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_004",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_br_002",
+      "target_name": "Fraud Check Approval Gate",
+      "rel_type": "implements",
+      "description": "Fraud Detection Engine implements fraud check approval gate business rule",
+      "properties": {
+        "action": "checks fraud and approves/rejects transfer"
+      },
+      "context": "FDE checks fraud → `fraud.scored` event → If approved: PPS processes",
+      "bidirectional": false,
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_001",
+      "source_name": "Apache Kafka",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_002",
+      "source_name": "Internet Banking Platform",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_003",
+      "source_name": "Payment Processing System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_004",
+      "source_name": "Fraud Detection Engine",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_005",
+      "source_name": "Account Management System",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_sys_006",
+      "source_name": "Data Warehouse",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_002",
+      "source_name": "Transaction",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_003",
+      "source_name": "Fraud Alert",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_004",
+      "source_name": "KYC Verification",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_bc_005",
+      "source_name": "Standing Order",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_br_001",
+      "source_name": "Transfer Validation Rule",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020_br_002",
+      "source_name": "Fraud Check Approval Gate",
+      "target_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "target_name": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954_020",
+      "doc_id": "01a072e7-a5f7-70ca-a96a-1757a59ba954",
+      "_domain": "banking.organization"
+    }
+  ]
+}

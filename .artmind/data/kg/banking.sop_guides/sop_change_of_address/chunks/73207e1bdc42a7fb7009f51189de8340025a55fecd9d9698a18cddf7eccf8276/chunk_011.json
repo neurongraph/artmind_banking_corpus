@@ -1,0 +1,2414 @@
+{
+  "chunk_seq": 11,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "## Step 3: Identify All Affected Accounts  \n### Single vs. Multiple Accounts  \n**Query System:**\n- [ ] Check all accounts linked to customer\n- [ ] Identify all product types (savings, checking, mortgages, cards)\n- [ ] Note joint account holders (separate treatment)\n- [ ] Identify linked accounts (e.g., mortgage on property at address)  \n**Example Scenarios:**  \n**Scenario A: Single Account (Typical)**\n```\nCustomer has: 1 SmartSaver account\nAction: Update single account address\nTimeline: 2 days\n```  \n**Scenario B: Multiple Accounts**\n```\nCustomer has: 1 SmartSaver + 1 Current + 1 Mortgage\nDecision Point: Same address for all, or different?\nAction: Update each account based on customer instruction\nTimeline: 3-5 days\n```  \n**Scenario C: Joint Account**\n```\nCustomer has: Joint SmartSaver with spouse\nIssue: Whose address is primary?\nAction: Confirm both account holders agree to change\nTimeline: 3-5 days (need written consent from both)\n```  \n**Scenario D: Mortgage with Property**\n```\nCustomer has: Mortgage on property at old address\nIssue: Mortgage is tied to property collateral\nAction: Update personal address but keep property address in mortgage\nTimeline: Special handling required\n```",
+  "name": "Chunk 11/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_010",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_012",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Account Address Update Process",
+      "aliases": [
+        "Change of Address",
+        "Address Update Procedure"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "A multi-account address update procedure that identifies all customer accounts, determines whether addresses are shared or separate, and applies appropriate update logic based on account type and holder arrangement. The process handles single accounts, multiple accounts, joint accounts, and mortgage-linked properties with varying timelines and consent requirements.",
+      "context": [
+        "Step 3: Identify All Affected Accounts",
+        "Check all accounts linked to customer",
+        "Identify all product types (savings, checking, mortgages, cards)",
+        "Update each account based on customer instruction"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Query System for Linked Accounts",
+      "aliases": [
+        "Account Lookup",
+        "System Query"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial step to retrieve all accounts associated with the customer from the banking system, including identification of product types and account linkages.",
+      "context": [
+        "Check all accounts linked to customer",
+        "Identify all product types (savings, checking, mortgages, cards)"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Identify Joint Account Holders",
+      "aliases": [
+        "Joint Holder Detection"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Step to flag and separately treat any joint accounts, noting all co-holders for consent and notification purposes.",
+      "context": [
+        "Note joint account holders (separate treatment)",
+        "Joint Account"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Identify Linked Accounts",
+      "aliases": [
+        "Account Linkage Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Step to identify accounts that are linked to collateral or property, such as mortgages tied to a specific property address.",
+      "context": [
+        "Identify linked accounts (e.g., mortgage on property at address)",
+        "Mortgage is tied to property collateral"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Determine Address Scope",
+      "aliases": [
+        "Address Scope Decision"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Step to determine whether all identified accounts share the same address or whether different accounts require different address updates.",
+      "context": [
+        "Same address for all, or different?",
+        "Decision Point: Same address for all, or different?"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Confirm Joint Holder Consent",
+      "aliases": [
+        "Joint Consent Verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Step to obtain written consent from all joint account holders before updating a joint account address.",
+      "context": [
+        "Confirm both account holders agree to change",
+        "need written consent from both"
+      ]
+    },
+    {
+      "id": "pstep_006",
+      "name": "Update Account Address",
+      "aliases": [
+        "Address Update Execution"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step to apply address updates to each identified account based on customer instruction and account type.",
+      "context": [
+        "Update single account address",
+        "Update each account based on customer instruction"
+      ]
+    },
+    {
+      "id": "pstep_007",
+      "name": "Handle Mortgage Property Address",
+      "aliases": [
+        "Mortgage Address Special Handling"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Special handling step for mortgages where the personal address is updated but the property address tied to the mortgage collateral is retained separately.",
+      "context": [
+        "Update personal address but keep property address in mortgage",
+        "Special handling required"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Single vs. Multiple Accounts Decision",
+      "aliases": [
+        "Account Count Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Branch point determining whether the customer has a single account (typical path, 2-day timeline) or multiple accounts (extended path, 3-5 day timeline).",
+      "context": [
+        "Customer has: 1 SmartSaver account",
+        "Customer has: 1 SmartSaver + 1 Current + 1 Mortgage"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Shared vs. Separate Address Decision",
+      "aliases": [
+        "Address Scope Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Branch point determining whether all customer accounts use the same address or whether different accounts require different address updates.",
+      "context": [
+        "Same address for all, or different?",
+        "Decision Point: Same address for all, or different?"
+      ]
+    },
+    {
+      "id": "dp_003",
+      "name": "Joint Account Consent Gate",
+      "aliases": [
+        "Joint Holder Approval"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approval_decision",
+      "description": "Approval gate requiring confirmation that both joint account holders agree to the address change before proceeding.",
+      "context": [
+        "Whose address is primary?",
+        "Confirm both account holders agree to change"
+      ]
+    },
+    {
+      "id": "dp_004",
+      "name": "Mortgage Property Linkage Gate",
+      "aliases": [
+        "Collateral Address Check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision point identifying whether an account is a mortgage linked to property collateral, triggering special handling to separate personal and property addresses.",
+      "context": [
+        "Mortgage is tied to property collateral",
+        "Mortgage on property at old address"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "System Query Operator",
+      "aliases": [
+        "Account Lookup Staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations staff member responsible for querying the banking system to retrieve all customer accounts and their product types.",
+      "context": [
+        "Check all accounts linked to customer",
+        "Identify all product types (savings, checking, mortgages, cards)"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Joint Account Consent Verifier",
+      "aliases": [
+        "Consent Verification Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations staff responsible for obtaining and verifying written consent from all joint account holders before updating joint account addresses.",
+      "context": [
+        "Confirm both account holders agree to change",
+        "need written consent from both"
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Account Update Processor",
+      "aliases": [
+        "Address Update Executor"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations staff responsible for executing address updates in the banking system for each identified account.",
+      "context": [
+        "Update single account address",
+        "Update each account based on customer instruction"
+      ]
+    },
+    {
+      "id": "ra_004",
+      "name": "Mortgage Specialist",
+      "aliases": [
+        "Mortgage Handler"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Specialist responsible for handling special cases where mortgages are linked to property collateral, ensuring personal address is updated while property address is retained.",
+      "context": [
+        "Update personal address but keep property address in mortgage",
+        "Special handling required"
+      ]
+    },
+    {
+      "id": "prd_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SmartSaver"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "smartsaver_account",
+      "description": "A savings product referenced in the address update scenarios as a typical single-account case and as part of multi-product customer portfolios.",
+      "context": [
+        "Customer has: 1 SmartSaver account",
+        "Customer has: 1 SmartSaver + 1 Current + 1 Mortgage"
+      ]
+    },
+    {
+      "id": "prd_002",
+      "name": "Current Account",
+      "aliases": [
+        "Checking Account"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "A checking/current account product referenced as part of multi-product customer portfolios in the address update process.",
+      "context": [
+        "Identify all product types (savings, checking, mortgages, cards)",
+        "Customer has: 1 SmartSaver + 1 Current + 1 Mortgage"
+      ]
+    },
+    {
+      "id": "prd_003",
+      "name": "Mortgage Product",
+      "aliases": [
+        "Mortgage"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "mortgage",
+      "description": "A mortgage product referenced in the address update process, with special handling requirements due to linkage to property collateral.",
+      "context": [
+        "Identify all product types (savings, checking, mortgages, cards)",
+        "Mortgage on property at old address"
+      ]
+    },
+    {
+      "id": "prd_004",
+      "name": "Card Product",
+      "aliases": [
+        "Payment Card"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "debit_card",
+      "description": "A card product referenced as part of the product types that may be linked to a customer account.",
+      "context": [
+        "Identify all product types (savings, checking, mortgages, cards)"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Single Customer Account",
+      "aliases": [
+        "Individual Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "A typical single account scenario where a customer holds one SmartSaver account requiring address update within a 2-day timeline.",
+      "context": [
+        "Scenario A: Single Account (Typical)",
+        "Customer has: 1 SmartSaver account",
+        "Timeline: 2 days"
+      ]
+    },
+    {
+      "id": "acc_002",
+      "name": "Multiple Customer Accounts",
+      "aliases": [
+        "Multi-Product Portfolio"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "A scenario where a customer holds multiple accounts across different product types (savings, current, mortgage) requiring coordinated address updates within 3-5 days.",
+      "context": [
+        "Scenario B: Multiple Accounts",
+        "Customer has: 1 SmartSaver + 1 Current + 1 Mortgage",
+        "Timeline: 3-5 days"
+      ]
+    },
+    {
+      "id": "acc_003",
+      "name": "Joint Savings Account",
+      "aliases": [
+        "Joint SmartSaver"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "joint_account",
+      "description": "A joint account held by multiple parties (e.g., spouse) requiring written consent from all holders before address update, with 3-5 day timeline.",
+      "context": [
+        "Scenario C: Joint Account",
+        "Customer has: Joint SmartSaver with spouse",
+        "Timeline: 3-5 days (need written consent from both)"
+      ]
+    },
+    {
+      "id": "acc_004",
+      "name": "Mortgage Account with Property Collateral",
+      "aliases": [
+        "Collateral-Linked Mortgage"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "mortgage",
+      "description": "A mortgage account linked to property collateral where the personal address is updated separately from the property address tied to the mortgage, requiring special handling.",
+      "context": [
+        "Scenario D: Mortgage with Property",
+        "Mortgage is tied to property collateral",
+        "Update personal address but keep property address in mortgage"
+      ]
+    },
+    {
+      "id": "ah_001",
+      "name": "Primary Account Holder",
+      "aliases": [
+        "Account Owner"
+      ],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "primary_holder",
+      "description": "The primary customer whose address is being updated across their linked accounts.",
+      "context": [
+        "Check all accounts linked to customer",
+        "Customer has: 1 SmartSaver account"
+      ]
+    },
+    {
+      "id": "ah_002",
+      "name": "Joint Account Holder",
+      "aliases": [
+        "Co-Holder",
+        "Spouse"
+      ],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "joint_holder",
+      "description": "A co-holder on a joint account (e.g., spouse) whose consent is required before updating the joint account address.",
+      "context": [
+        "Note joint account holders (separate treatment)",
+        "Customer has: Joint SmartSaver with spouse",
+        "Confirm both account holders agree to change"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Individual Customer",
+      "aliases": [
+        "Customer",
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A natural person who holds one or more accounts and is subject to the address update process.",
+      "context": [
+        "Check all accounts linked to customer",
+        "Customer has: 1 SmartSaver account"
+      ]
+    },
+    {
+      "id": "ja_001",
+      "name": "Joint Account Arrangement",
+      "aliases": [
+        "Joint Holding"
+      ],
+      "entity_class": "JOINT_ACCOUNT",
+      "type": "joint_and_several",
+      "description": "A joint account arrangement where multiple parties (e.g., spouses) hold shared rights and liabilities, requiring consent from all holders for address changes.",
+      "context": [
+        "Scenario C: Joint Account",
+        "Customer has: Joint SmartSaver with spouse",
+        "Whose address is primary?"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Customer Address Update",
+      "aliases": [
+        "Address Change",
+        "Address Modification"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The process of updating a customer's address across one or more linked accounts, with different timelines and consent requirements depending on account type and holder arrangement.",
+      "context": [
+        "Step 3: Identify All Affected Accounts",
+        "Update single account address",
+        "Update each account based on customer instruction"
+      ]
+    },
+    {
+      "id": "addr_002",
+      "name": "Property Address",
+      "aliases": [
+        "Collateral Address",
+        "Mortgage Property Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_recording",
+      "description": "The address of a property used as collateral for a mortgage, which is retained separately from the customer's personal address during an address update.",
+      "context": [
+        "Mortgage on property at old address",
+        "keep property address in mortgage",
+        "Update personal address but keep property address in mortgage"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_011_proc_001",
+    "pstep_001": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_001",
+    "pstep_002": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_002",
+    "pstep_003": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_003",
+    "pstep_004": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_004",
+    "pstep_005": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_005",
+    "pstep_006": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_006",
+    "pstep_007": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_007",
+    "dp_001": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_001",
+    "dp_002": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_002",
+    "dp_003": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_003",
+    "dp_004": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_004",
+    "ra_001": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_001",
+    "ra_002": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_002",
+    "ra_003": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_003",
+    "ra_004": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_004",
+    "prd_001": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_001",
+    "prd_002": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_002",
+    "prd_003": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_003",
+    "prd_004": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_004",
+    "acc_001": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_001",
+    "acc_002": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_002",
+    "acc_003": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_003",
+    "acc_004": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_004",
+    "ah_001": "01a07400-ba86-72f1-8b22-d07b32649491_011_ah_001",
+    "ah_002": "01a07400-ba86-72f1-8b22-d07b32649491_011_ah_002",
+    "cust_001": "01a07400-ba86-72f1-8b22-d07b32649491_011_cust_001",
+    "ja_001": "01a07400-ba86-72f1-8b22-d07b32649491_011_ja_001",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_011_addr_001",
+    "addr_002": "01a07400-ba86-72f1-8b22-d07b32649491_011_addr_002"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_proc_001",
+      "name": "Account Address Update Process",
+      "aliases": [
+        "Change of Address",
+        "Address Update Procedure"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "A multi-account address update procedure that identifies all customer accounts, determines whether addresses are shared or separate, and applies appropriate update logic based on account type and holder arrangement. The process handles single accounts, multiple accounts, joint accounts, and mortgage-linked properties with varying timelines and consent requirements.",
+      "context": [
+        "Step 3: Identify All Affected Accounts",
+        "Check all accounts linked to customer",
+        "Identify all product types (savings, checking, mortgages, cards)",
+        "Update each account based on customer instruction"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_001",
+      "name": "Query System for Linked Accounts",
+      "aliases": [
+        "Account Lookup",
+        "System Query"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Initial step to retrieve all accounts associated with the customer from the banking system, including identification of product types and account linkages.",
+      "context": [
+        "Check all accounts linked to customer",
+        "Identify all product types (savings, checking, mortgages, cards)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_002",
+      "name": "Identify Joint Account Holders",
+      "aliases": [
+        "Joint Holder Detection"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Step to flag and separately treat any joint accounts, noting all co-holders for consent and notification purposes.",
+      "context": [
+        "Note joint account holders (separate treatment)",
+        "Joint Account"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_003",
+      "name": "Identify Linked Accounts",
+      "aliases": [
+        "Account Linkage Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Step to identify accounts that are linked to collateral or property, such as mortgages tied to a specific property address.",
+      "context": [
+        "Identify linked accounts (e.g., mortgage on property at address)",
+        "Mortgage is tied to property collateral"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_004",
+      "name": "Determine Address Scope",
+      "aliases": [
+        "Address Scope Decision"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Step to determine whether all identified accounts share the same address or whether different accounts require different address updates.",
+      "context": [
+        "Same address for all, or different?",
+        "Decision Point: Same address for all, or different?"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_005",
+      "name": "Confirm Joint Holder Consent",
+      "aliases": [
+        "Joint Consent Verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "Step to obtain written consent from all joint account holders before updating a joint account address.",
+      "context": [
+        "Confirm both account holders agree to change",
+        "need written consent from both"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_006",
+      "name": "Update Account Address",
+      "aliases": [
+        "Address Update Execution"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "Step to apply address updates to each identified account based on customer instruction and account type.",
+      "context": [
+        "Update single account address",
+        "Update each account based on customer instruction"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_007",
+      "name": "Handle Mortgage Property Address",
+      "aliases": [
+        "Mortgage Address Special Handling"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "Special handling step for mortgages where the personal address is updated but the property address tied to the mortgage collateral is retained separately.",
+      "context": [
+        "Update personal address but keep property address in mortgage",
+        "Special handling required"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_001",
+      "name": "Single vs. Multiple Accounts Decision",
+      "aliases": [
+        "Account Count Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Branch point determining whether the customer has a single account (typical path, 2-day timeline) or multiple accounts (extended path, 3-5 day timeline).",
+      "context": [
+        "Customer has: 1 SmartSaver account",
+        "Customer has: 1 SmartSaver + 1 Current + 1 Mortgage"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_002",
+      "name": "Shared vs. Separate Address Decision",
+      "aliases": [
+        "Address Scope Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "Branch point determining whether all customer accounts use the same address or whether different accounts require different address updates.",
+      "context": [
+        "Same address for all, or different?",
+        "Decision Point: Same address for all, or different?"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_003",
+      "name": "Joint Account Consent Gate",
+      "aliases": [
+        "Joint Holder Approval"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approval_decision",
+      "description": "Approval gate requiring confirmation that both joint account holders agree to the address change before proceeding.",
+      "context": [
+        "Whose address is primary?",
+        "Confirm both account holders agree to change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_004",
+      "name": "Mortgage Property Linkage Gate",
+      "aliases": [
+        "Collateral Address Check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Decision point identifying whether an account is a mortgage linked to property collateral, triggering special handling to separate personal and property addresses.",
+      "context": [
+        "Mortgage is tied to property collateral",
+        "Mortgage on property at old address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_001",
+      "name": "System Query Operator",
+      "aliases": [
+        "Account Lookup Staff"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations staff member responsible for querying the banking system to retrieve all customer accounts and their product types.",
+      "context": [
+        "Check all accounts linked to customer",
+        "Identify all product types (savings, checking, mortgages, cards)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_002",
+      "name": "Joint Account Consent Verifier",
+      "aliases": [
+        "Consent Verification Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations staff responsible for obtaining and verifying written consent from all joint account holders before updating joint account addresses.",
+      "context": [
+        "Confirm both account holders agree to change",
+        "need written consent from both"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_003",
+      "name": "Account Update Processor",
+      "aliases": [
+        "Address Update Executor"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Operations staff responsible for executing address updates in the banking system for each identified account.",
+      "context": [
+        "Update single account address",
+        "Update each account based on customer instruction"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_004",
+      "name": "Mortgage Specialist",
+      "aliases": [
+        "Mortgage Handler"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "Specialist responsible for handling special cases where mortgages are linked to property collateral, ensuring personal address is updated while property address is retained.",
+      "context": [
+        "Update personal address but keep property address in mortgage",
+        "Special handling required"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_001",
+      "name": "SmartSaver Account",
+      "aliases": [
+        "SmartSaver"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "smartsaver_account",
+      "description": "A savings product referenced in the address update scenarios as a typical single-account case and as part of multi-product customer portfolios.",
+      "context": [
+        "Customer has: 1 SmartSaver account",
+        "Customer has: 1 SmartSaver + 1 Current + 1 Mortgage"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_002",
+      "name": "Current Account",
+      "aliases": [
+        "Checking Account"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "current_account",
+      "description": "A checking/current account product referenced as part of multi-product customer portfolios in the address update process.",
+      "context": [
+        "Identify all product types (savings, checking, mortgages, cards)",
+        "Customer has: 1 SmartSaver + 1 Current + 1 Mortgage"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_003",
+      "name": "Mortgage Product",
+      "aliases": [
+        "Mortgage"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "mortgage",
+      "description": "A mortgage product referenced in the address update process, with special handling requirements due to linkage to property collateral.",
+      "context": [
+        "Identify all product types (savings, checking, mortgages, cards)",
+        "Mortgage on property at old address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_004",
+      "name": "Card Product",
+      "aliases": [
+        "Payment Card"
+      ],
+      "entity_class": "PRODUCT",
+      "type": "debit_card",
+      "description": "A card product referenced as part of the product types that may be linked to a customer account.",
+      "context": [
+        "Identify all product types (savings, checking, mortgages, cards)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_001",
+      "name": "Single Customer Account",
+      "aliases": [
+        "Individual Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "A typical single account scenario where a customer holds one SmartSaver account requiring address update within a 2-day timeline.",
+      "context": [
+        "Scenario A: Single Account (Typical)",
+        "Customer has: 1 SmartSaver account",
+        "Timeline: 2 days"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_002",
+      "name": "Multiple Customer Accounts",
+      "aliases": [
+        "Multi-Product Portfolio"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "A scenario where a customer holds multiple accounts across different product types (savings, current, mortgage) requiring coordinated address updates within 3-5 days.",
+      "context": [
+        "Scenario B: Multiple Accounts",
+        "Customer has: 1 SmartSaver + 1 Current + 1 Mortgage",
+        "Timeline: 3-5 days"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_003",
+      "name": "Joint Savings Account",
+      "aliases": [
+        "Joint SmartSaver"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "joint_account",
+      "description": "A joint account held by multiple parties (e.g., spouse) requiring written consent from all holders before address update, with 3-5 day timeline.",
+      "context": [
+        "Scenario C: Joint Account",
+        "Customer has: Joint SmartSaver with spouse",
+        "Timeline: 3-5 days (need written consent from both)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_004",
+      "name": "Mortgage Account with Property Collateral",
+      "aliases": [
+        "Collateral-Linked Mortgage"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "mortgage",
+      "description": "A mortgage account linked to property collateral where the personal address is updated separately from the property address tied to the mortgage, requiring special handling.",
+      "context": [
+        "Scenario D: Mortgage with Property",
+        "Mortgage is tied to property collateral",
+        "Update personal address but keep property address in mortgage"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ah_001",
+      "name": "Primary Account Holder",
+      "aliases": [
+        "Account Owner"
+      ],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "primary_holder",
+      "description": "The primary customer whose address is being updated across their linked accounts.",
+      "context": [
+        "Check all accounts linked to customer",
+        "Customer has: 1 SmartSaver account"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ah_002",
+      "name": "Joint Account Holder",
+      "aliases": [
+        "Co-Holder",
+        "Spouse"
+      ],
+      "entity_class": "ACCOUNT_HOLDER",
+      "type": "joint_holder",
+      "description": "A co-holder on a joint account (e.g., spouse) whose consent is required before updating the joint account address.",
+      "context": [
+        "Note joint account holders (separate treatment)",
+        "Customer has: Joint SmartSaver with spouse",
+        "Confirm both account holders agree to change"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_cust_001",
+      "name": "Individual Customer",
+      "aliases": [
+        "Customer",
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "A natural person who holds one or more accounts and is subject to the address update process.",
+      "context": [
+        "Check all accounts linked to customer",
+        "Customer has: 1 SmartSaver account"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ja_001",
+      "name": "Joint Account Arrangement",
+      "aliases": [
+        "Joint Holding"
+      ],
+      "entity_class": "JOINT_ACCOUNT",
+      "type": "joint_and_several",
+      "description": "A joint account arrangement where multiple parties (e.g., spouses) hold shared rights and liabilities, requiring consent from all holders for address changes.",
+      "context": [
+        "Scenario C: Joint Account",
+        "Customer has: Joint SmartSaver with spouse",
+        "Whose address is primary?"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_addr_001",
+      "name": "Customer Address Update",
+      "aliases": [
+        "Address Change",
+        "Address Modification"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The process of updating a customer's address across one or more linked accounts, with different timelines and consent requirements depending on account type and holder arrangement.",
+      "context": [
+        "Step 3: Identify All Affected Accounts",
+        "Update single account address",
+        "Update each account based on customer instruction"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_addr_002",
+      "name": "Property Address",
+      "aliases": [
+        "Collateral Address",
+        "Mortgage Property Address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_recording",
+      "description": "The address of a property used as collateral for a mortgage, which is retained separately from the customer's personal address during an address update.",
+      "context": [
+        "Mortgage on property at old address",
+        "keep property address in mortgage",
+        "Update personal address but keep property address in mortgage"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_proc_001",
+      "name": "Account Address Update Process",
+      "properties": {
+        "purpose": "Update customer address across all linked accounts while managing joint account consent and mortgage property linkage",
+        "scope": [
+          "savings accounts",
+          "current accounts",
+          "mortgages",
+          "card products"
+        ],
+        "channels": [
+          "system",
+          "branch"
+        ],
+        "departments_involved": [
+          "Customer Service",
+          "Mortgage Services",
+          "Compliance"
+        ],
+        "timeline_sla": "2-5 days depending on account complexity",
+        "trigger": "Customer requests address change",
+        "outcome_success": "All applicable accounts updated with correct address; joint holders consented; mortgage property address preserved where applicable",
+        "outcome_failure": "Address update incomplete; joint holder consent not obtained; mortgage property address incorrectly modified"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_001",
+      "name": "Query System for Linked Accounts",
+      "properties": {
+        "step_number": 1,
+        "actor": "System Query Operator",
+        "input": "Customer identifier",
+        "output": "Complete list of all accounts linked to customer; product types identified",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account Management System"
+        ],
+        "failure_path": "Cannot proceed with address update; escalate to supervisor"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_002",
+      "name": "Identify Joint Account Holders",
+      "properties": {
+        "step_number": 2,
+        "actor": "System Query Operator",
+        "input": "Account list from Step 1",
+        "output": "Flagged joint accounts with co-holder names and contact details",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account Management System"
+        ],
+        "failure_path": "Joint account holders not identified; consent verification cannot proceed"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_003",
+      "name": "Identify Linked Accounts",
+      "properties": {
+        "step_number": 3,
+        "actor": "System Query Operator",
+        "input": "Account list from Step 1",
+        "output": "Linked accounts identified (e.g., mortgage on property at address)",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account Management System"
+        ],
+        "failure_path": "Linked accounts missed; mortgage property address may be incorrectly updated"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_004",
+      "name": "Determine Address Scope",
+      "properties": {
+        "step_number": 4,
+        "actor": "Account Update Processor",
+        "input": "Customer instruction; account list; linked account details",
+        "output": "Decision on which accounts receive address update; which retain original address",
+        "estimated_duration": "1 day",
+        "channel": "branch",
+        "mandatory": "yes",
+        "failure_path": "Incorrect address scope applied; customer dissatisfaction; compliance risk"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_005",
+      "name": "Confirm Joint Holder Consent",
+      "properties": {
+        "step_number": 5,
+        "actor": "Joint Account Consent Verifier",
+        "input": "Joint account details; co-holder contact information",
+        "output": "Written consent from all joint holders; consent records filed",
+        "estimated_duration": "2-3 days",
+        "channel": [
+          "branch",
+          "postal"
+        ],
+        "mandatory": "yes",
+        "failure_path": "Consent not obtained; address update cannot proceed for joint account"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_006",
+      "name": "Update Account Address",
+      "properties": {
+        "step_number": 6,
+        "actor": "Account Update Processor",
+        "input": "Approved address scope; customer instruction; joint consent (if applicable)",
+        "output": "Updated account records in system; confirmation sent to customer",
+        "estimated_duration": "1 day",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Account Management System"
+        ],
+        "failure_path": "Address update fails in system; manual intervention required"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_007",
+      "name": "Handle Mortgage Property Address",
+      "properties": {
+        "step_number": 7,
+        "actor": "Mortgage Specialist",
+        "input": "Mortgage account details; property address; customer personal address",
+        "output": "Personal address updated; property address preserved in mortgage record",
+        "estimated_duration": "1-2 days",
+        "channel": "system",
+        "mandatory": "conditional",
+        "tools_or_systems": [
+          "Mortgage Management System"
+        ],
+        "failure_path": "Property address incorrectly modified; collateral documentation at risk"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_001",
+      "name": "Single vs. Multiple Accounts Decision",
+      "properties": {
+        "decision_question": "Does the customer have one account or multiple linked accounts?",
+        "criteria": "System query result showing account count and product types",
+        "decision_maker": "System Query Operator",
+        "path_yes": "Single account: proceed to address update (2-day timeline)",
+        "path_no": "Multiple accounts: proceed to address scope determination (3-5 day timeline)",
+        "override_possible": "no"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_002",
+      "name": "Shared vs. Separate Address Decision",
+      "properties": {
+        "decision_question": "Should all accounts receive the same address update, or do different accounts require different addresses?",
+        "criteria": "Customer instruction; account type; linked account relationships",
+        "decision_maker": "Account Update Processor",
+        "path_yes": "Apply same address to all accounts",
+        "path_no": "Apply different addresses to specific accounts per customer instruction",
+        "override_possible": "yes",
+        "time_limit": "1 day"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_003",
+      "name": "Joint Account Consent Gate",
+      "properties": {
+        "decision_question": "Is the account a joint account requiring co-holder consent?",
+        "criteria": "Account flagged as joint in system; co-holder identified",
+        "decision_maker": "Joint Account Consent Verifier",
+        "path_yes": "Obtain written consent from all joint holders before proceeding",
+        "path_no": "Proceed directly to address update",
+        "override_possible": "no",
+        "time_limit": "2-3 days for consent collection"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_004",
+      "name": "Mortgage Property Linkage Gate",
+      "properties": {
+        "decision_question": "Is the customer's address linked to a mortgage property collateral?",
+        "criteria": "Mortgage account identified at address; property address in mortgage record",
+        "decision_maker": "Mortgage Specialist",
+        "path_yes": "Route to Mortgage Specialist; update personal address only; preserve property address",
+        "path_no": "Proceed with standard address update",
+        "override_possible": "no"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_001",
+      "name": "System Query Operator",
+      "properties": {
+        "role_type": "human",
+        "department": "Customer Service",
+        "authority_level": "operational",
+        "channels": [
+          "system"
+        ],
+        "response_time_sla": "same day"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_002",
+      "name": "Joint Account Consent Verifier",
+      "properties": {
+        "role_type": "human",
+        "department": "Customer Service",
+        "authority_level": "operational",
+        "channels": [
+          "branch",
+          "postal",
+          "phone"
+        ],
+        "response_time_sla": "2-3 days"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_003",
+      "name": "Account Update Processor",
+      "properties": {
+        "role_type": "human",
+        "department": "Customer Service",
+        "authority_level": "operational",
+        "channels": [
+          "system",
+          "branch"
+        ],
+        "response_time_sla": "1 day"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_004",
+      "name": "Mortgage Specialist",
+      "properties": {
+        "role_type": "human",
+        "department": "Mortgage Services",
+        "authority_level": "specialist",
+        "channels": [
+          "system",
+          "branch"
+        ],
+        "response_time_sla": "1-2 days"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_001",
+      "name": "SmartSaver Account",
+      "properties": {
+        "product_type": "savings",
+        "determines_process_variant": "no"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_002",
+      "name": "Current Account",
+      "properties": {
+        "product_type": "current",
+        "determines_process_variant": "no"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_003",
+      "name": "Mortgage Product",
+      "properties": {
+        "product_type": "mortgage",
+        "determines_process_variant": "yes"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_004",
+      "name": "Card Product",
+      "properties": {
+        "product_type": "card",
+        "determines_process_variant": "no"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_001",
+      "name": "Single Customer Account",
+      "properties": {
+        "account_type": "savings",
+        "account_state": "active"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_002",
+      "name": "Multiple Customer Accounts",
+      "properties": {
+        "account_type": [
+          "savings",
+          "current",
+          "mortgage"
+        ],
+        "account_state": "active"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_003",
+      "name": "Joint Savings Account",
+      "properties": {
+        "account_type": "savings",
+        "account_state": "active"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_004",
+      "name": "Mortgage Account with Property Collateral",
+      "properties": {
+        "account_type": "mortgage",
+        "account_state": "active"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ah_001",
+      "name": "Primary Account Holder",
+      "properties": {
+        "holder_type": "primary",
+        "withdrawal_or_signing_authority": "full"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ah_002",
+      "name": "Joint Account Holder",
+      "properties": {
+        "holder_type": "joint",
+        "withdrawal_or_signing_authority": "full",
+        "due_diligence_requirement": "consent required for address changes"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_cust_001",
+      "name": "Individual Customer",
+      "properties": {
+        "customer_type": "individual",
+        "context_role": "account holder initiating address change"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ja_001",
+      "name": "Joint Account Arrangement",
+      "properties": {
+        "consent_requirement": "written consent from all joint holders required for address update",
+        "dual_kyc_or_aml_requirement": "both holders identified in system"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_addr_001",
+      "name": "Customer Address Update",
+      "properties": {
+        "collection_steps": [
+          "Customer provides new address via branch or postal request"
+        ],
+        "recording_system": "Account Management System",
+        "update_process": "Address scope determined; joint consent obtained if applicable; system updated; confirmation sent to customer"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_011_addr_002",
+      "name": "Property Address",
+      "properties": {
+        "collection_steps": [
+          "Identified from mortgage account record"
+        ],
+        "recording_system": "Mortgage Management System",
+        "update_process": "Preserved in mortgage record; not updated when customer personal address changes"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_proc_001",
+      "source_name": "Account Address Update Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_001",
+      "target_name": "Query System for Linked Accounts",
+      "rel_type": "starts_with",
+      "description": "The Account Address Update Process begins with querying the system for linked accounts",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Query System: Check all accounts linked to customer",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_001",
+      "source_name": "Query System for Linked Accounts",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_002",
+      "target_name": "Identify Joint Account Holders",
+      "rel_type": "followed_by",
+      "description": "After querying the system, the process identifies joint account holders",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Note joint account holders (separate treatment)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_002",
+      "source_name": "Identify Joint Account Holders",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_003",
+      "target_name": "Identify Linked Accounts",
+      "rel_type": "followed_by",
+      "description": "After identifying joint account holders, the process identifies all linked accounts",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Identify linked accounts (e.g., mortgage on property at address)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_003",
+      "source_name": "Identify Linked Accounts",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_001",
+      "target_name": "Single vs. Multiple Accounts Decision",
+      "rel_type": "leads_to",
+      "description": "Identifying linked accounts leads to a decision point about single vs. multiple accounts",
+      "properties": {
+        "decision_criteria": "number of accounts identified"
+      },
+      "context": "Decision Point: Same address for all, or different?",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_001",
+      "source_name": "Single vs. Multiple Accounts Decision",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_004",
+      "target_name": "Determine Address Scope",
+      "rel_type": "routes_to_on_pass",
+      "description": "The single vs. multiple accounts decision routes to determining address scope",
+      "properties": {
+        "outcome": "proceed with scope determination"
+      },
+      "context": "Action: Update each account based on customer instruction",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_004",
+      "source_name": "Determine Address Scope",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_002",
+      "target_name": "Shared vs. Separate Address Decision",
+      "rel_type": "leads_to",
+      "description": "Determining address scope leads to deciding between shared vs. separate addresses",
+      "properties": {
+        "decision_criteria": "address configuration for multiple accounts"
+      },
+      "context": "Decision Point: Same address for all, or different?",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_002",
+      "source_name": "Shared vs. Separate Address Decision",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_005",
+      "target_name": "Confirm Joint Holder Consent",
+      "rel_type": "routes_to_on_pass",
+      "description": "The shared vs. separate address decision routes to confirming joint holder consent",
+      "properties": {
+        "outcome": "proceed with consent verification"
+      },
+      "context": "Confirm both account holders agree to change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_005",
+      "source_name": "Confirm Joint Holder Consent",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_003",
+      "target_name": "Joint Account Consent Gate",
+      "rel_type": "leads_to",
+      "description": "Confirming joint holder consent leads to the joint account consent gate decision",
+      "properties": {
+        "requirement": "written consent from both holders"
+      },
+      "context": "need written consent from both",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_003",
+      "source_name": "Joint Account Consent Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_006",
+      "target_name": "Update Account Address",
+      "rel_type": "routes_to_on_pass",
+      "description": "Upon passing the joint account consent gate, the process updates the account address",
+      "properties": {
+        "outcome": "consent verified, proceed with update"
+      },
+      "context": "Action: Update personal address but keep property address in mortgage",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_006",
+      "source_name": "Update Account Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_004",
+      "target_name": "Mortgage Property Linkage Gate",
+      "rel_type": "leads_to",
+      "description": "After updating account address, the process checks for mortgage property linkage",
+      "properties": {
+        "decision_criteria": "presence of linked mortgage property"
+      },
+      "context": "Mortgage is tied to property collateral",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_004",
+      "source_name": "Mortgage Property Linkage Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_007",
+      "target_name": "Handle Mortgage Property Address",
+      "rel_type": "routes_to_on_pass",
+      "description": "If mortgage property linkage is detected, the process handles the mortgage property address",
+      "properties": {
+        "outcome": "mortgage detected, special handling required"
+      },
+      "context": "Update personal address but keep property address in mortgage",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_proc_001",
+      "source_name": "Account Address Update Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_001",
+      "target_name": "Single vs. Multiple Accounts Decision",
+      "rel_type": "includes",
+      "description": "The Account Address Update Process includes a decision point for single vs. multiple accounts",
+      "properties": {},
+      "context": "Decision Point: Same address for all, or different?",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_proc_001",
+      "source_name": "Account Address Update Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_002",
+      "target_name": "Shared vs. Separate Address Decision",
+      "rel_type": "includes",
+      "description": "The Account Address Update Process includes a decision point for shared vs. separate addresses",
+      "properties": {},
+      "context": "Decision Point: Same address for all, or different?",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_proc_001",
+      "source_name": "Account Address Update Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_003",
+      "target_name": "Joint Account Consent Gate",
+      "rel_type": "includes",
+      "description": "The Account Address Update Process includes a joint account consent gate",
+      "properties": {},
+      "context": "Confirm both account holders agree to change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_proc_001",
+      "source_name": "Account Address Update Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_004",
+      "target_name": "Mortgage Property Linkage Gate",
+      "rel_type": "includes",
+      "description": "The Account Address Update Process includes a mortgage property linkage gate",
+      "properties": {},
+      "context": "Mortgage is tied to property collateral",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_001",
+      "source_name": "Query System for Linked Accounts",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_001",
+      "target_name": "System Query Operator",
+      "rel_type": "performed_by",
+      "description": "The system query step is performed by a System Query Operator",
+      "properties": {},
+      "context": "Query System: Check all accounts linked to customer",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_005",
+      "source_name": "Confirm Joint Holder Consent",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_002",
+      "target_name": "Joint Account Consent Verifier",
+      "rel_type": "performed_by",
+      "description": "Confirming joint holder consent is performed by a Joint Account Consent Verifier",
+      "properties": {},
+      "context": "Confirm both account holders agree to change",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_006",
+      "source_name": "Update Account Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_003",
+      "target_name": "Account Update Processor",
+      "rel_type": "performed_by",
+      "description": "Updating the account address is performed by an Account Update Processor",
+      "properties": {},
+      "context": "Action: Update each account based on customer instruction",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_007",
+      "source_name": "Handle Mortgage Property Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_004",
+      "target_name": "Mortgage Specialist",
+      "rel_type": "performed_by",
+      "description": "Handling mortgage property address is performed by a Mortgage Specialist",
+      "properties": {},
+      "context": "Special handling required",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_proc_001",
+      "source_name": "Account Address Update Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "governs_setup_of",
+      "description": "The Account Address Update Process governs updates to SmartSaver Account addresses",
+      "properties": {
+        "product_type": "savings"
+      },
+      "context": "Customer has: 1 SmartSaver account",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_proc_001",
+      "source_name": "Account Address Update Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_002",
+      "target_name": "Current Account",
+      "rel_type": "governs_setup_of",
+      "description": "The Account Address Update Process governs updates to Current Account addresses",
+      "properties": {
+        "product_type": "checking"
+      },
+      "context": "Customer has: 1 SmartSaver + 1 Current + 1 Mortgage",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_proc_001",
+      "source_name": "Account Address Update Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_003",
+      "target_name": "Mortgage Product",
+      "rel_type": "governs_setup_of",
+      "description": "The Account Address Update Process governs updates to Mortgage Product addresses",
+      "properties": {
+        "product_type": "mortgage",
+        "special_handling": true
+      },
+      "context": "Customer has: 1 SmartSaver + 1 Current + 1 Mortgage",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_001",
+      "source_name": "Single Customer Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "classified_as",
+      "description": "A single customer account is classified as a SmartSaver Account",
+      "properties": {
+        "scenario": "Scenario A"
+      },
+      "context": "Customer has: 1 SmartSaver account",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_002",
+      "source_name": "Multiple Customer Accounts",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "classified_as",
+      "description": "Multiple customer accounts include a SmartSaver Account",
+      "properties": {
+        "scenario": "Scenario B"
+      },
+      "context": "Customer has: 1 SmartSaver + 1 Current + 1 Mortgage",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_002",
+      "source_name": "Multiple Customer Accounts",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_002",
+      "target_name": "Current Account",
+      "rel_type": "classified_as",
+      "description": "Multiple customer accounts include a Current Account",
+      "properties": {
+        "scenario": "Scenario B"
+      },
+      "context": "Customer has: 1 SmartSaver + 1 Current + 1 Mortgage",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_002",
+      "source_name": "Multiple Customer Accounts",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_003",
+      "target_name": "Mortgage Product",
+      "rel_type": "classified_as",
+      "description": "Multiple customer accounts include a Mortgage Product",
+      "properties": {
+        "scenario": "Scenario B"
+      },
+      "context": "Customer has: 1 SmartSaver + 1 Current + 1 Mortgage",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_003",
+      "source_name": "Joint Savings Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_001",
+      "target_name": "SmartSaver Account",
+      "rel_type": "classified_as",
+      "description": "A joint savings account is classified as a SmartSaver Account",
+      "properties": {
+        "scenario": "Scenario C"
+      },
+      "context": "Customer has: Joint SmartSaver with spouse",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_004",
+      "source_name": "Mortgage Account with Property Collateral",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_003",
+      "target_name": "Mortgage Product",
+      "rel_type": "classified_as",
+      "description": "A mortgage account with property collateral is classified as a Mortgage Product",
+      "properties": {
+        "scenario": "Scenario D",
+        "collateral_type": "property"
+      },
+      "context": "Customer has: Mortgage on property at old address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_003",
+      "source_name": "Joint Savings Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ja_001",
+      "target_name": "Joint Account Arrangement",
+      "rel_type": "structured_as",
+      "description": "A joint savings account is structured as a joint account arrangement",
+      "properties": {
+        "scenario": "Scenario C"
+      },
+      "context": "Customer has: Joint SmartSaver with spouse",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ah_001",
+      "source_name": "Primary Account Holder",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_001",
+      "target_name": "Single Customer Account",
+      "rel_type": "has_rights_in",
+      "description": "The primary account holder has rights in a single customer account",
+      "properties": {
+        "scenario": "Scenario A"
+      },
+      "context": "Customer has: 1 SmartSaver account",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ah_001",
+      "source_name": "Primary Account Holder",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ja_001",
+      "target_name": "Joint Account Arrangement",
+      "rel_type": "party_to",
+      "description": "The primary account holder is a party to a joint account arrangement",
+      "properties": {
+        "scenario": "Scenario C"
+      },
+      "context": "Customer has: Joint SmartSaver with spouse",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ah_002",
+      "source_name": "Joint Account Holder",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ja_001",
+      "target_name": "Joint Account Arrangement",
+      "rel_type": "party_to",
+      "description": "A joint account holder is a party to a joint account arrangement",
+      "properties": {
+        "scenario": "Scenario C"
+      },
+      "context": "Customer has: Joint SmartSaver with spouse",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_cust_001",
+      "source_name": "Individual Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_001",
+      "target_name": "Single Customer Account",
+      "rel_type": "holds",
+      "description": "An individual customer holds a single customer account",
+      "properties": {
+        "scenario": "Scenario A"
+      },
+      "context": "Customer has: 1 SmartSaver account",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_cust_001",
+      "source_name": "Individual Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_002",
+      "target_name": "Multiple Customer Accounts",
+      "rel_type": "holds",
+      "description": "An individual customer holds multiple accounts",
+      "properties": {
+        "scenario": "Scenario B"
+      },
+      "context": "Customer has: 1 SmartSaver + 1 Current + 1 Mortgage",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_cust_001",
+      "source_name": "Individual Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ja_001",
+      "target_name": "Joint Account Arrangement",
+      "rel_type": "held_jointly_by",
+      "description": "An individual customer holds a joint account arrangement with another party",
+      "properties": {
+        "scenario": "Scenario C"
+      },
+      "context": "Customer has: Joint SmartSaver with spouse",
+      "bidirectional": true,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_addr_001",
+      "source_name": "Customer Address Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "registered_to",
+      "description": "A customer address update is registered to an individual customer",
+      "properties": {
+        "address_type": "personal"
+      },
+      "context": "Update personal address but keep property address in mortgage",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_addr_002",
+      "source_name": "Property Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_004",
+      "target_name": "Mortgage Account with Property Collateral",
+      "rel_type": "registered_to",
+      "description": "A property address is registered to a mortgage account with property collateral",
+      "properties": {
+        "address_type": "property",
+        "collateral_linkage": true
+      },
+      "context": "Mortgage on property at old address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_001",
+      "source_name": "Query System for Linked Accounts",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_001",
+      "target_name": "Single Customer Account",
+      "rel_type": "updates",
+      "description": "Querying the system identifies single customer accounts",
+      "properties": {
+        "scenario": "Scenario A"
+      },
+      "context": "Check all accounts linked to customer",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_001",
+      "source_name": "Query System for Linked Accounts",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_002",
+      "target_name": "Multiple Customer Accounts",
+      "rel_type": "updates",
+      "description": "Querying the system identifies multiple customer accounts",
+      "properties": {
+        "scenario": "Scenario B"
+      },
+      "context": "Check all accounts linked to customer",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_002",
+      "source_name": "Identify Joint Account Holders",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ah_002",
+      "target_name": "Joint Account Holder",
+      "rel_type": "verifies_identity_of",
+      "description": "Identifying joint account holders verifies the identity of joint account holders",
+      "properties": {
+        "scenario": "Scenario C"
+      },
+      "context": "Note joint account holders (separate treatment)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_003",
+      "source_name": "Identify Linked Accounts",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_004",
+      "target_name": "Mortgage Account with Property Collateral",
+      "rel_type": "updates",
+      "description": "Identifying linked accounts identifies mortgage accounts with property collateral",
+      "properties": {
+        "scenario": "Scenario D"
+      },
+      "context": "Identify linked accounts (e.g., mortgage on property at address)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_006",
+      "source_name": "Update Account Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_addr_001",
+      "target_name": "Customer Address Update",
+      "rel_type": "updates",
+      "description": "The update account address step updates the customer address",
+      "properties": {
+        "address_type": "personal"
+      },
+      "context": "Update personal address but keep property address in mortgage",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_007",
+      "source_name": "Handle Mortgage Property Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_addr_002",
+      "target_name": "Property Address",
+      "rel_type": "updates",
+      "description": "Handling mortgage property address manages the property address",
+      "properties": {
+        "address_type": "property",
+        "action": "keep unchanged"
+      },
+      "context": "Update personal address but keep property address in mortgage",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_proc_001",
+      "source_name": "Account Address Update Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_cust_001",
+      "target_name": "Individual Customer",
+      "rel_type": "operates_on",
+      "description": "The Account Address Update Process operates on individual customers",
+      "properties": {},
+      "context": "Customer has: 1 SmartSaver account",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_proc_001",
+      "source_name": "Account Address Update Process",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_001",
+      "source_name": "Query System for Linked Accounts",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_002",
+      "source_name": "Identify Joint Account Holders",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_003",
+      "source_name": "Identify Linked Accounts",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_004",
+      "source_name": "Determine Address Scope",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_005",
+      "source_name": "Confirm Joint Holder Consent",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_006",
+      "source_name": "Update Account Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_pstep_007",
+      "source_name": "Handle Mortgage Property Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_001",
+      "source_name": "Single vs. Multiple Accounts Decision",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_002",
+      "source_name": "Shared vs. Separate Address Decision",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_003",
+      "source_name": "Joint Account Consent Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_dp_004",
+      "source_name": "Mortgage Property Linkage Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_001",
+      "source_name": "System Query Operator",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_002",
+      "source_name": "Joint Account Consent Verifier",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_003",
+      "source_name": "Account Update Processor",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ra_004",
+      "source_name": "Mortgage Specialist",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_001",
+      "source_name": "SmartSaver Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_002",
+      "source_name": "Current Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_003",
+      "source_name": "Mortgage Product",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_prd_004",
+      "source_name": "Card Product",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_001",
+      "source_name": "Single Customer Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_002",
+      "source_name": "Multiple Customer Accounts",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_003",
+      "source_name": "Joint Savings Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_acc_004",
+      "source_name": "Mortgage Account with Property Collateral",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ah_001",
+      "source_name": "Primary Account Holder",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ah_002",
+      "source_name": "Joint Account Holder",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_cust_001",
+      "source_name": "Individual Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_ja_001",
+      "source_name": "Joint Account Arrangement",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_addr_001",
+      "source_name": "Customer Address Update",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_011_addr_002",
+      "source_name": "Property Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_011",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

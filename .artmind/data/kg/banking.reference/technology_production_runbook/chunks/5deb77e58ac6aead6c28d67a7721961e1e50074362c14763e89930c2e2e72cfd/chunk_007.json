@@ -1,0 +1,553 @@
+{
+  "chunk_seq": 7,
+  "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+  "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+  "text": "### Startup Sequence (Follow Exactly)  \n**Phase 1: Database (5–10 minutes)**  \n```\n1. Start PostgreSQL\nsystemctl start postgresql@main\n\n2. Wait for startup\npsql -U postgres -c \"SELECT version();\"\n(Should return version info)\n\n3. Verify replication\npsql -U postgres -c \"SELECT slot_name, restart_lsn FROM pg_replication_slots;\"\n(Should show active slots)\n\n4. Verify backups\ndu -h /var/lib/postgresql/backup/\n```  \n**Phase 2: Core Applications (10–15 minutes)**  \n```\n1. Start AMS (Account Management)\nkubectl apply -f /deployments/ams-deployment.yaml\nkubectl rollout status deployment/ams --timeout=5m\n\n2. Start PPS (Payment Processing)\nkubectl apply -f /deployments/pps-deployment.yaml\nkubectl rollout status deployment/pps --timeout=5m\n\n3. Start FDE (Fraud Detection)\nkubectl apply -f /deployments/fde-deployment.yaml\nkubectl rollout status deployment/fde --timeout=5m\n\n4. Verify core services healthy\nkubectl get pods -n production | grep Running\n(Should see all pods in \"Running\" state)\n```  \n**Phase 3: Customer-Facing (5–10 minutes)**  \n```\n1. Start IBP (Internet Banking)\nkubectl apply -f /deployments/ibp-deployment.yaml\nkubectl rollout status deployment/ibp --timeout=5m\n\n2. Start MBA (Mobile App backend)\nkubectl apply -f /deployments/mba-deployment.yaml\nkubectl rollout status deployment/mba --timeout=5m\n\n3. Clear cache\nredis-cli FLUSHALL\n\n4. Test endpoints\ncurl https://api.firstuk.bank/health\n(Should return \"status\": \"ok\")\n```  \n**Phase 4: Verification (5 minutes)**  \n```\n1. Run smoke tests\nbash /tests/smoke_tests.sh\nExpected: All tests PASS\n\n2. Verify dashboard\nCheck https://dashboard.firstuk.bank\nExpected: All systems Green\n\n3. Notify team\nPost to #operations-channel: \"Systems startup complete\"\n```  \n**If Any Phase Fails:** Go to Step 6 (Incident Response) — Do NOT proceed to next phase  \n---",
+  "name": "Chunk 7/21",
+  "_domain": "banking.reference",
+  "prev_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_006",
+  "next_chunk_id": "01a07393-e320-7264-b05f-7163527566c2_008",
+  "raw_entities": [
+    {
+      "id": "resp_001",
+      "name": "Database Startup Phase",
+      "aliases": [
+        "Phase 1",
+        "Database Phase"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "system_restore",
+      "description": "Initial startup phase for PostgreSQL database infrastructure, including service start, version verification, replication slot validation, and backup confirmation. This phase must complete successfully before proceeding to core application startup.",
+      "context": [
+        "Phase 1: Database (5–10 minutes)",
+        "Start PostgreSQL systemctl start postgresql@main",
+        "Verify replication psql -U postgres -c \"SELECT slot_name, restart_lsn FROM pg_replication_slots;\"",
+        "Verify backups du -h /var/lib/postgresql/backup/"
+      ]
+    },
+    {
+      "id": "resp_002",
+      "name": "Core Applications Startup Phase",
+      "aliases": [
+        "Phase 2",
+        "Core Applications Phase"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "system_restore",
+      "description": "Deployment and health verification of three critical banking services: Account Management System (AMS), Payment Processing System (PPS), and Fraud Detection Engine (FDE). Each service is deployed via Kubernetes with a 5-minute rollout timeout and verified to reach Running state.",
+      "context": [
+        "Phase 2: Core Applications (10–15 minutes)",
+        "Start AMS (Account Management) kubectl apply -f /deployments/ams-deployment.yaml",
+        "Start PPS (Payment Processing) kubectl apply -f /deployments/pps-deployment.yaml",
+        "Start FDE (Fraud Detection) kubectl apply -f /deployments/fde-deployment.yaml"
+      ]
+    },
+    {
+      "id": "resp_003",
+      "name": "Customer-Facing Services Startup Phase",
+      "aliases": [
+        "Phase 3",
+        "Customer-Facing Phase"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "system_restore",
+      "description": "Deployment of Internet Banking Platform (IBP) and Mobile Banking Application backend (MBA), followed by cache clearing and endpoint health verification. This phase enables customer access to banking services.",
+      "context": [
+        "Phase 3: Customer-Facing (5–10 minutes)",
+        "Start IBP (Internet Banking) kubectl apply -f /deployments/ibp-deployment.yaml",
+        "Start MBA (Mobile App backend) kubectl apply -f /deployments/mba-deployment.yaml",
+        "Clear cache redis-cli FLUSHALL"
+      ]
+    },
+    {
+      "id": "resp_004",
+      "name": "System Verification and Notification Phase",
+      "aliases": [
+        "Phase 4",
+        "Verification Phase"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "post_incident_review",
+      "description": "Final validation phase including automated smoke test execution, dashboard status confirmation, and team notification via operations channel. All systems must return Green status before startup is considered complete.",
+      "context": [
+        "Phase 4: Verification (5 minutes)",
+        "Run smoke tests bash /tests/smoke_tests.sh Expected: All tests PASS",
+        "Verify dashboard Check https://dashboard.firstuk.bank Expected: All systems Green",
+        "Notify team Post to #operations-channel: \"Systems startup complete\""
+      ]
+    },
+    {
+      "id": "resp_005",
+      "name": "Incident Response Escalation",
+      "aliases": [
+        "Step 6",
+        "Failure Protocol"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "escalation",
+      "description": "Mandatory escalation procedure triggered if any startup phase fails. Operations must halt progression to subsequent phases and immediately invoke incident response protocols rather than continuing with the startup sequence.",
+      "context": [
+        "If Any Phase Fails: Go to Step 6 (Incident Response) — Do NOT proceed to next phase"
+      ]
+    },
+    {
+      "id": "notif_001",
+      "name": "Operations Team Channel",
+      "aliases": [
+        "#operations-channel"
+      ],
+      "entity_class": "NOTIFICATION_CONTACT",
+      "type": "internal_team",
+      "description": "Internal Slack channel used for operational notifications and team coordination. Receives system startup completion notifications and operational status updates.",
+      "context": [
+        "Post to #operations-channel: \"Systems startup complete\""
+      ]
+    }
+  ],
+  "id_map": {
+    "resp_001": "01a07393-e320-7264-b05f-7163527566c2_007_resp_001",
+    "resp_002": "01a07393-e320-7264-b05f-7163527566c2_007_resp_002",
+    "resp_003": "01a07393-e320-7264-b05f-7163527566c2_007_resp_003",
+    "resp_004": "01a07393-e320-7264-b05f-7163527566c2_007_resp_004",
+    "resp_005": "01a07393-e320-7264-b05f-7163527566c2_007_resp_005",
+    "notif_001": "01a07393-e320-7264-b05f-7163527566c2_007_notif_001"
+  },
+  "entities": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_001",
+      "name": "Database Startup Phase",
+      "aliases": [
+        "Phase 1",
+        "Database Phase"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "system_restore",
+      "description": "Initial startup phase for PostgreSQL database infrastructure, including service start, version verification, replication slot validation, and backup confirmation. This phase must complete successfully before proceeding to core application startup.",
+      "context": [
+        "Phase 1: Database (5–10 minutes)",
+        "Start PostgreSQL systemctl start postgresql@main",
+        "Verify replication psql -U postgres -c \"SELECT slot_name, restart_lsn FROM pg_replication_slots;\"",
+        "Verify backups du -h /var/lib/postgresql/backup/"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_002",
+      "name": "Core Applications Startup Phase",
+      "aliases": [
+        "Phase 2",
+        "Core Applications Phase"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "system_restore",
+      "description": "Deployment and health verification of three critical banking services: Account Management System (AMS), Payment Processing System (PPS), and Fraud Detection Engine (FDE). Each service is deployed via Kubernetes with a 5-minute rollout timeout and verified to reach Running state.",
+      "context": [
+        "Phase 2: Core Applications (10–15 minutes)",
+        "Start AMS (Account Management) kubectl apply -f /deployments/ams-deployment.yaml",
+        "Start PPS (Payment Processing) kubectl apply -f /deployments/pps-deployment.yaml",
+        "Start FDE (Fraud Detection) kubectl apply -f /deployments/fde-deployment.yaml"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_003",
+      "name": "Customer-Facing Services Startup Phase",
+      "aliases": [
+        "Phase 3",
+        "Customer-Facing Phase"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "system_restore",
+      "description": "Deployment of Internet Banking Platform (IBP) and Mobile Banking Application backend (MBA), followed by cache clearing and endpoint health verification. This phase enables customer access to banking services.",
+      "context": [
+        "Phase 3: Customer-Facing (5–10 minutes)",
+        "Start IBP (Internet Banking) kubectl apply -f /deployments/ibp-deployment.yaml",
+        "Start MBA (Mobile App backend) kubectl apply -f /deployments/mba-deployment.yaml",
+        "Clear cache redis-cli FLUSHALL"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_004",
+      "name": "System Verification and Notification Phase",
+      "aliases": [
+        "Phase 4",
+        "Verification Phase"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "post_incident_review",
+      "description": "Final validation phase including automated smoke test execution, dashboard status confirmation, and team notification via operations channel. All systems must return Green status before startup is considered complete.",
+      "context": [
+        "Phase 4: Verification (5 minutes)",
+        "Run smoke tests bash /tests/smoke_tests.sh Expected: All tests PASS",
+        "Verify dashboard Check https://dashboard.firstuk.bank Expected: All systems Green",
+        "Notify team Post to #operations-channel: \"Systems startup complete\""
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_005",
+      "name": "Incident Response Escalation",
+      "aliases": [
+        "Step 6",
+        "Failure Protocol"
+      ],
+      "entity_class": "RESPONSE_ACTION",
+      "type": "escalation",
+      "description": "Mandatory escalation procedure triggered if any startup phase fails. Operations must halt progression to subsequent phases and immediately invoke incident response protocols rather than continuing with the startup sequence.",
+      "context": [
+        "If Any Phase Fails: Go to Step 6 (Incident Response) — Do NOT proceed to next phase"
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_007_notif_001",
+      "name": "Operations Team Channel",
+      "aliases": [
+        "#operations-channel"
+      ],
+      "entity_class": "NOTIFICATION_CONTACT",
+      "type": "internal_team",
+      "description": "Internal Slack channel used for operational notifications and team coordination. Receives system startup completion notifications and operational status updates.",
+      "context": [
+        "Post to #operations-channel: \"Systems startup complete\""
+      ],
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_001",
+      "name": "Database Startup Phase",
+      "properties": {
+        "action_phase": "recovery",
+        "actor": "Operations Team",
+        "timeline": "5–10 minutes",
+        "tools_or_systems": [
+          "PostgreSQL",
+          "psql"
+        ],
+        "output_or_artifact": [
+          "PostgreSQL service started",
+          "Version verification output",
+          "Replication slot status",
+          "Backup directory size"
+        ],
+        "escalation_trigger": "If phase fails, proceed to Incident Response Escalation"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_002",
+      "name": "Core Applications Startup Phase",
+      "properties": {
+        "action_phase": "recovery",
+        "actor": "Operations Team",
+        "timeline": "10–15 minutes",
+        "tools_or_systems": [
+          "Kubernetes",
+          "kubectl"
+        ],
+        "output_or_artifact": [
+          "AMS (Account Management) deployment active",
+          "PPS (Payment Processing) deployment active",
+          "FDE (Fraud Detection) deployment active",
+          "All pods in Running state"
+        ],
+        "escalation_trigger": "If phase fails, proceed to Incident Response Escalation"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_003",
+      "name": "Customer-Facing Services Startup Phase",
+      "properties": {
+        "action_phase": "recovery",
+        "actor": "Operations Team",
+        "timeline": "5–10 minutes",
+        "tools_or_systems": [
+          "Kubernetes",
+          "kubectl",
+          "Redis",
+          "curl"
+        ],
+        "output_or_artifact": [
+          "IBP (Internet Banking) deployment active",
+          "MBA (Mobile App backend) deployment active",
+          "Cache cleared",
+          "Health endpoint verification"
+        ],
+        "escalation_trigger": "If phase fails, proceed to Incident Response Escalation"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_004",
+      "name": "System Verification and Notification Phase",
+      "properties": {
+        "action_phase": "recovery",
+        "actor": "Operations Team",
+        "timeline": "5 minutes",
+        "tools_or_systems": [
+          "smoke_tests.sh",
+          "dashboard",
+          "Slack"
+        ],
+        "output_or_artifact": [
+          "Smoke test results (all PASS)",
+          "Dashboard status verification (all systems Green)",
+          "Team notification posted"
+        ],
+        "escalation_trigger": "If phase fails, proceed to Incident Response Escalation"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_005",
+      "name": "Incident Response Escalation",
+      "properties": {
+        "action_phase": "detection",
+        "actor": "Operations Team",
+        "trigger_condition": "Any phase in startup sequence fails",
+        "mandatory_for_severities": [
+          "Critical",
+          "High"
+        ]
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "id": "01a07393-e320-7264-b05f-7163527566c2_007_notif_001",
+      "name": "Operations Team Channel",
+      "properties": {
+        "contact_method": "portal",
+        "contact_details": "#operations-channel",
+        "trigger_condition": "Systems startup complete",
+        "required_information": "Startup completion status"
+      },
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_001",
+      "source_name": "Database Startup Phase",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_002",
+      "target_name": "Core Applications Startup Phase",
+      "rel_type": "followed_by",
+      "description": "Database Startup Phase must complete before Core Applications Startup Phase begins",
+      "properties": {
+        "sequence_order": 1,
+        "duration_minutes": "5-10",
+        "prerequisite": true
+      },
+      "context": "**Phase 1: Database (5–10 minutes)** ... **Phase 2: Core Applications (10–15 minutes)**",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_002",
+      "source_name": "Core Applications Startup Phase",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_003",
+      "target_name": "Customer-Facing Services Startup Phase",
+      "rel_type": "followed_by",
+      "description": "Core Applications Startup Phase must complete before Customer-Facing Services Startup Phase begins",
+      "properties": {
+        "sequence_order": 2,
+        "duration_minutes": "10-15",
+        "prerequisite": true
+      },
+      "context": "**Phase 2: Core Applications (10–15 minutes)** ... **Phase 3: Customer-Facing (5–10 minutes)**",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_003",
+      "source_name": "Customer-Facing Services Startup Phase",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_004",
+      "target_name": "System Verification and Notification Phase",
+      "rel_type": "followed_by",
+      "description": "Customer-Facing Services Startup Phase must complete before System Verification and Notification Phase begins",
+      "properties": {
+        "sequence_order": 3,
+        "duration_minutes": "5-10",
+        "prerequisite": true
+      },
+      "context": "**Phase 3: Customer-Facing (5–10 minutes)** ... **Phase 4: Verification (5 minutes)**",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_004",
+      "source_name": "System Verification and Notification Phase",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_007_notif_001",
+      "target_name": "Operations Team Channel",
+      "rel_type": "notifies",
+      "description": "System Verification and Notification Phase notifies Operations Team Channel upon successful startup completion",
+      "properties": {
+        "notification_message": "Systems startup complete",
+        "notification_channel": "#operations-channel",
+        "trigger_condition": "All systems Green"
+      },
+      "context": "3. Notify team\nPost to #operations-channel: \"Systems startup complete\"",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_001",
+      "source_name": "Database Startup Phase",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_005",
+      "target_name": "Incident Response Escalation",
+      "rel_type": "triggered_by",
+      "description": "Failure in Database Startup Phase triggers Incident Response Escalation",
+      "properties": {
+        "failure_condition": "Phase fails",
+        "escalation_required": true,
+        "action": "Do NOT proceed to next phase"
+      },
+      "context": "**If Any Phase Fails:** Go to Step 6 (Incident Response) — Do NOT proceed to next phase",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_002",
+      "source_name": "Core Applications Startup Phase",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_005",
+      "target_name": "Incident Response Escalation",
+      "rel_type": "triggered_by",
+      "description": "Failure in Core Applications Startup Phase triggers Incident Response Escalation",
+      "properties": {
+        "failure_condition": "Phase fails",
+        "escalation_required": true,
+        "action": "Do NOT proceed to next phase"
+      },
+      "context": "**If Any Phase Fails:** Go to Step 6 (Incident Response) — Do NOT proceed to next phase",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_003",
+      "source_name": "Customer-Facing Services Startup Phase",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_005",
+      "target_name": "Incident Response Escalation",
+      "rel_type": "triggered_by",
+      "description": "Failure in Customer-Facing Services Startup Phase triggers Incident Response Escalation",
+      "properties": {
+        "failure_condition": "Phase fails",
+        "escalation_required": true,
+        "action": "Do NOT proceed to next phase"
+      },
+      "context": "**If Any Phase Fails:** Go to Step 6 (Incident Response) — Do NOT proceed to next phase",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_004",
+      "source_name": "System Verification and Notification Phase",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_005",
+      "target_name": "Incident Response Escalation",
+      "rel_type": "triggered_by",
+      "description": "Failure in System Verification and Notification Phase triggers Incident Response Escalation",
+      "properties": {
+        "failure_condition": "Phase fails",
+        "escalation_required": true,
+        "action": "Do NOT proceed to next phase"
+      },
+      "context": "**If Any Phase Fails:** Go to Step 6 (Incident Response) — Do NOT proceed to next phase",
+      "bidirectional": false,
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_001",
+      "source_name": "Database Startup Phase",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_002",
+      "source_name": "Core Applications Startup Phase",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_003",
+      "source_name": "Customer-Facing Services Startup Phase",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_004",
+      "source_name": "System Verification and Notification Phase",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_007_resp_005",
+      "source_name": "Incident Response Escalation",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a07393-e320-7264-b05f-7163527566c2_007_notif_001",
+      "source_name": "Operations Team Channel",
+      "target_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "target_name": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07393-e320-7264-b05f-7163527566c2_007",
+      "doc_id": "01a07393-e320-7264-b05f-7163527566c2",
+      "_domain": "banking.reference"
+    }
+  ]
+}

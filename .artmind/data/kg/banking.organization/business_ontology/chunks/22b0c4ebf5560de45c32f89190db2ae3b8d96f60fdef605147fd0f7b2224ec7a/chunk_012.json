@@ -1,0 +1,823 @@
+{
+  "chunk_seq": 12,
+  "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+  "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+  "text": "## 3. Account Domain  \n### Entity: Account  \n**Definition:** A contractual arrangement between a customer and FirstUK Bank to hold money, make transactions, and earn interest.  \n**Attributes:**\n- `account_id` — Unique identifier (e.g., \"ACC-00001\")\n- `customer_id` — Primary account holder (links to Customer)\n- `product_id` — Linked product (e.g., \"SAV-001\", see [[products]])\n- `currency` — Account currency (GBP)\n- `opening_date` — Date account opened\n- `account_status` — Active, Dormant, Closed, Suspended\n- `account_balance` — Current account balance (calculated from transactions)\n- `available_balance` — Balance available for withdrawal\n- `overdraft_limit` — Overdraft facility amount (if applicable)  \n**Key Business Rules:**\n- Every account must have one primary account holder (customer)\n- Account balance is calculated from transaction ledger\n- Account can only be in one status at a time\n- Closed accounts are not reactivated  \n**Relationships:**\n- `has_primary_holder` → Customer (1:1)\n- `has_account_holders` → AccountHolder (1:many, including joint holders)\n- `has_products` → Product (1:1)\n- `has_transactions` → Transaction (1:many)\n- `has_standing_orders` → StandingOrder (1:many)\n- `has_cards` → Card (1:many)  \n**Example:**\n```\nAccount: ACC-00001\n- customer_id: CUST-00001 (Sarah Johnson)\n- product_id: SAV-001 (SmartSaver Account)\n- opening_date: 2024-06-15\n- account_status: Active\n- account_balance: £5,250.00\n- available_balance: £5,250.00\n```  \n---",
+  "name": "Chunk 12/37",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_011",
+  "next_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_013",
+  "raw_entities": [
+    {
+      "id": "bc_001",
+      "name": "Account",
+      "aliases": [
+        "ACC"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "A contractual arrangement between a customer and FirstUK Bank to hold money, make transactions, and earn interest. Accounts are uniquely identified and linked to a primary customer, a product, and a transaction ledger. Each account maintains a status (Active, Dormant, Closed, or Suspended) and tracks both current and available balances.",
+      "context": [
+        "A contractual arrangement between a customer and FirstUK Bank to hold money, make transactions, and earn interest.",
+        "Every account must have one primary account holder (customer)",
+        "Account balance is calculated from transaction ledger",
+        "Account can only be in one status at a time"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Customer",
+      "aliases": [
+        "CUST"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "individual_customer",
+      "description": "A natural person who holds a contractual arrangement with FirstUK Bank. Each customer serves as the primary account holder and is uniquely identified with a customer_id that links to one or more accounts.",
+      "context": [
+        "customer_id — Primary account holder (links to Customer)",
+        "Every account must have one primary account holder (customer)",
+        "has_primary_holder → Customer (1:1)"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "Account Holder",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account_holder",
+      "description": "A person with legal rights and obligations over an account, including primary holders and joint holders. Account holders are linked to accounts in a one-to-many relationship, allowing for joint account arrangements.",
+      "context": [
+        "has_account_holders → AccountHolder (1:many, including joint holders)",
+        "Every account must have one primary account holder (customer)"
+      ]
+    },
+    {
+      "id": "bc_004",
+      "name": "Product",
+      "aliases": [
+        "SAV-001",
+        "SmartSaver Account"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "product",
+      "description": "A banking product offering linked to an account, such as a savings or current account product. Each account is associated with exactly one product that defines the terms and features available to the account holder.",
+      "context": [
+        "product_id — Linked product (e.g., \"SAV-001\", see [[products]])",
+        "has_products → Product (1:1)",
+        "product_id: SAV-001 (SmartSaver Account)"
+      ]
+    },
+    {
+      "id": "bc_005",
+      "name": "Transaction",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "A financial event on a customer account such as a deposit, withdrawal, transfer, or payment. Transactions are recorded in a ledger and used to calculate the account balance.",
+      "context": [
+        "Account balance is calculated from transaction ledger",
+        "has_transactions → Transaction (1:many)"
+      ]
+    },
+    {
+      "id": "bc_006",
+      "name": "Standing Order",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "standing_order_setup",
+      "description": "A standing order payment instruction set up on a customer account. Multiple standing orders can be associated with a single account.",
+      "context": [
+        "has_standing_orders → StandingOrder (1:many)"
+      ]
+    },
+    {
+      "id": "bc_007",
+      "name": "Card",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "debit_card",
+      "description": "A payment card issued in connection with a customer account. Multiple cards can be linked to a single account.",
+      "context": [
+        "has_cards → Card (1:many)"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "Primary Account Holder Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A mandatory constraint requiring that every account must have exactly one primary account holder (customer). This establishes the foundational accountability relationship for the account.",
+      "context": [
+        "Every account must have one primary account holder (customer)"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Account Balance Calculation Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "data_rule",
+      "description": "A rule governing that account balance is calculated from the transaction ledger, ensuring that the balance is always derived from recorded transactions rather than stored independently.",
+      "context": [
+        "Account balance is calculated from transaction ledger"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "Account Status Exclusivity Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A constraint requiring that an account can only be in one status at a time. Valid statuses are Active, Dormant, Closed, or Suspended.",
+      "context": [
+        "Account can only be in one status at a time",
+        "account_status — Active, Dormant, Closed, Suspended"
+      ]
+    },
+    {
+      "id": "br_004",
+      "name": "Closed Account Non-Reactivation Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A constraint establishing that closed accounts are not reactivated, ensuring finality once an account is closed.",
+      "context": [
+        "Closed accounts are not reactivated"
+      ]
+    }
+  ],
+  "id_map": {
+    "bc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_001",
+    "bc_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_002",
+    "bc_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_003",
+    "bc_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_004",
+    "bc_005": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_005",
+    "bc_006": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_006",
+    "bc_007": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_007",
+    "br_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_001",
+    "br_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_002",
+    "br_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_003",
+    "br_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_004"
+  },
+  "entities": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_001",
+      "name": "Account",
+      "aliases": [
+        "ACC"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "A contractual arrangement between a customer and FirstUK Bank to hold money, make transactions, and earn interest. Accounts are uniquely identified and linked to a primary customer, a product, and a transaction ledger. Each account maintains a status (Active, Dormant, Closed, or Suspended) and tracks both current and available balances.",
+      "context": [
+        "A contractual arrangement between a customer and FirstUK Bank to hold money, make transactions, and earn interest.",
+        "Every account must have one primary account holder (customer)",
+        "Account balance is calculated from transaction ledger",
+        "Account can only be in one status at a time"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_002",
+      "name": "Customer",
+      "aliases": [
+        "CUST"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "individual_customer",
+      "description": "A natural person who holds a contractual arrangement with FirstUK Bank. Each customer serves as the primary account holder and is uniquely identified with a customer_id that links to one or more accounts.",
+      "context": [
+        "customer_id — Primary account holder (links to Customer)",
+        "Every account must have one primary account holder (customer)",
+        "has_primary_holder → Customer (1:1)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_003",
+      "name": "Account Holder",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account_holder",
+      "description": "A person with legal rights and obligations over an account, including primary holders and joint holders. Account holders are linked to accounts in a one-to-many relationship, allowing for joint account arrangements.",
+      "context": [
+        "has_account_holders → AccountHolder (1:many, including joint holders)",
+        "Every account must have one primary account holder (customer)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_004",
+      "name": "Product",
+      "aliases": [
+        "SAV-001",
+        "SmartSaver Account"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "product",
+      "description": "A banking product offering linked to an account, such as a savings or current account product. Each account is associated with exactly one product that defines the terms and features available to the account holder.",
+      "context": [
+        "product_id — Linked product (e.g., \"SAV-001\", see [[products]])",
+        "has_products → Product (1:1)",
+        "product_id: SAV-001 (SmartSaver Account)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_005",
+      "name": "Transaction",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "A financial event on a customer account such as a deposit, withdrawal, transfer, or payment. Transactions are recorded in a ledger and used to calculate the account balance.",
+      "context": [
+        "Account balance is calculated from transaction ledger",
+        "has_transactions → Transaction (1:many)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_006",
+      "name": "Standing Order",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "standing_order_setup",
+      "description": "A standing order payment instruction set up on a customer account. Multiple standing orders can be associated with a single account.",
+      "context": [
+        "has_standing_orders → StandingOrder (1:many)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_007",
+      "name": "Card",
+      "aliases": [],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "debit_card",
+      "description": "A payment card issued in connection with a customer account. Multiple cards can be linked to a single account.",
+      "context": [
+        "has_cards → Card (1:many)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_001",
+      "name": "Primary Account Holder Requirement",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A mandatory constraint requiring that every account must have exactly one primary account holder (customer). This establishes the foundational accountability relationship for the account.",
+      "context": [
+        "Every account must have one primary account holder (customer)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_002",
+      "name": "Account Balance Calculation Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "data_rule",
+      "description": "A rule governing that account balance is calculated from the transaction ledger, ensuring that the balance is always derived from recorded transactions rather than stored independently.",
+      "context": [
+        "Account balance is calculated from transaction ledger"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_003",
+      "name": "Account Status Exclusivity Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A constraint requiring that an account can only be in one status at a time. Valid statuses are Active, Dormant, Closed, or Suspended.",
+      "context": [
+        "Account can only be in one status at a time",
+        "account_status — Active, Dormant, Closed, Suspended"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_004",
+      "name": "Closed Account Non-Reactivation Rule",
+      "aliases": [],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A constraint establishing that closed accounts are not reactivated, ensuring finality once an account is closed.",
+      "context": [
+        "Closed accounts are not reactivated"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_001",
+      "name": "Account",
+      "properties": {
+        "definition": "A contractual arrangement between a customer and FirstUK Bank to hold money, make transactions, and earn interest",
+        "key_attribute": [
+          "account_id",
+          "customer_id",
+          "product_id",
+          "currency",
+          "opening_date",
+          "account_status",
+          "account_balance",
+          "available_balance",
+          "overdraft_limit"
+        ],
+        "business_rule": [
+          "Every account must have one primary account holder",
+          "Account balance is calculated from transaction ledger",
+          "Account can only be in one status at a time",
+          "Closed accounts are not reactivated"
+        ],
+        "relationships_to": [
+          "Customer",
+          "AccountHolder",
+          "Product",
+          "Transaction",
+          "StandingOrder",
+          "Card"
+        ],
+        "ontology_domain": "Account Domain"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_002",
+      "name": "Customer",
+      "properties": {
+        "definition": "An entity that holds an account with FirstUK Bank and serves as the primary account holder",
+        "key_attribute": [
+          "customer_id",
+          "name"
+        ],
+        "relationships_to": [
+          "Account",
+          "AccountHolder"
+        ],
+        "ontology_domain": "Account Domain"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_003",
+      "name": "Account Holder",
+      "properties": {
+        "definition": "A party with rights and obligations over an account, including primary and joint holders",
+        "key_attribute": [
+          "holder_type",
+          "account_id",
+          "customer_id"
+        ],
+        "relationships_to": [
+          "Account",
+          "Customer"
+        ],
+        "ontology_domain": "Account Domain"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_004",
+      "name": "Product",
+      "properties": {
+        "definition": "A banking product offering linked to an account",
+        "key_attribute": [
+          "product_id",
+          "product_name"
+        ],
+        "example": "SAV-001 (SmartSaver Account)",
+        "relationships_to": [
+          "Account"
+        ],
+        "ontology_domain": "Account Domain"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_005",
+      "name": "Transaction",
+      "properties": {
+        "definition": "A financial movement of funds on an account",
+        "key_attribute": [
+          "transaction_id",
+          "account_id",
+          "amount",
+          "transaction_date"
+        ],
+        "business_rule": [
+          "Account balance is calculated from transaction ledger"
+        ],
+        "relationships_to": [
+          "Account"
+        ],
+        "ontology_domain": "Account Domain"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_006",
+      "name": "Standing Order",
+      "properties": {
+        "definition": "A recurring transaction instruction set up on an account",
+        "relationships_to": [
+          "Account"
+        ],
+        "ontology_domain": "Account Domain"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_007",
+      "name": "Card",
+      "properties": {
+        "definition": "A payment card linked to an account",
+        "relationships_to": [
+          "Account"
+        ],
+        "ontology_domain": "Account Domain"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_001",
+      "name": "Primary Account Holder Requirement",
+      "properties": {
+        "rule_statement": "Every account must have one primary account holder",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Account"
+        ],
+        "regulatory_significance": "Establishes clear ownership and accountability for account management"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_002",
+      "name": "Account Balance Calculation Rule",
+      "properties": {
+        "rule_statement": "Account balance is calculated from transaction ledger",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Account",
+          "Transaction"
+        ],
+        "regulatory_significance": "Ensures accurate and auditable balance reporting"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_003",
+      "name": "Account Status Exclusivity Rule",
+      "properties": {
+        "rule_statement": "Account can only be in one status at a time",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Account"
+        ],
+        "regulatory_significance": "Prevents ambiguous account state and ensures clear operational status"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_004",
+      "name": "Closed Account Non-Reactivation Rule",
+      "properties": {
+        "rule_statement": "Closed accounts are not reactivated",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Account"
+        ],
+        "regulatory_significance": "Prevents unauthorized reactivation of terminated accounts and maintains audit trail integrity"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_002",
+      "target_name": "Customer",
+      "rel_type": "linked_to",
+      "description": "Account is linked to a Customer as the primary account holder",
+      "properties": {
+        "cardinality": "1:1",
+        "relationship_name": "has_primary_holder"
+      },
+      "context": "Every account must have one primary account holder (customer). has_primary_holder → Customer (1:1)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_003",
+      "target_name": "Account Holder",
+      "rel_type": "linked_to",
+      "description": "Account is linked to Account Holders including joint holders",
+      "properties": {
+        "cardinality": "1:many",
+        "relationship_name": "has_account_holders",
+        "includes_joint_holders": true
+      },
+      "context": "has_account_holders → AccountHolder (1:many, including joint holders)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_004",
+      "target_name": "Product",
+      "rel_type": "linked_to",
+      "description": "Account is linked to a Product",
+      "properties": {
+        "cardinality": "1:1",
+        "relationship_name": "has_products",
+        "example_product": "SAV-001"
+      },
+      "context": "product_id — Linked product (e.g., \"SAV-001\", see [[products]]). has_products → Product (1:1)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_005",
+      "target_name": "Transaction",
+      "rel_type": "linked_to",
+      "description": "Account is linked to Transactions",
+      "properties": {
+        "cardinality": "1:many",
+        "relationship_name": "has_transactions"
+      },
+      "context": "has_transactions → Transaction (1:many)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_006",
+      "target_name": "Standing Order",
+      "rel_type": "linked_to",
+      "description": "Account is linked to Standing Orders",
+      "properties": {
+        "cardinality": "1:many",
+        "relationship_name": "has_standing_orders"
+      },
+      "context": "has_standing_orders → StandingOrder (1:many)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_007",
+      "target_name": "Card",
+      "rel_type": "linked_to",
+      "description": "Account is linked to Cards",
+      "properties": {
+        "cardinality": "1:many",
+        "relationship_name": "has_cards"
+      },
+      "context": "has_cards → Card (1:many)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_001",
+      "target_name": "Primary Account Holder Requirement",
+      "rel_type": "governed_by",
+      "description": "Account is governed by the rule that every account must have one primary account holder",
+      "properties": {
+        "rule_enforcement": "mandatory",
+        "cardinality": "1:1"
+      },
+      "context": "Every account must have one primary account holder (customer)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_002",
+      "target_name": "Account Balance Calculation Rule",
+      "rel_type": "governed_by",
+      "description": "Account balance is calculated according to the Account Balance Calculation Rule",
+      "properties": {
+        "rule_enforcement": "mandatory",
+        "calculation_source": "transaction_ledger"
+      },
+      "context": "Account balance is calculated from transaction ledger",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_003",
+      "target_name": "Account Status Exclusivity Rule",
+      "rel_type": "governed_by",
+      "description": "Account is governed by the rule that it can only be in one status at a time",
+      "properties": {
+        "rule_enforcement": "mandatory",
+        "possible_statuses": [
+          "Active",
+          "Dormant",
+          "Closed",
+          "Suspended"
+        ]
+      },
+      "context": "Account can only be in one status at a time",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_004",
+      "target_name": "Closed Account Non-Reactivation Rule",
+      "rel_type": "governed_by",
+      "description": "Account is governed by the rule that closed accounts are not reactivated",
+      "properties": {
+        "rule_enforcement": "mandatory",
+        "applies_to_status": "Closed"
+      },
+      "context": "Closed accounts are not reactivated",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_002",
+      "source_name": "Customer",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_003",
+      "source_name": "Account Holder",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_004",
+      "source_name": "Product",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_005",
+      "source_name": "Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_006",
+      "source_name": "Standing Order",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_bc_007",
+      "source_name": "Card",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_001",
+      "source_name": "Primary Account Holder Requirement",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_002",
+      "source_name": "Account Balance Calculation Rule",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_003",
+      "source_name": "Account Status Exclusivity Rule",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012_br_004",
+      "source_name": "Closed Account Non-Reactivation Rule",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_012",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ]
+}

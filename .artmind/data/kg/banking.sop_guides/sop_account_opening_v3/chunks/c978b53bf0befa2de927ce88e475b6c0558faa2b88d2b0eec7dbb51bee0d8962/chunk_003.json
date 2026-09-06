@@ -1,0 +1,1019 @@
+{
+  "chunk_seq": 3,
+  "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+  "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+  "text": "## Step 1: Risk Classify Before Activation  \n1. Identify whether the applicant is an individual or entity.\n2. Apply the standard customer-risk assessment.\n3. Mark a high-risk customer as `Pending Enhanced Due Diligence`.\n4. Do not issue credentials or accept an initial deposit until approval gates pass.",
+  "name": "Chunk 3/6",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_002",
+  "next_chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_004",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Risk Classification Before Account Activation",
+      "aliases": [
+        "Pre-Activation Risk Assessment"
+      ],
+      "entity_class": "PROCESS",
+      "type": "risk_assessment",
+      "description": "An end-to-end procedure that classifies customer risk before account activation. The process identifies applicant type, applies standard risk assessment, flags high-risk customers for enhanced due diligence, and enforces approval gates before credential issuance or deposit acceptance.",
+      "context": [
+        "Risk Classify Before Activation",
+        "Identify whether the applicant is an individual or entity",
+        "Apply the standard customer-risk assessment",
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`",
+        "Do not issue credentials or accept an initial deposit until approval gates pass"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Applicant Type Identification",
+      "aliases": [
+        "Entity Type Classification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The first step in risk classification where the responsible actor determines whether the applicant is an individual or an entity. This classification determines which risk assessment rules apply.",
+      "context": [
+        "Identify whether the applicant is an individual or entity"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Standard Customer Risk Assessment",
+      "aliases": [
+        "Risk Assessment Application"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The step where standard customer-risk assessment criteria are applied to the applicant based on their identified type. This assessment determines the customer's risk classification.",
+      "context": [
+        "Apply the standard customer-risk assessment"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "High-Risk Customer Flagging",
+      "aliases": [
+        "Enhanced Due Diligence Marking"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The step where customers identified as high-risk are marked as 'Pending Enhanced Due Diligence'. This flag prevents account activation until enhanced due diligence is completed and approved.",
+      "context": [
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Approval Gate Verification Before Activation",
+      "aliases": [
+        "Pre-Activation Approval Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "The final step that enforces approval gates before credentials are issued or initial deposits are accepted. This step ensures all compliance and risk checks have passed before account activation.",
+      "context": [
+        "Do not issue credentials or accept an initial deposit until approval gates pass"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "High-Risk Customer Gate",
+      "aliases": [
+        "Risk Level Classification Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "A branching decision point where the customer's risk assessment outcome determines whether they proceed to standard activation or are flagged for enhanced due diligence. High-risk customers are held pending approval; standard-risk customers proceed.",
+      "context": [
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`",
+        "Apply the standard customer-risk assessment"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Approval Gates Pass Decision",
+      "aliases": [
+        "Activation Authorization Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A gate decision that determines whether all approval conditions have been satisfied before credentials are issued and deposits are accepted. Failure to pass gates blocks account activation.",
+      "context": [
+        "Do not issue credentials or accept an initial deposit until approval gates pass"
+      ]
+    },
+    {
+      "id": "ract_001",
+      "name": "Risk Classification Assessor",
+      "aliases": [
+        "Risk Assessment Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The role responsible for identifying applicant type, applying standard risk assessment, and marking high-risk customers for enhanced due diligence during the pre-activation risk classification process.",
+      "context": [
+        "Identify whether the applicant is an individual or entity",
+        "Apply the standard customer-risk assessment",
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`"
+      ]
+    },
+    {
+      "id": "ract_002",
+      "name": "Approval Gate Authority",
+      "aliases": [
+        "Activation Approver"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The role responsible for verifying that all approval gates have passed before credentials are issued or initial deposits are accepted. This role enforces the activation authorization decision.",
+      "context": [
+        "Do not issue credentials or accept an initial deposit until approval gates pass"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Enhanced Due Diligence Compliance Gate",
+      "aliases": [
+        "EDD Checkpoint"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A mandatory compliance gate that verifies enhanced due diligence requirements have been satisfied for high-risk customers before account activation is permitted. This checkpoint ensures regulatory risk management obligations are met.",
+      "context": [
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`",
+        "Do not issue credentials or accept an initial deposit until approval gates pass"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Applicant",
+      "aliases": [
+        "Customer Applicant",
+        "New Applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "applicant",
+      "description": "The natural person or entity applying for an account who is subject to risk classification before activation. The applicant's type (individual or entity) and risk profile determine the activation pathway.",
+      "context": [
+        "Identify whether the applicant is an individual or entity",
+        "Apply the standard customer-risk assessment",
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`"
+      ]
+    },
+    {
+      "id": "cust_002",
+      "name": "High-Risk Customer",
+      "aliases": [
+        "High-Risk Applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "high_risk_customer",
+      "description": "A customer identified through standard risk assessment as presenting elevated compliance or financial crime risk. High-risk customers are flagged as 'Pending Enhanced Due Diligence' and cannot proceed to account activation until enhanced due diligence is completed and approved.",
+      "context": [
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`",
+        "Do not issue credentials or accept an initial deposit until approval gates pass"
+      ]
+    },
+    {
+      "id": "kyc_001",
+      "name": "Standard Customer Risk Assessment",
+      "aliases": [
+        "Risk Classification Assessment"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "risk_classification",
+      "description": "The KYC-related risk assessment process applied to all applicants to determine their risk classification. This assessment is a prerequisite to account activation and determines whether enhanced due diligence is required.",
+      "context": [
+        "Apply the standard customer-risk assessment",
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a073f8-2690-77f0-b4e8-5b444f160394_003_proc_001",
+    "pstep_001": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_001",
+    "pstep_002": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_002",
+    "pstep_003": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_003",
+    "pstep_004": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_004",
+    "dp_001": "01a073f8-2690-77f0-b4e8-5b444f160394_003_dp_001",
+    "dp_002": "01a073f8-2690-77f0-b4e8-5b444f160394_003_dp_002",
+    "ract_001": "01a073f8-2690-77f0-b4e8-5b444f160394_003_ract_001",
+    "ract_002": "01a073f8-2690-77f0-b4e8-5b444f160394_003_ract_002",
+    "cc_001": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cc_001",
+    "cust_001": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cust_001",
+    "cust_002": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cust_002",
+    "kyc_001": "01a073f8-2690-77f0-b4e8-5b444f160394_003_kyc_001"
+  },
+  "entities": [
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_proc_001",
+      "name": "Risk Classification Before Account Activation",
+      "aliases": [
+        "Pre-Activation Risk Assessment"
+      ],
+      "entity_class": "PROCESS",
+      "type": "risk_assessment",
+      "description": "An end-to-end procedure that classifies customer risk before account activation. The process identifies applicant type, applies standard risk assessment, flags high-risk customers for enhanced due diligence, and enforces approval gates before credential issuance or deposit acceptance.",
+      "context": [
+        "Risk Classify Before Activation",
+        "Identify whether the applicant is an individual or entity",
+        "Apply the standard customer-risk assessment",
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`",
+        "Do not issue credentials or accept an initial deposit until approval gates pass"
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_001",
+      "name": "Applicant Type Identification",
+      "aliases": [
+        "Entity Type Classification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The first step in risk classification where the responsible actor determines whether the applicant is an individual or an entity. This classification determines which risk assessment rules apply.",
+      "context": [
+        "Identify whether the applicant is an individual or entity"
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_002",
+      "name": "Standard Customer Risk Assessment",
+      "aliases": [
+        "Risk Assessment Application"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The step where standard customer-risk assessment criteria are applied to the applicant based on their identified type. This assessment determines the customer's risk classification.",
+      "context": [
+        "Apply the standard customer-risk assessment"
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_003",
+      "name": "High-Risk Customer Flagging",
+      "aliases": [
+        "Enhanced Due Diligence Marking"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "The step where customers identified as high-risk are marked as 'Pending Enhanced Due Diligence'. This flag prevents account activation until enhanced due diligence is completed and approved.",
+      "context": [
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`"
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_004",
+      "name": "Approval Gate Verification Before Activation",
+      "aliases": [
+        "Pre-Activation Approval Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "approval_decision",
+      "description": "The final step that enforces approval gates before credentials are issued or initial deposits are accepted. This step ensures all compliance and risk checks have passed before account activation.",
+      "context": [
+        "Do not issue credentials or accept an initial deposit until approval gates pass"
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_dp_001",
+      "name": "High-Risk Customer Gate",
+      "aliases": [
+        "Risk Level Classification Decision"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "risk_level_gate",
+      "description": "A branching decision point where the customer's risk assessment outcome determines whether they proceed to standard activation or are flagged for enhanced due diligence. High-risk customers are held pending approval; standard-risk customers proceed.",
+      "context": [
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`",
+        "Apply the standard customer-risk assessment"
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_dp_002",
+      "name": "Approval Gates Pass Decision",
+      "aliases": [
+        "Activation Authorization Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A gate decision that determines whether all approval conditions have been satisfied before credentials are issued and deposits are accepted. Failure to pass gates blocks account activation.",
+      "context": [
+        "Do not issue credentials or accept an initial deposit until approval gates pass"
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_ract_001",
+      "name": "Risk Classification Assessor",
+      "aliases": [
+        "Risk Assessment Officer"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The role responsible for identifying applicant type, applying standard risk assessment, and marking high-risk customers for enhanced due diligence during the pre-activation risk classification process.",
+      "context": [
+        "Identify whether the applicant is an individual or entity",
+        "Apply the standard customer-risk assessment",
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`"
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_ract_002",
+      "name": "Approval Gate Authority",
+      "aliases": [
+        "Activation Approver"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The role responsible for verifying that all approval gates have passed before credentials are issued or initial deposits are accepted. This role enforces the activation authorization decision.",
+      "context": [
+        "Do not issue credentials or accept an initial deposit until approval gates pass"
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cc_001",
+      "name": "Enhanced Due Diligence Compliance Gate",
+      "aliases": [
+        "EDD Checkpoint"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "risk_classification",
+      "description": "A mandatory compliance gate that verifies enhanced due diligence requirements have been satisfied for high-risk customers before account activation is permitted. This checkpoint ensures regulatory risk management obligations are met.",
+      "context": [
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`",
+        "Do not issue credentials or accept an initial deposit until approval gates pass"
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cust_001",
+      "name": "Applicant",
+      "aliases": [
+        "Customer Applicant",
+        "New Applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "applicant",
+      "description": "The natural person or entity applying for an account who is subject to risk classification before activation. The applicant's type (individual or entity) and risk profile determine the activation pathway.",
+      "context": [
+        "Identify whether the applicant is an individual or entity",
+        "Apply the standard customer-risk assessment",
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`"
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cust_002",
+      "name": "High-Risk Customer",
+      "aliases": [
+        "High-Risk Applicant"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "high_risk_customer",
+      "description": "A customer identified through standard risk assessment as presenting elevated compliance or financial crime risk. High-risk customers are flagged as 'Pending Enhanced Due Diligence' and cannot proceed to account activation until enhanced due diligence is completed and approved.",
+      "context": [
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`",
+        "Do not issue credentials or accept an initial deposit until approval gates pass"
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_kyc_001",
+      "name": "Standard Customer Risk Assessment",
+      "aliases": [
+        "Risk Classification Assessment"
+      ],
+      "entity_class": "KYC_VERIFICATION",
+      "type": "risk_classification",
+      "description": "The KYC-related risk assessment process applied to all applicants to determine their risk classification. This assessment is a prerequisite to account activation and determines whether enhanced due diligence is required.",
+      "context": [
+        "Apply the standard customer-risk assessment",
+        "Mark a high-risk customer as `Pending Enhanced Due Diligence`"
+      ],
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_proc_001",
+      "name": "Risk Classification Before Account Activation",
+      "properties": {
+        "purpose": "Classify applicant risk level and verify approval gates before account activation and credential issuance",
+        "scope": "All applicants (individuals and entities) before account activation",
+        "trigger": "New account application submission",
+        "outcome_success": "Applicant classified, approval gates passed, account activated with credentials issued",
+        "outcome_failure": "Account activation blocked pending enhanced due diligence or approval gate resolution",
+        "departments_involved": [
+          "Risk Management",
+          "Compliance",
+          "Account Activation"
+        ]
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_001",
+      "name": "Applicant Type Identification",
+      "properties": {
+        "step_number": 1,
+        "actor": "Risk Classification Assessor",
+        "purpose": "Determine whether applicant is an individual or entity",
+        "input": "Applicant registration data",
+        "output": "Applicant type classification",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_002",
+      "name": "Standard Customer Risk Assessment",
+      "properties": {
+        "step_number": 2,
+        "actor": "Risk Classification Assessor",
+        "purpose": "Apply standard risk assessment criteria to classify customer risk profile",
+        "input": "Applicant type, customer profile data",
+        "output": "Risk classification (standard or high-risk)",
+        "channel": "system",
+        "mandatory": "yes"
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_003",
+      "name": "High-Risk Customer Flagging",
+      "properties": {
+        "step_number": 3,
+        "actor": "Risk Classification Assessor",
+        "purpose": "Flag high-risk customers for enhanced due diligence",
+        "input": "Risk assessment outcome",
+        "output": "Customer marked as 'Pending Enhanced Due Diligence'",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Customer remains flagged until enhanced due diligence completed"
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_004",
+      "name": "Approval Gate Verification Before Activation",
+      "properties": {
+        "step_number": 4,
+        "actor": "Approval Gate Authority",
+        "purpose": "Verify all approval gates have passed before issuing credentials or accepting deposits",
+        "input": "Risk classification, enhanced due diligence status (if applicable)",
+        "output": "Approval gate decision (pass/fail)",
+        "channel": "system",
+        "mandatory": "yes",
+        "failure_path": "Block credential issuance and deposit acceptance until gates pass"
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_dp_001",
+      "name": "High-Risk Customer Gate",
+      "properties": {
+        "decision_question": "Is the applicant classified as high-risk?",
+        "criteria": "Risk assessment outcome indicates high-risk profile",
+        "decision_maker": "Risk Classification Assessor",
+        "path_yes": "Mark customer as 'Pending Enhanced Due Diligence'; escalate to enhanced due diligence process",
+        "path_no": "Proceed to approval gate verification"
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_dp_002",
+      "name": "Approval Gates Pass Decision",
+      "properties": {
+        "decision_question": "Have all approval gates passed?",
+        "criteria": "Risk classification complete; enhanced due diligence (if required) approved",
+        "decision_maker": "Approval Gate Authority",
+        "path_yes": "Activate account; issue credentials; accept initial deposit",
+        "path_no": "Block account activation, credential issuance, and deposit acceptance"
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_ract_001",
+      "name": "Risk Classification Assessor",
+      "properties": {
+        "role_type": "human",
+        "department": "Risk Management",
+        "authority_level": "Assessment and flagging authority",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_ract_002",
+      "name": "Approval Gate Authority",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "Account activation approval authority",
+        "channels": [
+          "system"
+        ]
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cc_001",
+      "name": "Enhanced Due Diligence Compliance Gate",
+      "properties": {
+        "regulatory_basis": "AML/KYC regulations",
+        "mandatory": "yes",
+        "applies_to_channels": [
+          "all"
+        ],
+        "performed_by": "Compliance team",
+        "timing": "Before account activation for high-risk customers",
+        "evidence_required": "Enhanced due diligence documentation and approval",
+        "failure_consequence": "Account activation blocked until enhanced due diligence completed and approved"
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cust_001",
+      "name": "Applicant",
+      "properties": {
+        "customer_type": "new",
+        "context_role": "Subject of risk classification process"
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cust_002",
+      "name": "High-Risk Customer",
+      "properties": {
+        "customer_type": "new",
+        "risk_classification": "high_risk",
+        "context_role": "Applicant requiring enhanced due diligence before account activation"
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_kyc_001",
+      "name": "Standard Customer Risk Assessment",
+      "properties": {
+        "mandatory": "yes",
+        "timing_or_refresh_frequency": "Before account activation",
+        "verification_method": "Risk assessment criteria applied by Risk Classification Assessor",
+        "consequence_of_failure": "Account activation blocked; escalation to enhanced due diligence"
+      },
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_proc_001",
+      "source_name": "Risk Classification Before Account Activation",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_001",
+      "target_name": "Applicant Type Identification",
+      "rel_type": "starts_with",
+      "description": "The risk classification process begins with identifying the applicant type",
+      "properties": {
+        "sequence_position": 1
+      },
+      "context": "Identify whether the applicant is an individual or entity.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_001",
+      "source_name": "Applicant Type Identification",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_002",
+      "target_name": "Standard Customer Risk Assessment",
+      "rel_type": "followed_by",
+      "description": "Applicant type identification is followed by standard customer risk assessment",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Identify whether the applicant is an individual or entity. Apply the standard customer-risk assessment.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_002",
+      "source_name": "Standard Customer Risk Assessment",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_kyc_001",
+      "target_name": "Standard Customer Risk Assessment",
+      "rel_type": "executes",
+      "description": "The process step executes the standard customer risk assessment KYC verification",
+      "properties": {
+        "assessment_type": "standard"
+      },
+      "context": "Apply the standard customer-risk assessment.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_002",
+      "source_name": "Standard Customer Risk Assessment",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_003",
+      "target_name": "High-Risk Customer Flagging",
+      "rel_type": "followed_by",
+      "description": "Standard customer risk assessment is followed by high-risk customer flagging",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Apply the standard customer-risk assessment. Mark a high-risk customer as `Pending Enhanced Due Diligence`.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_003",
+      "source_name": "High-Risk Customer Flagging",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_dp_001",
+      "target_name": "High-Risk Customer Gate",
+      "rel_type": "triggers",
+      "description": "High-risk customer flagging triggers the high-risk customer decision gate",
+      "properties": {
+        "flag_status": "Pending Enhanced Due Diligence"
+      },
+      "context": "Mark a high-risk customer as `Pending Enhanced Due Diligence`.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_dp_001",
+      "source_name": "High-Risk Customer Gate",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cc_001",
+      "target_name": "Enhanced Due Diligence Compliance Gate",
+      "rel_type": "gated_by",
+      "description": "The high-risk customer gate is gated by enhanced due diligence compliance checkpoint",
+      "properties": {
+        "gate_type": "compliance_gated"
+      },
+      "context": "Mark a high-risk customer as `Pending Enhanced Due Diligence`. Do not issue credentials or accept an initial deposit until approval gates pass.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_003",
+      "source_name": "High-Risk Customer Flagging",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_004",
+      "target_name": "Approval Gate Verification Before Activation",
+      "rel_type": "followed_by",
+      "description": "High-risk customer flagging is followed by approval gate verification",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "Mark a high-risk customer as `Pending Enhanced Due Diligence`. Do not issue credentials or accept an initial deposit until approval gates pass.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_004",
+      "source_name": "Approval Gate Verification Before Activation",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_dp_002",
+      "target_name": "Approval Gates Pass Decision",
+      "rel_type": "leads_to",
+      "description": "Approval gate verification leads to the approval gates pass decision point",
+      "properties": {
+        "decision_type": "approval_gates_pass"
+      },
+      "context": "Do not issue credentials or accept an initial deposit until approval gates pass.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_proc_001",
+      "source_name": "Risk Classification Before Account Activation",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_004",
+      "target_name": "Approval Gate Verification Before Activation",
+      "rel_type": "ends_with",
+      "description": "The risk classification process ends with approval gate verification before activation",
+      "properties": {
+        "final_step": true
+      },
+      "context": "Do not issue credentials or accept an initial deposit until approval gates pass.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_001",
+      "source_name": "Applicant Type Identification",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cust_001",
+      "target_name": "Applicant",
+      "rel_type": "collects_data_from",
+      "description": "Applicant type identification collects data from the applicant",
+      "properties": {
+        "data_type": "applicant_type"
+      },
+      "context": "Identify whether the applicant is an individual or entity.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_002",
+      "source_name": "Standard Customer Risk Assessment",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_ract_001",
+      "target_name": "Risk Classification Assessor",
+      "rel_type": "performed_by",
+      "description": "Standard customer risk assessment is performed by the risk classification assessor",
+      "properties": {
+        "assessment_type": "standard"
+      },
+      "context": "Apply the standard customer-risk assessment.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_004",
+      "source_name": "Approval Gate Verification Before Activation",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_ract_002",
+      "target_name": "Approval Gate Authority",
+      "rel_type": "performed_by",
+      "description": "Approval gate verification is performed by the approval gate authority",
+      "properties": {
+        "verification_type": "approval_gates"
+      },
+      "context": "Do not issue credentials or accept an initial deposit until approval gates pass.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_dp_001",
+      "source_name": "High-Risk Customer Gate",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_ract_002",
+      "target_name": "Approval Gate Authority",
+      "rel_type": "decided_by",
+      "description": "The high-risk customer gate decision is made by the approval gate authority",
+      "properties": {
+        "decision_authority": "approval_gate_authority"
+      },
+      "context": "Do not issue credentials or accept an initial deposit until approval gates pass.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_proc_001",
+      "source_name": "Risk Classification Before Account Activation",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cc_001",
+      "target_name": "Enhanced Due Diligence Compliance Gate",
+      "rel_type": "mandated_to_include",
+      "description": "The risk classification process is mandated to include enhanced due diligence compliance gate",
+      "properties": {
+        "compliance_requirement": "enhanced_due_diligence"
+      },
+      "context": "Mark a high-risk customer as `Pending Enhanced Due Diligence`. Do not issue credentials or accept an initial deposit until approval gates pass.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_003",
+      "source_name": "High-Risk Customer Flagging",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cust_002",
+      "target_name": "High-Risk Customer",
+      "rel_type": "classifies",
+      "description": "High-risk customer flagging classifies the applicant as a high-risk customer",
+      "properties": {
+        "classification": "high_risk",
+        "status": "Pending Enhanced Due Diligence"
+      },
+      "context": "Mark a high-risk customer as `Pending Enhanced Due Diligence`.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cc_001",
+      "source_name": "Enhanced Due Diligence Compliance Gate",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_dp_001",
+      "target_name": "High-Risk Customer Gate",
+      "rel_type": "gates",
+      "description": "Enhanced due diligence compliance checkpoint gates the high-risk customer decision",
+      "properties": {
+        "gate_type": "compliance_gate"
+      },
+      "context": "Mark a high-risk customer as `Pending Enhanced Due Diligence`. Do not issue credentials or accept an initial deposit until approval gates pass.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_proc_001",
+      "source_name": "Risk Classification Before Account Activation",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_kyc_001",
+      "target_name": "Standard Customer Risk Assessment",
+      "rel_type": "requires",
+      "description": "The risk classification process requires standard customer risk assessment KYC verification",
+      "properties": {
+        "verification_type": "standard"
+      },
+      "context": "Apply the standard customer-risk assessment.",
+      "bidirectional": false,
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_proc_001",
+      "source_name": "Risk Classification Before Account Activation",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_001",
+      "source_name": "Applicant Type Identification",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_002",
+      "source_name": "Standard Customer Risk Assessment",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_003",
+      "source_name": "High-Risk Customer Flagging",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_pstep_004",
+      "source_name": "Approval Gate Verification Before Activation",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_dp_001",
+      "source_name": "High-Risk Customer Gate",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_dp_002",
+      "source_name": "Approval Gates Pass Decision",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_ract_001",
+      "source_name": "Risk Classification Assessor",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_ract_002",
+      "source_name": "Approval Gate Authority",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cc_001",
+      "source_name": "Enhanced Due Diligence Compliance Gate",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cust_001",
+      "source_name": "Applicant",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_cust_002",
+      "source_name": "High-Risk Customer",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003_kyc_001",
+      "source_name": "Standard Customer Risk Assessment",
+      "target_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "target_name": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073f8-2690-77f0-b4e8-5b444f160394_003",
+      "doc_id": "01a073f8-2690-77f0-b4e8-5b444f160394",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

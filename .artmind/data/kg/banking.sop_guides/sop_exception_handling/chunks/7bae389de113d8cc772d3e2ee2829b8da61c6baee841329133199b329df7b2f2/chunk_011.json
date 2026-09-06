@@ -1,0 +1,1006 @@
+{
+  "chunk_seq": 11,
+  "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+  "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+  "text": "### Category 2: Disputed Transactions  \n**Investigation Steps:**\n1. Pull transaction details\n2. Verify customer authorized\n3. Check timestamp and amount\n4. Review customer history (patterns?)\n5. Assess fraud likelihood  \n**Questions to Answer:**\n- Did customer authorize this amount?\n- To whom was money sent? (known party?)\n- Was customer negligent? (shared password?)\n- Timeline: When reported vs. when occurred?  \n**Outcomes:**\n- **Unauthorized:** Full refund within 10 days\n- **Authorized:** Explain, educate customer\n- **Disputed:** Further investigation or escalation",
+  "name": "Chunk 11/25",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_010",
+  "next_chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_012",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Disputed Transaction Investigation Process",
+      "aliases": [
+        "Category 2: Disputed Transactions"
+      ],
+      "entity_class": "PROCESS",
+      "type": "fraud_investigation",
+      "description": "An end-to-end investigation procedure for handling disputed transactions on customer accounts. The process involves pulling transaction details, verifying customer authorization, checking timestamps and amounts, reviewing customer history for patterns, and assessing fraud likelihood. Investigation outcomes determine whether a full refund is issued within 10 days, the transaction is confirmed as authorized with customer education, or further investigation and escalation is required.",
+      "context": [
+        "Category 2: Disputed Transactions",
+        "Pull transaction details, Verify customer authorized, Check timestamp and amount, Review customer history (patterns?), Assess fraud likelihood",
+        "Unauthorized: Full refund within 10 days",
+        "Authorized: Explain, educate customer",
+        "Disputed: Further investigation or escalation"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Pull Transaction Details",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The first step in the disputed transaction investigation where transaction details are retrieved and made available for review.",
+      "context": [
+        "Pull transaction details"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Verify Customer Authorization",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "A verification step to confirm whether the customer authorized the disputed transaction.",
+      "context": [
+        "Verify customer authorized",
+        "Did customer authorize this amount?"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Check Timestamp and Amount",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "A review step that examines the timestamp and monetary amount of the disputed transaction to establish transaction details and timeline.",
+      "context": [
+        "Check timestamp and amount",
+        "Timeline: When reported vs. when occurred?"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Review Customer History",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "An analysis step that examines the customer's transaction history and patterns to identify anomalies or indicators of fraud.",
+      "context": [
+        "Review customer history (patterns?)"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Assess Fraud Likelihood",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "A decision-support step that evaluates the overall likelihood of fraud based on collected evidence and analysis.",
+      "context": [
+        "Assess fraud likelihood"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Transaction Authorization Status Decision",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A branching decision point that determines the outcome of the disputed transaction investigation based on whether the transaction was authorized, unauthorized, or remains disputed. Each path leads to a different resolution outcome.",
+      "context": [
+        "Outcomes: Unauthorized: Full refund within 10 days, Authorized: Explain, educate customer, Disputed: Further investigation or escalation"
+      ]
+    },
+    {
+      "id": "fraud_001",
+      "name": "Unauthorized Transaction Refund",
+      "aliases": [],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "The outcome path when a disputed transaction is determined to be unauthorized, resulting in a full refund to the customer within 10 days.",
+      "context": [
+        "Unauthorized: Full refund within 10 days"
+      ]
+    },
+    {
+      "id": "fraud_002",
+      "name": "Authorized Transaction Customer Education",
+      "aliases": [],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "The outcome path when a disputed transaction is confirmed as authorized by the customer, requiring explanation and customer education.",
+      "context": [
+        "Authorized: Explain, educate customer"
+      ]
+    },
+    {
+      "id": "fraud_003",
+      "name": "Disputed Transaction Further Investigation",
+      "aliases": [],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "The outcome path when a disputed transaction cannot be conclusively determined as authorized or unauthorized, requiring further investigation or escalation.",
+      "context": [
+        "Disputed: Further investigation or escalation"
+      ]
+    },
+    {
+      "id": "txn_001",
+      "name": "Disputed Transaction",
+      "aliases": [],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "A financial transaction on a customer account that is contested by the customer and subject to investigation to determine authorization status and fraud likelihood.",
+      "context": [
+        "Category 2: Disputed Transactions",
+        "Did customer authorize this amount?",
+        "To whom was money sent? (known party?)"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The account holder who disputes a transaction and is the subject of the investigation process. The customer's authorization status, negligence, and transaction history are key factors in determining the investigation outcome.",
+      "context": [
+        "Verify customer authorized",
+        "Was customer negligent? (shared password?)",
+        "Explain, educate customer"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_proc_001",
+    "pstep_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_001",
+    "pstep_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_002",
+    "pstep_003": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_003",
+    "pstep_004": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_004",
+    "pstep_005": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_005",
+    "dp_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_dp_001",
+    "fraud_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_001",
+    "fraud_002": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_002",
+    "fraud_003": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_003",
+    "txn_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_txn_001",
+    "cust_001": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_cust_001"
+  },
+  "entities": [
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_proc_001",
+      "name": "Disputed Transaction Investigation Process",
+      "aliases": [
+        "Category 2: Disputed Transactions"
+      ],
+      "entity_class": "PROCESS",
+      "type": "fraud_investigation",
+      "description": "An end-to-end investigation procedure for handling disputed transactions on customer accounts. The process involves pulling transaction details, verifying customer authorization, checking timestamps and amounts, reviewing customer history for patterns, and assessing fraud likelihood. Investigation outcomes determine whether a full refund is issued within 10 days, the transaction is confirmed as authorized with customer education, or further investigation and escalation is required.",
+      "context": [
+        "Category 2: Disputed Transactions",
+        "Pull transaction details, Verify customer authorized, Check timestamp and amount, Review customer history (patterns?), Assess fraud likelihood",
+        "Unauthorized: Full refund within 10 days",
+        "Authorized: Explain, educate customer",
+        "Disputed: Further investigation or escalation"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_001",
+      "name": "Pull Transaction Details",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The first step in the disputed transaction investigation where transaction details are retrieved and made available for review.",
+      "context": [
+        "Pull transaction details"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_002",
+      "name": "Verify Customer Authorization",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "identity_check",
+      "description": "A verification step to confirm whether the customer authorized the disputed transaction.",
+      "context": [
+        "Verify customer authorized",
+        "Did customer authorize this amount?"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_003",
+      "name": "Check Timestamp and Amount",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "A review step that examines the timestamp and monetary amount of the disputed transaction to establish transaction details and timeline.",
+      "context": [
+        "Check timestamp and amount",
+        "Timeline: When reported vs. when occurred?"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_004",
+      "name": "Review Customer History",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "An analysis step that examines the customer's transaction history and patterns to identify anomalies or indicators of fraud.",
+      "context": [
+        "Review customer history (patterns?)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_005",
+      "name": "Assess Fraud Likelihood",
+      "aliases": [],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "A decision-support step that evaluates the overall likelihood of fraud based on collected evidence and analysis.",
+      "context": [
+        "Assess fraud likelihood"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_dp_001",
+      "name": "Transaction Authorization Status Decision",
+      "aliases": [],
+      "entity_class": "DECISION_POINT",
+      "type": "approve_reject",
+      "description": "A branching decision point that determines the outcome of the disputed transaction investigation based on whether the transaction was authorized, unauthorized, or remains disputed. Each path leads to a different resolution outcome.",
+      "context": [
+        "Outcomes: Unauthorized: Full refund within 10 days, Authorized: Explain, educate customer, Disputed: Further investigation or escalation"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_001",
+      "name": "Unauthorized Transaction Refund",
+      "aliases": [],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "The outcome path when a disputed transaction is determined to be unauthorized, resulting in a full refund to the customer within 10 days.",
+      "context": [
+        "Unauthorized: Full refund within 10 days"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_002",
+      "name": "Authorized Transaction Customer Education",
+      "aliases": [],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "The outcome path when a disputed transaction is confirmed as authorized by the customer, requiring explanation and customer education.",
+      "context": [
+        "Authorized: Explain, educate customer"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_003",
+      "name": "Disputed Transaction Further Investigation",
+      "aliases": [],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "The outcome path when a disputed transaction cannot be conclusively determined as authorized or unauthorized, requiring further investigation or escalation.",
+      "context": [
+        "Disputed: Further investigation or escalation"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_txn_001",
+      "name": "Disputed Transaction",
+      "aliases": [],
+      "entity_class": "TRANSACTION",
+      "type": "disputed_transaction",
+      "description": "A financial transaction on a customer account that is contested by the customer and subject to investigation to determine authorization status and fraud likelihood.",
+      "context": [
+        "Category 2: Disputed Transactions",
+        "Did customer authorize this amount?",
+        "To whom was money sent? (known party?)"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_cust_001",
+      "name": "Customer",
+      "aliases": [],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The account holder who disputes a transaction and is the subject of the investigation process. The customer's authorization status, negligence, and transaction history are key factors in determining the investigation outcome.",
+      "context": [
+        "Verify customer authorized",
+        "Was customer negligent? (shared password?)",
+        "Explain, educate customer"
+      ],
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_proc_001",
+      "name": "Disputed Transaction Investigation Process",
+      "properties": {
+        "purpose": "Investigate disputed transactions to determine authorization status and appropriate remediation",
+        "scope": "All disputed transactions reported by customers",
+        "owner": "Fraud Investigation Team",
+        "departments_involved": [
+          "Fraud",
+          "Customer Service",
+          "Compliance"
+        ],
+        "trigger": "Customer reports a transaction as unauthorized or disputed",
+        "outcome_success": "Transaction status determined (authorized, unauthorized, or requires further investigation) with appropriate customer action taken",
+        "outcome_failure": "Investigation inconclusive or customer dissatisfied with resolution"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_001",
+      "name": "Pull Transaction Details",
+      "properties": {
+        "step_number": 1,
+        "actor": "Fraud Investigation Team",
+        "input": "Transaction reference, customer account identifier",
+        "output": "Complete transaction record including amount, timestamp, recipient, and payment method",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Transaction Management System"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_002",
+      "name": "Verify Customer Authorization",
+      "properties": {
+        "step_number": 2,
+        "actor": "Fraud Investigation Team",
+        "input": "Transaction details, customer account history",
+        "output": "Authorization status determination",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Customer Account System",
+          "Authorization Log"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_003",
+      "name": "Check Timestamp and Amount",
+      "properties": {
+        "step_number": 3,
+        "actor": "Fraud Investigation Team",
+        "input": "Transaction timestamp, transaction amount, customer report date",
+        "output": "Timeline analysis and amount validation",
+        "channel": "system",
+        "mandatory": true
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_004",
+      "name": "Review Customer History",
+      "properties": {
+        "step_number": 4,
+        "actor": "Fraud Investigation Team",
+        "input": "Customer transaction history, spending patterns",
+        "output": "Pattern analysis identifying anomalies or consistency with customer behavior",
+        "channel": "system",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Customer Account System"
+        ]
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_005",
+      "name": "Assess Fraud Likelihood",
+      "properties": {
+        "step_number": 5,
+        "actor": "Fraud Investigation Team",
+        "input": "Authorization status, timeline analysis, pattern review, recipient verification",
+        "output": "Fraud likelihood assessment and recommendation for outcome path",
+        "channel": "system",
+        "mandatory": true
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_dp_001",
+      "name": "Transaction Authorization Status Decision",
+      "properties": {
+        "decision_question": "Was the transaction authorized by the customer?",
+        "criteria": [
+          "Customer authorization verification result",
+          "Timeline consistency (reported vs. occurred)",
+          "Amount consistency with customer history",
+          "Recipient verification (known party)",
+          "Customer negligence assessment (shared password, etc.)"
+        ],
+        "decision_maker": "Fraud Investigation Team",
+        "path_yes": "Proceed to Authorized Transaction Customer Education",
+        "path_no": "Proceed to Unauthorized Transaction Refund",
+        "override_possible": true
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_001",
+      "name": "Unauthorized Transaction Refund",
+      "properties": {
+        "generation_trigger": "Transaction determined to be unauthorized",
+        "investigation_or_escalation_path": "Issue full refund to customer",
+        "customer_notification": "Notify customer of refund approval and timeline",
+        "reimbursement_obligation": "Full refund within 10 days"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_002",
+      "name": "Authorized Transaction Customer Education",
+      "properties": {
+        "generation_trigger": "Transaction determined to be authorized",
+        "investigation_or_escalation_path": "Contact customer to explain transaction and provide security education",
+        "customer_notification": "Explain transaction details and circumstances to customer"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_003",
+      "name": "Disputed Transaction Further Investigation",
+      "properties": {
+        "generation_trigger": "Transaction status remains disputed or inconclusive after initial assessment",
+        "investigation_or_escalation_path": "Escalate for further investigation or specialist review",
+        "customer_notification": "Inform customer that investigation is ongoing"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_txn_001",
+      "name": "Disputed Transaction",
+      "properties": {
+        "transaction_type": "disputed",
+        "monitoring_or_reporting_obligation": "Investigation required to determine authorization status"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Initiator of dispute; subject of authorization verification and fraud assessment"
+      },
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_proc_001",
+      "source_name": "Disputed Transaction Investigation Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_001",
+      "target_name": "Pull Transaction Details",
+      "rel_type": "contains",
+      "description": "The investigation process includes pulling transaction details as its first step",
+      "properties": {
+        "sequence_position": 1,
+        "mandatory": true
+      },
+      "context": "Investigation Steps: 1. Pull transaction details",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_proc_001",
+      "source_name": "Disputed Transaction Investigation Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_002",
+      "target_name": "Verify Customer Authorization",
+      "rel_type": "contains",
+      "description": "The investigation process includes verifying customer authorization",
+      "properties": {
+        "sequence_position": 2,
+        "mandatory": true
+      },
+      "context": "Investigation Steps: 2. Verify customer authorized",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_proc_001",
+      "source_name": "Disputed Transaction Investigation Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_003",
+      "target_name": "Check Timestamp and Amount",
+      "rel_type": "contains",
+      "description": "The investigation process includes checking timestamp and amount",
+      "properties": {
+        "sequence_position": 3,
+        "mandatory": true
+      },
+      "context": "Investigation Steps: 3. Check timestamp and amount",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_proc_001",
+      "source_name": "Disputed Transaction Investigation Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_004",
+      "target_name": "Review Customer History",
+      "rel_type": "contains",
+      "description": "The investigation process includes reviewing customer history for patterns",
+      "properties": {
+        "sequence_position": 4,
+        "mandatory": true,
+        "focus": "patterns"
+      },
+      "context": "Investigation Steps: 4. Review customer history (patterns?)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_proc_001",
+      "source_name": "Disputed Transaction Investigation Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_005",
+      "target_name": "Assess Fraud Likelihood",
+      "rel_type": "contains",
+      "description": "The investigation process includes assessing fraud likelihood",
+      "properties": {
+        "sequence_position": 5,
+        "mandatory": true
+      },
+      "context": "Investigation Steps: 5. Assess fraud likelihood",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_proc_001",
+      "source_name": "Disputed Transaction Investigation Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_dp_001",
+      "target_name": "Transaction Authorization Status Decision",
+      "rel_type": "branches_at",
+      "description": "The investigation process branches at the transaction authorization status decision point",
+      "properties": {
+        "decision_outcomes": [
+          "Unauthorized",
+          "Authorized",
+          "Disputed"
+        ]
+      },
+      "context": "Outcomes: - **Unauthorized:** Full refund within 10 days - **Authorized:** Explain, educate customer - **Disputed:** Further investigation or escalation",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_proc_001",
+      "source_name": "Disputed Transaction Investigation Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_txn_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "operates_on",
+      "description": "The investigation process operates on the disputed transaction",
+      "properties": {
+        "process_type": "investigation"
+      },
+      "context": "Category 2: Disputed Transactions Investigation Steps",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_001",
+      "source_name": "Pull Transaction Details",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_002",
+      "target_name": "Verify Customer Authorization",
+      "rel_type": "followed_by",
+      "description": "Pulling transaction details is followed by verifying customer authorization",
+      "properties": {
+        "sequence": "1 → 2"
+      },
+      "context": "Investigation Steps: 1. Pull transaction details 2. Verify customer authorized",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_002",
+      "source_name": "Verify Customer Authorization",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_003",
+      "target_name": "Check Timestamp and Amount",
+      "rel_type": "followed_by",
+      "description": "Verifying customer authorization is followed by checking timestamp and amount",
+      "properties": {
+        "sequence": "2 → 3"
+      },
+      "context": "Investigation Steps: 2. Verify customer authorized 3. Check timestamp and amount",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_003",
+      "source_name": "Check Timestamp and Amount",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_004",
+      "target_name": "Review Customer History",
+      "rel_type": "followed_by",
+      "description": "Checking timestamp and amount is followed by reviewing customer history",
+      "properties": {
+        "sequence": "3 → 4"
+      },
+      "context": "Investigation Steps: 3. Check timestamp and amount 4. Review customer history (patterns?)",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_004",
+      "source_name": "Review Customer History",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_005",
+      "target_name": "Assess Fraud Likelihood",
+      "rel_type": "followed_by",
+      "description": "Reviewing customer history is followed by assessing fraud likelihood",
+      "properties": {
+        "sequence": "4 → 5"
+      },
+      "context": "Investigation Steps: 4. Review customer history (patterns?) 5. Assess fraud likelihood",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_005",
+      "source_name": "Assess Fraud Likelihood",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_dp_001",
+      "target_name": "Transaction Authorization Status Decision",
+      "rel_type": "leads_to",
+      "description": "Assessing fraud likelihood leads to the transaction authorization status decision",
+      "properties": {
+        "decision_trigger": true
+      },
+      "context": "Investigation Steps: 5. Assess fraud likelihood ... Outcomes: - **Unauthorized:** Full refund within 10 days - **Authorized:** Explain, educate customer - **Disputed:** Further investigation or escalation",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_dp_001",
+      "source_name": "Transaction Authorization Status Decision",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_001",
+      "target_name": "Unauthorized Transaction Refund",
+      "rel_type": "routes_to_on_pass",
+      "description": "When transaction is determined to be unauthorized, it routes to refund alert",
+      "properties": {
+        "outcome": "Unauthorized",
+        "action": "Full refund within 10 days"
+      },
+      "context": "Outcomes: - **Unauthorized:** Full refund within 10 days",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_dp_001",
+      "source_name": "Transaction Authorization Status Decision",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_002",
+      "target_name": "Authorized Transaction Customer Education",
+      "rel_type": "routes_to_on_fail",
+      "description": "When transaction is determined to be authorized, it routes to customer education alert",
+      "properties": {
+        "outcome": "Authorized",
+        "action": "Explain, educate customer"
+      },
+      "context": "Outcomes: - **Authorized:** Explain, educate customer",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_dp_001",
+      "source_name": "Transaction Authorization Status Decision",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_003",
+      "target_name": "Disputed Transaction Further Investigation",
+      "rel_type": "routes_to_on_fail",
+      "description": "When transaction status is disputed, it routes to further investigation alert",
+      "properties": {
+        "outcome": "Disputed",
+        "action": "Further investigation or escalation"
+      },
+      "context": "Outcomes: - **Disputed:** Further investigation or escalation",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_001",
+      "source_name": "Unauthorized Transaction Refund",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_txn_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "raised_on",
+      "description": "The unauthorized transaction refund alert is raised on the disputed transaction",
+      "properties": {
+        "alert_type": "refund",
+        "timeframe": "10 days"
+      },
+      "context": "Outcomes: - **Unauthorized:** Full refund within 10 days",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_002",
+      "source_name": "Authorized Transaction Customer Education",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_txn_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "raised_on",
+      "description": "The authorized transaction customer education alert is raised on the disputed transaction",
+      "properties": {
+        "alert_type": "education"
+      },
+      "context": "Outcomes: - **Authorized:** Explain, educate customer",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_003",
+      "source_name": "Disputed Transaction Further Investigation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_txn_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "raised_on",
+      "description": "The disputed transaction further investigation alert is raised on the disputed transaction",
+      "properties": {
+        "alert_type": "investigation",
+        "action": "escalation"
+      },
+      "context": "Outcomes: - **Disputed:** Further investigation or escalation",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_txn_001",
+      "source_name": "Disputed Transaction",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_cust_001",
+      "target_name": "Customer",
+      "rel_type": "concerns",
+      "description": "The disputed transaction concerns the customer",
+      "properties": {
+        "transaction_type": "disputed"
+      },
+      "context": "Category 2: Disputed Transactions ... Did customer authorize this amount?",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_txn_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "filed_about",
+      "description": "The customer files a dispute about the transaction",
+      "properties": {
+        "dispute_type": "authorization"
+      },
+      "context": "Questions to Answer: - Did customer authorize this amount?",
+      "bidirectional": true,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_002",
+      "source_name": "Verify Customer Authorization",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_cust_001",
+      "target_name": "Customer",
+      "rel_type": "verifies_identity_of",
+      "description": "Verifying customer authorization involves verifying the customer's identity and authorization",
+      "properties": {
+        "verification_focus": "authorization"
+      },
+      "context": "Investigation Steps: 2. Verify customer authorized",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_001",
+      "source_name": "Pull Transaction Details",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_txn_001",
+      "target_name": "Disputed Transaction",
+      "rel_type": "collects_data_from",
+      "description": "Pulling transaction details collects data from the disputed transaction",
+      "properties": {
+        "data_type": "transaction_details"
+      },
+      "context": "Investigation Steps: 1. Pull transaction details",
+      "bidirectional": false,
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_proc_001",
+      "source_name": "Disputed Transaction Investigation Process",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_001",
+      "source_name": "Pull Transaction Details",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_002",
+      "source_name": "Verify Customer Authorization",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_003",
+      "source_name": "Check Timestamp and Amount",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_004",
+      "source_name": "Review Customer History",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_pstep_005",
+      "source_name": "Assess Fraud Likelihood",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_dp_001",
+      "source_name": "Transaction Authorization Status Decision",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_001",
+      "source_name": "Unauthorized Transaction Refund",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_002",
+      "source_name": "Authorized Transaction Customer Education",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_fraud_003",
+      "source_name": "Disputed Transaction Further Investigation",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_txn_001",
+      "source_name": "Disputed Transaction",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "target_name": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b_011",
+      "doc_id": "01a07413-dadb-77ad-b2c3-8730bbdeff2b",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

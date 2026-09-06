@@ -1,0 +1,986 @@
+{
+  "chunk_seq": 22,
+  "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+  "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+  "text": "### Entity: Fraud Alert  \n**Definition:** A system-generated alert when fraud is detected.  \n**Attributes:**\n- `alert_id` — Unique identifier\n- `account_id` — Linked account\n- `transaction_id` — Linked transaction (if applicable)\n- `alert_type` — Unauthorized use, Card fraud, Account takeover, Rule violation\n- `fraud_score` — Risk score (0–100, where 100 = definite fraud)\n- `risk_level` — Low, Medium, High, Critical\n- `detected_date` — Date alert generated\n- `alert_status` — Auto-approved, Manual review, Blocked\n- `action_taken` — Approved, Blocked, Under review, False positive\n- `reviewer` — Financial Crime team member (if manual review)  \n**Example Fraud Patterns:**\n- Transaction in different country within 2 hours of previous transaction\n- Large ATM withdrawal (>£2,000) from unusual location\n- Card used by different person\n- Velocity check (>5 transactions in 1 hour)  \n**Key Business Rules:**\n- High-risk alerts automatically block transaction\n- Customer can dispute fraud (Fraud Policy)\n- Bank reimburses unauthorized fraud within 10 days\n- Fraud data feeds ML model for continuous improvement  \n**Relationships:**\n- `on_account` → Account (1:many)\n- `on_transaction` → Transaction (0:1)\n- `triggers_investigation` → FraudInvestigation (1:1, optional)  \n---",
+  "name": "Chunk 22/37",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_021",
+  "next_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_023",
+  "raw_entities": [
+    {
+      "id": "bc_001",
+      "name": "Fraud Alert",
+      "aliases": [
+        "fraud_detection_alert",
+        "system_fraud_alert"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "fraud_alert",
+      "description": "A system-generated alert triggered when fraud is detected on a customer account or transaction. Fraud alerts are assigned a fraud score (0–100), risk level (Low, Medium, High, Critical), and alert status (Auto-approved, Manual review, Blocked). High-risk alerts automatically block transactions, and customers can dispute fraud claims with reimbursement within 10 days.",
+      "context": [
+        "A system-generated alert when fraud is detected.",
+        "High-risk alerts automatically block transaction",
+        "Customer can dispute fraud (Fraud Policy)",
+        "Bank reimburses unauthorized fraud within 10 days"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Fraud Score",
+      "aliases": [
+        "risk_score"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "fraud_alert",
+      "description": "A quantitative risk assessment metric assigned to each fraud alert, ranging from 0 to 100, where 100 indicates definite fraud. The fraud score informs the alert's risk level classification and determines whether automatic blocking or manual review is triggered.",
+      "context": [
+        "fraud_score` — Risk score (0–100, where 100 = definite fraud)",
+        "Fraud data feeds ML model for continuous improvement"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "Fraud Investigation",
+      "aliases": [
+        "fraud_review",
+        "manual_review"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "fraud_alert",
+      "description": "The process of manually reviewing a fraud alert, typically conducted by a Financial Crime team member when an alert is flagged for manual review rather than auto-approved or auto-blocked. Investigations determine whether a transaction is genuinely fraudulent or a false positive.",
+      "context": [
+        "reviewer` — Financial Crime team member (if manual review)",
+        "triggers_investigation` → FraudInvestigation (1:1, optional)"
+      ]
+    },
+    {
+      "id": "mt_001",
+      "name": "Fraud Score Threshold",
+      "aliases": [
+        "fraud_risk_scale"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "risk_threshold",
+      "description": "The quantitative scale used to assess fraud risk, ranging from 0 to 100, where 100 represents definite fraud. This threshold determines alert classification and automated response actions.",
+      "context": [
+        "fraud_score` — Risk score (0–100, where 100 = definite fraud)"
+      ]
+    },
+    {
+      "id": "mt_002",
+      "name": "Fraud Reimbursement Timeline",
+      "aliases": [
+        "reimbursement_sla"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "sla",
+      "description": "The service level agreement requiring the bank to reimburse customers for unauthorized fraud within 10 days of a valid fraud claim.",
+      "context": [
+        "Bank reimburses unauthorized fraud within 10 days"
+      ]
+    },
+    {
+      "id": "mt_003",
+      "name": "Velocity Check Threshold",
+      "aliases": [
+        "transaction_velocity_limit"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "risk_threshold",
+      "description": "A fraud detection rule that flags suspicious activity when more than 5 transactions occur within a 1-hour window on a single account or card.",
+      "context": [
+        "Velocity check (>5 transactions in 1 hour)"
+      ]
+    },
+    {
+      "id": "mt_004",
+      "name": "ATM Withdrawal Limit for Fraud Detection",
+      "aliases": [
+        "large_withdrawal_threshold"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "risk_threshold",
+      "description": "A fraud detection rule that flags large ATM withdrawals exceeding £2,000 from unusual locations as potentially fraudulent activity.",
+      "context": [
+        "Large ATM withdrawal (>£2,000) from unusual location"
+      ]
+    },
+    {
+      "id": "mt_005",
+      "name": "Geographic Velocity Check Threshold",
+      "aliases": [
+        "country_velocity_limit"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "risk_threshold",
+      "description": "A fraud detection rule that flags transactions occurring in different countries within 2 hours of a previous transaction as potentially fraudulent.",
+      "context": [
+        "Transaction in different country within 2 hours of previous transaction"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "High-Risk Alert Auto-Block Rule",
+      "aliases": [
+        "auto_block_policy"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A mandatory operational constraint requiring that all fraud alerts classified as high-risk automatically block the associated transaction without waiting for manual review.",
+      "context": [
+        "High-risk alerts automatically block transaction"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Fraud Dispute and Reimbursement Policy",
+      "aliases": [
+        "fraud_policy",
+        "customer_dispute_right"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "A regulatory and contractual obligation allowing customers to dispute fraud claims and requiring the bank to reimburse unauthorized fraud within 10 days, subject to the Fraud Policy terms.",
+      "context": [
+        "Customer can dispute fraud (Fraud Policy)",
+        "Bank reimburses unauthorized fraud within 10 days"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "Fraud Data ML Model Feeding Rule",
+      "aliases": [
+        "ml_model_training_obligation"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "An operational requirement that fraud alert data be continuously fed into a machine learning model to improve fraud detection accuracy and pattern recognition over time.",
+      "context": [
+        "Fraud data feeds ML model for continuous improvement"
+      ]
+    },
+    {
+      "id": "ou_001",
+      "name": "Financial Crime Team",
+      "aliases": [
+        "fraud_review_team",
+        "financial_crime_unit"
+      ],
+      "entity_class": "ORGANIZATIONAL_UNIT",
+      "type": "department",
+      "description": "The internal department responsible for manually reviewing fraud alerts flagged for investigation and determining whether transactions are genuinely fraudulent or false positives.",
+      "context": [
+        "reviewer` — Financial Crime team member (if manual review)"
+      ]
+    }
+  ],
+  "id_map": {
+    "bc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+    "bc_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_002",
+    "bc_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_003",
+    "mt_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_001",
+    "mt_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_002",
+    "mt_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_003",
+    "mt_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_004",
+    "mt_005": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_005",
+    "br_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_001",
+    "br_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_002",
+    "br_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_003",
+    "ou_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_ou_001"
+  },
+  "entities": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+      "name": "Fraud Alert",
+      "aliases": [
+        "fraud_detection_alert",
+        "system_fraud_alert"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "fraud_alert",
+      "description": "A system-generated alert triggered when fraud is detected on a customer account or transaction. Fraud alerts are assigned a fraud score (0–100), risk level (Low, Medium, High, Critical), and alert status (Auto-approved, Manual review, Blocked). High-risk alerts automatically block transactions, and customers can dispute fraud claims with reimbursement within 10 days.",
+      "context": [
+        "A system-generated alert when fraud is detected.",
+        "High-risk alerts automatically block transaction",
+        "Customer can dispute fraud (Fraud Policy)",
+        "Bank reimburses unauthorized fraud within 10 days"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_002",
+      "name": "Fraud Score",
+      "aliases": [
+        "risk_score"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "fraud_alert",
+      "description": "A quantitative risk assessment metric assigned to each fraud alert, ranging from 0 to 100, where 100 indicates definite fraud. The fraud score informs the alert's risk level classification and determines whether automatic blocking or manual review is triggered.",
+      "context": [
+        "fraud_score` — Risk score (0–100, where 100 = definite fraud)",
+        "Fraud data feeds ML model for continuous improvement"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_003",
+      "name": "Fraud Investigation",
+      "aliases": [
+        "fraud_review",
+        "manual_review"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "fraud_alert",
+      "description": "The process of manually reviewing a fraud alert, typically conducted by a Financial Crime team member when an alert is flagged for manual review rather than auto-approved or auto-blocked. Investigations determine whether a transaction is genuinely fraudulent or a false positive.",
+      "context": [
+        "reviewer` — Financial Crime team member (if manual review)",
+        "triggers_investigation` → FraudInvestigation (1:1, optional)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_001",
+      "name": "Fraud Score Threshold",
+      "aliases": [
+        "fraud_risk_scale"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "risk_threshold",
+      "description": "The quantitative scale used to assess fraud risk, ranging from 0 to 100, where 100 represents definite fraud. This threshold determines alert classification and automated response actions.",
+      "context": [
+        "fraud_score` — Risk score (0–100, where 100 = definite fraud)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_002",
+      "name": "Fraud Reimbursement Timeline",
+      "aliases": [
+        "reimbursement_sla"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "sla",
+      "description": "The service level agreement requiring the bank to reimburse customers for unauthorized fraud within 10 days of a valid fraud claim.",
+      "context": [
+        "Bank reimburses unauthorized fraud within 10 days"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_003",
+      "name": "Velocity Check Threshold",
+      "aliases": [
+        "transaction_velocity_limit"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "risk_threshold",
+      "description": "A fraud detection rule that flags suspicious activity when more than 5 transactions occur within a 1-hour window on a single account or card.",
+      "context": [
+        "Velocity check (>5 transactions in 1 hour)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_004",
+      "name": "ATM Withdrawal Limit for Fraud Detection",
+      "aliases": [
+        "large_withdrawal_threshold"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "risk_threshold",
+      "description": "A fraud detection rule that flags large ATM withdrawals exceeding £2,000 from unusual locations as potentially fraudulent activity.",
+      "context": [
+        "Large ATM withdrawal (>£2,000) from unusual location"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_005",
+      "name": "Geographic Velocity Check Threshold",
+      "aliases": [
+        "country_velocity_limit"
+      ],
+      "entity_class": "METRIC_TARGET",
+      "type": "risk_threshold",
+      "description": "A fraud detection rule that flags transactions occurring in different countries within 2 hours of a previous transaction as potentially fraudulent.",
+      "context": [
+        "Transaction in different country within 2 hours of previous transaction"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_001",
+      "name": "High-Risk Alert Auto-Block Rule",
+      "aliases": [
+        "auto_block_policy"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A mandatory operational constraint requiring that all fraud alerts classified as high-risk automatically block the associated transaction without waiting for manual review.",
+      "context": [
+        "High-risk alerts automatically block transaction"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_002",
+      "name": "Fraud Dispute and Reimbursement Policy",
+      "aliases": [
+        "fraud_policy",
+        "customer_dispute_right"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "regulatory_obligation",
+      "description": "A regulatory and contractual obligation allowing customers to dispute fraud claims and requiring the bank to reimburse unauthorized fraud within 10 days, subject to the Fraud Policy terms.",
+      "context": [
+        "Customer can dispute fraud (Fraud Policy)",
+        "Bank reimburses unauthorized fraud within 10 days"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_003",
+      "name": "Fraud Data ML Model Feeding Rule",
+      "aliases": [
+        "ml_model_training_obligation"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "An operational requirement that fraud alert data be continuously fed into a machine learning model to improve fraud detection accuracy and pattern recognition over time.",
+      "context": [
+        "Fraud data feeds ML model for continuous improvement"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_ou_001",
+      "name": "Financial Crime Team",
+      "aliases": [
+        "fraud_review_team",
+        "financial_crime_unit"
+      ],
+      "entity_class": "ORGANIZATIONAL_UNIT",
+      "type": "department",
+      "description": "The internal department responsible for manually reviewing fraud alerts flagged for investigation and determining whether transactions are genuinely fraudulent or false positives.",
+      "context": [
+        "reviewer` — Financial Crime team member (if manual review)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+      "name": "Fraud Alert",
+      "properties": {
+        "definition": "A system-generated alert when fraud is detected",
+        "key_attributes": [
+          "alert_id",
+          "account_id",
+          "transaction_id",
+          "alert_type",
+          "fraud_score",
+          "risk_level",
+          "detected_date",
+          "alert_status",
+          "action_taken",
+          "reviewer"
+        ],
+        "alert_type_variant": [
+          "Unauthorized use",
+          "Card fraud",
+          "Account takeover",
+          "Rule violation"
+        ],
+        "risk_level_variant": [
+          "Low",
+          "Medium",
+          "High",
+          "Critical"
+        ],
+        "alert_status_variant": [
+          "Auto-approved",
+          "Manual review",
+          "Blocked"
+        ],
+        "action_taken_variant": [
+          "Approved",
+          "Blocked",
+          "Under review",
+          "False positive"
+        ],
+        "fraud_pattern_example": [
+          "Transaction in different country within 2 hours of previous transaction",
+          "Large ATM withdrawal (>£2,000) from unusual location",
+          "Card used by different person",
+          "Velocity check (>5 transactions in 1 hour)"
+        ],
+        "business_rule": [
+          "High-risk alerts automatically block transaction",
+          "Customer can dispute fraud",
+          "Bank reimburses unauthorized fraud within 10 days",
+          "Fraud data feeds ML model for continuous improvement"
+        ],
+        "relationship_to": [
+          "Account (1:many)",
+          "Transaction (0:1)",
+          "FraudInvestigation (1:1, optional)"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_002",
+      "name": "Fraud Score",
+      "properties": {
+        "definition": "Risk score assigned to a fraud alert indicating likelihood of fraudulent activity",
+        "key_attributes": [
+          "score_value",
+          "scale_range"
+        ],
+        "scale_range": "0–100, where 100 = definite fraud",
+        "ontology_domain": "Fraud Detection and Prevention"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_003",
+      "name": "Fraud Investigation",
+      "properties": {
+        "definition": "Process triggered by a fraud alert to investigate and determine if transaction is fraudulent",
+        "relationship_to": [
+          "Fraud Alert (1:1, optional)"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_001",
+      "name": "Fraud Score Threshold",
+      "properties": {
+        "value": 100,
+        "unit": "score",
+        "what_it_measures": "Maximum fraud score value on the risk scale where 100 indicates definite fraud",
+        "context": "Used to classify fraud risk level and determine alert action"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_002",
+      "name": "Fraud Reimbursement Timeline",
+      "properties": {
+        "value": 10,
+        "unit": "days",
+        "what_it_measures": "Maximum time within which bank must reimburse customer for unauthorized fraud",
+        "context": "Regulatory and customer protection requirement for fraud dispute resolution"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_003",
+      "name": "Velocity Check Threshold",
+      "properties": {
+        "value": 5,
+        "unit": "count",
+        "what_it_measures": "Number of transactions within 1 hour that triggers fraud alert",
+        "context": "Fraud pattern detection for unusual transaction velocity"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_004",
+      "name": "ATM Withdrawal Limit for Fraud Detection",
+      "properties": {
+        "value": 2000,
+        "unit": "GBP",
+        "what_it_measures": "ATM withdrawal amount threshold that triggers fraud alert when from unusual location",
+        "context": "Fraud pattern detection for large cash withdrawals from unexpected geographic locations"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_005",
+      "name": "Geographic Velocity Check Threshold",
+      "properties": {
+        "value": 2,
+        "unit": "hours",
+        "what_it_measures": "Time window for detecting transactions in different countries that trigger fraud alert",
+        "context": "Fraud pattern detection for impossible travel scenarios"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_001",
+      "name": "High-Risk Alert Auto-Block Rule",
+      "properties": {
+        "rule_statement": "High-risk fraud alerts automatically block the transaction without manual review",
+        "rule_type": "authority",
+        "applies_to": [
+          "Fraud Alert",
+          "Transaction"
+        ],
+        "enforcement": "Financial Crime Team",
+        "context": "Immediate fraud prevention mechanism for critical risk level alerts"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_002",
+      "name": "Fraud Dispute and Reimbursement Policy",
+      "properties": {
+        "rule_statement": "Customer can dispute fraud and bank must reimburse unauthorized fraud within 10 days",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Customer",
+          "Fraud Alert",
+          "Account"
+        ],
+        "enforcement": "Financial Crime Team",
+        "consequence": "Bank liability for unauthorized transactions if not reimbursed within timeline"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_003",
+      "name": "Fraud Data ML Model Feeding Rule",
+      "properties": {
+        "rule_statement": "Fraud data from alerts and investigations feeds machine learning model for continuous improvement of fraud detection",
+        "rule_type": "obligation",
+        "applies_to": [
+          "Fraud Alert",
+          "Fraud Investigation",
+          "ML Model"
+        ],
+        "enforcement": "Financial Crime Team",
+        "context": "Continuous enhancement of fraud detection capabilities"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_ou_001",
+      "name": "Financial Crime Team",
+      "properties": {
+        "key_functions": [
+          "Manual review of fraud alerts",
+          "Fraud investigation",
+          "Fraud dispute resolution",
+          "Reimbursement processing",
+          "ML model data feeding",
+          "Enforcement of fraud rules"
+        ],
+        "regulatory_responsibilities": [
+          "Fraud detection and prevention",
+          "Customer reimbursement for unauthorized transactions",
+          "Fraud alert review and decision-making"
+        ],
+        "cross_functional_interface": [
+          "Account management",
+          "Transaction processing",
+          "Customer service"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+      "source_name": "Fraud Alert",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_002",
+      "target_name": "Fraud Score",
+      "rel_type": "has_relationship_to",
+      "description": "Fraud Alert includes a Fraud Score as a risk assessment component",
+      "properties": {
+        "score_range": "0-100",
+        "score_interpretation": "100 = definite fraud"
+      },
+      "context": "fraud_score — Risk score (0–100, where 100 = definite fraud)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+      "source_name": "Fraud Alert",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_003",
+      "target_name": "Fraud Investigation",
+      "rel_type": "triggers",
+      "description": "High-risk Fraud Alerts trigger Fraud Investigation",
+      "properties": {
+        "trigger_condition": "optional, based on alert severity"
+      },
+      "context": "triggers_investigation → FraudInvestigation (1:1, optional)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+      "source_name": "Fraud Alert",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_001",
+      "target_name": "Fraud Score Threshold",
+      "rel_type": "measured_by",
+      "description": "Fraud Alert risk assessment is measured against Fraud Score Threshold",
+      "properties": {
+        "measurement_type": "risk_score_comparison"
+      },
+      "context": "fraud_score — Risk score (0–100, where 100 = definite fraud)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+      "source_name": "Fraud Alert",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_001",
+      "target_name": "High-Risk Alert Auto-Block Rule",
+      "rel_type": "governed_by",
+      "description": "Fraud Alert handling is governed by High-Risk Alert Auto-Block Rule",
+      "properties": {
+        "governance_aspect": "automatic_blocking_of_high_risk_alerts"
+      },
+      "context": "High-risk alerts automatically block transaction",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+      "source_name": "Fraud Alert",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_002",
+      "target_name": "Fraud Dispute and Reimbursement Policy",
+      "rel_type": "governed_by",
+      "description": "Fraud Alert dispute and reimbursement procedures are governed by Fraud Dispute and Reimbursement Policy",
+      "properties": {
+        "governance_aspect": "customer_dispute_and_reimbursement_process",
+        "reimbursement_timeline": "10 days"
+      },
+      "context": "Customer can dispute fraud (Fraud Policy); Bank reimburses unauthorized fraud within 10 days",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+      "source_name": "Fraud Alert",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_003",
+      "target_name": "Fraud Data ML Model Feeding Rule",
+      "rel_type": "governed_by",
+      "description": "Fraud Alert data feeding into ML model is governed by Fraud Data ML Model Feeding Rule",
+      "properties": {
+        "governance_aspect": "data_feeding_for_model_improvement"
+      },
+      "context": "Fraud data feeds ML model for continuous improvement",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_002",
+      "source_name": "Fraud Score",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_001",
+      "target_name": "Fraud Score Threshold",
+      "rel_type": "measured_by",
+      "description": "Fraud Score is measured and evaluated against Fraud Score Threshold",
+      "properties": {
+        "measurement_type": "threshold_comparison",
+        "score_range": "0-100"
+      },
+      "context": "fraud_score — Risk score (0–100, where 100 = definite fraud)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_003",
+      "source_name": "Fraud Investigation",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_ou_001",
+      "target_name": "Financial Crime Team",
+      "rel_type": "overseen_by",
+      "description": "Fraud Investigation is overseen and conducted by Financial Crime Team",
+      "properties": {
+        "oversight_type": "manual_review_and_investigation"
+      },
+      "context": "reviewer — Financial Crime team member (if manual review)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_002",
+      "source_name": "Fraud Reimbursement Timeline",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_002",
+      "target_name": "Fraud Dispute and Reimbursement Policy",
+      "rel_type": "enforces",
+      "description": "Fraud Reimbursement Timeline metric enforces the Fraud Dispute and Reimbursement Policy",
+      "properties": {
+        "timeline_days": 10,
+        "enforcement_aspect": "reimbursement_deadline"
+      },
+      "context": "Bank reimburses unauthorized fraud within 10 days",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_003",
+      "source_name": "Velocity Check Threshold",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+      "target_name": "Fraud Alert",
+      "rel_type": "measured_by",
+      "description": "Velocity Check Threshold is used to measure and trigger Fraud Alerts",
+      "properties": {
+        "threshold_condition": ">5 transactions in 1 hour"
+      },
+      "context": "Velocity check (>5 transactions in 1 hour)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_004",
+      "source_name": "ATM Withdrawal Limit for Fraud Detection",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+      "target_name": "Fraud Alert",
+      "rel_type": "measured_by",
+      "description": "ATM Withdrawal Limit for Fraud Detection is used to measure and trigger Fraud Alerts",
+      "properties": {
+        "threshold_condition": ">£2,000 from unusual location"
+      },
+      "context": "Large ATM withdrawal (>£2,000) from unusual location",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_005",
+      "source_name": "Geographic Velocity Check Threshold",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+      "target_name": "Fraud Alert",
+      "rel_type": "measured_by",
+      "description": "Geographic Velocity Check Threshold is used to measure and trigger Fraud Alerts",
+      "properties": {
+        "threshold_condition": "transaction in different country within 2 hours of previous transaction"
+      },
+      "context": "Transaction in different country within 2 hours of previous transaction",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_001",
+      "source_name": "High-Risk Alert Auto-Block Rule",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+      "target_name": "Fraud Alert",
+      "rel_type": "enforces",
+      "description": "High-Risk Alert Auto-Block Rule enforces automatic blocking of high-risk Fraud Alerts",
+      "properties": {
+        "enforcement_action": "automatic_transaction_block"
+      },
+      "context": "High-risk alerts automatically block transaction",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_003",
+      "source_name": "Fraud Data ML Model Feeding Rule",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+      "target_name": "Fraud Alert",
+      "rel_type": "enforces",
+      "description": "Fraud Data ML Model Feeding Rule enforces the feeding of Fraud Alert data into ML models",
+      "properties": {
+        "enforcement_aspect": "continuous_model_improvement"
+      },
+      "context": "Fraud data feeds ML model for continuous improvement",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_ou_001",
+      "source_name": "Financial Crime Team",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+      "target_name": "Fraud Alert",
+      "rel_type": "reviews",
+      "description": "Financial Crime Team reviews and manually assesses Fraud Alerts",
+      "properties": {
+        "review_type": "manual_review",
+        "reviewer_role": "Financial Crime team member"
+      },
+      "context": "reviewer — Financial Crime team member (if manual review)",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_001",
+      "source_name": "Fraud Alert",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_002",
+      "source_name": "Fraud Score",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_bc_003",
+      "source_name": "Fraud Investigation",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_001",
+      "source_name": "Fraud Score Threshold",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_002",
+      "source_name": "Fraud Reimbursement Timeline",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_003",
+      "source_name": "Velocity Check Threshold",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_004",
+      "source_name": "ATM Withdrawal Limit for Fraud Detection",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_mt_005",
+      "source_name": "Geographic Velocity Check Threshold",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_001",
+      "source_name": "High-Risk Alert Auto-Block Rule",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_002",
+      "source_name": "Fraud Dispute and Reimbursement Policy",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_br_003",
+      "source_name": "Fraud Data ML Model Feeding Rule",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022_ou_001",
+      "source_name": "Financial Crime Team",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_022",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ]
+}

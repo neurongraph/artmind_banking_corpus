@@ -1,0 +1,417 @@
+{
+  "chunk_seq": 13,
+  "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+  "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+  "text": "## Step 4: Failed Direct Debit  \n### Failure Scenarios  \n**Common Reasons:**\n- Account closed\n- Insufficient funds\n- Account frozen\n- Mandate canceled (customer didn't inform biller)",
+  "name": "Chunk 13/26",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_012",
+  "next_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_014",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Failed Direct Debit Handling",
+      "aliases": [
+        "Direct Debit Failure Process"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "Operational procedure for managing direct debit payment failures on customer accounts. Covers scenarios where direct debits cannot be processed due to account status, insufficient funds, or mandate issues. The process identifies failure reasons and determines appropriate remediation actions.",
+      "context": [
+        "Step 4: Failed Direct Debit",
+        "Common Reasons: Account closed, Insufficient funds, Account frozen, Mandate canceled"
+      ]
+    },
+    {
+      "id": "ps_001",
+      "name": "Failure Reason Identification",
+      "aliases": [
+        "Failure Scenario Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Diagnostic step to determine the root cause of a direct debit failure. Evaluates whether the failure is due to account closure, insufficient funds, account freeze, or mandate cancellation.",
+      "context": [
+        "Common Reasons: Account closed, Insufficient funds, Account frozen, Mandate canceled (customer didn't inform biller)"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "DD Mandate"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Standing direct debit instruction on a customer account subject to failure scenarios including mandate cancellation when the customer fails to notify the biller of the cancellation.",
+      "context": [
+        "Mandate canceled (customer didn't inform biller)"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "Customer account subject to direct debit processing and potential failure states including closure, freeze, or insufficient funds conditions.",
+      "context": [
+        "Account closed",
+        "Account frozen",
+        "Insufficient funds"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Direct Debit Failure Reason Gate",
+      "aliases": [
+        "Failure Scenario Branch"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Branching decision point that categorizes the direct debit failure into one of four scenarios: account closure, insufficient funds, account freeze, or mandate cancellation. Each path leads to different remediation handling.",
+      "context": [
+        "Common Reasons: Account closed, Insufficient funds, Account frozen, Mandate canceled (customer didn't inform biller)"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_proc_001",
+    "ps_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_ps_001",
+    "dd_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_dd_001",
+    "acc_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_acc_001",
+    "dp_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_dp_001"
+  },
+  "entities": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_proc_001",
+      "name": "Failed Direct Debit Handling",
+      "aliases": [
+        "Direct Debit Failure Process"
+      ],
+      "entity_class": "PROCESS",
+      "type": "exception_handling",
+      "description": "Operational procedure for managing direct debit payment failures on customer accounts. Covers scenarios where direct debits cannot be processed due to account status, insufficient funds, or mandate issues. The process identifies failure reasons and determines appropriate remediation actions.",
+      "context": [
+        "Step 4: Failed Direct Debit",
+        "Common Reasons: Account closed, Insufficient funds, Account frozen, Mandate canceled"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_ps_001",
+      "name": "Failure Reason Identification",
+      "aliases": [
+        "Failure Scenario Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Diagnostic step to determine the root cause of a direct debit failure. Evaluates whether the failure is due to account closure, insufficient funds, account freeze, or mandate cancellation.",
+      "context": [
+        "Common Reasons: Account closed, Insufficient funds, Account frozen, Mandate canceled (customer didn't inform biller)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "DD Mandate"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "Standing direct debit instruction on a customer account subject to failure scenarios including mandate cancellation when the customer fails to notify the biller of the cancellation.",
+      "context": [
+        "Mandate canceled (customer didn't inform biller)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "Customer account subject to direct debit processing and potential failure states including closure, freeze, or insufficient funds conditions.",
+      "context": [
+        "Account closed",
+        "Account frozen",
+        "Insufficient funds"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_dp_001",
+      "name": "Direct Debit Failure Reason Gate",
+      "aliases": [
+        "Failure Scenario Branch"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "Branching decision point that categorizes the direct debit failure into one of four scenarios: account closure, insufficient funds, account freeze, or mandate cancellation. Each path leads to different remediation handling.",
+      "context": [
+        "Common Reasons: Account closed, Insufficient funds, Account frozen, Mandate canceled (customer didn't inform biller)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_proc_001",
+      "name": "Failed Direct Debit Handling",
+      "properties": {
+        "purpose": "Handle and resolve failed direct debit transactions",
+        "scope": "All direct debit mandates and associated customer accounts",
+        "trigger": "Direct debit payment attempt fails",
+        "departments_involved": [
+          "Payments",
+          "Customer Service",
+          "Compliance"
+        ],
+        "outcome_success": "Failed direct debit resolved, customer notified, account status clarified",
+        "outcome_failure": "Unresolved failed payment, customer dissatisfaction, potential regulatory breach"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_ps_001",
+      "name": "Failure Reason Identification",
+      "properties": {
+        "step_number": 1,
+        "actor": "Payment Processing System",
+        "input": "Failed direct debit transaction record",
+        "output": "Categorized failure reason",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Payment Processing System"
+        ],
+        "failure_path": "Escalate to manual review if failure reason cannot be automatically categorized"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_dd_001",
+      "name": "Direct Debit Mandate",
+      "properties": {
+        "mandate_process": "Customer authorization required for direct debit collection",
+        "cancellation_or_dispute_process": "Customer may cancel mandate; biller must be informed by customer"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_acc_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_type": "current",
+        "account_state": [
+          "active",
+          "closed",
+          "frozen"
+        ],
+        "closure_or_freeze_conditions": "Account may be closed or frozen, preventing direct debit collection"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_dp_001",
+      "name": "Direct Debit Failure Reason Gate",
+      "properties": {
+        "decision_question": "What is the reason for the direct debit failure?",
+        "criteria": [
+          "Account closed",
+          "Insufficient funds",
+          "Account frozen",
+          "Mandate canceled"
+        ],
+        "decision_maker": "Payment Processing System",
+        "path_yes": "Route to appropriate resolution step based on failure reason",
+        "path_no": "Escalate to manual investigation"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_proc_001",
+      "source_name": "Failed Direct Debit Handling",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_ps_001",
+      "target_name": "Failure Reason Identification",
+      "rel_type": "contains",
+      "description": "The Failed Direct Debit Handling process includes the Failure Reason Identification step as a key component",
+      "properties": {
+        "sequence_position": "first",
+        "mandatory": true
+      },
+      "context": "Step 4: Failed Direct Debit... Failure Scenarios",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_proc_001",
+      "source_name": "Failed Direct Debit Handling",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_dp_001",
+      "target_name": "Direct Debit Failure Reason Gate",
+      "rel_type": "branches_at",
+      "description": "The Failed Direct Debit Handling process branches at a decision point that gates on the failure reason",
+      "properties": {
+        "decision_criteria": "failure_reason",
+        "branches": [
+          "account_closed",
+          "insufficient_funds",
+          "account_frozen",
+          "mandate_canceled"
+        ]
+      },
+      "context": "Common Reasons: Account closed, Insufficient funds, Account frozen, Mandate canceled",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_proc_001",
+      "source_name": "Failed Direct Debit Handling",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "processes_mandate_for",
+      "description": "The Failed Direct Debit Handling process handles failures related to a direct debit mandate",
+      "properties": {
+        "failure_handling": true
+      },
+      "context": "Step 4: Failed Direct Debit",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_ps_001",
+      "source_name": "Failure Reason Identification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_dp_001",
+      "target_name": "Direct Debit Failure Reason Gate",
+      "rel_type": "leads_to",
+      "description": "The Failure Reason Identification step leads to a decision point that gates on the identified failure reason",
+      "properties": {
+        "failure_reasons": [
+          "account_closed",
+          "insufficient_funds",
+          "account_frozen",
+          "mandate_canceled"
+        ]
+      },
+      "context": "Failure Scenarios: Common Reasons: Account closed, Insufficient funds, Account frozen, Mandate canceled",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_dp_001",
+      "source_name": "Direct Debit Failure Reason Gate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "routes_based_on_risk_of",
+      "description": "The Direct Debit Failure Reason Gate routes handling based on the account status and failure scenario",
+      "properties": {
+        "failure_scenarios": [
+          "account_closed",
+          "insufficient_funds",
+          "account_frozen",
+          "mandate_canceled"
+        ]
+      },
+      "context": "Account closed, Insufficient funds, Account frozen, Mandate canceled",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "set_up_on",
+      "description": "The Direct Debit Mandate is set up on the customer account",
+      "properties": {
+        "failure_context": true
+      },
+      "context": "Step 4: Failed Direct Debit",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_proc_001",
+      "source_name": "Failed Direct Debit Handling",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_ps_001",
+      "source_name": "Failure Reason Identification",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013_dp_001",
+      "source_name": "Direct Debit Failure Reason Gate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_013",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

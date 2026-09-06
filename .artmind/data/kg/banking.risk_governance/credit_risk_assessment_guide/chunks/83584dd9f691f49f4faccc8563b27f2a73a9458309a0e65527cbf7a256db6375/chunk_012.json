@@ -1,0 +1,864 @@
+{
+  "chunk_seq": 12,
+  "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+  "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+  "text": "## PART 3: UNDERWRITING DECISION MATRIX  \n**Use This Matrix to Make Lending Decisions:**  \n| Credit Score | Income DTI | LTV | Decision | Notes |\n|---|---|---|---|---|\n| 90+ | <35% | <80% | **APPROVE** | Strong candidate |\n| 90+ | 35–45% | <85% | **APPROVE** | Good candidate |\n| 80–89 | <40% | <90% | **APPROVE** | Standard |\n| 80–89 | 40–45% | <80% | **APPROVE** | Monitor |\n| 70–79 | <35% | <75% | **CONDITIONAL** | Requires depth review |\n| 70–79 | 35–45% | >75% | **CONDITIONAL** | Risk review needed |\n| 60–69 | Any | Any | **DECLINE** | High default risk |\n| <60 | Any | Any | **DECLINE** | Very high risk |  \n---",
+  "name": "Chunk 12/23",
+  "_domain": "banking.risk_governance",
+  "prev_chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_011",
+  "next_chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_013",
+  "raw_entities": [
+    {
+      "id": "rsk_001",
+      "name": "Credit Score Risk",
+      "aliases": [
+        "applicant credit rating",
+        "FICO score"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Credit score assessment used as a primary underwriting criterion in the lending decision matrix. Scores range from <60 (very high risk, automatic decline) to 90+ (strong candidate for approval). Score thresholds directly determine approval, conditional, or decline outcomes.",
+      "context": [
+        "Credit Score | Income DTI | LTV | Decision",
+        "90+ | <35% | <80% | **APPROVE** | Strong candidate",
+        "60–69 | Any | Any | **DECLINE** | High default risk",
+        "<60 | Any | Any | **DECLINE** | Very high risk"
+      ]
+    },
+    {
+      "id": "rsk_002",
+      "name": "Debt-to-Income Ratio Risk",
+      "aliases": [
+        "Income DTI",
+        "DTI"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Applicant income-to-debt ratio used as a secondary underwriting criterion. DTI thresholds range from <35% (favorable) to >45% (elevated risk). Combined with credit score and LTV, DTI determines lending decision outcome.",
+      "context": [
+        "Income DTI | LTV | Decision",
+        "90+ | <35% | <80% | **APPROVE**",
+        "80–89 | 40–45% | <80% | **APPROVE** | Monitor",
+        "70–79 | 35–45% | >75% | **CONDITIONAL** | Risk review needed"
+      ]
+    },
+    {
+      "id": "rsk_003",
+      "name": "Loan-to-Value Ratio Risk",
+      "aliases": [
+        "LTV"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Loan-to-value ratio threshold used in the underwriting decision matrix. LTV ranges from <75% (lower risk) to >90% (higher risk). LTV combined with credit score and DTI determines approval, conditional, or decline decisions.",
+      "context": [
+        "LTV | Decision | Notes",
+        "90+ | <35% | <80% | **APPROVE**",
+        "80–89 | <40% | <90% | **APPROVE** | Standard",
+        "70–79 | <35% | <75% | **CONDITIONAL** | Requires depth review"
+      ]
+    },
+    {
+      "id": "rsk_004",
+      "name": "Default Risk",
+      "aliases": [
+        "high default risk",
+        "very high risk"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Default risk assessment applied to applicants with credit scores 60–69 (high default risk) or <60 (very high risk), resulting in automatic decline regardless of DTI or LTV. This is the primary risk trigger for lending rejection.",
+      "context": [
+        "60–69 | Any | Any | **DECLINE** | High default risk",
+        "<60 | Any | Any | **DECLINE** | Very high risk"
+      ]
+    },
+    {
+      "id": "rmk_001",
+      "name": "Credit Score Threshold",
+      "aliases": [
+        "credit score appetite"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "Credit score appetite thresholds embedded in the underwriting decision matrix. Scores of 90+ represent strong candidates; 80–89 standard; 70–79 conditional; 60–69 high risk; <60 very high risk with automatic decline.",
+      "context": [
+        "Credit Score | Income DTI | LTV | Decision",
+        "90+ | <35% | <80% | **APPROVE** | Strong candidate",
+        "70–79 | <35% | <75% | **CONDITIONAL** | Requires depth review"
+      ]
+    },
+    {
+      "id": "rmk_002",
+      "name": "Debt-to-Income Ratio Threshold",
+      "aliases": [
+        "DTI appetite",
+        "income DTI limit"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "DTI appetite thresholds in the underwriting matrix. Favorable DTI is <35%; acceptable is 35–45%; DTI >45% combined with lower credit scores triggers conditional or decline decisions.",
+      "context": [
+        "90+ | <35% | <80% | **APPROVE** | Strong candidate",
+        "90+ | 35–45% | <85% | **APPROVE** | Good candidate",
+        "80–89 | 40–45% | <80% | **APPROVE** | Monitor"
+      ]
+    },
+    {
+      "id": "rmk_003",
+      "name": "Loan-to-Value Ratio Threshold",
+      "aliases": [
+        "LTV appetite",
+        "LTV limit"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "LTV appetite thresholds in the underwriting matrix. LTV <80% is favorable; <85% acceptable; <90% standard; >75% combined with lower credit scores triggers conditional review or decline.",
+      "context": [
+        "90+ | <35% | <80% | **APPROVE** | Strong candidate",
+        "80–89 | <40% | <90% | **APPROVE** | Standard",
+        "70–79 | 35–45% | >75% | **CONDITIONAL** | Risk review needed"
+      ]
+    },
+    {
+      "id": "gov_001",
+      "name": "Underwriting Decision Matrix Approval Framework",
+      "aliases": [
+        "lending decision matrix",
+        "underwriting framework"
+      ],
+      "entity_class": "GOVERNANCE_DECISION",
+      "type": "policy_approval",
+      "description": "Formal underwriting decision framework establishing three outcomes (APPROVE, CONDITIONAL, DECLINE) based on credit score, DTI, and LTV combinations. The matrix defines automatic approval for strong candidates (90+ credit score, <35% DTI, <80% LTV) and automatic decline for very high-risk applicants (<60 credit score).",
+      "context": [
+        "Use This Matrix to Make Lending Decisions",
+        "90+ | <35% | <80% | **APPROVE** | Strong candidate",
+        "<60 | Any | Any | **DECLINE** | Very high risk",
+        "70–79 | <35% | <75% | **CONDITIONAL** | Requires depth review"
+      ]
+    }
+  ],
+  "id_map": {
+    "rsk_001": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_001",
+    "rsk_002": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_002",
+    "rsk_003": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_003",
+    "rsk_004": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_004",
+    "rmk_001": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_001",
+    "rmk_002": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_002",
+    "rmk_003": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_003",
+    "gov_001": "01a073de-4124-7705-b995-4e94bdd5c076_012_gov_001"
+  },
+  "entities": [
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_001",
+      "name": "Credit Score Risk",
+      "aliases": [
+        "applicant credit rating",
+        "FICO score"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Credit score assessment used as a primary underwriting criterion in the lending decision matrix. Scores range from <60 (very high risk, automatic decline) to 90+ (strong candidate for approval). Score thresholds directly determine approval, conditional, or decline outcomes.",
+      "context": [
+        "Credit Score | Income DTI | LTV | Decision",
+        "90+ | <35% | <80% | **APPROVE** | Strong candidate",
+        "60–69 | Any | Any | **DECLINE** | High default risk",
+        "<60 | Any | Any | **DECLINE** | Very high risk"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_002",
+      "name": "Debt-to-Income Ratio Risk",
+      "aliases": [
+        "Income DTI",
+        "DTI"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Applicant income-to-debt ratio used as a secondary underwriting criterion. DTI thresholds range from <35% (favorable) to >45% (elevated risk). Combined with credit score and LTV, DTI determines lending decision outcome.",
+      "context": [
+        "Income DTI | LTV | Decision",
+        "90+ | <35% | <80% | **APPROVE**",
+        "80–89 | 40–45% | <80% | **APPROVE** | Monitor",
+        "70–79 | 35–45% | >75% | **CONDITIONAL** | Risk review needed"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_003",
+      "name": "Loan-to-Value Ratio Risk",
+      "aliases": [
+        "LTV"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Loan-to-value ratio threshold used in the underwriting decision matrix. LTV ranges from <75% (lower risk) to >90% (higher risk). LTV combined with credit score and DTI determines approval, conditional, or decline decisions.",
+      "context": [
+        "LTV | Decision | Notes",
+        "90+ | <35% | <80% | **APPROVE**",
+        "80–89 | <40% | <90% | **APPROVE** | Standard",
+        "70–79 | <35% | <75% | **CONDITIONAL** | Requires depth review"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_004",
+      "name": "Default Risk",
+      "aliases": [
+        "high default risk",
+        "very high risk"
+      ],
+      "entity_class": "RISK",
+      "type": "credit_risk",
+      "description": "Default risk assessment applied to applicants with credit scores 60–69 (high default risk) or <60 (very high risk), resulting in automatic decline regardless of DTI or LTV. This is the primary risk trigger for lending rejection.",
+      "context": [
+        "60–69 | Any | Any | **DECLINE** | High default risk",
+        "<60 | Any | Any | **DECLINE** | Very high risk"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_001",
+      "name": "Credit Score Threshold",
+      "aliases": [
+        "credit score appetite"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "Credit score appetite thresholds embedded in the underwriting decision matrix. Scores of 90+ represent strong candidates; 80–89 standard; 70–79 conditional; 60–69 high risk; <60 very high risk with automatic decline.",
+      "context": [
+        "Credit Score | Income DTI | LTV | Decision",
+        "90+ | <35% | <80% | **APPROVE** | Strong candidate",
+        "70–79 | <35% | <75% | **CONDITIONAL** | Requires depth review"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_002",
+      "name": "Debt-to-Income Ratio Threshold",
+      "aliases": [
+        "DTI appetite",
+        "income DTI limit"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "DTI appetite thresholds in the underwriting matrix. Favorable DTI is <35%; acceptable is 35–45%; DTI >45% combined with lower credit scores triggers conditional or decline decisions.",
+      "context": [
+        "90+ | <35% | <80% | **APPROVE** | Strong candidate",
+        "90+ | 35–45% | <85% | **APPROVE** | Good candidate",
+        "80–89 | 40–45% | <80% | **APPROVE** | Monitor"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_003",
+      "name": "Loan-to-Value Ratio Threshold",
+      "aliases": [
+        "LTV appetite",
+        "LTV limit"
+      ],
+      "entity_class": "RISK_METRIC",
+      "type": "risk_appetite_threshold",
+      "description": "LTV appetite thresholds in the underwriting matrix. LTV <80% is favorable; <85% acceptable; <90% standard; >75% combined with lower credit scores triggers conditional review or decline.",
+      "context": [
+        "90+ | <35% | <80% | **APPROVE** | Strong candidate",
+        "80–89 | <40% | <90% | **APPROVE** | Standard",
+        "70–79 | 35–45% | >75% | **CONDITIONAL** | Risk review needed"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_gov_001",
+      "name": "Underwriting Decision Matrix Approval Framework",
+      "aliases": [
+        "lending decision matrix",
+        "underwriting framework"
+      ],
+      "entity_class": "GOVERNANCE_DECISION",
+      "type": "policy_approval",
+      "description": "Formal underwriting decision framework establishing three outcomes (APPROVE, CONDITIONAL, DECLINE) based on credit score, DTI, and LTV combinations. The matrix defines automatic approval for strong candidates (90+ credit score, <35% DTI, <80% LTV) and automatic decline for very high-risk applicants (<60 credit score).",
+      "context": [
+        "Use This Matrix to Make Lending Decisions",
+        "90+ | <35% | <80% | **APPROVE** | Strong candidate",
+        "<60 | Any | Any | **DECLINE** | Very high risk",
+        "70–79 | <35% | <75% | **CONDITIONAL** | Requires depth review"
+      ],
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_001",
+      "name": "Credit Score Risk",
+      "properties": {
+        "risk_category": "credit",
+        "appetite_level": "moderate",
+        "tolerance_thresholds": [
+          "≥60",
+          "≥70",
+          "≥80",
+          "≥90"
+        ],
+        "stated_prohibitions": [
+          "Credit scores below 60 result in automatic decline"
+        ],
+        "controls_in_place": [
+          "Credit score threshold enforcement in underwriting matrix",
+          "Tiered decision framework based on score bands"
+        ]
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_002",
+      "name": "Debt-to-Income Ratio Risk",
+      "properties": {
+        "risk_category": "credit",
+        "appetite_level": "moderate",
+        "tolerance_thresholds": [
+          "<35%",
+          "35–45%",
+          ">45%"
+        ],
+        "stated_prohibitions": [
+          "DTI above 45% triggers conditional or decline decisions depending on other factors"
+        ],
+        "controls_in_place": [
+          "DTI ratio thresholds in underwriting matrix",
+          "Conditional approval pathway for DTI 40–45%"
+        ]
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_003",
+      "name": "Loan-to-Value Ratio Risk",
+      "properties": {
+        "risk_category": "credit",
+        "appetite_level": "moderate",
+        "tolerance_thresholds": [
+          "<75%",
+          "<80%",
+          "<85%",
+          "<90%"
+        ],
+        "stated_prohibitions": [
+          "LTV above 90% not permitted in standard underwriting matrix"
+        ],
+        "controls_in_place": [
+          "LTV ratio thresholds enforced in decision matrix",
+          "Higher LTV permitted only with stronger credit scores and lower DTI"
+        ]
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_004",
+      "name": "Default Risk",
+      "properties": {
+        "risk_category": "credit",
+        "appetite_level": "low",
+        "stated_prohibitions": [
+          "Applicants with credit scores below 60 automatically declined due to high default risk",
+          "Applicants with credit scores 60–69 automatically declined"
+        ],
+        "controls_in_place": [
+          "Multi-factor underwriting matrix combining credit score, DTI, and LTV",
+          "Conditional approval pathway for moderate-risk profiles requiring depth review"
+        ]
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_001",
+      "name": "Credit Score Threshold",
+      "properties": {
+        "metric_name": "Credit Score",
+        "target_threshold": "≥80",
+        "tolerance_thresholds": [
+          "≥60 (minimum)",
+          "≥70 (conditional)",
+          "≥80 (standard)",
+          "≥90 (strong)"
+        ],
+        "context": "Primary indicator of borrower creditworthiness; scores below 60 result in automatic decline"
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_002",
+      "name": "Debt-to-Income Ratio Threshold",
+      "properties": {
+        "metric_name": "Debt-to-Income Ratio",
+        "target_threshold": "<35%",
+        "tolerance_thresholds": [
+          "<35% (preferred)",
+          "35–45% (acceptable with conditions)",
+          ">45% (high risk)"
+        ],
+        "context": "Measures borrower's monthly debt obligations relative to income; higher ratios indicate greater default risk"
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_003",
+      "name": "Loan-to-Value Ratio Threshold",
+      "properties": {
+        "metric_name": "Loan-to-Value Ratio",
+        "target_threshold": "<80%",
+        "tolerance_thresholds": [
+          "<75% (preferred)",
+          "<80% (standard)",
+          "<85% (acceptable with strong credit)",
+          "<90% (maximum with excellent credit and low DTI)"
+        ],
+        "context": "Measures loan amount relative to property value; higher LTV indicates greater lender risk in case of default"
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "id": "01a073de-4124-7705-b995-4e94bdd5c076_012_gov_001",
+      "name": "Underwriting Decision Matrix Approval Framework",
+      "properties": {
+        "decision_outcome": "approved",
+        "decision_topic": "Adoption of multi-factor underwriting decision matrix for standardized lending decisions",
+        "decision_framework": "Matrix-based approach combining credit score, debt-to-income ratio, and loan-to-value ratio",
+        "decision_categories": [
+          "APPROVE",
+          "CONDITIONAL",
+          "DECLINE"
+        ],
+        "approval_criteria": [
+          "Credit Score ≥90 with DTI <35% and LTV <80%",
+          "Credit Score ≥90 with DTI 35–45% and LTV <85%",
+          "Credit Score 80–89 with DTI <40% and LTV <90%",
+          "Credit Score 80–89 with DTI 40–45% and LTV <80%"
+        ],
+        "conditional_criteria": [
+          "Credit Score 70–79 with DTI <35% and LTV <75% (requires depth review)",
+          "Credit Score 70–79 with DTI 35–45% and LTV >75% (risk review needed)"
+        ],
+        "decline_criteria": [
+          "Credit Score 60–69 (any DTI, any LTV)",
+          "Credit Score <60 (any DTI, any LTV)"
+        ]
+      },
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_001",
+      "source_name": "Credit Score Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_001",
+      "target_name": "Credit Score Threshold",
+      "rel_type": "quantified_by",
+      "description": "Credit Score Risk is quantified and measured by the Credit Score Threshold metric established in the underwriting matrix",
+      "properties": {
+        "threshold_ranges": [
+          "90+",
+          "80-89",
+          "70-79",
+          "60-69",
+          "<60"
+        ],
+        "decision_impact": "Direct correlation with approval/decline decisions"
+      },
+      "context": "Credit Score column in underwriting decision matrix with thresholds 90+, 80-89, 70-79, 60-69, <60 determining lending decisions",
+      "bidirectional": true,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_002",
+      "source_name": "Debt-to-Income Ratio Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_002",
+      "target_name": "Debt-to-Income Ratio Threshold",
+      "rel_type": "quantified_by",
+      "description": "Debt-to-Income Ratio Risk is quantified and measured by the Debt-to-Income Ratio Threshold metric established in the underwriting matrix",
+      "properties": {
+        "threshold_ranges": [
+          "<35%",
+          "35-45%",
+          ">45%"
+        ],
+        "decision_impact": "Determines approval status in combination with other factors"
+      },
+      "context": "Income DTI column in underwriting decision matrix with thresholds <35%, 35-45%, >45% affecting lending decisions",
+      "bidirectional": true,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_003",
+      "source_name": "Loan-to-Value Ratio Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_003",
+      "target_name": "Loan-to-Value Ratio Threshold",
+      "rel_type": "quantified_by",
+      "description": "Loan-to-Value Ratio Risk is quantified and measured by the Loan-to-Value Ratio Threshold metric established in the underwriting matrix",
+      "properties": {
+        "threshold_ranges": [
+          "<75%",
+          "<80%",
+          "<85%",
+          "<90%",
+          ">75%"
+        ],
+        "decision_impact": "Determines approval status in combination with other factors"
+      },
+      "context": "LTV column in underwriting decision matrix with thresholds <75%, <80%, <85%, <90%, >75% affecting lending decisions",
+      "bidirectional": true,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_004",
+      "source_name": "Default Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_001",
+      "target_name": "Credit Score Threshold",
+      "rel_type": "mitigated_by",
+      "description": "Default Risk is mitigated through the application of Credit Score Threshold controls in the underwriting matrix",
+      "properties": {
+        "mitigation_mechanism": "Credit score thresholds prevent high-risk borrowers from approval",
+        "risk_level_addressed": "High default risk identified for credit scores 60-69 and <60"
+      },
+      "context": "Credit scores 60-69 and <60 are marked as DECLINE with notes 'High default risk' and 'Very high risk'",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_004",
+      "source_name": "Default Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_002",
+      "target_name": "Debt-to-Income Ratio Threshold",
+      "rel_type": "mitigated_by",
+      "description": "Default Risk is mitigated through the application of Debt-to-Income Ratio Threshold controls in the underwriting matrix",
+      "properties": {
+        "mitigation_mechanism": "DTI thresholds prevent over-leveraged borrowers from approval",
+        "risk_level_addressed": "Debt-to-income ratios above 45% contribute to default risk assessment"
+      },
+      "context": "DTI ratios are evaluated in conjunction with credit scores to assess default risk in the underwriting matrix",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_004",
+      "source_name": "Default Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_003",
+      "target_name": "Loan-to-Value Ratio Threshold",
+      "rel_type": "mitigated_by",
+      "description": "Default Risk is mitigated through the application of Loan-to-Value Ratio Threshold controls in the underwriting matrix",
+      "properties": {
+        "mitigation_mechanism": "LTV thresholds prevent excessive leverage on collateral",
+        "risk_level_addressed": "Higher LTV ratios increase default risk and trigger conditional or decline decisions"
+      },
+      "context": "LTV ratios are evaluated in the underwriting matrix to assess and mitigate default risk",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_gov_001",
+      "source_name": "Underwriting Decision Matrix Approval Framework",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_001",
+      "target_name": "Credit Score Threshold",
+      "rel_type": "approves_threshold_for",
+      "description": "The Underwriting Decision Matrix Approval Framework formally approves and establishes the Credit Score Threshold metric",
+      "properties": {
+        "approved_thresholds": [
+          "90+",
+          "80-89",
+          "70-79",
+          "60-69",
+          "<60"
+        ],
+        "framework_type": "Underwriting Decision Matrix"
+      },
+      "context": "Credit Score column in the Underwriting Decision Matrix Approval Framework with defined thresholds",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_gov_001",
+      "source_name": "Underwriting Decision Matrix Approval Framework",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_002",
+      "target_name": "Debt-to-Income Ratio Threshold",
+      "rel_type": "approves_threshold_for",
+      "description": "The Underwriting Decision Matrix Approval Framework formally approves and establishes the Debt-to-Income Ratio Threshold metric",
+      "properties": {
+        "approved_thresholds": [
+          "<35%",
+          "35-45%",
+          ">45%"
+        ],
+        "framework_type": "Underwriting Decision Matrix"
+      },
+      "context": "Income DTI column in the Underwriting Decision Matrix Approval Framework with defined thresholds",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_gov_001",
+      "source_name": "Underwriting Decision Matrix Approval Framework",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_003",
+      "target_name": "Loan-to-Value Ratio Threshold",
+      "rel_type": "approves_threshold_for",
+      "description": "The Underwriting Decision Matrix Approval Framework formally approves and establishes the Loan-to-Value Ratio Threshold metric",
+      "properties": {
+        "approved_thresholds": [
+          "<75%",
+          "<80%",
+          "<85%",
+          "<90%",
+          ">75%"
+        ],
+        "framework_type": "Underwriting Decision Matrix"
+      },
+      "context": "LTV column in the Underwriting Decision Matrix Approval Framework with defined thresholds",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_001",
+      "source_name": "Credit Score Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_004",
+      "target_name": "Default Risk",
+      "rel_type": "drives",
+      "description": "Credit Score Risk is a primary driver of Default Risk in the lending decision framework",
+      "properties": {
+        "relationship_strength": "Direct correlation",
+        "evidence": "Low credit scores (60-69, <60) explicitly linked to high and very high default risk"
+      },
+      "context": "Credit scores 60-69 marked as DECLINE with 'High default risk' and <60 marked as DECLINE with 'Very high risk'",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_002",
+      "source_name": "Debt-to-Income Ratio Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_004",
+      "target_name": "Default Risk",
+      "rel_type": "drives",
+      "description": "Debt-to-Income Ratio Risk is a driver of Default Risk in the lending decision framework",
+      "properties": {
+        "relationship_strength": "Moderate correlation",
+        "evidence": "Higher DTI ratios contribute to conditional or decline decisions"
+      },
+      "context": "DTI ratios are evaluated in the underwriting matrix to assess default risk alongside other factors",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_003",
+      "source_name": "Loan-to-Value Ratio Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_004",
+      "target_name": "Default Risk",
+      "rel_type": "drives",
+      "description": "Loan-to-Value Ratio Risk is a driver of Default Risk in the lending decision framework",
+      "properties": {
+        "relationship_strength": "Moderate correlation",
+        "evidence": "Higher LTV ratios trigger conditional or decline decisions"
+      },
+      "context": "LTV ratios are evaluated in the underwriting matrix to assess default risk alongside other factors",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_gov_001",
+      "source_name": "Underwriting Decision Matrix Approval Framework",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_001",
+      "target_name": "Credit Score Risk",
+      "rel_type": "approves_appetite_for",
+      "description": "The Underwriting Decision Matrix Approval Framework establishes and approves the risk appetite for Credit Score Risk",
+      "properties": {
+        "appetite_definition": "Acceptable credit score ranges for approval, conditional approval, and decline",
+        "decision_categories": [
+          "APPROVE",
+          "CONDITIONAL",
+          "DECLINE"
+        ]
+      },
+      "context": "Credit Score thresholds in the Underwriting Decision Matrix define acceptable risk appetite for credit score-based lending decisions",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_gov_001",
+      "source_name": "Underwriting Decision Matrix Approval Framework",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_002",
+      "target_name": "Debt-to-Income Ratio Risk",
+      "rel_type": "approves_appetite_for",
+      "description": "The Underwriting Decision Matrix Approval Framework establishes and approves the risk appetite for Debt-to-Income Ratio Risk",
+      "properties": {
+        "appetite_definition": "Acceptable DTI ranges for approval, conditional approval, and decline",
+        "decision_categories": [
+          "APPROVE",
+          "CONDITIONAL",
+          "DECLINE"
+        ]
+      },
+      "context": "Income DTI thresholds in the Underwriting Decision Matrix define acceptable risk appetite for DTI-based lending decisions",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_gov_001",
+      "source_name": "Underwriting Decision Matrix Approval Framework",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_003",
+      "target_name": "Loan-to-Value Ratio Risk",
+      "rel_type": "approves_appetite_for",
+      "description": "The Underwriting Decision Matrix Approval Framework establishes and approves the risk appetite for Loan-to-Value Ratio Risk",
+      "properties": {
+        "appetite_definition": "Acceptable LTV ranges for approval, conditional approval, and decline",
+        "decision_categories": [
+          "APPROVE",
+          "CONDITIONAL",
+          "DECLINE"
+        ]
+      },
+      "context": "LTV thresholds in the Underwriting Decision Matrix define acceptable risk appetite for LTV-based lending decisions",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_gov_001",
+      "source_name": "Underwriting Decision Matrix Approval Framework",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_004",
+      "target_name": "Default Risk",
+      "rel_type": "approves_appetite_for",
+      "description": "The Underwriting Decision Matrix Approval Framework establishes and approves the overall risk appetite for Default Risk through combined metric thresholds",
+      "properties": {
+        "appetite_definition": "Acceptable default risk levels through multi-factor underwriting criteria",
+        "mitigation_approach": "Combined evaluation of credit score, DTI, and LTV to manage default risk"
+      },
+      "context": "The entire Underwriting Decision Matrix is designed to manage and approve acceptable levels of default risk through multi-factor assessment",
+      "bidirectional": false,
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_001",
+      "source_name": "Credit Score Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_002",
+      "source_name": "Debt-to-Income Ratio Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_003",
+      "source_name": "Loan-to-Value Ratio Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rsk_004",
+      "source_name": "Default Risk",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_001",
+      "source_name": "Credit Score Threshold",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_002",
+      "source_name": "Debt-to-Income Ratio Threshold",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_rmk_003",
+      "source_name": "Loan-to-Value Ratio Threshold",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    },
+    {
+      "source_id": "01a073de-4124-7705-b995-4e94bdd5c076_012_gov_001",
+      "source_name": "Underwriting Decision Matrix Approval Framework",
+      "target_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "target_name": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a073de-4124-7705-b995-4e94bdd5c076_012",
+      "doc_id": "01a073de-4124-7705-b995-4e94bdd5c076",
+      "_domain": "banking.risk_governance"
+    }
+  ]
+}

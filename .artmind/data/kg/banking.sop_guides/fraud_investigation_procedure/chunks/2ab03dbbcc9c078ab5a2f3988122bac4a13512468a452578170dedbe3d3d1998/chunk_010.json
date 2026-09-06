@@ -1,0 +1,1522 @@
+{
+  "chunk_seq": 10,
+  "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+  "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+  "text": "### Step 5: Merchant/Third-Party Investigation  \n**If Fraud Involves External Merchant/Recipient:**  \n**For Card Transactions:**\n- Contact merchant for transaction proof\n- Request proof customer was present (if card-present)\n- Request merchant records (receipt, camera footage)\n- Review merchant chargeback history (are they repeat offender?)  \n**For Transfers to External Account:**\n- Identify recipient bank\n- Request transaction details (recipient name matches account?)\n- Track recipient account (is it in sanctions list? Multiple fraud reports?)\n- Identify if funds already withdrawn  \n**Timeline:**\n- If funds still in recipient account: Attempt to recover (urgent)\n- If funds withdrawn: Trace withdrawal location (law enforcement)  \n---",
+  "name": "Chunk 10/24",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_009",
+  "next_chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_011",
+  "raw_entities": [
+    {
+      "id": "ps_001",
+      "name": "Merchant/Third-Party Investigation",
+      "aliases": [
+        "External Merchant Investigation",
+        "Third-Party Fraud Investigation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "A fraud investigation step triggered when fraudulent activity involves an external merchant or third-party recipient. The step branches into two paths: card transaction investigation (merchant contact, proof of presence, receipt/footage review, chargeback history) and transfer investigation (recipient bank identification, account verification, sanctions screening, fund recovery tracking).",
+      "context": [
+        "If Fraud Involves External Merchant/Recipient",
+        "Contact merchant for transaction proof",
+        "Identify recipient bank",
+        "Track recipient account (is it in sanctions list? Multiple fraud reports?)"
+      ]
+    },
+    {
+      "id": "ps_002",
+      "name": "Card Transaction Merchant Contact",
+      "aliases": [
+        "Merchant Proof Request",
+        "Card Fraud Merchant Investigation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "A sub-step within merchant investigation specific to card transactions. Involves contacting the merchant to obtain transaction proof, evidence of customer presence (for card-present transactions), and merchant records including receipts and camera footage.",
+      "context": [
+        "For Card Transactions:",
+        "Contact merchant for transaction proof",
+        "Request proof customer was present (if card-present)",
+        "Request merchant records (receipt, camera footage)"
+      ]
+    },
+    {
+      "id": "ps_003",
+      "name": "Merchant Chargeback History Review",
+      "aliases": [
+        "Repeat Offender Check",
+        "Merchant Risk Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "An investigation step that reviews the merchant's chargeback history to identify whether the merchant is a repeat offender in fraud cases, informing the fraud assessment and recovery strategy.",
+      "context": [
+        "Review merchant chargeback history (are they repeat offender?)"
+      ]
+    },
+    {
+      "id": "ps_004",
+      "name": "External Account Transfer Investigation",
+      "aliases": [
+        "Recipient Account Investigation",
+        "Transfer Fraud Investigation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "A sub-step within merchant investigation specific to transfers to external accounts. Involves identifying the recipient bank, requesting transaction details, verifying recipient name matches the account, screening the recipient account against sanctions lists, and checking for multiple fraud reports.",
+      "context": [
+        "For Transfers to External Account:",
+        "Identify recipient bank",
+        "Request transaction details (recipient name matches account?)",
+        "Track recipient account (is it in sanctions list? Multiple fraud reports?)"
+      ]
+    },
+    {
+      "id": "ps_005",
+      "name": "Recipient Account Sanctions Screening",
+      "aliases": [
+        "Sanctions List Check",
+        "PEP Screening for Recipient"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "A compliance check within transfer investigation that screens the recipient account against sanctions lists to determine if the account is linked to sanctioned entities or high-risk parties.",
+      "context": [
+        "Track recipient account (is it in sanctions list? Multiple fraud reports?)"
+      ]
+    },
+    {
+      "id": "ps_006",
+      "name": "Fund Recovery Attempt",
+      "aliases": [
+        "Urgent Fund Recovery",
+        "In-Account Fund Recovery"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "An urgent investigation step executed when fraudulent funds remain in the recipient account. Involves immediate contact with the recipient bank to attempt recovery of the transferred funds.",
+      "context": [
+        "If funds still in recipient account: Attempt to recover (urgent)"
+      ]
+    },
+    {
+      "id": "ps_007",
+      "name": "Withdrawal Location Tracing",
+      "aliases": [
+        "Fund Withdrawal Trace",
+        "Law Enforcement Referral"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "An investigation step executed when fraudulent funds have already been withdrawn from the recipient account. Involves tracing the withdrawal location and escalating to law enforcement for further investigation.",
+      "context": [
+        "If funds withdrawn: Trace withdrawal location (law enforcement)"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Fraud Involves External Merchant or Third Party",
+      "aliases": [
+        "Merchant vs Internal Fraud",
+        "External Party Involvement Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "A branching decision point that determines whether the fraud involves an external merchant or third-party recipient, triggering the Merchant/Third-Party Investigation process. If yes, the investigation branches into card transaction or transfer-specific paths.",
+      "context": [
+        "If Fraud Involves External Merchant/Recipient:",
+        "For Card Transactions:",
+        "For Transfers to External Account:"
+      ]
+    },
+    {
+      "id": "dp_002",
+      "name": "Funds Status in Recipient Account",
+      "aliases": [
+        "Fund Recovery Decision",
+        "Withdrawal Status Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "A critical decision point that determines whether fraudulent funds remain in the recipient account or have been withdrawn. If funds remain, urgent recovery is attempted; if withdrawn, the case is escalated to law enforcement for withdrawal location tracing.",
+      "context": [
+        "If funds still in recipient account: Attempt to recover (urgent)",
+        "If funds withdrawn: Trace withdrawal location (law enforcement)"
+      ]
+    },
+    {
+      "id": "fa_001",
+      "name": "External Merchant Fraud Event",
+      "aliases": [
+        "Merchant Fraud",
+        "Third-Party Fraud"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "A fraud investigation triggered by fraudulent activity involving an external merchant or third-party recipient. The investigation encompasses merchant contact, proof verification, chargeback history review, and fund recovery or law enforcement escalation depending on fund status.",
+      "context": [
+        "If Fraud Involves External Merchant/Recipient:",
+        "Contact merchant for transaction proof",
+        "Identify recipient bank"
+      ]
+    },
+    {
+      "id": "cc_001",
+      "name": "Sanctions Screening for Recipient Account",
+      "aliases": [
+        "Recipient Sanctions Check",
+        "External Account Sanctions Compliance"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "A mandatory compliance gate that screens the recipient account against sanctions lists during fraud investigation of external transfers. Verifies whether the recipient account is linked to sanctioned entities or has multiple fraud reports.",
+      "context": [
+        "Track recipient account (is it in sanctions list? Multiple fraud reports?)"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Fraud Investigation Team",
+      "aliases": [
+        "Investigation Officer",
+        "Fraud Investigator"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "financial_crime_team",
+      "description": "The operational role responsible for executing merchant/third-party fraud investigations, including contacting merchants, requesting documentation, reviewing chargeback history, identifying recipient banks, and coordinating fund recovery or law enforcement escalation.",
+      "context": [
+        "Contact merchant for transaction proof",
+        "Identify recipient bank",
+        "Attempt to recover (urgent)"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Merchant Contact Point",
+      "aliases": [
+        "Merchant Representative",
+        "Merchant Compliance"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "The external merchant entity responsible for providing transaction proof, evidence of customer presence, receipts, camera footage, and chargeback history information during fraud investigation.",
+      "context": [
+        "Contact merchant for transaction proof",
+        "Request proof customer was present (if card-present)",
+        "Request merchant records (receipt, camera footage)"
+      ]
+    },
+    {
+      "id": "ra_003",
+      "name": "Recipient Bank",
+      "aliases": [
+        "External Bank",
+        "Receiving Financial Institution"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "The external financial institution holding the recipient account. Responsible for providing transaction details, verifying recipient account information, and cooperating with fund recovery attempts when fraudulent transfers are identified.",
+      "context": [
+        "Identify recipient bank",
+        "Request transaction details (recipient name matches account?)",
+        "Attempt to recover (urgent)"
+      ]
+    },
+    {
+      "id": "ra_004",
+      "name": "Law Enforcement",
+      "aliases": [
+        "Police",
+        "Law Enforcement Agency"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External law enforcement authority engaged when fraudulent funds have been withdrawn from the recipient account. Responsible for tracing withdrawal locations and pursuing criminal investigation.",
+      "context": [
+        "Trace withdrawal location (law enforcement)"
+      ]
+    },
+    {
+      "id": "card_001",
+      "name": "Debit Card",
+      "aliases": [
+        "Card",
+        "Payment Card"
+      ],
+      "entity_class": "CARD",
+      "type": "debit_card",
+      "description": "A payment card referenced in the fraud investigation process for card-present and card-not-present transactions. Fraud investigation for card transactions includes merchant contact, proof of presence verification, and receipt/footage review.",
+      "context": [
+        "For Card Transactions:",
+        "Request proof customer was present (if card-present)",
+        "Request merchant records (receipt, camera footage)"
+      ]
+    },
+    {
+      "id": "txn_001",
+      "name": "Card Transaction",
+      "aliases": [
+        "Merchant Transaction",
+        "Card Purchase"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "suspicious_transaction",
+      "description": "A financial transaction conducted via card at an external merchant that is subject to fraud investigation. Investigation includes merchant contact for transaction proof and verification of customer presence.",
+      "context": [
+        "For Card Transactions:",
+        "Contact merchant for transaction proof",
+        "Request proof customer was present (if card-present)"
+      ]
+    },
+    {
+      "id": "txn_002",
+      "name": "External Account Transfer",
+      "aliases": [
+        "Third-Party Transfer",
+        "Fraudulent Transfer"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "suspicious_transaction",
+      "description": "A financial transfer to an external account that is subject to fraud investigation. Investigation includes recipient bank identification, account verification, sanctions screening, and fund recovery or law enforcement escalation based on fund status.",
+      "context": [
+        "For Transfers to External Account:",
+        "Identify recipient bank",
+        "Track recipient account (is it in sanctions list? Multiple fraud reports?)"
+      ]
+    }
+  ],
+  "id_map": {
+    "ps_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_001",
+    "ps_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_002",
+    "ps_003": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_003",
+    "ps_004": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_004",
+    "ps_005": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_005",
+    "ps_006": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_006",
+    "ps_007": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_007",
+    "dp_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_dp_001",
+    "dp_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_dp_002",
+    "fa_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_fa_001",
+    "cc_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_cc_001",
+    "ra_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_001",
+    "ra_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_002",
+    "ra_003": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_003",
+    "ra_004": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_004",
+    "card_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_card_001",
+    "txn_001": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_txn_001",
+    "txn_002": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_txn_002"
+  },
+  "entities": [
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_001",
+      "name": "Merchant/Third-Party Investigation",
+      "aliases": [
+        "External Merchant Investigation",
+        "Third-Party Fraud Investigation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "A fraud investigation step triggered when fraudulent activity involves an external merchant or third-party recipient. The step branches into two paths: card transaction investigation (merchant contact, proof of presence, receipt/footage review, chargeback history) and transfer investigation (recipient bank identification, account verification, sanctions screening, fund recovery tracking).",
+      "context": [
+        "If Fraud Involves External Merchant/Recipient",
+        "Contact merchant for transaction proof",
+        "Identify recipient bank",
+        "Track recipient account (is it in sanctions list? Multiple fraud reports?)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_002",
+      "name": "Card Transaction Merchant Contact",
+      "aliases": [
+        "Merchant Proof Request",
+        "Card Fraud Merchant Investigation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "A sub-step within merchant investigation specific to card transactions. Involves contacting the merchant to obtain transaction proof, evidence of customer presence (for card-present transactions), and merchant records including receipts and camera footage.",
+      "context": [
+        "For Card Transactions:",
+        "Contact merchant for transaction proof",
+        "Request proof customer was present (if card-present)",
+        "Request merchant records (receipt, camera footage)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_003",
+      "name": "Merchant Chargeback History Review",
+      "aliases": [
+        "Repeat Offender Check",
+        "Merchant Risk Assessment"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "An investigation step that reviews the merchant's chargeback history to identify whether the merchant is a repeat offender in fraud cases, informing the fraud assessment and recovery strategy.",
+      "context": [
+        "Review merchant chargeback history (are they repeat offender?)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_004",
+      "name": "External Account Transfer Investigation",
+      "aliases": [
+        "Recipient Account Investigation",
+        "Transfer Fraud Investigation"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "A sub-step within merchant investigation specific to transfers to external accounts. Involves identifying the recipient bank, requesting transaction details, verifying recipient name matches the account, screening the recipient account against sanctions lists, and checking for multiple fraud reports.",
+      "context": [
+        "For Transfers to External Account:",
+        "Identify recipient bank",
+        "Request transaction details (recipient name matches account?)",
+        "Track recipient account (is it in sanctions list? Multiple fraud reports?)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_005",
+      "name": "Recipient Account Sanctions Screening",
+      "aliases": [
+        "Sanctions List Check",
+        "PEP Screening for Recipient"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "A compliance check within transfer investigation that screens the recipient account against sanctions lists to determine if the account is linked to sanctioned entities or high-risk parties.",
+      "context": [
+        "Track recipient account (is it in sanctions list? Multiple fraud reports?)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_006",
+      "name": "Fund Recovery Attempt",
+      "aliases": [
+        "Urgent Fund Recovery",
+        "In-Account Fund Recovery"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "An urgent investigation step executed when fraudulent funds remain in the recipient account. Involves immediate contact with the recipient bank to attempt recovery of the transferred funds.",
+      "context": [
+        "If funds still in recipient account: Attempt to recover (urgent)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_007",
+      "name": "Withdrawal Location Tracing",
+      "aliases": [
+        "Fund Withdrawal Trace",
+        "Law Enforcement Referral"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "investigation",
+      "description": "An investigation step executed when fraudulent funds have already been withdrawn from the recipient account. Involves tracing the withdrawal location and escalating to law enforcement for further investigation.",
+      "context": [
+        "If funds withdrawn: Trace withdrawal location (law enforcement)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_dp_001",
+      "name": "Fraud Involves External Merchant or Third Party",
+      "aliases": [
+        "Merchant vs Internal Fraud",
+        "External Party Involvement Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "A branching decision point that determines whether the fraud involves an external merchant or third-party recipient, triggering the Merchant/Third-Party Investigation process. If yes, the investigation branches into card transaction or transfer-specific paths.",
+      "context": [
+        "If Fraud Involves External Merchant/Recipient:",
+        "For Card Transactions:",
+        "For Transfers to External Account:"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_dp_002",
+      "name": "Funds Status in Recipient Account",
+      "aliases": [
+        "Fund Recovery Decision",
+        "Withdrawal Status Gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "exception_trigger",
+      "description": "A critical decision point that determines whether fraudulent funds remain in the recipient account or have been withdrawn. If funds remain, urgent recovery is attempted; if withdrawn, the case is escalated to law enforcement for withdrawal location tracing.",
+      "context": [
+        "If funds still in recipient account: Attempt to recover (urgent)",
+        "If funds withdrawn: Trace withdrawal location (law enforcement)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_fa_001",
+      "name": "External Merchant Fraud Event",
+      "aliases": [
+        "Merchant Fraud",
+        "Third-Party Fraud"
+      ],
+      "entity_class": "FRAUD_ALERT",
+      "type": "fraud_investigation",
+      "description": "A fraud investigation triggered by fraudulent activity involving an external merchant or third-party recipient. The investigation encompasses merchant contact, proof verification, chargeback history review, and fund recovery or law enforcement escalation depending on fund status.",
+      "context": [
+        "If Fraud Involves External Merchant/Recipient:",
+        "Contact merchant for transaction proof",
+        "Identify recipient bank"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_cc_001",
+      "name": "Sanctions Screening for Recipient Account",
+      "aliases": [
+        "Recipient Sanctions Check",
+        "External Account Sanctions Compliance"
+      ],
+      "entity_class": "COMPLIANCE_CHECKPOINT",
+      "type": "sanctions_check",
+      "description": "A mandatory compliance gate that screens the recipient account against sanctions lists during fraud investigation of external transfers. Verifies whether the recipient account is linked to sanctioned entities or has multiple fraud reports.",
+      "context": [
+        "Track recipient account (is it in sanctions list? Multiple fraud reports?)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_001",
+      "name": "Fraud Investigation Team",
+      "aliases": [
+        "Investigation Officer",
+        "Fraud Investigator"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "financial_crime_team",
+      "description": "The operational role responsible for executing merchant/third-party fraud investigations, including contacting merchants, requesting documentation, reviewing chargeback history, identifying recipient banks, and coordinating fund recovery or law enforcement escalation.",
+      "context": [
+        "Contact merchant for transaction proof",
+        "Identify recipient bank",
+        "Attempt to recover (urgent)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_002",
+      "name": "Merchant Contact Point",
+      "aliases": [
+        "Merchant Representative",
+        "Merchant Compliance"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "The external merchant entity responsible for providing transaction proof, evidence of customer presence, receipts, camera footage, and chargeback history information during fraud investigation.",
+      "context": [
+        "Contact merchant for transaction proof",
+        "Request proof customer was present (if card-present)",
+        "Request merchant records (receipt, camera footage)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_003",
+      "name": "Recipient Bank",
+      "aliases": [
+        "External Bank",
+        "Receiving Financial Institution"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "The external financial institution holding the recipient account. Responsible for providing transaction details, verifying recipient account information, and cooperating with fund recovery attempts when fraudulent transfers are identified.",
+      "context": [
+        "Identify recipient bank",
+        "Request transaction details (recipient name matches account?)",
+        "Attempt to recover (urgent)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_004",
+      "name": "Law Enforcement",
+      "aliases": [
+        "Police",
+        "Law Enforcement Agency"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "external_regulator",
+      "description": "External law enforcement authority engaged when fraudulent funds have been withdrawn from the recipient account. Responsible for tracing withdrawal locations and pursuing criminal investigation.",
+      "context": [
+        "Trace withdrawal location (law enforcement)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_card_001",
+      "name": "Debit Card",
+      "aliases": [
+        "Card",
+        "Payment Card"
+      ],
+      "entity_class": "CARD",
+      "type": "debit_card",
+      "description": "A payment card referenced in the fraud investigation process for card-present and card-not-present transactions. Fraud investigation for card transactions includes merchant contact, proof of presence verification, and receipt/footage review.",
+      "context": [
+        "For Card Transactions:",
+        "Request proof customer was present (if card-present)",
+        "Request merchant records (receipt, camera footage)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_txn_001",
+      "name": "Card Transaction",
+      "aliases": [
+        "Merchant Transaction",
+        "Card Purchase"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "suspicious_transaction",
+      "description": "A financial transaction conducted via card at an external merchant that is subject to fraud investigation. Investigation includes merchant contact for transaction proof and verification of customer presence.",
+      "context": [
+        "For Card Transactions:",
+        "Contact merchant for transaction proof",
+        "Request proof customer was present (if card-present)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_txn_002",
+      "name": "External Account Transfer",
+      "aliases": [
+        "Third-Party Transfer",
+        "Fraudulent Transfer"
+      ],
+      "entity_class": "TRANSACTION",
+      "type": "suspicious_transaction",
+      "description": "A financial transfer to an external account that is subject to fraud investigation. Investigation includes recipient bank identification, account verification, sanctions screening, and fund recovery or law enforcement escalation based on fund status.",
+      "context": [
+        "For Transfers to External Account:",
+        "Identify recipient bank",
+        "Track recipient account (is it in sanctions list? Multiple fraud reports?)"
+      ],
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_001",
+      "name": "Merchant/Third-Party Investigation",
+      "properties": {
+        "step_number": 5,
+        "actor": [
+          "Fraud Investigation Team"
+        ],
+        "channel": "system",
+        "mandatory": "yes",
+        "input": [
+          "merchant_transaction_details",
+          "customer_presence_claim",
+          "recipient_account_information"
+        ],
+        "output": [
+          "merchant_chargeback_history_report",
+          "transaction_proof",
+          "recipient_account_status"
+        ],
+        "tools_or_systems": [
+          "merchant_database",
+          "sanctions_screening_system",
+          "fraud_reporting_database"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_002",
+      "name": "Card Transaction Merchant Contact",
+      "properties": {
+        "step_number": "5.1",
+        "actor": [
+          "Merchant Contact Point"
+        ],
+        "channel": [
+          "phone",
+          "email"
+        ],
+        "mandatory": "yes",
+        "input": [
+          "card_transaction_details",
+          "merchant_contact_information"
+        ],
+        "output": [
+          "transaction_proof",
+          "merchant_records"
+        ],
+        "estimated_duration": "24-48 hours"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_003",
+      "name": "Merchant Chargeback History Review",
+      "properties": {
+        "step_number": "5.2",
+        "actor": [
+          "Fraud Investigation Team"
+        ],
+        "channel": "system",
+        "mandatory": "yes",
+        "input": [
+          "merchant_identifier",
+          "chargeback_history_database"
+        ],
+        "output": [
+          "chargeback_history_report",
+          "repeat_offender_flag"
+        ],
+        "tools_or_systems": [
+          "merchant_chargeback_database"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_004",
+      "name": "External Account Transfer Investigation",
+      "properties": {
+        "step_number": "5.3",
+        "actor": [
+          "Fraud Investigation Team",
+          "Recipient Bank"
+        ],
+        "channel": "system",
+        "mandatory": "yes",
+        "input": [
+          "recipient_account_details",
+          "transfer_amount",
+          "recipient_name"
+        ],
+        "output": [
+          "recipient_account_status",
+          "fund_location",
+          "sanctions_screening_result"
+        ],
+        "tools_or_systems": [
+          "sanctions_screening_system",
+          "inter_bank_inquiry_system"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_005",
+      "name": "Recipient Account Sanctions Screening",
+      "properties": {
+        "step_number": "5.4",
+        "actor": [
+          "Fraud Investigation Team"
+        ],
+        "channel": "system",
+        "mandatory": "yes",
+        "input": [
+          "recipient_account_identifier",
+          "recipient_name"
+        ],
+        "output": [
+          "sanctions_screening_result"
+        ],
+        "tools_or_systems": [
+          "sanctions_screening_system"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_006",
+      "name": "Fund Recovery Attempt",
+      "properties": {
+        "step_number": "5.5",
+        "actor": [
+          "Recipient Bank",
+          "Fraud Investigation Team"
+        ],
+        "channel": "system",
+        "mandatory": "yes",
+        "input": [
+          "recipient_account_details",
+          "fund_status"
+        ],
+        "output": [
+          "fund_recovery_status"
+        ],
+        "estimated_duration": "urgent",
+        "failure_path": "escalate_to_law_enforcement"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_007",
+      "name": "Withdrawal Location Tracing",
+      "properties": {
+        "step_number": "5.6",
+        "actor": [
+          "Law Enforcement",
+          "Fraud Investigation Team"
+        ],
+        "channel": "external",
+        "mandatory": "yes",
+        "input": [
+          "withdrawal_transaction_details",
+          "recipient_bank_records"
+        ],
+        "output": [
+          "withdrawal_location_report"
+        ],
+        "failure_path": "case_closure_with_law_enforcement_referral"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_dp_001",
+      "name": "Fraud Involves External Merchant or Third Party",
+      "properties": {
+        "decision_question": "Does the fraud involve an external merchant or third-party recipient account?",
+        "criteria": [
+          "transaction_involves_merchant",
+          "transaction_involves_external_account_transfer"
+        ],
+        "decision_maker": "Fraud Investigation Team",
+        "path_yes": "Proceed to merchant/third-party investigation (Step 5)",
+        "path_no": "Proceed to alternative investigation path"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_dp_002",
+      "name": "Funds Status in Recipient Account",
+      "properties": {
+        "decision_question": "Are the fraudulent funds still present in the recipient account?",
+        "criteria": [
+          "recipient_account_balance_check",
+          "fund_withdrawal_status"
+        ],
+        "decision_maker": "Fraud Investigation Team",
+        "path_yes": "Attempt urgent fund recovery",
+        "path_no": "Trace withdrawal location and escalate to law enforcement",
+        "time_limit": "immediate"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_fa_001",
+      "name": "External Merchant Fraud Event",
+      "properties": {
+        "generation_trigger": [
+          "unauthorized_card_transaction_with_merchant",
+          "fraudulent_transfer_to_external_account"
+        ],
+        "investigation_or_escalation_path": [
+          "merchant_contact_and_verification",
+          "recipient_account_investigation",
+          "fund_recovery_attempt",
+          "law_enforcement_referral"
+        ],
+        "customer_notification": "yes",
+        "reimbursement_obligation": "yes"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_cc_001",
+      "name": "Sanctions Screening for Recipient Account",
+      "properties": {
+        "regulatory_basis": [
+          "OFAC",
+          "UN_sanctions",
+          "EU_sanctions"
+        ],
+        "mandatory": "yes",
+        "applies_to_channels": "all",
+        "evidence_required": [
+          "recipient_account_identifier",
+          "recipient_name",
+          "sanctions_list_match_result"
+        ],
+        "performed_by": "Fraud Investigation Team",
+        "timing": "during_external_account_transfer_investigation",
+        "system_used": "sanctions_screening_system",
+        "failure_consequence": "escalate_to_compliance_and_law_enforcement"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_001",
+      "name": "Fraud Investigation Team",
+      "properties": {
+        "role_type": "human",
+        "department": "Fraud and Disputes",
+        "authority_level": "investigation_and_escalation",
+        "channels": [
+          "system",
+          "phone",
+          "email"
+        ],
+        "response_time_sla": "24-48 hours"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_002",
+      "name": "Merchant Contact Point",
+      "properties": {
+        "role_type": "external",
+        "authority_level": "transaction_verification",
+        "channels": [
+          "phone",
+          "email"
+        ],
+        "response_time_sla": "24-48 hours"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_003",
+      "name": "Recipient Bank",
+      "properties": {
+        "role_type": "external",
+        "authority_level": "account_investigation_and_fund_recovery",
+        "channels": [
+          "system",
+          "email"
+        ],
+        "response_time_sla": "urgent"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_004",
+      "name": "Law Enforcement",
+      "properties": {
+        "role_type": "external",
+        "authority_level": "criminal_investigation",
+        "channels": [
+          "email",
+          "formal_report"
+        ],
+        "response_time_sla": "case_dependent"
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_card_001",
+      "name": "Debit Card",
+      "properties": {
+        "card_type": "debit",
+        "card_state": "active",
+        "block_or_replacement_conditions": [
+          "fraud_detected",
+          "unauthorized_transaction"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_txn_001",
+      "name": "Card Transaction",
+      "properties": {
+        "transaction_type": "suspicious",
+        "monitoring_or_reporting_obligation": "yes",
+        "dispute_or_reversal_rules": [
+          "chargeback_process_if_merchant_uncooperative",
+          "fund_reversal_if_fraud_confirmed"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_txn_002",
+      "name": "External Account Transfer",
+      "properties": {
+        "transaction_type": "suspicious",
+        "monitoring_or_reporting_obligation": "yes",
+        "dispute_or_reversal_rules": [
+          "fund_recovery_if_in_recipient_account",
+          "law_enforcement_referral_if_withdrawn"
+        ]
+      },
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_dp_001",
+      "source_name": "Fraud Involves External Merchant or Third Party",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_001",
+      "target_name": "Merchant/Third-Party Investigation",
+      "rel_type": "routes_to_on_pass",
+      "description": "When fraud is determined to involve external merchant or third party, investigation proceeds to merchant/third-party investigation step",
+      "properties": {
+        "condition": "fraud_involves_external_merchant_or_third_party",
+        "trigger_type": "positive_decision"
+      },
+      "context": "If Fraud Involves External Merchant/Recipient: For Card Transactions: Contact merchant for transaction proof",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_001",
+      "source_name": "Merchant/Third-Party Investigation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_002",
+      "target_name": "Card Transaction Merchant Contact",
+      "rel_type": "followed_by",
+      "description": "Merchant/Third-Party Investigation step is followed by Card Transaction Merchant Contact for card-based fraud cases",
+      "properties": {
+        "sequence_order": 1,
+        "applicable_to": "card_transactions"
+      },
+      "context": "For Card Transactions: Contact merchant for transaction proof",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_002",
+      "source_name": "Card Transaction Merchant Contact",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_003",
+      "target_name": "Merchant Chargeback History Review",
+      "rel_type": "followed_by",
+      "description": "Card Transaction Merchant Contact is followed by review of merchant chargeback history",
+      "properties": {
+        "sequence_order": 2,
+        "applicable_to": "card_transactions"
+      },
+      "context": "Request proof customer was present (if card-present). Request merchant records (receipt, camera footage). Review merchant chargeback history (are they repeat offender?)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_001",
+      "source_name": "Merchant/Third-Party Investigation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_004",
+      "target_name": "External Account Transfer Investigation",
+      "rel_type": "alternative_to",
+      "description": "Merchant/Third-Party Investigation branches into External Account Transfer Investigation for transfer-based fraud cases",
+      "properties": {
+        "condition": "fraud_type",
+        "applicable_to": "external_account_transfers"
+      },
+      "context": "For Transfers to External Account: Identify recipient bank. Request transaction details (recipient name matches account?)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_004",
+      "source_name": "External Account Transfer Investigation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_005",
+      "target_name": "Recipient Account Sanctions Screening",
+      "rel_type": "followed_by",
+      "description": "External Account Transfer Investigation is followed by sanctions screening of recipient account",
+      "properties": {
+        "sequence_order": 1,
+        "applicable_to": "external_transfers"
+      },
+      "context": "Track recipient account (is it in sanctions list? Multiple fraud reports?)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_005",
+      "source_name": "Recipient Account Sanctions Screening",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_dp_002",
+      "target_name": "Funds Status in Recipient Account",
+      "rel_type": "leads_to",
+      "description": "Sanctions screening of recipient account leads to decision point regarding funds status in recipient account",
+      "properties": {
+        "decision_criteria": "funds_location_and_status"
+      },
+      "context": "Identify if funds already withdrawn. Timeline: If funds still in recipient account: Attempt to recover (urgent). If funds withdrawn: Trace withdrawal location",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_dp_002",
+      "source_name": "Funds Status in Recipient Account",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_006",
+      "target_name": "Fund Recovery Attempt",
+      "rel_type": "routes_to_on_pass",
+      "description": "When funds are still in recipient account, decision routes to fund recovery attempt",
+      "properties": {
+        "condition": "funds_still_in_recipient_account",
+        "priority": "urgent"
+      },
+      "context": "If funds still in recipient account: Attempt to recover (urgent)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_dp_002",
+      "source_name": "Funds Status in Recipient Account",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_007",
+      "target_name": "Withdrawal Location Tracing",
+      "rel_type": "routes_to_on_fail",
+      "description": "When funds have been withdrawn from recipient account, decision routes to withdrawal location tracing",
+      "properties": {
+        "condition": "funds_already_withdrawn",
+        "escalation_required": true
+      },
+      "context": "If funds withdrawn: Trace withdrawal location (law enforcement)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_002",
+      "source_name": "Card Transaction Merchant Contact",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_002",
+      "target_name": "Merchant Contact Point",
+      "rel_type": "performed_by",
+      "description": "Card Transaction Merchant Contact step is performed by Merchant Contact Point role",
+      "properties": {
+        "action": "contact_merchant",
+        "deliverables": [
+          "transaction_proof",
+          "customer_presence_proof",
+          "merchant_records"
+        ]
+      },
+      "context": "Contact merchant for transaction proof. Request proof customer was present (if card-present). Request merchant records (receipt, camera footage)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_004",
+      "source_name": "External Account Transfer Investigation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_003",
+      "target_name": "Recipient Bank",
+      "rel_type": "performed_by",
+      "description": "External Account Transfer Investigation is performed by Recipient Bank through transaction detail requests",
+      "properties": {
+        "action": "identify_and_request_details",
+        "details_requested": [
+          "recipient_name",
+          "account_match",
+          "transaction_details"
+        ]
+      },
+      "context": "Identify recipient bank. Request transaction details (recipient name matches account?)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_005",
+      "source_name": "Recipient Account Sanctions Screening",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_cc_001",
+      "target_name": "Sanctions Screening for Recipient Account",
+      "rel_type": "satisfies",
+      "description": "Recipient Account Sanctions Screening step satisfies the Sanctions Screening compliance checkpoint",
+      "properties": {
+        "compliance_requirement": "sanctions_list_verification",
+        "checks_performed": [
+          "sanctions_list_match",
+          "fraud_report_history"
+        ]
+      },
+      "context": "Track recipient account (is it in sanctions list? Multiple fraud reports?)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_cc_001",
+      "source_name": "Sanctions Screening for Recipient Account",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_dp_002",
+      "target_name": "Funds Status in Recipient Account",
+      "rel_type": "gates",
+      "description": "Sanctions Screening compliance checkpoint gates the decision on funds status in recipient account",
+      "properties": {
+        "gate_type": "compliance_prerequisite",
+        "must_complete_before": "funds_status_decision"
+      },
+      "context": "Track recipient account (is it in sanctions list? Multiple fraud reports?). Timeline: If funds still in recipient account",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_006",
+      "source_name": "Fund Recovery Attempt",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_003",
+      "target_name": "Recipient Bank",
+      "rel_type": "escalated_to",
+      "description": "Fund Recovery Attempt step is escalated to Recipient Bank for urgent recovery action",
+      "properties": {
+        "priority": "urgent",
+        "action": "fund_recovery"
+      },
+      "context": "If funds still in recipient account: Attempt to recover (urgent)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_007",
+      "source_name": "Withdrawal Location Tracing",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_004",
+      "target_name": "Law Enforcement",
+      "rel_type": "escalated_to",
+      "description": "Withdrawal Location Tracing step is escalated to Law Enforcement for investigation of withdrawn funds",
+      "properties": {
+        "action": "trace_withdrawal_location",
+        "escalation_reason": "funds_already_withdrawn"
+      },
+      "context": "If funds withdrawn: Trace withdrawal location (law enforcement)",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_001",
+      "source_name": "Merchant/Third-Party Investigation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_001",
+      "target_name": "Fraud Investigation Team",
+      "rel_type": "performed_by",
+      "description": "Merchant/Third-Party Investigation step is performed by Fraud Investigation Team",
+      "properties": {
+        "responsibility": "coordinate_investigation",
+        "sub_tasks": [
+          "merchant_contact",
+          "transfer_investigation",
+          "sanctions_screening"
+        ]
+      },
+      "context": "Step 5: Merchant/Third-Party Investigation. If Fraud Involves External Merchant/Recipient",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_fa_001",
+      "source_name": "External Merchant Fraud Event",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_dp_001",
+      "target_name": "Fraud Involves External Merchant or Third Party",
+      "rel_type": "triggers",
+      "description": "External Merchant Fraud Event triggers the decision point on whether fraud involves external merchant or third party",
+      "properties": {
+        "fraud_type": "external_merchant_fraud",
+        "decision_required": true
+      },
+      "context": "If Fraud Involves External Merchant/Recipient: For Card Transactions",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_card_001",
+      "source_name": "Debit Card",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_txn_001",
+      "target_name": "Card Transaction",
+      "rel_type": "linked_to",
+      "description": "Debit Card is linked to Card Transaction for fraud investigation",
+      "properties": {
+        "transaction_type": "card_present_or_card_not_present"
+      },
+      "context": "For Card Transactions: Contact merchant for transaction proof. Request proof customer was present (if card-present)",
+      "bidirectional": true,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_txn_001",
+      "source_name": "Card Transaction",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_002",
+      "target_name": "Card Transaction Merchant Contact",
+      "rel_type": "triggers",
+      "description": "Card Transaction triggers the Card Transaction Merchant Contact investigation step",
+      "properties": {
+        "investigation_type": "merchant_verification"
+      },
+      "context": "For Card Transactions: Contact merchant for transaction proof",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_txn_002",
+      "source_name": "External Account Transfer",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_004",
+      "target_name": "External Account Transfer Investigation",
+      "rel_type": "triggers",
+      "description": "External Account Transfer triggers the External Account Transfer Investigation step",
+      "properties": {
+        "investigation_type": "recipient_account_verification"
+      },
+      "context": "For Transfers to External Account: Identify recipient bank. Request transaction details",
+      "bidirectional": false,
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_001",
+      "source_name": "Merchant/Third-Party Investigation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_002",
+      "source_name": "Card Transaction Merchant Contact",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_003",
+      "source_name": "Merchant Chargeback History Review",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_004",
+      "source_name": "External Account Transfer Investigation",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_005",
+      "source_name": "Recipient Account Sanctions Screening",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_006",
+      "source_name": "Fund Recovery Attempt",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ps_007",
+      "source_name": "Withdrawal Location Tracing",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_dp_001",
+      "source_name": "Fraud Involves External Merchant or Third Party",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_dp_002",
+      "source_name": "Funds Status in Recipient Account",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_fa_001",
+      "source_name": "External Merchant Fraud Event",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_cc_001",
+      "source_name": "Sanctions Screening for Recipient Account",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_001",
+      "source_name": "Fraud Investigation Team",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_002",
+      "source_name": "Merchant Contact Point",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_003",
+      "source_name": "Recipient Bank",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_ra_004",
+      "source_name": "Law Enforcement",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_card_001",
+      "source_name": "Debit Card",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_txn_001",
+      "source_name": "Card Transaction",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010_txn_002",
+      "source_name": "External Account Transfer",
+      "target_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "target_name": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8_010",
+      "doc_id": "01a072cb-0e65-731c-a6e5-0c7e4219b3f8",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

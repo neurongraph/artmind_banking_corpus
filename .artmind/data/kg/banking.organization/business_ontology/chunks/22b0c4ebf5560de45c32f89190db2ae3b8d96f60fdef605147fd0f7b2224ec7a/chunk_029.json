@@ -1,0 +1,553 @@
+{
+  "chunk_seq": 29,
+  "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+  "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+  "text": "## Constraints & Business Rules  \n### Account Constraints  \n| Rule | Constraint |\n|------|-----------|\n| Account must have product | `account.product_id NOT NULL` |\n| Account balance = transaction sum | `account.balance = SUM(transactions)` |\n| Dormant > 12 months inactive | `account_status = 'Dormant' IF no_activity > 365 days` |\n| Account status unique | `account.status IN (Active, Dormant, Closed, Suspended)` |",
+  "name": "Chunk 29/37",
+  "_domain": "banking.organization",
+  "prev_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_028",
+  "next_chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_030",
+  "raw_entities": [
+    {
+      "id": "bc_001",
+      "name": "Account",
+      "aliases": [
+        "account"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "A customer account entity with defined state constraints including product association, balance calculation rules, dormancy thresholds, and status lifecycle management. The document specifies that accounts must be linked to a product, maintain balance integrity through transaction summation, transition to dormant status after 12 months of inactivity, and operate within a constrained set of valid statuses.",
+      "context": [
+        "Account must have product",
+        "Account balance = transaction sum",
+        "Dormant > 12 months inactive",
+        "account.status IN (Active, Dormant, Closed, Suspended)"
+      ]
+    },
+    {
+      "id": "bc_002",
+      "name": "Product",
+      "aliases": [
+        "product"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "product",
+      "description": "A banking product that must be associated with every account. The document establishes product as a mandatory foreign key constraint on the account entity.",
+      "context": [
+        "Account must have product",
+        "account.product_id NOT NULL"
+      ]
+    },
+    {
+      "id": "bc_003",
+      "name": "Transaction",
+      "aliases": [
+        "transaction"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "A financial transaction whose aggregate sum determines the account balance. The document establishes that account balance must equal the sum of all associated transactions.",
+      "context": [
+        "Account balance = transaction sum",
+        "account.balance = SUM(transactions)"
+      ]
+    },
+    {
+      "id": "br_001",
+      "name": "Account Product Association Requirement",
+      "aliases": [
+        "account_product_constraint"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A mandatory constraint requiring every account to be associated with a product. This is enforced as a NOT NULL constraint on the product_id field.",
+      "context": [
+        "Account must have product",
+        "account.product_id NOT NULL"
+      ]
+    },
+    {
+      "id": "br_002",
+      "name": "Account Balance Integrity Rule",
+      "aliases": [
+        "balance_calculation_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "data_rule",
+      "description": "A data integrity rule that enforces account balance as the sum of all transactions. This ensures consistency between the account balance field and underlying transaction records.",
+      "context": [
+        "Account balance = transaction sum",
+        "account.balance = SUM(transactions)"
+      ]
+    },
+    {
+      "id": "br_003",
+      "name": "Dormancy Status Transition Rule",
+      "aliases": [
+        "dormancy_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "An operational rule that automatically transitions an account to dormant status when no activity occurs for more than 365 days. This is a time-based state transition constraint.",
+      "context": [
+        "Dormant > 12 months inactive",
+        "account_status = 'Dormant' IF no_activity > 365 days"
+      ]
+    },
+    {
+      "id": "br_004",
+      "name": "Account Status Enumeration Constraint",
+      "aliases": [
+        "status_constraint"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A constraint that restricts account status to a fixed set of four valid values: Active, Dormant, Closed, and Suspended. This enforces a controlled vocabulary for account lifecycle states.",
+      "context": [
+        "Account status unique",
+        "account.status IN (Active, Dormant, Closed, Suspended)"
+      ]
+    }
+  ],
+  "id_map": {
+    "bc_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_001",
+    "bc_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_002",
+    "bc_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_003",
+    "br_001": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_001",
+    "br_002": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_002",
+    "br_003": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_003",
+    "br_004": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_004"
+  },
+  "entities": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_001",
+      "name": "Account",
+      "aliases": [
+        "account"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "account",
+      "description": "A customer account entity with defined state constraints including product association, balance calculation rules, dormancy thresholds, and status lifecycle management. The document specifies that accounts must be linked to a product, maintain balance integrity through transaction summation, transition to dormant status after 12 months of inactivity, and operate within a constrained set of valid statuses.",
+      "context": [
+        "Account must have product",
+        "Account balance = transaction sum",
+        "Dormant > 12 months inactive",
+        "account.status IN (Active, Dormant, Closed, Suspended)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_002",
+      "name": "Product",
+      "aliases": [
+        "product"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "product",
+      "description": "A banking product that must be associated with every account. The document establishes product as a mandatory foreign key constraint on the account entity.",
+      "context": [
+        "Account must have product",
+        "account.product_id NOT NULL"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_003",
+      "name": "Transaction",
+      "aliases": [
+        "transaction"
+      ],
+      "entity_class": "BANKING_CONCEPT",
+      "type": "transaction",
+      "description": "A financial transaction whose aggregate sum determines the account balance. The document establishes that account balance must equal the sum of all associated transactions.",
+      "context": [
+        "Account balance = transaction sum",
+        "account.balance = SUM(transactions)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_001",
+      "name": "Account Product Association Requirement",
+      "aliases": [
+        "account_product_constraint"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A mandatory constraint requiring every account to be associated with a product. This is enforced as a NOT NULL constraint on the product_id field.",
+      "context": [
+        "Account must have product",
+        "account.product_id NOT NULL"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_002",
+      "name": "Account Balance Integrity Rule",
+      "aliases": [
+        "balance_calculation_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "data_rule",
+      "description": "A data integrity rule that enforces account balance as the sum of all transactions. This ensures consistency between the account balance field and underlying transaction records.",
+      "context": [
+        "Account balance = transaction sum",
+        "account.balance = SUM(transactions)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_003",
+      "name": "Dormancy Status Transition Rule",
+      "aliases": [
+        "dormancy_rule"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "operational_limit",
+      "description": "An operational rule that automatically transitions an account to dormant status when no activity occurs for more than 365 days. This is a time-based state transition constraint.",
+      "context": [
+        "Dormant > 12 months inactive",
+        "account_status = 'Dormant' IF no_activity > 365 days"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_004",
+      "name": "Account Status Enumeration Constraint",
+      "aliases": [
+        "status_constraint"
+      ],
+      "entity_class": "BUSINESS_RULE",
+      "type": "constraint",
+      "description": "A constraint that restricts account status to a fixed set of four valid values: Active, Dormant, Closed, and Suspended. This enforces a controlled vocabulary for account lifecycle states.",
+      "context": [
+        "Account status unique",
+        "account.status IN (Active, Dormant, Closed, Suspended)"
+      ],
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_001",
+      "name": "Account",
+      "properties": {
+        "definition": "A financial holding entity that maintains a balance derived from transactions and must be associated with a product",
+        "key_attributes": [
+          "product_id",
+          "balance",
+          "status",
+          "activity_timestamp"
+        ],
+        "subtypes": [
+          "Active",
+          "Dormant",
+          "Closed",
+          "Suspended"
+        ],
+        "business_rules": [
+          "Account must have product",
+          "Account balance = transaction sum",
+          "Dormant > 12 months inactive",
+          "Account status unique"
+        ],
+        "ontology_domain": "Account Management"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_002",
+      "name": "Product",
+      "properties": {
+        "definition": "A banking product offering that must be associated with at least one account",
+        "key_attributes": [
+          "product_id"
+        ],
+        "business_rules": [
+          "Account must have product"
+        ],
+        "ontology_domain": "Product Management"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_003",
+      "name": "Transaction",
+      "properties": {
+        "definition": "A financial movement that contributes to account balance calculation",
+        "key_attributes": [
+          "transaction_id",
+          "amount",
+          "account_id"
+        ],
+        "business_rules": [
+          "Account balance = transaction sum"
+        ],
+        "ontology_domain": "Transaction Management"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_001",
+      "name": "Account Product Association Requirement",
+      "properties": {
+        "rule_statement": "Every account must be associated with a product; product_id cannot be null",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Account"
+        ],
+        "enforcement": "Database constraint: account.product_id NOT NULL"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_002",
+      "name": "Account Balance Integrity Rule",
+      "properties": {
+        "rule_statement": "Account balance must equal the sum of all transactions associated with that account",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Account",
+          "Transaction"
+        ],
+        "enforcement": "Database constraint: account.balance = SUM(transactions)"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_003",
+      "name": "Dormancy Status Transition Rule",
+      "properties": {
+        "rule_statement": "An account transitions to Dormant status when there is no activity for more than 365 days",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Account"
+        ],
+        "enforcement": "Automated status transition: account_status = 'Dormant' IF no_activity > 365 days",
+        "dormancy_threshold": "12 months"
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_004",
+      "name": "Account Status Enumeration Constraint",
+      "properties": {
+        "rule_statement": "Account status must be one of four allowed values: Active, Dormant, Closed, or Suspended",
+        "rule_type": "constraint",
+        "applies_to": [
+          "Account"
+        ],
+        "enforcement": "Database constraint: account.status IN (Active, Dormant, Closed, Suspended)",
+        "allowed_status_value": [
+          "Active",
+          "Dormant",
+          "Closed",
+          "Suspended"
+        ]
+      },
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_002",
+      "target_name": "Product",
+      "rel_type": "linked_to",
+      "description": "An Account must be associated with a Product",
+      "properties": {
+        "constraint": "account.product_id NOT NULL",
+        "cardinality": "required"
+      },
+      "context": "Account must have product | `account.product_id NOT NULL`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_003",
+      "target_name": "Transaction",
+      "rel_type": "linked_to",
+      "description": "Account balance is derived from the sum of all associated Transactions",
+      "properties": {
+        "constraint": "account.balance = SUM(transactions)",
+        "relationship": "balance_integrity"
+      },
+      "context": "Account balance = transaction sum | `account.balance = SUM(transactions)`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_001",
+      "target_name": "Account Product Association Requirement",
+      "rel_type": "governed_by",
+      "description": "Account concept is governed by the requirement that it must have an associated Product",
+      "properties": {
+        "constraint_type": "NOT NULL",
+        "field": "product_id"
+      },
+      "context": "Account must have product | `account.product_id NOT NULL`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_002",
+      "target_name": "Account Balance Integrity Rule",
+      "rel_type": "governed_by",
+      "description": "Account concept is governed by the rule that balance must equal the sum of all transactions",
+      "properties": {
+        "constraint_type": "calculated_field",
+        "formula": "SUM(transactions)"
+      },
+      "context": "Account balance = transaction sum | `account.balance = SUM(transactions)`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_003",
+      "target_name": "Dormancy Status Transition Rule",
+      "rel_type": "governed_by",
+      "description": "Account concept is governed by the rule that status transitions to Dormant after 12 months of inactivity",
+      "properties": {
+        "constraint_type": "status_transition",
+        "trigger": "no_activity > 365 days",
+        "target_status": "Dormant"
+      },
+      "context": "Dormant > 12 months inactive | `account_status = 'Dormant' IF no_activity > 365 days`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_004",
+      "target_name": "Account Status Enumeration Constraint",
+      "rel_type": "governed_by",
+      "description": "Account concept is governed by the constraint that status must be one of a defined enumeration",
+      "properties": {
+        "constraint_type": "enumeration",
+        "allowed_values": [
+          "Active",
+          "Dormant",
+          "Closed",
+          "Suspended"
+        ]
+      },
+      "context": "Account status unique | `account.status IN (Active, Dormant, Closed, Suspended)`",
+      "bidirectional": false,
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_001",
+      "source_name": "Account",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_002",
+      "source_name": "Product",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_bc_003",
+      "source_name": "Transaction",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_001",
+      "source_name": "Account Product Association Requirement",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_002",
+      "source_name": "Account Balance Integrity Rule",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_003",
+      "source_name": "Dormancy Status Transition Rule",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    },
+    {
+      "source_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029_br_004",
+      "source_name": "Account Status Enumeration Constraint",
+      "target_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "target_name": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15_029",
+      "doc_id": "01a072d3-ef6f-71a7-af9f-8b0536f60b15",
+      "_domain": "banking.organization"
+    }
+  ]
+}

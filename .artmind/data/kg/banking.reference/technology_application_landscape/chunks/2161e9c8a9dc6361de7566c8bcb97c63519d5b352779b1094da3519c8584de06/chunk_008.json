@@ -1,0 +1,290 @@
+{
+  "chunk_seq": 8,
+  "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+  "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+  "text": "### Database\n- **Database:** PostgreSQL 13+\n- **Size:** ~500 MB (growing ~50 MB/month)\n- **Backup:** Daily, encrypted to S3\n- **Replication:** Continuous to standby",
+  "name": "Chunk 8/57",
+  "_domain": "banking.reference",
+  "prev_chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_007",
+  "next_chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_009",
+  "raw_entities": [
+    {
+      "id": "inc_001",
+      "name": "Database Failure",
+      "aliases": [
+        "PostgreSQL outage",
+        "database outage"
+      ],
+      "entity_class": "INCIDENT_TYPE",
+      "type": "system_outage",
+      "description": "A failure or unavailability of the PostgreSQL 13+ database system that supports core banking operations. This incident type encompasses database crashes, replication failures, backup failures, or performance degradation that impacts transaction processing and customer account access.",
+      "context": [
+        "Database: PostgreSQL 13+",
+        "Backup: Daily, encrypted to S3",
+        "Replication: Continuous to standby"
+      ]
+    },
+    {
+      "id": "inc_002",
+      "name": "Backup Failure",
+      "aliases": [
+        "backup outage",
+        "S3 backup failure"
+      ],
+      "entity_class": "INCIDENT_TYPE",
+      "type": "backup_failure",
+      "description": "Failure or corruption of the daily encrypted database backup process to S3, preventing recovery capability in the event of primary database loss or corruption.",
+      "context": [
+        "Backup: Daily, encrypted to S3"
+      ]
+    },
+    {
+      "id": "inc_003",
+      "name": "Replication Failure",
+      "aliases": [
+        "standby replication failure",
+        "continuous replication outage"
+      ],
+      "entity_class": "INCIDENT_TYPE",
+      "type": "integration_failure",
+      "description": "Failure or interruption of continuous replication from the primary PostgreSQL database to the standby instance, compromising high-availability and disaster recovery capability.",
+      "context": [
+        "Replication: Continuous to standby"
+      ]
+    }
+  ],
+  "id_map": {
+    "inc_001": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_001",
+    "inc_002": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_002",
+    "inc_003": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_003"
+  },
+  "entities": [
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_001",
+      "name": "Database Failure",
+      "aliases": [
+        "PostgreSQL outage",
+        "database outage"
+      ],
+      "entity_class": "INCIDENT_TYPE",
+      "type": "system_outage",
+      "description": "A failure or unavailability of the PostgreSQL 13+ database system that supports core banking operations. This incident type encompasses database crashes, replication failures, backup failures, or performance degradation that impacts transaction processing and customer account access.",
+      "context": [
+        "Database: PostgreSQL 13+",
+        "Backup: Daily, encrypted to S3",
+        "Replication: Continuous to standby"
+      ],
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_002",
+      "name": "Backup Failure",
+      "aliases": [
+        "backup outage",
+        "S3 backup failure"
+      ],
+      "entity_class": "INCIDENT_TYPE",
+      "type": "backup_failure",
+      "description": "Failure or corruption of the daily encrypted database backup process to S3, preventing recovery capability in the event of primary database loss or corruption.",
+      "context": [
+        "Backup: Daily, encrypted to S3"
+      ],
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_003",
+      "name": "Replication Failure",
+      "aliases": [
+        "standby replication failure",
+        "continuous replication outage"
+      ],
+      "entity_class": "INCIDENT_TYPE",
+      "type": "integration_failure",
+      "description": "Failure or interruption of continuous replication from the primary PostgreSQL database to the standby instance, compromising high-availability and disaster recovery capability.",
+      "context": [
+        "Replication: Continuous to standby"
+      ],
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_001",
+      "name": "Database Failure",
+      "properties": {
+        "category": "Infrastructure",
+        "typical_impact": [
+          "data unavailability",
+          "service disruption"
+        ],
+        "indicators": [
+          "PostgreSQL process failure",
+          "connection timeouts",
+          "query errors"
+        ],
+        "primary_response_team": "Database Administration"
+      },
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_002",
+      "name": "Backup Failure",
+      "properties": {
+        "category": "Data Protection",
+        "typical_impact": [
+          "loss of recovery capability",
+          "data loss risk"
+        ],
+        "indicators": [
+          "daily backup job failure",
+          "S3 encryption errors",
+          "backup verification failure"
+        ],
+        "primary_response_team": "Database Administration"
+      },
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_003",
+      "name": "Replication Failure",
+      "properties": {
+        "category": "Infrastructure",
+        "typical_impact": [
+          "standby unavailability",
+          "loss of failover capability"
+        ],
+        "indicators": [
+          "replication lag",
+          "standby sync failure",
+          "continuous replication interruption"
+        ],
+        "primary_response_team": "Database Administration"
+      },
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_001",
+      "source_name": "Database Failure",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_002",
+      "target_name": "Backup Failure",
+      "rel_type": "can_lead_to",
+      "description": "Database failure can lead to backup failure if the backup process is affected by the database outage",
+      "properties": {
+        "cascade_risk": true,
+        "dependency": "backup_depends_on_database_availability"
+      },
+      "context": "Database Failure in context of Daily encrypted backup to S3",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_001",
+      "source_name": "Database Failure",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_003",
+      "target_name": "Replication Failure",
+      "rel_type": "can_lead_to",
+      "description": "Database failure can lead to replication failure as continuous replication to standby depends on primary database health",
+      "properties": {
+        "cascade_risk": true,
+        "dependency": "replication_depends_on_primary_database"
+      },
+      "context": "Database Failure in context of Continuous replication to standby",
+      "bidirectional": false,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_002",
+      "source_name": "Backup Failure",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_001",
+      "target_name": "Database Failure",
+      "rel_type": "related_to",
+      "description": "Backup failure is related to database failure as both affect data protection and recovery capabilities",
+      "properties": {
+        "shared_impact": "data_protection",
+        "recovery_implication": true
+      },
+      "context": "Daily encrypted backup to S3 and Database Failure both critical to data resilience",
+      "bidirectional": true,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_003",
+      "source_name": "Replication Failure",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_001",
+      "target_name": "Database Failure",
+      "rel_type": "related_to",
+      "description": "Replication failure is related to database failure as both affect data availability and disaster recovery",
+      "properties": {
+        "shared_impact": "data_availability",
+        "disaster_recovery_implication": true
+      },
+      "context": "Continuous replication to standby and Database Failure both critical to high availability",
+      "bidirectional": true,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_002",
+      "source_name": "Backup Failure",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_003",
+      "target_name": "Replication Failure",
+      "rel_type": "related_to",
+      "description": "Backup failure and replication failure are related as both represent failures in data protection and recovery mechanisms",
+      "properties": {
+        "shared_impact": "data_resilience",
+        "both_protect_against": "data_loss"
+      },
+      "context": "Daily encrypted backup to S3 and Continuous replication to standby are complementary protection mechanisms",
+      "bidirectional": true,
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_001",
+      "source_name": "Database Failure",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "target_name": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_002",
+      "source_name": "Backup Failure",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "target_name": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    },
+    {
+      "source_id": "01a0738b-0d86-7461-97e7-87d468c067db_008_inc_003",
+      "source_name": "Replication Failure",
+      "target_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "target_name": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0738b-0d86-7461-97e7-87d468c067db_008",
+      "doc_id": "01a0738b-0d86-7461-97e7-87d468c067db",
+      "_domain": "banking.reference"
+    }
+  ]
+}

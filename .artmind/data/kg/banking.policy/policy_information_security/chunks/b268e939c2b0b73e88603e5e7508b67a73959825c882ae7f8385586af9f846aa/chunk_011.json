@@ -1,0 +1,1107 @@
+{
+  "chunk_seq": 11,
+  "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+  "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+  "text": "### At Rest  \n**Database Encryption:**\n- AES-256 encryption for sensitive columns\n- Encryption keys stored separately (HSM)\n- Transparent encryption (application-level)  \n**Backup Encryption:**\n- Encrypted backups to S3\n- AES-256 encryption standard\n- Keys managed in AWS KMS\n- Tested recovery procedures  \n**File Encryption:**\n- Encrypted file storage (on-premises + cloud)\n- Encrypted USB/portable devices\n- Deletion: Secure overwriting (DoD standard)  \n---",
+  "name": "Chunk 11/32",
+  "_domain": "banking.policy",
+  "prev_chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_010",
+  "next_chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_012",
+  "raw_entities": [
+    {
+      "id": "pol_001",
+      "name": "Data Encryption at Rest Policy",
+      "aliases": [
+        "At Rest Encryption",
+        "Data Protection at Rest"
+      ],
+      "entity_class": "POLICY",
+      "type": "information_security",
+      "description": "Policy governing encryption of sensitive data while stored in databases, backups, and file systems. Establishes standards for encryption algorithms, key management, and secure deletion procedures across on-premises and cloud environments.",
+      "context": [
+        "AES-256 encryption for sensitive columns",
+        "Encryption keys stored separately (HSM)",
+        "Encrypted backups to S3",
+        "Secure overwriting (DoD standard)"
+      ]
+    },
+    {
+      "id": "pp_001",
+      "name": "Database Sensitive Column Encryption Requirement",
+      "aliases": [],
+      "entity_class": "POLICY_PROVISION",
+      "type": "mandatory_requirement",
+      "description": "Mandates AES-256 encryption for all sensitive columns stored in databases, with encryption keys maintained separately in Hardware Security Modules to prevent unauthorized access.",
+      "context": [
+        "AES-256 encryption for sensitive columns",
+        "Encryption keys stored separately (HSM)"
+      ]
+    },
+    {
+      "id": "pp_002",
+      "name": "Transparent Application-Level Encryption Implementation",
+      "aliases": [],
+      "entity_class": "POLICY_PROVISION",
+      "type": "mandatory_requirement",
+      "description": "Requires transparent encryption at the application level to ensure sensitive data is encrypted without requiring changes to application code or user workflows.",
+      "context": [
+        "Transparent encryption (application-level)"
+      ]
+    },
+    {
+      "id": "pp_003",
+      "name": "Backup Encryption Standard",
+      "aliases": [],
+      "entity_class": "POLICY_PROVISION",
+      "type": "mandatory_requirement",
+      "description": "Mandates AES-256 encryption for all backups stored to S3, with encryption keys managed through AWS KMS and tested recovery procedures to ensure data integrity.",
+      "context": [
+        "Encrypted backups to S3",
+        "AES-256 encryption standard",
+        "Keys managed in AWS KMS",
+        "Tested recovery procedures"
+      ]
+    },
+    {
+      "id": "pp_004",
+      "name": "File Storage Encryption Across Environments",
+      "aliases": [],
+      "entity_class": "POLICY_PROVISION",
+      "type": "mandatory_requirement",
+      "description": "Requires encryption of file storage in both on-premises and cloud environments, including encrypted USB and portable devices to protect data in transit and at rest.",
+      "context": [
+        "Encrypted file storage (on-premises + cloud)",
+        "Encrypted USB/portable devices"
+      ]
+    },
+    {
+      "id": "pp_005",
+      "name": "Secure Data Deletion Procedure",
+      "aliases": [],
+      "entity_class": "POLICY_PROVISION",
+      "type": "mandatory_requirement",
+      "description": "Mandates secure overwriting of deleted data using Department of Defense standards to ensure sensitive information cannot be recovered from storage media.",
+      "context": [
+        "Deletion: Secure overwriting (DoD standard)"
+      ]
+    },
+    {
+      "id": "cm_001",
+      "name": "AES-256 Database Encryption",
+      "aliases": [
+        "AES-256 Encryption"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "data_encryption",
+      "description": "Cryptographic control implementing AES-256 encryption algorithm for sensitive database columns to protect data confidentiality at rest.",
+      "context": [
+        "AES-256 encryption for sensitive columns"
+      ]
+    },
+    {
+      "id": "cm_002",
+      "name": "Hardware Security Module Key Storage",
+      "aliases": [
+        "HSM",
+        "HSM Key Management"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "access_control",
+      "description": "Secure key management control that stores encryption keys separately in Hardware Security Modules, preventing unauthorized access to encryption keys.",
+      "context": [
+        "Encryption keys stored separately (HSM)"
+      ]
+    },
+    {
+      "id": "cm_003",
+      "name": "AWS KMS Backup Key Management",
+      "aliases": [
+        "AWS KMS",
+        "KMS Key Management"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "access_control",
+      "description": "Cloud-based key management service that manages encryption keys for S3 backups, providing centralized control and audit logging of key access.",
+      "context": [
+        "Keys managed in AWS KMS"
+      ]
+    },
+    {
+      "id": "cm_004",
+      "name": "Backup Recovery Testing Procedure",
+      "aliases": [
+        "Recovery Testing",
+        "Tested Recovery Procedures"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "record_keeping",
+      "description": "Operational control requiring regular testing of backup recovery procedures to verify encrypted backups can be successfully restored and remain accessible.",
+      "context": [
+        "Tested recovery procedures"
+      ]
+    },
+    {
+      "id": "cm_005",
+      "name": "Secure Data Overwriting Control",
+      "aliases": [
+        "DoD Standard Deletion",
+        "Secure Overwriting"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "data_encryption",
+      "description": "Technical control implementing Department of Defense standard secure overwriting procedures to ensure deleted data cannot be recovered from storage media.",
+      "context": [
+        "Deletion: Secure overwriting (DoD standard)"
+      ]
+    },
+    {
+      "id": "rc_001",
+      "name": "Unauthorized Data Access",
+      "aliases": [
+        "Data Breach",
+        "Confidentiality Breach"
+      ],
+      "entity_class": "RISK_CATEGORY",
+      "type": "data_breach",
+      "description": "Risk of unauthorized access to sensitive data stored in databases, backups, or file systems due to inadequate encryption or key management controls.",
+      "context": [
+        "AES-256 encryption for sensitive columns",
+        "Encryption keys stored separately (HSM)"
+      ]
+    },
+    {
+      "id": "rc_002",
+      "name": "Data Recovery Failure",
+      "aliases": [
+        "Backup Failure",
+        "Recovery Failure"
+      ],
+      "entity_class": "RISK_CATEGORY",
+      "type": "operational_risk",
+      "description": "Risk of inability to recover encrypted backups due to key loss, corruption, or untested recovery procedures, resulting in data loss.",
+      "context": [
+        "Tested recovery procedures"
+      ]
+    },
+    {
+      "id": "rc_003",
+      "name": "Data Residue After Deletion",
+      "aliases": [
+        "Data Remnants",
+        "Incomplete Deletion"
+      ],
+      "entity_class": "RISK_CATEGORY",
+      "type": "data_breach",
+      "description": "Risk of sensitive data remaining recoverable from storage media after deletion due to inadequate overwriting procedures.",
+      "context": [
+        "Deletion: Secure overwriting (DoD standard)"
+      ]
+    }
+  ],
+  "id_map": {
+    "pol_001": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pol_001",
+    "pp_001": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_001",
+    "pp_002": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_002",
+    "pp_003": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_003",
+    "pp_004": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_004",
+    "pp_005": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_005",
+    "cm_001": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_001",
+    "cm_002": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_002",
+    "cm_003": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_003",
+    "cm_004": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_004",
+    "cm_005": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_005",
+    "rc_001": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_001",
+    "rc_002": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_002",
+    "rc_003": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_003"
+  },
+  "entities": [
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pol_001",
+      "name": "Data Encryption at Rest Policy",
+      "aliases": [
+        "At Rest Encryption",
+        "Data Protection at Rest"
+      ],
+      "entity_class": "POLICY",
+      "type": "information_security",
+      "description": "Policy governing encryption of sensitive data while stored in databases, backups, and file systems. Establishes standards for encryption algorithms, key management, and secure deletion procedures across on-premises and cloud environments.",
+      "context": [
+        "AES-256 encryption for sensitive columns",
+        "Encryption keys stored separately (HSM)",
+        "Encrypted backups to S3",
+        "Secure overwriting (DoD standard)"
+      ],
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_001",
+      "name": "Database Sensitive Column Encryption Requirement",
+      "aliases": [],
+      "entity_class": "POLICY_PROVISION",
+      "type": "mandatory_requirement",
+      "description": "Mandates AES-256 encryption for all sensitive columns stored in databases, with encryption keys maintained separately in Hardware Security Modules to prevent unauthorized access.",
+      "context": [
+        "AES-256 encryption for sensitive columns",
+        "Encryption keys stored separately (HSM)"
+      ],
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_002",
+      "name": "Transparent Application-Level Encryption Implementation",
+      "aliases": [],
+      "entity_class": "POLICY_PROVISION",
+      "type": "mandatory_requirement",
+      "description": "Requires transparent encryption at the application level to ensure sensitive data is encrypted without requiring changes to application code or user workflows.",
+      "context": [
+        "Transparent encryption (application-level)"
+      ],
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_003",
+      "name": "Backup Encryption Standard",
+      "aliases": [],
+      "entity_class": "POLICY_PROVISION",
+      "type": "mandatory_requirement",
+      "description": "Mandates AES-256 encryption for all backups stored to S3, with encryption keys managed through AWS KMS and tested recovery procedures to ensure data integrity.",
+      "context": [
+        "Encrypted backups to S3",
+        "AES-256 encryption standard",
+        "Keys managed in AWS KMS",
+        "Tested recovery procedures"
+      ],
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_004",
+      "name": "File Storage Encryption Across Environments",
+      "aliases": [],
+      "entity_class": "POLICY_PROVISION",
+      "type": "mandatory_requirement",
+      "description": "Requires encryption of file storage in both on-premises and cloud environments, including encrypted USB and portable devices to protect data in transit and at rest.",
+      "context": [
+        "Encrypted file storage (on-premises + cloud)",
+        "Encrypted USB/portable devices"
+      ],
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_005",
+      "name": "Secure Data Deletion Procedure",
+      "aliases": [],
+      "entity_class": "POLICY_PROVISION",
+      "type": "mandatory_requirement",
+      "description": "Mandates secure overwriting of deleted data using Department of Defense standards to ensure sensitive information cannot be recovered from storage media.",
+      "context": [
+        "Deletion: Secure overwriting (DoD standard)"
+      ],
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_001",
+      "name": "AES-256 Database Encryption",
+      "aliases": [
+        "AES-256 Encryption"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "data_encryption",
+      "description": "Cryptographic control implementing AES-256 encryption algorithm for sensitive database columns to protect data confidentiality at rest.",
+      "context": [
+        "AES-256 encryption for sensitive columns"
+      ],
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_002",
+      "name": "Hardware Security Module Key Storage",
+      "aliases": [
+        "HSM",
+        "HSM Key Management"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "access_control",
+      "description": "Secure key management control that stores encryption keys separately in Hardware Security Modules, preventing unauthorized access to encryption keys.",
+      "context": [
+        "Encryption keys stored separately (HSM)"
+      ],
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_003",
+      "name": "AWS KMS Backup Key Management",
+      "aliases": [
+        "AWS KMS",
+        "KMS Key Management"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "access_control",
+      "description": "Cloud-based key management service that manages encryption keys for S3 backups, providing centralized control and audit logging of key access.",
+      "context": [
+        "Keys managed in AWS KMS"
+      ],
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_004",
+      "name": "Backup Recovery Testing Procedure",
+      "aliases": [
+        "Recovery Testing",
+        "Tested Recovery Procedures"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "record_keeping",
+      "description": "Operational control requiring regular testing of backup recovery procedures to verify encrypted backups can be successfully restored and remain accessible.",
+      "context": [
+        "Tested recovery procedures"
+      ],
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_005",
+      "name": "Secure Data Overwriting Control",
+      "aliases": [
+        "DoD Standard Deletion",
+        "Secure Overwriting"
+      ],
+      "entity_class": "CONTROL_MEASURE",
+      "type": "data_encryption",
+      "description": "Technical control implementing Department of Defense standard secure overwriting procedures to ensure deleted data cannot be recovered from storage media.",
+      "context": [
+        "Deletion: Secure overwriting (DoD standard)"
+      ],
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_001",
+      "name": "Unauthorized Data Access",
+      "aliases": [
+        "Data Breach",
+        "Confidentiality Breach"
+      ],
+      "entity_class": "RISK_CATEGORY",
+      "type": "data_breach",
+      "description": "Risk of unauthorized access to sensitive data stored in databases, backups, or file systems due to inadequate encryption or key management controls.",
+      "context": [
+        "AES-256 encryption for sensitive columns",
+        "Encryption keys stored separately (HSM)"
+      ],
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_002",
+      "name": "Data Recovery Failure",
+      "aliases": [
+        "Backup Failure",
+        "Recovery Failure"
+      ],
+      "entity_class": "RISK_CATEGORY",
+      "type": "operational_risk",
+      "description": "Risk of inability to recover encrypted backups due to key loss, corruption, or untested recovery procedures, resulting in data loss.",
+      "context": [
+        "Tested recovery procedures"
+      ],
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_003",
+      "name": "Data Residue After Deletion",
+      "aliases": [
+        "Data Remnants",
+        "Incomplete Deletion"
+      ],
+      "entity_class": "RISK_CATEGORY",
+      "type": "data_breach",
+      "description": "Risk of sensitive data remaining recoverable from storage media after deletion due to inadequate overwriting procedures.",
+      "context": [
+        "Deletion: Secure overwriting (DoD standard)"
+      ],
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pol_001",
+      "name": "Data Encryption at Rest Policy",
+      "properties": {
+        "policy_domain": "data_security",
+        "scope_summary": "Encryption requirements for sensitive data at rest across databases, backups, and file storage in on-premises and cloud environments",
+        "core_policy_statement": "All sensitive data at rest must be encrypted using AES-256 with keys stored separately in hardware security modules or managed key services"
+      },
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_001",
+      "name": "Database Sensitive Column Encryption Requirement",
+      "properties": {
+        "provision_type": "mandatory",
+        "applies_to": [
+          "database",
+          "sensitive_columns"
+        ],
+        "regulatory_source": "Data Encryption at Rest Policy",
+        "linked_control": [
+          "cm_001"
+        ]
+      },
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_002",
+      "name": "Transparent Application-Level Encryption Implementation",
+      "properties": {
+        "provision_type": "mandatory",
+        "applies_to": [
+          "database_encryption"
+        ],
+        "regulatory_source": "Data Encryption at Rest Policy",
+        "linked_control": [
+          "cm_001"
+        ]
+      },
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_003",
+      "name": "Backup Encryption Standard",
+      "properties": {
+        "provision_type": "mandatory",
+        "applies_to": [
+          "backups",
+          "S3_storage"
+        ],
+        "regulatory_source": "Data Encryption at Rest Policy",
+        "linked_control": [
+          "cm_003"
+        ]
+      },
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_004",
+      "name": "File Storage Encryption Across Environments",
+      "properties": {
+        "provision_type": "mandatory",
+        "applies_to": [
+          "file_storage",
+          "on-premises",
+          "cloud",
+          "portable_devices",
+          "USB"
+        ],
+        "regulatory_source": "Data Encryption at Rest Policy",
+        "linked_control": [
+          "cm_001"
+        ]
+      },
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_005",
+      "name": "Secure Data Deletion Procedure",
+      "properties": {
+        "provision_type": "mandatory",
+        "applies_to": [
+          "data_deletion",
+          "file_storage"
+        ],
+        "regulatory_source": "Data Encryption at Rest Policy",
+        "linked_control": [
+          "cm_005"
+        ]
+      },
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_001",
+      "name": "AES-256 Database Encryption",
+      "properties": {
+        "control_type": "preventive",
+        "mandatory": true,
+        "frequency": "at_onboarding",
+        "applies_to": [
+          "rc_001"
+        ],
+        "technology_used": "AES-256"
+      },
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_002",
+      "name": "Hardware Security Module Key Storage",
+      "properties": {
+        "control_type": "preventive",
+        "mandatory": true,
+        "frequency": "continuous",
+        "performed_by": "HSM",
+        "applies_to": [
+          "rc_001"
+        ],
+        "evidence_required": "key_storage_audit_logs"
+      },
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_003",
+      "name": "AWS KMS Backup Key Management",
+      "properties": {
+        "control_type": "preventive",
+        "mandatory": true,
+        "frequency": "continuous",
+        "performed_by": "AWS KMS",
+        "applies_to": [
+          "rc_001",
+          "rc_002"
+        ],
+        "technology_used": "AWS KMS"
+      },
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_004",
+      "name": "Backup Recovery Testing Procedure",
+      "properties": {
+        "control_type": "detective",
+        "mandatory": true,
+        "frequency": "periodic",
+        "applies_to": [
+          "rc_002"
+        ],
+        "evidence_required": "recovery_test_results"
+      },
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_005",
+      "name": "Secure Data Overwriting Control",
+      "properties": {
+        "control_type": "corrective",
+        "mandatory": true,
+        "frequency": "at_deletion",
+        "applies_to": [
+          "rc_003"
+        ],
+        "technology_used": "DoD_standard_overwriting"
+      },
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_001",
+      "name": "Unauthorized Data Access",
+      "properties": {
+        "risk_definition": "Exposure of sensitive data at rest due to unencrypted storage or compromised encryption keys",
+        "risk_level": "critical",
+        "required_response": "Implement AES-256 encryption with HSM or KMS key management"
+      },
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_002",
+      "name": "Data Recovery Failure",
+      "properties": {
+        "risk_definition": "Inability to recover encrypted backups due to key loss or corruption",
+        "risk_level": "high",
+        "required_response": "Conduct tested recovery procedures and maintain key redundancy in AWS KMS"
+      },
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_003",
+      "name": "Data Residue After Deletion",
+      "properties": {
+        "risk_definition": "Sensitive data remaining recoverable after deletion due to inadequate overwriting",
+        "risk_level": "high",
+        "required_response": "Apply DoD standard secure overwriting procedures"
+      },
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pol_001",
+      "source_name": "Data Encryption at Rest Policy",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_001",
+      "target_name": "Database Sensitive Column Encryption Requirement",
+      "rel_type": "contains",
+      "description": "Policy establishes the requirement for AES-256 encryption of sensitive database columns",
+      "properties": {
+        "scope": "database",
+        "encryption_standard": "AES-256"
+      },
+      "context": "AES-256 encryption for sensitive columns",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pol_001",
+      "source_name": "Data Encryption at Rest Policy",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_002",
+      "target_name": "Transparent Application-Level Encryption Implementation",
+      "rel_type": "contains",
+      "description": "Policy establishes transparent encryption at the application level",
+      "properties": {
+        "encryption_layer": "application-level",
+        "transparency": true
+      },
+      "context": "Transparent encryption (application-level)",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pol_001",
+      "source_name": "Data Encryption at Rest Policy",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_003",
+      "target_name": "Backup Encryption Standard",
+      "rel_type": "contains",
+      "description": "Policy establishes AES-256 encryption standard for backup data",
+      "properties": {
+        "scope": "backups",
+        "encryption_standard": "AES-256",
+        "target_storage": "S3"
+      },
+      "context": "Encrypted backups to S3, AES-256 encryption standard",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pol_001",
+      "source_name": "Data Encryption at Rest Policy",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_004",
+      "target_name": "File Storage Encryption Across Environments",
+      "rel_type": "contains",
+      "description": "Policy mandates encrypted file storage across on-premises and cloud environments",
+      "properties": {
+        "scope": "file storage",
+        "environments": [
+          "on-premises",
+          "cloud"
+        ],
+        "includes_portable_devices": true
+      },
+      "context": "Encrypted file storage (on-premises + cloud), Encrypted USB/portable devices",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pol_001",
+      "source_name": "Data Encryption at Rest Policy",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_005",
+      "target_name": "Secure Data Deletion Procedure",
+      "rel_type": "contains",
+      "description": "Policy establishes secure data deletion procedures using DoD standard overwriting",
+      "properties": {
+        "deletion_method": "secure overwriting",
+        "standard": "DoD"
+      },
+      "context": "Deletion: Secure overwriting (DoD standard)",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_001",
+      "source_name": "Database Sensitive Column Encryption Requirement",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_001",
+      "target_name": "AES-256 Database Encryption",
+      "rel_type": "implemented_by",
+      "description": "Database encryption requirement is implemented through AES-256 encryption control",
+      "properties": {
+        "encryption_algorithm": "AES-256",
+        "scope": "sensitive columns"
+      },
+      "context": "AES-256 encryption for sensitive columns",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_001",
+      "source_name": "Database Sensitive Column Encryption Requirement",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_002",
+      "target_name": "Hardware Security Module Key Storage",
+      "rel_type": "requires",
+      "description": "Database encryption requirement mandates separate key storage in Hardware Security Module",
+      "properties": {
+        "key_storage_location": "HSM",
+        "separation": "keys stored separately"
+      },
+      "context": "Encryption keys stored separately (HSM)",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_002",
+      "source_name": "Transparent Application-Level Encryption Implementation",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_001",
+      "target_name": "AES-256 Database Encryption",
+      "rel_type": "implemented_by",
+      "description": "Application-level transparent encryption is implemented through AES-256 database encryption",
+      "properties": {
+        "encryption_layer": "application-level",
+        "transparency": true
+      },
+      "context": "Transparent encryption (application-level)",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_003",
+      "source_name": "Backup Encryption Standard",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_003",
+      "target_name": "AWS KMS Backup Key Management",
+      "rel_type": "implemented_by",
+      "description": "Backup encryption standard is implemented through AWS KMS key management",
+      "properties": {
+        "key_management_service": "AWS KMS",
+        "scope": "backup keys"
+      },
+      "context": "Keys managed in AWS KMS",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_003",
+      "source_name": "Backup Encryption Standard",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_004",
+      "target_name": "Backup Recovery Testing Procedure",
+      "rel_type": "requires",
+      "description": "Backup encryption standard requires tested recovery procedures",
+      "properties": {
+        "requirement": "recovery testing",
+        "frequency": "tested"
+      },
+      "context": "Tested recovery procedures",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_005",
+      "source_name": "Secure Data Deletion Procedure",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_005",
+      "target_name": "Secure Data Overwriting Control",
+      "rel_type": "implemented_by",
+      "description": "Secure data deletion procedure is implemented through secure data overwriting control",
+      "properties": {
+        "deletion_method": "secure overwriting",
+        "standard": "DoD"
+      },
+      "context": "Deletion: Secure overwriting (DoD standard)",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_001",
+      "source_name": "Unauthorized Data Access",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_001",
+      "target_name": "AES-256 Database Encryption",
+      "rel_type": "mitigated_by",
+      "description": "Unauthorized data access risk is mitigated by AES-256 database encryption",
+      "properties": {
+        "risk_mitigation": "encryption prevents unauthorized access",
+        "encryption_standard": "AES-256"
+      },
+      "context": "AES-256 encryption for sensitive columns",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_001",
+      "source_name": "Unauthorized Data Access",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_002",
+      "target_name": "Hardware Security Module Key Storage",
+      "rel_type": "mitigated_by",
+      "description": "Unauthorized data access risk is mitigated by secure key storage in HSM",
+      "properties": {
+        "risk_mitigation": "separate key storage prevents unauthorized decryption",
+        "storage_location": "HSM"
+      },
+      "context": "Encryption keys stored separately (HSM)",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_002",
+      "source_name": "Data Recovery Failure",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_004",
+      "target_name": "Backup Recovery Testing Procedure",
+      "rel_type": "mitigated_by",
+      "description": "Data recovery failure risk is mitigated by tested backup recovery procedures",
+      "properties": {
+        "risk_mitigation": "testing ensures recovery capability",
+        "control_type": "recovery testing"
+      },
+      "context": "Tested recovery procedures",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_003",
+      "source_name": "Data Residue After Deletion",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_005",
+      "target_name": "Secure Data Overwriting Control",
+      "rel_type": "mitigated_by",
+      "description": "Data residue after deletion risk is mitigated by secure data overwriting control",
+      "properties": {
+        "risk_mitigation": "DoD standard overwriting prevents data residue",
+        "standard": "DoD"
+      },
+      "context": "Deletion: Secure overwriting (DoD standard)",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pol_001",
+      "source_name": "Data Encryption at Rest Policy",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_001",
+      "target_name": "Unauthorized Data Access",
+      "rel_type": "addresses",
+      "description": "Data Encryption at Rest Policy addresses the risk of unauthorized data access",
+      "properties": {
+        "risk_addressed": "unauthorized access to encrypted data"
+      },
+      "context": "AES-256 encryption for sensitive columns, Encryption keys stored separately (HSM)",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pol_001",
+      "source_name": "Data Encryption at Rest Policy",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_002",
+      "target_name": "Data Recovery Failure",
+      "rel_type": "addresses",
+      "description": "Data Encryption at Rest Policy addresses the risk of data recovery failure through backup procedures",
+      "properties": {
+        "risk_addressed": "backup recovery capability"
+      },
+      "context": "Tested recovery procedures",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pol_001",
+      "source_name": "Data Encryption at Rest Policy",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_003",
+      "target_name": "Data Residue After Deletion",
+      "rel_type": "addresses",
+      "description": "Data Encryption at Rest Policy addresses the risk of data residue after deletion",
+      "properties": {
+        "risk_addressed": "secure deletion prevents data residue"
+      },
+      "context": "Deletion: Secure overwriting (DoD standard)",
+      "bidirectional": false,
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pol_001",
+      "source_name": "Data Encryption at Rest Policy",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "target_name": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_001",
+      "source_name": "Database Sensitive Column Encryption Requirement",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "target_name": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_002",
+      "source_name": "Transparent Application-Level Encryption Implementation",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "target_name": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_003",
+      "source_name": "Backup Encryption Standard",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "target_name": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_004",
+      "source_name": "File Storage Encryption Across Environments",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "target_name": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_pp_005",
+      "source_name": "Secure Data Deletion Procedure",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "target_name": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_001",
+      "source_name": "AES-256 Database Encryption",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "target_name": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_002",
+      "source_name": "Hardware Security Module Key Storage",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "target_name": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_003",
+      "source_name": "AWS KMS Backup Key Management",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "target_name": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_004",
+      "source_name": "Backup Recovery Testing Procedure",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "target_name": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_cm_005",
+      "source_name": "Secure Data Overwriting Control",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "target_name": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_001",
+      "source_name": "Unauthorized Data Access",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "target_name": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_002",
+      "source_name": "Data Recovery Failure",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "target_name": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    },
+    {
+      "source_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011_rc_003",
+      "source_name": "Data Residue After Deletion",
+      "target_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "target_name": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07307-a828-77ee-9a2d-2122440cd9a1_011",
+      "doc_id": "01a07307-a828-77ee-9a2d-2122440cd9a1",
+      "_domain": "banking.policy"
+    }
+  ]
+}

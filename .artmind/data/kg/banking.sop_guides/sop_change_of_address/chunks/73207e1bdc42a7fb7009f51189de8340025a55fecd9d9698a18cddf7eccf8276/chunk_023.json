@@ -1,0 +1,1051 @@
+{
+  "chunk_seq": 23,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "### If Proof of Address Cannot Be Obtained  \n**Escalation Process:**\n1. Don't block address change indefinitely\n2. Process change with flag in system: \"Proof of address pending\"\n3. Allow customer to use new address for communications\n4. Set deadline (30 days) for document submission\n5. Restrict account (e.g., limit transactions) if document not provided by deadline\n6. Escalate to manager at 30 days  \n---",
+  "name": "Chunk 23/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_022",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_024",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Address Change Process with Proof of Address Exception Handling",
+      "aliases": [
+        "Address Change Escalation",
+        "Proof of Address Exception"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "An operational procedure for processing customer address changes when proof of address documentation cannot be immediately obtained. The process allows the address change to proceed with a system flag while establishing a 30-day deadline for document submission, with account restrictions and manager escalation triggered if the deadline is not met.",
+      "context": [
+        "Don't block address change indefinitely",
+        "Process change with flag in system: 'Proof of address pending'",
+        "Set deadline (30 days) for document submission",
+        "Escalate to manager at 30 days"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Process Address Change with Pending Flag",
+      "aliases": [
+        "Flag Address Change",
+        "System Recording with Pending Status"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "The step where the customer's address change is recorded in the system with a 'Proof of address pending' flag, allowing the change to proceed without blocking the customer while documentation is outstanding.",
+      "context": [
+        "Process change with flag in system: 'Proof of address pending'"
+      ]
+    },
+    {
+      "id": "pstep_002",
+      "name": "Allow Customer Communication Using New Address",
+      "aliases": [
+        "Enable New Address for Communications"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "The step where the customer is permitted to use their new address for all bank communications and correspondence, despite the proof of address documentation still being pending.",
+      "context": [
+        "Allow customer to use new address for communications"
+      ]
+    },
+    {
+      "id": "pstep_003",
+      "name": "Set 30-Day Document Submission Deadline",
+      "aliases": [
+        "Establish Proof of Address Deadline"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The step where a 30-day deadline is established for the customer to submit the required proof of address documentation to complete the address change verification.",
+      "context": [
+        "Set deadline (30 days) for document submission"
+      ]
+    },
+    {
+      "id": "pstep_004",
+      "name": "Restrict Account Transactions if Deadline Not Met",
+      "aliases": [
+        "Apply Transaction Restrictions",
+        "Account Restriction on Deadline Breach"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "The step where account restrictions (such as transaction limits) are applied if the customer fails to provide proof of address documentation by the 30-day deadline.",
+      "context": [
+        "Restrict account (e.g., limit transactions) if document not provided by deadline"
+      ]
+    },
+    {
+      "id": "pstep_005",
+      "name": "Escalate to Manager at 30-Day Deadline",
+      "aliases": [
+        "Manager Escalation on Deadline",
+        "Escalate Unresolved Address Change"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation_procedure",
+      "description": "The step where the unresolved address change case is escalated to a manager for review and decision-making if proof of address has not been received within the 30-day deadline.",
+      "context": [
+        "Escalate to manager at 30 days"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Proof of Address Document Received by Deadline",
+      "aliases": [
+        "Document Submission Gate",
+        "30-Day Deadline Check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "A branching decision point at the 30-day deadline that determines whether the customer has submitted the required proof of address documentation. If yes, the address change is completed; if no, account restrictions are applied and the case is escalated to management.",
+      "context": [
+        "Set deadline (30 days) for document submission",
+        "Restrict account (e.g., limit transactions) if document not provided by deadline",
+        "Escalate to manager at 30 days"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Branch Manager",
+      "aliases": [
+        "Manager",
+        "Branch Management"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "branch_manager",
+      "description": "The manager responsible for reviewing and making decisions on address change cases that have not been resolved within the 30-day deadline and have been escalated from the initial processing step.",
+      "context": [
+        "Escalate to manager at 30 days"
+      ]
+    },
+    {
+      "id": "ra_002",
+      "name": "Customer Service Operations Staff",
+      "aliases": [
+        "Operations Staff",
+        "Address Change Processor"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The operational staff responsible for processing the address change, recording it in the system with the pending flag, and managing the 30-day deadline tracking.",
+      "context": [
+        "Process change with flag in system: 'Proof of address pending'",
+        "Set deadline (30 days) for document submission"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "Proof of Address",
+      "aliases": [
+        "Address Verification Document",
+        "Address Documentation"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "proof_of_address",
+      "description": "The required documentation that customers must provide to verify their new address. The process allows a 30-day grace period for submission before account restrictions are applied.",
+      "context": [
+        "If Proof of Address Cannot Be Obtained",
+        "Set deadline (30 days) for document submission",
+        "Restrict account (e.g., limit transactions) if document not provided by deadline"
+      ]
+    },
+    {
+      "id": "addr_002",
+      "name": "Customer New Address",
+      "aliases": [
+        "Updated Address",
+        "Address Change"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The customer's new address that is being registered in the system and flagged as pending verification. The customer is permitted to use this address for communications while proof of address documentation is being obtained.",
+      "context": [
+        "Allow customer to use new address for communications",
+        "Process change with flag in system: 'Proof of address pending'"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder",
+        "Individual Customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual customer initiating an address change who may be unable to immediately provide proof of address documentation. The customer is allowed to use their new address for communications during the 30-day verification period.",
+      "context": [
+        "Allow customer to use new address for communications",
+        "Set deadline (30 days) for document submission"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account",
+        "Customer Banking Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "The customer's account that is subject to transaction restrictions if proof of address documentation is not provided within the 30-day deadline. The account address is being updated through this process.",
+      "context": [
+        "Restrict account (e.g., limit transactions) if document not provided by deadline",
+        "Allow customer to use new address for communications"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07400-ba86-72f1-8b22-d07b32649491_023_proc_001",
+    "pstep_001": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_001",
+    "pstep_002": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_002",
+    "pstep_003": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_003",
+    "pstep_004": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_004",
+    "pstep_005": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_005",
+    "dp_001": "01a07400-ba86-72f1-8b22-d07b32649491_023_dp_001",
+    "ra_001": "01a07400-ba86-72f1-8b22-d07b32649491_023_ra_001",
+    "ra_002": "01a07400-ba86-72f1-8b22-d07b32649491_023_ra_002",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_023_addr_001",
+    "addr_002": "01a07400-ba86-72f1-8b22-d07b32649491_023_addr_002",
+    "cust_001": "01a07400-ba86-72f1-8b22-d07b32649491_023_cust_001",
+    "acc_001": "01a07400-ba86-72f1-8b22-d07b32649491_023_acc_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_proc_001",
+      "name": "Address Change Process with Proof of Address Exception Handling",
+      "aliases": [
+        "Address Change Escalation",
+        "Proof of Address Exception"
+      ],
+      "entity_class": "PROCESS",
+      "type": "change_of_address",
+      "description": "An operational procedure for processing customer address changes when proof of address documentation cannot be immediately obtained. The process allows the address change to proceed with a system flag while establishing a 30-day deadline for document submission, with account restrictions and manager escalation triggered if the deadline is not met.",
+      "context": [
+        "Don't block address change indefinitely",
+        "Process change with flag in system: 'Proof of address pending'",
+        "Set deadline (30 days) for document submission",
+        "Escalate to manager at 30 days"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_001",
+      "name": "Process Address Change with Pending Flag",
+      "aliases": [
+        "Flag Address Change",
+        "System Recording with Pending Status"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "system_recording",
+      "description": "The step where the customer's address change is recorded in the system with a 'Proof of address pending' flag, allowing the change to proceed without blocking the customer while documentation is outstanding.",
+      "context": [
+        "Process change with flag in system: 'Proof of address pending'"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_002",
+      "name": "Allow Customer Communication Using New Address",
+      "aliases": [
+        "Enable New Address for Communications"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "notification",
+      "description": "The step where the customer is permitted to use their new address for all bank communications and correspondence, despite the proof of address documentation still being pending.",
+      "context": [
+        "Allow customer to use new address for communications"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_003",
+      "name": "Set 30-Day Document Submission Deadline",
+      "aliases": [
+        "Establish Proof of Address Deadline"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The step where a 30-day deadline is established for the customer to submit the required proof of address documentation to complete the address change verification.",
+      "context": [
+        "Set deadline (30 days) for document submission"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_004",
+      "name": "Restrict Account Transactions if Deadline Not Met",
+      "aliases": [
+        "Apply Transaction Restrictions",
+        "Account Restriction on Deadline Breach"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "exception_handling",
+      "description": "The step where account restrictions (such as transaction limits) are applied if the customer fails to provide proof of address documentation by the 30-day deadline.",
+      "context": [
+        "Restrict account (e.g., limit transactions) if document not provided by deadline"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_005",
+      "name": "Escalate to Manager at 30-Day Deadline",
+      "aliases": [
+        "Manager Escalation on Deadline",
+        "Escalate Unresolved Address Change"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "escalation_procedure",
+      "description": "The step where the unresolved address change case is escalated to a manager for review and decision-making if proof of address has not been received within the 30-day deadline.",
+      "context": [
+        "Escalate to manager at 30 days"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_dp_001",
+      "name": "Proof of Address Document Received by Deadline",
+      "aliases": [
+        "Document Submission Gate",
+        "30-Day Deadline Check"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "pass_fail",
+      "description": "A branching decision point at the 30-day deadline that determines whether the customer has submitted the required proof of address documentation. If yes, the address change is completed; if no, account restrictions are applied and the case is escalated to management.",
+      "context": [
+        "Set deadline (30 days) for document submission",
+        "Restrict account (e.g., limit transactions) if document not provided by deadline",
+        "Escalate to manager at 30 days"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_ra_001",
+      "name": "Branch Manager",
+      "aliases": [
+        "Manager",
+        "Branch Management"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "branch_manager",
+      "description": "The manager responsible for reviewing and making decisions on address change cases that have not been resolved within the 30-day deadline and have been escalated from the initial processing step.",
+      "context": [
+        "Escalate to manager at 30 days"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_ra_002",
+      "name": "Customer Service Operations Staff",
+      "aliases": [
+        "Operations Staff",
+        "Address Change Processor"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "operations_staff",
+      "description": "The operational staff responsible for processing the address change, recording it in the system with the pending flag, and managing the 30-day deadline tracking.",
+      "context": [
+        "Process change with flag in system: 'Proof of address pending'",
+        "Set deadline (30 days) for document submission"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_addr_001",
+      "name": "Proof of Address",
+      "aliases": [
+        "Address Verification Document",
+        "Address Documentation"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "proof_of_address",
+      "description": "The required documentation that customers must provide to verify their new address. The process allows a 30-day grace period for submission before account restrictions are applied.",
+      "context": [
+        "If Proof of Address Cannot Be Obtained",
+        "Set deadline (30 days) for document submission",
+        "Restrict account (e.g., limit transactions) if document not provided by deadline"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_addr_002",
+      "name": "Customer New Address",
+      "aliases": [
+        "Updated Address",
+        "Address Change"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "The customer's new address that is being registered in the system and flagged as pending verification. The customer is permitted to use this address for communications while proof of address documentation is being obtained.",
+      "context": [
+        "Allow customer to use new address for communications",
+        "Process change with flag in system: 'Proof of address pending'"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Account Holder",
+        "Individual Customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual customer initiating an address change who may be unable to immediately provide proof of address documentation. The customer is allowed to use their new address for communications during the 30-day verification period.",
+      "context": [
+        "Allow customer to use new address for communications",
+        "Set deadline (30 days) for document submission"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "Account",
+        "Customer Banking Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "The customer's account that is subject to transaction restrictions if proof of address documentation is not provided within the 30-day deadline. The account address is being updated through this process.",
+      "context": [
+        "Restrict account (e.g., limit transactions) if document not provided by deadline",
+        "Allow customer to use new address for communications"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_proc_001",
+      "name": "Address Change Process with Proof of Address Exception Handling",
+      "properties": {
+        "purpose": "Process address changes when proof of address documentation cannot be immediately obtained, while maintaining compliance through escalation and transaction restrictions",
+        "scope": "Customer address changes where proof of address is pending",
+        "channels": [
+          "branch"
+        ],
+        "owner": "Branch Manager",
+        "departments_involved": [
+          "Branch Operations",
+          "Customer Service Operations"
+        ],
+        "timeline_sla": "30 days for document submission",
+        "trigger": "Customer requests address change but cannot provide proof of address documentation",
+        "outcome_success": "Address updated in system with pending flag; customer can use new address for communications; proof of address received within 30 days",
+        "outcome_failure": "Proof of address not received within 30 days; account transactions restricted; escalation to manager"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_001",
+      "name": "Process Address Change with Pending Flag",
+      "properties": {
+        "step_number": 1,
+        "actor": "Customer Service Operations Staff",
+        "input": "Customer address change request; customer unable to provide proof of address",
+        "output": "Address updated in system with 'Proof of address pending' flag",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Customer account management system"
+        ],
+        "failure_path": "Address change not processed; escalate to manager for guidance"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_002",
+      "name": "Allow Customer Communication Using New Address",
+      "properties": {
+        "step_number": 2,
+        "actor": "Customer Service Operations Staff",
+        "input": "Updated address in system with pending flag",
+        "output": "Customer can receive communications at new address",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Customer account management system",
+          "Communications system"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_003",
+      "name": "Set 30-Day Document Submission Deadline",
+      "properties": {
+        "step_number": 3,
+        "actor": "Customer Service Operations Staff",
+        "input": "Address change with pending flag",
+        "output": "30-day deadline recorded in system; customer notified of deadline",
+        "estimated_duration": "1 business day",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Customer account management system"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_004",
+      "name": "Restrict Account Transactions if Deadline Not Met",
+      "properties": {
+        "step_number": 4,
+        "actor": "Customer Service Operations Staff",
+        "input": "30-day deadline reached; proof of address not received",
+        "output": "Account transaction restrictions applied",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Customer account management system"
+        ],
+        "failure_path": "Escalate to manager for further action"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_005",
+      "name": "Escalate to Manager at 30-Day Deadline",
+      "properties": {
+        "step_number": 5,
+        "actor": "Branch Manager",
+        "input": "Account with pending address; 30-day deadline reached; proof of address not received",
+        "output": "Manager review and decision on account status",
+        "channel": "branch",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Customer account management system"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_dp_001",
+      "name": "Proof of Address Document Received by Deadline",
+      "properties": {
+        "decision_question": "Has the customer submitted acceptable proof of address documentation within 30 days?",
+        "criteria": "Valid proof of address document received and verified before 30-day deadline expires",
+        "decision_maker": "Customer Service Operations Staff",
+        "path_yes": "Remove pending flag; finalize address change; lift transaction restrictions",
+        "path_no": "Escalate to Branch Manager; apply transaction restrictions; consider account freeze or closure"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_ra_001",
+      "name": "Branch Manager",
+      "properties": {
+        "role_type": "human",
+        "department": "Branch Operations",
+        "authority_level": "escalation and exception handling",
+        "channels": [
+          "branch",
+          "system"
+        ],
+        "response_time_sla": "At 30-day deadline"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_ra_002",
+      "name": "Customer Service Operations Staff",
+      "properties": {
+        "role_type": "human",
+        "department": "Customer Service Operations",
+        "authority_level": "process execution and system updates",
+        "channels": [
+          "system",
+          "branch"
+        ],
+        "response_time_sla": "1 business day"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_addr_001",
+      "name": "Proof of Address",
+      "properties": {
+        "collection_steps": [
+          "Customer submits proof of address documentation within 30-day deadline"
+        ],
+        "verification_steps": [
+          "Verify document authenticity and currency"
+        ],
+        "recording_system": "Customer account management system",
+        "expiry_check": "yes"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_addr_002",
+      "name": "Customer New Address",
+      "properties": {
+        "collection_steps": [
+          "Customer provides new address during address change request"
+        ],
+        "recording_system": "Customer account management system",
+        "update_process": "Address updated with 'Proof of address pending' flag; customer can use for communications immediately; flag removed upon receipt of proof of address"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "Initiates address change request; subject to 30-day document submission deadline"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_023_acc_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_state": "active with pending address verification",
+        "closure_or_freeze_conditions": "Transaction restrictions applied if proof of address not received within 30 days; potential closure or freeze after manager escalation"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_proc_001",
+      "source_name": "Address Change Process with Proof of Address Exception Handling",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_001",
+      "target_name": "Process Address Change with Pending Flag",
+      "rel_type": "starts_with",
+      "description": "The address change process begins with processing the address change and marking it with a pending flag in the system",
+      "properties": {
+        "sequence_position": 1,
+        "flag_status": "Proof of address pending"
+      },
+      "context": "Process change with flag in system: 'Proof of address pending'",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_001",
+      "source_name": "Process Address Change with Pending Flag",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_002",
+      "target_name": "Allow Customer Communication Using New Address",
+      "rel_type": "followed_by",
+      "description": "After processing the address change with pending flag, the system allows the customer to use the new address for communications",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Allow customer to use new address for communications",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_002",
+      "source_name": "Allow Customer Communication Using New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_003",
+      "target_name": "Set 30-Day Document Submission Deadline",
+      "rel_type": "followed_by",
+      "description": "After allowing customer communication with the new address, a 30-day deadline is set for proof of address document submission",
+      "properties": {
+        "sequence_position": 3,
+        "deadline_days": 30
+      },
+      "context": "Set deadline (30 days) for document submission",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_003",
+      "source_name": "Set 30-Day Document Submission Deadline",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_dp_001",
+      "target_name": "Proof of Address Document Received by Deadline",
+      "rel_type": "leads_to",
+      "description": "The 30-day deadline setting leads to a decision point evaluating whether proof of address was received by the deadline",
+      "properties": {
+        "deadline_days": 30
+      },
+      "context": "Set deadline (30 days) for document submission",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_dp_001",
+      "source_name": "Proof of Address Document Received by Deadline",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_004",
+      "target_name": "Restrict Account Transactions if Deadline Not Met",
+      "rel_type": "routes_to_on_fail",
+      "description": "If proof of address is not received by the deadline, the decision routes to account transaction restrictions",
+      "properties": {
+        "condition": "document_not_received",
+        "action": "restrict_transactions"
+      },
+      "context": "Restrict account (e.g., limit transactions) if document not provided by deadline",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_004",
+      "source_name": "Restrict Account Transactions if Deadline Not Met",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_005",
+      "target_name": "Escalate to Manager at 30-Day Deadline",
+      "rel_type": "followed_by",
+      "description": "After restricting account transactions, the case is escalated to a manager at the 30-day deadline",
+      "properties": {
+        "sequence_position": 5,
+        "escalation_trigger": "deadline_reached"
+      },
+      "context": "Escalate to manager at 30 days",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_005",
+      "source_name": "Escalate to Manager at 30-Day Deadline",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_ra_001",
+      "target_name": "Branch Manager",
+      "rel_type": "escalated_to",
+      "description": "The escalation at the 30-day deadline is routed to the Branch Manager for handling",
+      "properties": {
+        "escalation_trigger": "deadline_reached",
+        "deadline_days": 30
+      },
+      "context": "Escalate to manager at 30 days",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_001",
+      "source_name": "Process Address Change with Pending Flag",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_addr_002",
+      "target_name": "Customer New Address",
+      "rel_type": "updates",
+      "description": "Processing the address change updates the customer's new address in the system with a pending flag",
+      "properties": {
+        "flag_status": "Proof of address pending"
+      },
+      "context": "Process change with flag in system: 'Proof of address pending'",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_002",
+      "source_name": "Allow Customer Communication Using New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_cust_001",
+      "target_name": "Customer",
+      "rel_type": "notifies",
+      "description": "The system allows the customer to use the new address for communications",
+      "properties": {
+        "communication_channel": "new_address"
+      },
+      "context": "Allow customer to use new address for communications",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_003",
+      "source_name": "Set 30-Day Document Submission Deadline",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_cust_001",
+      "target_name": "Customer",
+      "rel_type": "notifies",
+      "description": "The customer is notified of the 30-day deadline for proof of address document submission",
+      "properties": {
+        "deadline_days": 30,
+        "document_required": "Proof of Address"
+      },
+      "context": "Set deadline (30 days) for document submission",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_004",
+      "source_name": "Restrict Account Transactions if Deadline Not Met",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "freezes",
+      "description": "If the deadline is not met, the account is restricted by limiting transactions",
+      "properties": {
+        "restriction_type": "transaction_limit",
+        "trigger": "deadline_not_met"
+      },
+      "context": "Restrict account (e.g., limit transactions) if document not provided by deadline",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_proc_001",
+      "source_name": "Address Change Process with Proof of Address Exception Handling",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_cust_001",
+      "target_name": "Customer",
+      "rel_type": "operates_on",
+      "description": "The address change process operates on the customer's account and address information",
+      "properties": {
+        "process_type": "address_change_with_exception_handling"
+      },
+      "context": "If Proof of Address Cannot Be Obtained - Escalation Process",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_proc_001",
+      "source_name": "Address Change Process with Proof of Address Exception Handling",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "modifies",
+      "description": "The address change process modifies the customer account with the new address and pending flag",
+      "properties": {
+        "modification_type": "address_update_with_pending_flag"
+      },
+      "context": "Process change with flag in system: 'Proof of address pending'",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_003",
+      "source_name": "Set 30-Day Document Submission Deadline",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_addr_001",
+      "target_name": "Proof of Address",
+      "rel_type": "collects",
+      "description": "The deadline-setting step initiates collection of proof of address documentation within 30 days",
+      "properties": {
+        "deadline_days": 30,
+        "document_type": "Proof of Address"
+      },
+      "context": "Set deadline (30 days) for document submission",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_ra_002",
+      "source_name": "Customer Service Operations Staff",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_001",
+      "target_name": "Process Address Change with Pending Flag",
+      "rel_type": "performed_by",
+      "description": "Customer Service Operations Staff perform the initial address change processing with pending flag",
+      "properties": {
+        "role_responsibility": "process_address_change"
+      },
+      "context": "Process change with flag in system: 'Proof of address pending'",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_ra_001",
+      "source_name": "Branch Manager",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_005",
+      "target_name": "Escalate to Manager at 30-Day Deadline",
+      "rel_type": "handles",
+      "description": "The Branch Manager handles the escalation at the 30-day deadline",
+      "properties": {
+        "escalation_level": "manager",
+        "trigger": "deadline_reached"
+      },
+      "context": "Escalate to manager at 30 days",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_proc_001",
+      "source_name": "Address Change Process with Proof of Address Exception Handling",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_001",
+      "source_name": "Process Address Change with Pending Flag",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_002",
+      "source_name": "Allow Customer Communication Using New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_003",
+      "source_name": "Set 30-Day Document Submission Deadline",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_004",
+      "source_name": "Restrict Account Transactions if Deadline Not Met",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_pstep_005",
+      "source_name": "Escalate to Manager at 30-Day Deadline",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_dp_001",
+      "source_name": "Proof of Address Document Received by Deadline",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_ra_001",
+      "source_name": "Branch Manager",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_ra_002",
+      "source_name": "Customer Service Operations Staff",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_addr_001",
+      "source_name": "Proof of Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_addr_002",
+      "source_name": "Customer New Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_023_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_023",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

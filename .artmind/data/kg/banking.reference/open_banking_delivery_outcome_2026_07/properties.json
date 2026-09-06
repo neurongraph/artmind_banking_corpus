@@ -1,0 +1,229 @@
+[
+  {
+    "id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001_prd_001",
+    "name": "Open Banking API",
+    "properties": {
+      "product_type": "API",
+      "regulatory_reference": "FCA-OP-2026-01",
+      "core_delivery_date": "2026-06-30",
+      "core_delivery_status": "complete",
+      "data_scope": [
+        "account",
+        "transaction",
+        "standing_order",
+        "direct_debit_mandate"
+      ],
+      "authentication_method": "OAuth 2.0",
+      "consent_tracking": [
+        "scope",
+        "expiry",
+        "revocation"
+      ],
+      "api_access_data_retention": "90 days",
+      "known_exception": "Legacy Direct Debit Mandate Data Completeness Issue"
+    },
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae"
+  },
+  {
+    "id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001_inc_001",
+    "name": "Legacy Direct Debit Mandate Data Completeness Issue",
+    "properties": {
+      "category": "Data Completeness",
+      "affected_entity_type": "Direct Debit Mandate",
+      "affected_entity_count": 37,
+      "affected_entity_status": "inactive",
+      "missing_data_field": "historical cancellation timestamp",
+      "data_returned": [
+        "identifier",
+        "status"
+      ],
+      "detection_date": "2026-06-30",
+      "regulatory_reference": "FCA-OP-2026-01",
+      "primary_response_team": "Chief Technology Officer",
+      "escalation_contact": "Board Risk Committee"
+    },
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae"
+  },
+  {
+    "id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001_sev_001",
+    "name": "Limited Exception Status",
+    "properties": {
+      "severity_classification": "limited exception",
+      "affected_scope": "37 legacy inactive direct debit mandates",
+      "remediation_status": "under remediation",
+      "regulatory_notification_required": true,
+      "board_escalation_required": true,
+      "reporting_deadline": "September 2026"
+    },
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae"
+  },
+  {
+    "id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001_act_001",
+    "name": "Manual Timestamp Provision for Legacy Mandates",
+    "properties": {
+      "action_phase": "containment",
+      "actor": "Support",
+      "timeline": "within one business day",
+      "mandatory_for_severities": [
+        "Limited Exception Status"
+      ],
+      "output_or_artifact": "historical cancellation timestamp",
+      "affected_entity_count": 37
+    },
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae"
+  },
+  {
+    "id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001_act_002",
+    "name": "Legacy Mandate System Migration",
+    "properties": {
+      "action_phase": "recovery",
+      "actor": "Chief Technology Officer",
+      "timeline": "by 2026-08-15",
+      "mandatory_for_severities": [
+        "Limited Exception Status"
+      ],
+      "objective": "complete migration of legacy direct debit mandate system",
+      "affected_entity_count": 37
+    },
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae"
+  },
+  {
+    "id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001_act_003",
+    "name": "Exception Closure Report to Board Risk Committee",
+    "properties": {
+      "action_phase": "post_incident",
+      "actor": "Chief Technology Officer",
+      "timeline": "September 2026",
+      "mandatory_for_severities": [
+        "Limited Exception Status"
+      ],
+      "escalation_trigger": "completion of legacy mandate system migration",
+      "recipient": "Board Risk Committee"
+    },
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae"
+  },
+  {
+    "id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001_notif_001",
+    "name": "Board Risk Committee",
+    "properties": {
+      "contact_name_or_role": "Board Risk Committee",
+      "trigger_condition": "exception closure report on legacy mandate data completeness issue",
+      "notification_timeframe": "September 2026",
+      "required_information": [
+        "exception status",
+        "remediation completion",
+        "migration outcome"
+      ],
+      "jurisdiction": "UK"
+    },
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae"
+  },
+  {
+    "id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001_notif_002",
+    "name": "Compliance Function",
+    "properties": {
+      "contact_name_or_role": "Compliance Function",
+      "trigger_condition": "exception logging for legacy direct debit mandate data completeness",
+      "notification_date": "2026-06-30",
+      "required_information": [
+        "exception details",
+        "affected mandate count",
+        "remediation plan"
+      ]
+    },
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae"
+  },
+  {
+    "id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001_notif_003",
+    "name": "Chief Technology Officer",
+    "properties": {
+      "contact_name_or_role": "Chief Technology Officer",
+      "trigger_condition": "ownership of exception closure and board reporting",
+      "responsibility": [
+        "exception remediation",
+        "board risk committee reporting"
+      ],
+      "reporting_deadline": "September 2026"
+    },
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae"
+  },
+  {
+    "id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001_dd_001",
+    "name": "Direct Debit Mandate",
+    "properties": {
+      "api_data_provision": true,
+      "api_data_fields": [
+        "identifier",
+        "status"
+      ],
+      "missing_data_field": "historical cancellation timestamp",
+      "legacy_mandate_count": 37,
+      "legacy_mandate_status": "inactive",
+      "consent_tracking": [
+        "scope",
+        "expiry",
+        "revocation"
+      ],
+      "remediation_timeline": "by 2026-08-15"
+    },
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae"
+  },
+  {
+    "id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001_so_001",
+    "name": "Standing Order",
+    "properties": {
+      "api_data_provision": true,
+      "api_data_scope": "transaction and standing order data",
+      "consent_tracking": [
+        "scope",
+        "expiry",
+        "revocation"
+      ],
+      "api_access_data_retention": "90 days"
+    },
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae"
+  },
+  {
+    "id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001_acc_001",
+    "name": "Customer Account",
+    "properties": {
+      "api_data_provision": true,
+      "api_data_scope": "account data",
+      "consent_tracking": [
+        "scope",
+        "expiry",
+        "revocation"
+      ],
+      "api_access_data_retention": "90 days"
+    },
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae"
+  },
+  {
+    "id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001_txn_001",
+    "name": "Transaction",
+    "properties": {
+      "api_data_provision": true,
+      "api_data_scope": "transaction data",
+      "consent_tracking": [
+        "scope",
+        "expiry",
+        "revocation"
+      ],
+      "api_access_data_retention": "90 days"
+    },
+    "chunk_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae_001",
+    "doc_id": "01a07389-fc5b-75bd-98bb-32ce4e494fae"
+  }
+]

@@ -1,0 +1,729 @@
+{
+  "chunk_seq": 17,
+  "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+  "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+  "text": "## Step 8: Failed Standing Orders  \n### Failure Scenarios  \n**Common Failure Reasons:**\n- Insufficient funds in source account\n- Invalid recipient account number\n- Recipient account closed\n- Payee bank system failure\n- Duplicate prevention (if failed before)",
+  "name": "Chunk 17/24",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_016",
+  "next_chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_018",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Standing Order Failure Handling",
+      "aliases": [
+        "Failed Standing Orders",
+        "Standing Order Failure Management"
+      ],
+      "entity_class": "PROCESS",
+      "type": "standing_order_setup",
+      "description": "End-to-end procedure for managing standing order payment failures, including identification of failure reasons and determination of appropriate remedial actions. Covers scenarios where standing orders cannot be executed due to insufficient funds, invalid recipient details, closed accounts, system failures, or duplicate prevention triggers.",
+      "context": [
+        "Step 8: Failed Standing Orders",
+        "Common Failure Reasons: Insufficient funds in source account, Invalid recipient account number, Recipient account closed, Payee bank system failure, Duplicate prevention (if failed before)"
+      ]
+    },
+    {
+      "id": "ps_001",
+      "name": "Insufficient Funds Detection",
+      "aliases": [
+        "Funds Check",
+        "Balance Verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Verification step that identifies when a standing order cannot be executed because the source account lacks sufficient funds to cover the payment amount.",
+      "context": [
+        "Insufficient funds in source account"
+      ]
+    },
+    {
+      "id": "ps_002",
+      "name": "Recipient Account Validation",
+      "aliases": [
+        "Account Number Verification",
+        "Recipient Details Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Validation step that confirms the recipient account number is valid and correctly formatted before payment execution.",
+      "context": [
+        "Invalid recipient account number"
+      ]
+    },
+    {
+      "id": "ps_003",
+      "name": "Recipient Account Status Check",
+      "aliases": [
+        "Account Closure Detection",
+        "Payee Account Verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Verification step that determines whether the recipient account is active and available to receive payments, identifying cases where the payee account has been closed.",
+      "context": [
+        "Recipient account closed"
+      ]
+    },
+    {
+      "id": "ps_004",
+      "name": "Payee Bank System Availability Check",
+      "aliases": [
+        "System Failure Detection",
+        "Payee Bank Connectivity"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Monitoring step that identifies when the payee bank's systems are unavailable or experiencing failures that prevent payment processing.",
+      "context": [
+        "Payee bank system failure"
+      ]
+    },
+    {
+      "id": "ps_005",
+      "name": "Duplicate Prevention Check",
+      "aliases": [
+        "Duplicate Detection",
+        "Repeat Failure Prevention"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Control step that prevents repeated execution of standing orders that have previously failed, blocking duplicate payment attempts.",
+      "context": [
+        "Duplicate prevention (if failed before)"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Standing Order Payment",
+        "Recurring Payment Instruction"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "A recurring payment instruction on a customer account that may fail for various operational or system-related reasons covered in this failure handling procedure.",
+      "context": [
+        "Step 8: Failed Standing Orders",
+        "Common Failure Reasons"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Source Account",
+      "aliases": [
+        "Payer Account",
+        "Originating Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer account from which a standing order payment is to be debited, subject to failure if insufficient funds are available.",
+      "context": [
+        "Insufficient funds in source account"
+      ]
+    },
+    {
+      "id": "acc_002",
+      "name": "Recipient Account",
+      "aliases": [
+        "Payee Account",
+        "Destination Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The destination account to which a standing order payment is intended, which may be closed or invalid, causing payment failure.",
+      "context": [
+        "Invalid recipient account number",
+        "Recipient account closed"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_proc_001",
+    "ps_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_001",
+    "ps_002": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_002",
+    "ps_003": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_003",
+    "ps_004": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_004",
+    "ps_005": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_005",
+    "so_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_so_001",
+    "acc_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_acc_001",
+    "acc_002": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_acc_002"
+  },
+  "entities": [
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_proc_001",
+      "name": "Standing Order Failure Handling",
+      "aliases": [
+        "Failed Standing Orders",
+        "Standing Order Failure Management"
+      ],
+      "entity_class": "PROCESS",
+      "type": "standing_order_setup",
+      "description": "End-to-end procedure for managing standing order payment failures, including identification of failure reasons and determination of appropriate remedial actions. Covers scenarios where standing orders cannot be executed due to insufficient funds, invalid recipient details, closed accounts, system failures, or duplicate prevention triggers.",
+      "context": [
+        "Step 8: Failed Standing Orders",
+        "Common Failure Reasons: Insufficient funds in source account, Invalid recipient account number, Recipient account closed, Payee bank system failure, Duplicate prevention (if failed before)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_001",
+      "name": "Insufficient Funds Detection",
+      "aliases": [
+        "Funds Check",
+        "Balance Verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Verification step that identifies when a standing order cannot be executed because the source account lacks sufficient funds to cover the payment amount.",
+      "context": [
+        "Insufficient funds in source account"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_002",
+      "name": "Recipient Account Validation",
+      "aliases": [
+        "Account Number Verification",
+        "Recipient Details Check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "document_verification",
+      "description": "Validation step that confirms the recipient account number is valid and correctly formatted before payment execution.",
+      "context": [
+        "Invalid recipient account number"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_003",
+      "name": "Recipient Account Status Check",
+      "aliases": [
+        "Account Closure Detection",
+        "Payee Account Verification"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Verification step that determines whether the recipient account is active and available to receive payments, identifying cases where the payee account has been closed.",
+      "context": [
+        "Recipient account closed"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_004",
+      "name": "Payee Bank System Availability Check",
+      "aliases": [
+        "System Failure Detection",
+        "Payee Bank Connectivity"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "Monitoring step that identifies when the payee bank's systems are unavailable or experiencing failures that prevent payment processing.",
+      "context": [
+        "Payee bank system failure"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_005",
+      "name": "Duplicate Prevention Check",
+      "aliases": [
+        "Duplicate Detection",
+        "Repeat Failure Prevention"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "risk_assessment",
+      "description": "Control step that prevents repeated execution of standing orders that have previously failed, blocking duplicate payment attempts.",
+      "context": [
+        "Duplicate prevention (if failed before)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Standing Order Payment",
+        "Recurring Payment Instruction"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "A recurring payment instruction on a customer account that may fail for various operational or system-related reasons covered in this failure handling procedure.",
+      "context": [
+        "Step 8: Failed Standing Orders",
+        "Common Failure Reasons"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_acc_001",
+      "name": "Source Account",
+      "aliases": [
+        "Payer Account",
+        "Originating Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer account from which a standing order payment is to be debited, subject to failure if insufficient funds are available.",
+      "context": [
+        "Insufficient funds in source account"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_acc_002",
+      "name": "Recipient Account",
+      "aliases": [
+        "Payee Account",
+        "Destination Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The destination account to which a standing order payment is intended, which may be closed or invalid, causing payment failure.",
+      "context": [
+        "Invalid recipient account number",
+        "Recipient account closed"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_proc_001",
+      "name": "Standing Order Failure Handling",
+      "properties": {
+        "purpose": "Handle and resolve standing order payment failures",
+        "scope": "Standing orders across all account types",
+        "owner": "Payments Operations",
+        "departments_involved": [
+          "Payments Operations",
+          "Customer Service",
+          "Systems"
+        ],
+        "trigger": "Standing order payment attempt fails",
+        "outcome_success": "Failed standing order is resolved or customer is notified with remediation steps",
+        "outcome_failure": "Standing order remains failed; customer funds or payee not reconciled"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_001",
+      "name": "Insufficient Funds Detection",
+      "properties": {
+        "step_number": 1,
+        "actor": "Payment Processing System",
+        "input": "Source account balance; standing order amount",
+        "output": "Insufficient funds flag; failure reason code",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Core Banking System"
+        ],
+        "failure_path": "Standing order fails; customer notification triggered"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_002",
+      "name": "Recipient Account Validation",
+      "properties": {
+        "step_number": 2,
+        "actor": "Payment Processing System",
+        "input": "Recipient account number; sort code or routing details",
+        "output": "Account validation result; validity flag",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Core Banking System",
+          "Recipient Bank Directory"
+        ],
+        "failure_path": "Invalid account detected; standing order fails; customer notified"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_003",
+      "name": "Recipient Account Status Check",
+      "properties": {
+        "step_number": 3,
+        "actor": "Payment Processing System",
+        "input": "Recipient account identifier; account status from recipient bank",
+        "output": "Account status confirmation; closure or restriction flag",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Core Banking System"
+        ],
+        "failure_path": "Recipient account closed or restricted; standing order fails"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_004",
+      "name": "Payee Bank System Availability Check",
+      "properties": {
+        "step_number": 4,
+        "actor": "Payment Processing System",
+        "input": "Payee bank identifier; system availability status",
+        "output": "System availability confirmation; retry flag if temporary outage",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Payment Gateway",
+          "Interbank Network Monitor"
+        ],
+        "failure_path": "Payee bank system unavailable; standing order queued for retry or fails"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_005",
+      "name": "Duplicate Prevention Check",
+      "properties": {
+        "step_number": 5,
+        "actor": "Payment Processing System",
+        "input": "Standing order identifier; recent transaction history for this standing order",
+        "output": "Duplicate flag; transaction deduplication result",
+        "channel": "system",
+        "mandatory": "yes",
+        "tools_or_systems": [
+          "Core Banking System",
+          "Transaction Deduplication Engine"
+        ],
+        "failure_path": "Duplicate detected; standing order rejected to prevent double payment"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_so_001",
+      "name": "Standing Order",
+      "properties": {
+        "setup_or_amendment_process": "Customer initiates standing order with source account, recipient details, amount, and frequency",
+        "beneficiary_validation": "Recipient account number and bank details validated before first payment",
+        "cancellation_process": "Customer can cancel standing order at any time via branch, online, or phone",
+        "failure_handling": "Automatic failure detection; customer notification; retry logic for temporary failures"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_acc_001",
+      "name": "Source Account",
+      "properties": {
+        "account_type": "current",
+        "account_state": "active",
+        "role_in_process": "Account from which standing order payment is debited"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_acc_002",
+      "name": "Recipient Account",
+      "properties": {
+        "account_type": "current",
+        "role_in_process": "Account to which standing order payment is credited",
+        "closure_or_freeze_conditions": "If recipient account is closed or frozen, standing order payment fails"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_proc_001",
+      "source_name": "Standing Order Failure Handling",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_001",
+      "target_name": "Insufficient Funds Detection",
+      "rel_type": "contains",
+      "description": "The Standing Order Failure Handling process includes the step to detect insufficient funds in the source account",
+      "properties": {
+        "step_sequence": 1,
+        "failure_reason": "Insufficient funds in source account"
+      },
+      "context": "Insufficient funds in source account",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_001",
+      "source_name": "Insufficient Funds Detection",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_002",
+      "target_name": "Recipient Account Validation",
+      "rel_type": "followed_by",
+      "description": "Insufficient Funds Detection is followed by Recipient Account Validation in the failure handling sequence",
+      "properties": {
+        "sequence_order": "step 1 to step 2"
+      },
+      "context": "Common Failure Reasons: Insufficient funds in source account, Invalid recipient account number",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_002",
+      "source_name": "Recipient Account Validation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_003",
+      "target_name": "Recipient Account Status Check",
+      "rel_type": "followed_by",
+      "description": "Recipient Account Validation is followed by Recipient Account Status Check",
+      "properties": {
+        "sequence_order": "step 2 to step 3",
+        "validation_type": "account number and status"
+      },
+      "context": "Invalid recipient account number, Recipient account closed",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_003",
+      "source_name": "Recipient Account Status Check",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_004",
+      "target_name": "Payee Bank System Availability Check",
+      "rel_type": "followed_by",
+      "description": "Recipient Account Status Check is followed by Payee Bank System Availability Check",
+      "properties": {
+        "sequence_order": "step 3 to step 4"
+      },
+      "context": "Recipient account closed, Payee bank system failure",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_004",
+      "source_name": "Payee Bank System Availability Check",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_005",
+      "target_name": "Duplicate Prevention Check",
+      "rel_type": "followed_by",
+      "description": "Payee Bank System Availability Check is followed by Duplicate Prevention Check",
+      "properties": {
+        "sequence_order": "step 4 to step 5"
+      },
+      "context": "Payee bank system failure, Duplicate prevention (if failed before)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_proc_001",
+      "source_name": "Standing Order Failure Handling",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "operates_on",
+      "description": "The Standing Order Failure Handling process operates on Standing Orders to handle failure scenarios",
+      "properties": {
+        "operation_type": "failure handling and recovery"
+      },
+      "context": "Step 8: Failed Standing Orders",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_001",
+      "source_name": "Insufficient Funds Detection",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_acc_001",
+      "target_name": "Source Account",
+      "rel_type": "verifies_identity_of",
+      "description": "Insufficient Funds Detection step checks the source account for available funds",
+      "properties": {
+        "check_type": "fund availability",
+        "failure_reason": "Insufficient funds in source account"
+      },
+      "context": "Insufficient funds in source account",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_002",
+      "source_name": "Recipient Account Validation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_acc_002",
+      "target_name": "Recipient Account",
+      "rel_type": "updates",
+      "description": "Recipient Account Validation step validates the recipient account number",
+      "properties": {
+        "validation_type": "account number validity",
+        "failure_reason": "Invalid recipient account number"
+      },
+      "context": "Invalid recipient account number",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_003",
+      "source_name": "Recipient Account Status Check",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_acc_002",
+      "target_name": "Recipient Account",
+      "rel_type": "updates",
+      "description": "Recipient Account Status Check step verifies the status of the recipient account",
+      "properties": {
+        "check_type": "account status",
+        "failure_reason": "Recipient account closed"
+      },
+      "context": "Recipient account closed",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_acc_001",
+      "target_name": "Source Account",
+      "rel_type": "deducts_from",
+      "description": "The Standing Order deducts funds from the source account",
+      "properties": {
+        "transaction_type": "standing order deduction"
+      },
+      "context": "Insufficient funds in source account",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_acc_002",
+      "target_name": "Recipient Account",
+      "rel_type": "set_up_on",
+      "description": "The Standing Order is set up to transfer funds to the recipient account",
+      "properties": {
+        "transfer_target": "recipient account"
+      },
+      "context": "Invalid recipient account number, Recipient account closed",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_proc_001",
+      "source_name": "Standing Order Failure Handling",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_001",
+      "source_name": "Insufficient Funds Detection",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_002",
+      "source_name": "Recipient Account Validation",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_003",
+      "source_name": "Recipient Account Status Check",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_004",
+      "source_name": "Payee Bank System Availability Check",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_ps_005",
+      "source_name": "Duplicate Prevention Check",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_acc_001",
+      "source_name": "Source Account",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017_acc_002",
+      "source_name": "Recipient Account",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_017",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

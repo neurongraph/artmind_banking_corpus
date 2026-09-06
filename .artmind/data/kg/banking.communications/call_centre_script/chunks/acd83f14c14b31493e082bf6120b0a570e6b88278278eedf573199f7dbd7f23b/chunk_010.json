@@ -1,0 +1,669 @@
+{
+  "chunk_seq": 10,
+  "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+  "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+  "text": "## SCENARIO 7: Account Closure  \n**Customer:** \"I'd like to close my account.\"  \n**Agent Script:**  \n```\nAgent: \"I'm sorry to hear you want to close your account.\nBefore you go, may I ask why? This helps us improve.\n\n[Customer explains]\n\nI understand. Let me explain the closure process:\n\n1. We'll calculate your final balance (including pending\ninterest)\n2. Cancel any standing orders or Direct Debits\n3. Transfer any remaining funds to your new bank\n4. Your account will be closed\n\nThe process takes 5-7 business days. How would you like to\nreceive your final balance?\n- Transfer to another UK bank account (1-2 days)\n- Cheque in the post (3-5 days)\n- Cash in a branch (same day)\n\n[Customer chooses option]\n\nBefore I process this, are you sure you want to close? We'd\nlove to keep you as a customer. Is there anything we could\nimprove?\"\n\n[If customer still wants to close:]\n\"I've processed your closure request. Your account will close\nin 5-7 days. We appreciate your business.\"\n```  \n---",
+  "name": "Chunk 10/17",
+  "_domain": "banking.communications",
+  "prev_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_009",
+  "next_chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_011",
+  "raw_entities": [
+    {
+      "id": "ct_001",
+      "name": "Account Closure Agent Script",
+      "aliases": [
+        "Scenario 7 Script",
+        "Account Closure Call Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre script for handling customer-initiated account closure requests. The script guides agents through explaining the closure process, calculating final balances, cancelling standing orders and Direct Debits, offering fund transfer options, and attempting retention before processing the closure.",
+      "context": [
+        "Agent: \"I'm sorry to hear you want to close your account. Before you go, may I ask why? This helps us improve.\"",
+        "I understand. Let me explain the closure process: 1. We'll calculate your final balance (including pending interest) 2. Cancel any standing orders or Direct Debits 3. Transfer any remaining funds to your new bank 4. Your account will be closed",
+        "The process takes 5-7 business days. How would you like to receive your final balance? - Transfer to another UK bank account (1-2 days) - Cheque in the post (3-5 days) - Cash in a branch (same day)",
+        "I've processed your closure request. Your account will close in 5-7 days. We appreciate your business."
+      ]
+    },
+    {
+      "id": "tv_001",
+      "name": "Final Balance",
+      "aliases": [
+        "closing balance",
+        "remaining funds"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "The calculated account balance at closure, including any pending interest accrued up to the closure date. This variable is presented to the customer and used to determine the transfer amount.",
+      "context": [
+        "We'll calculate your final balance (including pending interest)",
+        "How would you like to receive your final balance?"
+      ]
+    },
+    {
+      "id": "tv_002",
+      "name": "Closure Processing Timeframe",
+      "aliases": [
+        "processing time",
+        "closure duration"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "The standard timeframe for completing account closure after the customer's request is processed, stated as 5-7 business days.",
+      "context": [
+        "The process takes 5-7 business days.",
+        "Your account will close in 5-7 days."
+      ]
+    },
+    {
+      "id": "tv_003",
+      "name": "Fund Transfer Method",
+      "aliases": [
+        "delivery option",
+        "payment method"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "reference_field",
+      "description": "The customer's chosen method for receiving their final balance upon account closure: transfer to another UK bank account, cheque by post, or cash in branch.",
+      "context": [
+        "How would you like to receive your final balance? - Transfer to another UK bank account (1-2 days) - Cheque in the post (3-5 days) - Cash in a branch (same day)"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "The customer's account subject to closure. The script addresses the process of calculating final balance, cancelling standing orders and Direct Debits, and transferring remaining funds before closure.",
+      "context": [
+        "I'd like to close my account.",
+        "Before I process this, are you sure you want to close?"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Account Closure Customer",
+      "aliases": [
+        "customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "existing_customer",
+      "description": "A customer initiating account closure. The script captures their reason for closure and presents retention and fund transfer options before processing the closure request.",
+      "context": [
+        "Customer: \"I'd like to close my account.\"",
+        "[Customer explains]",
+        "[Customer chooses option]"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order Cancellation",
+      "aliases": [
+        "standing order cancellation"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_cancellation",
+      "description": "The cancellation of any active standing orders on the customer's account as part of the account closure process.",
+      "context": [
+        "Cancel any standing orders or Direct Debits"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Cancellation",
+      "aliases": [
+        "direct debit cancellation"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_cancellation",
+      "description": "The cancellation of any active Direct Debit mandates on the customer's account as part of the account closure process.",
+      "context": [
+        "Cancel any standing orders or Direct Debits"
+      ]
+    }
+  ],
+  "id_map": {
+    "ct_001": "01a07428-c932-773f-a5f8-da98f9df05b5_010_ct_001",
+    "tv_001": "01a07428-c932-773f-a5f8-da98f9df05b5_010_tv_001",
+    "tv_002": "01a07428-c932-773f-a5f8-da98f9df05b5_010_tv_002",
+    "tv_003": "01a07428-c932-773f-a5f8-da98f9df05b5_010_tv_003",
+    "acc_001": "01a07428-c932-773f-a5f8-da98f9df05b5_010_acc_001",
+    "cust_001": "01a07428-c932-773f-a5f8-da98f9df05b5_010_cust_001",
+    "so_001": "01a07428-c932-773f-a5f8-da98f9df05b5_010_so_001",
+    "dd_001": "01a07428-c932-773f-a5f8-da98f9df05b5_010_dd_001"
+  },
+  "entities": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_ct_001",
+      "name": "Account Closure Agent Script",
+      "aliases": [
+        "Scenario 7 Script",
+        "Account Closure Call Script"
+      ],
+      "entity_class": "COMMUNICATION_TEMPLATE",
+      "type": "call_script",
+      "description": "A call centre script for handling customer-initiated account closure requests. The script guides agents through explaining the closure process, calculating final balances, cancelling standing orders and Direct Debits, offering fund transfer options, and attempting retention before processing the closure.",
+      "context": [
+        "Agent: \"I'm sorry to hear you want to close your account. Before you go, may I ask why? This helps us improve.\"",
+        "I understand. Let me explain the closure process: 1. We'll calculate your final balance (including pending interest) 2. Cancel any standing orders or Direct Debits 3. Transfer any remaining funds to your new bank 4. Your account will be closed",
+        "The process takes 5-7 business days. How would you like to receive your final balance? - Transfer to another UK bank account (1-2 days) - Cheque in the post (3-5 days) - Cash in a branch (same day)",
+        "I've processed your closure request. Your account will close in 5-7 days. We appreciate your business."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_tv_001",
+      "name": "Final Balance",
+      "aliases": [
+        "closing balance",
+        "remaining funds"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "amount_field",
+      "description": "The calculated account balance at closure, including any pending interest accrued up to the closure date. This variable is presented to the customer and used to determine the transfer amount.",
+      "context": [
+        "We'll calculate your final balance (including pending interest)",
+        "How would you like to receive your final balance?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_tv_002",
+      "name": "Closure Processing Timeframe",
+      "aliases": [
+        "processing time",
+        "closure duration"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "date_field",
+      "description": "The standard timeframe for completing account closure after the customer's request is processed, stated as 5-7 business days.",
+      "context": [
+        "The process takes 5-7 business days.",
+        "Your account will close in 5-7 days."
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_tv_003",
+      "name": "Fund Transfer Method",
+      "aliases": [
+        "delivery option",
+        "payment method"
+      ],
+      "entity_class": "TEMPLATE_VARIABLE",
+      "type": "reference_field",
+      "description": "The customer's chosen method for receiving their final balance upon account closure: transfer to another UK bank account, cheque by post, or cash in branch.",
+      "context": [
+        "How would you like to receive your final balance? - Transfer to another UK bank account (1-2 days) - Cheque in the post (3-5 days) - Cash in a branch (same day)"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_acc_001",
+      "name": "Customer Account",
+      "aliases": [
+        "account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "savings_account",
+      "description": "The customer's account subject to closure. The script addresses the process of calculating final balance, cancelling standing orders and Direct Debits, and transferring remaining funds before closure.",
+      "context": [
+        "I'd like to close my account.",
+        "Before I process this, are you sure you want to close?"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_cust_001",
+      "name": "Account Closure Customer",
+      "aliases": [
+        "customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "existing_customer",
+      "description": "A customer initiating account closure. The script captures their reason for closure and presents retention and fund transfer options before processing the closure request.",
+      "context": [
+        "Customer: \"I'd like to close my account.\"",
+        "[Customer explains]",
+        "[Customer chooses option]"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_so_001",
+      "name": "Standing Order Cancellation",
+      "aliases": [
+        "standing order cancellation"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_cancellation",
+      "description": "The cancellation of any active standing orders on the customer's account as part of the account closure process.",
+      "context": [
+        "Cancel any standing orders or Direct Debits"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_dd_001",
+      "name": "Direct Debit Cancellation",
+      "aliases": [
+        "direct debit cancellation"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_cancellation",
+      "description": "The cancellation of any active Direct Debit mandates on the customer's account as part of the account closure process.",
+      "context": [
+        "Cancel any standing orders or Direct Debits"
+      ],
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_ct_001",
+      "name": "Account Closure Agent Script",
+      "properties": {
+        "channel": "call",
+        "trigger_event": "customer requests account closure",
+        "recipient": "customer initiating closure",
+        "tone": "empathetic",
+        "key_content": [
+          "Inquiry into closure reason",
+          "Explanation of closure process",
+          "Final balance calculation including pending interest",
+          "Standing order and direct debit cancellation",
+          "Fund transfer options",
+          "Processing timeframe",
+          "Retention attempt",
+          "Closure confirmation"
+        ],
+        "variables_used": [
+          "[Final Balance]",
+          "[Closure Processing Timeframe]",
+          "[Fund Transfer Method]"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_tv_001",
+      "name": "Final Balance",
+      "properties": {
+        "variable_placeholder": "[Final Balance]",
+        "data_type": "currency",
+        "data_source": "account system",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Account Closure Agent Script"
+        ],
+        "description": "customer's account balance including pending interest at time of closure"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_tv_002",
+      "name": "Closure Processing Timeframe",
+      "properties": {
+        "variable_placeholder": "[Closure Processing Timeframe]",
+        "data_type": "string",
+        "example_value": "5-7 business days",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Account Closure Agent Script"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_tv_003",
+      "name": "Fund Transfer Method",
+      "properties": {
+        "variable_placeholder": "[Fund Transfer Method]",
+        "data_type": "string",
+        "mandatory": "yes",
+        "appears_in_templates": [
+          "Account Closure Agent Script"
+        ],
+        "example_value": [
+          "Transfer to another UK bank account",
+          "Cheque in the post",
+          "Cash in a branch"
+        ]
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_acc_001",
+      "name": "Customer Account",
+      "properties": {
+        "account_state": "active",
+        "closure_or_freeze_conditions": "customer-initiated closure request triggers 5-7 business day closure process"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_cust_001",
+      "name": "Account Closure Customer",
+      "properties": {
+        "customer_type": "existing",
+        "context_role": "account holder requesting closure"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_so_001",
+      "name": "Standing Order Cancellation",
+      "properties": {
+        "cancellation_process": "automatic cancellation as part of account closure workflow",
+        "trigger": "account closure request"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_dd_001",
+      "name": "Direct Debit Cancellation",
+      "properties": {
+        "cancellation_process": "automatic cancellation as part of account closure workflow",
+        "trigger": "account closure request"
+      },
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_ct_001",
+      "source_name": "Account Closure Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_tv_001",
+      "target_name": "Final Balance",
+      "rel_type": "contains",
+      "description": "The agent script contains and requires the Final Balance template variable to communicate closure details to the customer",
+      "properties": {
+        "context_phase": "closure_process_explanation",
+        "usage": "calculation and communication of remaining funds"
+      },
+      "context": "We'll calculate your final balance (including pending interest)",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_ct_001",
+      "source_name": "Account Closure Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_tv_002",
+      "target_name": "Closure Processing Timeframe",
+      "rel_type": "contains",
+      "description": "The agent script contains and requires the Closure Processing Timeframe template variable to set customer expectations",
+      "properties": {
+        "context_phase": "process_timeline_communication",
+        "usage": "informing customer of closure duration"
+      },
+      "context": "The process takes 5-7 business days",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_ct_001",
+      "source_name": "Account Closure Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_tv_003",
+      "target_name": "Fund Transfer Method",
+      "rel_type": "personalises_via",
+      "description": "The agent script personalises the closure experience by allowing the customer to select their preferred fund transfer method",
+      "properties": {
+        "context_phase": "fund_delivery_options",
+        "options": [
+          "Transfer to another UK bank account (1-2 days)",
+          "Cheque in the post (3-5 days)",
+          "Cash in a branch (same day)"
+        ]
+      },
+      "context": "How would you like to receive your final balance? - Transfer to another UK bank account (1-2 days) - Cheque in the post (3-5 days) - Cash in a branch (same day)",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_ct_001",
+      "source_name": "Account Closure Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "references",
+      "description": "The agent script references the customer account throughout the closure process",
+      "properties": {
+        "action": "closure_processing",
+        "scope": "full_account_lifecycle"
+      },
+      "context": "I'd like to close my account. Your account will close in 5-7 days.",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_ct_001",
+      "source_name": "Account Closure Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_cust_001",
+      "target_name": "Account Closure Customer",
+      "rel_type": "addressed_to",
+      "description": "The agent script is addressed to and designed for the account closure customer",
+      "properties": {
+        "interaction_type": "closure_request_handling",
+        "tone": "empathetic_and_informative"
+      },
+      "context": "Customer: I'd like to close my account. Agent: I'm sorry to hear you want to close your account.",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_ct_001",
+      "source_name": "Account Closure Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_so_001",
+      "target_name": "Standing Order Cancellation",
+      "rel_type": "alerts_about",
+      "description": "The agent script alerts the customer about and manages standing order cancellation as part of the closure process",
+      "properties": {
+        "action": "cancellation_notification",
+        "sequence": "step_2_of_closure_process"
+      },
+      "context": "Cancel any standing orders or Direct Debits",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_ct_001",
+      "source_name": "Account Closure Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_dd_001",
+      "target_name": "Direct Debit Cancellation",
+      "rel_type": "alerts_about",
+      "description": "The agent script alerts the customer about and manages direct debit cancellation as part of the closure process",
+      "properties": {
+        "action": "cancellation_notification",
+        "sequence": "step_2_of_closure_process"
+      },
+      "context": "Cancel any standing orders or Direct Debits",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_cust_001",
+      "target_name": "Account Closure Customer",
+      "rel_type": "held_by",
+      "description": "The customer account is held by the account closure customer",
+      "properties": {
+        "relationship_type": "ownership",
+        "action_context": "closure_request"
+      },
+      "context": "Customer: I'd like to close my account.",
+      "bidirectional": true,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_so_001",
+      "target_name": "Standing Order Cancellation",
+      "rel_type": "deducts_from",
+      "description": "Standing orders are set up on and deduce from the customer account, requiring cancellation during closure",
+      "properties": {
+        "action": "cancellation_during_closure",
+        "impact": "removal_of_recurring_deductions"
+      },
+      "context": "Cancel any standing orders or Direct Debits",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_dd_001",
+      "target_name": "Direct Debit Cancellation",
+      "rel_type": "deducts_from",
+      "description": "Direct debits are set up on and deduce from the customer account, requiring cancellation during closure",
+      "properties": {
+        "action": "cancellation_during_closure",
+        "impact": "removal_of_recurring_deductions"
+      },
+      "context": "Cancel any standing orders or Direct Debits",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_cust_001",
+      "source_name": "Account Closure Customer",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_acc_001",
+      "target_name": "Customer Account",
+      "rel_type": "closes",
+      "description": "The account closure customer initiates closure of their account",
+      "properties": {
+        "action": "closure_initiation",
+        "status": "requested"
+      },
+      "context": "Customer: I'd like to close my account.",
+      "bidirectional": false,
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_ct_001",
+      "source_name": "Account Closure Agent Script",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_tv_001",
+      "source_name": "Final Balance",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_tv_002",
+      "source_name": "Closure Processing Timeframe",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_tv_003",
+      "source_name": "Fund Transfer Method",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_acc_001",
+      "source_name": "Customer Account",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_cust_001",
+      "source_name": "Account Closure Customer",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_so_001",
+      "source_name": "Standing Order Cancellation",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    },
+    {
+      "source_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010_dd_001",
+      "source_name": "Direct Debit Cancellation",
+      "target_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "target_name": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07428-c932-773f-a5f8-da98f9df05b5_010",
+      "doc_id": "01a07428-c932-773f-a5f8-da98f9df05b5",
+      "_domain": "banking.communications"
+    }
+  ]
+}

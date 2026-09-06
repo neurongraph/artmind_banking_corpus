@@ -1,0 +1,709 @@
+{
+  "chunk_seq": 6,
+  "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+  "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+  "text": "## Step 1: DD Mandate Collection  \n### Mandate Initiation  \n**Typical Scenario:**\n- Customer signs up for utility bill, gym membership, insurance, etc.\n- Biller asks: \"Can we take payment by Direct Debit?\"\n- Customer agrees and signs mandate form  \n**Mandate Form Contains:**\n- Bank account details (account number, sort code)\n- Biller details (name, DDIC number)\n- Amount type (fixed or variable)\n- Customer authorization (signature)",
+  "name": "Chunk 6/26",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_005",
+  "next_chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_007",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Direct Debit Mandate Collection Process",
+      "aliases": [
+        "DD Mandate Collection",
+        "Mandate Initiation"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit_setup",
+      "description": "The end-to-end procedure for collecting Direct Debit mandates from customers who wish to authorize recurring payments to billers. The process begins when a customer agrees to pay by Direct Debit and signs a mandate form containing bank account details, biller information, and authorization.",
+      "context": [
+        "Customer signs up for utility bill, gym membership, insurance, etc.",
+        "Biller asks: 'Can we take payment by Direct Debit?'",
+        "Customer agrees and signs mandate form",
+        "Mandate Form Contains: Bank account details (account number, sort code), Biller details (name, DDIC number), Amount type (fixed or variable), Customer authorization (signature)"
+      ]
+    },
+    {
+      "id": "pstep_001",
+      "name": "Mandate Initiation",
+      "aliases": [
+        "DD Mandate Initiation",
+        "Mandate Signup"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The initial stage where a customer agrees to authorize Direct Debit payments and signs the mandate form. This step captures the customer's consent and collects all required mandate information.",
+      "context": [
+        "Customer signs up for utility bill, gym membership, insurance, etc.",
+        "Biller asks: 'Can we take payment by Direct Debit?'",
+        "Customer agrees and signs mandate form"
+      ]
+    },
+    {
+      "id": "dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "DD Mandate",
+        "Mandate Form"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "A signed authorization form that enables a biller to collect recurring payments from a customer's bank account. The mandate contains bank account details, biller identification, payment amount type, and customer signature.",
+      "context": [
+        "Customer agrees and signs mandate form",
+        "Mandate Form Contains: Bank account details (account number, sort code), Biller details (name, DDIC number), Amount type (fixed or variable), Customer authorization (signature)"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Payer",
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual who authorizes Direct Debit payments by signing a mandate form. The customer agrees to allow a biller to collect recurring payments from their bank account.",
+      "context": [
+        "Customer signs up for utility bill, gym membership, insurance, etc.",
+        "Biller asks: 'Can we take payment by Direct Debit?'",
+        "Customer agrees and signs mandate form"
+      ]
+    },
+    {
+      "id": "ident_001",
+      "name": "Bank Account Details",
+      "aliases": [
+        "Account Number",
+        "Sort Code"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "document_recording",
+      "description": "The customer's bank account information collected on the Direct Debit mandate form, including account number and sort code. These details enable the biller to identify and access the correct account for payment collection.",
+      "context": [
+        "Mandate Form Contains: Bank account details (account number, sort code)"
+      ]
+    },
+    {
+      "id": "ident_002",
+      "name": "Biller Details",
+      "aliases": [
+        "Biller Information",
+        "DDIC Number"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "document_recording",
+      "description": "The biller's identification information recorded on the Direct Debit mandate, including the biller's name and DDIC (Direct Debit Information Centre) number. This identifies the organization authorized to collect payments.",
+      "context": [
+        "Mandate Form Contains: Biller details (name, DDIC number)"
+      ]
+    },
+    {
+      "id": "ident_003",
+      "name": "Customer Authorization Signature",
+      "aliases": [
+        "Signature",
+        "Customer Consent"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "document_recording",
+      "description": "The customer's signature on the Direct Debit mandate form that provides legal authorization for the biller to collect recurring payments. This signature evidences the customer's consent to the mandate.",
+      "context": [
+        "Customer agrees and signs mandate form",
+        "Mandate Form Contains: Customer authorization (signature)"
+      ]
+    },
+    {
+      "id": "acct_001",
+      "name": "Customer Bank Account",
+      "aliases": [
+        "Payer Account",
+        "Direct Debit Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer's bank account from which Direct Debit payments are authorized to be collected. The account is identified by account number and sort code on the mandate form.",
+      "context": [
+        "Mandate Form Contains: Bank account details (account number, sort code)"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_proc_001",
+    "pstep_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_pstep_001",
+    "dd_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_dd_001",
+    "cust_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_cust_001",
+    "ident_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_001",
+    "ident_002": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_002",
+    "ident_003": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_003",
+    "acct_001": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_acct_001"
+  },
+  "entities": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_proc_001",
+      "name": "Direct Debit Mandate Collection Process",
+      "aliases": [
+        "DD Mandate Collection",
+        "Mandate Initiation"
+      ],
+      "entity_class": "PROCESS",
+      "type": "direct_debit_setup",
+      "description": "The end-to-end procedure for collecting Direct Debit mandates from customers who wish to authorize recurring payments to billers. The process begins when a customer agrees to pay by Direct Debit and signs a mandate form containing bank account details, biller information, and authorization.",
+      "context": [
+        "Customer signs up for utility bill, gym membership, insurance, etc.",
+        "Biller asks: 'Can we take payment by Direct Debit?'",
+        "Customer agrees and signs mandate form",
+        "Mandate Form Contains: Bank account details (account number, sort code), Biller details (name, DDIC number), Amount type (fixed or variable), Customer authorization (signature)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_pstep_001",
+      "name": "Mandate Initiation",
+      "aliases": [
+        "DD Mandate Initiation",
+        "Mandate Signup"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The initial stage where a customer agrees to authorize Direct Debit payments and signs the mandate form. This step captures the customer's consent and collects all required mandate information.",
+      "context": [
+        "Customer signs up for utility bill, gym membership, insurance, etc.",
+        "Biller asks: 'Can we take payment by Direct Debit?'",
+        "Customer agrees and signs mandate form"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_dd_001",
+      "name": "Direct Debit Mandate",
+      "aliases": [
+        "DD Mandate",
+        "Mandate Form"
+      ],
+      "entity_class": "DIRECT_DEBIT",
+      "type": "dd_mandate_setup",
+      "description": "A signed authorization form that enables a biller to collect recurring payments from a customer's bank account. The mandate contains bank account details, biller identification, payment amount type, and customer signature.",
+      "context": [
+        "Customer agrees and signs mandate form",
+        "Mandate Form Contains: Bank account details (account number, sort code), Biller details (name, DDIC number), Amount type (fixed or variable), Customer authorization (signature)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_cust_001",
+      "name": "Customer",
+      "aliases": [
+        "Payer",
+        "Account Holder"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "individual_customer",
+      "description": "The individual who authorizes Direct Debit payments by signing a mandate form. The customer agrees to allow a biller to collect recurring payments from their bank account.",
+      "context": [
+        "Customer signs up for utility bill, gym membership, insurance, etc.",
+        "Biller asks: 'Can we take payment by Direct Debit?'",
+        "Customer agrees and signs mandate form"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_001",
+      "name": "Bank Account Details",
+      "aliases": [
+        "Account Number",
+        "Sort Code"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "document_recording",
+      "description": "The customer's bank account information collected on the Direct Debit mandate form, including account number and sort code. These details enable the biller to identify and access the correct account for payment collection.",
+      "context": [
+        "Mandate Form Contains: Bank account details (account number, sort code)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_002",
+      "name": "Biller Details",
+      "aliases": [
+        "Biller Information",
+        "DDIC Number"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "document_recording",
+      "description": "The biller's identification information recorded on the Direct Debit mandate, including the biller's name and DDIC (Direct Debit Information Centre) number. This identifies the organization authorized to collect payments.",
+      "context": [
+        "Mandate Form Contains: Biller details (name, DDIC number)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_003",
+      "name": "Customer Authorization Signature",
+      "aliases": [
+        "Signature",
+        "Customer Consent"
+      ],
+      "entity_class": "IDENTIFICATION_DOCUMENT",
+      "type": "document_recording",
+      "description": "The customer's signature on the Direct Debit mandate form that provides legal authorization for the biller to collect recurring payments. This signature evidences the customer's consent to the mandate.",
+      "context": [
+        "Customer agrees and signs mandate form",
+        "Mandate Form Contains: Customer authorization (signature)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_acct_001",
+      "name": "Customer Bank Account",
+      "aliases": [
+        "Payer Account",
+        "Direct Debit Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer's bank account from which Direct Debit payments are authorized to be collected. The account is identified by account number and sort code on the mandate form.",
+      "context": [
+        "Mandate Form Contains: Bank account details (account number, sort code)"
+      ],
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_proc_001",
+      "name": "Direct Debit Mandate Collection Process",
+      "properties": {
+        "purpose": "Collect and process Direct Debit mandates from customers for recurring payments",
+        "scope": "Utility bills, gym memberships, insurance, and other recurring payment services",
+        "channels": [
+          "branch",
+          "postal"
+        ],
+        "trigger": "Customer agrees to authorize recurring payment via Direct Debit",
+        "outcome_success": "Mandate form completed with all required details and customer authorization obtained"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_pstep_001",
+      "name": "Mandate Initiation",
+      "properties": {
+        "step_number": 1,
+        "actor": "Customer",
+        "input": [
+          "Service agreement",
+          "Biller request for payment authorization"
+        ],
+        "output": [
+          "Signed mandate form",
+          "Customer authorization"
+        ],
+        "channel": "manual",
+        "mandatory": true,
+        "tools_or_systems": [
+          "Mandate form"
+        ],
+        "failure_path": "Mandate cannot proceed without customer agreement and signature"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_dd_001",
+      "name": "Direct Debit Mandate",
+      "properties": {
+        "mandate_process": "Customer completes and signs mandate form containing bank account details, biller details, amount type, and authorization",
+        "required_information": [
+          "bank_account_details",
+          "biller_details",
+          "amount_type",
+          "customer_authorization_signature"
+        ]
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_cust_001",
+      "name": "Customer",
+      "properties": {
+        "customer_type": "individual",
+        "context_role": "Payer authorizing recurring Direct Debit payments",
+        "action_required": "Sign mandate form and provide authorization"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_001",
+      "name": "Bank Account Details",
+      "properties": {
+        "accepted_types": [
+          "account_number",
+          "sort_code"
+        ],
+        "collection_steps": [
+          "Customer provides on mandate form"
+        ],
+        "recording_obligation": "Recorded on Direct Debit mandate form",
+        "mandatory": true
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_002",
+      "name": "Biller Details",
+      "properties": {
+        "accepted_types": [
+          "biller_name",
+          "DDIC_number"
+        ],
+        "collection_steps": [
+          "Biller provides on mandate form"
+        ],
+        "recording_obligation": "Recorded on Direct Debit mandate form",
+        "mandatory": true
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_003",
+      "name": "Customer Authorization Signature",
+      "properties": {
+        "collection_steps": [
+          "Customer signs mandate form"
+        ],
+        "verification_steps": [
+          "Signature obtained on mandate form"
+        ],
+        "recording_obligation": "Recorded on Direct Debit mandate form",
+        "mandatory": true
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_acct_001",
+      "name": "Customer Bank Account",
+      "properties": {
+        "account_type": "current",
+        "account_state": "active",
+        "context_role": "Source account for Direct Debit payments"
+      },
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_proc_001",
+      "source_name": "Direct Debit Mandate Collection Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_pstep_001",
+      "target_name": "Mandate Initiation",
+      "rel_type": "starts_with",
+      "description": "The Direct Debit Mandate Collection Process begins with the Mandate Initiation step",
+      "properties": {
+        "sequence_position": 1,
+        "stage": "initial"
+      },
+      "context": "Step 1: DD Mandate Collection ### Mandate Initiation",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_proc_001",
+      "source_name": "Direct Debit Mandate Collection Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "sets_up",
+      "description": "The Direct Debit Mandate Collection Process sets up Direct Debit Mandates",
+      "properties": {
+        "process_outcome": "mandate_creation"
+      },
+      "context": "Step 1: DD Mandate Collection",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_proc_001",
+      "source_name": "Direct Debit Mandate Collection Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_cust_001",
+      "target_name": "Customer",
+      "rel_type": "operates_on",
+      "description": "The Direct Debit Mandate Collection Process operates on the Customer",
+      "properties": {
+        "interaction_type": "mandate_agreement"
+      },
+      "context": "Customer signs up for utility bill, gym membership, insurance, etc. Customer agrees and signs mandate form",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_pstep_001",
+      "source_name": "Mandate Initiation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_cust_001",
+      "target_name": "Customer",
+      "rel_type": "collects_data_from",
+      "description": "Mandate Initiation step collects authorization and account data from the Customer",
+      "properties": {
+        "data_collected": [
+          "bank_account_details",
+          "authorization_signature"
+        ]
+      },
+      "context": "Customer signs up for utility bill, gym membership, insurance, etc. Customer agrees and signs mandate form",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_pstep_001",
+      "source_name": "Mandate Initiation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_001",
+      "target_name": "Bank Account Details",
+      "rel_type": "collects",
+      "description": "Mandate Initiation step collects Bank Account Details from the customer",
+      "properties": {
+        "details_required": [
+          "account_number",
+          "sort_code"
+        ]
+      },
+      "context": "Bank account details (account number, sort code)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_pstep_001",
+      "source_name": "Mandate Initiation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_002",
+      "target_name": "Biller Details",
+      "rel_type": "collects",
+      "description": "Mandate Initiation step collects Biller Details",
+      "properties": {
+        "details_required": [
+          "biller_name",
+          "DDIC_number"
+        ]
+      },
+      "context": "Biller details (name, DDIC number)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_pstep_001",
+      "source_name": "Mandate Initiation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_003",
+      "target_name": "Customer Authorization Signature",
+      "rel_type": "collects",
+      "description": "Mandate Initiation step collects Customer Authorization Signature",
+      "properties": {
+        "authorization_type": "signature",
+        "mandatory": true
+      },
+      "context": "Customer authorization (signature)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_pstep_001",
+      "source_name": "Mandate Initiation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_dd_001",
+      "target_name": "Direct Debit Mandate",
+      "rel_type": "sets_up_mandate_for",
+      "description": "Mandate Initiation step sets up the Direct Debit Mandate",
+      "properties": {
+        "mandate_components": [
+          "bank_account_details",
+          "biller_details",
+          "amount_type",
+          "customer_authorization"
+        ]
+      },
+      "context": "Mandate Form Contains: Bank account details (account number, sort code), Biller details (name, DDIC number), Amount type (fixed or variable), Customer authorization (signature)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_cust_001",
+      "target_name": "Customer",
+      "rel_type": "authorised_by",
+      "description": "The Direct Debit Mandate is authorized by the Customer",
+      "properties": {
+        "authorization_method": "signature",
+        "agreement_type": "mandate"
+      },
+      "context": "Customer agrees and signs mandate form",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_acct_001",
+      "target_name": "Customer Bank Account",
+      "rel_type": "set_up_on",
+      "description": "The Direct Debit Mandate is set up on the Customer Bank Account",
+      "properties": {
+        "account_identifier": [
+          "account_number",
+          "sort_code"
+        ]
+      },
+      "context": "Bank account details (account number, sort code)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_001",
+      "source_name": "Bank Account Details",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_cust_001",
+      "target_name": "Customer",
+      "rel_type": "belongs_to",
+      "description": "Bank Account Details belong to the Customer",
+      "properties": {
+        "detail_type": "account_identification"
+      },
+      "context": "Bank account details (account number, sort code)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_acct_001",
+      "source_name": "Customer Bank Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_cust_001",
+      "target_name": "Customer",
+      "rel_type": "held_by",
+      "description": "The Customer Bank Account is held by the Customer",
+      "properties": {
+        "account_holder_type": "individual"
+      },
+      "context": "Bank account details (account number, sort code)",
+      "bidirectional": false,
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_proc_001",
+      "source_name": "Direct Debit Mandate Collection Process",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_pstep_001",
+      "source_name": "Mandate Initiation",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_dd_001",
+      "source_name": "Direct Debit Mandate",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_cust_001",
+      "source_name": "Customer",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_001",
+      "source_name": "Bank Account Details",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_002",
+      "source_name": "Biller Details",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_ident_003",
+      "source_name": "Customer Authorization Signature",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006_acct_001",
+      "source_name": "Customer Bank Account",
+      "target_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "target_name": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a0740e-3007-763d-bc05-fcd31c3ba548_006",
+      "doc_id": "01a0740e-3007-763d-bc05-fcd31c3ba548",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

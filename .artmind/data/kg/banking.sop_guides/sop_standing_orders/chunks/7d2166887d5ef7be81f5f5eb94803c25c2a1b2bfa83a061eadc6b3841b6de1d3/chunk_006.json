@@ -1,0 +1,575 @@
+{
+  "chunk_seq": 6,
+  "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+  "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+  "text": "### Initial Information Collected  \n- Account number (source account)\n- Payee name (recipient)\n- Payee account number (for internal transfers) or sort code + account (for external)\n- Amount (fixed, no variations)\n- Frequency (weekly, monthly, quarterly, annual)\n- Start date (when first payment should occur)\n- End date (optional, when standing order should stop)  \n---",
+  "name": "Chunk 6/24",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_005",
+  "next_chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_007",
+  "raw_entities": [
+    {
+      "id": "proc_001",
+      "name": "Standing Order Setup",
+      "aliases": [
+        "SO Setup",
+        "Standing Order Establishment"
+      ],
+      "entity_class": "PROCESS",
+      "type": "standing_order_setup",
+      "description": "The end-to-end process for establishing a standing order payment instruction on a customer account. Captures the collection of source account, payee details, payment amount, frequency, and start/end dates required to initiate recurring payments.",
+      "context": [
+        "Account number (source account)",
+        "Payee name (recipient)",
+        "Amount (fixed, no variations)",
+        "Frequency (weekly, monthly, quarterly, annual)",
+        "Start date (when first payment should occur)",
+        "End date (optional, when standing order should stop)"
+      ]
+    },
+    {
+      "id": "ps_001",
+      "name": "Source Account Identification",
+      "aliases": [
+        "Account Number Collection"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The step in which the source account number from which the standing order payments will be debited is collected and recorded.",
+      "context": [
+        "Account number (source account)"
+      ]
+    },
+    {
+      "id": "ps_002",
+      "name": "Payee Details Collection",
+      "aliases": [
+        "Recipient Information Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The step in which payee identification information is collected, including payee name and account routing details (either internal account number or external sort code and account number).",
+      "context": [
+        "Payee name (recipient)",
+        "Payee account number (for internal transfers) or sort code + account (for external)"
+      ]
+    },
+    {
+      "id": "ps_003",
+      "name": "Payment Amount and Frequency Specification",
+      "aliases": [
+        "Amount and Frequency Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The step in which the fixed payment amount and payment frequency (weekly, monthly, quarterly, or annual) are collected and recorded for the standing order.",
+      "context": [
+        "Amount (fixed, no variations)",
+        "Frequency (weekly, monthly, quarterly, annual)"
+      ]
+    },
+    {
+      "id": "ps_004",
+      "name": "Payment Schedule Definition",
+      "aliases": [
+        "Start and End Date Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The step in which the start date for the first payment and optional end date for standing order termination are collected and recorded.",
+      "context": [
+        "Start date (when first payment should occur)",
+        "End date (optional, when standing order should stop)"
+      ]
+    },
+    {
+      "id": "acc_001",
+      "name": "Source Account",
+      "aliases": [
+        "Debited Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer account from which standing order payments will be debited on a recurring basis according to the specified frequency and schedule.",
+      "context": [
+        "Account number (source account)"
+      ]
+    },
+    {
+      "id": "so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Recurring Payment Instruction"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "A recurring payment instruction established on a customer account with fixed amount, defined frequency, and specified start and optional end dates for automated payments to a named payee.",
+      "context": [
+        "Amount (fixed, no variations)",
+        "Frequency (weekly, monthly, quarterly, annual)",
+        "Start date (when first payment should occur)",
+        "End date (optional, when standing order should stop)"
+      ]
+    }
+  ],
+  "id_map": {
+    "proc_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_proc_001",
+    "ps_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_001",
+    "ps_002": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_002",
+    "ps_003": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_003",
+    "ps_004": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_004",
+    "acc_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_acc_001",
+    "so_001": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_so_001"
+  },
+  "entities": [
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_proc_001",
+      "name": "Standing Order Setup",
+      "aliases": [
+        "SO Setup",
+        "Standing Order Establishment"
+      ],
+      "entity_class": "PROCESS",
+      "type": "standing_order_setup",
+      "description": "The end-to-end process for establishing a standing order payment instruction on a customer account. Captures the collection of source account, payee details, payment amount, frequency, and start/end dates required to initiate recurring payments.",
+      "context": [
+        "Account number (source account)",
+        "Payee name (recipient)",
+        "Amount (fixed, no variations)",
+        "Frequency (weekly, monthly, quarterly, annual)",
+        "Start date (when first payment should occur)",
+        "End date (optional, when standing order should stop)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_001",
+      "name": "Source Account Identification",
+      "aliases": [
+        "Account Number Collection"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The step in which the source account number from which the standing order payments will be debited is collected and recorded.",
+      "context": [
+        "Account number (source account)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_002",
+      "name": "Payee Details Collection",
+      "aliases": [
+        "Recipient Information Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The step in which payee identification information is collected, including payee name and account routing details (either internal account number or external sort code and account number).",
+      "context": [
+        "Payee name (recipient)",
+        "Payee account number (for internal transfers) or sort code + account (for external)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_003",
+      "name": "Payment Amount and Frequency Specification",
+      "aliases": [
+        "Amount and Frequency Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The step in which the fixed payment amount and payment frequency (weekly, monthly, quarterly, or annual) are collected and recorded for the standing order.",
+      "context": [
+        "Amount (fixed, no variations)",
+        "Frequency (weekly, monthly, quarterly, annual)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_004",
+      "name": "Payment Schedule Definition",
+      "aliases": [
+        "Start and End Date Capture"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "data_collection",
+      "description": "The step in which the start date for the first payment and optional end date for standing order termination are collected and recorded.",
+      "context": [
+        "Start date (when first payment should occur)",
+        "End date (optional, when standing order should stop)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_acc_001",
+      "name": "Source Account",
+      "aliases": [
+        "Debited Account"
+      ],
+      "entity_class": "ACCOUNT",
+      "type": "current_account",
+      "description": "The customer account from which standing order payments will be debited on a recurring basis according to the specified frequency and schedule.",
+      "context": [
+        "Account number (source account)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_so_001",
+      "name": "Standing Order",
+      "aliases": [
+        "Recurring Payment Instruction"
+      ],
+      "entity_class": "STANDING_ORDER",
+      "type": "standing_order_setup",
+      "description": "A recurring payment instruction established on a customer account with fixed amount, defined frequency, and specified start and optional end dates for automated payments to a named payee.",
+      "context": [
+        "Amount (fixed, no variations)",
+        "Frequency (weekly, monthly, quarterly, annual)",
+        "Start date (when first payment should occur)",
+        "End date (optional, when standing order should stop)"
+      ],
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_proc_001",
+      "name": "Standing Order Setup",
+      "properties": {
+        "purpose": "Establish a recurring payment instruction from a customer's account to a named payee",
+        "scope": "Internal and external standing orders",
+        "channels": [
+          "branch",
+          "online"
+        ],
+        "departments_involved": [
+          "Payments",
+          "Customer Service"
+        ],
+        "trigger": "Customer request to set up a standing order",
+        "outcome_success": "Standing order created with all details captured and validated, ready for first payment on start date"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_001",
+      "name": "Source Account Identification",
+      "properties": {
+        "step_number": 1,
+        "actor": "Customer or Branch Staff",
+        "input": "Customer identification and account access request",
+        "output": "Verified source account number",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": true,
+        "tools_or_systems": [
+          "Core Banking System"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_002",
+      "name": "Payee Details Collection",
+      "properties": {
+        "step_number": 2,
+        "actor": "Customer or Branch Staff",
+        "input": "Payee name and routing information",
+        "output": "Payee name, account number, sort code (if applicable)",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": true,
+        "tools_or_systems": [
+          "Core Banking System"
+        ],
+        "failure_path": "Request clarification or correction of payee details before proceeding"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_003",
+      "name": "Payment Amount and Frequency Specification",
+      "properties": {
+        "step_number": 3,
+        "actor": "Customer or Branch Staff",
+        "input": "Payment amount and frequency preference",
+        "output": "Fixed payment amount and frequency (weekly, monthly, quarterly, or annual)",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": true,
+        "tools_or_systems": [
+          "Core Banking System"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_004",
+      "name": "Payment Schedule Definition",
+      "properties": {
+        "step_number": 4,
+        "actor": "Customer or Branch Staff",
+        "input": "Start date and optional end date",
+        "output": "Payment schedule with start date and end date (if applicable)",
+        "channel": [
+          "branch",
+          "online"
+        ],
+        "mandatory": true,
+        "tools_or_systems": [
+          "Core Banking System"
+        ]
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_acc_001",
+      "name": "Source Account",
+      "properties": {
+        "account_type": "current",
+        "account_state": "active",
+        "role_in_process": "Funding account for standing order payments"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_so_001",
+      "name": "Standing Order",
+      "properties": {
+        "setup_or_amendment_process": "Collect source account, payee details, fixed amount, frequency (weekly, monthly, quarterly, annual), start date, and optional end date",
+        "beneficiary_validation": "Payee name and account number (internal) or sort code and account number (external) captured and stored",
+        "cancellation_process": "Customer may request cancellation at any time; end date may be specified during setup"
+      },
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_proc_001",
+      "source_name": "Standing Order Setup",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_001",
+      "target_name": "Source Account Identification",
+      "rel_type": "starts_with",
+      "description": "Standing Order Setup process begins with Source Account Identification step",
+      "properties": {
+        "sequence_position": 1,
+        "mandatory": true
+      },
+      "context": "Initial Information Collected - Account number (source account)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_001",
+      "source_name": "Source Account Identification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_002",
+      "target_name": "Payee Details Collection",
+      "rel_type": "followed_by",
+      "description": "Source Account Identification is followed by Payee Details Collection",
+      "properties": {
+        "sequence_position": 2
+      },
+      "context": "Initial Information Collected - Account number (source account) followed by Payee name (recipient) and Payee account number",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_002",
+      "source_name": "Payee Details Collection",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_003",
+      "target_name": "Payment Amount and Frequency Specification",
+      "rel_type": "followed_by",
+      "description": "Payee Details Collection is followed by Payment Amount and Frequency Specification",
+      "properties": {
+        "sequence_position": 3
+      },
+      "context": "Initial Information Collected - Payee details followed by Amount (fixed, no variations) and Frequency (weekly, monthly, quarterly, annual)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_003",
+      "source_name": "Payment Amount and Frequency Specification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_004",
+      "target_name": "Payment Schedule Definition",
+      "rel_type": "followed_by",
+      "description": "Payment Amount and Frequency Specification is followed by Payment Schedule Definition",
+      "properties": {
+        "sequence_position": 4
+      },
+      "context": "Initial Information Collected - Amount and Frequency followed by Start date (when first payment should occur) and End date (optional, when standing order should stop)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_proc_001",
+      "source_name": "Standing Order Setup",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_so_001",
+      "target_name": "Standing Order",
+      "rel_type": "sets_up",
+      "description": "Standing Order Setup process creates and configures a Standing Order",
+      "properties": {
+        "outcome": "standing_order_created"
+      },
+      "context": "Standing Order Setup process collects all initial information required to establish a standing order",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_001",
+      "source_name": "Source Account Identification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_acc_001",
+      "target_name": "Source Account",
+      "rel_type": "collects_data_from",
+      "description": "Source Account Identification step collects account number from the source account",
+      "properties": {
+        "data_collected": "account_number"
+      },
+      "context": "Initial Information Collected - Account number (source account)",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_proc_001",
+      "source_name": "Standing Order Setup",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_acc_001",
+      "target_name": "Source Account",
+      "rel_type": "operates_on",
+      "description": "Standing Order Setup process operates on the source account from which payments will be deducted",
+      "properties": {
+        "account_role": "source"
+      },
+      "context": "Initial Information Collected - Account number (source account) is the basis for standing order setup",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_acc_001",
+      "target_name": "Source Account",
+      "rel_type": "set_up_on",
+      "description": "Standing Order is set up on the source account",
+      "properties": {
+        "deduction_source": true
+      },
+      "context": "Initial Information Collected - Standing order will deduct payments from the source account",
+      "bidirectional": false,
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_proc_001",
+      "source_name": "Standing Order Setup",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_001",
+      "source_name": "Source Account Identification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_002",
+      "source_name": "Payee Details Collection",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_003",
+      "source_name": "Payment Amount and Frequency Specification",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_ps_004",
+      "source_name": "Payment Schedule Definition",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_acc_001",
+      "source_name": "Source Account",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006_so_001",
+      "source_name": "Standing Order",
+      "target_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "target_name": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f_006",
+      "doc_id": "01a07422-8af8-7035-b9a3-0d5fa75c239f",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}

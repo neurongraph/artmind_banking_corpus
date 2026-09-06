@@ -1,0 +1,978 @@
+{
+  "chunk_seq": 19,
+  "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+  "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+  "text": "## Step 6: Obtain & Verify Proof of Address  \n### When Proof of Address Is Required  \n**Always Required If:**\n- Moving to international address (new country)\n- Address is in high-risk jurisdiction\n- Customer flagged as medium/high risk\n- Compliance Head requests it\n- Customer has been with bank <5 years  \n**May Be Waived If:**\n- Domestic UK move (same country)\n- Low-risk address\n- Customer is low-risk (established, long-term)\n- Address change within same local authority",
+  "name": "Chunk 19/52",
+  "_domain": "banking.sop_guides",
+  "prev_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_018",
+  "next_chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_020",
+  "raw_entities": [
+    {
+      "id": "ps_001",
+      "name": "Proof of Address Verification",
+      "aliases": [
+        "PoA verification",
+        "address proof check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_verification",
+      "description": "A conditional verification step that obtains and validates proof of address documentation from customers. The step is mandatory when customers move to international addresses, reside in high-risk jurisdictions, are flagged as medium/high risk, are requested by Compliance Head, or have been with the bank less than 5 years. The step may be waived for domestic UK moves, low-risk addresses, low-risk established customers, or address changes within the same local authority.",
+      "context": [
+        "Step 6: Obtain & Verify Proof of Address",
+        "Always Required If: Moving to international address (new country), Address is in high-risk jurisdiction, Customer flagged as medium/high risk, Compliance Head requests it, Customer has been with bank <5 years",
+        "May Be Waived If: Domestic UK move (same country), Low-risk address, Customer is low-risk (established, long-term), Address change within same local authority"
+      ]
+    },
+    {
+      "id": "addr_001",
+      "name": "International Address",
+      "aliases": [
+        "overseas address",
+        "new country address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "A customer address located outside the United Kingdom, which triggers mandatory proof of address verification requirements as part of compliance procedures.",
+      "context": [
+        "Moving to international address (new country)",
+        "Always Required If: Moving to international address (new country)"
+      ]
+    },
+    {
+      "id": "addr_002",
+      "name": "High-Risk Jurisdiction Address",
+      "aliases": [
+        "high-risk address",
+        "sanctioned jurisdiction address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "A customer address located in a jurisdiction classified as high-risk, which mandates proof of address verification as a compliance control.",
+      "context": [
+        "Address is in high-risk jurisdiction",
+        "Always Required If: Address is in high-risk jurisdiction"
+      ]
+    },
+    {
+      "id": "addr_003",
+      "name": "Domestic UK Address",
+      "aliases": [
+        "UK address",
+        "same country address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "A customer address within the United Kingdom where no international relocation occurs. Proof of address verification may be waived for domestic UK moves when other risk factors are low.",
+      "context": [
+        "Domestic UK move (same country)",
+        "May Be Waived If: Domestic UK move (same country)"
+      ]
+    },
+    {
+      "id": "addr_004",
+      "name": "Low-Risk Address",
+      "aliases": [
+        "low-risk jurisdiction address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "A customer address classified as low-risk, which may permit waiver of proof of address verification requirements when combined with other low-risk factors.",
+      "context": [
+        "Low-risk address",
+        "May Be Waived If: Low-risk address"
+      ]
+    },
+    {
+      "id": "addr_005",
+      "name": "Address Change Within Same Local Authority",
+      "aliases": [
+        "local authority address change",
+        "same authority move"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "A customer address change that remains within the same local authority boundary, which may permit waiver of proof of address verification.",
+      "context": [
+        "Address change within same local authority",
+        "May Be Waived If: Address change within same local authority"
+      ]
+    },
+    {
+      "id": "cust_001",
+      "name": "Medium-Risk Customer",
+      "aliases": [
+        "medium risk customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "high_risk_customer",
+      "description": "A customer classified as medium-risk, whose address changes trigger mandatory proof of address verification requirements.",
+      "context": [
+        "Customer flagged as medium/high risk",
+        "Always Required If: Customer flagged as medium/high risk"
+      ]
+    },
+    {
+      "id": "cust_002",
+      "name": "High-Risk Customer",
+      "aliases": [
+        "high risk customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "high_risk_customer",
+      "description": "A customer classified as high-risk, whose address changes mandate proof of address verification as a compliance control.",
+      "context": [
+        "Customer flagged as medium/high risk",
+        "Always Required If: Customer flagged as medium/high risk"
+      ]
+    },
+    {
+      "id": "cust_003",
+      "name": "Low-Risk Customer",
+      "aliases": [
+        "low risk customer",
+        "established customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "existing_customer",
+      "description": "A customer classified as low-risk, typically established and long-term with the bank, whose address changes may permit waiver of proof of address verification.",
+      "context": [
+        "Customer is low-risk (established, long-term)",
+        "May Be Waived If: Customer is low-risk (established, long-term)"
+      ]
+    },
+    {
+      "id": "cust_004",
+      "name": "New Customer (Less Than 5 Years)",
+      "aliases": [
+        "recent customer",
+        "customer tenure <5 years"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "new_customer",
+      "description": "A customer who has been with the bank for less than 5 years, whose address changes trigger mandatory proof of address verification requirements.",
+      "context": [
+        "Customer has been with bank <5 years",
+        "Always Required If: Customer has been with bank <5 years"
+      ]
+    },
+    {
+      "id": "ra_001",
+      "name": "Compliance Head",
+      "aliases": [
+        "Compliance Officer",
+        "Head of Compliance"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "A senior compliance role with authority to request proof of address verification for specific customers as part of compliance oversight.",
+      "context": [
+        "Compliance Head requests it",
+        "Always Required If: Compliance Head requests it"
+      ]
+    },
+    {
+      "id": "dp_001",
+      "name": "Proof of Address Requirement Gate",
+      "aliases": [
+        "PoA requirement decision",
+        "address verification gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "A branching decision point that determines whether proof of address verification is mandatory or may be waived based on customer risk profile, address location, tenure, and compliance override requests.",
+      "context": [
+        "Always Required If: Moving to international address (new country), Address is in high-risk jurisdiction, Customer flagged as medium/high risk, Compliance Head requests it, Customer has been with bank <5 years",
+        "May Be Waived If: Domestic UK move (same country), Low-risk address, Customer is low-risk (established, long-term), Address change within same local authority"
+      ]
+    }
+  ],
+  "id_map": {
+    "ps_001": "01a07400-ba86-72f1-8b22-d07b32649491_019_ps_001",
+    "addr_001": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_001",
+    "addr_002": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_002",
+    "addr_003": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_003",
+    "addr_004": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_004",
+    "addr_005": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_005",
+    "cust_001": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_001",
+    "cust_002": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_002",
+    "cust_003": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_003",
+    "cust_004": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_004",
+    "ra_001": "01a07400-ba86-72f1-8b22-d07b32649491_019_ra_001",
+    "dp_001": "01a07400-ba86-72f1-8b22-d07b32649491_019_dp_001"
+  },
+  "entities": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ps_001",
+      "name": "Proof of Address Verification",
+      "aliases": [
+        "PoA verification",
+        "address proof check"
+      ],
+      "entity_class": "PROCESS_STEP",
+      "type": "address_verification",
+      "description": "A conditional verification step that obtains and validates proof of address documentation from customers. The step is mandatory when customers move to international addresses, reside in high-risk jurisdictions, are flagged as medium/high risk, are requested by Compliance Head, or have been with the bank less than 5 years. The step may be waived for domestic UK moves, low-risk addresses, low-risk established customers, or address changes within the same local authority.",
+      "context": [
+        "Step 6: Obtain & Verify Proof of Address",
+        "Always Required If: Moving to international address (new country), Address is in high-risk jurisdiction, Customer flagged as medium/high risk, Compliance Head requests it, Customer has been with bank <5 years",
+        "May Be Waived If: Domestic UK move (same country), Low-risk address, Customer is low-risk (established, long-term), Address change within same local authority"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_001",
+      "name": "International Address",
+      "aliases": [
+        "overseas address",
+        "new country address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "A customer address located outside the United Kingdom, which triggers mandatory proof of address verification requirements as part of compliance procedures.",
+      "context": [
+        "Moving to international address (new country)",
+        "Always Required If: Moving to international address (new country)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_002",
+      "name": "High-Risk Jurisdiction Address",
+      "aliases": [
+        "high-risk address",
+        "sanctioned jurisdiction address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "A customer address located in a jurisdiction classified as high-risk, which mandates proof of address verification as a compliance control.",
+      "context": [
+        "Address is in high-risk jurisdiction",
+        "Always Required If: Address is in high-risk jurisdiction"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_003",
+      "name": "Domestic UK Address",
+      "aliases": [
+        "UK address",
+        "same country address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "A customer address within the United Kingdom where no international relocation occurs. Proof of address verification may be waived for domestic UK moves when other risk factors are low.",
+      "context": [
+        "Domestic UK move (same country)",
+        "May Be Waived If: Domestic UK move (same country)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_004",
+      "name": "Low-Risk Address",
+      "aliases": [
+        "low-risk jurisdiction address"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_verification_step",
+      "description": "A customer address classified as low-risk, which may permit waiver of proof of address verification requirements when combined with other low-risk factors.",
+      "context": [
+        "Low-risk address",
+        "May Be Waived If: Low-risk address"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_005",
+      "name": "Address Change Within Same Local Authority",
+      "aliases": [
+        "local authority address change",
+        "same authority move"
+      ],
+      "entity_class": "ADDRESS",
+      "type": "address_update",
+      "description": "A customer address change that remains within the same local authority boundary, which may permit waiver of proof of address verification.",
+      "context": [
+        "Address change within same local authority",
+        "May Be Waived If: Address change within same local authority"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_001",
+      "name": "Medium-Risk Customer",
+      "aliases": [
+        "medium risk customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "high_risk_customer",
+      "description": "A customer classified as medium-risk, whose address changes trigger mandatory proof of address verification requirements.",
+      "context": [
+        "Customer flagged as medium/high risk",
+        "Always Required If: Customer flagged as medium/high risk"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_002",
+      "name": "High-Risk Customer",
+      "aliases": [
+        "high risk customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "high_risk_customer",
+      "description": "A customer classified as high-risk, whose address changes mandate proof of address verification as a compliance control.",
+      "context": [
+        "Customer flagged as medium/high risk",
+        "Always Required If: Customer flagged as medium/high risk"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_003",
+      "name": "Low-Risk Customer",
+      "aliases": [
+        "low risk customer",
+        "established customer"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "existing_customer",
+      "description": "A customer classified as low-risk, typically established and long-term with the bank, whose address changes may permit waiver of proof of address verification.",
+      "context": [
+        "Customer is low-risk (established, long-term)",
+        "May Be Waived If: Customer is low-risk (established, long-term)"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_004",
+      "name": "New Customer (Less Than 5 Years)",
+      "aliases": [
+        "recent customer",
+        "customer tenure <5 years"
+      ],
+      "entity_class": "CUSTOMER",
+      "type": "new_customer",
+      "description": "A customer who has been with the bank for less than 5 years, whose address changes trigger mandatory proof of address verification requirements.",
+      "context": [
+        "Customer has been with bank <5 years",
+        "Always Required If: Customer has been with bank <5 years"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ra_001",
+      "name": "Compliance Head",
+      "aliases": [
+        "Compliance Officer",
+        "Head of Compliance"
+      ],
+      "entity_class": "ROLE_ACTOR",
+      "type": "compliance_staff",
+      "description": "A senior compliance role with authority to request proof of address verification for specific customers as part of compliance oversight.",
+      "context": [
+        "Compliance Head requests it",
+        "Always Required If: Compliance Head requests it"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_dp_001",
+      "name": "Proof of Address Requirement Gate",
+      "aliases": [
+        "PoA requirement decision",
+        "address verification gate"
+      ],
+      "entity_class": "DECISION_POINT",
+      "type": "compliance_gate",
+      "description": "A branching decision point that determines whether proof of address verification is mandatory or may be waived based on customer risk profile, address location, tenure, and compliance override requests.",
+      "context": [
+        "Always Required If: Moving to international address (new country), Address is in high-risk jurisdiction, Customer flagged as medium/high risk, Compliance Head requests it, Customer has been with bank <5 years",
+        "May Be Waived If: Domestic UK move (same country), Low-risk address, Customer is low-risk (established, long-term), Address change within same local authority"
+      ],
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ],
+  "properties": [
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ps_001",
+      "name": "Proof of Address Verification",
+      "properties": {
+        "step_number": 6,
+        "actor": [
+          "Compliance Head",
+          "Customer Service Representative"
+        ],
+        "input": [
+          "Current address",
+          "Proof of address documentation"
+        ],
+        "output": [
+          "Verified address record",
+          "Compliance checkpoint completion"
+        ],
+        "channel": [
+          "branch",
+          "online",
+          "postal"
+        ],
+        "mandatory": "conditional",
+        "tools_or_systems": [
+          "Address verification system",
+          "Compliance management system"
+        ],
+        "failure_path": "Escalate to Compliance Head for manual review and decision"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_001",
+      "name": "International Address",
+      "properties": {
+        "collection_steps": [
+          "Capture new country and full international address details"
+        ],
+        "verification_steps": [
+          "Verify address authenticity through international address verification service"
+        ],
+        "acceptable_proof": [
+          "Utility bill",
+          "Government-issued document",
+          "International address verification certificate"
+        ],
+        "recording_system": [
+          "Customer Information System",
+          "Compliance management system"
+        ],
+        "update_process": "Mandatory proof of address verification required before address change is processed",
+        "risk_classification": "triggers_mandatory_verification"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_002",
+      "name": "High-Risk Jurisdiction Address",
+      "properties": {
+        "collection_steps": [
+          "Capture address in high-risk jurisdiction"
+        ],
+        "verification_steps": [
+          "Enhanced verification through sanctions screening",
+          "Third-party address verification service"
+        ],
+        "acceptable_proof": [
+          "Government-issued identification with address",
+          "Utility bill",
+          "Official correspondence"
+        ],
+        "recording_system": [
+          "Customer Information System",
+          "Compliance management system",
+          "AML screening system"
+        ],
+        "update_process": "Mandatory proof of address verification and compliance review required",
+        "risk_classification": "triggers_mandatory_verification"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_003",
+      "name": "Domestic UK Address",
+      "properties": {
+        "collection_steps": [
+          "Capture new UK address details"
+        ],
+        "verification_steps": [
+          "Standard UK address verification",
+          "Optional utility bill or credit bureau check"
+        ],
+        "acceptable_proof": [
+          "Utility bill",
+          "Council tax bill",
+          "Mortgage statement"
+        ],
+        "recording_system": [
+          "Customer Information System"
+        ],
+        "update_process": "Proof of address may be waived if low-risk customer and same local authority"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_004",
+      "name": "Low-Risk Address",
+      "properties": {
+        "collection_steps": [
+          "Capture address details"
+        ],
+        "verification_steps": [
+          "Standard verification or waived verification"
+        ],
+        "acceptable_proof": [
+          "Utility bill",
+          "Council tax bill"
+        ],
+        "recording_system": [
+          "Customer Information System"
+        ],
+        "update_process": "Proof of address verification may be waived for low-risk customers"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_005",
+      "name": "Address Change Within Same Local Authority",
+      "properties": {
+        "collection_steps": [
+          "Capture new address within same local authority"
+        ],
+        "verification_steps": [
+          "Standard verification or waived verification"
+        ],
+        "acceptable_proof": [
+          "Utility bill",
+          "Council tax bill"
+        ],
+        "recording_system": [
+          "Customer Information System"
+        ],
+        "update_process": "Proof of address verification may be waived if customer is low-risk"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_001",
+      "name": "Medium-Risk Customer",
+      "properties": {
+        "customer_type": "existing",
+        "risk_classification": "medium_risk",
+        "eligibility_or_verification_status": "Requires mandatory proof of address verification on address change"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_002",
+      "name": "High-Risk Customer",
+      "properties": {
+        "customer_type": "existing",
+        "risk_classification": "high_risk",
+        "eligibility_or_verification_status": "Requires mandatory proof of address verification on address change"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_003",
+      "name": "Low-Risk Customer",
+      "properties": {
+        "customer_type": "existing",
+        "risk_classification": "low_risk",
+        "eligibility_or_verification_status": "May have proof of address verification waived if address change is domestic UK and within same local authority"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_004",
+      "name": "New Customer (Less Than 5 Years)",
+      "properties": {
+        "customer_type": "new",
+        "eligibility_or_verification_status": "Requires mandatory proof of address verification on address change"
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ra_001",
+      "name": "Compliance Head",
+      "properties": {
+        "role_type": "human",
+        "department": "Compliance",
+        "authority_level": "can_request_verification_and_override_waiver_decisions",
+        "channels": [
+          "system",
+          "email",
+          "branch"
+        ]
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "id": "01a07400-ba86-72f1-8b22-d07b32649491_019_dp_001",
+      "name": "Proof of Address Requirement Gate",
+      "properties": {
+        "decision_question": "Is proof of address verification required for this address change?",
+        "criteria": [
+          "Moving to international address (new country)",
+          "Address is in high-risk jurisdiction",
+          "Customer flagged as medium or high risk",
+          "Compliance Head requests it",
+          "Customer has been with bank less than 5 years",
+          "Domestic UK move (same country)",
+          "Low-risk address",
+          "Customer is low-risk (established, long-term)",
+          "Address change within same local authority"
+        ],
+        "decision_maker": "Compliance Head or automated system based on customer risk profile and address characteristics",
+        "path_yes": "Proceed to Step 6: Obtain & Verify Proof of Address",
+        "path_no": "Waive proof of address verification and proceed with address update",
+        "override_possible": true
+      },
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    }
+  ],
+  "relationships": [
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ps_001",
+      "source_name": "Proof of Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_001",
+      "target_name": "International Address",
+      "rel_type": "verifies",
+      "description": "Proof of Address Verification step verifies international addresses, which always require verification when customer moves to a new country",
+      "properties": {
+        "requirement_status": "always_required",
+        "trigger_reason": "moving_to_international_address"
+      },
+      "context": "Moving to international address (new country)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ps_001",
+      "source_name": "Proof of Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_002",
+      "target_name": "High-Risk Jurisdiction Address",
+      "rel_type": "verifies",
+      "description": "Proof of Address Verification step verifies addresses in high-risk jurisdictions, which always require verification",
+      "properties": {
+        "requirement_status": "always_required",
+        "trigger_reason": "high_risk_jurisdiction"
+      },
+      "context": "Address is in high-risk jurisdiction",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ps_001",
+      "source_name": "Proof of Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_001",
+      "target_name": "Medium-Risk Customer",
+      "rel_type": "collects_data_from",
+      "description": "Proof of Address Verification step collects address proof from medium-risk customers, for whom verification is always required",
+      "properties": {
+        "requirement_status": "always_required",
+        "trigger_reason": "customer_risk_classification"
+      },
+      "context": "Customer flagged as medium/high risk",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ps_001",
+      "source_name": "Proof of Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_002",
+      "target_name": "High-Risk Customer",
+      "rel_type": "collects_data_from",
+      "description": "Proof of Address Verification step collects address proof from high-risk customers, for whom verification is always required",
+      "properties": {
+        "requirement_status": "always_required",
+        "trigger_reason": "customer_risk_classification"
+      },
+      "context": "Customer flagged as medium/high risk",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ps_001",
+      "source_name": "Proof of Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_004",
+      "target_name": "New Customer (Less Than 5 Years)",
+      "rel_type": "collects_data_from",
+      "description": "Proof of Address Verification step collects address proof from new customers with less than 5 years tenure, for whom verification is always required",
+      "properties": {
+        "requirement_status": "always_required",
+        "trigger_reason": "customer_tenure_less_than_5_years"
+      },
+      "context": "Customer has been with bank <5 years",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ps_001",
+      "source_name": "Proof of Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_003",
+      "target_name": "Domestic UK Address",
+      "rel_type": "verifies",
+      "description": "Proof of Address Verification step may waive verification for domestic UK addresses when customer moves within the same country",
+      "properties": {
+        "requirement_status": "may_be_waived",
+        "trigger_reason": "domestic_uk_move"
+      },
+      "context": "Domestic UK move (same country)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ps_001",
+      "source_name": "Proof of Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_004",
+      "target_name": "Low-Risk Address",
+      "rel_type": "verifies",
+      "description": "Proof of Address Verification step may waive verification for low-risk addresses",
+      "properties": {
+        "requirement_status": "may_be_waived",
+        "trigger_reason": "low_risk_address"
+      },
+      "context": "Low-risk address",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ps_001",
+      "source_name": "Proof of Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_003",
+      "target_name": "Low-Risk Customer",
+      "rel_type": "collects_data_from",
+      "description": "Proof of Address Verification step may waive verification for low-risk, established, long-term customers",
+      "properties": {
+        "requirement_status": "may_be_waived",
+        "trigger_reason": "low_risk_established_customer"
+      },
+      "context": "Customer is low-risk (established, long-term)",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ps_001",
+      "source_name": "Proof of Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_005",
+      "target_name": "Address Change Within Same Local Authority",
+      "rel_type": "verifies",
+      "description": "Proof of Address Verification step may waive verification for address changes within the same local authority",
+      "properties": {
+        "requirement_status": "may_be_waived",
+        "trigger_reason": "same_local_authority"
+      },
+      "context": "Address change within same local authority",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ra_001",
+      "source_name": "Compliance Head",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ps_001",
+      "target_name": "Proof of Address Verification",
+      "rel_type": "notifies",
+      "description": "Compliance Head can request Proof of Address Verification, triggering the requirement",
+      "properties": {
+        "authority_level": "compliance_leadership",
+        "trigger_type": "discretionary_request"
+      },
+      "context": "Compliance Head requests it",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_dp_001",
+      "source_name": "Proof of Address Requirement Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ps_001",
+      "target_name": "Proof of Address Verification",
+      "rel_type": "triggers",
+      "description": "Proof of Address Requirement Gate decision point triggers the Proof of Address Verification step based on customer and address risk factors",
+      "properties": {
+        "gate_criteria": [
+          "international_address",
+          "high_risk_jurisdiction",
+          "medium_high_risk_customer",
+          "new_customer_less_than_5_years",
+          "compliance_head_request"
+        ],
+        "waiver_criteria": [
+          "domestic_uk_address",
+          "low_risk_address",
+          "low_risk_customer",
+          "same_local_authority_change"
+        ]
+      },
+      "context": "When Proof of Address Is Required - Always Required If / May Be Waived If",
+      "bidirectional": false,
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ps_001",
+      "source_name": "Proof of Address Verification",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_001",
+      "source_name": "International Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_002",
+      "source_name": "High-Risk Jurisdiction Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_003",
+      "source_name": "Domestic UK Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_004",
+      "source_name": "Low-Risk Address",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_addr_005",
+      "source_name": "Address Change Within Same Local Authority",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_001",
+      "source_name": "Medium-Risk Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_002",
+      "source_name": "High-Risk Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_003",
+      "source_name": "Low-Risk Customer",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_cust_004",
+      "source_name": "New Customer (Less Than 5 Years)",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_ra_001",
+      "source_name": "Compliance Head",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    },
+    {
+      "source_id": "01a07400-ba86-72f1-8b22-d07b32649491_019_dp_001",
+      "source_name": "Proof of Address Requirement Gate",
+      "target_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "target_name": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "rel_type": "EXTRACTED_FROM",
+      "description": "Entity extracted from this document chunk",
+      "chunk_id": "01a07400-ba86-72f1-8b22-d07b32649491_019",
+      "doc_id": "01a07400-ba86-72f1-8b22-d07b32649491",
+      "_domain": "banking.sop_guides"
+    }
+  ]
+}
